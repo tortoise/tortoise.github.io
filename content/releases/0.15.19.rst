@@ -1,0 +1,19 @@
+0.15.19
+#######
+
+:date: 2020-03-10
+:authors: Nickolas Grigoriadis
+
+Due to Python3.6 support being removed, we decided to declare 0.15 series as a pseudo LTS release
+
+
+    There are several known issues with Python 3.6 and the ``contextvars`` backport where it confuses the context, and connection pooling/transactions leak.
+
+    The problems are worse when using connection pooling (which is the default behaviour).
+
+    We strongly recommend that anyone upgrades to Python 3.7 or 3.8 as soon as is possible.
+
+Changes
+-------
+
+- Fix Function with ``source_field`` option. (#311)

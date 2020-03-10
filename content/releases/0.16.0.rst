@@ -1,0 +1,44 @@
+0.16.0
+######
+
+:date: 2020-03-12
+:authors: Nickolas Grigoriadis
+
+We are proud to announce the 0.16 series of Tortoise ORM
+
+Pydantic suport
+---------------
+
+The main new feature is Pydantic serialisation support!
+Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy objects.
+
+We have documented many of the use cases (including some tutorials) `in our on-line docs <https://tortoise-orm.readthedocs.io/en/latest/contrib/pydantic.html>`_
+
+Other new features
+------------------
+
+* Automatically uses docstrings and doc-comments ``#:`` to populate field/table metadata
+* Partial early-init support for cases when you want to have access to complete models before establishing a DB connection.
+* Allow usage of ``F`` expressions to in annotations.
+* Now negative number with ``.limit(...)`` and ``.offset(...)`` raise ParamsError.
+* Allow usage of Function to ``queryset.update()``.
+
+
+Removals
+--------
+
+* Removed ``tortoise.aggregation`` as this was deprecated since 0.14.0
+* Removed ``start_transaction`` as it has been broken since 0.15.0
+* Removed support for Python 3.6 / PyPy-3.6, as it has been broken since 0.15.0
+
+  If you still need Python 3.6 support, you can install tortoise-orm<0.16 as we will still backport critical bugfixes to the 0.15 branch for a while.
+
+Thanks
+------
+
+This release could not be done without the valiant effort of:
+
+* Nickolas Grigoriadis ``@grigi``
+* Adam Wallner ``@wallneradam``
+* Sang-Heon Jeon ``@lntuition``
+* And more...

@@ -1,0 +1,20 @@
+language: python
+python:
+  - 3.7
+cache: pip
+install:
+  - pip install -r requirements.txt
+script:
+  - rm -fR output
+  - pelican --ignore-cache
+  - touch output/.nojekyll
+deploy:
+  local_dir: output
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  target_branch: master
+  on:
+    branch: docs
+

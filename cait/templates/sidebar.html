@@ -1,0 +1,17 @@
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header" style="padding-top: 20px;">
+        <a id="site-title" href="{{ SITEURL }}" style="padding: 0;"><img src="/images/{{LOGO}}" width="191pm" height="102px" style="display: block; margin: auto;"/><h1 style="margin: 0; text-align: center;"> {{ SITENAME }}</h1></a>
+        <div id="site-desc" style="text-align: center;">{% if SITESUBTITLE %} {{ SITESUBTITLE }} {% endif %}</div>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+            {% for name, url in CUSTOM_MENUITEMS %}
+                <li><a href="{{ url }}">{{ name }}</a></li>
+            {% endfor %}
+            {% for page in PAGES %}
+                <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% include "footer.html" %}
+</header>
