@@ -6,7 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Tortoise ORM</title>
+        <title>    0.16.0
+</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
             <link rel="stylesheet" href="./theme/css/normalize.css">
@@ -50,59 +51,62 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2020-03-14T00:00:00+02:00" pubdate>
-                            Sat 14 March 2020
-                        </time>
-                        <a href="./in-progress.html" rel="bookmark"><h1>In&nbsp;progress</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>This is still in progress, we hope to have it done&nbsp;soon.</p>
-
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
                         <time class="post-time" datetime="2020-03-12T00:00:00+02:00" pubdate>
                             Thu 12 March 2020
                         </time>
                         <a href="./0160.html" rel="bookmark"><h1>0.16.0</h1></a>
                     </header>
+
                     <section class="post-content">
                         <p>We are proud to announce the 0.16 series of Tortoise <span class="caps">ORM</span></p>
 <div class="section" id="pydantic-suport">
 <h2>Pydantic&nbsp;suport</h2>
 <p>The main new feature is Pydantic serialisation support!
 Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy&nbsp;objects.</p>
-<p>We have documented many of the use cases (including …</p></div>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="2020-03-10T00:00:00+02:00" pubdate>
-                            Tue 10 March 2020
-                        </time>
-                        <a href="./01519.html" rel="bookmark"><h1>0.15.19</h1></a>
-                    </header>
-                    <section class="post-content">
-                        <p>Due to Python3.6 support being removed, we decided to declare 0.15 series as a pseudo <span class="caps">LTS</span>&nbsp;release</p>
-<blockquote>
-<p>There are several known issues with Python 3.6 and the <tt class="docutils literal">contextvars</tt> backport where it confuses the context, and connection pooling/transactions&nbsp;leak.</p>
-<p>The problems are worse when using connection pooling …</p></blockquote>
-                    </section>
-                </article>
-            </li>
-            <hr/>
-        </ol>
-        <div class="paginator">
-            Page 1 / 1
-        </div>
+<p>We have documented many of the use cases (including some tutorials) <a class="reference external" href="https://tortoise-orm.readthedocs.io/en/latest/contrib/pydantic.html">in our on-line&nbsp;docs</a></p>
+</div>
+<div class="section" id="other-new-features">
+<h2>Other new&nbsp;features</h2>
+<ul class="simple">
+<li>Automatically uses docstrings and doc-comments <tt class="docutils literal">#:</tt> to populate field/table&nbsp;metadata</li>
+<li>Partial early-init support for cases when you want to have access to complete models before establishing a <span class="caps">DB</span>&nbsp;connection.</li>
+<li>Allow usage of <tt class="docutils literal">F</tt> expressions to in&nbsp;annotations.</li>
+<li>Now negative number with <tt class="docutils literal"><span class="pre">.limit(...)</span></tt> and <tt class="docutils literal"><span class="pre">.offset(...)</span></tt> raise&nbsp;ParamsError.</li>
+<li>Allow usage of Function to <tt class="docutils literal">queryset.update()</tt>.</li>
+</ul>
+</div>
+<div class="section" id="removals">
+<h2>Removals</h2>
+<ul>
+<li><p class="first">Removed <tt class="docutils literal">tortoise.aggregation</tt> as this was deprecated since&nbsp;0.14.0</p>
+</li>
+<li><p class="first">Removed <tt class="docutils literal">start_transaction</tt> as it has been broken since&nbsp;0.15.0</p>
+</li>
+<li><p class="first">Removed support for Python 3.6 / PyPy-3.6, as it has been broken since&nbsp;0.15.0</p>
+<p>If you still need Python 3.6 support, you can install tortoise-orm&lt;0.16 as we will still backport critical bugfixes to the 0.15 branch for a&nbsp;while.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks</h2>
+<p>This release could not be done without the valiant effort&nbsp;of:</p>
+<ul class="simple">
+<li>Nickolas Grigoriadis <tt class="docutils literal">&#64;grigi</tt></li>
+<li>Adam Wallner <tt class="docutils literal">&#64;wallneradam</tt></li>
+<li>Sang-Heon Jeon <tt class="docutils literal">&#64;lntuition</tt></li>
+<li>And&nbsp;more&#8230;</li>
+</ul>
+</div>
 
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="./category/releases.html">releases</a></p>
+                    </aside>
+                    <hr/>
+                </article>
+            </li>
+        </ol>
     </div>
         </div>
 
