@@ -39,11 +39,11 @@
             {% endif %}
         {% endif %}
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/normalize.css">
+        {% assets filters="cssmin", output="css/style.min.css", "css/normalize.css", "css/font-awesome.min.css", "css/main.css", "css/blog.css", "css/github.css" %}
+            <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+        {% endassets %}
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
         {% endblock stylesheets %}
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -51,7 +51,7 @@
         {% if FEED_ALL_RSS %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
         {% endif %}
-        <script src="{{ SITEURL }}/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--<script src="{{ SITEURL }}/theme/js/vendor/modernizr-2.6.2.min.js"></script>-->
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -63,6 +63,6 @@
             {% endblock content %}
         </div>
 
-        <script src="{{ SITEURL }}/theme/js/main.js"></script>
+        <!--<script src="{{ SITEURL }}/theme/js/main.js"></script>-->
     </body>
 </html>

@@ -48,3 +48,5 @@ LOGO = 'tortoise.png'
 EXTRA_PATH_METADATA = {
     'images/tortoise.ico': {'path': 'favicon.ico'},
 }
+
+PLUGINS = ['assets']

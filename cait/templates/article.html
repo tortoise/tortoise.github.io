@@ -3,12 +3,6 @@
     {{ article.title|striptags}}
 {% endblock title %}
 
-{% block stylesheets %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/blog.css">
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/github.css">
-{% endblock stylesheets %}
-
 {% block content %}
     {% include "sidebar.html" %}
 
