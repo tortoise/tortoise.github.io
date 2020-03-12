@@ -36,11 +36,9 @@
             {% endif %}
         {% endif %}
         {% block stylesheets %}
-        {% assets filters="cssmin", output="css/style.min.css", "css/normalize.css", "css/main.css", "css/blog.css", "css/github.css" %}
+        {% assets filters="cssmin", output="css/style.min.css", "css/fonts.css", "css/normalize.css", "css/main.css", "css/blog.css", "css/github.css" %}
             <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
         {% endassets %}
-        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         {% endblock stylesheets %}
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
