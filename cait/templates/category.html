@@ -1,2 +1,7 @@
 {% extends "index.html" %}
-{% block title %}{{ SITENAME }} - {{ category }}{% endblock %}
+{% block title %}{{ SITENAME }} - {{ category|capitalize }}{% endblock %}
+{% block content_head %}
+<header class="entry-header">
+<h1>Category: {{ category|capitalize }}<small> — <a href="/categories.html">All Categories</a></small></h1>
+</header>
+{% endblock %}

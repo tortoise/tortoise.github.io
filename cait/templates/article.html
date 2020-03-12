@@ -14,6 +14,13 @@
                         <time class="post-time" datetime="{{ article.date.isoformat() }}" pubdate>
                             {{ article.locale_date }}
                         </time>
+
+                        {% if article.modified %}
+                        <time class="modified" datetime="{{ article.modified.isoformat() }}">
+                            — Modified :  {{ article.locale_modified }}
+                        </time>
+                        {% endif %}
+
                         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><h1>{{ article.title }}</h1></a>
                     </header>
 
@@ -22,9 +29,14 @@
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></p>
+                        <p>Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|capitalize }}</a></p>
+
+                        {% if article.authors %}
+                        <p>By {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{{ ", " if not loop.last }}{% endfor %}</p>
+                        {% endif %}
+
                         {% if article.tags %}
-                        <p>Tags: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>, {% endfor %}</p>
+                        <p>Tags: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{{ ", " if not loop.last }}{% endfor %}</p>
                         {% endif %}
                     </aside>
                     <hr/>
