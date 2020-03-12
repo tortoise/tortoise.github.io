@@ -45,7 +45,11 @@
                     </header>
 
                     <section class="post-content">
-                        <p>0.15 series is now pseudo <span class="caps">LTS</span> (until May), as it is the last version to support&nbsp;Python3.6.</p>
+                        <p>To update and keep Py3.6 compatibility&nbsp;do:</p>
+<pre class="literal-block">
+pip install -U tortoise-orm&lt;0.16
+</pre>
+<p>0.15 series is now pseudo <span class="caps">LTS</span> (until May), as it is the last version to support&nbsp;Python3.6.</p>
 <blockquote>
 <p>There are several known issues with Python 3.6 and the <tt class="docutils literal">contextvars</tt> backport where it confuses the context, and connection pooling/transactions&nbsp;leak.</p>
 <p>The problems are worse when using connection pooling (which is the default&nbsp;behaviour).</p>

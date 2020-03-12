@@ -44,17 +44,16 @@
                     </header>
                     <section class="post-content">
                         <p>We are proud to announce the 0.16 series of Tortoise <span class="caps">ORM</span></p>
+<p>To update/install&nbsp;do:</p>
+<pre class="literal-block">
+pip install -U tortoise-orm
+</pre>
 <div class="section" id="new-features">
 <h2>New&nbsp;Features</h2>
 <div class="section" id="pydantic-suport">
 <h3>Pydantic&nbsp;suport</h3>
 <p>The main new feature is Pydantic serialisation support!
-Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy&nbsp;objects:</p>
-<blockquote>
-<ul class="simple">
-<li>Data&nbsp;Fields</li>
-<li>Relationships (<span class="caps">FK</span>/<span class="caps">O2O</span>/<span class="caps">M2M</span>)</li>
-<li>Callables …</li></ul></blockquote></div></div>
+Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy …</p></div></div>
                     </section>
                 </article>
             </li>
@@ -68,10 +67,13 @@ Currently this is only for serialisation (no deserialisation support yet), but s
                         <a href="../01519.html" rel="bookmark"><h1>0.15.19</h1></a>
                     </header>
                     <section class="post-content">
-                        <p>0.15 series is now pseudo <span class="caps">LTS</span> (until May), as it is the last version to support&nbsp;Python3.6.</p>
+                        <p>To update and keep Py3.6 compatibility&nbsp;do:</p>
+<pre class="literal-block">
+pip install -U tortoise-orm&lt;0.16
+</pre>
+<p>0.15 series is now pseudo <span class="caps">LTS</span> (until May), as it is the last version to support&nbsp;Python3.6.</p>
 <blockquote>
-<p>There are several known issues with Python 3.6 and the <tt class="docutils literal">contextvars</tt> backport where it confuses the context, and connection pooling/transactions&nbsp;leak.</p>
-<p>The problems are worse when using connection pooling …</p></blockquote>
+<p>There are several known issues with Python 3.6 and the <tt class="docutils literal">contextvars</tt> backport where it confuses the …</p></blockquote>
                     </section>
                 </article>
             </li>
