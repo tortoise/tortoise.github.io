@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>    0.16.0
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" href="./theme/css/style.min.css?171776ee">
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="wrapper">
+<header id="sidebar" class="side-shadow">
+    <hgroup id="site-header" style="padding-top: 20px;">
+        <a id="site-title" href="." style="padding: 0;"><img src="/images/tortoise.png" width="191pm" height="102px" style="display: block; margin: auto;"/><h1 style="margin: 0; text-align: center;"> Tortoise ORM</h1></a>
+        <div id="site-desc" style="text-align: center;"> Tortoise ORM news & releases</div>
+    </hgroup>
+    <nav>
+        <ul id="nav-links">
+                <li><a href="https://tortoise-orm.readthedocs.io/">Documentation</a></li>
+                <li><a href="https://gitter.im/tortoise/community">Chat on Gitter</a></li>
+                <li><a href="https://github.com/tortoise">Source</a></li>
+        </ul>
+    </nav>
+<footer id="site-info">
+    <p>
+        Proudly powered by <a href="http://getpelican.com/" target="pelican">Pelican</a> &amp; <a href="http://python.org/" target="python">Python</a>.
+    </p>
+    <p>
+        Theme based on <a href="https://github.com/hdra/pelican-cait" target="github">cait</a>.
+    </p>
+</footer></header>
+    <div id="post-container">
+        <ol id="post-list">
+            <li>
+                <article class="post-entry">
+                    <header class="entry-header">
+                        <time class="post-time" datetime="2020-03-12T00:00:00+02:00" pubdate>
+                            Thu 12 March 2020
+                        </time>
+                        <a href="./0160.html" rel="bookmark"><h1>0.16.0</h1></a>
+                    </header>
+
+                    <section class="post-content">
+                        <p>We are proud to announce the 0.16 series of Tortoise <span class="caps">ORM</span></p>
+<div class="section" id="new-features">
+<h2>New&nbsp;Features</h2>
+<div class="section" id="pydantic-suport">
+<h3>Pydantic&nbsp;suport</h3>
+<p>The main new feature is Pydantic serialisation support!
+Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy&nbsp;objects:</p>
+<blockquote>
+<ul class="simple">
+<li>Data&nbsp;Fields</li>
+<li>Relationships (<span class="caps">FK</span>/<span class="caps">O2O</span>/<span class="caps">M2M</span>)</li>
+<li>Callables</li>
+</ul>
+</blockquote>
+<p>We have documented many of the use cases (including some tutorials) <a class="reference external" href="https://tortoise-orm.readthedocs.io/en/latest/contrib/pydantic.html">in our on-line&nbsp;docs</a></p>
+</div>
+<div class="section" id="docstrings-doc-comments">
+<h3>Docstrings <span class="amp">&amp;</span>&nbsp;doc-comments</h3>
+<p>Model docstrings and <tt class="docutils literal">#:</tt> comments directly preceding Field definitions are now used as docstrings and <span class="caps">DDL</span>&nbsp;descriptions.</p>
+<p>This is now cleaned and carried as part of the <tt class="docutils literal">docstring</tt> parameter in <tt class="docutils literal"><span class="pre">describe_model(...)</span></tt></p>
+<p>If one doesn&#8217;t explicitly specify a Field <tt class="docutils literal">description=</tt> or Model <tt class="docutils literal">Meta.table_description=</tt> then we default to the first line as the description.
+This is done because a description is submitted to the <span class="caps">DB</span>, and needs to be short (depending on <span class="caps">DB</span>, 63 chars) in&nbsp;size.</p>
+<p>Usage&nbsp;example:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Something</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Docstring.</span>
+
+<span class="sd">    Some extra info.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># A regular comment</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="c1">#: A docstring comment</span>
+    <span class="n">chars</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Some chars&quot;</span><span class="p">)</span>
+    <span class="c1">#: A docstring comment</span>
+    <span class="c1">#: Some more detail</span>
+    <span class="n">blip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># When looking at the describe model:</span>
+<span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A Docstring.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;docstring&quot;</span><span class="p">:</span> <span class="s2">&quot;A Docstring.</span><span class="se">\n\n</span><span class="s2">Some extra info.&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;data_fields&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+            <span class="o">...</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;docstring&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;chars&quot;</span><span class="p">,</span>
+            <span class="o">...</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Some chars&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;docstring&quot;</span><span class="p">:</span> <span class="s2">&quot;A docstring comment&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;blip&quot;</span><span class="p">,</span>
+            <span class="o">...</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A docstring comment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;docstring&quot;</span><span class="p">:</span> <span class="s2">&quot;A docstring comment</span><span class="se">\n</span><span class="s2">Some more detail&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="early-partial-init-of-models">
+<h2>Early Partial Init of&nbsp;models</h2>
+<p>We now have an early init of models, which can be useful when needing Models that are not bound to a <span class="caps">DB</span>, but otherwise complete.
+e.g. Schema generation without needing to be properly set&nbsp;up.</p>
+<p>Usage&nbsp;example:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Lets say you defined your models in &quot;some/models.py&quot;, and &quot;other/ddef.py&quot;</span>
+<span class="c1"># And you are going to use them in the &quot;model&quot; namespace:</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;some.models&quot;</span><span class="p">,</span> <span class="s2">&quot;other.ddef&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now the models will have relationships built, so introspection of schema will be comprehensive</span>
+</pre></div>
+<div class="section" id="other-new-features">
+<h3>Other new&nbsp;features</h3>
+<ul class="simple">
+<li>Allow usage of <tt class="docutils literal">F</tt> expressions to in&nbsp;annotations.</li>
+<li>Now negative number with <tt class="docutils literal"><span class="pre">.limit(...)</span></tt> and <tt class="docutils literal"><span class="pre">.offset(...)</span></tt> raise&nbsp;ParamsError.</li>
+<li>Allow usage of Function to <tt class="docutils literal">queryset.update()</tt>.</li>
+<li>Add ability to supply <tt class="docutils literal">distinct</tt> flag to&nbsp;Aggregate.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="bugfixes">
+<h2>Bugfixes:</h2>
+<ul class="simple">
+<li>Fix default type of <tt class="docutils literal">JSONField</tt></li>
+</ul>
+</div>
+<div class="section" id="removals">
+<h2>Removals</h2>
+<ul>
+<li><p class="first">Removed <tt class="docutils literal">tortoise.aggregation</tt> as this was deprecated since&nbsp;0.14.0</p>
+</li>
+<li><p class="first">Removed <tt class="docutils literal">start_transaction</tt> as it has been broken since&nbsp;0.15.0</p>
+</li>
+<li><p class="first">Removed support for Python 3.6 / PyPy-3.6, as it has been broken since&nbsp;0.15.0</p>
+<p>If you still need Python 3.6 support, you can install tortoise-orm&lt;0.16 as we will still backport critical bugfixes to the 0.15 branch for a&nbsp;while.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks</h2>
+<p>This release could not be done without the valiant efforts&nbsp;of:</p>
+<ul class="simple">
+<li>Nickolas Grigoriadis <tt class="docutils literal">&#64;grigi</tt></li>
+<li>Adam Wallner <tt class="docutils literal">&#64;wallneradam</tt></li>
+<li><tt class="docutils literal">&#64;AEnterprise</tt></li>
+<li>Sang-Heon Jeon <tt class="docutils literal">&#64;lntuition</tt></li>
+<li>Jong-Yeop Park <tt class="docutils literal">&#64;pjongy</tt></li>
+</ul>
+<p>And&nbsp;more&#8230;</p>
+</div>
+
+                    </section>
+                    <hr/>
+                    <aside class="post-meta">
+                        <p>Category: <a href="./category/releases.html">releases</a></p>
+                    </aside>
+                    <hr/>
+                </article>
+            </li>
+        </ol>
+    </div>
+        </div>
+        <!--<script src="./theme/js/main.js"></script>-->
+    </body>
+</html>
