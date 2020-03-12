@@ -3,30 +3,112 @@
 
 :date: 2020-03-12
 :authors: Nickolas Grigoriadis
-:status: draft
+
 
 We are proud to announce the 0.16 series of Tortoise ORM
+
+New Features
+============
 
 Pydantic suport
 ---------------
 
 The main new feature is Pydantic serialisation support!
-Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy objects.
+Currently this is only for serialisation (no deserialisation support yet), but supports everything required for serialising complex relation-heavy objects:
+
+  * Data Fields
+  * Relationships (FK/O2O/M2M)
+  * Callables
 
 We have documented many of the use cases (including some tutorials) `in our on-line docs <https://tortoise-orm.readthedocs.io/en/latest/contrib/pydantic.html>`_
+
+Docstrings & doc-comments
+-------------------------
+Model docstrings and ``#:`` comments directly preceding Field definitions are now used as docstrings and DDL descriptions.
+
+This is now cleaned and carried as part of the ``docstring`` parameter in ``describe_model(...)``
+
+If one doesn't explicitly specify a Field ``description=`` or Model ``Meta.table_description=`` then we default to the first line as the description.
+This is done because a description is submitted to the DB, and needs to be short (depending on DB, 63 chars) in size.
+
+Usage example:
+
+.. code-block:: python3
+
+    class Something(Model):
+        """
+        A Docstring.
+
+        Some extra info.
+        """
+
+        # A regular comment
+        name = fields.CharField(max_length=50)
+        #: A docstring comment
+        chars = fields.CharField(max_length=50, description="Some chars")
+        #: A docstring comment
+        #: Some more detail
+        blip = fields.CharField(max_length=50)
+
+    # When looking at the describe model:
+    {
+        "description": "A Docstring.",
+        "docstring": "A Docstring.\n\nSome extra info.",
+        ...
+        "data_fields": [
+            {
+                "name": "name",
+                ...
+                "description": null,
+                "docstring": null
+            },
+            {
+                "name": "chars",
+                ...
+                "description": "Some chars",
+                "docstring": "A docstring comment"
+            },
+            {
+                "name": "blip",
+                ...
+                "description": "A docstring comment",
+                "docstring": "A docstring comment\nSome more detail"
+            }
+        ]
+    }
+
+
+Early Partial Init of models
+============================
+
+We now have an early init of models, which can be useful when needing Models that are not bound to a DB, but otherwise complete.
+e.g. Schema generation without needing to be properly set up.
+
+Usage example:
+
+.. code-block:: python3
+
+    # Lets say you defined your models in "some/models.py", and "other/ddef.py"
+    # And you are going to use them in the "model" namespace:
+    Tortoise.init_models(["some.models", "other.ddef"], "models")
+
+    # Now the models will have relationships built, so introspection of schema will be comprehensive
+
 
 Other new features
 ------------------
 
-* Automatically uses docstrings and doc-comments ``#:`` to populate field/table metadata
-* Partial early-init support for cases when you want to have access to complete models before establishing a DB connection.
 * Allow usage of ``F`` expressions to in annotations.
 * Now negative number with ``.limit(...)`` and ``.offset(...)`` raise ParamsError.
 * Allow usage of Function to ``queryset.update()``.
 * Add ability to supply ``distinct`` flag to Aggregate.
 
+Bugfixes:
+=========
+- Fix default type of ``JSONField``
+
 Removals
---------
+========
 
 * Removed ``tortoise.aggregation`` as this was deprecated since 0.14.0
 * Removed ``start_transaction`` as it has been broken since 0.15.0
@@ -35,7 +117,7 @@ Removals
   If you still need Python 3.6 support, you can install tortoise-orm<0.16 as we will still backport critical bugfixes to the 0.15 branch for a while.
 
 Thanks
-------
+======
 
 This release could not be done without the valiant efforts of:
 
@@ -44,4 +126,5 @@ This release could not be done without the valiant efforts of:
 * ``@AEnterprise``
 * Sang-Heon Jeon ``@lntuition``
 * Jong-Yeop Park ``@pjongy``
-* And more...
+
+And more...
