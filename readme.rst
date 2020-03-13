@@ -17,3 +17,18 @@ Running it locally
 * Browse to http://localhost:8000
 
 Any of the files you update will get auto-rebuilt and you can see the result on your local browser.
+
+Extensions
+----------
+
+We use a few Pelican plugins, and most of them is automatic, but these two features are manual:
+
+* To mark the end of the summary manually (in case you are not happy with where the cut-off autmatically happens)
+  you can add::
+
+      .. PELICAN_END_SUMMARY
+
+
+* To embed a Youtube video, just do::
+
+      .. youtube:: <SOME_CODE>

@@ -49,4 +49,5 @@ EXTRA_PATH_METADATA = {
     'images/tortoise.ico': {'path': 'favicon.ico'},
 }
 
-PLUGINS = ['assets', 'minify_all']
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['assets', 'minify_all', 'youtube', 'summary']
