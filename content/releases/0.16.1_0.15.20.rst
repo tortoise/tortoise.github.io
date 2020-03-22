@@ -1,0 +1,26 @@
+0.16.2 & 0.15.20
+################
+
+:date: 2020-03-22
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.2 & 0.15.20 releases of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+or for 0.15 legacy series::
+
+    pip install -U tortoise-orm<0.16
+
+These are bugfix releases, and we recommend you upgrade.
+
+Bugfixes
+========
+* Default ``values()`` & ``values_list()`` now includes annotations.
+* Annotations over joins now work correctly with ``values()`` & ``values_list()``
+* Ensure ``GROUP BY`` precedes ``HAVING`` to ensure that filtering by aggregates work correctly.
+* Cast ``BooleanField`` values correctly on SQLite & MySQL
+* Fix bug with join query with aggregation (only 0.16.2)
