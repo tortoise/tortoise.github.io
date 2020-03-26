@@ -1,0 +1,24 @@
+0.16.3 & 0.15.21
+################
+
+:date: 2020-03-26
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.3 & 0.15.21 releases of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+or for 0.15 legacy series::
+
+    pip install -U tortoise-orm<0.16
+
+These are bugfix releases, and we recommend you upgrade.
+
+Bugfixes
+========
+* Fixed invalid ``var IN ()`` SQL generated using ``__in=`` and ``__not_in`` filters.
+* Fix bug with order_by on nested fields
+* Fix joining with self by reverse-foreign-key for filtering and annotation
