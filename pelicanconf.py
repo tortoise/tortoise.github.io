@@ -25,7 +25,7 @@ AUTHOR_FEED_RSS = None
 CUSTOM_MENUITEMS = (
     ('Documentation', 'https://tortoise-orm.readthedocs.io/'),
     ('Chat on Gitter', 'https://gitter.im/tortoise/community'),
-    ('Source', 'https://github.com/tortoise'),
+    ('Source', 'https://github.com/tortoise/tortoise-orm'),
 )
 
 
