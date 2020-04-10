@@ -1,0 +1,24 @@
+0.16.5
+######
+
+:date: 2020-04-10
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.5 release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+This release includes bugfixes and some minor changes:
+
+Bugfixes
+========
+* Fix for ``generate_schemas`` param being ignored in ``tortoise.contrib.quart.register_tortoise``
+* Fix join query with `source_field` param
+
+Changed
+=======
+* Moved ``Tortoise.describe_model(<MODEL>, ...)`` to ``<MODEL>.describe(...)``
+* Deprecated ``Tortoise.describe_model()``
