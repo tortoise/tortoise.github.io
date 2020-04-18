@@ -1,0 +1,20 @@
+0.15.23
+#######
+
+:date: 2020-04-18
+:authors: Nickolas Grigoriadis
+
+We are proud to announce the 0.15.23 legacy release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm<0.16
+
+This is a security fix release, and we strongly recommend you upgrade.
+
+
+Security Fixes
+==============
+- Fixed SQL injection issue in MySQL
+- Fixed SQL injection issues in MySQL when using ``contains``, ``starts_with`` or ``ends_with`` filters (and their case-insensitive counterparts)
+- Fixed malformed SQL for PostgreSQL and SQLite when using ``contains``, ``starts_with`` or ``ends_with`` filters (and their case-insensitive counterparts)
