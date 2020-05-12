@@ -1,0 +1,25 @@
+0.16.11
+#######
+
+:date: 2020-05-12
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.11 release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+This release is both a bugfix & feature release:
+
+Fixes
+=====
+* fix: ``sqlite://:memory:`` in Windows thrown ``OSError: [WinError 123]``
+* Support ``bulk_create()`` insertion of records with overridden primary key when the primary key is DB-generated
+
+Features
+========
+* Add ``queryset.exists()`` and ``Model.exists()``.
+* Add model subscription lookup, ``Model[<pkval>]`` that will return the object or raise ``KeyError``
+
