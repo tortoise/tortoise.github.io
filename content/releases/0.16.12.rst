@@ -1,0 +1,26 @@
+0.16.12
+#######
+
+:date: 2020-05-22
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.12 release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+This release is primarily a bugfix release, and upgrading is recommended:
+
+Fixes
+=====
+* Make ``Field.default`` effect on db level when generate table
+* Add converters instead of importing from pymysql
+* Fix PostgreSQL ``BooleanField`` default value convertion
+* Fix ``JSONField`` typed in ``pydantic_model_creator``
+
+Feature
+=======
+* Add ``.sql()`` method on ``QuerySet``
+
