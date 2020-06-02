@@ -1,0 +1,25 @@
+0.16.13
+#######
+
+:date: 2020-06-02
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.13 release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+This release is primarily a minor feature release:
+
+Changes
+=======
+* Default install of ``tortoise-orm`` now installs with no C-dependencies, if you want to use the C accelerators, please do a ``pip install tortoise-orm[accel]`` instead.
+* Added ``<instance>.clone()`` method that will create a cloned instance in memory. To persist it you still need to call ``.save()``
+* ``.clone()`` will raise a ``ParamsError`` if tortoise can't generate a primary key. In that case do a ``.clone(pk=<newval>)``
+* If manually setting the primary key value to ``None`` and the primary key can be automatically generated, this will create a new record. We however still recommend the ``.clone()`` method instead.
+* ``.save()`` can be forced to do a create by setting ``force_create=True``
+* ``.save()`` can be forced to do an update by setting ``force_update=True``
+* Setting ``update_fields`` for a ``.save()`` operation will strongly prefer to do an update if possible
+
