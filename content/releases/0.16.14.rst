@@ -1,0 +1,24 @@
+0.16.14
+#######
+
+:date: 2020-07-15
+:authors: Nickolas Grigoriadis
+
+
+We are proud to announce the 0.16.14 release of Tortoise ORM
+
+To update/install do::
+
+    pip install -U tortoise-orm
+
+This release is primarily a minor fix release:
+
+Changes
+=======
+* We now do CI runs on a Windows VM as well, to try and prevent Windows specific regressions.
+* Make ``F`` expression work with ``QuerySet.filter()``.
+* Include ``py.typed`` in source distribution.
+* Added ``datetime`` parsing from ``int`` for ``fields.DatetimeField``.
+* ``get_or_create`` passes the ``using_db=`` on if provided.
+* Allow custom ``loop`` and ``connection_class`` parameters to be passed on to asyncpg.
+
