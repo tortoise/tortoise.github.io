@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="../../../_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="../../../_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="../../../_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="../../../_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#3f51b5" name="theme-color"/>
+  <script src="../../../_static/javascripts/modernizr.js">
+  </script>
+  <title>
+   tortoise.contrib.test — Tortoise ORM v0.17.5 Documentation
+  </title>
+  <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js">
+  </script>
+  <script src="../../../_static/jquery.js">
+  </script>
+  <script src="../../../_static/underscore.js">
+  </script>
+  <script src="../../../_static/doctools.js">
+  </script>
+  <link href="../../../genindex.html" rel="index" title="Index"/>
+  <link href="../../../search.html" rel="search" title="Search"/>
+ </head>
+ <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#_modules/tortoise/contrib/test" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
+       <img alt="Tortoise ORM 0.17.5 Documentation logo" height="26" src="../../../_static/tortoise.png"/>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Tortoise ORM
+       </span>
+       <span class="md-header-nav__topic">
+        tortoise.contrib.test
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="../../../search.html" class="md-search__form" method="GET" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         tortoise-orm
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="../../../_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = "../../../"versions.json"",
+        target_loc = "../../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+     </script>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../index.html">
+        Module code
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../tortoise.html">
+        tortoise
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
+           <img alt=" logo" height="48" src="../../../_static/tortoise.png" width="48"/>
+          </a>
+          <a href="../../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
+           Tortoise ORM
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            tortoise-orm
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../index.html">
+            Tortoise ORM
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../getting_started.html">
+            Getting started
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../reference.html">
+            Reference
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../examples.html">
+            Examples
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../contrib.html">
+            Contrib
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../CHANGELOG.html">
+            Changelog
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../roadmap.html">
+            Roadmap
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../CONTRIBUTING.html">
+            Contribution Guide
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../CONTRIBUTORS.html">
+            Thanks
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <h1 id="modules-tortoise-contrib-test--page-root">
+        Source code for tortoise.contrib.test
+       </h1>
+       <div class="highlight">
+        <pre>
+<span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">asyncio.events</span> <span class="kn">import</span> <span class="n">AbstractEventLoop</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">SkipTest</span><span class="p">,</span> <span class="n">expectedFailure</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="n">skipIf</span><span class="p">,</span> <span class="n">skipUnless</span>
+<span class="kn">from</span> <span class="nn">unittest.result</span> <span class="kn">import</span> <span class="n">TestResult</span>
+
+<span class="kn">from</span> <span class="nn">asynctest</span> <span class="kn">import</span> <span class="n">TestCase</span> <span class="k">as</span> <span class="n">_TestCase</span>
+<span class="kn">from</span> <span class="nn">asynctest</span> <span class="kn">import</span> <span class="n">_fail_on</span>
+<span class="kn">from</span> <span class="nn">asynctest.case</span> <span class="kn">import</span> <span class="n">_Policy</span>
+
+<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Tortoise</span>
+<span class="kn">from</span> <span class="nn">tortoise.backends.base.config_generator</span> <span class="kn">import</span> <span class="n">generate_config</span> <span class="k">as</span> <span class="n">_generate_config</span>
+<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">DBConnectionError</span>
+<span class="kn">from</span> <span class="nn">tortoise.transactions</span> <span class="kn">import</span> <span class="n">current_transaction_map</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"SimpleTestCase"</span><span class="p">,</span>
+    <span class="s2">"TestCase"</span><span class="p">,</span>
+    <span class="s2">"TruncationTestCase"</span><span class="p">,</span>
+    <span class="s2">"IsolatedTestCase"</span><span class="p">,</span>
+    <span class="s2">"getDBConfig"</span><span class="p">,</span>
+    <span class="s2">"requireCapability"</span><span class="p">,</span>
+    <span class="s2">"env_initializer"</span><span class="p">,</span>
+    <span class="s2">"initializer"</span><span class="p">,</span>
+    <span class="s2">"finalizer"</span><span class="p">,</span>
+    <span class="s2">"SkipTest"</span><span class="p">,</span>
+    <span class="s2">"expectedFailure"</span><span class="p">,</span>
+    <span class="s2">"skip"</span><span class="p">,</span>
+    <span class="s2">"skipIf"</span><span class="p">,</span>
+    <span class="s2">"skipUnless"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">_TORTOISE_TEST_DB</span> <span class="o">=</span> <span class="s2">"sqlite://:memory:"</span>
+<span class="c1"># pylint: disable=W0201</span>
+
+<span class="n">expectedFailure</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">Mark test as expecting failiure.</span>
+
+<span class="s2">On success it will be marked as unexpected success.</span>
+<span class="s2">"""</span>
+
+<span class="n">_CONFIG</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">_CONNECTIONS</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">_SELECTOR</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_LOOP</span><span class="p">:</span> <span class="n">AbstractEventLoop</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+<span class="n">_MODULES</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">_CONN_MAP</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="getDBConfig"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.getDBConfig">[docs]</a><span class="k">def</span> <span class="nf">getDBConfig</span><span class="p">(</span><span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">modules</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    DB Config factory, for use in testing.</span>
+
+<span class="sd">    :param app_label: Label of the app (must be distinct for multiple apps).</span>
+<span class="sd">    :param modules: List of modules to look for models in.</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">_generate_config</span><span class="p">(</span>
+        <span class="n">_TORTOISE_TEST_DB</span><span class="p">,</span>
+        <span class="n">app_modules</span><span class="o">=</span><span class="p">{</span><span class="n">app_label</span><span class="p">:</span> <span class="n">modules</span><span class="p">},</span>
+        <span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">connection_label</span><span class="o">=</span><span class="n">app_label</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">_init_db</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">_drop_databases</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">DBConnectionError</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+        <span class="k">pass</span>
+
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_restore_default</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="n">_CONNECTIONS</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">current_transaction_map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_CONN_MAP</span><span class="p">)</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">_init_apps</span><span class="p">(</span><span class="n">_CONFIG</span><span class="p">[</span><span class="s2">"apps"</span><span class="p">])</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<div class="viewcode-block" id="initializer"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.initializer">[docs]</a><span class="k">def</span> <span class="nf">initializer</span><span class="p">(</span>
+    <span class="n">modules</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">]],</span>
+    <span class="n">db_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"models"</span><span class="p">,</span>
+    <span class="n">loop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AbstractEventLoop</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Sets up the DB for testing. Must be called as part of test environment setup.</span>
+
+<span class="sd">    :param modules: List of modules to look for models in.</span>
+<span class="sd">    :param db_url: The db_url, defaults to ``sqlite://:memory``.</span>
+<span class="sd">    :param app_label: The name of the APP to initialise the modules in, defaults to "models"</span>
+<span class="sd">    :param loop: Optional event loop.</span>
+<span class="sd">    """</span>
+    <span class="c1"># pylint: disable=W0603</span>
+    <span class="k">global</span> <span class="n">_CONFIG</span>
+    <span class="k">global</span> <span class="n">_CONNECTIONS</span>
+    <span class="k">global</span> <span class="n">_SELECTOR</span>
+    <span class="k">global</span> <span class="n">_LOOP</span>
+    <span class="k">global</span> <span class="n">_TORTOISE_TEST_DB</span>
+    <span class="k">global</span> <span class="n">_MODULES</span>
+    <span class="k">global</span> <span class="n">_CONN_MAP</span>
+    <span class="n">_MODULES</span> <span class="o">=</span> <span class="n">modules</span>
+    <span class="k">if</span> <span class="n">db_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: nobranch</span>
+        <span class="n">_TORTOISE_TEST_DB</span> <span class="o">=</span> <span class="n">db_url</span>
+    <span class="n">_CONFIG</span> <span class="o">=</span> <span class="n">getDBConfig</span><span class="p">(</span><span class="n">app_label</span><span class="o">=</span><span class="n">app_label</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="n">_MODULES</span><span class="p">)</span>
+
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">loop</span> <span class="ow">or</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">_LOOP</span> <span class="o">=</span> <span class="n">loop</span>
+    <span class="n">_SELECTOR</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">_selector</span>  <span class="c1"># type: ignore</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">_init_db</span><span class="p">(</span><span class="n">_CONFIG</span><span class="p">))</span>
+    <span class="n">_CONNECTIONS</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">_CONN_MAP</span> <span class="o">=</span> <span class="n">current_transaction_map</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">Tortoise</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="finalizer"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.finalizer">[docs]</a><span class="k">def</span> <span class="nf">finalizer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""</span>
+<span class="sd">    Cleans up the DB after testing. Must be called as part of the test environment teardown.</span>
+<span class="sd">    """</span>
+    <span class="n">_restore_default</span><span class="p">()</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">_LOOP</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">_selector</span> <span class="o">=</span> <span class="n">_SELECTOR</span>  <span class="c1"># type: ignore</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">_drop_databases</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="env_initializer"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.env_initializer">[docs]</a><span class="k">def</span> <span class="nf">env_initializer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="sd">"""</span>
+<span class="sd">    Calls ``initializer()`` with parameters mapped from environment variables.</span>
+
+<span class="sd">    ``TORTOISE_TEST_MODULES``:</span>
+<span class="sd">        A comma-separated list of modules to include *(required)*</span>
+<span class="sd">    ``TORTOISE_TEST_APP``:</span>
+<span class="sd">        The name of the APP to initialise the modules in *(optional)*</span>
+
+<span class="sd">        If not provided, it will default to "models".</span>
+<span class="sd">    ``TORTOISE_TEST_DB``:</span>
+<span class="sd">        The db_url of the test db. *(optional*)</span>
+
+<span class="sd">        If not provided, it will default to an in-memory SQLite DB.</span>
+<span class="sd">    """</span>
+    <span class="n">modules</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">_os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TORTOISE_TEST_MODULES"</span><span class="p">,</span> <span class="s2">"tests.testmodels"</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+    <span class="n">db_url</span> <span class="o">=</span> <span class="n">_os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TORTOISE_TEST_DB"</span><span class="p">,</span> <span class="s2">"sqlite://:memory:"</span><span class="p">)</span>
+    <span class="n">app_label</span> <span class="o">=</span> <span class="n">_os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TORTOISE_TEST_APP"</span><span class="p">,</span> <span class="s2">"models"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">modules</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"TORTOISE_TEST_MODULES envvar not defined"</span><span class="p">)</span>
+    <span class="n">initializer</span><span class="p">(</span><span class="n">modules</span><span class="p">,</span> <span class="n">db_url</span><span class="o">=</span><span class="n">db_url</span><span class="p">,</span> <span class="n">app_label</span><span class="o">=</span><span class="n">app_label</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SimpleTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase">[docs]</a><span class="k">class</span> <span class="nc">SimpleTestCase</span><span class="p">(</span><span class="n">_TestCase</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+    <span class="sd">"""</span>
+<span class="sd">    The Tortoise base test class.</span>
+
+<span class="sd">    This will ensure that your DB environment has a test double set up for use.</span>
+
+<span class="sd">    An asyncio capable test class that provides some helper functions.</span>
+
+<span class="sd">    Will run any ``test_*()`` function either as sync or async, depending</span>
+<span class="sd">    on the signature of the function.</span>
+<span class="sd">    If you specify ``async test_*()`` then it will run it in an event loop.</span>
+
+<span class="sd">    Based on `asynctest &lt;http://asynctest.readthedocs.io/&gt;`_</span>
+<span class="sd">    """</span>
+
+    <span class="n">use_default_loop</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_init_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_default_loop</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="n">_LOOP</span>
+            <span class="n">loop</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+            <span class="n">loop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">new_event_loop</span><span class="p">()</span>
+
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">_Policy</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop_policy</span><span class="p">(),</span> <span class="n">loop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">forbid_get_event_loop</span><span class="p">)</span>
+
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">set_event_loop_policy</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch_loop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUpDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="c1"># initialize post-test checks</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
+        <span class="n">checker</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">_fail_on</span><span class="o">.</span><span class="n">_FAIL_ON_ATTR</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_checker</span> <span class="o">=</span> <span class="n">checker</span> <span class="ow">or</span> <span class="n">_fail_on</span><span class="o">.</span><span class="n">_fail_on</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_checker</span><span class="o">.</span><span class="n">before_test</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setUpDB</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">setUp</span><span class="p">):</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+
+        <span class="c1"># don't take into account if the loop ran during setUp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">_asynctest_ran</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tearDown</span><span class="p">):</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tearDownDB</span><span class="p">()</span>
+        <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">Tortoise</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># post-test checks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_checker</span><span class="o">.</span><span class="n">check_test</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c1"># Override unittest.TestCase methods which call setUp() and tearDown()</span>
+<div class="viewcode-block" id="SimpleTestCase.run"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TestResult</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TestResult</span><span class="p">]:</span>
+        <span class="n">orig_result</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaultTestResult</span><span class="p">()</span>
+            <span class="n">startTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">"startTestRun"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">startTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">startTestRun</span><span class="p">()</span>
+
+        <span class="n">result</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">testMethod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="p">):</span>
+            <span class="c1"># If the class or method was skipped.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">skip_why</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">"__unittest_skip_why__"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span>
+                    <span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_skip_why__"</span><span class="p">,</span> <span class="s2">""</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_addSkip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">skip_why</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">stopTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">expecting_failure</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_expecting_failure__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">outcome</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">case</span><span class="o">.</span><span class="n">_Outcome</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="n">outcome</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_init_loop</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_outcome</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="n">expecting_failure</span><span class="p">,</span> <span class="n">testMethod</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doCleanups</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_unset_loop</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">skipped</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_addSkip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_feedErrorsToResult</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">expecting_failure</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_addExpectedFailure</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_addUnexpectedSuccess</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">addSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">stopTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">orig_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+                <span class="n">stopTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">"stopTestRun"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">stopTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">stopTestRun</span><span class="p">()</span>  <span class="c1"># pylint: disable=E1102</span>
+
+            <span class="c1"># explicitly break reference cycles:</span>
+            <span class="c1"># outcome.errors -&gt; frame -&gt; outcome -&gt; outcome.errors</span>
+            <span class="c1"># outcome.expectedFailure -&gt; frame -&gt; outcome -&gt; outcome.expectedFailure</span>
+            <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># clear the outcome, no more needed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="SimpleTestCase.assertListSortEqual"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">[docs]</a>    <span class="k">def</span> <span class="nf">assertListSortEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">list2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Model</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span></div>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_run_outcome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">expecting_failure</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">testMethod</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setUp</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+            <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="n">expecting_failure</span>
+            <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isTest</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_test_method</span><span class="p">(</span><span class="n">testMethod</span><span class="p">)</span>
+            <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tearDown</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_run_test_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># If the method is a coroutine or returns a coroutine, run it on the</span>
+        <span class="c1"># loop</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutine</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="IsolatedTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase">[docs]</a><span class="k">class</span> <span class="nc">IsolatedTestCase</span><span class="p">(</span><span class="n">SimpleTestCase</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    An asyncio capable test class that will ensure that an isolated test db</span>
+<span class="sd">    is available for each test.</span>
+
+<span class="sd">    Use this if your test needs perfect isolation.</span>
+
+<span class="sd">    Note to use ``{}`` as a string-replacement parameter, for your DB_URL.</span>
+<span class="sd">    That will create a randomised database name.</span>
+
+<span class="sd">    It will create and destroy a new DB instance for every test.</span>
+<span class="sd">    This is obviously slow, but guarantees a fresh DB.</span>
+
+<span class="sd">    If you define a ``tortoise_test_modules`` list, it overrides the DB setup module for the tests.</span>
+<span class="sd">    """</span>
+
+    <span class="n">tortoise_test_modules</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUpDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">getDBConfig</span><span class="p">(</span><span class="n">app_label</span><span class="o">=</span><span class="s2">"models"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tortoise_test_modules</span> <span class="ow">or</span> <span class="n">_MODULES</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">_drop_databases</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TruncationTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TruncationTestCase">[docs]</a><span class="k">class</span> <span class="nc">TruncationTestCase</span><span class="p">(</span><span class="n">SimpleTestCase</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    An asyncio capable test class that will truncate the tables after a test.</span>
+
+<span class="sd">    Use this when your tests contain transactions.</span>
+
+<span class="sd">    This is slower than ``TestCase`` but faster than ``IsolatedTestCase``.</span>
+<span class="sd">    Note that usage of this does not guarantee that auto-number-pks will be reset to 1.</span>
+<span class="sd">    """</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUpDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_restore_default</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_restore_default</span><span class="p">()</span>
+        <span class="c1"># TODO: This is a naive implementation: Will fail to clear M2M and non-cascade foreign keys</span>
+        <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">quote_char</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">query_class</span><span class="o">.</span><span class="n">_builder</span><span class="p">()</span><span class="o">.</span><span class="n">QUOTE_CHAR</span>
+                <span class="k">await</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>  <span class="c1"># nosec</span>
+                    <span class="sa">f</span><span class="s2">"DELETE FROM </span><span class="si">{</span><span class="n">quote_char</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}{</span><span class="n">quote_char</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span></div>
+
+
+<span class="k">class</span> <span class="nc">TransactionTestContext</span><span class="p">:</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"connection"</span><span class="p">,</span> <span class="s2">"connection_name"</span><span class="p">,</span> <span class="s2">"token"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">connection_name</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">current_transaction</span> <span class="o">=</span> <span class="n">current_transaction_map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">current_transaction</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="s2">"_parent"</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="s2">"_parent"</span><span class="p">):</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span><span class="p">)</span>
+        <span class="n">current_transaction_map</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TestCase">[docs]</a><span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">TruncationTestCase</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    An asyncio capable test class that will ensure that each test will be run at</span>
+<span class="sd">    separate transaction that will rollback on finish.</span>
+
+<span class="sd">    This is a fast test runner. Don't use it if your test uses transactions.</span>
+<span class="sd">    """</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_run_outcome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">expecting_failure</span><span class="p">,</span> <span class="n">testMethod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_restore_default</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__db__</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"models"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__db__</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">supports_transactions</span><span class="p">:</span>
+            <span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__db__</span><span class="o">.</span><span class="n">_in_transaction</span><span class="p">()</span><span class="o">.</span><span class="n">connection</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">TransactionTestContext</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+                <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_run_outcome</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="n">expecting_failure</span><span class="p">,</span> <span class="n">testMethod</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_run_outcome</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="n">expecting_failure</span><span class="p">,</span> <span class="n">testMethod</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUpDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__db__</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">supports_transactions</span><span class="p">:</span>
+            <span class="n">_restore_default</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_tearDownDB</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="requireCapability"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.requireCapability">[docs]</a><span class="k">def</span> <span class="nf">requireCapability</span><span class="p">(</span><span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"models"</span><span class="p">,</span> <span class="o">**</span><span class="n">conditions</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Skip a test if the required capabilities are not matched.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        The database must be initialized *before* the decorated test runs.</span>
+
+<span class="sd">    Usage:</span>
+
+<span class="sd">    .. code-block:: python3</span>
+
+<span class="sd">        @requireCapability(dialect='sqlite')</span>
+<span class="sd">        async def test_run_sqlite_only(self):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    Or to conditionally skip a class:</span>
+
+<span class="sd">    .. code-block:: python3</span>
+
+<span class="sd">        @requireCapability(dialect='sqlite')</span>
+<span class="sd">        class TestSqlite(test.TestCase):</span>
+<span class="sd">            ...</span>
+
+<span class="sd">    :param connection_name: name of the connection to retrieve capabilities from.</span>
+<span class="sd">    :param conditions: capability tests which must all pass for the test to run.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">test_item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+
+            <span class="nd">@wraps</span><span class="p">(</span><span class="n">test_item</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">skip_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="n">db</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="n">connection_name</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">conditions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">capabilities</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Capability </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">test_item</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">skip_wrapper</span>
+
+        <span class="c1"># Assume a class is decorated</span>
+        <span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">var</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">test_item</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"test_"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span>
+                <span class="n">test_item</span><span class="p">,</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">requireCapability</span><span class="p">(</span><span class="n">connection_name</span><span class="o">=</span><span class="n">connection_name</span><span class="p">,</span> <span class="o">**</span><span class="n">conditions</span><span class="p">)(</span><span class="n">func</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">test_item</span>
+
+    <span class="k">return</span> <span class="n">decorator</span></div>
+</pre>
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2018 - 2021, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      4.0.3.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="../../../_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>
