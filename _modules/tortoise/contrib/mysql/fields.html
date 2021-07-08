@@ -35,15 +35,18 @@
   <meta content="#3f51b5" name="theme-color"/>
   <script src="../../../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-MJ7RHW2FRB', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
    tortoise.contrib.mysql.fields — Tortoise ORM v0.17.5 Documentation
