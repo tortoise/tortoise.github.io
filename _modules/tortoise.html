@@ -916,7 +916,8 @@
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_reset_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-                <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">default_connection</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ModelMeta</span><span class="p">):</span>
+                    <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">default_connection</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">current_transaction_map</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
