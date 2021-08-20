@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.queryset — Tortoise ORM v0.17.5 Documentation
+   tortoise.queryset — Tortoise ORM v0.17.7 Documentation
   </title>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
-       <img alt="Tortoise ORM 0.17.5 Documentation logo" height="26" src="../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.7 Documentation">
+       <img alt="Tortoise ORM 0.17.7 Documentation logo" height="26" src="../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
+          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.7 Documentation">
            <img alt=" logo" height="48" src="../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../toc.html" title="Tortoise ORM v0.17.5 Documentation">
+          <a href="../../toc.html" title="Tortoise ORM v0.17.7 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -597,7 +597,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"QuerySet[MODEL]"</span><span class="p">:</span>
-        <span class="n">queryset</span> <span class="o">=</span> <span class="n">QuerySet</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">QuerySet</span><span class="p">)</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">QuerySet</span><span class="p">)</span>
         <span class="n">queryset</span><span class="o">.</span><span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span>
         <span class="n">queryset</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
         <span class="n">queryset</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span>
@@ -1719,7 +1719,7 @@
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.1.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
