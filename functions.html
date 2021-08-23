@@ -912,6 +912,107 @@
            </p>
           </dd>
          </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.functions.Concat">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.functions.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             Concat
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              field
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              default_values
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/functions.html#Concat">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.functions.Concat" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Concate field or constant text.
+Be care, DB like sqlite3 has no support for
+            <cite>
+             CONCAT
+            </cite>
+            .
+           </p>
+           <blockquote>
+            <div>
+             <p>
+              <code class="samp docutils literal notranslate">
+               <span class="pre">
+                Concat("
+               </span>
+               <em>
+                <span class="pre">
+                 FIELD_NAME
+                </span>
+               </em>
+               <span class="pre">
+                ",
+               </span>
+               <em>
+                <span class="pre">
+                 ANOTHER_FIELD_NAMES
+                </span>
+                <span class="pre">
+                 or
+                </span>
+                <span class="pre">
+                 CONSTANT_TEXT
+                </span>
+               </em>
+               <span class="pre">
+                ,
+               </span>
+               <span class="pre">
+                *args)
+               </span>
+              </code>
+             </p>
+            </div>
+           </blockquote>
+          </dd>
+         </dl>
         </section>
         <section id="aggregates">
          <h2 id="aggregates">

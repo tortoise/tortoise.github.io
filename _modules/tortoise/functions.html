@@ -277,7 +277,7 @@
        </h1>
        <div class="highlight">
         <pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Case</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">functions</span>
 <span class="kn">from</span> <span class="nn">pypika.functions</span> <span class="kn">import</span> <span class="n">DistinctOptionFunction</span>
@@ -382,6 +382,13 @@
 
         <span class="k">return</span> <span class="p">{</span><span class="s2">"joins"</span><span class="p">:</span> <span class="n">joins</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="n">field</span><span class="p">}</span>
 
+    <span class="k">def</span> <span class="nf">_resolve_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">default_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_values</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default_value</span><span class="p">,</span> <span class="n">Function</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">default_value</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)[</span><span class="s2">"field"</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">default_value</span>
+
 <div class="viewcode-block" id="Function.resolve"><a class="viewcode-back" href="../../functions.html#tortoise.functions.Function.resolve">[docs]</a>    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Used to resolve the Function statement for SQL generation.</span>
@@ -392,19 +399,21 @@
 <span class="sd">        :return: Dict with keys ``"joins"`` and ``"fields"``</span>
 <span class="sd">        """</span>
 
+        <span class="n">default_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_default_values</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_field_for_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">)</span>
-            <span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">default_values</span><span class="p">)</span>
+            <span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">function</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">Function</span><span class="p">):</span>
             <span class="n">function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-            <span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">default_values</span><span class="p">)</span>
+            <span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">function</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">function</span>
 
         <span class="n">field</span><span class="p">,</span> <span class="n">field_object</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">resolver_arithmetic_expression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">populate_field_object</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span> <span class="o">=</span> <span class="n">field_object</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">"joins"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"field"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">default_values</span><span class="p">)}</span></div></div>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"joins"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"field"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_function_field</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)}</span></div></div>
 
 
 <div class="viewcode-block" id="Aggregate"><a class="viewcode-back" href="../../functions.html#tortoise.functions.Aggregate">[docs]</a><span class="k">class</span> <span class="nc">Aggregate</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
@@ -500,6 +509,17 @@
 <span class="sd">    """</span>
 
     <span class="n">database_func</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">Upper</span></div>
+
+
+<div class="viewcode-block" id="Concat"><a class="viewcode-back" href="../../functions.html#tortoise.functions.Concat">[docs]</a><span class="k">class</span> <span class="nc">Concat</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Concate field or constant text.</span>
+<span class="sd">    Be care, DB like sqlite3 has no support for `CONCAT`.</span>
+
+<span class="sd">     :samp:`Concat("{FIELD_NAME}", {ANOTHER_FIELD_NAMES or CONSTANT_TEXT}, *args)`</span>
+<span class="sd">    """</span>
+
+    <span class="n">database_func</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">Concat</span></div>
 
 
 <span class="c1">##############################################################################</span>
