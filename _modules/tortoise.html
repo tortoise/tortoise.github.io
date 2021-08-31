@@ -275,7 +275,6 @@
 <span></span><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">contextvars</span> <span class="kn">import</span> <span class="n">ContextVar</span>
@@ -297,11 +296,10 @@
     <span class="n">OneToOneFieldInstance</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">get_m2m_filters</span>
+<span class="kn">from</span> <span class="nn">tortoise.log</span> <span class="kn">import</span> <span class="n">logger</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModelMeta</span>
 <span class="kn">from</span> <span class="nn">tortoise.transactions</span> <span class="kn">import</span> <span class="n">current_transaction_map</span>
 <span class="kn">from</span> <span class="nn">tortoise.utils</span> <span class="kn">import</span> <span class="n">generate_schema_for_client</span>
-
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">"tortoise"</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Tortoise"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise">[docs]</a><span class="k">class</span> <span class="nc">Tortoise</span><span class="p">:</span>

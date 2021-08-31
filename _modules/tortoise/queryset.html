@@ -804,6 +804,8 @@
             <span class="n">annotations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">,</span>
             <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span>
             <span class="n">group_bys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_bys</span><span class="p">,</span>
+            <span class="n">force_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_force_indexes</span><span class="p">,</span>
+            <span class="n">use_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.values"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ValuesQuery"</span><span class="p">:</span>
@@ -848,6 +850,8 @@
             <span class="n">annotations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">,</span>
             <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span>
             <span class="n">group_bys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_bys</span><span class="p">,</span>
+            <span class="n">force_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_force_indexes</span><span class="p">,</span>
+            <span class="n">use_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.delete"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"DeleteQuery"</span><span class="p">:</span>
@@ -899,6 +903,8 @@
             <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_limit</span><span class="p">,</span>
             <span class="n">offset</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">,</span>
+            <span class="n">force_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_force_indexes</span><span class="p">,</span>
+            <span class="n">use_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.exists"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.exists">[docs]</a>    <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ExistsQuery"</span><span class="p">:</span>
@@ -911,6 +917,8 @@
             <span class="n">q_objects</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_q_objects</span><span class="p">,</span>
             <span class="n">annotations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">,</span>
             <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span>
+            <span class="n">force_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_force_indexes</span><span class="p">,</span>
+            <span class="n">use_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.all"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"QuerySet[MODEL]"</span><span class="p">:</span>
@@ -1277,7 +1285,13 @@
 
 
 <div class="viewcode-block" id="DeleteQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.DeleteQuery">[docs]</a><span class="k">class</span> <span class="nc">DeleteQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"q_objects"</span><span class="p">,</span> <span class="s2">"annotations"</span><span class="p">,</span> <span class="s2">"custom_filters"</span><span class="p">,</span> <span class="s2">"orderings"</span><span class="p">,</span> <span class="s2">"limit"</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"q_objects"</span><span class="p">,</span>
+        <span class="s2">"annotations"</span><span class="p">,</span>
+        <span class="s2">"custom_filters"</span><span class="p">,</span>
+        <span class="s2">"orderings"</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1323,7 +1337,13 @@
 
 
 <div class="viewcode-block" id="ExistsQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ExistsQuery">[docs]</a><span class="k">class</span> <span class="nc">ExistsQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"q_objects"</span><span class="p">,</span> <span class="s2">"annotations"</span><span class="p">,</span> <span class="s2">"custom_filters"</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"q_objects"</span><span class="p">,</span>
+        <span class="s2">"annotations"</span><span class="p">,</span>
+        <span class="s2">"custom_filters"</span><span class="p">,</span>
+        <span class="s2">"force_indexes"</span><span class="p">,</span>
+        <span class="s2">"use_indexes"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1332,12 +1352,16 @@
         <span class="n">q_objects</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Q</span><span class="p">],</span>
         <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
         <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">force_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">use_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q_objects</span> <span class="o">=</span> <span class="n">q_objects</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">annotations</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_filters</span> <span class="o">=</span> <span class="n">custom_filters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span> <span class="o">=</span> <span class="n">force_indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
@@ -1349,6 +1373,13 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_limit</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_select_other</span><span class="p">(</span><span class="n">ValueWrapper</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_force_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">force_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1362,7 +1393,15 @@
 
 
 <div class="viewcode-block" id="CountQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.CountQuery">[docs]</a><span class="k">class</span> <span class="nc">CountQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"q_objects"</span><span class="p">,</span> <span class="s2">"annotations"</span><span class="p">,</span> <span class="s2">"custom_filters"</span><span class="p">,</span> <span class="s2">"limit"</span><span class="p">,</span> <span class="s2">"offset"</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"q_objects"</span><span class="p">,</span>
+        <span class="s2">"annotations"</span><span class="p">,</span>
+        <span class="s2">"custom_filters"</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">,</span>
+        <span class="s2">"force_indexes"</span><span class="p">,</span>
+        <span class="s2">"use_indexes"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1373,6 +1412,8 @@
         <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">force_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">use_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q_objects</span> <span class="o">=</span> <span class="n">q_objects</span>
@@ -1381,6 +1422,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span> <span class="ow">or</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span> <span class="o">=</span> <span class="n">force_indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
@@ -1391,6 +1434,13 @@
             <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_filters</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_select_other</span><span class="p">(</span><span class="n">Count</span><span class="p">(</span><span class="s2">"*"</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_force_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">force_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1530,6 +1580,8 @@
         <span class="s2">"q_objects"</span><span class="p">,</span>
         <span class="s2">"fields_for_select_list"</span><span class="p">,</span>
         <span class="s2">"group_bys"</span><span class="p">,</span>
+        <span class="s2">"force_indexes"</span><span class="p">,</span>
+        <span class="s2">"use_indexes"</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1546,6 +1598,8 @@
         <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
         <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
         <span class="n">group_bys</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+        <span class="n">force_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">use_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">annotations</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">flat</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fields_for_select_list</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">):</span>
@@ -1563,6 +1617,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">flat</span> <span class="o">=</span> <span class="n">flat</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span> <span class="o">=</span> <span class="n">group_bys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span> <span class="o">=</span> <span class="n">force_indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
@@ -1586,6 +1642,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_distinct</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_groupbys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_group_bys</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_force_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">force_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1623,6 +1686,8 @@
         <span class="s2">"custom_filters"</span><span class="p">,</span>
         <span class="s2">"q_objects"</span><span class="p">,</span>
         <span class="s2">"group_bys"</span><span class="p">,</span>
+        <span class="s2">"force_indexes"</span><span class="p">,</span>
+        <span class="s2">"use_indexes"</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1638,6 +1703,8 @@
         <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
         <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
         <span class="n">group_bys</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+        <span class="n">force_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">use_indexes</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">annotations</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_for_select</span> <span class="o">=</span> <span class="n">fields_for_select</span>
@@ -1649,6 +1716,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">q_objects</span> <span class="o">=</span> <span class="n">q_objects</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span> <span class="o">=</span> <span class="n">group_bys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span> <span class="o">=</span> <span class="n">force_indexes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
@@ -1672,6 +1741,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_distinct</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_groupbys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_group_bys</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_force_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">force_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
