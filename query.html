@@ -50,7 +50,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   Query API — Tortoise ORM v0.17.7 Documentation
+   Query API — Tortoise ORM v0.17.8 Documentation
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -93,8 +93,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.7 Documentation">
-       <img alt="Tortoise ORM 0.17.7 Documentation logo" height="26" src="_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
+       <img alt="Tortoise ORM 0.17.8 Documentation logo" height="26" src="_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -185,10 +185,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.7 Documentation">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
            <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
           </a>
-          <a href="toc.html" title="Tortoise ORM v0.17.7 Documentation">
+          <a href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -2270,6 +2270,59 @@ A ‘-’ before the name will result in descending sort order, default is ascen
             </dd>
            </dl>
            <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.queryset.QuerySet.raw">
+             <span class="sig-name descname">
+              <span class="pre">
+               raw
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                sql
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.raw">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.queryset.QuerySet.raw" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Return the QuerySet from raw SQL
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <a class="reference internal" href="#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   RawSQLQuery
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
             <dt class="sig sig-object py" id="tortoise.queryset.QuerySet.resolve_filters">
              <span class="sig-name descname">
               <span class="pre">
@@ -3557,6 +3610,66 @@ in order of declaration.
             </span>
            </a>
            <a class="headerlink" href="#tortoise.queryset.FieldSelectQuery" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+          </dd>
+         </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.queryset.RawSQLQuery">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.queryset.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             RawSQLQuery
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              model
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              db
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              sql
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/queryset.html#RawSQLQuery">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.queryset.RawSQLQuery" title="Permalink to this definition">
             ¶
            </a>
           </dt>
