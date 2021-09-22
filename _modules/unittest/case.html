@@ -830,73 +830,71 @@
         <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">orig_result</span> <span class="o">=</span> <span class="n">result</span>
         <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaultTestResult</span><span class="p">()</span>
             <span class="n">startTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s1">'startTestRun'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">stopTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s1">'stopTestRun'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">startTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">startTestRun</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stopTestRun</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="n">result</span><span class="o">.</span><span class="n">startTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-        <span class="n">testMethod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span>
-            <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)):</span>
-            <span class="c1"># If the class or method was skipped.</span>
-            <span class="k">try</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">testMethod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)):</span>
+                <span class="c1"># If the class or method was skipped.</span>
                 <span class="n">skip_why</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s1">'__unittest_skip_why__'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
                             <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s1">'__unittest_skip_why__'</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_addSkip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">skip_why</span><span class="p">)</span>
-            <span class="k">finally</span><span class="p">:</span>
-                <span class="n">result</span><span class="o">.</span><span class="n">stopTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="k">return</span>
-        <span class="n">expecting_failure_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span>
-                                           <span class="s2">"__unittest_expecting_failure__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="n">expecting_failure_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                                          <span class="s2">"__unittest_expecting_failure__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="n">expecting_failure</span> <span class="o">=</span> <span class="n">expecting_failure_class</span> <span class="ow">or</span> <span class="n">expecting_failure_method</span>
-        <span class="n">outcome</span> <span class="o">=</span> <span class="n">_Outcome</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="n">outcome</span>
+                <span class="k">return</span> <span class="n">result</span>
 
-            <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_callSetUp</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-                <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="n">expecting_failure</span>
-                <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isTest</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_callTestMethod</span><span class="p">(</span><span class="n">testMethod</span><span class="p">)</span>
-                <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">expecting_failure</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"__unittest_expecting_failure__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_expecting_failure__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">outcome</span> <span class="o">=</span> <span class="n">_Outcome</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="n">outcome</span>
+
                 <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_callTearDown</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_callSetUp</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                    <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="n">expecting_failure</span>
+                    <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isTest</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_callTestMethod</span><span class="p">(</span><span class="n">testMethod</span><span class="p">)</span>
+                    <span class="n">outcome</span><span class="o">.</span><span class="n">expecting_failure</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">with</span> <span class="n">outcome</span><span class="o">.</span><span class="n">testPartExecutor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_callTearDown</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">doCleanups</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">skipped</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_addSkip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_feedErrorsToResult</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">expecting_failure</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_addExpectedFailure</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">doCleanups</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span> <span class="ow">in</span> <span class="n">outcome</span><span class="o">.</span><span class="n">skipped</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_addSkip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_feedErrorsToResult</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">expecting_failure</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_addExpectedFailure</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_addUnexpectedSuccess</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">_addUnexpectedSuccess</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">result</span><span class="o">.</span><span class="n">addSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">result</span>
+                        <span class="n">result</span><span class="o">.</span><span class="n">addSuccess</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="c1"># explicitly break reference cycles:</span>
+                <span class="c1"># outcome.errors -&gt; frame -&gt; outcome -&gt; outcome.errors</span>
+                <span class="c1"># outcome.expectedFailure -&gt; frame -&gt; outcome -&gt; outcome.expectedFailure</span>
+                <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span> <span class="o">=</span> <span class="kc">None</span>
+
+                <span class="c1"># clear the outcome, no more needed</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">stopTest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">orig_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">stopTestRun</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s1">'stopTestRun'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">stopTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">stopTestRun</span><span class="p">()</span>
-
-            <span class="c1"># explicitly break reference cycles:</span>
-            <span class="c1"># outcome.errors -&gt; frame -&gt; outcome -&gt; outcome.errors</span>
-            <span class="c1"># outcome.expectedFailure -&gt; frame -&gt; outcome -&gt; outcome.expectedFailure</span>
-            <span class="n">outcome</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-            <span class="n">outcome</span><span class="o">.</span><span class="n">expectedFailure</span> <span class="o">=</span> <span class="kc">None</span>
-
-            <span class="c1"># clear the outcome, no more needed</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_outcome</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">stopTestRun</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">stopTestRun</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">doCleanups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Execute all cleanup functions. Normally called for you after</span>
