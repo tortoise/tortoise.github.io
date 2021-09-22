@@ -280,8 +280,9 @@
 <span></span><span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">blacksheep</span> <span class="kn">import</span> <span class="n">JSONContent</span><span class="p">,</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">blacksheep</span> <span class="kn">import</span> <span class="n">Request</span>
 <span class="kn">from</span> <span class="nn">blacksheep.server</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">blacksheep.server.responses</span> <span class="kn">import</span> <span class="n">json</span>
 
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">DoesNotExist</span><span class="p">,</span> <span class="n">IntegrityError</span>
@@ -378,17 +379,12 @@
     <span class="k">if</span> <span class="n">add_exception_handlers</span><span class="p">:</span>
 
         <span class="nd">@app</span><span class="o">.</span><span class="n">exception_handler</span><span class="p">(</span><span class="n">DoesNotExist</span><span class="p">)</span>
-        <span class="k">async</span> <span class="k">def</span> <span class="nf">doesnotexist_exception_handler</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">DoesNotExist</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">JSONContent</span><span class="p">({</span><span class="s2">"detail"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)}))</span>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">doesnotexist_exception_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">DoesNotExist</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">json</span><span class="p">({</span><span class="s2">"detail"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)},</span> <span class="mi">404</span><span class="p">)</span>
 
         <span class="nd">@app</span><span class="o">.</span><span class="n">exception_handler</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">)</span>
-        <span class="k">async</span> <span class="k">def</span> <span class="nf">integrityerror_exception_handler</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">IntegrityError</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
-                <span class="n">status</span><span class="o">=</span><span class="mi">422</span><span class="p">,</span>
-                <span class="n">content</span><span class="o">=</span><span class="n">JSONContent</span><span class="p">(</span>
-                    <span class="p">{</span><span class="s2">"detail"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"loc"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"msg"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">),</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"IntegrityError"</span><span class="p">}]}</span>
-                <span class="p">),</span>
-            <span class="p">)</span></div>
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">integrityerror_exception_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="n">IntegrityError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">json</span><span class="p">({</span><span class="s2">"detail"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"loc"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"msg"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">),</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"IntegrityError"</span><span class="p">}]},</span> <span class="mi">422</span><span class="p">)</span></div>
 </pre>
        </div>
       </article>
