@@ -2237,6 +2237,165 @@ insert performance.
             </dd>
            </dl>
            <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.models.Model.bulk_update">
+             <em class="property">
+              <span class="pre">
+               classmethod
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               bulk_update
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                objects
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                fields
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                batch_size
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/models.html#Model.bulk_update">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.models.Model.bulk_update" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Update the given fields in each of the given objects in the database.
+This method efficiently updates the given fields on the provided model instances, generally with one query.
+             </p>
+             <div class="highlight-python3 notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">"..."</span><span class="p">),</span>
+    <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'name1'</span>
+<span class="n">users</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'name2'</span>
+
+<span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">bulk_update</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span>
+</pre>
+              </div>
+             </div>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   objects
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [Model]) – List of objects to bulk create
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   fields
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ]) – The fields to update
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   batch_size
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    int
+                   </span>
+                  </code>
+                  ]) – How many objects are created in a single query
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <a class="reference internal" href="query.html#tortoise.queryset.BulkUpdateQuery" title="tortoise.queryset.BulkUpdateQuery">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   BulkUpdateQuery
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
             <dt class="sig sig-object py" id="tortoise.models.Model.check">
              <em class="property">
               <span class="pre">
@@ -3898,6 +4057,148 @@ else creates an instance with any unspecified parameters as default values.
              </dl>
             </dd>
            </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.models.Model.in_bulk">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="pre">
+               classmethod
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               in_bulk
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                id_list
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                field_name
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                'pk'
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/models.html#Model.in_bulk">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.models.Model.in_bulk" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Return a dictionary mapping each of the given IDs to the object with
+that ID. If
+              <cite>
+               id_list
+              </cite>
+              isn’t provided, evaluate the entire QuerySet.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   id_list
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Union
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ,
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    int
+                   </span>
+                  </code>
+                  ]]) – A list of field values
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   field_name
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ) – Must be a unique field
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  Dict
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                , Model]
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
            <dl class="py property">
             <dt class="sig sig-object py" id="tortoise.models.Model.pk">
              <em class="property">
@@ -4970,7 +5271,7 @@ but will raise errors on bad types or updating Many-instance relations.
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.2.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

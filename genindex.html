@@ -563,10 +563,6 @@
              BigIntField (class in tortoise.fields.data)
             </a>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="fields.html#tortoise.fields.data.BinaryField">
              BinaryField (class in tortoise.fields.data)
@@ -577,6 +573,10 @@
              BloomIndex (class in tortoise.contrib.postgres.indexes)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="fields.html#tortoise.fields.data.BooleanField">
              BooleanField (class in tortoise.fields.data)
@@ -590,6 +590,23 @@
            <li>
             <a href="models.html#tortoise.models.Model.bulk_create">
              bulk_create() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.bulk_update">
+             bulk_update() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.bulk_update">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.BulkUpdateQuery">
+             BulkUpdateQuery (class in tortoise.queryset)
             </a>
            </li>
           </ul>
@@ -1342,6 +1359,18 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
+            <a href="models.html#tortoise.models.Model.in_bulk">
+             in_bulk() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.in_bulk">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
             <a href="transactions.html#tortoise.transactions.in_transaction">
              in_transaction() (in module tortoise.transactions)
             </a>
@@ -1371,15 +1400,15 @@
              init() (tortoise.Tortoise class method)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="setup.html#tortoise.Tortoise.init_models">
              init_models() (tortoise.Tortoise class method)
             </a>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="contrib/unittest.html#tortoise.contrib.test.initializer">
              initializer() (in module tortoise.contrib.test)
@@ -2167,15 +2196,15 @@
              skip() (in module tortoise.contrib.test)
             </a>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="fields.html#tortoise.fields.base.Field.skip_to_python_if_native">
              skip_to_python_if_native (tortoise.fields.base.Field attribute)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="contrib/unittest.html#tortoise.contrib.test.skipIf">
              skipIf() (in module tortoise.contrib.test)
@@ -2212,9 +2241,16 @@
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.queryset.QuerySet.sql">
-             sql() (tortoise.queryset.QuerySet method)
+            <a href="query.html#tortoise.queryset.BulkUpdateQuery.sql">
+             sql() (tortoise.queryset.BulkUpdateQuery method)
             </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.sql">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
            </li>
            <li>
             <a href="fields.html#tortoise.fields.base.Field.SQL_TYPE">
@@ -2734,7 +2770,7 @@
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.2.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

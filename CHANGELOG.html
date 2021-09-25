@@ -249,6 +249,25 @@
                     <a class="md-nav__link" href="#id3">
                      0.17.8
                     </a>
+                    <nav class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#added">
+                        Added
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#fixed">
+                        Fixed
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#changed">
+                        Changed
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
                    </li>
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#id4">
@@ -1025,6 +1044,23 @@
                <a class="md-nav__link" href="#id3">
                 0.17.8
                </a>
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#added">
+                  Added
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#fixed">
+                  Fixed
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#changed">
+                  Changed
+                 </a>
+                </li>
+               </ul>
               </li>
               <li class="md-nav__item">
                <a class="md-nav__link" href="#id4">
@@ -1800,6 +1836,25 @@
                  <a class="md-nav__link" href="#id3">
                   0.17.8
                  </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#added">
+                     Added
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#fixed">
+                     Fixed
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#changed">
+                     Changed
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
                 </li>
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="#id4">
@@ -2596,61 +2651,107 @@
             ¶
            </a>
           </h3>
-          <ul class="simple">
-           <li>
-            <p>
-             Add
-             <cite>
-              Model.raw
-             </cite>
-             method to support the raw sql query.
-            </p>
-           </li>
-           <li>
-            <p>
-             Fix
-             <cite>
-              QuerySet
-             </cite>
-             subclass being lost when
-             <cite>
-              _clone
-             </cite>
-             is run on the instance.
-            </p>
-           </li>
-           <li>
-            <p>
-             Fix bug in
-             <cite>
-              .values
-             </cite>
-             with
-             <cite>
-              source_field
-             </cite>
-             . (#844)
-            </p>
-           </li>
-           <li>
-            <p>
-             Allow negative values with
-             <cite>
-              IntEnumField
-             </cite>
-             . (#889)
-            </p>
-           </li>
-           <li>
-            <p>
-             Fix
-             <cite>
-              contrib.blacksheep
-             </cite>
-             exception handlers, use builtin json response. (#914)
-            </p>
-           </li>
-          </ul>
+          <section id="added">
+           <h4 id="added">
+            Added
+            <a class="headerlink" href="#added" title="Permalink to this headline">
+             ¶
+            </a>
+           </h4>
+           <ul class="simple">
+            <li>
+             <p>
+              Add
+              <cite>
+               Model.raw
+              </cite>
+              method to support the raw sql query.
+             </p>
+            </li>
+            <li>
+             <p>
+              Add
+              <cite>
+               QuerySet.bulk_update
+              </cite>
+              method. (#924)
+             </p>
+            </li>
+            <li>
+             <p>
+              Add
+              <cite>
+               QuerySet.in_bulk
+              </cite>
+              method.
+             </p>
+            </li>
+           </ul>
+          </section>
+          <section id="fixed">
+           <h4 id="fixed">
+            Fixed
+            <a class="headerlink" href="#fixed" title="Permalink to this headline">
+             ¶
+            </a>
+           </h4>
+           <ul class="simple">
+            <li>
+             <p>
+              Fix
+              <cite>
+               QuerySet
+              </cite>
+              subclass being lost when
+              <cite>
+               _clone
+              </cite>
+              is run on the instance.
+             </p>
+            </li>
+            <li>
+             <p>
+              Fix bug in
+              <cite>
+               .values
+              </cite>
+              with
+              <cite>
+               source_field
+              </cite>
+              . (#844)
+             </p>
+            </li>
+            <li>
+             <p>
+              Fix
+              <cite>
+               contrib.blacksheep
+              </cite>
+              exception handlers, use builtin json response. (#914)
+             </p>
+            </li>
+           </ul>
+          </section>
+          <section id="changed">
+           <h4 id="changed">
+            Changed
+            <a class="headerlink" href="#changed" title="Permalink to this headline">
+             ¶
+            </a>
+           </h4>
+           <ul class="simple">
+            <li>
+             <p>
+              Allow negative values with
+              <cite>
+               IntEnumField
+              </cite>
+              . (#889)
+             </p>
+            </li>
+           </ul>
+          </section>
          </section>
          <section id="id4">
           <h3 id="id4">
@@ -9006,7 +9107,7 @@ instead you need to provide an app ⇒ modules map with the init call:
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.2.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

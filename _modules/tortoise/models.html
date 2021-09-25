@@ -327,7 +327,7 @@
 <span class="kn">from</span> <span class="nn">tortoise.functions</span> <span class="kn">import</span> <span class="n">Function</span>
 <span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">Index</span>
 <span class="kn">from</span> <span class="nn">tortoise.manager</span> <span class="kn">import</span> <span class="n">Manager</span>
-<span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">ExistsQuery</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">QuerySet</span><span class="p">,</span> <span class="n">QuerySetSingle</span><span class="p">,</span> <span class="n">RawSQLQuery</span>
+<span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">BulkUpdateQuery</span><span class="p">,</span> <span class="n">ExistsQuery</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">QuerySet</span><span class="p">,</span> <span class="n">QuerySetSingle</span><span class="p">,</span> <span class="n">RawSQLQuery</span>
 <span class="kn">from</span> <span class="nn">tortoise.router</span> <span class="kn">import</span> <span class="n">router</span>
 <span class="kn">from</span> <span class="nn">tortoise.signals</span> <span class="kn">import</span> <span class="n">Signals</span>
 <span class="kn">from</span> <span class="nn">tortoise.transactions</span> <span class="kn">import</span> <span class="n">current_transaction_map</span><span class="p">,</span> <span class="n">in_transaction</span>
@@ -1388,6 +1388,47 @@
         <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">using_db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">force_create</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">instance</span></div>
 
+<div class="viewcode-block" id="Model.bulk_update"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.bulk_update">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">bulk_update</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BulkUpdateQuery"</span><span class="p">:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Update the given fields in each of the given objects in the database.</span>
+<span class="sd">        This method efficiently updates the given fields on the provided model instances, generally with one query.</span>
+
+<span class="sd">        .. code-block:: python3</span>
+
+<span class="sd">            users = [</span>
+<span class="sd">                await User.create(name="...", email="..."),</span>
+<span class="sd">                await User.create(name="...", email="...")</span>
+<span class="sd">            ]</span>
+<span class="sd">            users[0].name = 'name1'</span>
+<span class="sd">            users[1].name = 'name2'</span>
+
+<span class="sd">            await User.bulk_update(users, fields=['name'])</span>
+
+<span class="sd">        :param objects: List of objects to bulk create</span>
+<span class="sd">        :param fields: The fields to update</span>
+<span class="sd">        :param batch_size: How many objects are created in a single query</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">bulk_update</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.in_bulk"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.in_bulk">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">in_bulk</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">id_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">field_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"pk"</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MODEL</span><span class="p">]:</span>
+        <span class="sd">"""</span>
+<span class="sd">        Return a dictionary mapping each of the given IDs to the object with</span>
+<span class="sd">        that ID. If `id_list` isn't provided, evaluate the entire QuerySet.</span>
+
+<span class="sd">        :param id_list: A list of field values</span>
+<span class="sd">        :param field_name: Must be a unique field</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">in_bulk</span><span class="p">(</span><span class="n">id_list</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Model.bulk_create"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.bulk_create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">bulk_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
@@ -1705,7 +1746,7 @@
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.2.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
