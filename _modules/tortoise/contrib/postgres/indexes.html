@@ -283,7 +283,9 @@
 
 
 <span class="k">class</span> <span class="nc">PostgreSQLIndex</span><span class="p">(</span><span class="n">Index</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="n">INDEX_CREATE_TEMPLATE</span> <span class="o">=</span> <span class="s2">"CREATE INDEX </span><span class="si">{index_name}</span><span class="s2"> ON </span><span class="si">{table_name}</span><span class="s2"> USING</span><span class="si">{index_type}</span><span class="s2">(</span><span class="si">{fields}</span><span class="s2">);"</span>
+    <span class="n">INDEX_CREATE_TEMPLATE</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"CREATE INDEX </span><span class="si">{exists}{index_name}</span><span class="s2"> ON </span><span class="si">{table_name}</span><span class="s2"> USING</span><span class="si">{index_type}</span><span class="s2">(</span><span class="si">{fields}</span><span class="s2">);"</span>
+    <span class="p">)</span>
 
 
 <div class="viewcode-block" id="BloomIndex"><a class="viewcode-back" href="../../../../contrib/postgres.html#tortoise.contrib.postgres.indexes.BloomIndex">[docs]</a><span class="k">class</span> <span class="nc">BloomIndex</span><span class="p">(</span><span class="n">PostgreSQLIndex</span><span class="p">):</span>
