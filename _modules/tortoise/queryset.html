@@ -781,7 +781,9 @@
         <span class="sd">"""</span>
 <span class="sd">        Make QuerySet returns list of tuples for given args instead of objects.</span>
 
-<span class="sd">        If ```flat=True`` and only one arg is passed can return flat list.</span>
+<span class="sd">        If call after `.get()`, `.get_or_none()` or `.first()` return tuples for given args instead of object.</span>
+
+<span class="sd">        If ```flat=True`` and only one arg is passed can return flat list or just scalar.</span>
 
 <span class="sd">        If no arguments are passed it will default to a tuple containing all fields</span>
 <span class="sd">        in order of declaration.</span>
@@ -790,6 +792,8 @@
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">q_objects</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_q_objects</span><span class="p">,</span>
+            <span class="n">single</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_single</span><span class="p">,</span>
+            <span class="n">raise_does_not_exist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_raise_does_not_exist</span><span class="p">,</span>
             <span class="n">flat</span><span class="o">=</span><span class="n">flat</span><span class="p">,</span>
             <span class="n">fields_for_select_list</span><span class="o">=</span><span class="n">fields_</span>  <span class="c1"># type: ignore</span>
             <span class="ow">or</span> <span class="p">[</span>
@@ -812,6 +816,8 @@
 <div class="viewcode-block" id="QuerySet.values"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ValuesQuery"</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Make QuerySet return dicts instead of objects.</span>
+
+<span class="sd">        If call after `.get()`, `.get_or_none()` or `.first()` return dict instead of object.</span>
 
 <span class="sd">        Can pass names of fields to fetch, or as a ``field_name='name_in_dict'`` kwarg.</span>
 
@@ -843,6 +849,8 @@
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">q_objects</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_q_objects</span><span class="p">,</span>
+            <span class="n">single</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_single</span><span class="p">,</span>
+            <span class="n">raise_does_not_exist</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_raise_does_not_exist</span><span class="p">,</span>
             <span class="n">fields_for_select</span><span class="o">=</span><span class="n">fields_for_select</span><span class="p">,</span>
             <span class="n">distinct</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_distinct</span><span class="p">,</span>
             <span class="n">limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_limit</span><span class="p">,</span>
@@ -1628,6 +1636,8 @@
         <span class="s2">"annotations"</span><span class="p">,</span>
         <span class="s2">"custom_filters"</span><span class="p">,</span>
         <span class="s2">"q_objects"</span><span class="p">,</span>
+        <span class="s2">"single"</span><span class="p">,</span>
+        <span class="s2">"raise_does_not_exist"</span><span class="p">,</span>
         <span class="s2">"fields_for_select_list"</span><span class="p">,</span>
         <span class="s2">"group_bys"</span><span class="p">,</span>
         <span class="s2">"force_indexes"</span><span class="p">,</span>
@@ -1639,6 +1649,8 @@
         <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span><span class="p">,</span>
         <span class="n">q_objects</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Q</span><span class="p">],</span>
+        <span class="n">single</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">raise_does_not_exist</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
         <span class="n">fields_for_select_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
@@ -1663,6 +1675,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">orderings</span> <span class="o">=</span> <span class="n">orderings</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_filters</span> <span class="o">=</span> <span class="n">custom_filters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q_objects</span> <span class="o">=</span> <span class="n">q_objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="o">=</span> <span class="n">single</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span> <span class="o">=</span> <span class="n">raise_does_not_exist</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_for_select_list</span> <span class="o">=</span> <span class="n">fields_for_select_list</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">flat</span> <span class="o">=</span> <span class="n">flat</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
@@ -1700,7 +1714,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
@@ -1710,7 +1724,7 @@
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="k">await</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">val</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]:</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">))</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
@@ -1719,10 +1733,20 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
             <span class="n">func</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">flatmap</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">entry</span><span class="p">:</span> <span class="n">func</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">"0"</span><span class="p">])</span>  <span class="c1"># noqa</span>
-            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">flatmap</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+            <span class="n">lst_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">flatmap</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">listmap</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">entry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="n">column</span><span class="p">])</span> <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span>  <span class="c1"># noqa</span>
+            <span class="n">lst_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">listmap</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
 
-        <span class="n">listmap</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">entry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="n">column</span><span class="p">])</span> <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span>  <span class="c1"># noqa</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">listmap</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">lst_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">lst_values</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="s2">"Object does not exist"</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="s2">"Multiple objects returned, expected exactly one"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lst_values</span></div>
 
 
 <div class="viewcode-block" id="ValuesQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ValuesQuery">[docs]</a><span class="k">class</span> <span class="nc">ValuesQuery</span><span class="p">(</span><span class="n">FieldSelectQuery</span><span class="p">):</span>
@@ -1735,6 +1759,8 @@
         <span class="s2">"annotations"</span><span class="p">,</span>
         <span class="s2">"custom_filters"</span><span class="p">,</span>
         <span class="s2">"q_objects"</span><span class="p">,</span>
+        <span class="s2">"single"</span><span class="p">,</span>
+        <span class="s2">"raise_does_not_exist"</span><span class="p">,</span>
         <span class="s2">"group_bys"</span><span class="p">,</span>
         <span class="s2">"force_indexes"</span><span class="p">,</span>
         <span class="s2">"use_indexes"</span><span class="p">,</span>
@@ -1745,6 +1771,8 @@
         <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span><span class="p">,</span>
         <span class="n">q_objects</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Q</span><span class="p">],</span>
+        <span class="n">single</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">raise_does_not_exist</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
         <span class="n">fields_for_select</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
         <span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">offset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
@@ -1764,6 +1792,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">orderings</span> <span class="o">=</span> <span class="n">orderings</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">custom_filters</span> <span class="o">=</span> <span class="n">custom_filters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q_objects</span> <span class="o">=</span> <span class="n">q_objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single</span> <span class="o">=</span> <span class="n">single</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span> <span class="o">=</span> <span class="n">raise_does_not_exist</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">group_bys</span> <span class="o">=</span> <span class="n">group_bys</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">force_indexes</span> <span class="o">=</span> <span class="n">force_indexes</span>
@@ -1799,7 +1829,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]:</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Dict</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
@@ -1809,7 +1839,7 @@
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="k">await</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">val</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Dict</span><span class="p">]:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_query_dict</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">))</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">val</span>
@@ -1825,6 +1855,14 @@
                 <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
                     <span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="s2">"Object does not exist"</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="s2">"Multiple objects returned, expected exactly one"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
 

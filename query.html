@@ -3419,6 +3419,21 @@ Useful for transactions workaround.
               Make QuerySet return dicts instead of objects.
              </p>
              <p>
+              If call after
+              <cite>
+               .get()
+              </cite>
+              ,
+              <cite>
+               .get_or_none()
+              </cite>
+              or
+              <cite>
+               .first()
+              </cite>
+              return dict instead of object.
+             </p>
+             <p>
               Can pass names of fields to fetch, or as a
               <code class="docutils literal notranslate">
                <span class="pre">
@@ -3520,13 +3535,28 @@ Useful for transactions workaround.
               Make QuerySet returns list of tuples for given args instead of objects.
              </p>
              <p>
+              If call after
+              <cite>
+               .get()
+              </cite>
+              ,
+              <cite>
+               .get_or_none()
+              </cite>
+              or
+              <cite>
+               .first()
+              </cite>
+              return tuples for given args instead of object.
+             </p>
+             <p>
               If
               <code class="docutils literal notranslate">
                <span class="pre">
                 `flat=True
                </span>
               </code>
-              and only one arg is passed can return flat list.
+              and only one arg is passed can return flat list or just scalar.
              </p>
              <p>
               If no arguments are passed it will default to a tuple containing all fields
@@ -4285,6 +4315,22 @@ in order of declaration.
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              single
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              raise_does_not_exist
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               fields_for_select_list
              </span>
             </span>
@@ -4426,6 +4472,22 @@ in order of declaration.
             <span class="n">
              <span class="pre">
               q_objects
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              single
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              raise_does_not_exist
              </span>
             </span>
            </em>
