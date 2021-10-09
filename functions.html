@@ -1849,7 +1849,7 @@ So often makes sense with a
            <span class="sig-paren">
             )
            </span>
-           <a class="reference internal" href="_modules/tortoise/functions.html#Function">
+           <a class="reference internal" href="_modules/tortoise/expressions.html#Function">
             <span class="viewcode-link">
              <span class="pre">
               [source]
@@ -1900,7 +1900,7 @@ So often makes sense with a
                  </span>
                 </code>
                 ,
-                <a class="reference internal" href="#tortoise.functions.Function" title="tortoise.functions.Function">
+                <a class="reference internal" href="#tortoise.functions.Function" title="tortoise.expressions.Function">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    Function
@@ -2005,7 +2005,7 @@ So often makes sense with a
              <span class="sig-paren">
               )
              </span>
-             <a class="reference internal" href="_modules/tortoise/functions.html#Function.resolve">
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Function.resolve">
               <span class="viewcode-link">
                <span class="pre">
                 [source]
@@ -2186,7 +2186,7 @@ So often makes sense with a
            <span class="sig-paren">
             )
            </span>
-           <a class="reference internal" href="_modules/tortoise/functions.html#Aggregate">
+           <a class="reference internal" href="_modules/tortoise/expressions.html#Aggregate">
             <span class="viewcode-link">
              <span class="pre">
               [source]
@@ -2292,8 +2292,7 @@ So often makes sense with a
          <div class="highlight-python3 notranslate">
           <div class="highlight">
            <pre><span></span><span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">CustomFunction</span>
-<span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span>
-<span class="kn">from</span> <span class="nn">tortoise.functions</span> <span class="kn">import</span> <span class="n">Function</span>
+<span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span><span class="p">,</span> <span class="n">Function</span>
 
 <span class="k">class</span> <span class="nc">TruncMonth</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
     <span class="n">database_func</span> <span class="o">=</span> <span class="n">CustomFunction</span><span class="p">(</span><span class="s2">"DATE_FORMAT"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"dt_format"</span><span class="p">])</span>

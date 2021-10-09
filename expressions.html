@@ -305,6 +305,11 @@
                     RawSQL
                    </a>
                   </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#case-when-expression">
+                    Case-When Expression
+                   </a>
+                  </li>
                  </ul>
                 </nav>
                </li>
@@ -329,6 +334,11 @@
               <li class="md-nav__item">
                <a class="md-nav__link" href="#rawsql">
                 RawSQL
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#case-when-expression">
+                Case-When Expression
                </a>
               </li>
              </ul>
@@ -437,6 +447,11 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="#rawsql">
                RawSQL
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-when-expression">
+               Case-When Expression
               </a>
              </li>
             </ul>
@@ -610,6 +625,344 @@
            <pre><span></span><span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s1">'count(*)'</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"count"</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s1">'id + 1'</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"idp"</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s2">"id + 1"</span><span class="p">))</span>
+</pre>
+          </div>
+         </div>
+        </section>
+        <section id="case-when-expression">
+         <h2 id="case-when-expression">
+          Case-When Expression
+          <a class="headerlink" href="#case-when-expression" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Build classic
+          <cite>
+           CASE WHEN … THEN … ELSE … END
+          </cite>
+          sql snippet.
+         </p>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.expressions.When">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.expressions.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             When
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              then
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              negate
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/expressions.html#When">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.expressions.When" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            When expression.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 args
+                </strong>
+                (
+                <a class="reference internal" href="query.html#tortoise.query_utils.Q" title="tortoise.query_utils.Q">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Q
+                  </span>
+                 </code>
+                </a>
+                ) – Q objects
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kwargs
+                </strong>
+                (
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Any
+                 </span>
+                </code>
+                ) – keyword criterion like filter
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 then
+                </strong>
+                (
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Union
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  F
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  ArithmeticExpression
+                 </span>
+                </code>
+                ,
+                <a class="reference internal" href="functions.html#tortoise.functions.Function" title="tortoise.expressions.Function">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Function
+                  </span>
+                 </code>
+                </a>
+                ]) – value for criterion
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 negate
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – false (default)
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.expressions.Case">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.expressions.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             Case
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              default
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/expressions.html#Case">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.expressions.Case" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Case expression.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 args
+                </strong>
+                – When objects
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 default
+                </strong>
+                (
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Union
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  F
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  ArithmeticExpression
+                 </span>
+                </code>
+                ,
+                <a class="reference internal" href="functions.html#tortoise.functions.Function" title="tortoise.expressions.Function">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Function
+                  </span>
+                 </code>
+                </a>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                ]) – value for ‘CASE WHEN … THEN … ELSE &lt;default&gt; END’
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <div class="highlight-py3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntModel</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">Case</span><span class="p">(</span><span class="n">When</span><span class="p">(</span><span class="n">intnum__gte</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">'big'</span><span class="p">),</span> <span class="n">When</span><span class="p">(</span><span class="n">intnum__lte</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">'small'</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="s1">'middle'</span><span class="p">))</span>
 </pre>
           </div>
          </div>
