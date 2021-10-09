@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.queryset — Tortoise ORM v0.17.8 Documentation
+   tortoise.queryset — Tortoise ORM v0.18.0 Documentation
   </title>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
-       <img alt="Tortoise ORM 0.17.8 Documentation logo" height="26" src="../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
            <img alt=" logo" height="48" src="../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -312,14 +312,14 @@
     <span class="n">MultipleObjectsReturned</span><span class="p">,</span>
     <span class="n">ParamsError</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span><span class="p">,</span> <span class="n">RawSQL</span>
+<span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">RawSQL</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
     <span class="n">OneToOneFieldInstance</span><span class="p">,</span>
     <span class="n">RelationalField</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tortoise.functions</span> <span class="kn">import</span> <span class="n">Function</span>
-<span class="kn">from</span> <span class="nn">tortoise.query_utils</span> <span class="kn">import</span> <span class="n">Prefetch</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">QueryModifier</span><span class="p">,</span> <span class="n">_get_joins_for_related_field</span>
+<span class="kn">from</span> <span class="nn">tortoise.query_utils</span> <span class="kn">import</span> <span class="n">Prefetch</span><span class="p">,</span> <span class="n">QueryModifier</span><span class="p">,</span> <span class="n">_get_joins_for_related_field</span>
 <span class="kn">from</span> <span class="nn">tortoise.router</span> <span class="kn">import</span> <span class="n">router</span>
 <span class="kn">from</span> <span class="nn">tortoise.utils</span> <span class="kn">import</span> <span class="n">chunk</span>
 
@@ -406,7 +406,9 @@
 
         <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">q_objects</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">&amp;=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">annotations</span><span class="p">,</span> <span class="n">custom_filters</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">_annotations</span> <span class="o">=</span> <span class="n">annotations</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">_custom_filters</span> <span class="o">=</span> <span class="n">custom_filters</span>
+            <span class="n">modifier</span> <span class="o">&amp;=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span><span class="p">)</span>
 
         <span class="n">where_criterion</span><span class="p">,</span> <span class="n">joins</span><span class="p">,</span> <span class="n">having_criterion</span> <span class="o">=</span> <span class="n">modifier</span><span class="o">.</span><span class="n">get_query_modifiers</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">join</span> <span class="ow">in</span> <span class="n">joins</span><span class="p">:</span>

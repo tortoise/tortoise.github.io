@@ -50,7 +50,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   Expressions — Tortoise ORM v0.17.8 Documentation
+   Expressions — Tortoise ORM v0.18.0 Documentation
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -93,8 +93,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
-       <img alt="Tortoise ORM 0.17.8 Documentation logo" height="26" src="_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -185,10 +185,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
            <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
           </a>
-          <a href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -291,8 +291,13 @@
                 <nav class="md-nav">
                  <ul class="md-nav__list">
                   <li class="md-nav__item">
+                   <a class="md-nav__link" href="#q-expression">
+                    Q Expression
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
                    <a class="md-nav__link" href="#f-expression">
-                    F expression
+                    F Expression
                    </a>
                   </li>
                   <li class="md-nav__item">
@@ -322,8 +327,13 @@
              </nav>
              <ul class="md-nav__list">
               <li class="md-nav__item">
+               <a class="md-nav__link" href="#q-expression">
+                Q Expression
+               </a>
+              </li>
+              <li class="md-nav__item">
                <a class="md-nav__link" href="#f-expression">
-                F expression
+                F Expression
                </a>
               </li>
               <li class="md-nav__item">
@@ -435,8 +445,13 @@
            <nav class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
+              <a class="md-nav__link" href="#q-expression">
+               Q Expression
+              </a>
+             </li>
+             <li class="md-nav__item">
               <a class="md-nav__link" href="#f-expression">
-               F expression
+               F Expression
               </a>
              </li>
              <li class="md-nav__item">
@@ -480,9 +495,764 @@
           ¶
          </a>
         </h1>
+        <section id="q-expression">
+         <h2 id="q-expression">
+          Q Expression
+          <a class="headerlink" href="#q-expression" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Sometimes you need to do more complicated queries than the simple AND
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            &lt;model&gt;.filter()
+           </span>
+          </code>
+          provides. Luckily we have Q objects to spice things up and help you find what you need. These Q-objects can then be used as argument to
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            &lt;model&gt;.filter()
+           </span>
+          </code>
+          instead.
+         </p>
+         <dl class="simple">
+          <dt>
+           Q objects are extremely versatile, some example use cases:
+          </dt>
+          <dd>
+           <ul class="simple">
+            <li>
+             <p>
+              creating an OR filter
+             </p>
+            </li>
+            <li>
+             <p>
+              nested filters
+             </p>
+            </li>
+            <li>
+             <p>
+              inverted filters
+             </p>
+            </li>
+            <li>
+             <p>
+              combining any of the above to simply write complicated multilayer filters
+             </p>
+            </li>
+           </ul>
+          </dd>
+         </dl>
+         <p>
+          Q objects can take any (special) kwargs for filtering that
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            &lt;model&gt;.filter()
+           </span>
+          </code>
+          accepts, see those docs for a full list of filter options in that regard.
+         </p>
+         <p>
+          They can also be combined by using bitwise operators (
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            |
+           </span>
+          </code>
+          is OR and
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            &amp;
+           </span>
+          </code>
+          is AND for those unfamiliar with bitwise operators)
+         </p>
+         <p>
+          For example to find the events with as name
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            Event
+           </span>
+           <span class="pre">
+            1
+           </span>
+          </code>
+          or
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            Event
+           </span>
+           <span class="pre">
+            2
+           </span>
+          </code>
+          :
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">found_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Event 1'</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Event 2'</span><span class="p">)</span>
+<span class="p">)</span>
+</pre>
+          </div>
+         </div>
+         <p>
+          Q objects can be nested as well, the above for example is equivalent to:
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">found_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">Q</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Event 1'</span><span class="p">),</span> <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Event 2'</span><span class="p">),</span> <span class="n">join_type</span><span class="o">=</span><span class="s2">"OR"</span><span class="p">)</span>
+<span class="p">)</span>
+</pre>
+          </div>
+         </div>
+         <p>
+          If join type is omitted it defaults to
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            AND
+           </span>
+          </code>
+          .
+         </p>
+         <div class="admonition note">
+          <p class="admonition-title">
+           Note
+          </p>
+          <p>
+           Q objects without filter arguments are considered NOP and will be ignored for the final query (regardless on if they are used as
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             AND
+            </span>
+           </code>
+           or
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             OR
+            </span>
+           </code>
+           param)
+          </p>
+         </div>
+         <p>
+          Also, Q objects support negated to generate
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            NOT
+           </span>
+          </code>
+          (
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            ~
+           </span>
+          </code>
+          operator) clause in your query
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">not_third_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'3'</span><span class="p">))</span>
+</pre>
+          </div>
+         </div>
+         <span class="target" id="module-tortoise.expressions">
+         </span>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.expressions.Q">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.expressions.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             Q
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              join_type
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'AND'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/expressions.html#Q">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.expressions.Q" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Q Expression container.
+Q Expressions are a useful tool to compose a query from many small parts.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 join_type
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                ) – Is the join an AND or OR join type?
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 args
+                </strong>
+                (
+                <a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Q
+                  </span>
+                 </code>
+                </a>
+                ) – Inner
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Q
+                 </span>
+                </code>
+                expressions that you want to wrap.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kwargs
+                </strong>
+                (
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Any
+                 </span>
+                </code>
+                ) – Filter statements that this Q object should encapsulate.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.AND">
+             <span class="sig-name descname">
+              <span class="pre">
+               AND
+              </span>
+             </span>
+             <em class="property">
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               'AND'
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.expressions.Q.AND" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.OR">
+             <span class="sig-name descname">
+              <span class="pre">
+               OR
+              </span>
+             </span>
+             <em class="property">
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               'OR'
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.expressions.Q.OR" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.__and__">
+             <span class="sig-name descname">
+              <span class="pre">
+               __and__
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                other
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Q.__and__">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.expressions.Q.__and__" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns a binary AND of Q objects, use
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                AND
+               </span>
+              </code>
+              operator.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Raises
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError">
+                 <strong>
+                  OperationalError
+                 </strong>
+                </a>
+                – AND operation requires a Q node
+               </p>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Q
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.__invert__">
+             <span class="sig-name descname">
+              <span class="pre">
+               __invert__
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Q.__invert__">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.expressions.Q.__invert__" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns a negated instance of the Q object, use
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                ~
+               </span>
+              </code>
+              operator.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Q
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.__or__">
+             <span class="sig-name descname">
+              <span class="pre">
+               __or__
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                other
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Q.__or__">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.expressions.Q.__or__" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns a binary OR of Q objects, use
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                OR
+               </span>
+              </code>
+              operator.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Raises
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError">
+                 <strong>
+                  OperationalError
+                 </strong>
+                </a>
+                – OR operation requires a Q node
+               </p>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Q
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.children">
+             <span class="sig-name descname">
+              <span class="pre">
+               children
+              </span>
+             </span>
+             <a class="headerlink" href="#tortoise.expressions.Q.children" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Contains the sub-Q’s that this Q is made up of
+             </p>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.filters">
+             <span class="sig-name descname">
+              <span class="pre">
+               filters
+              </span>
+             </span>
+             <a class="headerlink" href="#tortoise.expressions.Q.filters" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Contains the filters applied to this Q
+             </p>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.join_type">
+             <span class="sig-name descname">
+              <span class="pre">
+               join_type
+              </span>
+             </span>
+             <a class="headerlink" href="#tortoise.expressions.Q.join_type" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Specifies if this Q does an AND or OR on its children
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.negate">
+             <span class="sig-name descname">
+              <span class="pre">
+               negate
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Q.negate">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.expressions.Q.negate" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Negates the current Q object. (mutation)
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.expressions.Q.resolve">
+             <span class="sig-name descname">
+              <span class="pre">
+               resolve
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                model
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                table
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/expressions.html#Q.resolve">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.expressions.Q.resolve" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Resolves the logical Q chain into the parts of a SQL statement.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   model
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Type
+                   </span>
+                  </code>
+                  [
+                  <a class="reference internal" href="models.html#tortoise.models.Model" title="tortoise.models.Model">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     Model
+                    </span>
+                   </code>
+                  </a>
+                  ]) – The Model this Q Expression should be resolved on.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   table
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Table
+                   </span>
+                  </code>
+                  ) –
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    pypika.Table
+                   </span>
+                  </code>
+                  to keep track of the virtual SQL table
+(to allow self referential joins)
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  QueryModifier
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </section>
         <section id="f-expression">
          <h2 id="f-expression">
-          F expression
+          F Expression
           <a class="headerlink" href="#f-expression" title="Permalink to this headline">
            ¶
           </a>
@@ -744,7 +1514,7 @@
                  args
                 </strong>
                 (
-                <a class="reference internal" href="query.html#tortoise.query_utils.Q" title="tortoise.query_utils.Q">
+                <a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    Q
@@ -906,7 +1676,15 @@
                 <strong>
                  args
                 </strong>
-                – When objects
+                (
+                <a class="reference internal" href="#tortoise.expressions.When" title="tortoise.expressions.When">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   When
+                  </span>
+                 </code>
+                </a>
+                ) – When objects
                </p>
               </li>
               <li>

@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.query_utils — Tortoise ORM v0.17.8 Documentation
+   tortoise.query_utils — Tortoise ORM v0.18.0 Documentation
   </title>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
-       <img alt="Tortoise ORM 0.17.8 Documentation logo" height="26" src="../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
            <img alt=" logo" height="48" src="../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -278,51 +278,16 @@
        <div class="highlight">
         <pre>
 <span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Table</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">Term</span>
+<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Criterion</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
+<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">OperationalError</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="n">BackwardFKRelation</span><span class="p">,</span> <span class="n">ManyToManyFieldInstance</span><span class="p">,</span> <span class="n">RelationalField</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
     <span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">QuerySet</span>
-
-
-<span class="k">def</span> <span class="nf">_process_filter_kwarg</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]]]:</span>
-    <span class="n">join</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">__isnull"</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span>
-        <span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">__isnull"</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-    <span class="n">pk_db_field</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_pk_column</span>
-    <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"table"</span><span class="p">):</span>
-        <span class="n">join</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">param</span><span class="p">[</span><span class="s2">"table"</span><span class="p">],</span>
-            <span class="n">table</span><span class="p">[</span><span class="n">pk_db_field</span><span class="p">]</span> <span class="o">==</span> <span class="n">param</span><span class="p">[</span><span class="s2">"table"</span><span class="p">][</span><span class="n">param</span><span class="p">[</span><span class="s2">"backward_key"</span><span class="p">]],</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"value_encoder"</span><span class="p">):</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">"value_encoder"</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-        <span class="n">criterion</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">"operator"</span><span class="p">](</span><span class="n">param</span><span class="p">[</span><span class="s2">"table"</span><span class="p">][</span><span class="n">param</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]],</span> <span class="n">value</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Term</span><span class="p">):</span>
-            <span class="n">encoded_value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">field_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]]</span>
-            <span class="n">encoded_value</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">param</span><span class="p">[</span><span class="s2">"value_encoder"</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">field_object</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"value_encoder"</span><span class="p">)</span>
-                <span class="k">else</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">executor_class</span><span class="o">.</span><span class="n">_field_to_db</span><span class="p">(</span><span class="n">field_object</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-            <span class="p">)</span>
-        <span class="n">criterion</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">"operator"</span><span class="p">](</span><span class="n">table</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s2">"source_field"</span><span class="p">]],</span> <span class="n">encoded_value</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">join</span>
 
 
 <span class="k">def</span> <span class="nf">_get_joins_for_related_field</span><span class="p">(</span>
@@ -403,7 +368,7 @@
     <span class="k">return</span> <span class="n">left</span> <span class="o">|</span> <span class="n">right</span>
 
 
-<div class="viewcode-block" id="QueryModifier"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.QueryModifier">[docs]</a><span class="k">class</span> <span class="nc">QueryModifier</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">QueryModifier</span><span class="p">:</span>
     <span class="sd">"""</span>
 <span class="sd">    Internal structure used to generate SQL Queries.</span>
 <span class="sd">    """</span>
@@ -458,216 +423,11 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="o">.</span><span class="n">negate</span><span class="p">(),</span> <span class="n">joins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">)</span>
 
-<div class="viewcode-block" id="QueryModifier.get_query_modifiers"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.QueryModifier.get_query_modifiers">[docs]</a>    <span class="k">def</span> <span class="nf">get_query_modifiers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]],</span> <span class="n">Criterion</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">get_query_modifiers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]],</span> <span class="n">Criterion</span><span class="p">]:</span>
         <span class="sd">"""</span>
 <span class="sd">        Returns a tuple of the query criterion.</span>
 <span class="sd">        """</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span></div></div>
-
-
-<div class="viewcode-block" id="Q"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q">[docs]</a><span class="k">class</span> <span class="nc">Q</span><span class="p">:</span>
-    <span class="sd">"""</span>
-<span class="sd">    Q Expression container.</span>
-<span class="sd">    Q Expressions are a useful tool to compose a query from many small parts.</span>
-
-<span class="sd">    :param join_type: Is the join an AND or OR join type?</span>
-<span class="sd">    :param args: Inner ``Q`` expressions that you want to wrap.</span>
-<span class="sd">    :param kwargs: Filter statements that this Q object should encapsulate.</span>
-<span class="sd">    """</span>
-
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">"children"</span><span class="p">,</span>
-        <span class="s2">"filters"</span><span class="p">,</span>
-        <span class="s2">"join_type"</span><span class="p">,</span>
-        <span class="s2">"_is_negated"</span><span class="p">,</span>
-        <span class="s2">"_annotations"</span><span class="p">,</span>
-        <span class="s2">"_custom_filters"</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">AND</span> <span class="o">=</span> <span class="s2">"AND"</span>
-    <span class="n">OR</span> <span class="o">=</span> <span class="s2">"OR"</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="s2">"Q"</span><span class="p">,</span> <span class="n">join_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AND</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">newarg</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">join_type</span><span class="o">=</span><span class="n">join_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">newarg</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
-            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">args</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">"All ordered arguments must be Q nodes"</span><span class="p">)</span>
-        <span class="c1">#: Contains the sub-Q's that this Q is made up of</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Q</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
-        <span class="c1">#: Contains the filters applied to this Q</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span>
-        <span class="k">if</span> <span class="n">join_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OR</span><span class="p">}:</span>
-            <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">"join_type must be AND or OR"</span><span class="p">)</span>
-        <span class="c1">#: Specifies if this Q does an AND or OR on its children</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">join_type</span> <span class="o">=</span> <span class="n">join_type</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
-
-<div class="viewcode-block" id="Q.__and__"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q.__and__">[docs]</a>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"Q"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Q"</span><span class="p">:</span>
-        <span class="sd">"""</span>
-<span class="sd">        Returns a binary AND of Q objects, use ``AND`` operator.</span>
-
-<span class="sd">        :raises OperationalError: AND operation requires a Q node</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">"AND operation requires a Q node"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">join_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Q.__or__"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q.__or__">[docs]</a>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"Q"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Q"</span><span class="p">:</span>
-        <span class="sd">"""</span>
-<span class="sd">        Returns a binary OR of Q objects, use ``OR`` operator.</span>
-
-<span class="sd">        :raises OperationalError: OR operation requires a Q node</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">"OR operation requires a Q node"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">join_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">OR</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Q.__invert__"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Q"</span><span class="p">:</span>
-        <span class="sd">"""</span>
-<span class="sd">        Returns a negated instance of the Q object, use ``~`` operator.</span>
-<span class="sd">        """</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="n">join_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">join_type</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">)</span>
-        <span class="n">q</span><span class="o">.</span><span class="n">negate</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">q</span></div>
-
-<div class="viewcode-block" id="Q.negate"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q.negate">[docs]</a>    <span class="k">def</span> <span class="nf">negate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">"""</span>
-<span class="sd">        Negates the current Q object. (mutation)</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span></div>
-
-    <span class="k">def</span> <span class="nf">_resolve_nested_filter</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="n">related_field_name</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">forwarded_fields</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">"__"</span><span class="p">)</span>
-        <span class="n">related_field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">related_field_name</span><span class="p">])</span>
-        <span class="n">required_joins</span> <span class="o">=</span> <span class="n">_get_joins_for_related_field</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">,</span> <span class="n">related_field_name</span><span class="p">)</span>
-        <span class="n">modifier</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">forwarded_fields</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="n">related_field</span><span class="o">.</span><span class="n">related_model</span><span class="p">,</span>
-            <span class="n">annotations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">,</span>
-            <span class="n">custom_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span>
-            <span class="n">table</span><span class="o">=</span><span class="n">required_joins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
-        <span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">joins</span><span class="o">=</span><span class="n">required_joins</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">modifier</span>
-
-    <span class="k">def</span> <span class="nf">_resolve_custom_kwarg</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="n">having_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="n">annotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">[</span><span class="n">having_info</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">annotation</span><span class="p">,</span> <span class="n">Term</span><span class="p">):</span>
-            <span class="n">annotation_info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"field"</span><span class="p">:</span> <span class="n">annotation</span><span class="p">}</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">annotation_info</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-
-        <span class="n">operator</span> <span class="o">=</span> <span class="n">having_info</span><span class="p">[</span><span class="s2">"operator"</span><span class="p">]</span>
-        <span class="n">overridden_operator</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">executor_class</span><span class="o">.</span><span class="n">get_overridden_filter_func</span><span class="p">(</span>
-            <span class="n">filter_func</span><span class="o">=</span><span class="n">operator</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">overridden_operator</span><span class="p">:</span>
-            <span class="n">operator</span> <span class="o">=</span> <span class="n">overridden_operator</span>
-        <span class="k">if</span> <span class="n">annotation_info</span><span class="p">[</span><span class="s2">"field"</span><span class="p">]</span><span class="o">.</span><span class="n">is_aggregate</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">having_criterion</span><span class="o">=</span><span class="n">operator</span><span class="p">(</span><span class="n">annotation_info</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="n">value</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="n">operator</span><span class="p">(</span><span class="n">annotation_info</span><span class="p">[</span><span class="s2">"field"</span><span class="p">],</span> <span class="n">value</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">modifier</span>
-
-    <span class="k">def</span> <span class="nf">_resolve_regular_kwarg</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">filters</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"__"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_nested_filter</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">criterion</span><span class="p">,</span> <span class="n">join</span> <span class="o">=</span> <span class="n">_process_filter_kwarg</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-            <span class="n">joins</span> <span class="o">=</span> <span class="p">[</span><span class="n">join</span><span class="p">]</span> <span class="k">if</span> <span class="n">join</span> <span class="k">else</span> <span class="p">[]</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span> <span class="n">joins</span><span class="o">=</span><span class="n">joins</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">modifier</span>
-
-    <span class="k">def</span> <span class="nf">_get_actual_filter_params</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Table</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="n">filter_key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fk_fields</span> <span class="ow">or</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">o2o_fields</span><span class="p">:</span>
-            <span class="n">field_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">"pk"</span><span class="p">):</span>
-                <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">pk</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span>
-            <span class="n">filter_key</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">field_object</span><span class="o">.</span><span class="n">source_field</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">m2m_fields</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">"pk"</span><span class="p">):</span>
-                <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">pk</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">elif</span> <span class="p">(</span>
-            <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"__"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span>
-            <span class="ow">or</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span>
-            <span class="ow">or</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">filters</span>
-        <span class="p">):</span>
-            <span class="n">filter_value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">allowed</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
-                <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields</span> <span class="o">|</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="k">raise</span> <span class="n">FieldError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown filter param '</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">'. Allowed base values are </span><span class="si">{</span><span class="n">allowed</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">filter_key</span><span class="p">,</span> <span class="n">filter_value</span>
-
-    <span class="k">def</span> <span class="nf">_resolve_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">raw_key</span><span class="p">,</span> <span class="n">raw_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_actual_filter_params</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">raw_key</span><span class="p">,</span> <span class="n">raw_value</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">:</span>
-                <span class="n">filter_modifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_custom_kwarg</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">filter_modifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_regular_kwarg</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">join_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">:</span>
-                <span class="n">modifier</span> <span class="o">&amp;=</span> <span class="n">filter_modifier</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">modifier</span> <span class="o">|=</span> <span class="n">filter_modifier</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="o">~</span><span class="n">modifier</span>
-        <span class="k">return</span> <span class="n">modifier</span>
-
-    <span class="k">def</span> <span class="nf">_resolve_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-            <span class="n">node_modifier</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">join_type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">:</span>
-                <span class="n">modifier</span> <span class="o">&amp;=</span> <span class="n">node_modifier</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">modifier</span> <span class="o">|=</span> <span class="n">node_modifier</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span><span class="p">:</span>
-            <span class="n">modifier</span> <span class="o">=</span> <span class="o">~</span><span class="n">modifier</span>
-        <span class="k">return</span> <span class="n">modifier</span>
-
-<div class="viewcode-block" id="Q.resolve"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Q.resolve">[docs]</a>    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">model</span><span class="p">:</span> <span class="s2">"Type[Model]"</span><span class="p">,</span>
-        <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-        <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
-        <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
-        <span class="sd">"""</span>
-<span class="sd">        Resolves the logical Q chain into the parts of a SQL statement.</span>
-
-<span class="sd">        :param model: The Model this Q Expression should be resolved on.</span>
-<span class="sd">        :param annotations: Extra annotations one wants to inject into the resultset.</span>
-<span class="sd">        :param custom_filters: Pre-resolved filters to be passed though.</span>
-<span class="sd">        :param table: ``pypika.Table`` to keep track of the virtual SQL table</span>
-<span class="sd">            (to allow self referential joins)</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span> <span class="o">=</span> <span class="n">annotations</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span> <span class="o">=</span> <span class="n">custom_filters</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_kwargs</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_children</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span>
 
 
 <div class="viewcode-block" id="Prefetch"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch">[docs]</a><span class="k">class</span> <span class="nc">Prefetch</span><span class="p">:</span>

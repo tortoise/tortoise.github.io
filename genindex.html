@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   Index — Tortoise ORM v0.17.8 Documentation
+   Index — Tortoise ORM v0.18.0 Documentation
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
-       <img alt="Tortoise ORM 0.17.8 Documentation logo" height="26" src="_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -171,10 +171,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
            <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
           </a>
-          <a href="toc.html" title="Tortoise ORM v0.17.8 Documentation">
+          <a href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -406,8 +406,8 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.__and__">
-             __and__() (tortoise.query_utils.Q method)
+            <a href="expressions.html#tortoise.expressions.Q.__and__">
+             __and__() (tortoise.expressions.Q method)
             </a>
            </li>
            <li>
@@ -420,13 +420,13 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.__invert__">
-             __invert__() (tortoise.query_utils.Q method)
+            <a href="expressions.html#tortoise.expressions.Q.__invert__">
+             __invert__() (tortoise.expressions.Q method)
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.__or__">
-             __or__() (tortoise.query_utils.Q method)
+            <a href="expressions.html#tortoise.expressions.Q.__or__">
+             __or__() (tortoise.expressions.Q method)
             </a>
            </li>
           </ul>
@@ -497,8 +497,8 @@
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.AND">
-             AND (tortoise.query_utils.Q attribute)
+            <a href="expressions.html#tortoise.expressions.Q.AND">
+             AND (tortoise.expressions.Q attribute)
             </a>
            </li>
            <li>
@@ -657,8 +657,8 @@
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.children">
-             children (tortoise.query_utils.Q attribute)
+            <a href="expressions.html#tortoise.expressions.Q.children">
+             children (tortoise.expressions.Q attribute)
             </a>
            </li>
            <li>
@@ -1110,8 +1110,8 @@
             </ul>
            </li>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.filters">
-             filters (tortoise.query_utils.Q attribute)
+            <a href="expressions.html#tortoise.expressions.Q.filters">
+             filters (tortoise.expressions.Q attribute)
             </a>
            </li>
            <li>
@@ -1262,15 +1262,15 @@
              get_default_timezone() (in module tortoise.timezone)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="fields.html#tortoise.fields.base.Field.get_for_dialect">
              get_for_dialect() (tortoise.fields.base.Field method)
             </a>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="models.html#tortoise.models.Model.get_or_create">
              get_or_create() (tortoise.models.Model class method)
@@ -1287,11 +1287,6 @@
               </a>
              </li>
             </ul>
-           </li>
-           <li>
-            <a href="query.html#tortoise.query_utils.QueryModifier.get_query_modifiers">
-             get_query_modifiers() (tortoise.query_utils.QueryModifier method)
-            </a>
            </li>
            <li>
             <a href="schema.html#tortoise.utils.get_schema_sql">
@@ -1467,8 +1462,8 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.join_type">
-             join_type (tortoise.query_utils.Q attribute)
+            <a href="expressions.html#tortoise.expressions.Q.join_type">
+             join_type (tortoise.expressions.Q attribute)
             </a>
            </li>
           </ul>
@@ -1687,6 +1682,11 @@
               </a>
              </li>
              <li>
+              <a href="expressions.html#module-tortoise.expressions">
+               tortoise.expressions
+              </a>
+             </li>
+             <li>
               <a href="fields.html#module-tortoise.fields.base">
                tortoise.fields.base
               </a>
@@ -1709,11 +1709,6 @@
              <li>
               <a href="models.html#module-tortoise.models">
                tortoise.models
-              </a>
-             </li>
-             <li>
-              <a href="query.html#module-tortoise.query_utils">
-               tortoise.query_utils
               </a>
              </li>
              <li>
@@ -1769,8 +1764,8 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.negate">
-             negate() (tortoise.query_utils.Q method)
+            <a href="expressions.html#tortoise.expressions.Q.negate">
+             negate() (tortoise.expressions.Q method)
             </a>
            </li>
           </ul>
@@ -1845,8 +1840,8 @@
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.query_utils.Q.OR">
-             OR (tortoise.query_utils.Q attribute)
+            <a href="expressions.html#tortoise.expressions.Q.OR">
+             OR (tortoise.expressions.Q attribute)
             </a>
            </li>
            <li>
@@ -1988,8 +1983,8 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="query.html#tortoise.query_utils.Q">
-             Q (class in tortoise.query_utils)
+            <a href="expressions.html#tortoise.expressions.Q">
+             Q (class in tortoise.expressions)
             </a>
            </li>
            <li>
@@ -2001,11 +1996,6 @@
          </td>
          <td style="width: 33%; vertical-align: top;">
           <ul>
-           <li>
-            <a href="query.html#tortoise.query_utils.QueryModifier">
-             QueryModifier (class in tortoise.query_utils)
-            </a>
-           </li>
            <li>
             <a href="query.html#tortoise.queryset.QuerySet">
              QuerySet (class in tortoise.queryset)
@@ -2128,13 +2118,13 @@
             </a>
            </li>
            <li>
-            <a href="functions.html#tortoise.functions.Function.resolve">
-             resolve() (tortoise.functions.Function method)
+            <a href="expressions.html#tortoise.expressions.Q.resolve">
+             resolve() (tortoise.expressions.Q method)
             </a>
             <ul>
              <li>
-              <a href="query.html#tortoise.query_utils.Q.resolve">
-               (tortoise.query_utils.Q method)
+              <a href="functions.html#tortoise.functions.Function.resolve">
+               (tortoise.functions.Function method)
               </a>
              </li>
             </ul>
@@ -2496,6 +2486,16 @@
             </ul>
            </li>
            <li>
+            tortoise.expressions
+            <ul>
+             <li>
+              <a href="expressions.html#module-tortoise.expressions">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
             tortoise.fields.base
             <ul>
              <li>
@@ -2540,16 +2540,6 @@
             <ul>
              <li>
               <a href="models.html#module-tortoise.models">
-               module
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li>
-            tortoise.query_utils
-            <ul>
-             <li>
-              <a href="query.html#module-tortoise.query_utils">
                module
               </a>
              </li>
