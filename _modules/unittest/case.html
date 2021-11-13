@@ -926,12 +926,20 @@
 
     <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""Run the test without collecting errors in a TestResult"""</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="n">testMethod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s2">"__unittest_skip__"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)):</span>
+            <span class="c1"># If the class or method was skipped.</span>
+            <span class="n">skip_why</span> <span class="o">=</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s1">'__unittest_skip_why__'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+                        <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="s1">'__unittest_skip_why__'</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="n">skip_why</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callSetUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callTestMethod</span><span class="p">(</span><span class="n">testMethod</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callTearDown</span><span class="p">()</span>
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cleanups</span><span class="p">:</span>
-            <span class="n">function</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cleanups</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">function</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cleanups</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_callCleanup</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">skipTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
         <span class="sd">"""Skip this test."""</span>
@@ -1729,7 +1737,7 @@
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.2.0.
+      4.3.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
