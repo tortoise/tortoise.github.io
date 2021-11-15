@@ -960,7 +960,7 @@ This is obviously slow, but guarantees a fresh DB.
             Bases:
             <code class="xref py py-class docutils literal notranslate">
              <span class="pre">
-              asynctest.case.TestCase
+              unittest.async_case.IsolatedAsyncioTestCase
              </span>
             </code>
            </p>
@@ -1164,17 +1164,6 @@ If you specify
              </a>
             </dt>
             <dd>
-             <p>
-              If true, the loop used by the test case is the current default event
-loop returned by
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                asyncio.get_event_loop()
-               </span>
-              </code>
-              . The loop will not be
-closed and recreated between tests.
-             </p>
             </dd>
            </dl>
           </dd>
