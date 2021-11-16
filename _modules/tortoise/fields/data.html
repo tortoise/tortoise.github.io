@@ -332,11 +332,11 @@
 <span class="n">JSON_LOADS</span><span class="p">:</span> <span class="n">JsonLoadsFunc</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="c1"># Use python-rapidjson as an optional accelerator</span>
-    <span class="kn">import</span> <span class="nn">rapidjson</span>
+    <span class="c1"># Use orjson as an optional accelerator</span>
+    <span class="kn">import</span> <span class="nn">orjson</span>
 
-    <span class="n">JSON_DUMPS</span> <span class="o">=</span> <span class="n">rapidjson</span><span class="o">.</span><span class="n">dumps</span>
-    <span class="n">JSON_LOADS</span> <span class="o">=</span> <span class="n">rapidjson</span><span class="o">.</span><span class="n">loads</span>
+    <span class="n">JSON_DUMPS</span> <span class="o">=</span> <span class="n">orjson</span><span class="o">.</span><span class="n">dumps</span>  <span class="c1"># type:ignore</span>
+    <span class="n">JSON_LOADS</span> <span class="o">=</span> <span class="n">orjson</span><span class="o">.</span><span class="n">loads</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
     <span class="k">pass</span>
 
@@ -658,11 +658,9 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">]:</span>
 
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
-            <span class="n">return_value</span> <span class="o">=</span> <span class="n">parse_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">return_value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">return_value</span></div>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">parse_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div>
 
 
 <div class="viewcode-block" id="TimeDeltaField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.TimeDeltaField">[docs]</a><span class="k">class</span> <span class="nc">TimeDeltaField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">):</span>
