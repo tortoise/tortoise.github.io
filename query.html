@@ -987,6 +987,95 @@ Essentially a no-op except as the only operation.
             </dd>
            </dl>
            <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.queryset.QuerySet.bulk_create">
+             <span class="sig-name descname">
+              <span class="pre">
+               bulk_create
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                objects
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                batch_size
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                ignore_conflicts
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                False
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.bulk_create">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Bulk create objects.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <a class="reference internal" href="#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   BulkCreateQuery
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
             <dt class="sig sig-object py" id="tortoise.queryset.QuerySet.bulk_update">
              <span class="sig-name descname">
               <span class="pre">
@@ -3573,6 +3662,104 @@ in order of declaration.
              </dl>
             </dd>
            </dl>
+          </dd>
+         </dl>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.queryset.BulkCreateQuery">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.queryset.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             BulkCreateQuery
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              model
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              db
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              objects
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              batch_size
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              ignore_conflicts
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.queryset.BulkCreateQuery" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
           </dd>
          </dl>
          <dl class="py class">
@@ -6608,7 +6795,7 @@ for specialised prefetching.
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.3.0.
+      4.3.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

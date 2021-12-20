@@ -2121,7 +2121,7 @@ all models including fields for the relations between models.
              <em class="sig-param">
               <span class="n">
                <span class="pre">
-                using_db
+                ignore_conflicts
                </span>
               </span>
               <span class="o">
@@ -2131,7 +2131,7 @@ all models including fields for the relations between models.
               </span>
               <span class="default_value">
                <span class="pre">
-                None
+                False
                </span>
               </span>
              </em>
@@ -2173,7 +2173,7 @@ but may be incomplete reference in Python.
               </p>
              </div>
              <p>
-              This is recommend only for throw away inserts where you want to ensure optimal
+              This is recommended only for throw away inserts where you want to ensure optimal
 insert performance.
              </p>
              <div class="highlight-python3 notranslate">
@@ -2191,6 +2191,20 @@ insert performance.
               </dt>
               <dd class="field-odd">
                <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   ignore_conflicts
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    bool
+                   </span>
+                  </code>
+                  ) – Ignore conflicts when inserting
+                 </p>
+                </li>
                 <li>
                  <p>
                   <strong>
@@ -2225,28 +2239,6 @@ insert performance.
                   ]) – How many objects are created in a single query
                  </p>
                 </li>
-                <li>
-                 <p>
-                  <strong>
-                   using_db
-                  </strong>
-                  (
-                  <code class="xref py py-data docutils literal notranslate">
-                   <span class="pre">
-                    Optional
-                   </span>
-                  </code>
-                  [
-                  <a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient">
-                   <code class="xref py py-class docutils literal notranslate">
-                    <span class="pre">
-                     BaseDBAsyncClient
-                    </span>
-                   </code>
-                  </a>
-                  ]) – Specific DB connection to use instead of default bound
-                 </p>
-                </li>
                </ul>
               </dd>
               <dt class="field-even">
@@ -2254,11 +2246,13 @@ insert performance.
               </dt>
               <dd class="field-even">
                <p>
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  None
-                 </span>
-                </code>
+                <a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   BulkCreateQuery
+                  </span>
+                 </code>
+                </a>
                </p>
               </dd>
              </dl>
@@ -5359,7 +5353,7 @@ but will raise errors on bad types or updating Many-instance relations.
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.3.0.
+      4.3.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
