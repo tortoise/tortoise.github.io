@@ -50,7 +50,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   Query API — Tortoise ORM v0.18.0 Documentation
+   Query API — Tortoise ORM v0.18.1 Documentation
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -93,8 +93,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
-       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
+       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -185,10 +185,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
            <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
           </a>
-          <a href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -1055,13 +1055,70 @@ Essentially a no-op except as the only operation.
             </dt>
             <dd>
              <p>
-              Bulk create objects.
+              This method inserts the provided list of objects into the database in an efficient manner
+(generally only 1 query, no matter how many objects there are),
+and returns created objects as a list, in the same order as provided
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
-               Return type
+               Parameters
               </dt>
               <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   ignore_conflicts
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    bool
+                   </span>
+                  </code>
+                  ) – Ignore conflicts when inserting
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   objects
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [Model]) – List of objects to bulk create
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   batch_size
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    int
+                   </span>
+                  </code>
+                  ]) – How many objects are created in a single query
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
                <p>
                 <a class="reference internal" href="#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery">
                  <code class="xref py py-class docutils literal notranslate">
@@ -3760,6 +3817,62 @@ in order of declaration.
            </a>
           </dt>
           <dd>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.queryset.BulkCreateQuery.sql">
+             <span class="sig-name descname">
+              <span class="pre">
+               sql
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                **
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                kwargs
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery.sql">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Return the actual SQL.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
           </dd>
          </dl>
          <dl class="py class">

@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   Index — Tortoise ORM v0.18.0 Documentation
+   Index — Tortoise ORM v0.18.1 Documentation
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
-       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
+       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -171,10 +171,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
            <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
           </a>
-          <a href="toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a href="toc.html" title="Tortoise ORM v0.18.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -487,10 +487,6 @@
              allow_cycles (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
             </a>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="fields.html#tortoise.fields.base.Field.allows_generated">
              allows_generated (tortoise.fields.base.Field attribute)
@@ -501,6 +497,10 @@
              AND (tortoise.expressions.Q attribute)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="models.html#tortoise.models.Model.annotate">
              annotate() (tortoise.models.Model class method)
@@ -527,6 +527,30 @@
             <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">
              assertListSortEqual() (tortoise.contrib.test.SimpleTestCase method)
             </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncSetUp">
+             asyncSetUp() (tortoise.contrib.test.SimpleTestCase method)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncSetUp">
+               (tortoise.contrib.test.TestCase method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncTearDown">
+             asyncTearDown() (tortoise.contrib.test.SimpleTestCase method)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncTearDown">
+               (tortoise.contrib.test.TestCase method)
+              </a>
+             </li>
+            </ul>
            </li>
            <li>
             <a href="transactions.html#tortoise.transactions.atomic">
@@ -2162,11 +2186,6 @@
             </a>
            </li>
            <li>
-            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.run">
-             run() (tortoise.contrib.test.SimpleTestCase method)
-            </a>
-           </li>
-           <li>
             <a href="setup.html#tortoise.run_async">
              run_async() (in module tortoise)
             </a>
@@ -2281,10 +2300,15 @@
             </a>
            </li>
            <li>
-            <a href="query.html#tortoise.queryset.BulkUpdateQuery.sql">
-             sql() (tortoise.queryset.BulkUpdateQuery method)
+            <a href="query.html#tortoise.queryset.BulkCreateQuery.sql">
+             sql() (tortoise.queryset.BulkCreateQuery method)
             </a>
             <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.BulkUpdateQuery.sql">
+               (tortoise.queryset.BulkUpdateQuery method)
+              </a>
+             </li>
              <li>
               <a href="query.html#tortoise.queryset.QuerySet.sql">
                (tortoise.queryset.QuerySet method)
@@ -2687,23 +2711,18 @@
              update_or_create() (tortoise.models.Model class method)
             </a>
            </li>
-           <li>
-            <a href="query.html#tortoise.queryset.UpdateQuery">
-             UpdateQuery (class in tortoise.queryset)
-            </a>
-           </li>
           </ul>
          </td>
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="functions.html#tortoise.functions.Upper">
-             Upper (class in tortoise.functions)
+            <a href="query.html#tortoise.queryset.UpdateQuery">
+             UpdateQuery (class in tortoise.queryset)
             </a>
            </li>
            <li>
-            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.use_default_loop">
-             use_default_loop (tortoise.contrib.test.SimpleTestCase attribute)
+            <a href="functions.html#tortoise.functions.Upper">
+             Upper (class in tortoise.functions)
             </a>
            </li>
            <li>

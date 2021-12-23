@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.queryset — Tortoise ORM v0.18.0 Documentation
+   tortoise.queryset — Tortoise ORM v0.18.1 Documentation
   </title>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
-       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
+       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            <img alt=" logo" height="48" src="../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -984,7 +984,13 @@
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BulkCreateQuery"</span><span class="p">:</span>
         <span class="sd">"""</span>
-<span class="sd">        Bulk create objects.</span>
+<span class="sd">        This method inserts the provided list of objects into the database in an efficient manner</span>
+<span class="sd">        (generally only 1 query, no matter how many objects there are),</span>
+<span class="sd">        and returns created objects as a list, in the same order as provided</span>
+
+<span class="sd">        :param ignore_conflicts: Ignore conflicts when inserting</span>
+<span class="sd">        :param objects: List of objects to bulk create</span>
+<span class="sd">        :param batch_size: How many objects are created in a single query</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="n">BulkCreateQuery</span><span class="p">(</span>  <span class="c1"># type:ignore</span>
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
@@ -1955,8 +1961,8 @@
                 <span class="n">pk_list</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_item</span><span class="p">:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">pk_attr</span><span class="p">](</span><span class="n">obj</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                    <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
-                    <span class="n">case</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pk</span> <span class="o">==</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+                    <span class="n">field_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
+                    <span class="n">case</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pk</span> <span class="o">==</span> <span class="n">value</span><span class="p">,</span> <span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">field</span><span class="p">](</span><span class="n">field_value</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
                     <span class="n">pk_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">case</span><span class="p">)</span>
                 <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pk</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">pk_list</span><span class="p">))</span>
@@ -1974,7 +1980,15 @@
 
 
 <div class="viewcode-block" id="BulkCreateQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery">[docs]</a><span class="k">class</span> <span class="nc">BulkCreateQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"objects"</span><span class="p">,</span> <span class="s2">"ignore_conflicts"</span><span class="p">,</span> <span class="s2">"batch_size"</span><span class="p">,</span> <span class="s2">"executor"</span><span class="p">,</span> <span class="s2">"_custom_generated_pk"</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">"objects"</span><span class="p">,</span>
+        <span class="s2">"ignore_conflicts"</span><span class="p">,</span>
+        <span class="s2">"batch_size"</span><span class="p">,</span>
+        <span class="s2">"_db"</span><span class="p">,</span>
+        <span class="s2">"executor"</span><span class="p">,</span>
+        <span class="s2">"insert_query"</span><span class="p">,</span>
+        <span class="s2">"insert_query_all"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1989,33 +2003,32 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span> <span class="o">=</span> <span class="n">ignore_conflicts</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_generated_pk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_custom_generated_pk</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_generated_pk</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query_all</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query_all</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">regular_columns</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
+                <span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">generated_db_fields</span><span class="p">:</span>
-                <span class="n">_</span><span class="p">,</span> <span class="n">columns_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">(</span><span class="n">include_generated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
+                <span class="n">regular_columns_all</span><span class="p">,</span> <span class="n">columns_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">(</span>
+                    <span class="n">include_generated</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
                     <span class="n">columns_all</span><span class="p">,</span> <span class="n">has_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="kc">True</span>
                 <span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">instance_chunk</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">):</span>
             <span class="n">values_lists_all</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">values_lists</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instance_chunk</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_generated_pk</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">_custom_generated_pk</span><span class="p">:</span>
                     <span class="n">values_lists_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                         <span class="p">[</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">](</span>
@@ -2034,9 +2047,22 @@
                         <span class="p">]</span>
                     <span class="p">)</span>
             <span class="k">if</span> <span class="n">values_lists_all</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">values_lists_all</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">,</span> <span class="n">values_lists_all</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">values_lists</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">values_lists</span><span class="p">)</span></div>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span><span class="p">,</span> <span class="n">values_lists</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span>
+
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+
+<div class="viewcode-block" id="BulkCreateQuery.sql"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery.sql">[docs]</a>    <span class="k">def</span> <span class="nf">sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">as_query</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">";"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">)</span></div></div>
 </pre>
        </div>
       </article>

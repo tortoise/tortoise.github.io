@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.models — Tortoise ORM v0.18.0 Documentation
+   tortoise.models — Tortoise ORM v0.18.1 Documentation
   </title>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
-       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
+       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a class="md-nav__button md-logo" href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            <img alt=" logo" height="48" src="../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a href="../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -1438,7 +1438,7 @@
         <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">in_bulk</span><span class="p">(</span><span class="n">id_list</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.bulk_create"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.bulk_create">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">bulk_create</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">bulk_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>

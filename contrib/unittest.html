@@ -50,7 +50,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   UnitTest support — Tortoise ORM v0.18.0 Documentation
+   UnitTest support — Tortoise ORM v0.18.1 Documentation
   </title>
   <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -93,8 +93,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.18.0 Documentation">
-       <img alt="Tortoise ORM 0.18.0 Documentation logo" height="26" src="../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.18.1 Documentation">
+       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -185,10 +185,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a class="md-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            <img alt=" logo" height="48" src="../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../toc.html" title="Tortoise ORM v0.18.0 Documentation">
+          <a href="../toc.html" title="Tortoise ORM v0.18.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -1074,43 +1074,33 @@ If you specify
             </dd>
            </dl>
            <dl class="py method">
-            <dt class="sig sig-object py" id="tortoise.contrib.test.SimpleTestCase.run">
+            <dt class="sig sig-object py" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
              <span class="sig-name descname">
               <span class="pre">
-               run
+               asyncSetUp
               </span>
              </span>
              <span class="sig-paren">
               (
              </span>
-             <em class="sig-param">
-              <span class="n">
-               <span class="pre">
-                result
-               </span>
-              </span>
-              <span class="o">
-               <span class="pre">
-                =
-               </span>
-              </span>
-              <span class="default_value">
-               <span class="pre">
-                None
-               </span>
-              </span>
-             </em>
              <span class="sig-paren">
               )
              </span>
-             <a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.run">
+             <a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncSetUp">
               <span class="viewcode-link">
                <span class="pre">
                 [source]
                </span>
               </span>
              </a>
-             <a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.run" title="Permalink to this definition">
+             <a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp" title="Permalink to this definition">
               ¶
              </a>
             </dt>
@@ -1121,49 +1111,62 @@ If you specify
               </dt>
               <dd class="field-odd">
                <p>
-                <code class="xref py py-data docutils literal notranslate">
+                <code class="docutils literal notranslate">
                  <span class="pre">
-                  Optional
+                  None
                  </span>
                 </code>
-                [
-                <code class="xref py py-class docutils literal notranslate">
-                 <span class="pre">
-                  TestResult
-                 </span>
-                </code>
-                ]
                </p>
               </dd>
              </dl>
             </dd>
            </dl>
-           <dl class="py attribute">
-            <dt class="sig sig-object py" id="tortoise.contrib.test.SimpleTestCase.use_default_loop">
-             <span class="sig-name descname">
-              <span class="pre">
-               use_default_loop
-              </span>
-             </span>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown">
              <em class="property">
-              <span class="w">
-              </span>
-              <span class="p">
-               <span class="pre">
-                =
-               </span>
-              </span>
-              <span class="w">
-              </span>
               <span class="pre">
-               True
+               async
+              </span>
+              <span class="w">
               </span>
              </em>
-             <a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.use_default_loop" title="Permalink to this definition">
+             <span class="sig-name descname">
+              <span class="pre">
+               asyncTearDown
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncTearDown">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown" title="Permalink to this definition">
               ¶
              </a>
             </dt>
             <dd>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
             </dd>
            </dl>
           </dd>
@@ -1287,6 +1290,102 @@ separate transaction that will rollback on finish.
            <p>
             This is a fast test runner. Don’t use it if your test uses transactions.
            </p>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.contrib.test.TestCase.asyncSetUp">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               asyncSetUp
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncSetUp">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.contrib.test.TestCase.asyncTearDown">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               asyncTearDown
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncTearDown">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
           </dd>
          </dl>
          <dl class="py class">
