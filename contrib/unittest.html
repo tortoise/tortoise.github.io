@@ -603,8 +603,8 @@ The SQLite in-memory
           </p>
           <div class="highlight-ini notranslate">
            <div class="highlight">
-            <pre><span></span><span class="na">initializer</span> <span class="o">=</span> <span class="s">tortoise.contrib.test.env_initializer</span>
-<span class="na">finalizer</span> <span class="o">=</span> <span class="s">tortoise.contrib.test.finalizer</span>
+            <pre><span></span><span class="na">initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.env_initializer</span><span class="w"></span>
+<span class="na">finalizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.finalizer</span><span class="w"></span>
 </pre>
            </div>
           </div>
@@ -707,15 +707,15 @@ TORTOISE_TEST_DB=postgres://postgres:@127.0.0.1:5432/test_{}
           </p>
           <div class="highlight-ini notranslate">
            <div class="highlight">
-            <pre><span></span><span class="k">[unittest]</span>
-<span class="na">plugins</span> <span class="o">=</span> <span class="s">tortoise.contrib.test.nose2</span>
+            <pre><span></span><span class="k">[unittest]</span><span class="w"></span>
+<span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.nose2</span><span class="w"></span>
 
-<span class="k">[tortoise]</span>
-<span class="c1"># Must specify at least one module path</span>
-<span class="na">db-module</span> <span class="o">=</span>
-    <span class="na">tests.testmodels</span>
-<span class="c1"># You can optionally override the db_url here</span>
-<span class="na">db-url</span> <span class="o">=</span> <span class="s">sqlite://testdb-{}.sqlite</span>
+<span class="k">[tortoise]</span><span class="w"></span>
+<span class="c1"># Must specify at least one module path</span><span class="w"></span>
+<span class="na">db-module</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">tests.testmodels</span><span class="w"></span>
+<span class="c1"># You can optionally override the db_url here</span><span class="w"></span>
+<span class="na">db-url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sqlite://testdb-{}.sqlite</span><span class="w"></span>
 </pre>
            </div>
           </div>
@@ -2330,7 +2330,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
     <div class="md-footer-meta__inner md-grid">
      <div class="md-footer-copyright">
       <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2021, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
       </div>
       Created using
       <a href="http://www.sphinx-doc.org/">

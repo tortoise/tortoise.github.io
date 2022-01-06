@@ -1443,6 +1443,8 @@
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BulkCreateQuery"</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Bulk insert operation:</span>
@@ -1464,11 +1466,15 @@
 <span class="sd">                User(name="...", email="...")</span>
 <span class="sd">            ])</span>
 
+<span class="sd">        :param on_conflict: On conflict index name</span>
+<span class="sd">        :param update_fields: Update fields when conflicts</span>
 <span class="sd">        :param ignore_conflicts: Ignore conflicts when inserting</span>
 <span class="sd">        :param objects: List of objects to bulk create</span>
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
 <span class="sd">        """</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span>
+            <span class="n">objects</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">,</span> <span class="n">on_conflict</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.first"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.first">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
@@ -1747,7 +1753,7 @@
     <div class="md-footer-meta__inner md-grid">
      <div class="md-footer-copyright">
       <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2021, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
       </div>
       Created using
       <a href="http://www.sphinx-doc.org/">

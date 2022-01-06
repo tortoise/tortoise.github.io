@@ -982,22 +982,37 @@
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"BulkCreateQuery"</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        This method inserts the provided list of objects into the database in an efficient manner</span>
 <span class="sd">        (generally only 1 query, no matter how many objects there are),</span>
 <span class="sd">        and returns created objects as a list, in the same order as provided</span>
 
+<span class="sd">        :param on_conflict: On conflict index name</span>
+<span class="sd">        :param update_fields: Update fields when conflicts</span>
 <span class="sd">        :param ignore_conflicts: Ignore conflicts when inserting</span>
 <span class="sd">        :param objects: List of objects to bulk create</span>
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
+
+<span class="sd">        :raises ValueError: If params do not meet specifications</span>
 <span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">ignore_conflicts</span> <span class="ow">and</span> <span class="n">update_fields</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">"ignore_conflicts and update_fields are mutually exclusive."</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_conflicts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">update_fields</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">on_conflict</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">on_conflict</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">update_fields</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"update_fields and on_conflict need set in same time."</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">BulkCreateQuery</span><span class="p">(</span>  <span class="c1"># type:ignore</span>
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">objects</span><span class="o">=</span><span class="n">objects</span><span class="p">,</span>
             <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
             <span class="n">ignore_conflicts</span><span class="o">=</span><span class="n">ignore_conflicts</span><span class="p">,</span>
+            <span class="n">update_fields</span><span class="o">=</span><span class="n">update_fields</span><span class="p">,</span>
+            <span class="n">on_conflict</span><span class="o">=</span><span class="n">on_conflict</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.bulk_update"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.bulk_update">[docs]</a>    <span class="k">def</span> <span class="nf">bulk_update</span><span class="p">(</span>
@@ -1962,7 +1977,7 @@
                 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects_item</span><span class="p">:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">pk_attr</span><span class="p">](</span><span class="n">obj</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                     <span class="n">field_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
-                    <span class="n">case</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pk</span> <span class="o">==</span> <span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_wrapper_cls</span><span class="p">(</span><span class="n">field_value</span><span class="p">))</span>
+                    <span class="k">case</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">pk</span> <span class="o">==</span> <span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_wrapper_cls</span><span class="p">(</span><span class="n">field_value</span><span class="p">))</span>
                     <span class="n">pk_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">case</span><span class="p">)</span>
                 <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pk</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">pk_list</span><span class="p">))</span>
@@ -1988,6 +2003,8 @@
         <span class="s2">"executor"</span><span class="p">,</span>
         <span class="s2">"insert_query"</span><span class="p">,</span>
         <span class="s2">"insert_query_all"</span><span class="p">,</span>
+        <span class="s2">"update_fields"</span><span class="p">,</span>
+        <span class="s2">"on_conflict"</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1997,22 +2014,26 @@
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span> <span class="o">=</span> <span class="n">ignore_conflicts</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_fields</span> <span class="o">=</span> <span class="n">update_fields</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_conflict</span> <span class="o">=</span> <span class="n">on_conflict</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_fields</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query_all</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">insert_query</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">regular_columns</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
-                <span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="kc">True</span>
+                <span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">generated_db_fields</span><span class="p">:</span>
@@ -2020,7 +2041,19 @@
                     <span class="n">include_generated</span><span class="o">=</span><span class="kc">True</span>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
-                    <span class="n">columns_all</span><span class="p">,</span> <span class="n">has_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="n">columns_all</span><span class="p">,</span> <span class="n">has_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ignore_conflicts</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_fields</span><span class="p">:</span>
+                <span class="n">alias</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"new_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>  <span class="c1"># type:ignore</span>
+                    <span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">update_fields</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>  <span class="c1"># type:ignore</span>
+                    <span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">update_fields</span><span class="p">)</span>
                 <span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
@@ -2047,9 +2080,9 @@
                         <span class="p">]</span>
                     <span class="p">)</span>
             <span class="k">if</span> <span class="n">values_lists_all</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">,</span> <span class="n">values_lists_all</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query_all</span><span class="p">),</span> <span class="n">values_lists_all</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">values_lists</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span><span class="p">,</span> <span class="n">values_lists</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">insert_query</span><span class="p">),</span> <span class="n">values_lists</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">objects</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
@@ -2079,7 +2112,7 @@
     <div class="md-footer-meta__inner md-grid">
      <div class="md-footer-copyright">
       <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2021, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
       </div>
       Created using
       <a href="http://www.sphinx-doc.org/">

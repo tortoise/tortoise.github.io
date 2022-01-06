@@ -2130,6 +2130,42 @@ all models including fields for the relations between models.
                </span>
               </span>
              </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                update_fields
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                on_conflict
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
              <span class="sig-paren">
               )
              </span>
@@ -2186,6 +2222,58 @@ insert performance.
               </dt>
               <dd class="field-odd">
                <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   on_conflict
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ]]) – On conflict index name
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   update_fields
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Iterable
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ]]) – Update fields when conflicts
+                 </p>
+                </li>
                 <li>
                  <p>
                   <strong>
@@ -5342,7 +5430,7 @@ but will raise errors on bad types or updating Many-instance relations.
     <div class="md-footer-meta__inner md-grid">
      <div class="md-footer-copyright">
       <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2021, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
       </div>
       Created using
       <a href="http://www.sphinx-doc.org/">
