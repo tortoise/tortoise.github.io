@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.contrib.test — Tortoise ORM v0.18.1 Documentation
+   tortoise.contrib.test — Tortoise ORM v0.18.2 Documentation
   </title>
   <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
-       <img alt="Tortoise ORM 0.18.1 Documentation logo" height="26" src="../../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.18.2 Documentation">
+       <img alt="Tortoise ORM 0.18.2 Documentation logo" height="26" src="../../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
+          <a class="md-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.18.2 Documentation">
            <img alt=" logo" height="48" src="../../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../../toc.html" title="Tortoise ORM v0.18.1 Documentation">
+          <a href="../../../toc.html" title="Tortoise ORM v0.18.2 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -474,13 +474,21 @@
         <span class="n">Tortoise</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">Tortoise</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="SimpleTestCase.assertListSortEqual"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">[docs]</a>    <span class="k">def</span> <span class="nf">assertListSortEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">list2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="SimpleTestCase.assertListSortEqual"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">[docs]</a>    <span class="k">def</span> <span class="nf">assertListSortEqual</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">list1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">list2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">sorted_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Model</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span>
-                <span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pk</span><span class="p">),</span> <span class="n">msg</span><span class="o">=</span><span class="n">msg</span>
             <span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">))</span></div></div>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sorted_key</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">sorted_key</span><span class="p">]),</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">sorted_key</span><span class="p">]),</span>
+                <span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">list1</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">list2</span><span class="p">),</span> <span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="IsolatedTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase">[docs]</a><span class="k">class</span> <span class="nc">IsolatedTestCase</span><span class="p">(</span><span class="n">SimpleTestCase</span><span class="p">):</span>
