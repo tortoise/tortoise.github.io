@@ -662,6 +662,12 @@
              asyncpg
             </span>
            </code>
+           or
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             psycopg
+            </span>
+           </code>
            )
           </p>
          </li>
@@ -682,6 +688,12 @@
          <code class="docutils literal notranslate">
           <span class="pre">
            asyncpg
+          </span>
+         </code>
+         ,
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           psycopg
           </span>
          </code>
          and/or
@@ -795,7 +807,7 @@
           </code>
           :
          </p>
-         <dl class="simple">
+         <dl>
           <dt>
            <code class="docutils literal notranslate">
             <span class="pre">
@@ -838,17 +850,70 @@
              postgres
             </span>
            </code>
-           :
           </dt>
           <dd>
            <p>
-            Typically in the form of
+            Using
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              asyncpg
+             </span>
+            </code>
+            :
+Typically in the form of
             <code class="samp docutils literal notranslate">
              <span class="pre">
               postgres://postgres:pass@db.host:5432/somedb
              </span>
             </code>
            </p>
+           <p>
+            Or specifically
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              asyncpg
+             </span>
+            </code>
+            /
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              psycopg
+             </span>
+            </code>
+            using:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                psycopg
+               </span>
+              </code>
+              :
+              <code class="samp docutils literal notranslate">
+               <span class="pre">
+                psycopg://postgres:pass@db.host:5432/somedb
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                asyncpg
+               </span>
+              </code>
+              :
+              <code class="samp docutils literal notranslate">
+               <span class="pre">
+                asyncpg://postgres:pass@db.host:5432/somedb
+               </span>
+              </code>
+             </p>
+            </li>
+           </ul>
           </dd>
           <dt>
            <code class="docutils literal notranslate">
@@ -1655,6 +1720,12 @@ DDL statement, and not as a separate statement.
            <code class="docutils literal notranslate">
             <span class="pre">
              asyncpg
+            </span>
+           </code>
+           /
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             psycopg
             </span>
            </code>
            retrieve it from default sources (standard PostgreSQL environment variables or default values).

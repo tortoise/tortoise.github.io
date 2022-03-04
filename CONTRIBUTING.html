@@ -649,6 +649,12 @@ If not you are welcome to open one.
               asyncpg
              </span>
             </code>
+            ,
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              psycopg
+             </span>
+            </code>
             &amp;
             <code class="docutils literal notranslate">
              <span class="pre">
@@ -927,10 +933,23 @@ Postgres uses the default
                make
               </span>
               <span class="pre">
-               test_postgres
+               test_postgres_asyncpg
               </span>
              </code>
-             : Runs the tests on the postgres database
+             : Runs the asyncpg tests on the postgres database
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_postgres_psycopg
+              </span>
+             </code>
+             : Runs the psycopg tests on the postgres database
             </p>
            </li>
            <li>
