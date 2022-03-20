@@ -570,6 +570,35 @@
             TIMESTAMP
            </cite>
            when generate schema.
+For
+           <cite>
+            TimeField
+           </cite>
+           ,
+           <cite>
+            MySQL
+           </cite>
+           use
+           <cite>
+            TIME(6)
+           </cite>
+           ,
+           <cite>
+            PostgreSQL
+           </cite>
+           use
+           <cite>
+            TIMETZ
+           </cite>
+           and
+           <cite>
+            SQLite
+           </cite>
+           use
+           <cite>
+            TIME
+           </cite>
+           .
           </p>
          </section>
          <section id="id2">
@@ -588,7 +617,15 @@
            <cite>
             timezone
            </cite>
-           is when select datetime field from database, no matter what
+           is when select
+           <cite>
+            DateTimeField
+           </cite>
+           and
+           <cite>
+            TimeField
+           </cite>
+           from database, no matter what
            <cite>
             timezone
            </cite>
@@ -801,7 +838,7 @@
           </dt>
           <dd>
            <p>
-            Determine if a given datetime.datetime is aware.
+            Determine if a given datetime.datetime or datetime.time is aware.
            </p>
            <p>
             The concept is defined in Python’s docs:
@@ -867,7 +904,7 @@ value.utcoffset() implements the appropriate logic.
           </dt>
           <dd>
            <p>
-            Determine if a given datetime.datetime is naive.
+            Determine if a given datetime.datetime or datetime.time is naive.
            </p>
            <p>
             The concept is defined in Python’s docs:
