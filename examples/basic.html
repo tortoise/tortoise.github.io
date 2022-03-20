@@ -1087,7 +1087,7 @@
            <pre><span></span><span class="sd">"""</span>
 <span class="sd">This example demonstrates SQL Schema generation for each DB type supported.</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">connections</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">tortoise.utils</span> <span class="kn">import</span> <span class="n">get_schema_sql</span>
 
@@ -1135,19 +1135,19 @@
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"SQLite:</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
-    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">MySQL:</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"mysql://root:@127.0.0.1:3306/"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
-    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">PostgreSQL:</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
         <span class="n">db_url</span><span class="o">=</span><span class="s2">"postgres://postgres:@127.0.0.1:5432/"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]}</span>
     <span class="p">)</span>
-    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="n">get_schema_sql</span><span class="p">(</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">),</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 
 
@@ -1178,7 +1178,7 @@
 <span class="sd">Key notes of this example is using db_route for Tortoise init</span>
 <span class="sd">and explicitly declaring model apps in class Meta</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">connections</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">OperationalError</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
@@ -1243,8 +1243,8 @@
         <span class="p">}</span>
     <span class="p">)</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"first"</span><span class="p">)</span>
-    <span class="n">second_client</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"second"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"first"</span><span class="p">)</span>
+    <span class="n">second_client</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"second"</span><span class="p">)</span>
 
     <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Tournament"</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">Event</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Event"</span><span class="p">,</span> <span class="n">tournament_id</span><span class="o">=</span><span class="n">tournament</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -1872,7 +1872,7 @@
            <pre><span></span><span class="sd">"""</span>
 <span class="sd">This example demonstrates executing manual SQL queries</span>
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">connections</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">tortoise.transactions</span> <span class="kn">import</span> <span class="n">in_transaction</span>
 
@@ -1888,7 +1888,7 @@
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="c1"># Need to get a connection. Unless explicitly specified, the name should be 'default'</span>
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>
 
     <span class="c1"># Now we can execute queries in the normal autocommit mode</span>
     <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="s2">"INSERT INTO event (name) VALUES ('Foo')"</span><span class="p">)</span>

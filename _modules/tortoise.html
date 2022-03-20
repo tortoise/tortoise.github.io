@@ -277,7 +277,6 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">contextvars</span> <span class="kn">import</span> <span class="n">ContextVar</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">isclass</span>
 <span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
@@ -287,6 +286,7 @@
 
 <span class="kn">from</span> <span class="nn">tortoise.backends.base.client</span> <span class="kn">import</span> <span class="n">BaseDBAsyncClient</span>
 <span class="kn">from</span> <span class="nn">tortoise.backends.base.config_generator</span> <span class="kn">import</span> <span class="n">expand_db_url</span><span class="p">,</span> <span class="n">generate_config</span>
+<span class="kn">from</span> <span class="nn">tortoise.connection</span> <span class="kn">import</span> <span class="n">connections</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BackwardFKRelation</span><span class="p">,</span>
@@ -298,13 +298,11 @@
 <span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">get_m2m_filters</span>
 <span class="kn">from</span> <span class="nn">tortoise.log</span> <span class="kn">import</span> <span class="n">logger</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModelMeta</span>
-<span class="kn">from</span> <span class="nn">tortoise.transactions</span> <span class="kn">import</span> <span class="n">current_transaction_map</span>
 <span class="kn">from</span> <span class="nn">tortoise.utils</span> <span class="kn">import</span> <span class="n">generate_schema_for_client</span>
 
 
 <div class="viewcode-block" id="Tortoise"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise">[docs]</a><span class="k">class</span> <span class="nc">Tortoise</span><span class="p">:</span>
     <span class="n">apps</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="s2">"Model"</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">_connections</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">_inited</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="Tortoise.get_connection"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.get_connection">[docs]</a>    <span class="nd">@classmethod</span>
@@ -312,9 +310,13 @@
         <span class="sd">"""</span>
 <span class="sd">        Returns the connection by name.</span>
 
-<span class="sd">        :raises KeyError: If connection name does not exist.</span>
+<span class="sd">        :raises ConfigurationError: If connection name does not exist.</span>
+
+<span class="sd">        .. warning::</span>
+<span class="sd">           This is deprecated and will be removed in a future release. Please use</span>
+<span class="sd">           :meth:`connections.get&lt;tortoise.connection.ConnectionHandler.get&gt;` instead.</span>
 <span class="sd">        """</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span><span class="p">[</span><span class="n">connection_name</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">connection_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Tortoise.describe_model"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.describe_model">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">describe_model</span><span class="p">(</span>
@@ -611,17 +613,6 @@
                     <span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">backward_relation_name</span><span class="p">,</span> <span class="n">m2m_relation</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_discover_client_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]:</span>
-        <span class="c1"># Let exception bubble up for transparency</span>
-        <span class="n">engine_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">client_class</span> <span class="o">=</span> <span class="n">engine_module</span><span class="o">.</span><span class="n">client_class</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Backend for engine "</span><span class="si">{</span><span class="n">engine</span><span class="si">}</span><span class="s1">" does not implement db client'</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">client_class</span>
-
-    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_discover_models</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">models_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="s2">"Model"</span><span class="p">]]:</span>
@@ -649,21 +640,6 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">discovered_models</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Module "</span><span class="si">{</span><span class="n">models_path</span><span class="si">}</span><span class="s1">" has no models'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">discovered_models</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_init_connections</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">connections_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">create_db</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">connections_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                <span class="n">info</span> <span class="o">=</span> <span class="n">expand_db_url</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-            <span class="n">client_class</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_discover_client_class</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"engine"</span><span class="p">))</span>
-            <span class="n">db_params</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s2">"credentials"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">db_params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"connection_name"</span><span class="p">:</span> <span class="n">name</span><span class="p">})</span>
-            <span class="n">connection</span> <span class="o">=</span> <span class="n">client_class</span><span class="p">(</span><span class="o">**</span><span class="n">db_params</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">create_db</span><span class="p">:</span>
-                <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">db_create</span><span class="p">()</span>
-            <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">with_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span>
-            <span class="n">current_transaction_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ContextVar</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">connection</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Tortoise.init_models"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.init_models">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">init_models</span><span class="p">(</span>
@@ -697,7 +673,7 @@
     <span class="k">def</span> <span class="nf">_init_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">apps_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">apps_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="bp">cls</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_connection"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">))</span>
+                <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"default_connection"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">))</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
                     <span class="s1">'Unknown connection "</span><span class="si">{}</span><span class="s1">" for app "</span><span class="si">{}</span><span class="s1">"'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -816,7 +792,7 @@
 <span class="sd">        :raises ConfigurationError: For any configuration error</span>
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_inited</span><span class="p">:</span>
-            <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+            <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">(</span><span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_reset_apps</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bool</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bool</span><span class="p">(</span><span class="n">db_url</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
@@ -869,7 +845,7 @@
         <span class="p">)</span>
 
         <span class="bp">cls</span><span class="o">.</span><span class="n">_init_timezone</span><span class="p">(</span><span class="n">use_tz</span><span class="p">,</span> <span class="n">timezone</span><span class="p">)</span>
-        <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_init_connections</span><span class="p">(</span><span class="n">connections_config</span><span class="p">,</span> <span class="n">_create_db</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="n">connections_config</span><span class="p">,</span> <span class="n">_create_db</span><span class="p">)</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">_init_apps</span><span class="p">(</span><span class="n">apps_config</span><span class="p">)</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">_init_routers</span><span class="p">(</span><span class="n">routers</span><span class="p">)</span>
 
@@ -902,12 +878,12 @@
 <span class="sd">        It is required for this to be called on exit,</span>
 <span class="sd">        else your event loop may never complete</span>
 <span class="sd">        as it is waiting for the connections to die.</span>
+
+<span class="sd">        .. warning::</span>
+<span class="sd">           This is deprecated and will be removed in a future release. Please use</span>
+<span class="sd">           :meth:`connections.close_all&lt;tortoise.connection.ConnectionHandler.close_all&gt;` instead.</span>
 <span class="sd">        """</span>
-        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
-        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Tortoise-ORM shutdown"</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>
@@ -917,7 +893,6 @@
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ModelMeta</span><span class="p">):</span>
                     <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">default_connection</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="n">current_transaction_map</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Tortoise.generate_schemas"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.generate_schemas">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">generate_schemas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">safe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -932,7 +907,7 @@
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_inited</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">"You have to call .init() first before generating schemas"</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="n">connections</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="k">await</span> <span class="n">generate_schema_for_client</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">safe</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>
@@ -945,10 +920,13 @@
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_inited</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">"You have to call .init() first before deleting schemas"</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">db_delete</span><span class="p">()</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_connections</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># this closes any existing connections/pool if any and clears</span>
+        <span class="c1"># the storage</span>
+        <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">(</span><span class="n">discard</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">conn</span> <span class="ow">in</span> <span class="n">connections</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">db_delete</span><span class="p">()</span>
+            <span class="n">connections</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span>
+
         <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_reset_apps</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
@@ -980,7 +958,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">coro</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">())</span></div>
+        <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">(</span><span class="n">discard</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span></div>
 
 
 <span class="n">__version__</span> <span class="o">=</span> <span class="s2">"0.18.2"</span>
