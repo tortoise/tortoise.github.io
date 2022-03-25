@@ -1308,6 +1308,7 @@
         <span class="s2">"custom_filters"</span><span class="p">,</span>
         <span class="s2">"orderings"</span><span class="p">,</span>
         <span class="s2">"limit"</span><span class="p">,</span>
+        <span class="s2">"values"</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1329,6 +1330,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">orderings</span> <span class="o">=</span> <span class="n">orderings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span>
@@ -1345,7 +1347,7 @@
         <span class="p">)</span>
         <span class="c1"># Need to get executor to get correct column_map</span>
         <span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
-
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">field_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">field_object</span><span class="p">:</span>
@@ -1369,8 +1371,12 @@
                     <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">table</span><span class="p">)[</span><span class="s2">"field"</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">db_field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Term</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">db_field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">db_field</span><span class="p">,</span> <span class="n">executor</span><span class="o">.</span><span class="n">parameter</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1379,7 +1385,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="DeleteQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.DeleteQuery">[docs]</a><span class="k">class</span> <span class="nc">DeleteQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
