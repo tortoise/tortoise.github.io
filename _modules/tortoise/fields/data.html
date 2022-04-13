@@ -49,7 +49,7 @@
     gtag('config', 'G-MJ7RHW2FRB');
   </script>
   <title>
-   tortoise.fields.data — Tortoise ORM v0.19.0 Documentation
+   tortoise.fields.data — Tortoise ORM v0.19.1 Documentation
   </title>
   <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -90,8 +90,8 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.19.0 Documentation">
-       <img alt="Tortoise ORM 0.19.0 Documentation logo" height="26" src="../../../_static/tortoise.png"/>
+      <a class="md-header-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.19.1 Documentation">
+       <img alt="Tortoise ORM 0.19.1 Documentation logo" height="26" src="../../../_static/tortoise.png"/>
       </a>
      </div>
      <div class="md-flex__cell md-flex__cell--shrink">
@@ -187,10 +187,10 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.19.0 Documentation">
+          <a class="md-nav__button md-logo" href="../../../toc.html" title="Tortoise ORM v0.19.1 Documentation">
            <img alt=" logo" height="48" src="../../../_static/tortoise.png" width="48"/>
           </a>
-          <a href="../../../toc.html" title="Tortoise ORM v0.19.0 Documentation">
+          <a href="../../../toc.html" title="Tortoise ORM v0.19.1 Documentation">
            Tortoise ORM
           </a>
          </label>
@@ -371,7 +371,10 @@
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"</span>
 
     <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
-        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span></div>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INT IDENTITY(1,1) NOT NULL PRIMARY KEY"</span></div>
 
 
 <div class="viewcode-block" id="BigIntField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BigIntField">[docs]</a><span class="k">class</span> <span class="nc">BigIntField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -404,7 +407,10 @@
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"</span>
 
     <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
-        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span></div>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY"</span></div>
 
 
 <div class="viewcode-block" id="SmallIntField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.SmallIntField">[docs]</a><span class="k">class</span> <span class="nc">SmallIntField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -437,7 +443,10 @@
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"</span>
 
     <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
-        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span></div>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">"SMALLINT IDENTITY(1,1) NOT NULL PRIMARY KEY"</span></div>
 
 
 <div class="viewcode-block" id="CharField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.CharField">[docs]</a><span class="k">class</span> <span class="nc">CharField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
@@ -495,7 +504,10 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
-        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"LONGTEXT"</span></div>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"LONGTEXT"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"NVARCHAR(MAX)"</span></div>
 
 
 <div class="viewcode-block" id="BooleanField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BooleanField">[docs]</a><span class="k">class</span> <span class="nc">BooleanField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
@@ -508,7 +520,10 @@
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"BOOL"</span>
 
     <span class="k">class</span> <span class="nc">_db_sqlite</span><span class="p">:</span>
-        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"INT"</span></div>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"INT"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"BIT"</span></div>
 
 
 <div class="viewcode-block" id="DecimalField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DecimalField">[docs]</a><span class="k">class</span> <span class="nc">DecimalField</span><span class="p">(</span><span class="n">Field</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">):</span>
@@ -575,6 +590,9 @@
 
     <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"TIMESTAMPTZ"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"DATETIME"</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auto_now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">auto_now_add</span> <span class="ow">and</span> <span class="n">auto_now</span><span class="p">:</span>
@@ -784,6 +802,9 @@
     <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"JSONB"</span>
 
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"NVARCHAR(MAX)"</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">encoder</span><span class="p">:</span> <span class="n">JsonDumpsFunc</span> <span class="o">=</span> <span class="n">JSON_DUMPS</span><span class="p">,</span>
@@ -865,7 +886,10 @@
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"BYTEA"</span>
 
     <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
-        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"LONGBLOB"</span></div>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"LONGBLOB"</span>
+
+    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+        <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">"BINARY"</span></div>
 
 
 <span class="k">class</span> <span class="nc">IntEnumFieldInstance</span><span class="p">(</span><span class="n">SmallIntField</span><span class="p">):</span>
