@@ -313,8 +313,8 @@
                    </nav>
                   </li>
                   <li class="md-nav__item">
-                   <a class="md-nav__link" href="#mssql">
-                    MSSQL
+                   <a class="md-nav__link" href="#mssql-oracle">
+                    MSSQL/Oracle
                    </a>
                    <nav class="md-nav">
                     <ul class="md-nav__list">
@@ -414,8 +414,8 @@
                </ul>
               </li>
               <li class="md-nav__item">
-               <a class="md-nav__link" href="#mssql">
-                MSSQL
+               <a class="md-nav__link" href="#mssql-oracle">
+                MSSQL/Oracle
                </a>
                <ul class="md-nav__list">
                 <li class="md-nav__item">
@@ -651,8 +651,8 @@
               </nav>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#mssql">
-               MSSQL
+              <a class="md-nav__link" href="#mssql-oracle">
+               MSSQL/Oracle
               </a>
               <nav class="md-nav">
                <ul class="md-nav__list">
@@ -1767,7 +1767,7 @@ DDL statement, and not as a separate statement.
              or a custom SSL context for self-signed certificates. See
              <a class="reference internal" href="#db-ssl">
               <span class="std std-ref">
-               MSSQL
+               MSSQL/Oracle
               </span>
              </a>
              for more info.
@@ -2075,7 +2075,7 @@ DDL statement, and not as a separate statement.
              or a custom SSL context for self-signed certificates. See
              <a class="reference internal" href="#db-ssl">
               <span class="std std-ref">
-               MSSQL
+               MSSQL/Oracle
               </span>
              </a>
              for more info.
@@ -2084,12 +2084,12 @@ DDL statement, and not as a separate statement.
           </dl>
          </section>
         </section>
-        <section id="mssql">
+        <section id="mssql-oracle">
          <span id="db-ssl">
          </span>
-         <h2 id="mssql">
-          MSSQL
-          <a class="headerlink" href="#mssql" title="Permalink to this headline">
+         <h2 id="mssql-oracle">
+          MSSQL/Oracle
+          <a class="headerlink" href="#mssql-oracle" title="Permalink to this headline">
            ¶
           </a>
          </h2>
@@ -2097,7 +2097,13 @@ DDL statement, and not as a separate statement.
           DB URL is typically in the form of
           <code class="samp docutils literal notranslate">
            <span class="pre">
-            mssql://myuser:mypass@db.host:1433/somedb?driver=the
+            mssql
+           </span>
+           <span class="pre">
+            or
+           </span>
+           <span class="pre">
+            oracle://myuser:mypass@db.host:1433/somedb?driver=the
            </span>
            <span class="pre">
             odbc
@@ -2209,7 +2215,7 @@ DDL statement, and not as a separate statement.
            </a>
           </h3>
           <p>
-           MSSQL optional parameters are pass-though parameters to the driver, see
+           MSSQL/Oracle optional parameters are pass-though parameters to the driver, see
            <a class="reference external" href="https://github.com/tortoise/asyncodbc">
             here
            </a>
