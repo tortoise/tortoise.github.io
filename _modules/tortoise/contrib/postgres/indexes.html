@@ -281,10 +281,10 @@
 
 <span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">Index</span>
+<span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">PartialIndex</span>
 
 
-<span class="k">class</span> <span class="nc">PostgreSQLIndex</span><span class="p">(</span><span class="n">Index</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">PostgreSQLIndex</span><span class="p">(</span><span class="n">PartialIndex</span><span class="p">):</span>
     <span class="n">INDEX_CREATE_TEMPLATE</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">"CREATE INDEX </span><span class="si">{exists}{index_name}</span><span class="s2"> ON </span><span class="si">{table_name}</span><span class="s2"> USING</span><span class="si">{index_type}</span><span class="s2">(</span><span class="si">{fields}</span><span class="s2">)</span><span class="si">{extra}</span><span class="s2">;"</span>
     <span class="p">)</span>
