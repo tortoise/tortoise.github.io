@@ -625,7 +625,7 @@
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">datetime</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
@@ -636,11 +636,8 @@
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-        <span class="n">db_url</span><span class="o">=</span><span class="s2">"oracle://test:123456@127.0.0.1:1521/test?driver=Oracle"</span><span class="p">,</span>
-        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]},</span>
-    <span class="p">)</span>
-    <span class="c1"># await Tortoise.generate_schemas()</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Updated name"</span><span class="p">)</span>

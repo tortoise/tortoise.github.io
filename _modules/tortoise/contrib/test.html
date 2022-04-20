@@ -604,9 +604,6 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="fm">__aexit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">await</span> <span class="nb">super</span><span class="p">(</span><span class="n">TestCase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">asyncTearDown</span><span class="p">()</span></div>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_setUpDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">await</span> <span class="nb">super</span><span class="p">(</span><span class="n">TestCase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_setUpDB</span><span class="p">()</span>
-
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">supports_transactions</span><span class="p">:</span>
             <span class="n">_restore_default</span><span class="p">()</span>
