@@ -576,16 +576,16 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
 </code></pre></div>
 </div>
-<p>Or MySQL:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>aiomysql<span class="o">]</span>
-</code></pre></div>
-</div>
-<p>Or another driver <a class="reference external" href="https://github.com/long2ice/asyncmy">asyncmy</a> for MySQL:</p>
+<p>For MySQL:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
 </code></pre></div>
 </div>
+<p>For Microsoft SQL Server/Oracle:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncodbc<span class="o">]</span>
+</code></pre></div>
+</div>
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> there is also support for <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> through <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> and
-<code class="docutils literal notranslate"><span class="pre">mysql</span></code> through <code class="docutils literal notranslate"><span class="pre">aiomysql</span></code>.
+<code class="docutils literal notranslate"><span class="pre">mysql</span></code> through <code class="docutils literal notranslate"><span class="pre">asyncmy</span></code>.
 You can easily implement more backends if there is appropriate <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> driver for this db.</p>
 <h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Permalink to this headline">¶</a></h3>
 <p>The following libraries can be used as accelerators:</p>
