@@ -1,0 +1,824 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="_static/tortoise.png">
+    
+    
+      
+        <title>Contribution Guide - Tortoise ORM v0.19.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="_static/stylesheets/main.8674dc46.min.css">
+      
+        
+        <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="CODE_OF_CONDUCT.html" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.19.1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contribution Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="getting_started.html" class="md-tabs__link">
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="reference.html" class="md-tabs__link">
+      <span title="reference (document)" class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="examples.html" class="md-tabs__link">
+      <span title="examples (document)" class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="contrib.html" class="md-tabs__link">
+      <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CHANGELOG.html" class="md-tabs__link">
+      <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="roadmap.html" class="md-tabs__link">
+      <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="" class="md-tabs__link md-tabs__link--active">
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTORS.html" class="md-tabs__link">
+      <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.19.1 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference.html" class="md-nav__link">
+        <span title="reference (document)" class="md-ellipsis">Reference</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples.html" class="md-nav__link">
+        <span title="examples (document)" class="md-ellipsis">Examples</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contrib.html" class="md-nav__link">
+        <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG.html" class="md-nav__link">
+        <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap.html" class="md-nav__link">
+        <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="CODE_OF_CONDUCT.html" class="md-nav__link">
+    <span title="CODE_OF_CONDUCT (document)" class="md-ellipsis">Contributor Covenant Code of Conduct</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filing-a-bug-or-requesting-a-feature" class="md-nav__link">
+    <span class="md-ellipsis">Filing a bug or requesting a feature</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#have-a-chat" class="md-nav__link">
+    <span class="md-ellipsis">Have a chat</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">Project structure</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-guideline" class="md-nav__link">
+    <span class="md-ellipsis">Coding Guideline</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Guideline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priorities" class="md-nav__link">
+    <span class="md-ellipsis">Priorities</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style" class="md-nav__link">
+    <span class="md-ellipsis">Style</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">Running tests</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#different-types-of-tests" class="md-nav__link">
+    <span class="md-ellipsis">Different types of tests</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#things-to-be-aware-of-when-running-the-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">Things to be aware of when running the test suite</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTORS.html" class="md-nav__link">
+        <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+
+
+  <h1 id="contribution-guide">Contribution Guide<a class="headerlink" href="#contribution-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>If you want to contribute check out issues, or just straightforwardly create PR.</p>
+<p>Tortoise ORM is a volunteer effort. We encourage you to pitch in and join the team!</p>
+<p>Please have a look at the <a class="reference internal" href="CODE_OF_CONDUCT.html#code-conduct"><span class="std std-ref">Contributor Covenant Code of Conduct</span></a></p>
+<h2 id="filing-a-bug-or-requesting-a-feature">Filing a bug or requesting a feature<a class="headerlink" href="#filing-a-bug-or-requesting-a-feature" title="Permalink to this headline">¶</a></h2>
+<p>Please check if there isn’t an existing issue or pull request open that addresses your issue.
+If not you are welcome to open one.</p>
+<p>If you have an incomplete change, but won’t/can’t continue working on it, please create a PR in any case and mark it as <code class="docutils literal notranslate"><span class="pre">(WIP)</span></code> so we can help each other.</p>
+<h2 id="have-a-chat">Have a chat<a class="headerlink" href="#have-a-chat" title="Permalink to this headline">¶</a></h2>
+<p>We have a chatroom on <a class="reference external" href="https://gitter.im/tortoise/community">Gitter</a></p>
+<h2 id="project-structure">Project structure<a class="headerlink" href="#project-structure" title="Permalink to this headline">¶</a></h2>
+<p>We have a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that has the common operations listed, to get started just type <code class="docutils literal notranslate"><span class="pre">make</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">Tortoise</span> <span class="n">ORM</span> <span class="n">development</span> <span class="n">makefile</span>
+
+<span class="n">usage</span><span class="p">:</span> <span class="n">make</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<span class="n">Targets</span><span class="p">:</span>
+    <span class="n">up</span>          <span class="n">Updates</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span>
+    <span class="n">deps</span>        <span class="n">Ensure</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span> <span class="n">are</span> <span class="n">installed</span>
+    <span class="n">check</span>       <span class="n">Checks</span> <span class="n">that</span> <span class="n">build</span> <span class="ow">is</span> <span class="n">sane</span>
+    <span class="n">lint</span>        <span class="n">Reports</span> <span class="nb">all</span> <span class="n">linter</span> <span class="n">violations</span>
+    <span class="n">test</span>        <span class="n">Runs</span> <span class="nb">all</span> <span class="n">tests</span>
+    <span class="n">docs</span>        <span class="n">Builds</span> <span class="n">the</span> <span class="n">documentation</span>
+    <span class="n">style</span>       <span class="n">Auto</span><span class="o">-</span><span class="n">formats</span> <span class="n">the</span> <span class="n">code</span>
+</code></pre></div>
+</div>
+<p>So to run the tests you just need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>, etc…</p>
+<p>The code is structured in the following directories:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">docs/</span></code>:</dt><dd><p>Documentation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">examples/</span></code>:</dt><dd><p>Example code</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/</span></code>:</dt><dd><p>Base Tortoise ORM</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/fields/</span></code>:</dt><dd><p>The Fields are defined here.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/backends/</span></code>:</dt><dd><p>DB Backends, such as <code class="docutils literal notranslate"><span class="pre">sqlite</span></code>, <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>, <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">mysql</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/backends/base/</span></code>:</dt><dd><p>Common DB Backend code</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/contrib/</span></code>:</dt><dd><p>Anything that helps people use the project, such as Testing framework and linter plugins</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tortoise/tests/</span></code>:</dt><dd><p>The Tortoise test code</p>
+</dd>
+</dl>
+<h2 id="coding-guideline">Coding Guideline<a class="headerlink" href="#coding-guideline" title="Permalink to this headline">¶</a></h2>
+<p>We believe to keep the code simple, so it is easier to test and there is less place for bugs to hide.</p>
+<h3 id="priorities">Priorities<a class="headerlink" href="#priorities" title="Permalink to this headline">¶</a></h3>
+<p>An important part of Tortoise ORM is that we want a simple interface, that only does what is expected.
+As this is a value that is different for different people, we have settled on:</p>
+<ul class="simple">
+<li><p>Model/QuerySet usage should be explicit and concise.</p></li>
+<li><p>Keep it simple, as simple code not only often runs faster, but has less bugs too.</p></li>
+<li><p>Correctness &gt; Ease-Of-Use &gt; Performance &gt; Maintenance</p></li>
+<li><p>Test everything.</p></li>
+<li><p>Only do performance/memory optimisation when you have a repeatable benchmark to measure with.</p></li>
+</ul>
+<h3 id="style">Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h3>
+<p>We try and automate as much as we can, so a simple <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">check</span></code> will do automated style checking and linting, but these don’t pick up on the non-obvious style preferences.</p>
+<p>Tortoise ORM follows a the following agreed upon style:</p>
+<ul class="simple">
+<li><p>Keep to PEP8 where you can</p></li>
+<li><p>Max line-length is changed to 100</p></li>
+<li><dl class="simple">
+<dt>Always try to separate out terms clearly rather than concatenate words directly:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">some_purpose</span></code> instead of <code class="docutils literal notranslate"><span class="pre">somepurpose</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SomePurpose</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Somepurpose</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Keep in mind the targeted Python versions of <code class="docutils literal notranslate"><span class="pre">&gt;=3.7</span></code>:</dt><dd><ul>
+<li><p>Do use f-strings</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Please try and provide type annotations where you can, it will improve auto-completion in editors, and better static analysis.</p></li>
+</ul>
+<h2 id="running-tests">Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
+<p>Running tests natively on windows isn’t supported (yet). Best way to run them atm is by using WSL.
+Postgres uses the default <code class="docutils literal notranslate"><span class="pre">postgres</span></code> user, mysql uses <code class="docutils literal notranslate"><span class="pre">root</span></code>. If either of them has a password you can set it with the <code class="docutils literal notranslate"><span class="pre">TORTOISE_POSTGRES_PASS</span></code> and <code class="docutils literal notranslate"><span class="pre">TORTOISE_MYSQL_PASS</span></code> env variables respectively.</p>
+<h3 id="different-types-of-tests">Different types of tests<a class="headerlink" href="#different-types-of-tests" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>: most basic quick test. only runs the tests on in an memory sqlite database without generating a coverage report.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_sqlite</span></code>: Runs the tests on a sqlite in memory database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_postgres_asyncpg</span></code>: Runs the asyncpg tests on the postgres database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_postgres_psycopg</span></code>: Runs the psycopg tests on the postgres database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_mysql_myisam</span></code>: Runs the tests on the mysql database using the <code class="docutils literal notranslate"><span class="pre">MYISAM</span></code> storage engine (no transactions)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_mysql</span></code>: Runs the tests on the mysql database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">testall</span></code>: runs the tests on all 4 database types: sqlite (in memory), postgress, MySQL-MyISAM and MySQL-InnoDB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">green</span></code>: runs the same tests as <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>, ensures the green plugin works</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nose2</span> <span class="pre">--plugin</span> <span class="pre">tortoise.contrib.test.nose2</span> <span class="pre">--db-module</span> <span class="pre">tests.testmodels</span> <span class="pre">--db-url</span> <span class="pre">sqlite://:memory:</span> <span class="pre">``:</span> <span class="pre">same</span> <span class="pre">test</span> <span class="pre">as</span> <span class="pre">``make</span> <span class="pre">test</span></code> , ensures the nose2 plugin works</p></li>
+</ul>
+<h3 id="things-to-be-aware-of-when-running-the-test-suite">Things to be aware of when running the test suite<a class="headerlink" href="#things-to-be-aware-of-when-running-the-test-suite" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Some tests always run regardless of what test suite you are running (the connection tests for mysql and postgres for example, you don’t need a database running as it doesn’t actually connect though)</p></li>
+<li><p>Some tests use hardcoded databases (usually sqlite) for testing, regardless of what DB url you specified.</p></li>
+<li><p>The postgres driver does not work under Pypy so those tests will be skipped if you are running under pypy</p></li>
+<li><p>You can run only specific tests by running `` py.test &lt;testfiles&gt;`` or <code class="docutils literal notranslate"><span class="pre">green</span> <span class="pre">-s</span> <span class="pre">1</span> <span class="pre">&lt;testfile&gt;</span></code></p></li>
+<li><dl class="simple">
+<dt>If you want a peek under the hood of test that hang to debug try running them with <code class="docutils literal notranslate"><span class="pre">green</span> <span class="pre">-s</span> <span class="pre">1</span> <span class="pre">-vv</span> <span class="pre">-d</span> <span class="pre">-a</span> <span class="pre">&lt;test&gt;</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">1</span></code> means it only runs one test at a time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-vv</span></code> very verbose output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code> log debug output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> don’t capture stdout but just let it output</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Mysql tends to be relatively slow but there are some settings you can tweak to make it faster, however this also means less redundant. Use at own risk: <a class="reference external" href="http://www.tocker.ca/2013/11/04/reducing-mysql-durability-for-testing.html">http://www.tocker.ca/2013/11/04/reducing-mysql-durability-for-testing.html</a></p></li>
+</ul>
+
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="roadmap.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Roadmap" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Roadmap
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="CODE_OF_CONDUCT.html" class="md-footer__link md-footer__link--next" aria-label="Next: Contributor Covenant Code of Conduct" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributor Covenant Code of Conduct
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.3.2.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+    
+      <script src="_static/javascripts/bundle.37d1338f.min.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+  </body>
+</html>
