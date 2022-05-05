@@ -1,522 +1,745 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
-  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
-  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
-  <meta content="en" name="lang:search.language"/>
-  <meta content="True" name="lang:search.pipeline.stopwords"/>
-  <meta content="True" name="lang:search.pipeline.trimmer"/>
-  <meta content="No matching documents" name="lang:search.result.none"/>
-  <meta content="1 matching document" name="lang:search.result.one"/>
-  <meta content="# matching documents" name="lang:search.result.other"/>
-  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
-  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   body,
-      input {
-        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
-      }
 
-      code,
-      kbd,
-      pre {
-        font-family: "Roboto Mono", "Courier New", Courier, monospace
-      }
-  </style>
-  <link href="../_static/stylesheets/application.css" rel="stylesheet"/>
-  <link href="../_static/stylesheets/application-palette.css" rel="stylesheet"/>
-  <link href="../_static/stylesheets/application-fixes.css" rel="stylesheet"/>
-  <link href="../_static/fonts/material-icons.css" rel="stylesheet"/>
-  <meta content="#3f51b5" name="theme-color"/>
-  <script src="../_static/javascripts/modernizr.js">
-  </script>
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
-  </script>
-  <script>
-   window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../_static/tortoise.png">
+    
+    
+      
+        <title>Pydantic Examples - Tortoise ORM v0.19.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../_static/stylesheets/main.8674dc46.min.css">
+      
+        
+        <link rel="stylesheet" href="../_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
 
-    gtag('js', new Date());
 
-    gtag('config', 'G-MJ7RHW2FRB');
-  </script>
-  <title>
-   Pydantic Examples — Tortoise ORM v0.19.1 Documentation
-  </title>
-  <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-  <link href="../_static/material.css" rel="stylesheet" type="text/css"/>
-  <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js">
-  </script>
-  <script src="../_static/jquery.js">
-  </script>
-  <script src="../_static/underscore.js">
-  </script>
-  <script src="../_static/doctools.js">
-  </script>
-  <script src="../_static/clipboard.min.js">
-  </script>
-  <script src="../_static/copybutton.js">
-  </script>
-  <link href="../_static/tortoise.png" rel="shortcut icon"/>
-  <link href="../genindex.html" rel="index" title="Index"/>
-  <link href="../search.html" rel="search" title="Search"/>
-  <link href="fastapi.html" rel="next" title="FastAPI Examples"/>
-  <link href="basic.html" rel="prev" title="Simple Examples"/>
- </head>
- <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
-  <svg class="md-svg">
-   <defs data-children-count="0">
-    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
-     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
-     </path>
-    </svg>
-   </defs>
-  </svg>
-  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" data-md-component="overlay" for="__drawer">
-  </label>
-  <a class="md-skip" href="#examples/pydantic" tabindex="1">
-   Skip to content
-  </a>
-  <header class="md-header" data-md-component="header">
-   <nav class="md-header-nav md-grid">
-    <div class="md-flex navheader">
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.19.1 Documentation">
-       <img alt="Tortoise ORM 0.19.1 Documentation logo" height="26" src="../_static/tortoise.png"/>
-      </a>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
-      </label>
-     </div>
-     <div class="md-flex__cell md-flex__cell--stretch">
-      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-       <span class="md-header-nav__topic">
-        Tortoise ORM
-       </span>
-       <span class="md-header-nav__topic">
-        Pydantic Examples
-       </span>
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-pydantic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
       </div>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="../_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.19.1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pydantic Examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
-       <label class="md-search__overlay" for="__search">
-       </label>
-       <div class="md-search__inner" role="search">
-        <form action="../search.html" class="md-search__form" method="get" name="search">
-         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
-         <label class="md-icon md-search__icon" for="__search">
-         </label>
-         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
-          
-         </button>
-        </form>
-        <div class="md-search__output">
-         <div class="md-search__scrollwrap" data-md-scrollfix="">
-          <div class="md-search-result" data-md-component="result">
-           <div class="md-search-result__meta">
-            Type to start searching
-           </div>
-           <ol class="md-search-result__list">
-           </ol>
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
           </div>
-         </div>
+          <ol class="md-search-result__list"></ol>
         </div>
-       </div>
       </div>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <div class="md-header-nav__source">
-       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
-        <div class="md-source__icon">
-         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <use height="24" width="24" xlink:href="#__github">
-          </use>
-         </svg>
-        </div>
-        <div class="md-source__repository">
-         tortoise-orm
-        </div>
-       </a>
-      </div>
-     </div>
-     <script src="../_static/javascripts/version_dropdown.js">
-     </script>
-     <script>
-      var json_loc = "../"versions.json"",
-        target_loc = "../../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-     </script>
     </div>
-   </nav>
-  </header>
-  <div class="md-container">
-   <nav class="md-tabs" data-md-component="tabs">
-    <div class="md-tabs__inner md-grid">
-     <ul class="md-tabs__list">
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../examples.html">
-        Examples
-       </a>
-      </li>
-     </ul>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link">
+      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../getting_started.html" class="md-tabs__link">
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../reference.html" class="md-tabs__link">
+      <span title="reference (document)" class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../examples.html" class="md-tabs__link md-tabs__link--active">
+      <span title="examples (document)" class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../contrib.html" class="md-tabs__link">
+      <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CHANGELOG.html" class="md-tabs__link">
+      <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../roadmap.html" class="md-tabs__link">
+      <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CONTRIBUTING.html" class="md-tabs__link">
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CONTRIBUTORS.html" class="md-tabs__link">
+      <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="../_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.19.1 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
     </div>
-   </nav>
-   <main class="md-main">
-    <div class="md-main__inner md-grid" data-md-component="container">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav class="md-nav md-nav--primary" data-md-level="0">
-         <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="../toc.html" title="Tortoise ORM v0.19.1 Documentation">
-           <img alt=" logo" height="48" src="../_static/tortoise.png" width="48"/>
-          </a>
-          <a href="../toc.html" title="Tortoise ORM v0.19.1 Documentation">
-           Tortoise ORM
-          </a>
-         </label>
-         <div class="md-nav__source">
-          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
-           <div class="md-source__icon">
-            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-             <use height="24" width="24" xlink:href="#__github">
-             </use>
-            </svg>
-           </div>
-           <div class="md-source__repository">
-            tortoise-orm
-           </div>
-          </a>
-         </div>
-         <ul class="md-nav__list">
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started.html" class="md-nav__link">
+        <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference.html" class="md-nav__link">
+        <span title="reference (document)" class="md-ellipsis">Reference</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../examples.html"><span title="examples (document)" class="md-ellipsis">Examples</span></a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span title="examples (document)" class="md-ellipsis">Examples</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic.html" class="md-nav__link">
+        <span title="examples/basic (document)" class="md-ellipsis">Simple Examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span title="examples/pydantic (document)" class="md-ellipsis">Pydantic Examples</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        <span title="examples/pydantic (document)" class="md-ellipsis">Pydantic Examples</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span title="examples/pydantic (document)" class="md-ellipsis">Pydantic Examples</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-pydantic" class="md-nav__link">
+    <span class="md-ellipsis">Basic Pydantic</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#early-model-init" class="md-nav__link">
+    <span class="md-ellipsis">Early model Init</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-models-computed-fields" class="md-nav__link">
+    <span class="md-ellipsis">Recursive models + Computed fields</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-sources" class="md-nav__link">
+    <span class="md-ellipsis">Tutorial sources</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial sources">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../index.html">
-            Tortoise ORM
-           </a>
-          </li>
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">1:<wbr> Basic usage</span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../getting_started.html">
-            Getting started
-           </a>
-          </li>
+  <a href="#querysets-lists" class="md-nav__link">
+    <span class="md-ellipsis">2:<wbr> Querysets &amp; Lists</span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../reference.html">
-            Reference
-           </a>
-          </li>
+  <a href="#relations-early-init" class="md-nav__link">
+    <span class="md-ellipsis">3:<wbr> Relations &amp; Early-<wbr>init</span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../examples.html">
-            Examples
-           </a>
-           <ul class="md-nav__list">
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="basic.html">
-              Simple Examples
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-             <label class="md-nav__link md-nav__link--active" for="__toc">
-              Pydantic Examples
-             </label>
-             <a class="md-nav__link md-nav__link--active" href="#">
-              Pydantic Examples
-             </a>
-             <nav class="md-nav md-nav--secondary">
-              <label class="md-nav__title" for="__toc">
-               Contents
-              </label>
-              <ul class="md-nav__list" data-md-scrollfix="">
-               <li class="md-nav__item">
-                <a class="md-nav__link" href="#examples-pydantic--page-root">
-                 Pydantic Examples
-                </a>
-                <nav class="md-nav">
-                 <ul class="md-nav__list">
-                  <li class="md-nav__item">
-                   <a class="md-nav__link" href="#basic-pydantic">
-                    Basic Pydantic
-                   </a>
-                  </li>
-                  <li class="md-nav__item">
-                   <a class="md-nav__link" href="#early-model-init">
-                    Early model Init
-                   </a>
-                  </li>
-                  <li class="md-nav__item">
-                   <a class="md-nav__link" href="#recursive-models-computed-fields">
-                    Recursive models + Computed fields
-                   </a>
-                  </li>
-                  <li class="md-nav__item">
-                   <a class="md-nav__link" href="#tutorial-sources">
-                    Tutorial sources
-                   </a>
-                   <nav class="md-nav">
-                    <ul class="md-nav__list">
-                     <li class="md-nav__item">
-                      <a class="md-nav__link" href="#basic-usage">
-                       1: Basic usage
-                      </a>
-                     </li>
-                     <li class="md-nav__item">
-                      <a class="md-nav__link" href="#querysets-lists">
-                       2: Querysets &amp; Lists
-                      </a>
-                     </li>
-                     <li class="md-nav__item">
-                      <a class="md-nav__link" href="#relations-early-init">
-                       3: Relations &amp; Early-init
-                      </a>
-                     </li>
-                     <li class="md-nav__item">
-                      <a class="md-nav__link" href="#pydanticmeta-callables">
-                       4: PydanticMeta &amp; Callables
-                      </a>
-                     </li>
-                    </ul>
-                   </nav>
-                  </li>
-                 </ul>
-                </nav>
-               </li>
-               <li class="md-nav__item">
-                <a class="md-nav__extra_link" href="../_sources/examples/pydantic.rst.txt">
-                 Show Source
-                </a>
-               </li>
-              </ul>
-             </nav>
-             <ul class="md-nav__list">
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#basic-pydantic">
-                Basic Pydantic
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#early-model-init">
-                Early model Init
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#recursive-models-computed-fields">
-                Recursive models + Computed fields
-               </a>
-              </li>
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#tutorial-sources">
-                Tutorial sources
-               </a>
-               <ul class="md-nav__list">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#basic-usage">
-                  1: Basic usage
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#querysets-lists">
-                  2: Querysets &amp; Lists
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#relations-early-init">
-                  3: Relations &amp; Early-init
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#pydanticmeta-callables">
-                  4: PydanticMeta &amp; Callables
-                 </a>
-                </li>
-               </ul>
-              </li>
-             </ul>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="fastapi.html">
-              FastAPI Examples
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="quart.html">
-              Quart Example
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="sanic.html">
-              Sanic Example
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="starlette.html">
-              Starlette Example
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="aiohttp.html">
-              AIOHTTP Example
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="blacksheep.html">
-              BlackSheep Examples
-             </a>
-            </li>
-           </ul>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../contrib.html">
-            Contrib
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../CHANGELOG.html">
-            Changelog
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../roadmap.html">
-            Roadmap
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../CONTRIBUTING.html">
-            Contribution Guide
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../CONTRIBUTORS.html">
-            Thanks
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          Contents
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#examples-pydantic--page-root">
-            Pydantic Examples
-           </a>
-           <nav class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#basic-pydantic">
-               Basic Pydantic
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#early-model-init">
-               Early model Init
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#recursive-models-computed-fields">
-               Recursive models + Computed fields
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#tutorial-sources">
-               Tutorial sources
-              </a>
-              <nav class="md-nav">
-               <ul class="md-nav__list">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#basic-usage">
-                  1: Basic usage
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#querysets-lists">
-                  2: Querysets &amp; Lists
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#relations-early-init">
-                  3: Relations &amp; Early-init
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#pydanticmeta-callables">
-                  4: PydanticMeta &amp; Callables
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__extra_link" href="../_sources/examples/pydantic.rst.txt">
-            Show Source
-           </a>
-          </li>
-          <li class="md-nav__item" id="searchbox">
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-content">
-      <article class="md-content__inner md-typeset" role="main">
-       <section id="pydantic-examples">
-        <span id="examples-pydantic">
-        </span>
-        <h1 id="examples-pydantic--page-root">
-         Pydantic Examples
-         <a class="headerlink" href="#examples-pydantic--page-root" title="Permalink to this headline">
-          ¶
-         </a>
-        </h1>
-        <p>
-         See
-         <a class="reference internal" href="../contrib/pydantic.html#contrib-pydantic">
-          <span class="std std-ref">
-           Pydantic serialisation
-          </span>
-         </a>
-        </p>
-        <section class="html-toggle" id="basic-pydantic">
-         <span id="example-pydantic-basic">
-         </span>
-         <h2 id="basic-pydantic">
-          Basic Pydantic
-          <a class="headerlink" href="#basic-pydantic" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <div class="highlight-default notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="sd">"""</span>
+  <a href="#pydanticmeta-callables" class="md-nav__link">
+    <span class="md-ellipsis">4:<wbr> Pydantic<wbr>Meta &amp; Callables</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fastapi.html" class="md-nav__link">
+        <span title="examples/fastapi (document)" class="md-ellipsis">Fast<wbr>API Examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quart.html" class="md-nav__link">
+        <span title="examples/quart (document)" class="md-ellipsis">Quart Example</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanic.html" class="md-nav__link">
+        <span title="examples/sanic (document)" class="md-ellipsis">Sanic Example</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="starlette.html" class="md-nav__link">
+        <span title="examples/starlette (document)" class="md-ellipsis">Starlette Example</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aiohttp.html" class="md-nav__link">
+        <span title="examples/aiohttp (document)" class="md-ellipsis">AIOHTTP Example</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blacksheep.html" class="md-nav__link">
+        <span title="examples/blacksheep (document)" class="md-ellipsis">Black<wbr>Sheep Examples</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrib.html" class="md-nav__link">
+        <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG.html" class="md-nav__link">
+        <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap.html" class="md-nav__link">
+        <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING.html" class="md-nav__link">
+        <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTORS.html" class="md-nav__link">
+        <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+
+
+  <h1 id="pydantic-examples"><span id="examples-pydantic"></span>Pydantic Examples<a class="headerlink" href="#pydantic-examples" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="../contrib/pydantic.html#contrib-pydantic"><span class="std std-ref">Pydantic serialisation</span></a></p>
+<h2 id="basic-pydantic"><span id="example-pydantic-basic"></span>Basic Pydantic<a class="headerlink" href="#basic-pydantic" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span><span class="p">,</span> <span class="n">pydantic_queryset_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -527,10 +750,10 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">"Event"</span><span class="p">]</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -538,15 +761,15 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">tournament</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="n">Tournament</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">"models.Tournament"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
-    <span class="n">participants</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">"Team"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span>
-        <span class="s2">"models.Team"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">through</span><span class="o">=</span><span class="s2">"event_team"</span>
+    <span class="n">participants</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">&quot;Team&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span>
+        <span class="s2">&quot;models.Team&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">through</span><span class="o">=</span><span class="s2">&quot;event_team&quot;</span>
     <span class="p">)</span>
-    <span class="n">address</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">OneToOneNullableRelation</span><span class="p">[</span><span class="s2">"Address"</span><span class="p">]</span>
+    <span class="n">address</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">OneToOneNullableRelation</span><span class="p">[</span><span class="s2">&quot;Address&quot;</span><span class="p">]</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">Address</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -555,11 +778,11 @@
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">event</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">OneToOneRelation</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span>
-        <span class="s2">"models.Event"</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">fields</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"address"</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">True</span>
+        <span class="s2">&quot;models.Event&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">fields</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;address&quot;</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"city"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">Team</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -570,11 +793,11 @@
     <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="n">Event_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
@@ -587,54 +810,42 @@
     <span class="c1"># print(Tournament_Pydantic.schema_json(indent=4))</span>
     <span class="c1"># print(Team_Pydantic.schema_json(indent=4))</span>
 
-    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">)</span>
-    <span class="n">tournament2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Old Tournament"</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Empty"</span><span class="p">)</span>
-    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-    <span class="n">event2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"TestLast"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-    <span class="n">event3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Test2"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament2</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Address</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">"Santa Monica"</span><span class="p">,</span> <span class="n">street</span><span class="o">=</span><span class="s2">"Ocean"</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Address</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">"Somewhere Else"</span><span class="p">,</span> <span class="n">street</span><span class="o">=</span><span class="s2">"Lane"</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">event2</span><span class="p">)</span>
-    <span class="n">team1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Onesies"</span><span class="p">)</span>
-    <span class="n">team2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"T-Shirts"</span><span class="p">)</span>
-    <span class="n">team3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Alternates"</span><span class="p">)</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+    <span class="n">tournament2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Old Tournament&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Empty&quot;</span><span class="p">)</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">event2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;TestLast&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">event3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test2&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament2</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Address</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;Santa Monica&quot;</span><span class="p">,</span> <span class="n">street</span><span class="o">=</span><span class="s2">&quot;Ocean&quot;</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Address</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">&quot;Somewhere Else&quot;</span><span class="p">,</span> <span class="n">street</span><span class="o">=</span><span class="s2">&quot;Lane&quot;</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">event2</span><span class="p">)</span>
+    <span class="n">team1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Onesies&quot;</span><span class="p">)</span>
+    <span class="n">team2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;T-Shirts&quot;</span><span class="p">)</span>
+    <span class="n">team3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Alternates&quot;</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">team1</span><span class="p">,</span> <span class="n">team2</span><span class="p">,</span> <span class="n">team3</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">event2</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">team1</span><span class="p">,</span> <span class="n">team2</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">event3</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">team1</span><span class="p">,</span> <span class="n">team3</span><span class="p">)</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Test"</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"One Event:"</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One Event:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"One Tournament:"</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One Tournament:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Onesies"</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"One Team:"</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Onesies&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One Team:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
     <span class="n">pl</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event_Pydantic_List</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">address__event_id__isnull</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"All Events without addresses:"</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All Events without addresses:&quot;</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-          </div>
-         </div>
-        </section>
-        <section class="html-toggle" id="early-model-init">
-         <span id="example-pydantic-early-init">
-         </span>
-         <h2 id="early-model-init">
-          Early model Init
-          <a class="headerlink" href="#early-model-init" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <div class="highlight-default notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h2 id="early-model-init"><span id="example-pydantic-early-init"></span>Early model Init<a class="headerlink" href="#early-model-init" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation, and how to use early partial init.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -645,10 +856,10 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">"Event"</span><span class="p">]</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -656,43 +867,31 @@
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">tournament</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="n">Tournament</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">"models.Tournament"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="n">Event_TooEarly</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Relations are missing if models not initialized:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Relations are missing if models not initialized:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Event_TooEarly</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">"__main__"</span><span class="p">],</span> <span class="s2">"models"</span><span class="p">)</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
 
 <span class="n">Event_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Relations are now present:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Relations are now present:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Now we can use the pydantic model early if needed</span>
-</pre>
-          </div>
-         </div>
-        </section>
-        <section class="html-toggle" id="recursive-models-computed-fields">
-         <span id="example-pydantic-recursive">
-         </span>
-         <h2 id="recursive-models-computed-fields">
-          Recursive models + Computed fields
-          <a class="headerlink" href="#recursive-models-computed-fields" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <div class="highlight-default notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h2 id="recursive-models-computed-fields"><span id="example-pydantic-recursive"></span>Recursive models + Computed fields<a class="headerlink" href="#recursive-models-computed-fields" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation of a recursively cycled model.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">NoValuesFetched</span>
@@ -702,15 +901,15 @@
 <span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
-    <span class="n">manager</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="s2">"Employee"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">"models.Employee"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"team_members"</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
+        <span class="s2">&quot;models.Employee&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;team_members&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
-    <span class="n">team_members</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">"Employee"</span><span class="p">]</span>
+    <span class="n">team_members</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span>
 
-    <span class="n">talks_to</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">"Employee"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span>
-        <span class="s2">"models.Employee"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"gets_talked_to"</span>
+    <span class="n">talks_to</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span>
+        <span class="s2">&quot;models.Employee&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;gets_talked_to&quot;</span>
     <span class="p">)</span>
-    <span class="n">gets_talked_to</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">"Employee"</span><span class="p">]</span>
+    <span class="n">gets_talked_to</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="c1"># Computes length of name</span>
@@ -719,18 +918,18 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">team_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes team size.</span>
 
 <span class="sd">        Note that this function needs to be annotated with a return type so that pydantic can</span>
 <span class="sd">         generate a valid schema.</span>
 
-<span class="sd">        Note that the pydantic serializer can't call async methods, but the tortoise helpers</span>
-<span class="sd">         pre-fetch relational data, so that it is available before serialization. So we don't</span>
+<span class="sd">        Note that the pydantic serializer can&#39;t call async methods, but the tortoise helpers</span>
+<span class="sd">         pre-fetch relational data, so that it is available before serialization. So we don&#39;t</span>
 <span class="sd">         need to await the relation. We do however have to protect against the case where no</span>
 <span class="sd">         prefetching was done, hence catching and handling the</span>
 <span class="sd">         ``tortoise.exceptions.NoValuesFetched`` exception.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">team_members</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">NoValuesFetched</span><span class="p">:</span>
@@ -738,65 +937,45 @@
 
     <span class="k">def</span> <span class="nf">not_annotated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Never called due to no annotation!</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Not Done"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Done&quot;</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
-        <span class="n">computed</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name_length"</span><span class="p">,</span> <span class="s2">"team_size"</span><span class="p">,</span> <span class="s2">"not_annotated"</span><span class="p">]</span>
-        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"manager"</span><span class="p">,</span> <span class="s2">"gets_talked_to"</span><span class="p">]</span>
+        <span class="n">computed</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="s2">&quot;team_size&quot;</span><span class="p">,</span> <span class="s2">&quot;not_annotated&quot;</span><span class="p">]</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;manager&quot;</span><span class="p">,</span> <span class="s2">&quot;gets_talked_to&quot;</span><span class="p">]</span>
         <span class="n">allow_cycles</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">max_recursion</span> <span class="o">=</span> <span class="mi">4</span>
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="n">Employee_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Employee</span><span class="p">)</span>
     <span class="c1"># print(Employee_Pydantic.schema_json(indent=4))</span>
 
-    <span class="n">root</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Root"</span><span class="p">)</span>
-    <span class="n">loose</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Loose"</span><span class="p">)</span>
-    <span class="n">_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"1. First H1"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">_2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"2. Second H1"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">_1_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"1.1. First H2"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_1</span><span class="p">)</span>
-    <span class="n">_1_1_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"1.1.1. First H3"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_1_1</span><span class="p">)</span>
-    <span class="n">_2_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"2.1. Second H2"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_2</span><span class="p">)</span>
-    <span class="n">_2_2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"2.2. Third H2"</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_2</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Root&quot;</span><span class="p">)</span>
+    <span class="n">loose</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Loose&quot;</span><span class="p">)</span>
+    <span class="n">_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;1. First H1&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">_2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;2. Second H1&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">_1_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;1.1. First H2&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_1</span><span class="p">)</span>
+    <span class="n">_1_1_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;1.1.1. First H3&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_1_1</span><span class="p">)</span>
+    <span class="n">_2_1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;2.1. Second H2&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_2</span><span class="p">)</span>
+    <span class="n">_2_2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;2.2. Third H2&quot;</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="n">_2</span><span class="p">)</span>
 
     <span class="k">await</span> <span class="n">_1</span><span class="o">.</span><span class="n">talks_to</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">_2</span><span class="p">,</span> <span class="n">_1_1_1</span><span class="p">,</span> <span class="n">loose</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">_2_1</span><span class="o">.</span><span class="n">gets_talked_to</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">_2_2</span><span class="p">,</span> <span class="n">_1_1</span><span class="p">,</span> <span class="n">loose</span><span class="p">)</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Root"</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Employee_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Employee</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Root&quot;</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-          </div>
-         </div>
-        </section>
-        <section class="emphasize-children" id="tutorial-sources">
-         <span id="example-pydantic-tutorials">
-         </span>
-         <h2 id="tutorial-sources">
-          Tutorial sources
-          <a class="headerlink" href="#tutorial-sources" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <section class="html-toggle" id="basic-usage">
-          <span id="example-pydantic-tut1">
-          </span>
-          <h3 id="basic-usage">
-           1: Basic usage
-           <a class="headerlink" href="#basic-usage" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <div class="highlight-default notranslate">
-           <div class="highlight">
-            <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h2 id="tutorial-sources"><span id="example-pydantic-tutorials"></span>Tutorial sources<a class="headerlink" href="#tutorial-sources" title="Permalink to this headline">¶</a></h2>
+<h3 id="basic-usage"><span id="example-pydantic-tut1"></span>1: Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 1</span>
 
 <span class="sd">Here we introduce:</span>
@@ -804,16 +983,16 @@
 <span class="sd">* Docstrings &amp; doc-comments are used</span>
 <span class="sd">* Evaluating the generated schema</span>
 <span class="sd">* Simple serialisation with both .dict() and .json()</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
 <span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -827,11 +1006,11 @@
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="c1"># Create object</span>
-    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">)</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
     <span class="c1"># Serialise it</span>
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
 
@@ -841,39 +1020,27 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-           </div>
-          </div>
-         </section>
-         <section class="html-toggle" id="querysets-lists">
-          <span id="example-pydantic-tut2">
-          </span>
-          <h3 id="querysets-lists">
-           2: Querysets &amp; Lists
-           <a class="headerlink" href="#querysets-lists" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <div class="highlight-default notranslate">
-           <div class="highlight">
-            <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h3 id="querysets-lists"><span id="example-pydantic-tut2"></span>2: Querysets &amp; Lists<a class="headerlink" href="#querysets-lists" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 2</span>
 
 <span class="sd">Here we introduce:</span>
 <span class="sd">* Creating a list-model to serialise a queryset</span>
 <span class="sd">* Default sorting is honoured</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_queryset_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
 <span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -883,7 +1050,7 @@
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="c1"># Define the default ordering</span>
         <span class="c1">#  the pydantic serialiser will use this to order the results</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
 <span class="c1"># Create a list of models for population from a queryset.</span>
@@ -893,57 +1060,45 @@
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="c1"># Create objects</span>
-    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Another"</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Last Tournament"</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Another&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Last Tournament&quot;</span><span class="p">)</span>
 
     <span class="c1"># Serialise it</span>
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
     <span class="c1"># As Python dict with Python objects (e.g. datetime)</span>
-    <span class="c1"># Note that the root element is '__root__' that contains the root element.</span>
+    <span class="c1"># Note that the root element is &#39;__root__&#39; that contains the root element.</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
     <span class="c1"># As serialised JSON (e.g. datetime is ISO8601 string representation)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-           </div>
-          </div>
-         </section>
-         <section class="html-toggle" id="relations-early-init">
-          <span id="example-pydantic-tut3">
-          </span>
-          <h3 id="relations-early-init">
-           3: Relations &amp; Early-init
-           <a class="headerlink" href="#relations-early-init" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <div class="highlight-default notranslate">
-           <div class="highlight">
-            <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h3 id="relations-early-init"><span id="example-pydantic-tut3"></span>3: Relations &amp; Early-init<a class="headerlink" href="#relations-early-init" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 3</span>
 
 <span class="sd">Here we introduce:</span>
 <span class="sd">* Relationships</span>
 <span class="sd">* Early model init</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
 
 <span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -952,16 +1107,16 @@
 
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references an Event in a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">"models.Tournament"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"The Tournement this happens in"</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
     <span class="p">)</span>
 
 
@@ -972,7 +1127,7 @@
 
 
 <span class="c1"># Initialise model structure early. This does not init any database structures</span>
-<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">"__main__"</span><span class="p">],</span> <span class="s2">"models"</span><span class="p">)</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
 
 
 <span class="c1"># We now have a complete model</span>
@@ -980,19 +1135,19 @@
 <span class="c1"># Print JSON-schema</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
-<span class="c1"># Note how both schema's don't follow relations back.</span>
+<span class="c1"># Note how both schema&#39;s don&#39;t follow relations back.</span>
 <span class="n">Event_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
 <span class="c1"># Print JSON-schema</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="c1"># Create objects</span>
-    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">)</span>
-    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"The Event"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;The Event&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
 
     <span class="c1"># Serialise Tournament</span>
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
@@ -1007,30 +1162,18 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">eventpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-           </div>
-          </div>
-         </section>
-         <section class="html-toggle" id="pydanticmeta-callables">
-          <span id="example-pydantic-tut4">
-          </span>
-          <h3 id="pydanticmeta-callables">
-           4: PydanticMeta &amp; Callables
-           <a class="headerlink" href="#pydanticmeta-callables" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <div class="highlight-default notranslate">
-           <div class="highlight">
-            <pre><span></span><span class="sd">"""</span>
+</code></pre></div>
+</div>
+<h3 id="pydanticmeta-callables"><span id="example-pydantic-tut4"></span>4: PydanticMeta &amp; Callables<a class="headerlink" href="#pydanticmeta-callables" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 4</span>
 
 <span class="sd">Here we introduce:</span>
 <span class="sd">* Configuring model creator via PydanticMeta class.</span>
 <span class="sd">* Using callable functions to annotate extra data.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">NoValuesFetched</span>
@@ -1038,9 +1181,9 @@
 
 
 <span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -1048,25 +1191,25 @@
 
     <span class="c1"># It is useful to define the reverse relations manually so that type checking</span>
     <span class="c1">#  and auto completion work</span>
-    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">"Event"</span><span class="p">]</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes length of name</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Note that this function needs to be annotated with a return type so that pydantic</span>
         <span class="c1">#  can generate a valid schema</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">events_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes team size.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Note that this function needs to be annotated with a return type so that pydantic</span>
         <span class="c1">#  can generate a valid schema.</span>
 
-        <span class="c1"># Note that the pydantic serializer can't call async methods, but the tortoise helpers</span>
-        <span class="c1">#  pre-fetch relational data, so that it is available before serialization. So we don't</span>
+        <span class="c1"># Note that the pydantic serializer can&#39;t call async methods, but the tortoise helpers</span>
+        <span class="c1">#  pre-fetch relational data, so that it is available before serialization. So we don&#39;t</span>
         <span class="c1">#  need to await the relation. We do however have to protect against the case where no</span>
         <span class="c1">#  prefetching was done, hence catching and handling the</span>
         <span class="c1">#  ``tortoise.exceptions.NoValuesFetched`` exception</span>
@@ -1076,34 +1219,34 @@
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
     <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
-        <span class="c1"># Let's exclude the created timestamp</span>
-        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"created_at"</span><span class="p">,)</span>
-        <span class="c1"># Let's include two callables as computed columns</span>
-        <span class="n">computed</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"name_length"</span><span class="p">,</span> <span class="s2">"events_num"</span><span class="p">)</span>
+        <span class="c1"># Let&#39;s exclude the created timestamp</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
+        <span class="c1"># Let&#39;s include two callables as computed columns</span>
+        <span class="n">computed</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="s2">&quot;events_num&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references an Event in a Tournament</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">"models.Tournament"</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"The Tournement this happens in"</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
     <span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
     <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
-        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"created_at"</span><span class="p">,)</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
 
 
 <span class="c1"># Initialise model structure early. This does not init any database structures</span>
-<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">"__main__"</span><span class="p">],</span> <span class="s2">"models"</span><span class="p">)</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
 <span class="n">Tournament_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
 
 
@@ -1112,13 +1255,13 @@
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">"sqlite://:memory:"</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"__main__"</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
     <span class="c1"># Create objects</span>
-    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"New Tournament"</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Event 1"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Event 2"</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Event 1&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Event 2&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
 
     <span class="c1"># Serialise Tournament</span>
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
@@ -1127,76 +1270,97 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
-</pre>
-           </div>
+</code></pre></div>
+</div>
+
+
+
+              
+            </article>
           </div>
-         </section>
-        </section>
-       </section>
-      </article>
-     </div>
-    </div>
-   </main>
-  </div>
-  <footer class="md-footer">
-   <div class="md-footer-nav">
-    <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="basic.html" rel="prev" title="Simple Examples">
-      <div class="md-flex__cell md-flex__cell--shrink">
-       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
-       </i>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-       <span class="md-flex__ellipsis">
-        <span class="md-footer-nav__direction">
-         Previous
-        </span>
-        Simple Examples
-       </span>
-      </div>
-     </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="fastapi.html" rel="next" title="FastAPI Examples">
-      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-       <span class="md-flex__ellipsis">
-        <span class="md-footer-nav__direction">
-         Next
-        </span>
-        FastAPI Examples
-       </span>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
-       </i>
-      </div>
-     </a>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="basic.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simple Examples" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Simple Examples
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="fastapi.html" class="md-footer__link md-footer__link--next" aria-label="Next: FastAPI Examples" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              FastAPI Examples
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
     </nav>
-   </div>
-   <div class="md-footer-meta md-typeset">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
     <div class="md-footer-meta__inner md-grid">
-     <div class="md-footer-copyright">
-      <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
-      </div>
-      Created using
-      <a href="http://www.sphinx-doc.org/">
-       Sphinx
-      </a>
-      4.3.2.
-             and
-      <a href="https://github.com/bashtage/sphinx-material/">
-       Material for
-              Sphinx
-      </a>
-     </div>
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
     </div>
-   </div>
-  </footer>
-  <script src="../_static/javascripts/application.js">
-  </script>
-  <script>
-   app.initialize({version: "1.0.4", url: {base: ".."}})
-  </script>
- </body>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.3.2.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+    
+      <script src="../_static/javascripts/bundle.37d1338f.min.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+  </body>
 </html>

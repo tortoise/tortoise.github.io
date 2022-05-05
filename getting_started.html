@@ -1,555 +1,615 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
-  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
-  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
-  <meta content="en" name="lang:search.language"/>
-  <meta content="True" name="lang:search.pipeline.stopwords"/>
-  <meta content="True" name="lang:search.pipeline.trimmer"/>
-  <meta content="No matching documents" name="lang:search.result.none"/>
-  <meta content="1 matching document" name="lang:search.result.one"/>
-  <meta content="# matching documents" name="lang:search.result.other"/>
-  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
-  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   body,
-      input {
-        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
-      }
 
-      code,
-      kbd,
-      pre {
-        font-family: "Roboto Mono", "Courier New", Courier, monospace
-      }
-  </style>
-  <link href="_static/stylesheets/application.css" rel="stylesheet"/>
-  <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
-  <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
-  <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
-  <meta content="#3f51b5" name="theme-color"/>
-  <script src="_static/javascripts/modernizr.js">
-  </script>
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
-  </script>
-  <script>
-   window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="_static/tortoise.png">
+    
+    
+      
+        <title>Getting started - Tortoise ORM v0.19.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="_static/stylesheets/main.8674dc46.min.css">
+      
+        
+        <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
 
-    gtag('js', new Date());
 
-    gtag('config', 'G-MJ7RHW2FRB');
-  </script>
-  <title>
-   Getting started — Tortoise ORM v0.19.1 Documentation
-  </title>
-  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
-  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
-  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
-  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
-  </script>
-  <script src="_static/jquery.js">
-  </script>
-  <script src="_static/underscore.js">
-  </script>
-  <script src="_static/doctools.js">
-  </script>
-  <script src="_static/clipboard.min.js">
-  </script>
-  <script src="_static/copybutton.js">
-  </script>
-  <link href="_static/tortoise.png" rel="shortcut icon"/>
-  <link href="genindex.html" rel="index" title="Index"/>
-  <link href="search.html" rel="search" title="Search"/>
-  <link href="reference.html" rel="next" title="Reference"/>
-  <link href="index.html" rel="prev" title="Tortoise ORM"/>
- </head>
- <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
-  <svg class="md-svg">
-   <defs data-children-count="0">
-    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
-     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
-     </path>
-    </svg>
-   </defs>
-  </svg>
-  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" data-md-component="overlay" for="__drawer">
-  </label>
-  <a class="md-skip" href="#getting_started" tabindex="1">
-   Skip to content
-  </a>
-  <header class="md-header" data-md-component="header">
-   <nav class="md-header-nav md-grid">
-    <div class="md-flex navheader">
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.1 Documentation">
-       <img alt="Tortoise ORM 0.19.1 Documentation logo" height="26" src="_static/tortoise.png"/>
-      </a>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
-      </label>
-     </div>
-     <div class="md-flex__cell md-flex__cell--stretch">
-      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-       <span class="md-header-nav__topic">
-        Tortoise ORM
-       </span>
-       <span class="md-header-nav__topic">
-        Getting started
-       </span>
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
       </div>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.19.1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
-       <label class="md-search__overlay" for="__search">
-       </label>
-       <div class="md-search__inner" role="search">
-        <form action="search.html" class="md-search__form" method="get" name="search">
-         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
-         <label class="md-icon md-search__icon" for="__search">
-         </label>
-         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
-          
-         </button>
-        </form>
-        <div class="md-search__output">
-         <div class="md-search__scrollwrap" data-md-scrollfix="">
-          <div class="md-search-result" data-md-component="result">
-           <div class="md-search-result__meta">
-            Type to start searching
-           </div>
-           <ol class="md-search-result__list">
-           </ol>
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
           </div>
-         </div>
+          <ol class="md-search-result__list"></ol>
         </div>
-       </div>
       </div>
-     </div>
-     <div class="md-flex__cell md-flex__cell--shrink">
-      <div class="md-header-nav__source">
-       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
-        <div class="md-source__icon">
-         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <use height="24" width="24" xlink:href="#__github">
-          </use>
-         </svg>
-        </div>
-        <div class="md-source__repository">
-         tortoise-orm
-        </div>
-       </a>
-      </div>
-     </div>
-     <script src="_static/javascripts/version_dropdown.js">
-     </script>
-     <script>
-      var json_loc = ""versions.json"",
-        target_loc = "../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-     </script>
     </div>
-   </nav>
-  </header>
-  <div class="md-container">
-   <main class="md-main">
-    <div class="md-main__inner md-grid" data-md-component="container">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav class="md-nav md-nav--primary" data-md-level="0">
-         <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.1 Documentation">
-           <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
-          </a>
-          <a href="toc.html" title="Tortoise ORM v0.19.1 Documentation">
-           Tortoise ORM
-          </a>
-         </label>
-         <div class="md-nav__source">
-          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
-           <div class="md-source__icon">
-            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-             <use height="24" width="24" xlink:href="#__github">
-             </use>
-            </svg>
-           </div>
-           <div class="md-source__repository">
-            tortoise-orm
-           </div>
-          </a>
-         </div>
-         <ul class="md-nav__list">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="index.html">
-            Tortoise ORM
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-           <label class="md-nav__link md-nav__link--active" for="__toc">
-            Getting started
-           </label>
-           <a class="md-nav__link md-nav__link--active" href="#">
-            Getting started
-           </a>
-           <nav class="md-nav md-nav--secondary">
-            <label class="md-nav__title" for="__toc">
-             Contents
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#getting-started--page-root">
-               Getting started
-              </a>
-              <nav class="md-nav">
-               <ul class="md-nav__list">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#installation">
-                  Installation
-                 </a>
-                 <nav class="md-nav">
-                  <ul class="md-nav__list">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#optional-accelerators">
-                     Optional Accelerators
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#tutorial">
-                  Tutorial
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__extra_link" href="_sources/getting_started.rst.txt">
-               Show Source
-              </a>
-             </li>
-            </ul>
-           </nav>
-           <ul class="md-nav__list">
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#installation">
-              Installation
-             </a>
-             <ul class="md-nav__list">
-              <li class="md-nav__item">
-               <a class="md-nav__link" href="#optional-accelerators">
-                Optional Accelerators
-               </a>
-              </li>
-             </ul>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#tutorial">
-              Tutorial
-             </a>
-            </li>
-           </ul>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="reference.html">
-            Reference
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="examples.html">
-            Examples
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="contrib.html">
-            Contrib
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="CHANGELOG.html">
-            Changelog
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="roadmap.html">
-            Roadmap
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="CONTRIBUTING.html">
-            Contribution Guide
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="CONTRIBUTORS.html">
-            Thanks
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
       </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          Contents
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="" class="md-tabs__link md-tabs__link--active">
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="reference.html" class="md-tabs__link">
+      <span title="reference (document)" class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="examples.html" class="md-tabs__link">
+      <span title="examples (document)" class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="contrib.html" class="md-tabs__link">
+      <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CHANGELOG.html" class="md-tabs__link">
+      <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="roadmap.html" class="md-tabs__link">
+      <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTING.html" class="md-tabs__link">
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTORS.html" class="md-tabs__link">
+      <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="toc.html" title="Tortoise ORM v0.19.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.19.1 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">Installation</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#getting-started--page-root">
-            Getting started
-           </a>
-           <nav class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#installation">
-               Installation
-              </a>
-              <nav class="md-nav">
-               <ul class="md-nav__list">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#optional-accelerators">
-                  Optional Accelerators
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#tutorial">
-               Tutorial
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__extra_link" href="_sources/getting_started.rst.txt">
-            Show Source
-           </a>
-          </li>
-          <li class="md-nav__item" id="searchbox">
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-content">
-      <article class="md-content__inner md-typeset" role="main">
-       <section id="getting-started">
-        <span id="id1">
-        </span>
-        <h1 id="getting-started--page-root">
-         Getting started
-         <a class="headerlink" href="#getting-started--page-root" title="Permalink to this headline">
-          ¶
-         </a>
-        </h1>
-        <section id="installation">
-         <h2 id="installation">
-          Installation
-          <a class="headerlink" href="#installation" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          First you have to install tortoise like this:
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install tortoise-orm
-</pre>
-          </div>
-         </div>
-         <p>
-          You can also install with your db driver:
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install tortoise-orm<span class="o">[</span>asyncpg<span class="o">]</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Or PsycoPG:
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Or MySQL:
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install tortoise-orm<span class="o">[</span>aiomysql<span class="o">]</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Or another driver
-          <a class="reference external" href="https://github.com/long2ice/asyncmy">
-           asyncmy
-          </a>
-          for MySQL:
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Apart from
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            asyncpg
-           </span>
-          </code>
-          and
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            psycopg
-           </span>
-          </code>
-          there is also support for
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            sqlite
-           </span>
-          </code>
-          through
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            aiosqlite
-           </span>
-          </code>
-          and
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            mysql
-           </span>
-          </code>
-          through
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            aiomysql
-           </span>
-          </code>
-          .
-You can easily implement more backends if there is appropriate
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            asyncio
-           </span>
-          </code>
-          driver for this db.
-         </p>
-         <section id="optional-accelerators">
-          <h3 id="optional-accelerators">
-           Optional Accelerators
-           <a class="headerlink" href="#optional-accelerators" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <p>
-           The following libraries can be used as accelerators:
-          </p>
-          <ul class="simple">
-           <li>
-            <p>
-             <a class="reference external" href="https://pypi.org/project/python-rapidjson/">
-              python-rapidjson
-             </a>
-             : Automatically used if installed for JSON SerDes.
-            </p>
-           </li>
-           <li>
-            <p>
-             <a class="reference external" href="https://pypi.org/project/uvloop/">
-              uvloop
-             </a>
-             : Shown to improve performance, but needs to be set up.
-Please look at
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               uvloop
-              </span>
-             </code>
-             documentation for more info.
-If you use a framework, it may already use it.
-            </p>
-           </li>
-           <li>
-            <p>
-             <a class="reference external" href="https://pypi.org/project/ciso8601/">
-              ciso8601
-             </a>
-             : Automatically used if installed.
-Not automatically installed on Windows due to often a lack of a C compiler. Default on Linux/CPython.
-            </p>
-           </li>
-          </ul>
-          <p>
-           You can install with all accelerators above:
-          </p>
-          <div class="highlight-bash notranslate">
-           <div class="highlight">
-            <pre><span></span>pip install tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
-</pre>
-           </div>
-          </div>
-         </section>
-        </section>
-        <section id="tutorial">
-         <h2 id="tutorial">
-          Tutorial
-          <a class="headerlink" href="#tutorial" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          Primary entity of tortoise is
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            tortoise.models.Model
-           </span>
-          </code>
-          .
-You can start writing models like this:
-         </p>
-         <div class="highlight-python3 notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+  <a href="#optional-accelerators" class="md-nav__link">
+    <span class="md-ellipsis">Optional Accelerators</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">Tutorial</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference.html" class="md-nav__link">
+        <span title="reference (document)" class="md-ellipsis">Reference</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples.html" class="md-nav__link">
+        <span title="examples (document)" class="md-ellipsis">Examples</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contrib.html" class="md-nav__link">
+        <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG.html" class="md-nav__link">
+        <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap.html" class="md-nav__link">
+        <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTING.html" class="md-nav__link">
+        <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTORS.html" class="md-nav__link">
+        <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+
+
+  <h1 id="getting-started"><span id="id1"></span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>First you have to install tortoise like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm
+</code></pre></div>
+</div>
+<p>You can also install with your db driver:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncpg<span class="o">]</span>
+</code></pre></div>
+</div>
+<p>Or PsycoPG:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
+</code></pre></div>
+</div>
+<p>Or MySQL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>aiomysql<span class="o">]</span>
+</code></pre></div>
+</div>
+<p>Or another driver <a class="reference external" href="https://github.com/long2ice/asyncmy">asyncmy</a> for MySQL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
+</code></pre></div>
+</div>
+<p>Apart from <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> there is also support for <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> through <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> and
+<code class="docutils literal notranslate"><span class="pre">mysql</span></code> through <code class="docutils literal notranslate"><span class="pre">aiomysql</span></code>.
+You can easily implement more backends if there is appropriate <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> driver for this db.</p>
+<h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Permalink to this headline">¶</a></h3>
+<p>The following libraries can be used as accelerators:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/python-rapidjson/">python-rapidjson</a>: Automatically used if installed for JSON SerDes.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/uvloop/">uvloop</a>: Shown to improve performance, but needs to be set up.
+Please look at <code class="docutils literal notranslate"><span class="pre">uvloop</span></code> documentation for more info.
+If you use a framework, it may already use it.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/ciso8601/">ciso8601</a>: Automatically used if installed.
+Not automatically installed on Windows due to often a lack of a C compiler. Default on Linux/CPython.</p></li>
+</ul>
+<p>You can install with all accelerators above:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
+</code></pre></div>
+</div>
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Primary entity of tortoise is <code class="docutils literal notranslate"><span class="pre">tortoise.models.Model</span></code>.
+You can start writing models like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
 
 <span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="c1"># Defining `id` field is optional, it will be defined automatically</span>
-    <span class="c1"># if you haven't done it yourself</span>
+    <span class="c1"># if you haven&#39;t done it yourself</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
 
@@ -563,9 +623,9 @@ You can start writing models like this:
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="c1"># References to other models are defined in format</span>
-    <span class="c1"># "{app_name}.{model_name}" - where {app_name} is defined in tortoise config</span>
-    <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="s1">'models.Tournament'</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">'events'</span><span class="p">)</span>
-    <span class="n">participants</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s1">'models.Team'</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">'events'</span><span class="p">,</span> <span class="n">through</span><span class="o">=</span><span class="s1">'event_team'</span><span class="p">)</span>
+    <span class="c1"># &quot;{app_name}.{model_name}&quot; - where {app_name} is defined in tortoise config</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="s1">&#39;models.Tournament&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">)</span>
+    <span class="n">participants</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s1">&#39;models.Team&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="n">through</span><span class="o">=</span><span class="s1">&#39;event_team&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -577,99 +637,46 @@ You can start writing models like this:
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-</pre>
-          </div>
-         </div>
-         <div class="admonition note">
-          <p class="admonition-title">
-           Note
-          </p>
-          <p>
-           You can read more on defining models in
-           <a class="reference internal" href="models.html#models">
-            <span class="std std-ref">
-             Models
-            </span>
-           </a>
-          </p>
-         </div>
-         <p>
-          After you defined all your models, tortoise needs you to init them, in order to create backward relations between models and match your db client with appropriate models.
-         </p>
-         <p>
-          You can do it like this:
-         </p>
-         <div class="highlight-python3 notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can read more on defining models in <a class="reference internal" href="models.html#models"><span class="std std-ref">Models</span></a></p>
+</div>
+<p>After you defined all your models, tortoise needs you to init them, in order to create backward relations between models and match your db client with appropriate models.</p>
+<p>You can do it like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
-    <span class="c1"># Here we create a SQLite DB using file "db.sqlite3"</span>
-    <span class="c1">#  also specify the app name of "models"</span>
-    <span class="c1">#  which contain models from "app.models"</span>
+    <span class="c1"># Here we create a SQLite DB using file &quot;db.sqlite3&quot;</span>
+    <span class="c1">#  also specify the app name of &quot;models&quot;</span>
+    <span class="c1">#  which contain models from &quot;app.models&quot;</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-        <span class="n">db_url</span><span class="o">=</span><span class="s1">'sqlite://db.sqlite3'</span><span class="p">,</span>
-        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">'models'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app.models'</span><span class="p">]}</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
     <span class="p">)</span>
     <span class="c1"># Generate the schema</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Here we create a connection to a SQLite DB database with the default
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            aiosqlite
-           </span>
-          </code>
-          client and then we discover &amp; initialise models.
-         </p>
-         <p>
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            generate_schema
-           </span>
-          </code>
-          generates schema on empty database, you shouldn’t run it on every app init, run it just once, maybe out of your main code.
-         </p>
-         <p>
-          If you are running this in a simple script, you can do:
-         </p>
-         <div class="highlight-python3 notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">run_async</span><span class="p">(</span><span class="n">init</span><span class="p">())</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            run_async
-           </span>
-          </code>
-          is a helper function to run simple async Tortoise scripts. If you are running Tortoise ORM as part of a service, please have a look at
-          <a class="reference internal" href="setup.html#cleaningup">
-           <span class="std std-ref">
-            The Importance of cleaning up
-           </span>
-          </a>
-         </p>
-         <p>
-          After that you can start using your models:
-         </p>
-         <div class="highlight-python3 notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="c1"># Create instance by save</span>
-<span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'New Tournament'</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Here we create a connection to a SQLite DB database with the default <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> client and then we discover &amp; initialise models.</p>
+<p><code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> generates schema on empty database, you shouldn’t run it on every app init, run it just once, maybe out of your main code.</p>
+<p>If you are running this in a simple script, you can do:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">run_async</span><span class="p">(</span><span class="n">init</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">run_async</span></code> is a helper function to run simple async Tortoise scripts. If you are running Tortoise ORM as part of a service, please have a look at <a class="reference internal" href="setup.html#cleaningup"><span class="std std-ref">The Importance of cleaning up</span></a></p>
+<p>After that you can start using your models:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create instance by save</span>
+<span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Tournament&#39;</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">tournament</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="c1"># Or by .create()</span>
-<span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Without participants'</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-<span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Test'</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Without participants&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+<span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
 <span class="n">participants</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Team </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Team </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">participants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
 
 <span class="c1"># M2M Relationship management is quite straightforward</span>
@@ -691,99 +698,113 @@ You can start writing models like this:
 <span class="c1"># so you can work with related objects immediately</span>
 <span class="n">selected_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">participants</span><span class="o">=</span><span class="n">participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
-<span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">'participants'</span><span class="p">,</span> <span class="s1">'tournament'</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;participants&#39;</span><span class="p">,</span> <span class="s1">&#39;tournament&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">selected_events</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">])</span>
 
 <span class="c1"># Tortoise ORM supports variable depth of prefetching related entities</span>
 <span class="c1"># This will fetch all events for team and in those team tournament will be prefetched</span>
-<span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">'events__tournament'</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;events__tournament&#39;</span><span class="p">)</span>
 
 <span class="c1"># You can filter and order by related models too</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">events__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">'Test'</span><span class="p">,</span> <span class="s1">'Prod'</span><span class="p">]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">'-events__participants__name'</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
-</pre>
+    <span class="n">events__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Prod&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-events__participants__name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can read more examples (including transactions, several databases and a little more complex querying) in
+<a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a></p>
+</div>
+
+
+
+              
+            </article>
           </div>
-         </div>
-         <div class="admonition note">
-          <p class="admonition-title">
-           Note
-          </p>
-          <p>
-           You can read more examples (including transactions, several databases and a little more complex querying) in
-           <a class="reference internal" href="examples.html#examples">
-            <span class="std std-ref">
-             Examples
-            </span>
-           </a>
-          </p>
-         </div>
-        </section>
-       </section>
-      </article>
-     </div>
-    </div>
-   </main>
-  </div>
-  <footer class="md-footer">
-   <div class="md-footer-nav">
-    <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="index.html" rel="prev" title="Tortoise ORM">
-      <div class="md-flex__cell md-flex__cell--shrink">
-       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
-       </i>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-       <span class="md-flex__ellipsis">
-        <span class="md-footer-nav__direction">
-         Previous
-        </span>
-        Tortoise ORM
-       </span>
-      </div>
-     </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="reference.html" rel="next" title="Reference">
-      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-       <span class="md-flex__ellipsis">
-        <span class="md-footer-nav__direction">
-         Next
-        </span>
-        Reference
-       </span>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
-       </i>
-      </div>
-     </a>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tortoise ORM" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Tortoise ORM
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="reference.html" class="md-footer__link md-footer__link--next" aria-label="Next: Reference" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Reference
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
     </nav>
-   </div>
-   <div class="md-footer-meta md-typeset">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
     <div class="md-footer-meta__inner md-grid">
-     <div class="md-footer-copyright">
-      <div class="md-footer-copyright__highlight">
-       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
-      </div>
-      Created using
-      <a href="http://www.sphinx-doc.org/">
-       Sphinx
-      </a>
-      4.3.2.
-             and
-      <a href="https://github.com/bashtage/sphinx-material/">
-       Material for
-              Sphinx
-      </a>
-     </div>
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
     </div>
-   </div>
-  </footer>
-  <script src="_static/javascripts/application.js">
-  </script>
-  <script>
-   app.initialize({version: "1.0.4", url: {base: ".."}})
-  </script>
- </body>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.3.2.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+    
+      <script src="_static/javascripts/bundle.37d1338f.min.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+  </body>
 </html>
