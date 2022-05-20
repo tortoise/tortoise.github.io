@@ -1,0 +1,1730 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="_static/tortoise.png">
+    
+    
+      
+        <title>Tortoise ORM v0.19.1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="_static/stylesheets/main.8674dc46.min.css">
+      
+        
+        <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="#" title="Tortoise ORM v0.19.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.19.1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Table Of Contents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="getting_started.html" class="md-tabs__link">
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="reference.html" class="md-tabs__link">
+      <span title="reference (document)" class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="examples.html" class="md-tabs__link">
+      <span title="examples (document)" class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="contrib.html" class="md-tabs__link">
+      <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CHANGELOG.html" class="md-tabs__link">
+      <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="roadmap.html" class="md-tabs__link">
+      <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTING.html" class="md-tabs__link">
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTORS.html" class="md-tabs__link">
+      <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="#" title="Tortoise ORM v0.19.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.19.1 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.19.1 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference.html" class="md-nav__link">
+        <span title="reference (document)" class="md-ellipsis">Reference</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples.html" class="md-nav__link">
+        <span title="examples (document)" class="md-ellipsis">Examples</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contrib.html" class="md-nav__link">
+        <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG.html" class="md-nav__link">
+        <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap.html" class="md-nav__link">
+        <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTING.html" class="md-nav__link">
+        <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTORS.html" class="md-nav__link">
+        <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+
+
+  <h1 id="table-of-contents">Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Tortoise ORM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#why-was-tortoise-orm-built">Why was Tortoise ORM built?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#how-is-an-orm-useful">How is an ORM useful?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#features">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#clean-familiar-python-interface">Clean, familiar python interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#pluggable-database-backends">Pluggable Database backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#and-more">And more</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#optional-accelerators">Optional Accelerators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Set up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="setup.html#init-app">Init app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup.html#the-importance-of-cleaning-up">The Importance of cleaning up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup.html#module-tortoise">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise">tortoise.Tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.apps">apps</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.close_connections">close_connections</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.describe_model">describe_model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.describe_models">describe_models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.generate_schemas">generate_schemas</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.get_connection">get_connection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.init">init</a></li>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.Tortoise.init_models">init_models</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.run_async">tortoise.run_async</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="setup.html#tortoise.run_async-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">Databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#db-url">DB_URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#capabilities">Capabilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#tortoise.backends.base.client.Capabilities">tortoise.backends.base.client.Capabilities</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.Capabilities-parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#sqlite">SQLite</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#required-parameters">Required Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#optional-parameters">Optional parameters:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#postgresql">PostgreSQL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id3">Required Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id4">Optional parameters:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mysql-mariadb">MySQL/MariaDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id5">Required Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id6">Optional parameters:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#mssql-oracle">MSSQL/Oracle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id7">Required Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#id8">Optional parameters:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#passing-in-custom-ssl-certificates">Passing in custom SSL Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#base-db-client">Base DB client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient">tortoise.backends.base.client.BaseDBAsyncClient</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.query_class">query_class</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.executor_class">executor_class</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.schema_generator">schema_generator</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.capabilities">capabilities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">acquire_connection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.close">close</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.create_connection">create_connection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_create">db_create</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_delete">db_delete</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert">execute_insert</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_many">execute_many</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query">execute_query</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict">execute_query_dict</a></li>
+<li class="toctree-l5"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_script">execute_script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#use-of-models">Use of <code class="docutils literal notranslate"><span class="pre">__models__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#primary-keys">Primary Keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#inheritance">Inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#the-meta-class">The <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.Meta">tortoise.models.Model.Meta</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#foreignkeyfield"><code class="docutils literal notranslate"><span class="pre">ForeignKeyField</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="models.html#the-db-backing-field">The DB-backing field</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#fetching-the-foreign-object">Fetching the foreign object</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#manytomanyfield"><code class="docutils literal notranslate"><span class="pre">ManyToManyField</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#improving-relational-type-hinting">Improving relational type hinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#module-tortoise.models">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model">tortoise.models.Model</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="models.html#id0">Meta</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.all">all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.annotate">annotate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.bulk_create">bulk_create</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.bulk_update">bulk_update</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.check">check</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.clone">clone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.create">create</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.delete">delete</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.describe">describe</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.exclude">exclude</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.exists">exists</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.fetch_for_list">fetch_for_list</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.fetch_related">fetch_related</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.filter">filter</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.first">first</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.get">get</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.get_or_create">get_or_create</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.get_or_none">get_or_none</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.in_bulk">in_bulk</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.pk">pk</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.raw">raw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.refresh_from_db">refresh_from_db</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.register_listener">register_listener</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.save">save</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.select_for_update">select_for_update</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.update_from_dict">update_from_dict</a></li>
+<li class="toctree-l5"><a class="reference internal" href="models.html#tortoise.models.Model.update_or_create">update_or_create</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fields.html">Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fields.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fields.html#reference">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fields.html#module-tortoise.fields.base">Base Field</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.base.Field">tortoise.fields.base.Field</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fields.html#module-tortoise.fields.data">Data Fields</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.BigIntField">tortoise.fields.data.BigIntField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.BinaryField">tortoise.fields.data.BinaryField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.BooleanField">tortoise.fields.data.BooleanField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.CharEnumField">tortoise.fields.data.CharEnumField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.CharField">tortoise.fields.data.CharField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.DateField">tortoise.fields.data.DateField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.DatetimeField">tortoise.fields.data.DatetimeField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.DecimalField">tortoise.fields.data.DecimalField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.FloatField">tortoise.fields.data.FloatField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.IntEnumField">tortoise.fields.data.IntEnumField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.IntField">tortoise.fields.data.IntField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.JSONField">tortoise.fields.data.JSONField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.SmallIntField">tortoise.fields.data.SmallIntField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.TextField">tortoise.fields.data.TextField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.TimeDeltaField">tortoise.fields.data.TimeDeltaField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.data.UUIDField">tortoise.fields.data.UUIDField</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fields.html#module-tortoise.fields.relational">Relational Fields</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.relational.ForeignKeyField">tortoise.fields.relational.ForeignKeyField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.relational.ManyToManyField">tortoise.fields.relational.ManyToManyField</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#tortoise.fields.relational.OneToOneField">tortoise.fields.relational.OneToOneField</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fields.html#db-specific-fields">DB Specific Fields</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#module-tortoise.contrib.mysql.fields">MySQL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fields.html#module-tortoise.contrib.postgres.fields">Postgres</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fields.html#extending-a-field">Extending A Field</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="indexes.html">Indexes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="indexes.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="indexes.html#extending-index">Extending Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timezone.html">Timezone</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timezone.html#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#use-tz">use_tz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#id2">timezone</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timezone.html#module-tortoise.timezone">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.get_default_timezone">tortoise.timezone.get_default_timezone</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.get_default_timezone-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.get_timezone">tortoise.timezone.get_timezone</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.get_timezone-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.get_use_tz">tortoise.timezone.get_use_tz</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.get_use_tz-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.is_aware">tortoise.timezone.is_aware</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.is_aware-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.is_naive">tortoise.timezone.is_naive</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.is_naive-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.localtime">tortoise.timezone.localtime</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.localtime-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.localtime-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.make_aware">tortoise.timezone.make_aware</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.make_aware-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.make_aware-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.make_naive">tortoise.timezone.make_naive</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.make_naive-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.make_naive-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="timezone.html#tortoise.timezone.now">tortoise.timezone.now</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="timezone.html#tortoise.timezone.now-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Schema Creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="schema.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.html#raises">Raises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.html#return-type">Return type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.html#module-tortoise.utils">Helper Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="schema.html#tortoise.utils.generate_schema_for_client">tortoise.utils.generate_schema_for_client</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="schema.html#tortoise.utils.generate_schema_for_client-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="schema.html#tortoise.utils.generate_schema_for_client-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="schema.html#tortoise.utils.get_schema_sql">tortoise.utils.get_schema_sql</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="schema.html#tortoise.utils.get_schema_sql-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="schema.html#tortoise.utils.get_schema_sql-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="query.html">Query API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="query.html#queryset">QuerySet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySetSingle">tortoise.queryset.QuerySetSingle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet">tortoise.queryset.QuerySet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.all">all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.annotate">annotate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.as_query">as_query</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.bulk_create">bulk_create</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.bulk_update">bulk_update</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.count">count</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.delete">delete</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.distinct">distinct</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.exclude">exclude</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.exists">exists</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.explain">explain</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.filter">filter</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.first">first</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.force_index">force_index</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.get">get</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.get_or_none">get_or_none</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.group_by">group_by</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.in_bulk">in_bulk</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.limit">limit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.offset">offset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.only">only</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.order_by">order_by</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.prefetch_related">prefetch_related</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.raw">raw</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.resolve_filters">resolve_filters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.resolve_ordering">resolve_ordering</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.select_for_update">select_for_update</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.select_related">select_related</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.sql">sql</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.update">update</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.use_index">use_index</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.using_db">using_db</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.values">values</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.values_list">values_list</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery">tortoise.queryset.BulkCreateQuery</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery.sql">sql</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.BulkUpdateQuery">tortoise.queryset.BulkUpdateQuery</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.queryset.BulkUpdateQuery.sql">sql</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.CountQuery">tortoise.queryset.CountQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.DeleteQuery">tortoise.queryset.DeleteQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.ExistsQuery">tortoise.queryset.ExistsQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.FieldSelectQuery">tortoise.queryset.FieldSelectQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.RawSQLQuery">tortoise.queryset.RawSQLQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UpdateQuery">tortoise.queryset.UpdateQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.ValuesListQuery">tortoise.queryset.ValuesListQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.ValuesQuery">tortoise.queryset.ValuesQuery</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#foreign-key">Foreign Key</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation">tortoise.fields.relational.ReverseRelation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation.all">all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation.filter">filter</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation.limit">limit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation.offset">offset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ReverseRelation.order_by">order_by</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.ForeignKeyNullableRelation">tortoise.fields.relational.ForeignKeyNullableRelation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.ForeignKeyRelation">tortoise.fields.relational.ForeignKeyRelation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#one-to-one">One to One</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.OneToOneNullableRelation">tortoise.fields.relational.OneToOneNullableRelation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.OneToOneRelation">tortoise.fields.relational.OneToOneRelation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#many-to-many">Many to Many</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation">tortoise.fields.relational.ManyToManyRelation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.add">add</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.all">all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.clear">clear</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.filter">filter</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.limit">limit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.offset">offset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.order_by">order_by</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation.remove">remove</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#complex-prefetch">Complex prefetch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch">tortoise.query_utils.Prefetch</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">resolve_for_queryset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manager.html">Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manager.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Functions &amp; Aggregates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functions.html#id1">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Trim">tortoise.functions.Trim</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Length">tortoise.functions.Length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Coalesce">tortoise.functions.Coalesce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Lower">tortoise.functions.Lower</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Upper">tortoise.functions.Upper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Concat">tortoise.functions.Concat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.contrib.mysql.functions.Rand">tortoise.contrib.mysql.functions.Rand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.contrib.postgres.functions.Random">tortoise.contrib.postgres.functions.Random</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.contrib.sqlite.functions.Random">tortoise.contrib.sqlite.functions.Random</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html#aggregates">Aggregates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Count">tortoise.functions.Count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Sum">tortoise.functions.Sum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Max">tortoise.functions.Max</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Min">tortoise.functions.Min</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Avg">tortoise.functions.Avg</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html#module-tortoise.functions">Base function class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Function">tortoise.functions.Function</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="functions.html#tortoise.functions.Function-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="functions.html#tortoise.functions.Function.database_func">database_func</a></li>
+<li class="toctree-l5"><a class="reference internal" href="functions.html#tortoise.functions.Function.populate_field_object">populate_field_object</a></li>
+<li class="toctree-l5"><a class="reference internal" href="functions.html#tortoise.functions.Function.resolve">resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html#tortoise.functions.Aggregate">tortoise.functions.Aggregate</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="functions.html#tortoise.functions.Aggregate-parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html#custom-functions">Custom functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">Expressions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="expressions.html#q-expression">Q Expression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="expressions.html#tortoise.expressions.Q">tortoise.expressions.Q</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.AND">AND</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.OR">OR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.__and__">__and__</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.__invert__">__invert__</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.__or__">__or__</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.children">children</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.filters">filters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.join_type">join_type</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.negate">negate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Q.resolve">resolve</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="expressions.html#f-expression">F Expression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="expressions.html#subquery">Subquery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="expressions.html#rawsql">RawSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="expressions.html#case-when-expression">Case-When Expression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="expressions.html#tortoise.expressions.When">tortoise.expressions.When</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.When-parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="expressions.html#tortoise.expressions.Case">tortoise.expressions.Case</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="expressions.html#tortoise.expressions.Case-parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="transactions.html#tortoise.transactions.atomic">tortoise.transactions.atomic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="transactions.html#tortoise.transactions.atomic-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="transactions.html#tortoise.transactions.atomic.connection_name">connection_name</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="transactions.html#tortoise.transactions.atomic-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="transactions.html#tortoise.transactions.in_transaction">tortoise.transactions.in_transaction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="transactions.html#tortoise.transactions.in_transaction-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="transactions.html#tortoise.transactions.in_transaction.connection_name">connection_name</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="transactions.html#tortoise.transactions.in_transaction-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="connections.html">Connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="connections.html#api-reference">API Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler">tortoise.connection.ConnectionHandler</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.all">all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.close_all">close_all</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.db_config">db_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.discard">discard</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.get">get</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.reset">reset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.set">set</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.BaseORMException">tortoise.exceptions.BaseORMException</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError">tortoise.exceptions.ConfigurationError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.DBConnectionError">tortoise.exceptions.DBConnectionError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.DoesNotExist">tortoise.exceptions.DoesNotExist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError">tortoise.exceptions.FieldError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.IncompleteInstanceError">tortoise.exceptions.IncompleteInstanceError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.IntegrityError">tortoise.exceptions.IntegrityError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.MultipleObjectsReturned">tortoise.exceptions.MultipleObjectsReturned</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.NoValuesFetched">tortoise.exceptions.NoValuesFetched</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError">tortoise.exceptions.OperationalError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError">tortoise.exceptions.ParamsError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.TransactionManagementError">tortoise.exceptions.TransactionManagementError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.UnSupportedError">tortoise.exceptions.UnSupportedError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html#tortoise.exceptions.ValidationError">tortoise.exceptions.ValidationError</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="signals.html#tortoise.signals.Signals">tortoise.signals.Signals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.Signals.post_delete">post_delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.Signals.post_save">post_save</a></li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.Signals.pre_delete">pre_delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.Signals.pre_save">pre_save</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="signals.html#tortoise.signals.post_delete">tortoise.signals.post_delete</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.post_delete-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="signals.html#tortoise.signals.post_delete.senders">senders</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.post_delete-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="signals.html#tortoise.signals.post_save">tortoise.signals.post_save</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.post_save-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="signals.html#tortoise.signals.post_save.senders">senders</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.post_save-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="signals.html#tortoise.signals.pre_delete">tortoise.signals.pre_delete</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.pre_delete-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="signals.html#tortoise.signals.pre_delete.senders">senders</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.pre_delete-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="signals.html#tortoise.signals.pre_save">tortoise.signals.pre_save</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.pre_save-parameters">Parameters</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="signals.html#tortoise.signals.pre_save.senders">senders</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="signals.html#tortoise.signals.pre_save-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration.html#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration.html#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#initialization">Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#init-db">Init db</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#update-models-and-make-migrate">Update models and make migrate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#upgrade-to-latest-version">Upgrade to latest version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#downgrade-to-specified-version">Downgrade to specified version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#show-history">Show history</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration.html#show-heads-to-be-migrated">Show heads to be migrated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="validators.html">Validators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#built-in-validators">Built-in Validators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.CommaSeparatedIntegerListValidator">tortoise.validators.CommaSeparatedIntegerListValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.MaxLengthValidator">tortoise.validators.MaxLengthValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.MaxValueValidator">tortoise.validators.MaxValueValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.MinLengthValidator">tortoise.validators.MinLengthValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.MinValueValidator">tortoise.validators.MinValueValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.RegexValidator">tortoise.validators.RegexValidator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.Validator">tortoise.validators.Validator</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="validators.html#tortoise.validators.Validator.__call__">__call__</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv46_address">tortoise.validators.validate_ipv46_address</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv46_address-raises">Raises</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv4_address">tortoise.validators.validate_ipv4_address</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv4_address-raises">Raises</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv6_address">tortoise.validators.validate_ipv6_address</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv6_address-raises">Raises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#custom-validator">Custom Validator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html">Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="router.html#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="router.html#define-router">Define Router</a></li>
+<li class="toctree-l4"><a class="reference internal" href="router.html#config-router">Config Router</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">TortoiseCLI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#interactive-shell">Interactive shell</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/basic.html">Simple Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#basic">Basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#prefetching">Prefetching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#transactions">Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#group-by">Group By</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#schema-creation">Schema creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#two-databases">Two Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#relations">Relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#relations-with-unique-field">Relations with Unique field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#recursive-relations">Recursive Relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#enumeration-fields">Enumeration Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#model-signals">Model Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#manual-sql">Manual SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/basic.html#router">Router</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/pydantic.html">Pydantic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/pydantic.html#basic-pydantic">Basic Pydantic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/pydantic.html#early-model-init">Early model Init</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/pydantic.html#recursive-models-computed-fields">Recursive models + Computed fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/pydantic.html#tutorial-sources">Tutorial sources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/pydantic.html#basic-usage">1: Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/pydantic.html#querysets-lists">2: Querysets &amp; Lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/pydantic.html#relations-early-init">3: Relations &amp; Early-init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/pydantic.html#pydanticmeta-callables">4: PydanticMeta &amp; Callables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/fastapi.html">FastAPI Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/fastapi.html#basic-non-relational-example">Basic non-relational example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/fastapi.html#models-py">models.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/fastapi.html#tests-py">tests.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/fastapi.html#main-py">main.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quart.html">Quart Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/quart.html#models-py">models.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/quart.html#main-py">main.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/sanic.html">Sanic Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/sanic.html#models-py">models.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/sanic.html#main-py">main.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/starlette.html">Starlette Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/starlette.html#models-py">models.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/starlette.html#main-py">main.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/aiohttp.html">AIOHTTP Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/aiohttp.html#models-py">models.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/aiohttp.html#main-py">main.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/blacksheep.html">BlackSheep Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/blacksheep.html#basic-non-relational-example">Basic non-relational example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/blacksheep.html#models-py">models.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/blacksheep.html#test-api-py">test_api.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/blacksheep.html#server-py">server.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contrib.html">Contrib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contrib/linters.html">Linters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/linters.html#pylint-plugin">PyLint plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/linters.html#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/pydantic.html">Pydantic serialisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/pydantic.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#basic-usage">1: Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#querysets-lists">2: Querysets &amp; Lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#relations-early-init">3: Relations &amp; Early-init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#pydanticmeta-callables">4: PydanticMeta &amp; Callables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/pydantic.html#module-tortoise.contrib.pydantic.creator">Creators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_model_creator">tortoise.contrib.pydantic.creator.pydantic_model_creator</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_queryset_creator">tortoise.contrib.pydantic.creator.pydantic_queryset_creator</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/pydantic.html#pydanticmeta">PydanticMeta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta">tortoise.contrib.pydantic.creator.PydanticMeta</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles">allow_cycles</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations">backward_relations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.computed">computed</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.exclude">exclude</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields">exclude_raw_fields</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.include">include</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion">max_recursion</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically">sort_alphabetically</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/pydantic.html#module-tortoise.contrib.pydantic.base">Model classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticListModel">tortoise.contrib.pydantic.base.PydanticListModel</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset">from_queryset</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel">tortoise.contrib.pydantic.base.PydanticModel</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset">from_queryset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single">from_queryset_single</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm">from_tortoise_orm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/unittest.html">UnitTest support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/unittest.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/unittest.html#test-runners">Test Runners</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#green">Green</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#py-test">Py.test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#nose2">Nose2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/unittest.html#module-tortoise.contrib.test">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase">tortoise.contrib.test.IsolatedTestCase</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase.tortoise_test_modules">tortoise_test_modules</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase">tortoise.contrib.test.SimpleTestCase</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">assertListSortEqual</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncSetUp">asyncSetUp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncTearDown">asyncTearDown</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.SkipTest">tortoise.contrib.test.SkipTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.TestCase">tortoise.contrib.test.TestCase</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncSetUp">asyncSetUp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncTearDown">asyncTearDown</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.TruncationTestCase">tortoise.contrib.test.TruncationTestCase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.env_initializer">tortoise.contrib.test.env_initializer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.env_initializer-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.expectedFailure">tortoise.contrib.test.expectedFailure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.finalizer">tortoise.contrib.test.finalizer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.finalizer-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.getDBConfig">tortoise.contrib.test.getDBConfig</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.getDBConfig-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.getDBConfig-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.initializer">tortoise.contrib.test.initializer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.initializer-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.initializer-return-type">Return type</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.requireCapability">tortoise.contrib.test.requireCapability</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.requireCapability-parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.skip">tortoise.contrib.test.skip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.skipIf">tortoise.contrib.test.skipIf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/unittest.html#tortoise.contrib.test.skipUnless">tortoise.contrib.test.skipUnless</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/fastapi.html">Tortoise-ORM FastAPI integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/fastapi.html#module-tortoise.contrib.fastapi">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.HTTPNotFoundError">tortoise.contrib.fastapi.HTTPNotFoundError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.HTTPNotFoundError.detail">detail</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.register_tortoise">tortoise.contrib.fastapi.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/fastapi.html#tortoise.contrib.fastapi.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/quart.html">Tortoise-ORM Quart integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/quart.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/quart.html#module-tortoise.contrib.quart">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/quart.html#tortoise.contrib.quart.register_tortoise">tortoise.contrib.quart.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/quart.html#tortoise.contrib.quart.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/quart.html#tortoise.contrib.quart.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/quart.html#tortoise.contrib.quart.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/sanic.html">Tortoise-ORM Sanic integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/sanic.html#module-tortoise.contrib.sanic">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/sanic.html#tortoise.contrib.sanic.register_tortoise">tortoise.contrib.sanic.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/sanic.html#tortoise.contrib.sanic.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/sanic.html#tortoise.contrib.sanic.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/sanic.html#tortoise.contrib.sanic.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/starlette.html">Tortoise-ORM Starlette integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/starlette.html#module-tortoise.contrib.starlette">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/starlette.html#tortoise.contrib.starlette.register_tortoise">tortoise.contrib.starlette.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/starlette.html#tortoise.contrib.starlette.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/starlette.html#tortoise.contrib.starlette.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/starlette.html#tortoise.contrib.starlette.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/aiohttp.html">Tortoise-ORM aiohttp integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/aiohttp.html#module-tortoise.contrib.aiohttp">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/aiohttp.html#tortoise.contrib.aiohttp.register_tortoise">tortoise.contrib.aiohttp.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/aiohttp.html#tortoise.contrib.aiohttp.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/aiohttp.html#tortoise.contrib.aiohttp.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/aiohttp.html#tortoise.contrib.aiohttp.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/mysql.html">MySQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/mysql.html#indexes">Indexes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/mysql.html#tortoise.contrib.mysql.indexes.FullTextIndex">tortoise.contrib.mysql.indexes.FullTextIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/mysql.html#tortoise.contrib.mysql.indexes.SpatialIndex">tortoise.contrib.mysql.indexes.SpatialIndex</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/mysql.html#fields">Fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/mysql.html#tortoise.contrib.mysql.fields.GeometryField">tortoise.contrib.mysql.fields.GeometryField</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/mysql.html#search">Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/mysql.html#tortoise.contrib.mysql.search.SearchCriterion">tortoise.contrib.mysql.search.SearchCriterion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/postgres.html">Postgres</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/postgres.html#indexes">Indexes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.BloomIndex">tortoise.contrib.postgres.indexes.BloomIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.BrinIndex">tortoise.contrib.postgres.indexes.BrinIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.GinIndex">tortoise.contrib.postgres.indexes.GinIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.GistIndex">tortoise.contrib.postgres.indexes.GistIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.HashIndex">tortoise.contrib.postgres.indexes.HashIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.indexes.SpGistIndex">tortoise.contrib.postgres.indexes.SpGistIndex</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/postgres.html#fields">Fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.fields.TSVectorField">tortoise.contrib.postgres.fields.TSVectorField</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/postgres.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.functions.ToTsVector">tortoise.contrib.postgres.functions.ToTsVector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.functions.ToTsQuery">tortoise.contrib.postgres.functions.ToTsQuery</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrib/postgres.html#search">Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/postgres.html#tortoise.contrib.postgres.search.SearchCriterion">tortoise.contrib.postgres.search.SearchCriterion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contrib/blacksheep.html">Tortoise-ORM BlackSheep integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrib/blacksheep.html#module-tortoise.contrib.blacksheep">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="contrib/blacksheep.html#tortoise.contrib.blacksheep.register_tortoise">tortoise.contrib.blacksheep.register_tortoise</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="contrib/blacksheep.html#tortoise.contrib.blacksheep.register_tortoise-parameters">Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/blacksheep.html#tortoise.contrib.blacksheep.register_tortoise-raises">Raises</a></li>
+<li class="toctree-l5"><a class="reference internal" href="contrib/blacksheep.html#tortoise.contrib.blacksheep.register_tortoise-return-type">Return type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id2">0.19</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id3">0.19.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#added">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#fixed">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id4">0.19.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id5">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id6">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#deprecated">Deprecated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#changed">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id7">0.18.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id8">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id9">Fixed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id10">0.18.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id11">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id12">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id13">Changed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#removed">Removed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id14">0.17</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id15">0.17.8</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id16">Added</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id17">Fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id18">Changed</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id19">0.17.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id20">0.17.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id21">0.17.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id22">0.17.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id23">0.17.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id24">0.17.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id25">0.17.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id26">0.17.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id27">0.16</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id28">0.16.21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id29">0.16.20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id30">0.16.19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id31">0.16.18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id32">0.16.17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id33">0.16.16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id34">0.16.15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id35">0.16.14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id36">0.16.13</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id37">0.16.12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id38">0.16.11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id39">0.16.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id40">0.16.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id41">0.16.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id42">0.16.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id43">0.16.6</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#security-fixes">Security fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#other-changes">Other changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id44">0.16.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id45">0.16.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id46">0.16.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id47">0.16.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id48">0.16.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id49">0.16.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#new-features">New features:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#bugfixes">Bugfixes:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#removals">Removals:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id50">0.15</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id51">0.15.24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id52">0.15.23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id53">0.15.22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id54">0.15.21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id55">0.15.20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id56">0.15.19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id57">0.15.18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id58">0.15.17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id59">0.15.16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id60">0.15.15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id61">0.15.14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id62">0.15.13</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id63">0.15.12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id64">0.15.11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id65">0.15.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id66">0.15.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id67">0.15.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id68">0.15.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id69">0.15.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id70">0.15.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id71">0.15.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id72">0.15.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id73">0.15.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id74">0.15.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id75">0.15.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id76">New features:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id77">Bugfixes:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#deprecations">Deprecations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id78">0.14</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id79">0.14.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id80">0.14.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id81">0.14.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#enhancements">Enhancements:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id82">Bugfixes:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id83">Deprecations:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#breaking-changes">Breaking Changes:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id84">0.13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id85">0.13.12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id86">0.13.11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id87">0.13.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id88">0.13.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id89">0.13.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id90">0.13.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id91">0.13.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id92">0.13.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id93">0.13.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id94">0.13.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id95">0.13.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id96">0.13.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id97">0.13.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id98">New Features:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#id99">Bugfixes:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CHANGELOG.html#docs-examples">Docs/examples:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id100">0.12</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#retracted">0.12.7 (retracted)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id101">0.12.6 / 0.12.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id102">0.12.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id103">0.12.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id104">0.12.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id105">0.12.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id106">0.12.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id107">0.12.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id108">0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id109">0.11.13</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id110">0.11.12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id111">0.11.11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id112">0.11.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id113">0.11.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id114">0.11.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id115">0.11.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id116">0.11.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id117">0.11.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id118">0.11.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id119">0.11.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id120">0.11.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id121">0.11.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id122">0.11.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id123">0.10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id124">0.10.11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id125">0.10.10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id126">0.10.9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id127">0.10.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id128">0.10.7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id129">0.10.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id130">0.10.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id131">0.10.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id132">0.10.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id133">0.10.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id134">0.10.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id135">0.10.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#older">0.9 &amp; older</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id136">0.9.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id137">0.9.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id138">0.9.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id139">0.9.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id140">0.9.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id141">0.8.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id142">0.7.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id143">0.6.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id144">0.5.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id145">0.4.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id146">0.3.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CHANGELOG.html#id147">0.2.0</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#short-term">Short-term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#mid-term">Mid-term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#long-term">Long-term</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contribution Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#our-pledge">Our Pledge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#our-standards">Our Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#our-responsibilities">Our Responsibilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#scope">Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#enforcement">Enforcement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html#attribution">Attribution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#filing-a-bug-or-requesting-a-feature">Filing a bug or requesting a feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#have-a-chat">Have a chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#project-structure">Project structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#coding-guideline">Coding Guideline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#priorities">Priorities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#style">Style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#running-tests">Running tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#different-types-of-tests">Different types of tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#things-to-be-aware-of-when-running-the-test-suite">Things to be aware of when running the test suite</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTORS.html">Thanks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTORS.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTORS.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Tortoise ORM" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tortoise ORM
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.3.2.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
+    
+    
+      <script src="_static/javascripts/bundle.37d1338f.min.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+  </body>
+</html>
