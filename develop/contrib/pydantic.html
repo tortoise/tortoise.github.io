@@ -1,0 +1,2192 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../_static/tortoise.png">
+    
+    
+      
+        <title>Pydantic serialisation - Tortoise ORM v0.19.2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../_static/stylesheets/main.8674dc46.min.css">
+      
+        
+        <link rel="stylesheet" href="../_static/stylesheets/palette.92c9fe4a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../toc.html" title="Tortoise ORM v0.19.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.19.2 Documentation" data-md-component="logo">
+      <img src="../_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.19.2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pydantic serialisation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link">
+      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../getting_started.html" class="md-tabs__link">
+      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../reference.html" class="md-tabs__link">
+      <span title="reference (document)" class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../examples.html" class="md-tabs__link">
+      <span title="examples (document)" class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../contrib.html" class="md-tabs__link md-tabs__link--active">
+      <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CHANGELOG.html" class="md-tabs__link">
+      <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../roadmap.html" class="md-tabs__link">
+      <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CONTRIBUTING.html" class="md-tabs__link">
+      <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../CONTRIBUTORS.html" class="md-tabs__link">
+      <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../toc.html" title="Tortoise ORM v0.19.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.19.2 Documentation" data-md-component="logo">
+      <img src="../_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.19.2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started.html" class="md-nav__link">
+        <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference.html" class="md-nav__link">
+        <span title="reference (document)" class="md-ellipsis">Reference</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples.html" class="md-nav__link">
+        <span title="examples (document)" class="md-ellipsis">Examples</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../contrib.html"><span title="contrib (document)" class="md-ellipsis">Contrib</span></a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Contrib" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          <span title="contrib (document)" class="md-ellipsis">Contrib</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="linters.html" class="md-nav__link">
+        <span title="contrib/linters (document)" class="md-ellipsis">Linters</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span title="contrib/pydantic (document)" class="md-ellipsis">Pydantic serialisation</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        <span title="contrib/pydantic (document)" class="md-ellipsis">Pydantic serialisation</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span title="contrib/pydantic (document)" class="md-ellipsis">Pydantic serialisation</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">Tutorial</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">1:<wbr> Basic usage</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querysets-lists" class="md-nav__link">
+    <span class="md-ellipsis">2:<wbr> Querysets &amp; Lists</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relations-early-init" class="md-nav__link">
+    <span class="md-ellipsis">3:<wbr> Relations &amp; Early-<wbr>init</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydanticmeta-callables" class="md-nav__link">
+    <span class="md-ellipsis">4:<wbr> Pydantic<wbr>Meta &amp; Callables</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-tortoise.contrib.pydantic.creator" class="md-nav__link">
+    <span title="tortoise.contrib.pydantic.creator (Python module)" class="md-ellipsis">Creators</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator (Python function) — Function to build Pydantic Model off Tortoise Model." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>pydantic.<wbr>creator.<wbr>pydantic_<wbr>model_<wbr>creator</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.pydantic.creator.pydantic_model_creator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.cls" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.cls (Python parameter) — The Tortoise Model" class="md-ellipsis">cls</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.name" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.name (Python parameter) — Specify a custom name explicitly, instead of a generated name." class="md-ellipsis">name</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude (Python parameter) — Extra fields to exclude from the provided model." class="md-ellipsis">exclude</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.include" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.include (Python parameter) — Extra fields to include from the provided model." class="md-ellipsis">include</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.computed" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.computed (Python parameter) — Extra computed fields to include from the provided model." class="md-ellipsis">computed</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.optional" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.optional (Python parameter) — Extra optional fields for the provided model." class="md-ellipsis">optional</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles (Python parameter) — Do we allow any cycles in the generated model? This is only useful for recursive/self-referential models." class="md-ellipsis">allow_<wbr>cycles</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically (Python parameter) — Sort the parameters alphabetically instead of Field-definition order." class="md-ellipsis">sort_<wbr>alphabetically</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly (Python parameter) — Build a subset model that excludes any readonly fields" class="md-ellipsis">exclude_<wbr>readonly</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override (Python parameter) — A PydanticMeta class to override model&#39;s values." class="md-ellipsis">meta_<wbr>override</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator (Python function) — Function to build a Pydantic Model list off Tortoise Model." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>pydantic.<wbr>creator.<wbr>pydantic_<wbr>queryset_<wbr>creator</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.pydantic.creator.pydantic_queryset_creator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls (Python parameter) — The Tortoise Model to put in a list." class="md-ellipsis">cls</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name (Python parameter) — Specify a custom name explicitly, instead of a generated name." class="md-ellipsis">name</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude (Python parameter) — Extra fields to exclude from the provided model." class="md-ellipsis">exclude</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include (Python parameter) — Extra fields to include from the provided model." class="md-ellipsis">include</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed (Python parameter) — Extra computed fields to include from the provided model." class="md-ellipsis">computed</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles (Python parameter) — Do we allow any cycles in the generated model? This is only useful for recursive/self-referential models." class="md-ellipsis">allow_<wbr>cycles</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically (Python parameter) — Sort the parameters alphabetically instead of Field-definition order." class="md-ellipsis">sort_<wbr>alphabetically</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pydanticmeta" class="md-nav__link">
+    <span class="md-ellipsis">Pydantic<wbr>Meta</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PydanticMeta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta (Python class) — The PydanticMeta class is used to configure metadata for generating the pydantic Model." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>pydantic.<wbr>creator.<wbr>Pydantic<wbr>Meta</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.pydantic.creator.PydanticMeta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles (Python attribute) — Allow cycles in recursion - This can result in HUGE data - Be careful! Please use this with exclude/include and sane max_recursion" class="md-ellipsis">allow_<wbr>cycles</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations (Python attribute) — Use backward relations without annotations - not recommended, it can be huge data without control" class="md-ellipsis">backward_<wbr>relations</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.computed" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.computed (Python attribute) — Computed fields can be listed here to use in pydantic model" class="md-ellipsis">computed</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.exclude" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.exclude (Python attribute) — Fields listed in this property will be excluded from pydantic model" class="md-ellipsis">exclude</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields (Python attribute) — If we should exclude raw fields (the ones have _id suffixes) of relations" class="md-ellipsis">exclude_<wbr>raw_<wbr>fields</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.include" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.include (Python attribute) — If not empty, only fields this property contains will be in the pydantic model" class="md-ellipsis">include</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion (Python attribute) — Maximum recursion level allowed" class="md-ellipsis">max_<wbr>recursion</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically (Python attribute) — Sort fields alphabetically. If not set (or False) then leave fields in declaration order" class="md-ellipsis">sort_<wbr>alphabetically</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-tortoise.contrib.pydantic.base" class="md-nav__link">
+    <span title="tortoise.contrib.pydantic.base (Python module)" class="md-ellipsis">Model classes</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticListModel" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.contrib.pydantic.base.PydanticListModel (Python class) — Pydantic BaseModel for List of Tortoise Models" class="md-ellipsis">tortoise.<wbr>contrib.<wbr>pydantic.<wbr>base.<wbr>Pydantic<wbr>List<wbr>Model</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.pydantic.base.PydanticListModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset (Python method) — Returns a serializable pydantic model instance that contains a list of models, from the provided queryset." class="md-ellipsis">from_<wbr>queryset</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_queryset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset (Python parameter) — a queryset on the model this PydanticListModel is based on." class="md-ellipsis">queryset</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>pydantic.<wbr>base.<wbr>Pydantic<wbr>Model</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.pydantic.base.PydanticModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset (Python method) — Returns a serializable pydantic model instance that contains a list of models, from the provided queryset." class="md-ellipsis">from_<wbr>queryset</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_queryset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset (Python parameter) — a queryset on the model this PydanticModel is based on." class="md-ellipsis">queryset</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single (Python method) — Returns a serializable pydantic model instance for a single model from the provided queryset." class="md-ellipsis">from_<wbr>queryset_<wbr>single</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_queryset_single">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset (Python parameter) — a queryset on the model this PydanticModel is based on." class="md-ellipsis">queryset</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm (Python method) — Returns a serializable pydantic model instance built from the provided model instance." class="md-ellipsis">from_<wbr>tortoise_<wbr>orm</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="from_tortoise_orm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj (Python parameter) — The Model instance you want serialized." class="md-ellipsis">obj</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="unittest.html" class="md-nav__link">
+        <span title="contrib/unittest (document)" class="md-ellipsis">Unit<wbr>Test support</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fastapi.html" class="md-nav__link">
+        <span title="contrib/fastapi (document)" class="md-ellipsis">Tortoise-<wbr>ORM Fast<wbr>API integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quart.html" class="md-nav__link">
+        <span title="contrib/quart (document)" class="md-ellipsis">Tortoise-<wbr>ORM Quart integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sanic.html" class="md-nav__link">
+        <span title="contrib/sanic (document)" class="md-ellipsis">Tortoise-<wbr>ORM Sanic integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="starlette.html" class="md-nav__link">
+        <span title="contrib/starlette (document)" class="md-ellipsis">Tortoise-<wbr>ORM Starlette integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aiohttp.html" class="md-nav__link">
+        <span title="contrib/aiohttp (document)" class="md-ellipsis">Tortoise-<wbr>ORM aiohttp integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mysql.html" class="md-nav__link">
+        <span title="contrib/mysql (document)" class="md-ellipsis">My<wbr>SQL</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="postgres.html" class="md-nav__link">
+        <span title="contrib/postgres (document)" class="md-ellipsis">Postgres</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blacksheep.html" class="md-nav__link">
+        <span title="contrib/blacksheep (document)" class="md-ellipsis">Tortoise-<wbr>ORM Black<wbr>Sheep integration</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG.html" class="md-nav__link">
+        <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap.html" class="md-nav__link">
+        <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING.html" class="md-nav__link">
+        <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTORS.html" class="md-nav__link">
+        <span title="CONTRIBUTORS (document)" class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset" role="main">
+                
+
+
+  <h1 id="pydantic-serialisation"><span id="contrib-pydantic"></span>Pydantic serialisation<a class="headerlink" href="#pydantic-serialisation" title="Permalink to this headline">¶</a></h1>
+<p>Tortoise ORM has a Pydantic plugin that will generate Pydantic Models from Tortoise Models, and then provides helper functions to serialise that model and its related objects.</p>
+<p>We currently only support generating Pydantic objects for serialisation, and no deserialisation at this stage.</p>
+<p>See the <a class="reference internal" href="../examples/pydantic.html#examples-pydantic"><span class="std std-ref">Pydantic Examples</span></a></p>
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<h3 id="basic-usage">1: Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h3>
+<p>Here we introduce:</p>
+<ul class="simple">
+<li><p>Creating a Pydantic model from a Tortoise model</p></li>
+<li><p>Docstrings &amp; doc-comments are used</p></li>
+<li><p>Evaluating the generated schema</p></li>
+<li><p>Simple serialisation with both <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> and <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p></li>
+</ul>
+<p>Source to example: <a class="reference internal" href="../examples/pydantic.html#example-pydantic-tut1"><span class="std std-ref">1: Basic usage</span></a></p>
+<p>Lets start with a basic Tortoise Model:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1">#: The date-time the Tournament record was created at</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="line-block">
+<div class="line">To create a Pydantic model from that one would call:</div>
+<div class="line"><a class="reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator" title="tortoise.contrib.pydantic.creator.pydantic_model_creator (Python function) — Function to build Pydantic Model off Tortoise Model."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.contrib.pydantic.creator.pydantic_model_creator()</span></code></a></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+
+<span class="n">Tournament_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>And now have a <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> that can be used for representing schema and serialisation.</p>
+<p>The JSON-Schema of <code class="docutils literal notranslate"><span class="pre">Tournament_Pydantic</span></code> is now:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;title&#39;: &#39;Tournament&#39;,</span>
+<span class="go">    &#39;description&#39;: &#39;This references a Tournament&#39;,</span>
+<span class="go">    &#39;type&#39;: &#39;object&#39;,</span>
+<span class="go">    &#39;properties&#39;: {</span>
+<span class="go">        &#39;id&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Id&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;integer&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;name&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Name&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;created_at&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Created At&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;The date-time the Tournament record was created at&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;,</span>
+<span class="go">            &#39;format&#39;: &#39;date-time&#39;</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</code></pre></div>
+</div>
+<p>Note how the class docstring and doc-comment <code class="docutils literal notranslate"><span class="pre">#:</span></code> is included as descriptions in the Schema.</p>
+<p>To serialise an object it is simply <em>(in an async context)</em>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+<span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> or <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;id&#39;: 1,</span>
+<span class="go">    &#39;name&#39;: &#39;New Tournament&#39;,</span>
+<span class="go">    &#39;created_at&#39;: datetime.datetime(2020, 3, 1, 20, 28, 9, 346808)</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &quot;id&quot;: 1,</span>
+<span class="go">    &quot;name&quot;: &quot;New Tournament&quot;,</span>
+<span class="go">    &quot;created_at&quot;: &quot;2020-03-01T20:28:09.346808&quot;</span>
+<span class="go">}</span>
+</code></pre></div>
+</div>
+<h3 id="querysets-lists">2: Querysets &amp; Lists<a class="headerlink" href="#querysets-lists" title="Permalink to this headline">¶</a></h3>
+<p>Here we introduce:</p>
+<ul class="simple">
+<li><p>Creating a list-model to serialise a queryset</p></li>
+<li><p>Default sorting is honoured</p></li>
+</ul>
+<p>Source to example: <a class="reference internal" href="../examples/pydantic.html#example-pydantic-tut2"><span class="std std-ref">2: Querysets &amp; Lists</span></a></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1">#: The date-time the Tournament record was created at</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1"># Define the default ordering</span>
+        <span class="c1">#  the pydantic serialiser will use this to order the results</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="line-block">
+<div class="line">To create a Pydantic list-model from that one would call:</div>
+<div class="line"><a class="reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator (Python function) — Function to build a Pydantic Model list off Tortoise Model."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.contrib.pydantic.creator.pydantic_queryset_creator()</span></code></a></div>
+</div>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_queryset_creator</span>
+
+<span class="n">Tournament_Pydantic_List</span> <span class="o">=</span> <span class="n">pydantic_queryset_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>And now have a <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> that can be used for representing schema and serialisation.</p>
+<p>The JSON-Schema of <code class="docutils literal notranslate"><span class="pre">Tournament_Pydantic_List</span></code> is now:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;title&#39;: &#39;Tournaments&#39;,</span>
+<span class="go">    &#39;description&#39;: &#39;This references a Tournament&#39;,</span>
+<span class="go">    &#39;type&#39;: &#39;array&#39;,</span>
+<span class="go">    &#39;items&#39;: {</span>
+<span class="go">        &#39;$ref&#39;: &#39;#/definitions/Tournament&#39;</span>
+<span class="go">    },</span>
+<span class="go">    &#39;definitions&#39;: {</span>
+<span class="go">        &#39;Tournament&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Tournament&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;This references a Tournament&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;object&#39;,</span>
+<span class="go">            &#39;properties&#39;: {</span>
+<span class="go">                &#39;id&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Id&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;integer&#39;</span>
+<span class="go">                },</span>
+<span class="go">                &#39;name&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Name&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;string&#39;</span>
+<span class="go">                },</span>
+<span class="go">                &#39;created_at&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Created At&#39;,</span>
+<span class="go">                    &#39;description&#39;: &#39;The date-time the Tournament record was created at&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;string&#39;,</span>
+<span class="go">                    &#39;format&#39;: &#39;date-time&#39;</span>
+<span class="go">                }</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</code></pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">Tournament</span></code> is now not the root. A simple list is.</p>
+<p>To serialise an object it is simply <em>(in an async context)</em>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create objects</span>
+<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Another&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Last Tournament&quot;</span><span class="p">)</span>
+
+<span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> or <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;__root__&#39;: [</span>
+<span class="go">        {</span>
+<span class="go">            &#39;id&#39;: 2,</span>
+<span class="go">            &#39;name&#39;: &#39;Another&#39;,</span>
+<span class="go">            &#39;created_at&#39;: datetime.datetime(2020, 3, 2, 6, 53, 39, 776504)</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &#39;id&#39;: 3,</span>
+<span class="go">            &#39;name&#39;: &#39;Last Tournament&#39;,</span>
+<span class="go">            &#39;created_at&#39;: datetime.datetime(2020, 3, 2, 6, 53, 39, 776848)</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &#39;id&#39;: 1,</span>
+<span class="go">            &#39;name&#39;: &#39;New Tournament&#39;,</span>
+<span class="go">            &#39;created_at&#39;: datetime.datetime(2020, 3, 2, 6, 53, 39, 776211)</span>
+<span class="go">        }</span>
+<span class="go">    ]</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;id&quot;: 2,</span>
+<span class="go">        &quot;name&quot;: &quot;Another&quot;,</span>
+<span class="go">        &quot;created_at&quot;: &quot;2020-03-02T06:53:39.776504&quot;</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;id&quot;: 3,</span>
+<span class="go">        &quot;name&quot;: &quot;Last Tournament&quot;,</span>
+<span class="go">        &quot;created_at&quot;: &quot;2020-03-02T06:53:39.776848&quot;</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;id&quot;: 1,</span>
+<span class="go">        &quot;name&quot;: &quot;New Tournament&quot;,</span>
+<span class="go">        &quot;created_at&quot;: &quot;2020-03-02T06:53:39.776211&quot;</span>
+<span class="go">    }</span>
+<span class="go">]</span>
+</code></pre></div>
+</div>
+<p>Note how <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> has a <code class="docutils literal notranslate"><span class="pre">_root__</span></code> element with the list, but the <code class="docutils literal notranslate"><span class="pre">.json()</span></code> has the list as root.
+Also note how the results are sorted alphabetically by <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<h3 id="relations-early-init">3: Relations &amp; Early-init<a class="headerlink" href="#relations-early-init" title="Permalink to this headline">¶</a></h3>
+<p>Here we introduce:</p>
+<ul class="simple">
+<li><p>Relationships</p></li>
+<li><p>Early model init</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The part of this tutorial about early-init is only required if you need to generate the pydantic models <strong>before</strong> you have initialised Tortoise ORM.</p>
+<p>Look at <a class="reference internal" href="../examples/pydantic.html#example-pydantic-basic"><span class="std std-ref">Basic Pydantic</span></a> (in function <code class="docutils literal notranslate"><span class="pre">run</span></code>) to see where the <code class="docutils literal notranslate"><span class="pre">*_creator</span> <span class="pre">is</span> <span class="pre">only</span></code> called <strong>after</strong> we initialised Tortoise ORM properly, in that case an early init is not needed.</p>
+</div>
+<p>Source to example: <a class="reference internal" href="../examples/pydantic.html#example-pydantic-tut3"><span class="std std-ref">3: Relations &amp; Early-init</span></a></p>
+<p>We define our models with a relationship:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1">#: The date-time the Tournament record was created at</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references an Event in a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
+    <span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Next we create our <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> using <code class="docutils literal notranslate"><span class="pre">pydantic_model_creator</span></code>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+
+<span class="n">Tournament_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>The JSON-Schema of <code class="docutils literal notranslate"><span class="pre">Tournament_Pydantic</span></code> is now:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;title&#39;: &#39;Tournament&#39;,</span>
+<span class="go">    &#39;description&#39;: &#39;This references a Tournament&#39;,</span>
+<span class="go">    &#39;type&#39;: &#39;object&#39;,</span>
+<span class="go">    &#39;properties&#39;: {</span>
+<span class="go">        &#39;id&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Id&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;integer&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;name&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Name&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;created_at&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Created At&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;The date-time the Tournament record was created at&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;,</span>
+<span class="go">            &#39;format&#39;: &#39;date-time&#39;</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</code></pre></div>
+</div>
+<p>Oh no! Where is the relation?</p>
+<p>Because the models have not fully initialised, it doesn’t know about the relations at this stage.</p>
+<p>We need to initialise our model relationships early using <a class="reference internal" href="../setup.html#tortoise.Tortoise.init_models" title="tortoise.Tortoise.init_models (Python method) — Early initialisation of Tortoise ORM Models."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.Tortoise.init_models()</span></code></a></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
+<span class="c1"># Now lets try again</span>
+<span class="n">Tournament_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>The JSON-Schema of <code class="docutils literal notranslate"><span class="pre">Tournament_Pydantic</span></code> is now:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
+<span class="go">{</span>
+<span class="go">    &#39;title&#39;: &#39;Tournament&#39;,</span>
+<span class="go">    &#39;description&#39;: &#39;This references a Tournament&#39;,</span>
+<span class="go">    &#39;type&#39;: &#39;object&#39;,</span>
+<span class="go">    &#39;properties&#39;: {</span>
+<span class="go">        &#39;id&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Id&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;integer&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;name&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Name&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;created_at&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Created At&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;The date-time the Tournament record was created at&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;string&#39;,</span>
+<span class="go">            &#39;format&#39;: &#39;date-time&#39;</span>
+<span class="go">        },</span>
+<span class="go">        &#39;events&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Events&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;The Tournement this happens in&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;array&#39;,</span>
+<span class="go">            &#39;items&#39;: {</span>
+<span class="go">                &#39;$ref&#39;: &#39;#/definitions/Event&#39;</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    },</span>
+<span class="go">    &#39;definitions&#39;: {</span>
+<span class="go">        &#39;Event&#39;: {</span>
+<span class="go">            &#39;title&#39;: &#39;Event&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;This references an Event in a Tournament&#39;,</span>
+<span class="go">            &#39;type&#39;: &#39;object&#39;,</span>
+<span class="go">            &#39;properties&#39;: {</span>
+<span class="go">                &#39;id&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Id&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;integer&#39;</span>
+<span class="go">                },</span>
+<span class="go">                &#39;name&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Name&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;string&#39;</span>
+<span class="go">                },</span>
+<span class="go">                &#39;created_at&#39;: {</span>
+<span class="go">                    &#39;title&#39;: &#39;Created At&#39;,</span>
+<span class="go">                    &#39;type&#39;: &#39;string&#39;,</span>
+<span class="go">                    &#39;format&#39;: &#39;date-time&#39;</span>
+<span class="go">                }</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</code></pre></div>
+</div>
+<p>Aha! that’s much better.</p>
+<p>Note we can also create a model for <code class="docutils literal notranslate"><span class="pre">Event</span></code> the same way, and it should just work:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">Event_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">schema</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Event&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;This references an Event in a Tournament&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Id&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;created_at&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Created At&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;date-time&#39;</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;tournament&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Tournament&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;The Tournement this happens in&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;allOf&#39;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;$ref&#39;</span><span class="p">:</span> <span class="s1">&#39;#/definitions/Tournament&#39;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;definitions&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Tournament&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Tournament&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;This references a Tournament&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Id&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;created_at&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Created At&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;The date-time the Tournament record was created at&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;date-time&#39;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p>And that also has the relation defined!</p>
+<p>Note how both schema’s don’t follow relations back. This is on by default, and in a later tutorial we will show the options.</p>
+<p>Lets create and serialise the objects and see what they look like <em>(in an async context)</em>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create objects</span>
+<span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+<span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;The Event&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+
+<span class="c1"># Serialise Tournament</span>
+<span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Tournament&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-02T07:23:27.731656&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Event&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-02T07:23:27.732492&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p>And serialising the event <em>(in an async context)</em>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">eventpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">eventpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Event&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-02T07:23:27.732492&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tournament&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Tournament&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-02T07:23:27.731656&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h3 id="pydanticmeta-callables">4: PydanticMeta &amp; Callables<a class="headerlink" href="#pydanticmeta-callables" title="Permalink to this headline">¶</a></h3>
+<p>Here we introduce:</p>
+<ul class="simple">
+<li><p>Configuring model creator via <code class="docutils literal notranslate"><span class="pre">PydanticMeta</span></code> class.</p></li>
+<li><p>Using callable functions to annotate extra data.</p></li>
+</ul>
+<p>Source to example: <a class="reference internal" href="../examples/pydantic.html#example-pydantic-tut4"><span class="std std-ref">4: PydanticMeta &amp; Callables</span></a></p>
+<p>Let’s add some methods that calculate data, and tell the creators to use them:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># It is useful to define the reverse relations manually so that type checking</span>
+    <span class="c1">#  and auto completion work</span>
+    <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computed length of name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">events_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computed team size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">NoValuesFetched</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+        <span class="c1"># Let&#39;s exclude the created timestamp</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
+        <span class="c1"># Let&#39;s include two callables as computed columns</span>
+        <span class="n">computed</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="s2">&quot;events_num&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This references an Event in a Tournament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+
+    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
+</code></pre></div>
+</div>
+<p>There is much to unpack here.</p>
+<p>Firstly, we defined a <code class="docutils literal notranslate"><span class="pre">PydanticMeta</span></code> block, and in there is configuration options for the pydantic model creator.
+See <a class="reference internal" href="#tortoise.contrib.pydantic.creator.PydanticMeta" title="tortoise.contrib.pydantic.creator.PydanticMeta (Python class) — The PydanticMeta class is used to configure metadata for generating the pydantic Model."><code class="xref py py-class docutils literal notranslate"><span class="pre">tortoise.contrib.pydantic.creator.PydanticMeta</span></code></a> for the available options.</p>
+<p>Secondly, we excluded <code class="docutils literal notranslate"><span class="pre">created_at</span></code> in both models, as we decided it provided no benefit.</p>
+<p>Thirly, we added two callables: <code class="docutils literal notranslate"><span class="pre">name_length</span></code> and <code class="docutils literal notranslate"><span class="pre">events_num</span></code>. We want these as part of the result set.
+Note that callables/computed fields require manual specification of return type, as without this we can’t determine the record type which is needed to create a valid Pydantic schema.
+This is not needed for standard Tortoise ORM fields, as the fields already define a valid type.</p>
+<p>Note that the Pydantic serializer can’t call async methods, but since the tortoise helpers pre-fetch relational data, it is available before serialization.
+So we don’t need to await the relation.
+We should however protect against the case where no prefetching was done, hence catching and handling the <code class="docutils literal notranslate"><span class="pre">tortoise.exceptions.NoValuesFetched</span></code> exception.</p>
+<p>Next we create our <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> using <code class="docutils literal notranslate"><span class="pre">pydantic_model_creator</span></code>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">init_models</span><span class="p">([</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span> <span class="s2">&quot;models&quot;</span><span class="p">)</span>
+<span class="n">Tournament_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Tournament</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>The JSON-Schema of <code class="docutils literal notranslate"><span class="pre">Tournament_Pydantic</span></code> is now:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tournament&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This references a Tournament&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Events&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Tournement this happens in&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/Event&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name Length&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Computes length of name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;events_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Events Num&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Computes team size.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;definitions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Event&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This references an Event in a Tournament&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">created_at</span></code> is removed, and <code class="docutils literal notranslate"><span class="pre">name_length</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">events_num</span></code> is added.</p>
+<p>Lets create and serialise the objects and see what they look like <em>(in an async context)</em>:</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create objects</span>
+<span class="n">tournament</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Tournament&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Event 1&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Event 2&quot;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+
+<span class="c1"># Serialise Tournament</span>
+<span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Tournament&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Event 1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Event 2&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;name_length&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="s2">&quot;events_num&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="module-tortoise.contrib.pydantic.creator"><span id="creators"></span>Creators<a class="headerlink" href="#module-tortoise.contrib.pydantic.creator" title="Permalink to this headline">¶</a></h2>
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.pydantic.creator.pydantic_model_creator">
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.pydantic.creator.</span></span><span class="sig-name descname"><span class="pre">pydantic_model_creator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.cls" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.cls (Python parameter) — The Tortoise Model"><span class="n"><span class="pre">cls</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.name" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.name (Python parameter) — Specify a custom name explicitly, instead of a generated name."><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude (Python parameter) — Extra fields to exclude from the provided model."><span class="n"><span class="pre">exclude</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.include" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.include (Python parameter) — Extra fields to include from the provided model."><span class="n"><span class="pre">include</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.computed" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.computed (Python parameter) — Extra computed fields to include from the provided model."><span class="n"><span class="pre">computed</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.optional" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.optional (Python parameter) — Extra optional fields for the provided model."><span class="n"><span class="pre">optional</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles (Python parameter) — Do we allow any cycles in the generated model? This is only useful for recursive/self-referential models."><span class="n"><span class="pre">allow_cycles</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically (Python parameter) — Sort the parameters alphabetically instead of Field-definition order."><span class="n"><span class="pre">sort_alphabetically</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">_stack</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly (Python parameter) — Build a subset model that excludes any readonly fields"><span class="n"><span class="pre">exclude_readonly</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override" title="tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override (Python parameter) — A PydanticMeta class to override model's values."><span class="n"><span class="pre">meta_override</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/creator.html#pydantic_model_creator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to build <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> off Tortoise Model.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.cls"><span class="n sig-name">cls</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.name"><span class="n sig-name">name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.name" title="Permalink to this definition">¶</a></dt><dd><p>Specify a custom name explicitly, instead of a generated name.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude"><span class="n sig-name">exclude</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.include"><span class="n sig-name">include</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.computed"><span class="n sig-name">computed</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.optional"><span class="n sig-name">optional</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.optional" title="Permalink to this definition">¶</a></dt><dd><p>Extra optional fields for the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles"><span class="n sig-name">allow_cycles</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
+This is only useful for recursive/self-referential models.</p>
+<p>A value of <code class="docutils literal notranslate"><span class="pre">False</span></code> (the default) will prevent any and all backtracking.</p>
+</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically"><span class="n sig-name">sort_alphabetically</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
+<p>The default order would be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Field definition order +</p></li>
+<li><p>order of reverse relations (as discovered) +</p></li>
+<li><p>order of computed functions (as provided).</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly"><span class="n sig-name">exclude_readonly</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly" title="Permalink to this definition">¶</a></dt><dd><p>Build a subset model that excludes any readonly fields</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override"><span class="n sig-name">meta_override</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override" title="Permalink to this definition">¶</a></dt><dd><p>A PydanticMeta class to override model’s values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects."><code class="xref py py-class docutils literal notranslate"><span class="pre">PydanticModel</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator">
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.pydantic.creator.</span></span><span class="sig-name descname"><span class="pre">pydantic_queryset_creator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls (Python parameter) — The Tortoise Model to put in a list."><span class="n"><span class="pre">cls</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name (Python parameter) — Specify a custom name explicitly, instead of a generated name."><span class="n"><span class="pre">name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude (Python parameter) — Extra fields to exclude from the provided model."><span class="n"><span class="pre">exclude</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include (Python parameter) — Extra fields to include from the provided model."><span class="n"><span class="pre">include</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed (Python parameter) — Extra computed fields to include from the provided model."><span class="n"><span class="pre">computed</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles (Python parameter) — Do we allow any cycles in the generated model? This is only useful for recursive/self-referential models."><span class="n"><span class="pre">allow_cycles</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically" title="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically (Python parameter) — Sort the parameters alphabetically instead of Field-definition order."><span class="n"><span class="pre">sort_alphabetically</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/creator.html#pydantic_queryset_creator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to build a <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">Pydantic Model</a> list off Tortoise Model.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls"><span class="n sig-name">cls</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model to put in a list.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name"><span class="n sig-name">name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name" title="Permalink to this definition">¶</a></dt><dd><p><p>Specify a custom name explicitly, instead of a generated name.</p>
+<p>The list generated name is currently naive and merely adds a “s” to the end
+of the singular name.</p>
+</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude"><span class="n sig-name">exclude</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include"><span class="n sig-name">include</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed"><span class="n sig-name">computed</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles"><span class="n sig-name">allow_cycles</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
+This is only useful for recursive/self-referential models.</p>
+<p>A value of <code class="docutils literal notranslate"><span class="pre">False</span></code> (the default) will prevent any and all backtracking.</p>
+</p>
+</dd>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically"><span class="n sig-name">sort_alphabetically</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
+<p>The default order would be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Field definition order +</p></li>
+<li><p>order of reverse relations (as discovered) +</p></li>
+<li><p>order of computed functions (as provided).</p></li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticListModel" title="tortoise.contrib.pydantic.base.PydanticListModel (Python class) — Pydantic BaseModel for List of Tortoise Models"><code class="xref py py-class docutils literal notranslate"><span class="pre">PydanticListModel</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<h2 id="pydanticmeta">PydanticMeta<a class="headerlink" href="#pydanticmeta" title="Permalink to this headline">¶</a></h2>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.pydantic.creator.</span></span><span class="sig-name descname"><span class="pre">PydanticMeta</span></span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/creator.html#PydanticMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">PydanticMeta</span></code> class is used to configure metadata for generating the pydantic Model.</p>
+<p>Usage:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;baa&quot;</span><span class="p">)</span>
+        <span class="n">computed</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;count_peanuts&quot;</span><span class="p">,</span> <span class="p">)</span>
+</code></pre></div>
+</div>
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles">
+<span class="sig-name descname"><span class="pre">allow_cycles</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow cycles in recursion - This can result in HUGE data - Be careful!
+Please use this with <code class="docutils literal notranslate"><span class="pre">exclude</span></code>/<code class="docutils literal notranslate"><span class="pre">include</span></code> and sane <code class="docutils literal notranslate"><span class="pre">max_recursion</span></code></p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations">
+<span class="sig-name descname"><span class="pre">backward_relations</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use backward relations without annotations - not recommended, it can be huge data
+without control</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.computed">
+<span class="sig-name descname"><span class="pre">computed</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.computed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computed fields can be listed here to use in pydantic model</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.exclude">
+<span class="sig-name descname"><span class="pre">exclude</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fields listed in this property will be excluded from pydantic model</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields">
+<span class="sig-name descname"><span class="pre">exclude_raw_fields</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>If we should exclude raw fields (the ones have _id suffixes) of relations</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.include">
+<span class="sig-name descname"><span class="pre">include</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.include" title="Permalink to this definition">¶</a></dt>
+<dd><p>If not empty, only fields this property contains will be in the pydantic model</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion">
+<span class="sig-name descname"><span class="pre">max_recursion</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="mi">3</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum recursion level allowed</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically">
+<span class="sig-name descname"><span class="pre">sort_alphabetically</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort fields alphabetically.
+If not set (or <code class="docutils literal notranslate"><span class="pre">False</span></code>) then leave fields in declaration order</p>
+</dd></dl>
+
+</dd></dl>
+
+<h2 id="module-tortoise.contrib.pydantic.base"><span id="model-classes"></span>Model classes<a class="headerlink" href="#module-tortoise.contrib.pydantic.base" title="Permalink to this headline">¶</a></h2>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticListModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.pydantic.base.</span></span><span class="sig-name descname"><span class="pre">PydanticListModel</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticListModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pydantic BaseModel for List of Tortoise Models</p>
+<p>This provides an extra method above the usual Pydantic
+<a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/#model-properties">model properties</a></p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_queryset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset" title="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset (Python parameter) — a queryset on the model this PydanticListModel is based on."><span class="n"><span class="pre">queryset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticListModel.from_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serializable pydantic model instance that contains a list of models,
+from the provided queryset.</p>
+<p>This will prefetch all the relations automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset"><span class="sig-name descname">queryset</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="../query.html#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a></span></span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset.queryset" title="Permalink to this definition">¶</a></dt><dd><p>a queryset on the model this PydanticListModel is based on.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticListModel" title="tortoise.contrib.pydantic.base.PydanticListModel (Python class) — Pydantic BaseModel for List of Tortoise Models">PydanticListModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.pydantic.base.</span></span><span class="sig-name descname"><span class="pre">PydanticModel</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">data</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pydantic BaseModel for Tortoise objects.</p>
+<p>This provides an extra method above the usual Pydantic
+<a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/#model-properties">model properties</a></p>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_queryset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset" title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset (Python parameter) — a queryset on the model this PydanticModel is based on."><span class="n"><span class="pre">queryset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticModel.from_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serializable pydantic model instance that contains a list of models,
+from the provided queryset.</p>
+<p>This will prefetch all the relations automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset"><span class="sig-name descname">queryset</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="../query.html#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a></span></span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset.queryset" title="Permalink to this definition">¶</a></dt><dd><p>a queryset on the model this PydanticModel is based on.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects.">PydanticModel</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_queryset_single</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset" title="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset (Python parameter) — a queryset on the model this PydanticModel is based on."><span class="n"><span class="pre">queryset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticModel.from_queryset_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serializable pydantic model instance for a single model
+from the provided queryset.</p>
+<p>This will prefetch all the relations automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset"><span class="sig-name descname">queryset</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="../query.html#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence.">QuerySetSingle</a></span></span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single.queryset" title="Permalink to this definition">¶</a></dt><dd><p>a queryset on the model this PydanticModel is based on.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects.">PydanticModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_tortoise_orm</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj" title="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj (Python parameter) — The Model instance you want serialized."><span class="n"><span class="pre">obj</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/pydantic/base.html#PydanticModel.from_tortoise_orm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a serializable pydantic model instance built from the provided model instance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will prefetch all the relations automatically. It is probably what you want.</p>
+<p>If you don’t want this, or require a <code class="docutils literal notranslate"><span class="pre">sync</span></code> method, look to using <code class="docutils literal notranslate"><span class="pre">.from_orm()</span></code>.</p>
+<p>In that case you’d have to manage  prefetching yourself,
+or exclude relational fields from being part of the model using
+<a class="reference internal" href="#tortoise.contrib.pydantic.creator.PydanticMeta" title="tortoise.contrib.pydantic.creator.PydanticMeta (Python class) — The PydanticMeta class is used to configure metadata for generating the pydantic Model."><code class="xref py py-class docutils literal notranslate"><span class="pre">tortoise.contrib.pydantic.creator.PydanticMeta</span></code></a>, or you would be
+getting <code class="docutils literal notranslate"><span class="pre">OperationalError</span></code> exceptions.</p>
+<p>This is due to how the <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> framework forces I/O to happen in explicit <code class="docutils literal notranslate"><span class="pre">await</span></code>
+statements. Hence we can only do lazy-fetching during an awaited method.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="api-field highlight simple">
+<dt id="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj"><span class="n sig-name">obj</span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm.obj" title="Permalink to this definition">¶</a></dt><dd><p>The Model instance you want serialized.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-return-type">Return type<a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects."><code class="xref py py-class docutils literal notranslate"><span class="pre">PydanticModel</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="linters.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linters" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Linters
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="unittest.html" class="md-footer__link md-footer__link--next" aria-label="Next: UnitTest support" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              UnitTest support
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    4.3.2.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
+    
+    
+      <script src="../_static/javascripts/bundle.37d1338f.min.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    
+  </body>
+</html>
