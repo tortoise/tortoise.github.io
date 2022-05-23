@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#3f51b5" name="theme-color"/>
+  <script src="_static/javascripts/modernizr.js">
+  </script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MJ7RHW2FRB');
+  </script>
+  <title>
+   Migration — Tortoise ORM v0.19.0 Documentation
+  </title>
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  </script>
+  <script src="_static/jquery.js">
+  </script>
+  <script src="_static/underscore.js">
+  </script>
+  <script src="_static/doctools.js">
+  </script>
+  <script src="_static/clipboard.min.js">
+  </script>
+  <script src="_static/copybutton.js">
+  </script>
+  <link href="_static/tortoise.png" rel="shortcut icon"/>
+  <link href="genindex.html" rel="index" title="Index"/>
+  <link href="search.html" rel="search" title="Search"/>
+  <link href="validators.html" rel="next" title="Validators"/>
+  <link href="signals.html" rel="prev" title="Signals"/>
+ </head>
+ <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#migration" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+       <img alt="Tortoise ORM 0.19.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Tortoise ORM
+       </span>
+       <span class="md-header-nav__topic">
+        Migration
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         tortoise-orm
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+     </script>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="reference.html">
+        Reference
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
+          </a>
+          <a href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           Tortoise ORM
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            tortoise-orm
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            Tortoise ORM
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="getting_started.html">
+            Getting started
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="reference.html">
+            Reference
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="setup.html">
+              Set up
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="databases.html">
+              Databases
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="models.html">
+              Models
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="fields.html">
+              Fields
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="indexes.html">
+              Indexes
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="timezone.html">
+              Timezone
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="schema.html">
+              Schema Creation
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="query.html">
+              Query API
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="manager.html">
+              Manager
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="functions.html">
+              Functions &amp; Aggregates
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="expressions.html">
+              Expressions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="transactions.html">
+              Transactions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="connections.html">
+              Connections
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="exceptions.html">
+              Exceptions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="signals.html">
+              Signals
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+             <label class="md-nav__link md-nav__link--active" for="__toc">
+              Migration
+             </label>
+             <a class="md-nav__link md-nav__link--active" href="#">
+              Migration
+             </a>
+             <nav class="md-nav md-nav--secondary">
+              <label class="md-nav__title" for="__toc">
+               Contents
+              </label>
+              <ul class="md-nav__list" data-md-scrollfix="">
+               <li class="md-nav__item">
+                <a class="md-nav__link" href="#migration--page-root">
+                 Migration
+                </a>
+                <nav class="md-nav">
+                 <ul class="md-nav__list">
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#quick-start">
+                    Quick Start
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#usage">
+                    Usage
+                   </a>
+                   <nav class="md-nav">
+                    <ul class="md-nav__list">
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#initialization">
+                       Initialization
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#init-db">
+                       Init db
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#update-models-and-make-migrate">
+                       Update models and make migrate
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#upgrade-to-latest-version">
+                       Upgrade to latest version
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#downgrade-to-specified-version">
+                       Downgrade to specified version
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#show-history">
+                       Show history
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#show-heads-to-be-migrated">
+                       Show heads to be migrated
+                      </a>
+                     </li>
+                    </ul>
+                   </nav>
+                  </li>
+                 </ul>
+                </nav>
+               </li>
+               <li class="md-nav__item">
+                <a class="md-nav__extra_link" href="_sources/migration.rst.txt">
+                 Show Source
+                </a>
+               </li>
+              </ul>
+             </nav>
+             <ul class="md-nav__list">
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#quick-start">
+                Quick Start
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#usage">
+                Usage
+               </a>
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#initialization">
+                  Initialization
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#init-db">
+                  Init db
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#update-models-and-make-migrate">
+                  Update models and make migrate
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#upgrade-to-latest-version">
+                  Upgrade to latest version
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#downgrade-to-specified-version">
+                  Downgrade to specified version
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#show-history">
+                  Show history
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#show-heads-to-be-migrated">
+                  Show heads to be migrated
+                 </a>
+                </li>
+               </ul>
+              </li>
+             </ul>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="validators.html">
+              Validators
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="logging.html">
+              Logging
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="router.html">
+              Router
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="cli.html">
+              TortoiseCLI
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="examples.html">
+            Examples
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="contrib.html">
+            Contrib
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CHANGELOG.html">
+            Changelog
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="roadmap.html">
+            Roadmap
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTING.html">
+            Contribution Guide
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTORS.html">
+            Thanks
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#migration--page-root">
+            Migration
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#quick-start">
+               Quick Start
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#usage">
+               Usage
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#initialization">
+                  Initialization
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#init-db">
+                  Init db
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#update-models-and-make-migrate">
+                  Update models and make migrate
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#upgrade-to-latest-version">
+                  Upgrade to latest version
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#downgrade-to-specified-version">
+                  Downgrade to specified version
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#show-history">
+                  Show history
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#show-heads-to-be-migrated">
+                  Show heads to be migrated
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__extra_link" href="_sources/migration.rst.txt">
+            Show Source
+           </a>
+          </li>
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <section id="migration">
+        <span id="id1">
+        </span>
+        <h1 id="migration--page-root">
+         Migration
+         <a class="headerlink" href="#migration--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         This document describes how to use
+         <cite>
+          Aerich
+         </cite>
+         to make migrations.
+        </p>
+        <p>
+         You can see
+         <a class="reference external" href="https://github.com/tortoise/aerich">
+          https://github.com/tortoise/aerich
+         </a>
+         for more details.
+        </p>
+        <section id="quick-start">
+         <h2 id="quick-start">
+          Quick Start
+          <a class="headerlink" href="#quick-start" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <div class="highlight-shell notranslate">
+          <div class="highlight">
+           <pre><span></span>&gt; aerich -h
+
+Usage: aerich <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+
+Options:
+  -c, --config TEXT  Config file.  <span class="o">[</span>default: aerich.ini<span class="o">]</span>
+  --app TEXT         Tortoise-ORM app name.  <span class="o">[</span>default: models<span class="o">]</span>
+  -n, --name TEXT    Name of section <span class="k">in</span> .ini file to use <span class="k">for</span> aerich config.
+                     <span class="o">[</span>default: aerich<span class="o">]</span>
+  -h, --help         Show this message and exit.
+
+Commands:
+  downgrade  Downgrade to specified version.
+  heads      Show current available heads <span class="k">in</span> migrate location.
+  <span class="nb">history</span>    List all migrate items.
+  init       Init config file and generate root migrate location.
+  init-db    Generate schema and generate app migrate location.
+  migrate    Generate migrate changes file.
+  upgrade    Upgrade to latest version.
+</pre>
+          </div>
+         </div>
+        </section>
+        <section id="usage">
+         <h2 id="usage">
+          Usage
+          <a class="headerlink" href="#usage" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          You need add
+          <cite>
+           aerich.models
+          </cite>
+          to your
+          <cite>
+           Tortoise-ORM
+          </cite>
+          config first,
+example:
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">TORTOISE_ORM</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"connections"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"default"</span><span class="p">:</span> <span class="s2">"mysql://root:123456@127.0.0.1:3306/test"</span><span class="p">},</span>
+    <span class="s2">"apps"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"models"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"tests.models"</span><span class="p">,</span> <span class="s2">"aerich.models"</span><span class="p">],</span>
+            <span class="s2">"default_connection"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre>
+          </div>
+         </div>
+         <section id="initialization">
+          <h3 id="initialization">
+           Initialization
+           <a class="headerlink" href="#initialization" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich init -h
+
+Usage: aerich init <span class="o">[</span>OPTIONS<span class="o">]</span>
+
+  Init config file and generate root migrate location.
+
+Options:
+  -t, --tortoise-orm TEXT  Tortoise-ORM config module dict variable, like settings.TORTOISE_ORM.
+                           <span class="o">[</span>required<span class="o">]</span>
+  --location TEXT          Migrate store location.  <span class="o">[</span>default: ./migrations<span class="o">]</span>
+  -h, --help               Show this message and exit.
+</pre>
+           </div>
+          </div>
+          <p>
+           Init config file and location:
+          </p>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich init -t tests.backends.mysql.TORTOISE_ORM
+
+Success create migrate location ./migrations
+Success generate config file aerich.ini
+</pre>
+           </div>
+          </div>
+         </section>
+         <section id="init-db">
+          <h3 id="init-db">
+           Init db
+           <a class="headerlink" href="#init-db" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich init-db
+
+Success create app migrate location ./migrations/models
+Success generate schema <span class="k">for</span> app <span class="s2">"models"</span>
+</pre>
+           </div>
+          </div>
+          <p>
+           If your Tortoise-ORM app is not default
+           <cite>
+            models
+           </cite>
+           , you must specify
+           <cite>
+            –app
+           </cite>
+           like
+           <cite>
+            aerich –app other_models init-db
+           </cite>
+           .
+          </p>
+         </section>
+         <section id="update-models-and-make-migrate">
+          <h3 id="update-models-and-make-migrate">
+           Update models and make migrate
+           <a class="headerlink" href="#update-models-and-make-migrate" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich migrate --name drop_column
+
+Success migrate 1_202029051520102929_drop_column.json
+</pre>
+           </div>
+          </div>
+          <p>
+           Format of migrate filename is
+           <cite>
+            {version_num}_{datetime}_{name|update}.json
+           </cite>
+           .
+          </p>
+          <p>
+           And if
+           <cite>
+            aerich
+           </cite>
+           guess you are renaming a column, it will ask
+           <cite>
+            Rename {old_column} to {new_column} [True]
+           </cite>
+           , you can choice
+           <cite>
+            True
+           </cite>
+           to rename column without column drop, or choice
+           <cite>
+            False
+           </cite>
+           to drop column then create.
+          </p>
+          <p>
+           If you use
+           <cite>
+            MySQL
+           </cite>
+           , only MySQL8.0+ support
+           <cite>
+            rename..to
+           </cite>
+           syntax.
+          </p>
+         </section>
+         <section id="upgrade-to-latest-version">
+          <h3 id="upgrade-to-latest-version">
+           Upgrade to latest version
+           <a class="headerlink" href="#upgrade-to-latest-version" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich upgrade
+
+Success upgrade 1_202029051520102929_drop_column.json
+</pre>
+           </div>
+          </div>
+          <p>
+           Now your db is migrated to latest.
+          </p>
+         </section>
+         <section id="downgrade-to-specified-version">
+          <h3 id="downgrade-to-specified-version">
+           Downgrade to specified version
+           <a class="headerlink" href="#downgrade-to-specified-version" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich init -h
+
+Usage: aerich downgrade <span class="o">[</span>OPTIONS<span class="o">]</span>
+
+  Downgrade to specified version.
+
+Options:
+  -v, --version INTEGER  Specified version, default to last.  <span class="o">[</span>default: -1<span class="o">]</span>
+  -h, --help             Show this message and exit.
+</pre>
+           </div>
+          </div>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich downgrade
+
+Success downgrade 1_202029051520102929_drop_column.json
+</pre>
+           </div>
+          </div>
+          <p>
+           Now your db rollback to specified version.
+          </p>
+         </section>
+         <section id="show-history">
+          <h3 id="show-history">
+           Show history
+           <a class="headerlink" href="#show-history" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich <span class="nb">history</span>
+
+1_202029051520102929_drop_column.json
+</pre>
+           </div>
+          </div>
+         </section>
+         <section id="show-heads-to-be-migrated">
+          <h3 id="show-heads-to-be-migrated">
+           Show heads to be migrated
+           <a class="headerlink" href="#show-heads-to-be-migrated" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <div class="highlight-shell notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt; aerich heads
+
+1_202029051520102929_drop_column.json
+</pre>
+           </div>
+          </div>
+         </section>
+        </section>
+       </section>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="signals.html" rel="prev" title="Signals">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        Signals
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="validators.html" rel="next" title="Validators">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Next
+        </span>
+        Validators
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      4.3.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>

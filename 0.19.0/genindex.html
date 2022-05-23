@@ -1,0 +1,2912 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#3f51b5" name="theme-color"/>
+  <script src="_static/javascripts/modernizr.js">
+  </script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MJ7RHW2FRB');
+  </script>
+  <title>
+   Index — Tortoise ORM v0.19.0 Documentation
+  </title>
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  </script>
+  <script src="_static/jquery.js">
+  </script>
+  <script src="_static/underscore.js">
+  </script>
+  <script src="_static/doctools.js">
+  </script>
+  <script src="_static/clipboard.min.js">
+  </script>
+  <script src="_static/copybutton.js">
+  </script>
+  <link href="_static/tortoise.png" rel="shortcut icon"/>
+  <link href="#" rel="index" title="Index"/>
+  <link href="search.html" rel="search" title="Search"/>
+ </head>
+ <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#genindex" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+       <img alt="Tortoise ORM 0.19.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Tortoise ORM
+       </span>
+       <span class="md-header-nav__topic">
+        Index
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         tortoise-orm
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+     </script>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
+          </a>
+          <a href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           Tortoise ORM
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            tortoise-orm
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            Tortoise ORM
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="getting_started.html">
+            Getting started
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="reference.html">
+            Reference
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="examples.html">
+            Examples
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="contrib.html">
+            Contrib
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CHANGELOG.html">
+            Changelog
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="roadmap.html">
+            Roadmap
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTING.html">
+            Contribution Guide
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTORS.html">
+            Thanks
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <h1 id="index">
+        Index
+       </h1>
+       <div class="genindex-jumpbox">
+        <a href="#_">
+         <strong>
+          _
+         </strong>
+        </a>
+        |
+        <a href="#A">
+         <strong>
+          A
+         </strong>
+        </a>
+        |
+        <a href="#B">
+         <strong>
+          B
+         </strong>
+        </a>
+        |
+        <a href="#C">
+         <strong>
+          C
+         </strong>
+        </a>
+        |
+        <a href="#D">
+         <strong>
+          D
+         </strong>
+        </a>
+        |
+        <a href="#E">
+         <strong>
+          E
+         </strong>
+        </a>
+        |
+        <a href="#F">
+         <strong>
+          F
+         </strong>
+        </a>
+        |
+        <a href="#G">
+         <strong>
+          G
+         </strong>
+        </a>
+        |
+        <a href="#H">
+         <strong>
+          H
+         </strong>
+        </a>
+        |
+        <a href="#I">
+         <strong>
+          I
+         </strong>
+        </a>
+        |
+        <a href="#J">
+         <strong>
+          J
+         </strong>
+        </a>
+        |
+        <a href="#L">
+         <strong>
+          L
+         </strong>
+        </a>
+        |
+        <a href="#M">
+         <strong>
+          M
+         </strong>
+        </a>
+        |
+        <a href="#N">
+         <strong>
+          N
+         </strong>
+        </a>
+        |
+        <a href="#O">
+         <strong>
+          O
+         </strong>
+        </a>
+        |
+        <a href="#P">
+         <strong>
+          P
+         </strong>
+        </a>
+        |
+        <a href="#Q">
+         <strong>
+          Q
+         </strong>
+        </a>
+        |
+        <a href="#R">
+         <strong>
+          R
+         </strong>
+        </a>
+        |
+        <a href="#S">
+         <strong>
+          S
+         </strong>
+        </a>
+        |
+        <a href="#T">
+         <strong>
+          T
+         </strong>
+        </a>
+        |
+        <a href="#U">
+         <strong>
+          U
+         </strong>
+        </a>
+        |
+        <a href="#V">
+         <strong>
+          V
+         </strong>
+        </a>
+        |
+        <a href="#W">
+         <strong>
+          W
+         </strong>
+        </a>
+       </div>
+       <h2 id="_">
+        _
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.__and__">
+             __and__() (tortoise.expressions.Q method)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.Validator.__call__">
+             __call__() (tortoise.validators.Validator method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.__invert__">
+             __invert__() (tortoise.expressions.Q method)
+            </a>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.__or__">
+             __or__() (tortoise.expressions.Q method)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="A">
+        A
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.abstract">
+             abstract (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">
+             acquire_connection() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.add">
+             add() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Aggregate">
+             Aggregate (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.all">
+             all() (tortoise.connection.ConnectionHandler method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ManyToManyRelation.all">
+               (tortoise.fields.relational.ManyToManyRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ReverseRelation.all">
+               (tortoise.fields.relational.ReverseRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="models.html#tortoise.models.Model.all">
+               (tortoise.models.Model class method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.all">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.allow_cycles">
+             allow_cycles (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.allows_generated">
+             allows_generated (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.AND">
+             AND (tortoise.expressions.Q attribute)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.annotate">
+             annotate() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.annotate">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.apps">
+             apps (tortoise.Tortoise attribute)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.as_query">
+             as_query() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.assertListSortEqual">
+             assertListSortEqual() (tortoise.contrib.test.SimpleTestCase method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncSetUp">
+             asyncSetUp() (tortoise.contrib.test.SimpleTestCase method)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncSetUp">
+               (tortoise.contrib.test.TestCase method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase.asyncTearDown">
+             asyncTearDown() (tortoise.contrib.test.SimpleTestCase method)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/unittest.html#tortoise.contrib.test.TestCase.asyncTearDown">
+               (tortoise.contrib.test.TestCase method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="transactions.html#tortoise.transactions.atomic">
+             atomic() (in module tortoise.transactions)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Avg">
+             Avg (class in tortoise.functions)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="B">
+        B
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.backward_relations">
+             backward_relations (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient">
+             BaseDBAsyncClient (class in tortoise.backends.base.client)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.BaseORMException">
+             BaseORMException
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.BigIntField">
+             BigIntField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.BinaryField">
+             BinaryField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.BloomIndex">
+             BloomIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.BooleanField">
+             BooleanField (class in tortoise.fields.data)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.BrinIndex">
+             BrinIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.bulk_create">
+             bulk_create() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.bulk_create">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.bulk_update">
+             bulk_update() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.bulk_update">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.BulkCreateQuery">
+             BulkCreateQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.BulkUpdateQuery">
+             BulkUpdateQuery (class in tortoise.queryset)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="C">
+        C
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.Capabilities">
+             Capabilities (class in tortoise.backends.base.client)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.capabilities">
+             capabilities (tortoise.backends.base.client.BaseDBAsyncClient attribute)
+            </a>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Case">
+             Case (class in tortoise.expressions)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.CharEnumField">
+             CharEnumField() (in module tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.CharField">
+             CharField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.check">
+             check() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.children">
+             children (tortoise.expressions.Q attribute)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.clear">
+             clear() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.clone">
+             clone() (tortoise.models.Model method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.close">
+             close() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.close_all">
+             close_all() (tortoise.connection.ConnectionHandler method)
+            </a>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.close_connections">
+             close_connections() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Coalesce">
+             Coalesce (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.CommaSeparatedIntegerListValidator">
+             CommaSeparatedIntegerListValidator (class in tortoise.validators)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.computed">
+             computed (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Concat">
+             Concat (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.ConfigurationError">
+             ConfigurationError
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler">
+             ConnectionHandler (class in tortoise.connection)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.constraints">
+             constraints (tortoise.fields.base.Field property)
+            </a>
+            <ul>
+             <li>
+              <a href="fields.html#tortoise.fields.data.BigIntField.constraints">
+               (tortoise.fields.data.BigIntField property)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.CharField.constraints">
+               (tortoise.fields.data.CharField property)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.DatetimeField.constraints">
+               (tortoise.fields.data.DatetimeField property)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.IntField.constraints">
+               (tortoise.fields.data.IntField property)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.SmallIntField.constraints">
+               (tortoise.fields.data.SmallIntField property)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Count">
+             Count (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.count">
+             count() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.CountQuery">
+             CountQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.create">
+             create() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.create_connection">
+             create_connection() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="D">
+        D
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="functions.html#tortoise.functions.Function.database_func">
+             database_func (tortoise.functions.Function attribute)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.DateField">
+             DateField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.DatetimeField">
+             DatetimeField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.db_config">
+             db_config (tortoise.connection.ConnectionHandler property)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_create">
+             db_create() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_delete">
+             db_delete() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.DBConnectionError">
+             DBConnectionError
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.DecimalField">
+             DecimalField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.delete">
+             delete() (tortoise.models.Model method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.delete">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.queryset.DeleteQuery">
+             DeleteQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.describe">
+             describe() (tortoise.fields.base.Field method)
+            </a>
+            <ul>
+             <li>
+              <a href="fields.html#tortoise.fields.data.DatetimeField.describe">
+               (tortoise.fields.data.DatetimeField method)
+              </a>
+             </li>
+             <li>
+              <a href="models.html#tortoise.models.Model.describe">
+               (tortoise.models.Model class method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.describe_model">
+             describe_model() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.describe_models">
+             describe_models() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/fastapi.html#tortoise.contrib.fastapi.HTTPNotFoundError.detail">
+             detail (tortoise.contrib.fastapi.HTTPNotFoundError attribute)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.discard">
+             discard() (tortoise.connection.ConnectionHandler method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.distinct">
+             distinct() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.DoesNotExist">
+             DoesNotExist
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="E">
+        E
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.env_initializer">
+             env_initializer() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.exclude">
+             exclude (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.exclude">
+             exclude() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.exclude">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.exclude_raw_fields">
+             exclude_raw_fields (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert">
+             execute_insert() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_many">
+             execute_many() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query">
+             execute_query() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict">
+             execute_query_dict() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_script">
+             execute_script() (tortoise.backends.base.client.BaseDBAsyncClient method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.executor_class">
+             executor_class (tortoise.backends.base.client.BaseDBAsyncClient attribute)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.exists">
+             exists() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.exists">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.ExistsQuery">
+             ExistsQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.expectedFailure">
+             expectedFailure() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.explain">
+             explain() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="F">
+        F
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.fetch_for_list">
+             fetch_for_list() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.fetch_related">
+             fetch_related() (tortoise.models.Model method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field">
+             Field (class in tortoise.fields.base)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.field_type">
+             field_type (tortoise.fields.base.Field attribute)
+            </a>
+            <ul>
+             <li>
+              <a href="fields.html#tortoise.fields.data.BigIntField.field_type">
+               (tortoise.fields.data.BigIntField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.BinaryField.field_type">
+               (tortoise.fields.data.BinaryField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.BooleanField.field_type">
+               (tortoise.fields.data.BooleanField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.CharField.field_type">
+               (tortoise.fields.data.CharField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.DateField.field_type">
+               (tortoise.fields.data.DateField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.DatetimeField.field_type">
+               (tortoise.fields.data.DatetimeField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.DecimalField.field_type">
+               (tortoise.fields.data.DecimalField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.FloatField.field_type">
+               (tortoise.fields.data.FloatField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.IntField.field_type">
+               (tortoise.fields.data.IntField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.SmallIntField.field_type">
+               (tortoise.fields.data.SmallIntField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.TextField.field_type">
+               (tortoise.fields.data.TextField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.TimeDeltaField.field_type">
+               (tortoise.fields.data.TimeDeltaField attribute)
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#tortoise.fields.data.UUIDField.field_type">
+               (tortoise.fields.data.UUIDField attribute)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.FieldError">
+             FieldError
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.FieldSelectQuery">
+             FieldSelectQuery (class in tortoise.queryset)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.filter">
+             filter() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ReverseRelation.filter">
+               (tortoise.fields.relational.ReverseRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="models.html#tortoise.models.Model.filter">
+               (tortoise.models.Model class method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.filter">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.filters">
+             filters (tortoise.expressions.Q attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.finalizer">
+             finalizer() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.first">
+             first() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.first">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.FloatField">
+             FloatField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.force_index">
+             force_index() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.relational.ForeignKeyField">
+             ForeignKeyField() (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ForeignKeyNullableRelation">
+             ForeignKeyNullableRelation (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ForeignKeyRelation">
+             ForeignKeyRelation (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset">
+             from_queryset() (tortoise.contrib.pydantic.base.PydanticListModel class method)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset">
+               (tortoise.contrib.pydantic.base.PydanticModel class method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single">
+             from_queryset_single() (tortoise.contrib.pydantic.base.PydanticModel class method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm">
+             from_tortoise_orm() (tortoise.contrib.pydantic.base.PydanticModel class method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/mysql.html#tortoise.contrib.mysql.indexes.FullTextIndex">
+             FullTextIndex (class in tortoise.contrib.mysql.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Function">
+             Function (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.function_cast">
+             function_cast (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="G">
+        G
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="schema.html#tortoise.utils.generate_schema_for_client">
+             generate_schema_for_client() (in module tortoise.utils)
+            </a>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.generate_schemas">
+             generate_schemas() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.GENERATED_SQL">
+             GENERATED_SQL (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/mysql.html#tortoise.contrib.mysql.fields.GeometryField">
+             GeometryField (class in tortoise.contrib.mysql.fields)
+            </a>
+            ,
+            <a href="fields.html#tortoise.contrib.mysql.fields.GeometryField">
+             [1]
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.get">
+             get() (tortoise.connection.ConnectionHandler method)
+            </a>
+            <ul>
+             <li>
+              <a href="models.html#tortoise.models.Model.get">
+               (tortoise.models.Model class method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.get">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.get_connection">
+             get_connection() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.get_db_field_types">
+             get_db_field_types() (tortoise.fields.base.Field method)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.get_default_timezone">
+             get_default_timezone() (in module tortoise.timezone)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.get_for_dialect">
+             get_for_dialect() (tortoise.fields.base.Field method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.get_or_create">
+             get_or_create() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.get_or_none">
+             get_or_none() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.get_or_none">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="schema.html#tortoise.utils.get_schema_sql">
+             get_schema_sql() (in module tortoise.utils)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.get_timezone">
+             get_timezone() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.get_use_tz">
+             get_use_tz() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.getDBConfig">
+             getDBConfig() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.GinIndex">
+             GinIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.GistIndex">
+             GistIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.group_by">
+             group_by() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="H">
+        H
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.has_db_field">
+             has_db_field (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.HashIndex">
+             HashIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/fastapi.html#tortoise.contrib.fastapi.HTTPNotFoundError">
+             HTTPNotFoundError (class in tortoise.contrib.fastapi)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="I">
+        I
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.in_bulk">
+             in_bulk() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.in_bulk">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="transactions.html#tortoise.transactions.in_transaction">
+             in_transaction() (in module tortoise.transactions)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.include">
+             include (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.IncompleteInstanceError">
+             IncompleteInstanceError
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.indexable">
+             indexable (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.indexes">
+             indexes (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.init">
+             init() (tortoise.Tortoise class method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="setup.html#tortoise.Tortoise.init_models">
+             init_models() (tortoise.Tortoise class method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.initializer">
+             initializer() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.IntegrityError">
+             IntegrityError
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.IntEnumField">
+             IntEnumField() (in module tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.IntField">
+             IntField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.is_aware">
+             is_aware() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.is_naive">
+             is_naive() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase">
+             IsolatedTestCase (class in tortoise.contrib.test)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="J">
+        J
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.join_type">
+             join_type (tortoise.expressions.Q attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="fields.html#tortoise.fields.data.JSONField">
+             JSONField (class in tortoise.fields.data)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="L">
+        L
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="functions.html#tortoise.functions.Length">
+             Length (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.limit">
+             limit() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ReverseRelation.limit">
+               (tortoise.fields.relational.ReverseRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.limit">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="timezone.html#tortoise.timezone.localtime">
+             localtime() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Lower">
+             Lower (class in tortoise.functions)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="M">
+        M
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="timezone.html#tortoise.timezone.make_aware">
+             make_aware() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.make_naive">
+             make_naive() (in module tortoise.timezone)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.manager">
+             manager (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.relational.ManyToManyField">
+             ManyToManyField() (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation">
+             ManyToManyRelation (class in tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Max">
+             Max (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.max_recursion">
+             max_recursion (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.MaxLengthValidator">
+             MaxLengthValidator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.MaxValueValidator">
+             MaxValueValidator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta">
+             Meta (class in tortoise.models.Model)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Min">
+             Min (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.MinLengthValidator">
+             MinLengthValidator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.MinValueValidator">
+             MinValueValidator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model">
+             Model (class in tortoise.models)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#id0">
+             Model.Meta (class in tortoise.models)
+            </a>
+           </li>
+           <li>
+            module
+            <ul>
+             <li>
+              <a href="setup.html#module-tortoise">
+               tortoise
+              </a>
+             </li>
+             <li>
+              <a href="databases.html#module-tortoise.backends.base.client">
+               tortoise.backends.base.client
+              </a>
+             </li>
+             <li>
+              <a href="connections.html#module-tortoise.connection">
+               tortoise.connection
+              </a>
+             </li>
+             <li>
+              <a href="contrib/aiohttp.html#module-tortoise.contrib.aiohttp">
+               tortoise.contrib.aiohttp
+              </a>
+             </li>
+             <li>
+              <a href="contrib/blacksheep.html#module-tortoise.contrib.blacksheep">
+               tortoise.contrib.blacksheep
+              </a>
+             </li>
+             <li>
+              <a href="contrib/fastapi.html#module-tortoise.contrib.fastapi">
+               tortoise.contrib.fastapi
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#module-tortoise.contrib.mysql.fields">
+               tortoise.contrib.mysql.fields
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#module-tortoise.contrib.postgres.fields">
+               tortoise.contrib.postgres.fields
+              </a>
+             </li>
+             <li>
+              <a href="contrib/pydantic.html#module-tortoise.contrib.pydantic.base">
+               tortoise.contrib.pydantic.base
+              </a>
+             </li>
+             <li>
+              <a href="contrib/pydantic.html#module-tortoise.contrib.pydantic.creator">
+               tortoise.contrib.pydantic.creator
+              </a>
+             </li>
+             <li>
+              <a href="contrib/quart.html#module-tortoise.contrib.quart">
+               tortoise.contrib.quart
+              </a>
+             </li>
+             <li>
+              <a href="contrib/sanic.html#module-tortoise.contrib.sanic">
+               tortoise.contrib.sanic
+              </a>
+             </li>
+             <li>
+              <a href="contrib/starlette.html#module-tortoise.contrib.starlette">
+               tortoise.contrib.starlette
+              </a>
+             </li>
+             <li>
+              <a href="contrib/unittest.html#module-tortoise.contrib.test">
+               tortoise.contrib.test
+              </a>
+             </li>
+             <li>
+              <a href="exceptions.html#module-tortoise.exceptions">
+               tortoise.exceptions
+              </a>
+             </li>
+             <li>
+              <a href="expressions.html#module-tortoise.expressions">
+               tortoise.expressions
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#module-tortoise.fields.base">
+               tortoise.fields.base
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#module-tortoise.fields.data">
+               tortoise.fields.data
+              </a>
+             </li>
+             <li>
+              <a href="fields.html#module-tortoise.fields.relational">
+               tortoise.fields.relational
+              </a>
+             </li>
+             <li>
+              <a href="functions.html#module-tortoise.functions">
+               tortoise.functions
+              </a>
+             </li>
+             <li>
+              <a href="models.html#module-tortoise.models">
+               tortoise.models
+              </a>
+             </li>
+             <li>
+              <a href="query.html#module-tortoise.queryset">
+               tortoise.queryset
+              </a>
+             </li>
+             <li>
+              <a href="signals.html#module-tortoise.signals">
+               tortoise.signals
+              </a>
+             </li>
+             <li>
+              <a href="timezone.html#module-tortoise.timezone">
+               tortoise.timezone
+              </a>
+             </li>
+             <li>
+              <a href="transactions.html#module-tortoise.transactions">
+               tortoise.transactions
+              </a>
+             </li>
+             <li>
+              <a href="schema.html#module-tortoise.utils">
+               tortoise.utils
+              </a>
+             </li>
+             <li>
+              <a href="validators.html#module-tortoise.validators">
+               tortoise.validators
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.MultipleObjectsReturned">
+             MultipleObjectsReturned
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="N">
+        N
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.negate">
+             negate() (tortoise.expressions.Q method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.NoValuesFetched">
+             NoValuesFetched
+            </a>
+           </li>
+           <li>
+            <a href="timezone.html#tortoise.timezone.now">
+             now() (in module tortoise.timezone)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="O">
+        O
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.offset">
+             offset() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ReverseRelation.offset">
+               (tortoise.fields.relational.ReverseRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.offset">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.relational.OneToOneField">
+             OneToOneField() (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.OneToOneNullableRelation">
+             OneToOneNullableRelation (in module tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.OneToOneRelation">
+             OneToOneRelation (in module tortoise.fields.relational)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.only">
+             only() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.OperationalError">
+             OperationalError
+            </a>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.OR">
+             OR (tortoise.expressions.Q attribute)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.order_by">
+             order_by() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.fields.relational.ReverseRelation.order_by">
+               (tortoise.fields.relational.ReverseRelation method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.order_by">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.ordering">
+             ordering (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="P">
+        P
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.ParamsError">
+             ParamsError
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.pk">
+             pk (tortoise.models.Model property)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Function.populate_field_object">
+             populate_field_object (tortoise.functions.Function attribute)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.Signals.post_delete">
+             post_delete (tortoise.signals.Signals attribute)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.post_delete">
+             post_delete() (in module tortoise.signals)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.Signals.post_save">
+             post_save (tortoise.signals.Signals attribute)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.post_save">
+             post_save() (in module tortoise.signals)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.Signals.pre_delete">
+             pre_delete (tortoise.signals.Signals attribute)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.pre_delete">
+             pre_delete() (in module tortoise.signals)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="signals.html#tortoise.signals.Signals.pre_save">
+             pre_save (tortoise.signals.Signals attribute)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.pre_save">
+             pre_save() (in module tortoise.signals)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.query_utils.Prefetch">
+             Prefetch (class in tortoise.query_utils)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.prefetch_related">
+             prefetch_related() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_model_creator">
+             pydantic_model_creator() (in module tortoise.contrib.pydantic.creator)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.pydantic_queryset_creator">
+             pydantic_queryset_creator() (in module tortoise.contrib.pydantic.creator)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticListModel">
+             PydanticListModel (class in tortoise.contrib.pydantic.base)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta">
+             PydanticMeta (class in tortoise.contrib.pydantic.creator)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel">
+             PydanticModel (class in tortoise.contrib.pydantic.base)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="Q">
+        Q
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q">
+             Q (class in tortoise.expressions)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.query_class">
+             query_class (tortoise.backends.base.client.BaseDBAsyncClient attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet">
+             QuerySet (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySetSingle">
+             QuerySetSingle (class in tortoise.queryset)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="R">
+        R
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="functions.html#tortoise.contrib.mysql.functions.Rand">
+             Rand (class in tortoise.contrib.mysql.functions)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.contrib.postgres.functions.Random">
+             Random (class in tortoise.contrib.postgres.functions)
+            </a>
+            <ul>
+             <li>
+              <a href="functions.html#tortoise.contrib.sqlite.functions.Random">
+               (class in tortoise.contrib.sqlite.functions)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.raw">
+             raw() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.raw">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.RawSQLQuery">
+             RawSQLQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.refresh_from_db">
+             refresh_from_db() (tortoise.models.Model method)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.RegexValidator">
+             RegexValidator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.register_listener">
+             register_listener() (tortoise.models.Model class method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/aiohttp.html#tortoise.contrib.aiohttp.register_tortoise">
+             register_tortoise() (in module tortoise.contrib.aiohttp)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/blacksheep.html#tortoise.contrib.blacksheep.register_tortoise">
+               (in module tortoise.contrib.blacksheep)
+              </a>
+             </li>
+             <li>
+              <a href="contrib/fastapi.html#tortoise.contrib.fastapi.register_tortoise">
+               (in module tortoise.contrib.fastapi)
+              </a>
+             </li>
+             <li>
+              <a href="contrib/quart.html#tortoise.contrib.quart.register_tortoise">
+               (in module tortoise.contrib.quart)
+              </a>
+             </li>
+             <li>
+              <a href="contrib/sanic.html#tortoise.contrib.sanic.register_tortoise">
+               (in module tortoise.contrib.sanic)
+              </a>
+             </li>
+             <li>
+              <a href="contrib/starlette.html#tortoise.contrib.starlette.register_tortoise">
+               (in module tortoise.contrib.starlette)
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ManyToManyRelation.remove">
+             remove() (tortoise.fields.relational.ManyToManyRelation method)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.requireCapability">
+             requireCapability() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.required">
+             required (tortoise.fields.base.Field property)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.reset">
+             reset() (tortoise.connection.ConnectionHandler method)
+            </a>
+           </li>
+           <li>
+            <a href="expressions.html#tortoise.expressions.Q.resolve">
+             resolve() (tortoise.expressions.Q method)
+            </a>
+            <ul>
+             <li>
+              <a href="functions.html#tortoise.functions.Function.resolve">
+               (tortoise.functions.Function method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.resolve_filters">
+             resolve_filters() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">
+             resolve_for_queryset() (tortoise.query_utils.Prefetch method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.resolve_ordering">
+             resolve_ordering() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.fields.relational.ReverseRelation">
+             ReverseRelation (class in tortoise.fields.relational)
+            </a>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.run_async">
+             run_async() (in module tortoise)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="S">
+        S
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.save">
+             save() (tortoise.models.Model method)
+            </a>
+           </li>
+           <li>
+            <a href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient.schema_generator">
+             schema_generator (tortoise.backends.base.client.BaseDBAsyncClient attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/mysql.html#tortoise.contrib.mysql.search.SearchCriterion">
+             SearchCriterion (class in tortoise.contrib.mysql.search)
+            </a>
+            <ul>
+             <li>
+              <a href="contrib/postgres.html#tortoise.contrib.postgres.search.SearchCriterion">
+               (class in tortoise.contrib.postgres.search)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.select_for_update">
+             select_for_update() (tortoise.models.Model class method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.select_for_update">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.select_related">
+             select_related() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="connections.html#tortoise.connection.ConnectionHandler.set">
+             set() (tortoise.connection.ConnectionHandler method)
+            </a>
+           </li>
+           <li>
+            <a href="signals.html#tortoise.signals.Signals">
+             Signals (class in tortoise.signals)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SimpleTestCase">
+             SimpleTestCase (class in tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.skip">
+             skip() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.skip_to_python_if_native">
+             skip_to_python_if_native (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.skipIf">
+             skipIf() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.SkipTest">
+             SkipTest
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.skipUnless">
+             skipUnless() (in module tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.SmallIntField">
+             SmallIntField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta.sort_alphabetically">
+             sort_alphabetically (tortoise.contrib.pydantic.creator.PydanticMeta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/mysql.html#tortoise.contrib.mysql.indexes.SpatialIndex">
+             SpatialIndex (class in tortoise.contrib.mysql.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.SpGistIndex">
+             SpGistIndex (class in tortoise.contrib.postgres.indexes)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.BulkCreateQuery.sql">
+             sql() (tortoise.queryset.BulkCreateQuery method)
+            </a>
+            <ul>
+             <li>
+              <a href="query.html#tortoise.queryset.BulkUpdateQuery.sql">
+               (tortoise.queryset.BulkUpdateQuery method)
+              </a>
+             </li>
+             <li>
+              <a href="query.html#tortoise.queryset.QuerySet.sql">
+               (tortoise.queryset.QuerySet method)
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.SQL_TYPE">
+             SQL_TYPE (tortoise.fields.base.Field attribute)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Sum">
+             Sum (class in tortoise.functions)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="T">
+        T
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.table">
+             table (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.table_description">
+             table_description (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.TestCase">
+             TestCase (class in tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.TextField">
+             TextField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.TimeDeltaField">
+             TimeDeltaField (class in tortoise.fields.data)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.to_db_value">
+             to_db_value() (tortoise.fields.base.Field method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.to_python_value">
+             to_python_value() (tortoise.fields.base.Field method)
+            </a>
+           </li>
+           <li>
+            tortoise
+            <ul>
+             <li>
+              <a href="setup.html#module-tortoise">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="setup.html#tortoise.Tortoise">
+             Tortoise (class in tortoise)
+            </a>
+           </li>
+           <li>
+            tortoise.backends.base.client
+            <ul>
+             <li>
+              <a href="databases.html#module-tortoise.backends.base.client">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.connection
+            <ul>
+             <li>
+              <a href="connections.html#module-tortoise.connection">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.aiohttp
+            <ul>
+             <li>
+              <a href="contrib/aiohttp.html#module-tortoise.contrib.aiohttp">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.blacksheep
+            <ul>
+             <li>
+              <a href="contrib/blacksheep.html#module-tortoise.contrib.blacksheep">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.fastapi
+            <ul>
+             <li>
+              <a href="contrib/fastapi.html#module-tortoise.contrib.fastapi">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.mysql.fields
+            <ul>
+             <li>
+              <a href="fields.html#module-tortoise.contrib.mysql.fields">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.postgres.fields
+            <ul>
+             <li>
+              <a href="fields.html#module-tortoise.contrib.postgres.fields">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.pydantic.base
+            <ul>
+             <li>
+              <a href="contrib/pydantic.html#module-tortoise.contrib.pydantic.base">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.pydantic.creator
+            <ul>
+             <li>
+              <a href="contrib/pydantic.html#module-tortoise.contrib.pydantic.creator">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.quart
+            <ul>
+             <li>
+              <a href="contrib/quart.html#module-tortoise.contrib.quart">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.sanic
+            <ul>
+             <li>
+              <a href="contrib/sanic.html#module-tortoise.contrib.sanic">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.contrib.starlette
+            <ul>
+             <li>
+              <a href="contrib/starlette.html#module-tortoise.contrib.starlette">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            tortoise.contrib.test
+            <ul>
+             <li>
+              <a href="contrib/unittest.html#module-tortoise.contrib.test">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.exceptions
+            <ul>
+             <li>
+              <a href="exceptions.html#module-tortoise.exceptions">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.expressions
+            <ul>
+             <li>
+              <a href="expressions.html#module-tortoise.expressions">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.fields.base
+            <ul>
+             <li>
+              <a href="fields.html#module-tortoise.fields.base">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.fields.data
+            <ul>
+             <li>
+              <a href="fields.html#module-tortoise.fields.data">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.fields.relational
+            <ul>
+             <li>
+              <a href="fields.html#module-tortoise.fields.relational">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.functions
+            <ul>
+             <li>
+              <a href="functions.html#module-tortoise.functions">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.models
+            <ul>
+             <li>
+              <a href="models.html#module-tortoise.models">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.queryset
+            <ul>
+             <li>
+              <a href="query.html#module-tortoise.queryset">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.signals
+            <ul>
+             <li>
+              <a href="signals.html#module-tortoise.signals">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.timezone
+            <ul>
+             <li>
+              <a href="timezone.html#module-tortoise.timezone">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.transactions
+            <ul>
+             <li>
+              <a href="transactions.html#module-tortoise.transactions">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.utils
+            <ul>
+             <li>
+              <a href="schema.html#module-tortoise.utils">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            tortoise.validators
+            <ul>
+             <li>
+              <a href="validators.html#module-tortoise.validators">
+               module
+              </a>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase.tortoise_test_modules">
+             tortoise_test_modules (tortoise.contrib.test.IsolatedTestCase attribute)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.functions.ToTsQuery">
+             ToTsQuery (class in tortoise.contrib.postgres.functions)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.functions.ToTsVector">
+             ToTsVector (class in tortoise.contrib.postgres.functions)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.TransactionManagementError">
+             TransactionManagementError
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Trim">
+             Trim (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/unittest.html#tortoise.contrib.test.TruncationTestCase">
+             TruncationTestCase (class in tortoise.contrib.test)
+            </a>
+           </li>
+           <li>
+            <a href="contrib/postgres.html#tortoise.contrib.postgres.fields.TSVectorField">
+             TSVectorField (class in tortoise.contrib.postgres.fields)
+            </a>
+            ,
+            <a href="fields.html#tortoise.contrib.postgres.fields.TSVectorField">
+             [1]
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="U">
+        U
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="models.html#tortoise.models.Model.Meta.unique_together">
+             unique_together (tortoise.models.Model.Meta attribute)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.update">
+             update() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.update_from_dict">
+             update_from_dict() (tortoise.models.Model method)
+            </a>
+           </li>
+           <li>
+            <a href="models.html#tortoise.models.Model.update_or_create">
+             update_or_create() (tortoise.models.Model class method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="query.html#tortoise.queryset.UpdateQuery">
+             UpdateQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="functions.html#tortoise.functions.Upper">
+             Upper (class in tortoise.functions)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.use_index">
+             use_index() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.using_db">
+             using_db() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="fields.html#tortoise.fields.data.UUIDField">
+             UUIDField (class in tortoise.fields.data)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="V">
+        V
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="fields.html#tortoise.fields.base.Field.validate">
+             validate() (tortoise.fields.base.Field method)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.validate_ipv46_address">
+             validate_ipv46_address() (in module tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.validate_ipv4_address">
+             validate_ipv4_address() (in module tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="validators.html#tortoise.validators.validate_ipv6_address">
+             validate_ipv6_address() (in module tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="exceptions.html#tortoise.exceptions.ValidationError">
+             ValidationError
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="validators.html#tortoise.validators.Validator">
+             Validator (class in tortoise.validators)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.values">
+             values() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.QuerySet.values_list">
+             values_list() (tortoise.queryset.QuerySet method)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.ValuesListQuery">
+             ValuesListQuery (class in tortoise.queryset)
+            </a>
+           </li>
+           <li>
+            <a href="query.html#tortoise.queryset.ValuesQuery">
+             ValuesQuery (class in tortoise.queryset)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="W">
+        W
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="expressions.html#tortoise.expressions.When">
+             When (class in tortoise.expressions)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      4.3.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>

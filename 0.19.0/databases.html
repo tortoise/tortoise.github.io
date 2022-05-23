@@ -1,0 +1,3201 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#3f51b5" name="theme-color"/>
+  <script src="_static/javascripts/modernizr.js">
+  </script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MJ7RHW2FRB');
+  </script>
+  <title>
+   Databases — Tortoise ORM v0.19.0 Documentation
+  </title>
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  </script>
+  <script src="_static/jquery.js">
+  </script>
+  <script src="_static/underscore.js">
+  </script>
+  <script src="_static/doctools.js">
+  </script>
+  <script src="_static/clipboard.min.js">
+  </script>
+  <script src="_static/copybutton.js">
+  </script>
+  <link href="_static/tortoise.png" rel="shortcut icon"/>
+  <link href="genindex.html" rel="index" title="Index"/>
+  <link href="search.html" rel="search" title="Search"/>
+  <link href="models.html" rel="next" title="Models"/>
+  <link href="setup.html" rel="prev" title="Set up"/>
+ </head>
+ <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#databases" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+       <img alt="Tortoise ORM 0.19.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Tortoise ORM
+       </span>
+       <span class="md-header-nav__topic">
+        Databases
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         tortoise-orm
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+     </script>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="reference.html">
+        Reference
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
+          </a>
+          <a href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           Tortoise ORM
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            tortoise-orm
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            Tortoise ORM
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="getting_started.html">
+            Getting started
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="reference.html">
+            Reference
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="setup.html">
+              Set up
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+             <label class="md-nav__link md-nav__link--active" for="__toc">
+              Databases
+             </label>
+             <a class="md-nav__link md-nav__link--active" href="#">
+              Databases
+             </a>
+             <nav class="md-nav md-nav--secondary">
+              <label class="md-nav__title" for="__toc">
+               Contents
+              </label>
+              <ul class="md-nav__list" data-md-scrollfix="">
+               <li class="md-nav__item">
+                <a class="md-nav__link" href="#databases--page-root">
+                 Databases
+                </a>
+                <nav class="md-nav">
+                 <ul class="md-nav__list">
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#db-url">
+                    DB_URL
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#capabilities">
+                    Capabilities
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#sqlite">
+                    SQLite
+                   </a>
+                   <nav class="md-nav">
+                    <ul class="md-nav__list">
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#required-parameters">
+                       Required Parameters
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#optional-parameters">
+                       Optional parameters:
+                      </a>
+                     </li>
+                    </ul>
+                   </nav>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#postgresql">
+                    PostgreSQL
+                   </a>
+                   <nav class="md-nav">
+                    <ul class="md-nav__list">
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#id3">
+                       Required Parameters
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#id4">
+                       Optional parameters:
+                      </a>
+                     </li>
+                    </ul>
+                   </nav>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#mysql-mariadb">
+                    MySQL/MariaDB
+                   </a>
+                   <nav class="md-nav">
+                    <ul class="md-nav__list">
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#id5">
+                       Required Parameters
+                      </a>
+                     </li>
+                     <li class="md-nav__item">
+                      <a class="md-nav__link" href="#id6">
+                       Optional parameters:
+                      </a>
+                     </li>
+                    </ul>
+                   </nav>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#passing-in-custom-ssl-certificates">
+                    Passing in custom SSL Certificates
+                   </a>
+                  </li>
+                  <li class="md-nav__item">
+                   <a class="md-nav__link" href="#base-db-client">
+                    Base DB client
+                   </a>
+                  </li>
+                 </ul>
+                </nav>
+               </li>
+               <li class="md-nav__item">
+                <a class="md-nav__extra_link" href="_sources/databases.rst.txt">
+                 Show Source
+                </a>
+               </li>
+              </ul>
+             </nav>
+             <ul class="md-nav__list">
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#db-url">
+                DB_URL
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#capabilities">
+                Capabilities
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#sqlite">
+                SQLite
+               </a>
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#required-parameters">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#optional-parameters">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#postgresql">
+                PostgreSQL
+               </a>
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id3">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id4">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#mysql-mariadb">
+                MySQL/MariaDB
+               </a>
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id5">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id6">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#passing-in-custom-ssl-certificates">
+                Passing in custom SSL Certificates
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#base-db-client">
+                Base DB client
+               </a>
+              </li>
+             </ul>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="models.html">
+              Models
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="fields.html">
+              Fields
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="indexes.html">
+              Indexes
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="timezone.html">
+              Timezone
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="schema.html">
+              Schema Creation
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="query.html">
+              Query API
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="manager.html">
+              Manager
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="functions.html">
+              Functions &amp; Aggregates
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="expressions.html">
+              Expressions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="transactions.html">
+              Transactions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="connections.html">
+              Connections
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="exceptions.html">
+              Exceptions
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="signals.html">
+              Signals
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="migration.html">
+              Migration
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="validators.html">
+              Validators
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="logging.html">
+              Logging
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="router.html">
+              Router
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="cli.html">
+              TortoiseCLI
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="examples.html">
+            Examples
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="contrib.html">
+            Contrib
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CHANGELOG.html">
+            Changelog
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="roadmap.html">
+            Roadmap
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTING.html">
+            Contribution Guide
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTORS.html">
+            Thanks
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#databases--page-root">
+            Databases
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#db-url">
+               DB_URL
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#capabilities">
+               Capabilities
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#sqlite">
+               SQLite
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#required-parameters">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#optional-parameters">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#postgresql">
+               PostgreSQL
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id3">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id4">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#mysql-mariadb">
+               MySQL/MariaDB
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id5">
+                  Required Parameters
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id6">
+                  Optional parameters:
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#passing-in-custom-ssl-certificates">
+               Passing in custom SSL Certificates
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#base-db-client">
+               Base DB client
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__extra_link" href="_sources/databases.rst.txt">
+            Show Source
+           </a>
+          </li>
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <section id="databases">
+        <span id="id1">
+        </span>
+        <h1 id="databases--page-root">
+         Databases
+         <a class="headerlink" href="#databases--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         Tortoise currently supports the following databases:
+        </p>
+        <ul class="simple">
+         <li>
+          <p>
+           SQLite
+          </p>
+         </li>
+         <li>
+          <p>
+           PostgreSQL &gt;= 9.4 (using
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             asyncpg
+            </span>
+           </code>
+           or
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             psycopg
+            </span>
+           </code>
+           )
+          </p>
+         </li>
+         <li>
+          <p>
+           MySQL/MariaDB (using
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             aiomysql
+            </span>
+           </code>
+           )
+          </p>
+         </li>
+        </ul>
+        <p>
+         To use, please ensure that
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           asyncpg
+          </span>
+         </code>
+         ,
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           psycopg
+          </span>
+         </code>
+         and/or
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           aiomysql
+          </span>
+         </code>
+         is installed.
+        </p>
+        <section id="db-url">
+         <span id="id2">
+         </span>
+         <h2 id="db-url">
+          DB_URL
+          <a class="headerlink" href="#db-url" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Tortoise supports specifying Database configuration in a URL form.
+         </p>
+         <p>
+          The form is:
+         </p>
+         <p>
+          <code class="samp docutils literal notranslate">
+           <em>
+            <span class="pre">
+             DB_TYPE
+            </span>
+           </em>
+           <span class="pre">
+            ://
+           </span>
+           <em>
+            <span class="pre">
+             USERNAME
+            </span>
+           </em>
+           <span class="pre">
+            :
+           </span>
+           <em>
+            <span class="pre">
+             PASSWORD
+            </span>
+           </em>
+           <span class="pre">
+            @
+           </span>
+           <em>
+            <span class="pre">
+             HOST
+            </span>
+           </em>
+           <span class="pre">
+            :
+           </span>
+           <em>
+            <span class="pre">
+             PORT
+            </span>
+           </em>
+           <span class="pre">
+            /
+           </span>
+           <em>
+            <span class="pre">
+             DB_NAME
+            </span>
+           </em>
+           <span class="pre">
+            ?
+           </span>
+           <em>
+            <span class="pre">
+             PARAM1
+            </span>
+           </em>
+           <span class="pre">
+            =value&amp;
+           </span>
+           <em>
+            <span class="pre">
+             PARAM2
+            </span>
+           </em>
+           <span class="pre">
+            =value
+           </span>
+          </code>
+         </p>
+         <p>
+          If password contains special characters it need to be URL encoded:
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="s2">"kx%jj5/g"</span><span class="p">)</span>
+<span class="go">'kx%25jj5%2Fg'</span>
+</pre>
+          </div>
+         </div>
+         <p>
+          The supported
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            DB_TYPE
+           </span>
+          </code>
+          :
+         </p>
+         <dl>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             sqlite
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Typically in the form of
+            <code class="samp docutils literal notranslate">
+             <span class="pre">
+              sqlite://
+             </span>
+             <em>
+              <span class="pre">
+               DB_FILE
+              </span>
+             </em>
+            </code>
+            So if the
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              DB_FILE
+             </span>
+            </code>
+            is “/data/db.sqlite3” then the string will be
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              sqlite:///data/db.sqlite
+             </span>
+            </code>
+            (note the three /’s)
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             postgres
+            </span>
+           </code>
+          </dt>
+          <dd>
+           <p>
+            Using
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              asyncpg
+             </span>
+            </code>
+            :
+Typically in the form of
+            <code class="samp docutils literal notranslate">
+             <span class="pre">
+              postgres://postgres:pass@db.host:5432/somedb
+             </span>
+            </code>
+           </p>
+           <p>
+            Or specifically
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              asyncpg
+             </span>
+            </code>
+            /
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              psycopg
+             </span>
+            </code>
+            using:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                psycopg
+               </span>
+              </code>
+              :
+              <code class="samp docutils literal notranslate">
+               <span class="pre">
+                psycopg://postgres:pass@db.host:5432/somedb
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                asyncpg
+               </span>
+              </code>
+              :
+              <code class="samp docutils literal notranslate">
+               <span class="pre">
+                asyncpg://postgres:pass@db.host:5432/somedb
+               </span>
+              </code>
+             </p>
+            </li>
+           </ul>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             mysql
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Typically in the form of
+            <code class="samp docutils literal notranslate">
+             <span class="pre">
+              mysql://myuser:mypass@db.host:3306/somedb
+             </span>
+            </code>
+           </p>
+          </dd>
+         </dl>
+        </section>
+        <section id="capabilities">
+         <h2 id="capabilities">
+          Capabilities
+          <a class="headerlink" href="#capabilities" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Since each database has a different set of features we have a
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            Capabilities
+           </span>
+          </code>
+          that is registered on each client.
+Primarily this is to work around larger-than SQL differences, or common issues.
+         </p>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.backends.base.client.Capabilities">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.backends.base.client.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             Capabilities
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dialect
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              daemon
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_limit
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inline_comment
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              supports_transactions
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              support_for_update
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              support_index_hint
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              support_update_limit_order_by
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/backends/base/client.html#Capabilities">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.backends.base.client.Capabilities" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            DB Client Capabilities indicates the supported feature-set,
+and is also used to note common workarounds to deficiencies.
+           </p>
+           <p>
+            Defaults are set with the following standard:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              Deficiencies: assume it is working right.
+             </p>
+            </li>
+            <li>
+             <p>
+              Features: assume it doesn’t have it.
+             </p>
+            </li>
+           </ul>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dialect
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                ) – Dialect name of the DB Client driver.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 daemon
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Is the DB an external Daemon we connect to?
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_limit
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Indicates that this DB requires a
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  LIMIT
+                 </span>
+                </code>
+                statement for
+an
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  OFFSET
+                 </span>
+                </code>
+                statement to work.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inline_comment
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Indicates that comments should be rendered in line with the
+DDL statement, and not as a separate statement.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 supports_transactions
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Indicates that this DB supports transactions.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 support_for_update
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Indicates that this DB supports SELECT … FOR UPDATE SQL statement.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 support_index_hint
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – Support force index or use index.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 support_update_limit_order_by
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – support update/delete with limit and order by.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </section>
+        <section id="sqlite">
+         <h2 id="sqlite">
+          SQLite
+          <a class="headerlink" href="#sqlite" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          SQLite is an embedded database, and can run on a file or in-memory. Good database for local development or testing of code logic, but not recommended for production use.
+         </p>
+         <div class="admonition caution">
+          <p class="admonition-title">
+           Caution
+          </p>
+          <p>
+           SQLite doesn’t support many of the common datatypes natively, although we do emulation where we can, not everything is perfect.
+          </p>
+          <p>
+           For example
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             DecimalField
+            </span>
+           </code>
+           has precision preserved by storing values as strings, except when doing aggregates/ordering on it. In those cases we have to cast to/from floating-point numbers.
+          </p>
+          <p>
+           Similarily case-insensitivity is only partially implemented.
+          </p>
+         </div>
+         <p>
+          DB URL is typically in the form of
+          <code class="samp docutils literal notranslate">
+           <span class="pre">
+            sqlite://
+           </span>
+           <em>
+            <span class="pre">
+             DB_FILE
+            </span>
+           </em>
+          </code>
+          So if the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            DB_FILE
+           </span>
+          </code>
+          is “/data/db.sqlite3” then the string will be
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            sqlite:///data/db.sqlite
+           </span>
+          </code>
+          (note the three /’s)
+         </p>
+         <section id="required-parameters">
+          <h3 id="required-parameters">
+           Required Parameters
+           <a class="headerlink" href="#required-parameters" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              path
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Path to SQLite3 file.
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               :memory:
+              </span>
+             </code>
+             is a special path that indicates in-memory database.
+            </p>
+           </dd>
+          </dl>
+         </section>
+         <section id="optional-parameters">
+          <h3 id="optional-parameters">
+           Optional parameters:
+           <a class="headerlink" href="#optional-parameters" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           SQLite optional parameters is basically any of the
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             PRAGMA
+            </span>
+           </code>
+           statements documented
+           <a class="reference external" href="https://sqlite.org/pragma.html#toc">
+            here.
+           </a>
+          </p>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              journal_mode
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              WAL
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Specify SQLite journal mode.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              journal_size_limit
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              16384
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             The journal size.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              foreign_keys
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ON
+             </span>
+            </code>
+            )
+           </dt>
+           <dd>
+            <p>
+             Set to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               OFF
+              </span>
+             </code>
+             to not enforce referential integrity.
+            </p>
+           </dd>
+          </dl>
+         </section>
+        </section>
+        <section id="postgresql">
+         <h2 id="postgresql">
+          PostgreSQL
+          <a class="headerlink" href="#postgresql" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          DB URL is typically in the form of
+          <code class="samp docutils literal notranslate">
+           <span class="pre">
+            postgres://postgres:pass@db.host:5432/somedb
+           </span>
+          </code>
+          , or, if connecting via Unix domain socket
+          <code class="samp docutils literal notranslate">
+           <span class="pre">
+            postgres:///somedb
+           </span>
+          </code>
+          .
+         </p>
+         <section id="id3">
+          <h3 id="id3">
+           Required Parameters
+           <a class="headerlink" href="#id3" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              user
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Username to connect with.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              password
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Password for username.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              host
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Network host that database is available at.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              port
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Network port that database is available at. (defaults to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               5432
+              </span>
+             </code>
+             )
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              database
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Database to use.
+            </p>
+           </dd>
+          </dl>
+         </section>
+         <section id="id4">
+          <h3 id="id4">
+           Optional parameters:
+           <a class="headerlink" href="#id4" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           PostgreSQL optional parameters are pass-though parameters to the driver, see
+           <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#connection-pools">
+            here
+           </a>
+           for more details.
+          </p>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              minsize
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              1
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Minimum connection pool size
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              maxsize
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              5
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Maximum connection pool size
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              max_queries
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              50000
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Maximum no of queries before a connection is closed and replaced.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              max_inactive_connection_lifetime
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              300.0
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Duration of inactive connection before assuming that it has gone stale, and force a re-connect.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              schema
+             </span>
+            </code>
+            (uses user’s default schema by default):
+           </dt>
+           <dd>
+            <p>
+             A specific schema to use by default.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ssl
+             </span>
+            </code>
+            (defaults to ‘’False``):
+           </dt>
+           <dd>
+            <p>
+             Either
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               True
+              </span>
+             </code>
+             or a custom SSL context for self-signed certificates. See
+             <a class="reference internal" href="#db-ssl">
+              <span class="std std-ref">
+               Passing in custom SSL Certificates
+              </span>
+             </a>
+             for more info.
+            </p>
+           </dd>
+          </dl>
+          <p>
+           In case any of
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             user
+            </span>
+           </code>
+           ,
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             password
+            </span>
+           </code>
+           ,
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             host
+            </span>
+           </code>
+           ,
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             port
+            </span>
+           </code>
+           parameters is missing, we are letting
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             asyncpg
+            </span>
+           </code>
+           /
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             psycopg
+            </span>
+           </code>
+           retrieve it from default sources (standard PostgreSQL environment variables or default values).
+          </p>
+         </section>
+        </section>
+        <section id="mysql-mariadb">
+         <h2 id="mysql-mariadb">
+          MySQL/MariaDB
+          <a class="headerlink" href="#mysql-mariadb" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          DB URL is typically in the form of
+          <code class="samp docutils literal notranslate">
+           <span class="pre">
+            mysql://myuser:mypass@db.host:3306/somedb
+           </span>
+          </code>
+         </p>
+         <section id="id5">
+          <h3 id="id5">
+           Required Parameters
+           <a class="headerlink" href="#id5" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              user
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Username to connect with.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              password
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Password for username.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              host
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Network host that database is available at.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              port
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Network port that database is available at. (defaults to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               3306
+              </span>
+             </code>
+             )
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              database
+             </span>
+            </code>
+            :
+           </dt>
+           <dd>
+            <p>
+             Database to use.
+            </p>
+           </dd>
+          </dl>
+         </section>
+         <section id="id6">
+          <h3 id="id6">
+           Optional parameters:
+           <a class="headerlink" href="#id6" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           MySQL optional parameters are pass-though parameters to the driver, see
+           <a class="reference external" href="https://aiomysql.readthedocs.io/en/latest/connection.html#connection">
+            here
+           </a>
+           for more details.
+          </p>
+          <dl class="simple">
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              minsize
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              1
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Minimum connection pool size
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              maxsize
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              5
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Maximum connection pool size
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              connect_timeout
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              None
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Duration to wait for connection before throwing error.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              echo
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              False
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Set to
+             <cite>
+              True`
+             </cite>
+             to echo SQL queries (debug only)
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              no_delay
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              None
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Set to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               True
+              </span>
+             </code>
+             to set TCP NO_DELAY to disable Nagle’s algorithm on the socket.
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              charset
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              utf8mb4
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Sets the character set in use
+            </p>
+           </dd>
+           <dt>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ssl
+             </span>
+            </code>
+            (defaults to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              False
+             </span>
+            </code>
+            ):
+           </dt>
+           <dd>
+            <p>
+             Either
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               True
+              </span>
+             </code>
+             or a custom SSL context for self-signed certificates. See
+             <a class="reference internal" href="#db-ssl">
+              <span class="std std-ref">
+               Passing in custom SSL Certificates
+              </span>
+             </a>
+             for more info.
+            </p>
+           </dd>
+          </dl>
+         </section>
+        </section>
+        <section id="passing-in-custom-ssl-certificates">
+         <span id="db-ssl">
+         </span>
+         <h2 id="passing-in-custom-ssl-certificates">
+          Passing in custom SSL Certificates
+          <a class="headerlink" href="#passing-in-custom-ssl-certificates" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          To pass in a custom SSL Cert, one has to use the verbose init structure as the URL parser can’t
+handle complex objects.
+         </p>
+         <div class="highlight-python3 notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="c1"># Here we create a custom SSL context</span>
+<span class="kn">import</span> <span class="nn">ssl</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">create_default_context</span><span class="p">()</span>
+<span class="c1"># And in this example we disable validation...</span>
+<span class="c1"># Please don't do this. Loot at the official Python ``ssl`` module documentation</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">check_hostname</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">verify_mode</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CERT_NONE</span>
+
+<span class="c1"># Here we do a verbose init</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"connections"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"default"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"engine"</span><span class="p">:</span> <span class="s2">"tortoise.backends.asyncpg"</span><span class="p">,</span>
+                <span class="s2">"credentials"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"database"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="s2">"host"</span><span class="p">:</span> <span class="s2">"127.0.0.1"</span><span class="p">,</span>
+                    <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"moo"</span><span class="p">,</span>
+                    <span class="s2">"port"</span><span class="p">:</span> <span class="mi">54321</span><span class="p">,</span>
+                    <span class="s2">"user"</span><span class="p">:</span> <span class="s2">"postgres"</span><span class="p">,</span>
+                    <span class="s2">"ssl"</span><span class="p">:</span> <span class="n">ctx</span>  <span class="c1"># Here we pass in the SSL context</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">"apps"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"models"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"models"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"some.models"</span><span class="p">],</span>
+                <span class="s2">"default_connection"</span><span class="p">:</span> <span class="s2">"default"</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre>
+          </div>
+         </div>
+        </section>
+        <section id="base-db-client">
+         <span id="id7">
+         </span>
+         <h2 id="base-db-client">
+          Base DB client
+          <a class="headerlink" href="#base-db-client" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          The Base DB client interface is provided here, but should only be directly used as an advanced case.
+         </p>
+         <span class="target" id="module-tortoise.backends.base.client">
+         </span>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             tortoise.backends.base.client.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             BaseDBAsyncClient
+            </span>
+           </span>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              connection_name
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              fetch_inserted
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Base class for containing a DB connection.
+           </p>
+           <p>
+            Parameters get passed as kwargs, and is mostly driver specific.
+           </p>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.query_class">
+             <span class="sig-name descname">
+              <span class="pre">
+               query_class
+              </span>
+             </span>
+             <em class="property">
+              <span class="w">
+              </span>
+              <span class="pre">
+               Type[pypika.Query]
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.query_class" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              The PyPika Query dialect (low level dialect)
+             </p>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.executor_class">
+             <span class="sig-name descname">
+              <span class="pre">
+               executor_class
+              </span>
+             </span>
+             <em class="property">
+              <span class="w">
+              </span>
+              <span class="pre">
+               Type[BaseExecutor]
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.executor_class" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              The executor dialect class (high level dialect)
+             </p>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.schema_generator">
+             <span class="sig-name descname">
+              <span class="pre">
+               schema_generator
+              </span>
+             </span>
+             <em class="property">
+              <span class="w">
+              </span>
+              <span class="pre">
+               Type[BaseSchemaGenerator]
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.schema_generator" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              The DDL schema generator
+             </p>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.capabilities">
+             <span class="sig-name descname">
+              <span class="pre">
+               capabilities
+              </span>
+             </span>
+             <em class="property">
+              <span class="w">
+              </span>
+              <span class="pre">
+               Capabilities
+              </span>
+             </em>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.capabilities" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Contains the connection capabilities
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">
+             <span class="sig-name descname">
+              <span class="pre">
+               acquire_connection
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.acquire_connection">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Acquires a connection from the pool.
+Will return the current context connection if already in a transaction.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Union
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  ConnectionWrapper
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  PoolConnectionWrapper
+                 </span>
+                </code>
+                ]
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.close">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               close
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.close">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.close" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Closes the DB connection.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.create_connection">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               create_connection
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                with_db
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.create_connection">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.create_connection" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Establish a DB connection.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <strong>
+                 with_db
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  bool
+                 </span>
+                </code>
+                ) – If True, then select the DB to use, else use default.
+Use case for this is to create/drop a database.
+               </p>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.db_create">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               db_create
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.db_create">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.db_create" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Created the database in the server. Typically only called by the test runner.
+             </p>
+             <p>
+              Need to have called
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                create_connection()`
+               </span>
+              </code>
+              with parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                with_db=False
+               </span>
+              </code>
+              set to
+use the default connection instead of the configured one, else you would get errors
+indicating the database doesn’t exist.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.db_delete">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               db_delete
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.db_delete">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.db_delete" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Delete the database from the Server. Typically only called by the test runner.
+             </p>
+             <p>
+              Need to have called
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                create_connection()`
+               </span>
+              </code>
+              with parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                with_db=False
+               </span>
+              </code>
+              set to
+use the default connection instead of the configured one, else you would get errors
+indicating the database is in use.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               execute_insert
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                query
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                values
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_insert">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Executes a RAW SQL insert statement, with provided parameters.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   query
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ) – The SQL string, pre-parametrized for the target DB dialect.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   values
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    list
+                   </span>
+                  </code>
+                  ) – A sequence of positional DB parameters.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Any
+                 </span>
+                </code>
+               </p>
+              </dd>
+              <dt class="field-odd">
+               Returns
+              </dt>
+              <dd class="field-odd">
+               <p>
+                The primary key if it is generated by the DB.
+(Currently only integer autonumber PK’s)
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_many">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               execute_many
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                query
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                values
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_many">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Executes a RAW bulk insert statement, like execute_insert, but returns no data.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   query
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ) – The SQL string, pre-parametrized for the target DB dialect.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   values
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    List
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    list
+                   </span>
+                  </code>
+                  ]) – A sequence of positional DB parameters.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               execute_query
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                query
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                values
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_query">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Executes a RAW SQL query statement, and returns the resultset.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   query
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ) – The SQL string, pre-parametrized for the target DB dialect.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   values
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    list
+                   </span>
+                  </code>
+                  ]) – A sequence of positional DB parameters.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-data docutils literal notranslate">
+                 <span class="pre">
+                  Tuple
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  Sequence
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  dict
+                 </span>
+                </code>
+                ]]
+               </p>
+              </dd>
+              <dt class="field-odd">
+               Returns
+              </dt>
+              <dd class="field-odd">
+               <p>
+                A tuple of: (The number of rows affected, The resultset)
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               execute_query_dict
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                query
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                values
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_query_dict">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Executes a RAW SQL query statement, and returns the resultset as a list of dicts.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   query
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    str
+                   </span>
+                  </code>
+                  ) – The SQL string, pre-parametrized for the target DB dialect.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   values
+                  </strong>
+                  (
+                  <code class="xref py py-data docutils literal notranslate">
+                   <span class="pre">
+                    Optional
+                   </span>
+                  </code>
+                  [
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    list
+                   </span>
+                  </code>
+                  ]) – A sequence of positional DB parameters.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  List
+                 </span>
+                </code>
+                [
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  dict
+                 </span>
+                </code>
+                ]
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt class="sig sig-object py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_script">
+             <em class="property">
+              <span class="pre">
+               async
+              </span>
+              <span class="w">
+              </span>
+             </em>
+             <span class="sig-name descname">
+              <span class="pre">
+               execute_script
+              </span>
+             </span>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                query
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_script">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_script" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Executes a RAW SQL script with multiple statements, and returns nothing.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <strong>
+                 query
+                </strong>
+                (
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  str
+                 </span>
+                </code>
+                ) – The SQL string, which will be passed on verbatim.
+Semicolons is supported here.
+               </p>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </section>
+       </section>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="setup.html" rel="prev" title="Set up">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        Set up
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="models.html" rel="next" title="Models">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Next
+        </span>
+        Models
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      4.3.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#3f51b5" name="theme-color"/>
+  <script src="_static/javascripts/modernizr.js">
+  </script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MJ7RHW2FRB');
+  </script>
+  <title>
+   Contribution Guide — Tortoise ORM v0.19.0 Documentation
+  </title>
+  <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
+  </script>
+  <script src="_static/jquery.js">
+  </script>
+  <script src="_static/underscore.js">
+  </script>
+  <script src="_static/doctools.js">
+  </script>
+  <script src="_static/clipboard.min.js">
+  </script>
+  <script src="_static/copybutton.js">
+  </script>
+  <link href="_static/tortoise.png" rel="shortcut icon"/>
+  <link href="genindex.html" rel="index" title="Index"/>
+  <link href="search.html" rel="search" title="Search"/>
+  <link href="CODE_OF_CONDUCT.html" rel="next" title="Contributor Covenant Code of Conduct"/>
+  <link href="roadmap.html" rel="prev" title="Roadmap"/>
+ </head>
+ <body data-md-color-accent="light-green" data-md-color-primary="green" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#CONTRIBUTING" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+       <img alt="Tortoise ORM 0.19.0 Documentation logo" height="26" src="_static/tortoise.png"/>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Tortoise ORM
+       </span>
+       <span class="md-header-nav__topic">
+        Contribution Guide
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         tortoise-orm
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+     </script>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           <img alt=" logo" height="48" src="_static/tortoise.png" width="48"/>
+          </a>
+          <a href="toc.html" title="Tortoise ORM v0.19.0 Documentation">
+           Tortoise ORM
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/tortoise/tortoise-orm" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            tortoise-orm
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            Tortoise ORM
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="getting_started.html">
+            Getting started
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="reference.html">
+            Reference
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="examples.html">
+            Examples
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="contrib.html">
+            Contrib
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CHANGELOG.html">
+            Changelog
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="roadmap.html">
+            Roadmap
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            Contribution Guide
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="#">
+            Contribution Guide
+           </a>
+           <nav class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             Contents
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#contributing--page-root">
+               Contribution Guide
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#filing-a-bug-or-requesting-a-feature">
+                  Filing a bug or requesting a feature
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#have-a-chat">
+                  Have a chat
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#project-structure">
+                  Project structure
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#coding-guideline">
+                  Coding Guideline
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#priorities">
+                     Priorities
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#style">
+                     Style
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#running-tests">
+                  Running tests
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#different-types-of-tests">
+                     Different types of tests
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#things-to-be-aware-of-when-running-the-test-suite">
+                     Things to be aware of when running the test suite
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__extra_link" href="_sources/CONTRIBUTING.rst.txt">
+               Show Source
+              </a>
+             </li>
+            </ul>
+           </nav>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="CODE_OF_CONDUCT.html">
+              Contributor Covenant Code of Conduct
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#filing-a-bug-or-requesting-a-feature">
+              Filing a bug or requesting a feature
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#have-a-chat">
+              Have a chat
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#project-structure">
+              Project structure
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#coding-guideline">
+              Coding Guideline
+             </a>
+             <ul class="md-nav__list">
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#priorities">
+                Priorities
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#style">
+                Style
+               </a>
+              </li>
+             </ul>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#running-tests">
+              Running tests
+             </a>
+             <ul class="md-nav__list">
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#different-types-of-tests">
+                Different types of tests
+               </a>
+              </li>
+              <li class="md-nav__item">
+               <a class="md-nav__link" href="#things-to-be-aware-of-when-running-the-test-suite">
+                Things to be aware of when running the test suite
+               </a>
+              </li>
+             </ul>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="CONTRIBUTORS.html">
+            Thanks
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#contributing--page-root">
+            Contribution Guide
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#filing-a-bug-or-requesting-a-feature">
+               Filing a bug or requesting a feature
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#have-a-chat">
+               Have a chat
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#project-structure">
+               Project structure
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#coding-guideline">
+               Coding Guideline
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#priorities">
+                  Priorities
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#style">
+                  Style
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#running-tests">
+               Running tests
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#different-types-of-tests">
+                  Different types of tests
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#things-to-be-aware-of-when-running-the-test-suite">
+                  Things to be aware of when running the test suite
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__extra_link" href="_sources/CONTRIBUTING.rst.txt">
+            Show Source
+           </a>
+          </li>
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <section id="contribution-guide">
+        <h1 id="contributing--page-root">
+         Contribution Guide
+         <a class="headerlink" href="#contributing--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <div class="toctree-wrapper compound">
+        </div>
+        <p>
+         If you want to contribute check out issues, or just straightforwardly create PR.
+        </p>
+        <p>
+         Tortoise ORM is a volunteer effort. We encourage you to pitch in and join the team!
+        </p>
+        <p>
+         Please have a look at the
+         <a class="reference internal" href="CODE_OF_CONDUCT.html#code-conduct">
+          <span class="std std-ref">
+           Contributor Covenant Code of Conduct
+          </span>
+         </a>
+        </p>
+        <section id="filing-a-bug-or-requesting-a-feature">
+         <h2 id="filing-a-bug-or-requesting-a-feature">
+          Filing a bug or requesting a feature
+          <a class="headerlink" href="#filing-a-bug-or-requesting-a-feature" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Please check if there isn’t an existing issue or pull request open that addresses your issue.
+If not you are welcome to open one.
+         </p>
+         <p>
+          If you have an incomplete change, but won’t/can’t continue working on it, please create a PR in any case and mark it as
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            (WIP)
+           </span>
+          </code>
+          so we can help each other.
+         </p>
+        </section>
+        <section id="have-a-chat">
+         <h2 id="have-a-chat">
+          Have a chat
+          <a class="headerlink" href="#have-a-chat" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          We have a chatroom on
+          <a class="reference external" href="https://gitter.im/tortoise/community">
+           Gitter
+          </a>
+         </p>
+        </section>
+        <section id="project-structure">
+         <h2 id="project-structure">
+          Project structure
+          <a class="headerlink" href="#project-structure" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          We have a
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            Makefile
+           </span>
+          </code>
+          that has the common operations listed, to get started just type
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            make
+           </span>
+          </code>
+          :
+         </p>
+         <div class="highlight-default notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">Tortoise</span> <span class="n">ORM</span> <span class="n">development</span> <span class="n">makefile</span>
+
+<span class="n">usage</span><span class="p">:</span> <span class="n">make</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+<span class="n">Targets</span><span class="p">:</span>
+    <span class="n">up</span>          <span class="n">Updates</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span>
+    <span class="n">deps</span>        <span class="n">Ensure</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span> <span class="n">are</span> <span class="n">installed</span>
+    <span class="n">check</span>       <span class="n">Checks</span> <span class="n">that</span> <span class="n">build</span> <span class="ow">is</span> <span class="n">sane</span>
+    <span class="n">lint</span>        <span class="n">Reports</span> <span class="nb">all</span> <span class="n">linter</span> <span class="n">violations</span>
+    <span class="n">test</span>        <span class="n">Runs</span> <span class="nb">all</span> <span class="n">tests</span>
+    <span class="n">docs</span>        <span class="n">Builds</span> <span class="n">the</span> <span class="n">documentation</span>
+    <span class="n">style</span>       <span class="n">Auto</span><span class="o">-</span><span class="n">formats</span> <span class="n">the</span> <span class="n">code</span>
+</pre>
+          </div>
+         </div>
+         <p>
+          So to run the tests you just need to run
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            make
+           </span>
+           <span class="pre">
+            test
+           </span>
+          </code>
+          , etc…
+         </p>
+         <p>
+          The code is structured in the following directories:
+         </p>
+         <dl class="simple">
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             docs/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Documentation
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             examples/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Example code
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Base Tortoise ORM
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/fields/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            The Fields are defined here.
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/backends/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            DB Backends, such as
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              sqlite
+             </span>
+            </code>
+            ,
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              asyncpg
+             </span>
+            </code>
+            ,
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              psycopg
+             </span>
+            </code>
+            &amp;
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              mysql
+             </span>
+            </code>
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/backends/base/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Common DB Backend code
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/contrib/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            Anything that helps people use the project, such as Testing framework and linter plugins
+           </p>
+          </dd>
+          <dt>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             tortoise/tests/
+            </span>
+           </code>
+           :
+          </dt>
+          <dd>
+           <p>
+            The Tortoise test code
+           </p>
+          </dd>
+         </dl>
+        </section>
+        <section id="coding-guideline">
+         <h2 id="coding-guideline">
+          Coding Guideline
+          <a class="headerlink" href="#coding-guideline" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          We believe to keep the code simple, so it is easier to test and there is less place for bugs to hide.
+         </p>
+         <section id="priorities">
+          <h3 id="priorities">
+           Priorities
+           <a class="headerlink" href="#priorities" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           An important part of Tortoise ORM is that we want a simple interface, that only does what is expected.
+As this is a value that is different for different people, we have settled on:
+          </p>
+          <ul class="simple">
+           <li>
+            <p>
+             Model/QuerySet usage should be explicit and concise.
+            </p>
+           </li>
+           <li>
+            <p>
+             Keep it simple, as simple code not only often runs faster, but has less bugs too.
+            </p>
+           </li>
+           <li>
+            <p>
+             Correctness &gt; Ease-Of-Use &gt; Performance &gt; Maintenance
+            </p>
+           </li>
+           <li>
+            <p>
+             Test everything.
+            </p>
+           </li>
+           <li>
+            <p>
+             Only do performance/memory optimisation when you have a repeatable benchmark to measure with.
+            </p>
+           </li>
+          </ul>
+         </section>
+         <section id="style">
+          <h3 id="style">
+           Style
+           <a class="headerlink" href="#style" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           We try and automate as much as we can, so a simple
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             make
+            </span>
+            <span class="pre">
+             check
+            </span>
+           </code>
+           will do automated style checking and linting, but these don’t pick up on the non-obvious style preferences.
+          </p>
+          <p>
+           Tortoise ORM follows a the following agreed upon style:
+          </p>
+          <ul class="simple">
+           <li>
+            <p>
+             Keep to PEP8 where you can
+            </p>
+           </li>
+           <li>
+            <p>
+             Max line-length is changed to 100
+            </p>
+           </li>
+           <li>
+            <dl class="simple">
+             <dt>
+              Always try to separate out terms clearly rather than concatenate words directly:
+             </dt>
+             <dd>
+              <ul>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   some_purpose
+                  </span>
+                 </code>
+                 instead of
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   somepurpose
+                  </span>
+                 </code>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   SomePurpose
+                  </span>
+                 </code>
+                 instead of
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   Somepurpose
+                  </span>
+                 </code>
+                </p>
+               </li>
+              </ul>
+             </dd>
+            </dl>
+           </li>
+           <li>
+            <dl class="simple">
+             <dt>
+              Keep in mind the targeted Python versions of
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                &gt;=3.7
+               </span>
+              </code>
+              :
+             </dt>
+             <dd>
+              <ul>
+               <li>
+                <p>
+                 Do use f-strings
+                </p>
+               </li>
+              </ul>
+             </dd>
+            </dl>
+           </li>
+           <li>
+            <p>
+             Please try and provide type annotations where you can, it will improve auto-completion in editors, and better static analysis.
+            </p>
+           </li>
+          </ul>
+         </section>
+        </section>
+        <section id="running-tests">
+         <h2 id="running-tests">
+          Running tests
+          <a class="headerlink" href="#running-tests" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Running tests natively on windows isn’t supported (yet). Best way to run them atm is by using WSL.
+Postgres uses the default
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            postgres
+           </span>
+          </code>
+          user, mysql uses
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            root
+           </span>
+          </code>
+          . If either of them has a password you can set it with the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            TORTOISE_POSTGRES_PASS
+           </span>
+          </code>
+          and
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            TORTOISE_MYSQL_PASS
+           </span>
+          </code>
+          env variables respectively.
+         </p>
+         <section id="different-types-of-tests">
+          <h3 id="different-types-of-tests">
+           Different types of tests
+           <a class="headerlink" href="#different-types-of-tests" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <ul class="simple">
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test
+              </span>
+             </code>
+             : most basic quick test. only runs the tests on in an memory sqlite database without generating a coverage report.
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_sqlite
+              </span>
+             </code>
+             : Runs the tests on a sqlite in memory database
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_postgres_asyncpg
+              </span>
+             </code>
+             : Runs the asyncpg tests on the postgres database
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_postgres_psycopg
+              </span>
+             </code>
+             : Runs the psycopg tests on the postgres database
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_mysql_myisam
+              </span>
+             </code>
+             : Runs the tests on the mysql database using the
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               MYISAM
+              </span>
+             </code>
+             storage engine (no transactions)
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test_mysql
+              </span>
+             </code>
+             : Runs the tests on the mysql database
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               testall
+              </span>
+             </code>
+             : runs the tests on all 4 database types: sqlite (in memory), postgress, MySQL-MyISAM and MySQL-InnoDB
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               green
+              </span>
+             </code>
+             : runs the same tests as
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               make
+              </span>
+              <span class="pre">
+               test
+              </span>
+             </code>
+             , ensures the green plugin works
+            </p>
+           </li>
+           <li>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               nose2
+              </span>
+              <span class="pre">
+               --plugin
+              </span>
+              <span class="pre">
+               tortoise.contrib.test.nose2
+              </span>
+              <span class="pre">
+               --db-module
+              </span>
+              <span class="pre">
+               tests.testmodels
+              </span>
+              <span class="pre">
+               --db-url
+              </span>
+              <span class="pre">
+               sqlite://:memory:
+              </span>
+              <span class="pre">
+               ``:
+              </span>
+              <span class="pre">
+               same
+              </span>
+              <span class="pre">
+               test
+              </span>
+              <span class="pre">
+               as
+              </span>
+              <span class="pre">
+               ``make
+              </span>
+              <span class="pre">
+               test
+              </span>
+             </code>
+             , ensures the nose2 plugin works
+            </p>
+           </li>
+          </ul>
+         </section>
+         <section id="things-to-be-aware-of-when-running-the-test-suite">
+          <h3 id="things-to-be-aware-of-when-running-the-test-suite">
+           Things to be aware of when running the test suite
+           <a class="headerlink" href="#things-to-be-aware-of-when-running-the-test-suite" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <ul class="simple">
+           <li>
+            <p>
+             Some tests always run regardless of what test suite you are running (the connection tests for mysql and postgres for example, you don’t need a database running as it doesn’t actually connect though)
+            </p>
+           </li>
+           <li>
+            <p>
+             Some tests use hardcoded databases (usually sqlite) for testing, regardless of what DB url you specified.
+            </p>
+           </li>
+           <li>
+            <p>
+             The postgres driver does not work under Pypy so those tests will be skipped if you are running under pypy
+            </p>
+           </li>
+           <li>
+            <p>
+             You can run only specific tests by running `` py.test &lt;testfiles&gt;`` or
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               green
+              </span>
+              <span class="pre">
+               -s
+              </span>
+              <span class="pre">
+               1
+              </span>
+              <span class="pre">
+               &lt;testfile&gt;
+              </span>
+             </code>
+            </p>
+           </li>
+           <li>
+            <dl class="simple">
+             <dt>
+              If you want a peek under the hood of test that hang to debug try running them with
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                green
+               </span>
+               <span class="pre">
+                -s
+               </span>
+               <span class="pre">
+                1
+               </span>
+               <span class="pre">
+                -vv
+               </span>
+               <span class="pre">
+                -d
+               </span>
+               <span class="pre">
+                -a
+               </span>
+               <span class="pre">
+                &lt;test&gt;
+               </span>
+              </code>
+             </dt>
+             <dd>
+              <ul>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   -s
+                  </span>
+                  <span class="pre">
+                   1
+                  </span>
+                 </code>
+                 means it only runs one test at a time
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   -vv
+                  </span>
+                 </code>
+                 very verbose output
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   -d
+                  </span>
+                 </code>
+                 log debug output
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   -a
+                  </span>
+                 </code>
+                 don’t capture stdout but just let it output
+                </p>
+               </li>
+              </ul>
+             </dd>
+            </dl>
+           </li>
+           <li>
+            <p>
+             Mysql tends to be relatively slow but there are some settings you can tweak to make it faster, however this also means less redundant. Use at own risk:
+             <a class="reference external" href="http://www.tocker.ca/2013/11/04/reducing-mysql-durability-for-testing.html">
+              http://www.tocker.ca/2013/11/04/reducing-mysql-durability-for-testing.html
+             </a>
+            </p>
+           </li>
+          </ul>
+         </section>
+        </section>
+       </section>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="roadmap.html" rel="prev" title="Roadmap">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        Roadmap
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="CODE_OF_CONDUCT.html" rel="next" title="Contributor Covenant Code of Conduct">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Next
+        </span>
+        Contributor Covenant Code of Conduct
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2018 - 2022, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      4.3.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>
