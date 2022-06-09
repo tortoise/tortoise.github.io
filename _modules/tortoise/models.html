@@ -1780,7 +1780,7 @@
 
 <div class="viewcode-block" id="Model.get"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.get">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetches a single record for a Model type using the provided filter parameters.</span>
@@ -1789,6 +1789,7 @@
 
 <span class="sd">            user = await User.get(username=&quot;foo&quot;)</span>
 
+<span class="sd">        :param using_db: The DB connection to use</span>
 <span class="sd">        :param args: Q functions containing constraints. Will be AND&#39;ed.</span>
 <span class="sd">        :param kwargs: Simple filter constraints.</span>
 
@@ -1807,6 +1808,7 @@
 
 <span class="sd">            result = await User.raw(&quot;select * from users where name like &#39;%test%&#39;&quot;)</span>
 
+<span class="sd">        :param using_db: The specific DB connection to use</span>
 <span class="sd">        :param sql: The raw sql.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
@@ -1814,7 +1816,7 @@
 
 <div class="viewcode-block" id="Model.exists"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.exists">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExistsQuery</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return True/False whether record exists with the provided filter parameters.</span>
@@ -1823,6 +1825,7 @@
 
 <span class="sd">            result = await User.exists(username=&quot;foo&quot;)</span>
 
+<span class="sd">        :param using_db: The specific DB connection to use.</span>
 <span class="sd">        :param args: Q functions containing constraints. Will be AND&#39;ed.</span>
 <span class="sd">        :param kwargs: Simple filter constraints.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1831,7 +1834,7 @@
 
 <div class="viewcode-block" id="Model.get_or_none"><a class="viewcode-back" href="../../models.html#tortoise.models.Model.get_or_none">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_or_none</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetches a single record for a Model type using the provided filter parameters or None.</span>
@@ -1840,6 +1843,7 @@
 
 <span class="sd">            user = await User.get_or_none(username=&quot;foo&quot;)</span>
 
+<span class="sd">        :param using_db: The specific DB connection to use.</span>
 <span class="sd">        :param args: Q functions containing constraints. Will be AND&#39;ed.</span>
 <span class="sd">        :param kwargs: Simple filter constraints.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
