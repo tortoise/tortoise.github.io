@@ -681,6 +681,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#encoding-in-oracle" class="md-nav__link">
+    <span class="md-ellipsis">Encoding in Oracle:<wbr></span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passing-in-custom-ssl-certificates" class="md-nav__link">
     <span class="md-ellipsis">Passing in custom SSL Certificates</span>
   </a>
@@ -1640,7 +1647,7 @@ So if the <code class="docutils literal notranslate"><span class="pre">DB_FILE</
 </dd>
 </dl>
 <h2 id="mssql-oracle"><span id="db-ssl"></span>MSSQL/Oracle<a class="headerlink" href="#mssql-oracle" title="Permalink to this headline">¶</a></h2>
-<p>DB URL is typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mssql</span> <span class="pre">or</span> <span class="pre">oracle://myuser:mypass&#64;db.host:1433/somedb?driver=the</span> <span class="pre">odbc</span> <span class="pre">driver</span></code></p>
+<p>DB URL is typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mssql</span> <span class="pre">or</span> <span class="pre">oracle://myuser:mypass&#64;db.host:1433/somedb?driver=</span><em><span class="pre">the</span> <span class="pre">odbc</span> <span class="pre">driver</span></em></code></p>
 <h3 id="id7">Required Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">user</span></code>:</dt><dd><p>Username to connect with.</p>
@@ -1653,7 +1660,7 @@ So if the <code class="docutils literal notranslate"><span class="pre">DB_FILE</
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">database</span></code>:</dt><dd><p>Database to use.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code>:</dt><dd><p>The ODBC driver to use.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code>:</dt><dd><p>The ODBC driver to use. Actual name of the ODBC driver in your <cite>odbcinst.ini</cite> file (you can find it’s location using <cite>odbcinst -j</cite> command). It requires <cite>unixodbc</cite> to be installed in your system.</p>
 </dd>
 </dl>
 <h3 id="id8">Optional parameters:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
@@ -1665,9 +1672,11 @@ So if the <code class="docutils literal notranslate"><span class="pre">DB_FILE</
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">pool_recycle</span></code> (defaults to <code class="docutils literal notranslate"><span class="pre">-1</span></code>):</dt><dd><p>Pool recycle timeout in seconds.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">echo</span></code> (defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>):</dt><dd><p>Set to <cite>True`</cite> to echo SQL queries (debug only)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">echo</span></code> (defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>):</dt><dd><p>Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to echo SQL queries (debug only)</p>
 </dd>
 </dl>
+<h2 id="encoding-in-oracle">Encoding in Oracle:<a class="headerlink" href="#encoding-in-oracle" title="Permalink to this headline">¶</a></h2>
+<p>If you get <code class="docutils literal notranslate"><span class="pre">???</span></code> values in Varchar fields instead of your actual text (russian/chinese/etc), then set <code class="docutils literal notranslate"><span class="pre">NLS_LANG</span></code> variable in your client environment to support UTF8. For example, <cite>“American_America.UTF8”</cite>.</p>
 <h2 id="passing-in-custom-ssl-certificates">Passing in custom SSL Certificates<a class="headerlink" href="#passing-in-custom-ssl-certificates" title="Permalink to this headline">¶</a></h2>
 <p>To pass in a custom SSL Cert, one has to use the verbose init structure as the URL parser can’t
 handle complex objects.</p>

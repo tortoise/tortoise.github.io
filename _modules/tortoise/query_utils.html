@@ -508,7 +508,11 @@
 <span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Criterion</span>
 
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">OperationalError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="n">BackwardFKRelation</span><span class="p">,</span> <span class="n">ManyToManyFieldInstance</span><span class="p">,</span> <span class="n">RelationalField</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BackwardFKRelation</span><span class="p">,</span>
+    <span class="n">ManyToManyFieldInstance</span><span class="p">,</span>
+    <span class="n">RelationalField</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
     <span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">QuerySet</span>

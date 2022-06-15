@@ -502,7 +502,18 @@
 
   <h1>Source code for tortoise.expressions</h1><div class="highlight"><pre>
 <span></span><code><span class="kn">import</span> <span class="nn">operator</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TYPE_CHECKING</span><span class="p">,</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">Iterator</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Case</span> <span class="k">as</span> <span class="n">PypikaCase</span>
 <span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PypikaField</span>
@@ -514,7 +525,11 @@
 <span class="kn">from</span> <span class="nn">pypika.utils</span> <span class="kn">import</span> <span class="n">format_alias_sql</span>
 
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="n">BackwardFKRelation</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span> <span class="n">RelationalField</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BackwardFKRelation</span><span class="p">,</span>
+    <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
+    <span class="n">RelationalField</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tortoise.query_utils</span> <span class="kn">import</span> <span class="n">QueryModifier</span><span class="p">,</span> <span class="n">_get_joins_for_related_field</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
