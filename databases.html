@@ -1562,7 +1562,7 @@ DDL statement, and not as a separate statement.</p>
 <p class="admonition-title">Caution</p>
 <p>SQLite doesn’t support many of the common datatypes natively, although we do emulation where we can, not everything is perfect.</p>
 <p>For example <code class="docutils literal notranslate"><span class="pre">DecimalField</span></code> has precision preserved by storing values as strings, except when doing aggregates/ordering on it. In those cases we have to cast to/from floating-point numbers.</p>
-<p>Similarily case-insensitivity is only partially implemented.</p>
+<p>Similarly case-insensitivity is only partially implemented.</p>
 </div>
 <p>DB URL is typically in the form of <code class="samp docutils literal notranslate"><span class="pre">sqlite://</span><em><span class="pre">DB_FILE</span></em></code>
 So if the <code class="docutils literal notranslate"><span class="pre">DB_FILE</span></code> is “/data/db.sqlite3” then the string will be <code class="docutils literal notranslate"><span class="pre">sqlite:///data/db.sqlite</span></code> (note the three /’s)</p>

@@ -2163,7 +2163,7 @@ then <code class="docutils literal notranslate"><span class="pre">IncompleteInst
 <ul class="simple">
 <li><p>More consistent escaping of db columns, fixes using SQL reserved keywords as field names with a function.</p></li>
 <li><p>Fix the aggregates using the wrong side of the join when doing a self-referential aggregation.</p></li>
-<li><p>Fix <code class="docutils literal notranslate"><span class="pre">F</span></code> funtions wrapped forgetting about <code class="docutils literal notranslate"><span class="pre">distinct=True</span></code></p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">F</span></code> functions wrapped forgetting about <code class="docutils literal notranslate"><span class="pre">distinct=True</span></code></p></li>
 </ul>
 <h3 id="id49">0.16.3<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -2277,7 +2277,7 @@ This will correctly model:</p>
 <li><p>Relationships (FK/O2O/M2M)</p></li>
 <li><p>Callables</p></li>
 </ul>
-<p>At this stage we only suport serialisation, not deserialisation.</p>
+<p>At this stage we only support serialisation, not deserialisation.</p>
 <p>For mode information, please see <a class="reference internal" href="contrib/pydantic.html#contrib-pydantic"><span class="std std-ref">Pydantic serialisation</span></a></p>
 </li>
 </ul>
@@ -2398,7 +2398,7 @@ This generates SQL that differentiates between which instance of the table to wo
 <li><p>Changed <code class="docutils literal notranslate"><span class="pre">TextField</span></code> to use <code class="docutils literal notranslate"><span class="pre">LONGTEXT</span></code> for MySQL to allow for larger than 64KB of text.</p></li>
 <li><p>De-duplicate index if specified on both <code class="docutils literal notranslate"><span class="pre">index=true</span></code> and as part of <code class="docutils literal notranslate"><span class="pre">indexes</span></code></p></li>
 <li><p>Primary Keyed <code class="docutils literal notranslate"><span class="pre">TextField</span></code> is marked as deprecated.
-We can’t guarnatee that it will be properly indexed or unique in all cases.</p></li>
+We can’t guarantee that it will be properly indexed or unique in all cases.</p></li>
 <li><p>One can now disable the backwards relation for FK/O2O relations by passing <code class="docutils literal notranslate"><span class="pre">related_name=False</span></code></p></li>
 <li><p>One can now pass a PK value to a generated field, and Tortoise ORM will use that as the PK as expected.
 This allows one to have a model that has a autonumber PK, but setting it explicitly if required.</p></li>
@@ -2442,7 +2442,7 @@ It can be set from the primary side only, but resolved from both sides in the sa
 </ul>
 <ul class="simple">
 <li><p>Prefetching is done concurrently now, sending all prefetch requests at the same time instead of in sequence.</p></li>
-<li><p>Enabe foreign key enforcement on SQLite for builds where it was optional.</p></li>
+<li><p>Enable foreign key enforcement on SQLite for builds where it was optional.</p></li>
 </ul>
 <h3 id="id76">0.15.2<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -2689,7 +2689,7 @@ and is missing many useful features for async applications.</p>
 </li>
 </ul>
 <ul class="simple">
-<li><p>Split model consructor into from-Python and from-DB paths, leading to 15-25% speedup for large fetch operations.</p></li>
+<li><p>Split model constructor into from-Python and from-DB paths, leading to 15-25% speedup for large fetch operations.</p></li>
 <li><p>More efficient queryset manipulation, 5-30% speedup for small fetches.</p></li>
 </ul>
 <h3 id="id105">0.12.5<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
@@ -2739,7 +2739,7 @@ insert performance.</p>
 <p class="admonition-title">Note</p>
 <p>This is a big feature change. It should not break any existing implementations.</p>
 </div>
-<p>That primary key will be accesible through a reserved field <code class="docutils literal notranslate"><span class="pre">pk</span></code> which will be an alias of whichever field has been nominated as a primary key.
+<p>That primary key will be accessible through a reserved field <code class="docutils literal notranslate"><span class="pre">pk</span></code> which will be an alias of whichever field has been nominated as a primary key.
 That alias field can be used as a field name when doing filtering e.g. <code class="docutils literal notranslate"><span class="pre">.filter(pk=...)</span></code> etc…</p>
 <p>We currently support single (non-composite) primary keys of any indexable field type, but only these field types are recommended:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">IntField</span>
@@ -2764,7 +2764,7 @@ That alias field can be used as a field name when doing filtering e.g. <code cla
 <h3 id="id112">0.11.13<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed connection retry to work with transactions</p></li>
-<li><p>Added broader PostgreSQL connection failiure detection</p></li>
+<li><p>Added broader PostgreSQL connection failure detection</p></li>
 </ul>
 <h3 id="id113">0.11.12<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -2925,7 +2925,7 @@ if <code class="docutils literal notranslate"><span class="pre">safe=True</span>
 </ul>
 <h3 id="id136">0.10.2<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Set single_connection to True by default, as there is known issues with conection pooling</p></li>
+<li><p>Set single_connection to True by default, as there is known issues with connection pooling</p></li>
 <li><p>Updated documentation</p></li>
 </ul>
 <h3 id="id137">0.10.1<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
