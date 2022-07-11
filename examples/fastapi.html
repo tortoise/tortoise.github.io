@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../_static/stylesheets/main.8674dc46.min.css">
+      <link rel="stylesheet" href="../_static/stylesheets/main.2014a6d7.min.css">
       
         
         <link rel="stylesheet" href="../_static/stylesheets/palette.92c9fe4a.min.css">
@@ -71,11 +71,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#basic-non-relational-example" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -366,6 +361,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
         <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
@@ -381,6 +377,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../getting_started.html" class="md-nav__link">
         <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
@@ -393,6 +390,7 @@
       
       
 
+  
   
   
   
@@ -443,6 +441,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="basic.html" class="md-nav__link">
         <span title="examples/basic (document)" class="md-ellipsis">Simple Examples</span>
@@ -454,6 +453,7 @@
           
             
               
+  
   
   
   
@@ -472,8 +472,11 @@
   
     
   
+    
+  
   
     <li class="md-nav__item md-nav__item--active">
+      
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
@@ -482,20 +485,21 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="" class="md-nav__link md-nav__link--active">
+      <a href="#" class="md-nav__link md-nav__link--active">
         <span title="examples/fastapi (document)" class="md-ellipsis">Fast<wbr>API Examples</span>
       </a>
       
         
 
-  
-
 <nav class="md-nav md-nav--secondary">
+  
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span title="examples/fastapi (document)" class="md-ellipsis">Fast<wbr>API Examples</span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -547,6 +551,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="quart.html" class="md-nav__link">
         <span title="examples/quart (document)" class="md-ellipsis">Quart Example</span>
@@ -558,6 +563,7 @@
           
             
               
+  
   
   
   
@@ -575,6 +581,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="starlette.html" class="md-nav__link">
         <span title="examples/starlette (document)" class="md-ellipsis">Starlette Example</span>
@@ -586,6 +593,7 @@
           
             
               
+  
   
   
   
@@ -603,6 +611,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="blacksheep.html" class="md-nav__link">
         <span title="examples/blacksheep (document)" class="md-ellipsis">Black<wbr>Sheep Examples</span>
@@ -616,12 +625,14 @@
       </nav>
     </li>
   
+  
 
     
       
       
       
 
+  
   
   
   
@@ -640,6 +651,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../CHANGELOG.html" class="md-nav__link">
         <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
@@ -652,6 +664,7 @@
       
       
 
+  
   
   
   
@@ -670,6 +683,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../CONTRIBUTING.html" class="md-nav__link">
         <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
@@ -682,6 +696,7 @@
       
       
 
+  
   
   
   
@@ -706,14 +721,14 @@
                 
 
 
-  <h1 id="fastapi-examples"><span id="example-fastapi"></span>FastAPI Examples<a class="headerlink" href="#fastapi-examples" title="Permalink to this headline">¶</a></h1>
+  <h1 id="fastapi-examples"><span id="example-fastapi"></span>FastAPI Examples<a class="headerlink" href="#fastapi-examples" title="Permalink to this heading">¶</a></h1>
 <p>This is an example of the  <a class="reference internal" href="../contrib/fastapi.html#contrib-fastapi"><span class="std std-ref">Tortoise-ORM FastAPI integration</span></a></p>
 <p><strong>Usage:</strong></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>uvicorn main:app --reload
 </code></pre></div>
 </div>
-<h2 id="basic-non-relational-example">Basic non-relational example<a class="headerlink" href="#basic-non-relational-example" title="Permalink to this headline">¶</a></h2>
-<h3 id="models-py">models.py<a class="headerlink" href="#models-py" title="Permalink to this headline">¶</a></h3>
+<h2 id="basic-non-relational-example">Basic non-relational example<a class="headerlink" href="#basic-non-relational-example" title="Permalink to this heading">¶</a></h2>
+<h3 id="models-py">models.py<a class="headerlink" href="#models-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
 
@@ -750,7 +765,7 @@
 <span class="n">UserIn_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Users</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;UserIn&quot;</span><span class="p">,</span> <span class="n">exclude_readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h3 id="tests-py">tests.py<a class="headerlink" href="#tests-py" title="Permalink to this headline">¶</a></h3>
+<h3 id="tests-py">tests.py<a class="headerlink" href="#tests-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># mypy: no-disallow-untyped-decorators</span>
 <span class="c1"># pylint: disable=E0611,E0401</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
@@ -793,7 +808,7 @@
     <span class="k">assert</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
 </code></pre></div>
 </div>
-<h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h3>
+<h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># pylint: disable=E0611,E0401</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -919,7 +934,7 @@
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.3.2.
+    5.0.2.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -937,7 +952,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="../_static/javascripts/bundle.37d1338f.min.js"></script>
+      <script src="../_static/javascripts/bundle.dc1bded0.min.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     

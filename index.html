@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="_static/stylesheets/main.8674dc46.min.css">
+      <link rel="stylesheet" href="_static/stylesheets/main.2014a6d7.min.css">
       
         
         <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
@@ -71,11 +71,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#introduction" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -214,7 +209,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="" class="md-tabs__link md-tabs__link--active">
+    <a href="#" class="md-tabs__link md-tabs__link--active">
       <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
     </a>
   </li>
@@ -367,8 +362,11 @@
   
     
   
+    
+  
   
     <li class="md-nav__item md-nav__item--active">
+      
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
@@ -377,20 +375,21 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="" class="md-nav__link md-nav__link--active">
+      <a href="#" class="md-nav__link md-nav__link--active">
         <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
       </a>
       
         
 
-  
-
 <nav class="md-nav md-nav--secondary">
+  
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -470,6 +469,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="getting_started.html" class="md-nav__link">
         <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
@@ -482,6 +482,7 @@
       
       
 
+  
   
   
   
@@ -500,6 +501,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="examples.html" class="md-nav__link">
         <span title="examples (document)" class="md-ellipsis">Examples</span>
@@ -512,6 +514,7 @@
       
       
 
+  
   
   
   
@@ -530,6 +533,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="CHANGELOG.html" class="md-nav__link">
         <span title="CHANGELOG (document)" class="md-ellipsis">Changelog</span>
@@ -542,6 +546,7 @@
       
       
 
+  
   
   
   
@@ -560,6 +565,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="CONTRIBUTING.html" class="md-nav__link">
         <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
@@ -572,6 +578,7 @@
       
       
 
+  
   
   
   
@@ -596,7 +603,7 @@
                 
 
 
-  <h1 id="tortoise-orm">Tortoise ORM<a class="headerlink" href="#tortoise-orm" title="Permalink to this headline">¶</a></h1>
+  <h1 id="tortoise-orm">Tortoise ORM<a class="headerlink" href="#tortoise-orm" title="Permalink to this heading">¶</a></h1>
 <p>Tortoise ORM is an easy-to-use <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> ORM <em>(Object Relational Mapper)</em> inspired by Django.</p>
 <p>Tortoise ORM was build with relations in mind and admiration for the excellent and popular Django ORM.
 It’s engraved in it’s design that you are working not with just tables, you work with relational data.</p>
@@ -607,8 +614,8 @@ We keep a <a class="reference internal" href="CHANGELOG.html#changelog"><span cl
 </div>
 <p>Source &amp; issue trackers are available at <a class="reference external" href="https://github.com/tortoise/tortoise-orm/">https://github.com/tortoise/tortoise-orm/</a></p>
 <p>Tortoise ORM is supported on CPython &gt;= 3.7 for SQLite, MySQL and PostgreSQL.</p>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<h3 id="why-was-tortoise-orm-built">Why was Tortoise ORM built?<a class="headerlink" href="#why-was-tortoise-orm-built" title="Permalink to this headline">¶</a></h3>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h3 id="why-was-tortoise-orm-built">Why was Tortoise ORM built?<a class="headerlink" href="#why-was-tortoise-orm-built" title="Permalink to this heading">¶</a></h3>
 <p>Python has many existing and mature ORMs, unfortunately they are designed with an opposing paradigm of how I/O gets processed.
 <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> is relatively new technology that has a different concurrency model, and the largest change is regarding how I/O is handled.</p>
 <p>However, Tortoise ORM is not first attempt of building <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> ORM, there are many cases of developers attempting to map synchronous python ORMs to the async world, initial attempts did not have a clean API.</p>
@@ -616,14 +623,14 @@ We keep a <a class="reference internal" href="CHANGELOG.html#changelog"><span cl
 <p>Tortoise ORM is designed to be functional, yet familiar, to ease the migration of developers wishing to switch to <code class="docutils literal notranslate"><span class="pre">asyncio</span></code>.</p>
 <p>It also performs well when compared to other Python ORMs, trading places with Pony ORM:</p>
 <a class="reference external image-reference" href="https://github.com/tortoise/orm-benchmarks"><img alt="_images/ORM_Perf.png" src="_images/ORM_Perf.png" /></a>
-<h3 id="how-is-an-orm-useful">How is an ORM useful?<a class="headerlink" href="#how-is-an-orm-useful" title="Permalink to this headline">¶</a></h3>
+<h3 id="how-is-an-orm-useful">How is an ORM useful?<a class="headerlink" href="#how-is-an-orm-useful" title="Permalink to this heading">¶</a></h3>
 <p>When you build an application or service that uses a relational database, there is a point when you can’t just get away with just using parametrized queries or even query builder, you just keep repeating yourself, writing slightly different code for each entity.
 Code has no idea about relations between data, so you end up concatenating your data almost manually.
 It is also easy to make a mistake in how you access your database, making it easy for SQL-injection attacks to occur.
 Your data rules are also distributed, increasing the complexity of managing your data, and even worse, is applied inconsistently.</p>
 <p>An ORM (Object Relational Mapper) is designed to address these issues, by centralizing your data model and data rules, ensuring that your data is managed safely (providing immunity to SQL-injection) and keeps track of relationships so you don’t have to.</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<h3 id="clean-familiar-python-interface">Clean, familiar python interface<a class="headerlink" href="#clean-familiar-python-interface" title="Permalink to this headline">¶</a></h3>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
+<h3 id="clean-familiar-python-interface">Clean, familiar python interface<a class="headerlink" href="#clean-familiar-python-interface" title="Permalink to this heading">¶</a></h3>
 <p>Define your models like so:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
@@ -664,7 +671,7 @@ Your data rules are also distributed, increasing the complexity of managing your
 <span class="nb">print</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h3 id="pluggable-database-backends">Pluggable Database backends<a class="headerlink" href="#pluggable-database-backends" title="Permalink to this headline">¶</a></h3>
+<h3 id="pluggable-database-backends">Pluggable Database backends<a class="headerlink" href="#pluggable-database-backends" title="Permalink to this heading">¶</a></h3>
 <p>Tortoise ORM currently supports the following <a class="reference internal" href="databases.html#databases"><span class="std std-ref">Databases</span></a>:</p>
 <ul class="simple">
 <li><p><cite>PostgreSQL</cite> &gt;= 9.4 (using <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>)</p></li>
@@ -672,7 +679,7 @@ Your data rules are also distributed, increasing the complexity of managing your
 <li><p><cite>MySQL</cite>/<cite>MariaDB</cite> (using <a class="reference external" href="https://github.com/long2ice/asyncmy">asyncmy</a>)</p></li>
 <li><p><cite>Microsoft SQL Server</cite>/<cite>Oracle</cite> (using <code class="docutils literal notranslate"><span class="pre">asyncodbc</span></code>)</p></li>
 </ul>
-<h3 id="and-more">And more<a class="headerlink" href="#and-more" title="Permalink to this headline">¶</a></h3>
+<h3 id="and-more">And more<a class="headerlink" href="#and-more" title="Permalink to this heading">¶</a></h3>
 <p>Tortoise ORM supports the following features:</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -759,7 +766,7 @@ down the test databases. (See <a class="reference internal" href="contrib/unitte
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.3.2.
+    5.0.2.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -777,7 +784,7 @@ down the test databases. (See <a class="reference internal" href="contrib/unitte
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="_static/javascripts/bundle.37d1338f.min.js"></script>
+      <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     

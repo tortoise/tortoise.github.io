@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="_static/stylesheets/main.8674dc46.min.css">
+      <link rel="stylesheet" href="_static/stylesheets/main.2014a6d7.min.css">
       
         
         <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
@@ -71,11 +71,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#installation" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -226,7 +221,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="" class="md-tabs__link md-tabs__link--active">
+    <a href="#" class="md-tabs__link md-tabs__link--active">
       <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
     </a>
   </li>
@@ -366,6 +361,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
         <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
@@ -382,8 +378,11 @@
   
     
   
+    
+  
   
     <li class="md-nav__item md-nav__item--active">
+      
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
@@ -392,20 +391,21 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="" class="md-nav__link md-nav__link--active">
+      <a href="#" class="md-nav__link md-nav__link--active">
         <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
       </a>
       
         
 
-  
-
 <nav class="md-nav md-nav--secondary">
+  
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span title="getting_started (document)" class="md-ellipsis">Getting started</span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -451,6 +451,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="reference.html" class="md-nav__link">
         <span title="reference (document)" class="md-ellipsis">Reference</span>
@@ -463,6 +464,7 @@
       
       
 
+  
   
   
   
@@ -481,6 +483,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="contrib.html" class="md-nav__link">
         <span title="contrib (document)" class="md-ellipsis">Contrib</span>
@@ -493,6 +496,7 @@
       
       
 
+  
   
   
   
@@ -511,6 +515,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="roadmap.html" class="md-nav__link">
         <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
@@ -526,6 +531,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="CONTRIBUTING.html" class="md-nav__link">
         <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
@@ -538,6 +544,7 @@
       
       
 
+  
   
   
   
@@ -562,8 +569,8 @@
                 
 
 
-  <h1 id="getting-started"><span id="id1"></span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+  <h1 id="getting-started"><span id="id1"></span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>First you have to install tortoise like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm
 </code></pre></div>
@@ -587,7 +594,7 @@
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> there is also support for <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> through <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> and
 <code class="docutils literal notranslate"><span class="pre">mysql</span></code> through <code class="docutils literal notranslate"><span class="pre">asyncmy</span></code>.
 You can easily implement more backends if there is appropriate <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> driver for this db.</p>
-<h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Permalink to this headline">¶</a></h3>
+<h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Permalink to this heading">¶</a></h3>
 <p>The following libraries can be used as accelerators:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/python-rapidjson/">python-rapidjson</a>: Automatically used if installed for JSON SerDes.</p></li>
@@ -601,7 +608,7 @@ Not automatically installed on Windows due to often a lack of a C compiler. Defa
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
 </code></pre></div>
 </div>
-<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">¶</a></h2>
 <p>Primary entity of tortoise is <code class="docutils literal notranslate"><span class="pre">tortoise.models.Model</span></code>.
 You can start writing models like this:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -784,7 +791,7 @@ You can start writing models like this:</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.3.2.
+    5.0.2.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -802,7 +809,7 @@ You can start writing models like this:</p>
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="_static/javascripts/bundle.37d1338f.min.js"></script>
+      <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     

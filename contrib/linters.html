@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../_static/stylesheets/main.8674dc46.min.css">
+      <link rel="stylesheet" href="../_static/stylesheets/main.2014a6d7.min.css">
       
         
         <link rel="stylesheet" href="../_static/stylesheets/palette.92c9fe4a.min.css">
@@ -71,11 +71,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#pylint-plugin" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -366,6 +361,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
         <span title="index (document)" class="md-ellipsis">Tortoise ORM</span>
@@ -378,6 +374,7 @@
       
       
 
+  
   
   
   
@@ -396,6 +393,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../reference.html" class="md-nav__link">
         <span title="reference (document)" class="md-ellipsis">Reference</span>
@@ -408,6 +406,7 @@
       
       
 
+  
   
   
   
@@ -459,8 +458,11 @@
   
     
   
+    
+  
   
     <li class="md-nav__item md-nav__item--active">
+      
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
@@ -469,20 +471,21 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="" class="md-nav__link md-nav__link--active">
+      <a href="#" class="md-nav__link md-nav__link--active">
         <span title="contrib/linters (document)" class="md-ellipsis">Linters</span>
       </a>
       
         
 
-  
-
 <nav class="md-nav md-nav--secondary">
+  
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span title="contrib/linters (document)" class="md-ellipsis">Linters</span>
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -520,6 +523,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="pydantic.html" class="md-nav__link">
         <span title="contrib/pydantic (document)" class="md-ellipsis">Pydantic serialisation</span>
@@ -531,6 +535,7 @@
           
             
               
+  
   
   
   
@@ -548,6 +553,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="fastapi.html" class="md-nav__link">
         <span title="contrib/fastapi (document)" class="md-ellipsis">Tortoise-<wbr>ORM Fast<wbr>API integration</span>
@@ -559,6 +565,7 @@
           
             
               
+  
   
   
   
@@ -576,6 +583,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="sanic.html" class="md-nav__link">
         <span title="contrib/sanic (document)" class="md-ellipsis">Tortoise-<wbr>ORM Sanic integration</span>
@@ -587,6 +595,7 @@
           
             
               
+  
   
   
   
@@ -604,6 +613,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="aiohttp.html" class="md-nav__link">
         <span title="contrib/aiohttp (document)" class="md-ellipsis">Tortoise-<wbr>ORM aiohttp integration</span>
@@ -615,6 +625,7 @@
           
             
               
+  
   
   
   
@@ -632,6 +643,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="postgres.html" class="md-nav__link">
         <span title="contrib/postgres (document)" class="md-ellipsis">Postgres</span>
@@ -643,6 +655,7 @@
           
             
               
+  
   
   
   
@@ -659,12 +672,14 @@
       </nav>
     </li>
   
+  
 
     
       
       
       
 
+  
   
   
   
@@ -683,6 +698,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../roadmap.html" class="md-nav__link">
         <span title="roadmap (document)" class="md-ellipsis">Roadmap</span>
@@ -698,6 +714,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../CONTRIBUTING.html" class="md-nav__link">
         <span title="CONTRIBUTING (document)" class="md-ellipsis">Contribution Guide</span>
@@ -710,6 +727,7 @@
       
       
 
+  
   
   
   
@@ -734,10 +752,10 @@
                 
 
 
-  <h1 id="linters">Linters<a class="headerlink" href="#linters" title="Permalink to this headline">¶</a></h1>
-<h2 id="pylint-plugin"><span id="pylint"></span>PyLint plugin<a class="headerlink" href="#pylint-plugin" title="Permalink to this headline">¶</a></h2>
+  <h1 id="linters">Linters<a class="headerlink" href="#linters" title="Permalink to this heading">¶</a></h1>
+<h2 id="pylint-plugin"><span id="pylint"></span>PyLint plugin<a class="headerlink" href="#pylint-plugin" title="Permalink to this heading">¶</a></h2>
 <p>Since Tortoise ORM uses MetaClasses to build the Model objects, PyLint will often not understand how the Models behave. We provided a <cite>tortoise.pylint</cite> plugin that enhances PyLints understanding of Models and Fields.</p>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h3>
 <p>In your projects <code class="docutils literal notranslate"><span class="pre">.pylintrc</span></code> file, ensure the following is set:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="na">load-plugins</span><span class="o">=</span><span class="s">tortoise.contrib.pylint</span><span class="w"></span>
 </code></pre></div>
@@ -808,7 +826,7 @@
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.3.2.
+    5.0.2.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -826,7 +844,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="../_static/javascripts/bundle.37d1338f.min.js"></script>
+      <script src="../_static/javascripts/bundle.dc1bded0.min.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
