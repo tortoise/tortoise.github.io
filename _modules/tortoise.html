@@ -631,7 +631,9 @@
                 <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="p">[</span><span class="n">related_app_name</span><span class="p">][</span><span class="n">related_model_name</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">related_app_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No app with name &#39;</span><span class="si">{</span><span class="n">related_app_name</span><span class="si">}</span><span class="s2">&#39; registered.&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No app with name &#39;</span><span class="si">{</span><span class="n">related_app_name</span><span class="si">}</span><span class="s2">&#39; registered.&quot;</span>
+                                             <span class="sa">f</span><span class="s2">&quot; Please check your model names in ForeignKeyFields&quot;</span>
+                                             <span class="sa">f</span><span class="s2">&quot; and configurations.&quot;</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;No model with name &#39;</span><span class="si">{</span><span class="n">related_model_name</span><span class="si">}</span><span class="s2">&#39; registered in&quot;</span>
                     <span class="sa">f</span><span class="s2">&quot; app &#39;</span><span class="si">{</span><span class="n">related_app_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
