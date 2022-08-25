@@ -516,6 +516,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
+<span class="kn">from</span> <span class="nn">pydantic.main</span> <span class="kn">import</span> <span class="n">BaseConfig</span> <span class="k">as</span> <span class="n">PydanticBaseConfig</span>
 
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.base</span> <span class="kn">import</span> <span class="n">PydanticListModel</span><span class="p">,</span> <span class="n">PydanticModel</span>
@@ -569,7 +570,10 @@
 
     <span class="c1">#: Sort fields alphabetically.</span>
     <span class="c1">#: If not set (or ``False``) then leave fields in declaration order</span>
-    <span class="n">sort_alphabetically</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+    <span class="n">sort_alphabetically</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1">#: Allows user to specify custom config class for generated model</span>
+    <span class="n">config_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticBaseConfig</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 
 <span class="k">def</span> <span class="nf">_br_it</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -639,6 +643,7 @@
     <span class="n">_stack</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="n">exclude_readonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">meta_override</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">config_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticBaseConfig</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to build `Pydantic Model &lt;https://pydantic-docs.helpmanual.io/usage/models/&gt;`__ off Tortoise Model.</span>
@@ -662,6 +667,12 @@
 <span class="sd">            * order of computed functions (as provided).</span>
 <span class="sd">    :param exclude_readonly: Build a subset model that excludes any readonly fields</span>
 <span class="sd">    :param meta_override: A PydanticMeta class to override model&#39;s values.</span>
+<span class="sd">    :param config_class: A custom config class to use as pydantic config.</span>
+
+<span class="sd">        Note: Created pydantic model uses config_class parameter and PydanticMeta&#39;s</span>
+<span class="sd">            config_class as its Config class&#39;s bases(Only if provided!), but it</span>
+<span class="sd">            ignores ``fields`` config. pydantic_model_creator will generate fields by</span>
+<span class="sd">            include/exclude/computed parameters automatically.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Fully qualified class name</span>
@@ -706,6 +717,7 @@
     <span class="n">default_include</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;include&quot;</span><span class="p">))</span>
     <span class="n">default_exclude</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;exclude&quot;</span><span class="p">))</span>
     <span class="n">default_computed</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;computed&quot;</span><span class="p">))</span>
+    <span class="n">default_config_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticBaseConfig</span><span class="p">]]</span> <span class="o">=</span> <span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;config_class&quot;</span><span class="p">)</span>
 
     <span class="n">backward_relations</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">get_param</span><span class="p">(</span><span class="s2">&quot;backward_relations&quot;</span><span class="p">))</span>
 
@@ -726,11 +738,33 @@
     <span class="c1"># Get all annotations</span>
     <span class="n">annotations</span> <span class="o">=</span> <span class="n">get_annotations</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
+    <span class="c1"># Note: First ones override next ones&#39; attributes</span>
+    <span class="n">pconfig_bases</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">PydanticModel</span><span class="o">.</span><span class="n">Config</span><span class="p">]</span>
+    <span class="c1"># If default config class is specified, we add it as first item of bases</span>
+    <span class="k">if</span> <span class="n">default_config_class</span><span class="p">:</span>
+        <span class="n">pconfig_bases</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">default_config_class</span><span class="p">)</span>
+    <span class="c1"># If config class is specified, we add it as first item of bases</span>
+    <span class="k">if</span> <span class="n">config_class</span><span class="p">:</span>
+        <span class="n">pconfig_bases</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">config_class</span><span class="p">)</span>
+
+    <span class="c1"># fields will be filled BY using include/exclude/computed</span>
+    <span class="n">pconfig_attrs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+
+    <span class="c1"># If at least one of default_config_class or config_class have title,</span>
+    <span class="c1">#   we don&#39;t add title automatically.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">default_config_class</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config_class</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">):</span>
+        <span class="n">pconfig_attrs</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+
+    <span class="c1"># If at least one of default_config_class or config_class have extra,</span>
+    <span class="c1">#   we don&#39;t add extra automatically.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">default_config_class</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config_class</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">):</span>
+        <span class="n">pconfig_attrs</span><span class="p">[</span><span class="s2">&quot;extra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">Extra</span><span class="o">.</span><span class="n">forbid</span>
+
     <span class="c1"># Properties and their annotations` store</span>
     <span class="n">pconfig</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">BaseConfig</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
         <span class="s2">&quot;Config&quot;</span><span class="p">,</span>
-        <span class="p">(</span><span class="n">PydanticModel</span><span class="o">.</span><span class="n">Config</span><span class="p">,),</span>
-        <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">name</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">Extra</span><span class="o">.</span><span class="n">forbid</span><span class="p">,</span> <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{}},</span>
+        <span class="nb">tuple</span><span class="p">(</span><span class="n">pconfig_bases</span><span class="p">),</span>
+        <span class="n">pconfig_attrs</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">pannotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">properties</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;__annotations__&quot;</span><span class="p">:</span> <span class="n">pannotations</span><span class="p">,</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span> <span class="n">pconfig</span><span class="p">}</span>
