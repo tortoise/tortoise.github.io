@@ -767,43 +767,35 @@
 <h3 id="tests-py">tests.py<a class="headerlink" href="#tests-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># mypy: no-disallow-untyped-decorators</span>
 <span class="c1"># pylint: disable=E0611,E0401</span>
-<span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span>
-
 <span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+<span class="kn">from</span> <span class="nn">asgi_lifespan</span> <span class="kn">import</span> <span class="n">LifespanManager</span>
+<span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">AsyncClient</span>
 <span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Users</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.contrib.test</span> <span class="kn">import</span> <span class="n">finalizer</span><span class="p">,</span> <span class="n">initializer</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">anyio_backend</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;asyncio&quot;</span>
 
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">client</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
-    <span class="n">initializer</span><span class="p">([</span><span class="s2">&quot;models&quot;</span><span class="p">])</span>
-    <span class="k">with</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">c</span>
-    <span class="n">finalizer</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">client</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">LifespanManager</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncClient</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://test&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">c</span>
 
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">event_loop</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
-    <span class="k">yield</span> <span class="n">client</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">get_loop</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
-
-
-<span class="k">def</span> <span class="nf">test_create_user</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">TestClient</span><span class="p">,</span> <span class="n">event_loop</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">AbstractEventLoop</span><span class="p">):</span>  <span class="c1"># nosec</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">})</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_user</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">):</span>  <span class="c1"># nosec</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">})</span>
     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span>
     <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
     <span class="n">user_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_user_by_db</span><span class="p">():</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">user</span>
-
-    <span class="n">user_obj</span> <span class="o">=</span> <span class="n">event_loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">get_user_by_db</span><span class="p">())</span>
+    <span class="n">user_obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
 </code></pre></div>
 </div>
