@@ -1508,7 +1508,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournament this happens in&quot;</span>
     <span class="p">)</span>
 </code></pre></div>
 </div>
@@ -1576,7 +1576,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
 <span class="go">        },</span>
 <span class="go">        &#39;events&#39;: {</span>
 <span class="go">            &#39;title&#39;: &#39;Events&#39;,</span>
-<span class="go">            &#39;description&#39;: &#39;The Tournement this happens in&#39;,</span>
+<span class="go">            &#39;description&#39;: &#39;The Tournament this happens in&#39;,</span>
 <span class="go">            &#39;type&#39;: &#39;array&#39;,</span>
 <span class="go">            &#39;items&#39;: {</span>
 <span class="go">                &#39;$ref&#39;: &#39;#/definitions/Event&#39;</span>
@@ -1633,7 +1633,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
         <span class="p">},</span>
         <span class="s1">&#39;tournament&#39;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Tournament&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;The Tournement this happens in&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;The Tournament this happens in&#39;</span><span class="p">,</span>
             <span class="s1">&#39;allOf&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="p">{</span>
                     <span class="s1">&#39;$ref&#39;</span><span class="p">:</span> <span class="s1">&#39;#/definitions/Tournament&#39;</span>
@@ -1761,7 +1761,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
-        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournement this happens in&quot;</span>
+        <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournament this happens in&quot;</span>
     <span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
@@ -1804,7 +1804,7 @@ We should however protect against the case where no prefetching was done, hence 
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Events&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Tournement this happens in&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Tournament this happens in&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/definitions/Event&quot;</span><span class="w"></span>

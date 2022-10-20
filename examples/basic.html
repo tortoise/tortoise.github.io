@@ -1086,7 +1086,9 @@
     <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">tournament_test_id</span><span class="o">=</span><span class="n">Sum</span><span class="p">(</span><span class="s2">&quot;tournament__id&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
 
     <span class="nb">print</span><span class="p">(</span>
-        <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">clean_desciption</span><span class="o">=</span><span class="n">Coalesce</span><span class="p">(</span><span class="s2">&quot;desc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">clean_desciption</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">clean_description</span><span class="o">=</span><span class="n">Coalesce</span><span class="p">(</span><span class="s2">&quot;desc&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">clean_description</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+        <span class="p">)</span>
     <span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span>
