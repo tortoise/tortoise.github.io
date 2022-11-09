@@ -1395,13 +1395,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="QuerySet.using_db"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.using_db">[docs]</a>    <span class="k">def</span> <span class="nf">using_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="QuerySet.using_db"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.using_db">[docs]</a>    <span class="k">def</span> <span class="nf">using_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes query in provided db client.</span>
 <span class="sd">        Useful for transactions workaround.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clone</span><span class="p">()</span>
-        <span class="n">queryset</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">_db</span>
+        <span class="n">queryset</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">_db</span> <span class="k">if</span> <span class="n">_db</span> <span class="k">else</span> <span class="n">queryset</span><span class="o">.</span><span class="n">_db</span>
         <span class="k">return</span> <span class="n">queryset</span></div>
 
     <span class="k">def</span> <span class="nf">_join_table_with_select_related</span><span class="p">(</span>
