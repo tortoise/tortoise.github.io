@@ -17,12 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="../_static/stylesheets/main.b0359c04.min.css">
       
         
-        <link rel="stylesheet" href="../_static/stylesheets/palette.92c9fe4a.min.css">
         
       
+      
+
     
     
     
@@ -34,7 +34,8 @@
     
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
         <link rel="stylesheet" type="text/css" href="../_static/google_fonts.css" />
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+        <link rel="stylesheet" type="text/css" href="../_static/stylesheets/sphinx_immaterial_theme.e10f1df50225cf229.min.css" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -44,10 +45,13 @@
   
 
 
-  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
+    
     
     
   </head>
@@ -77,9 +81,7 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+        
       </div>
     
     
@@ -148,11 +150,11 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -176,7 +178,7 @@
         <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -343,7 +345,7 @@
       <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -1156,12 +1158,13 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset" role="main">
-                
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
 
 
-  <h1 id="unittest-support"><span id="unittest"></span>UnitTest support<a class="headerlink" href="#unittest-support" title="Permalink to this heading">¶</a></h1>
+<h1 id="unittest-support"><span id="unittest"></span>UnitTest support<a class="headerlink" href="#unittest-support" title="Permalink to this heading">¶</a></h1>
 <p>Tortoise ORM includes its own helper utilities to assist in unit tests.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib</span> <span class="kn">import</span> <span class="n">test</span>
@@ -1219,7 +1222,7 @@ The SQLite in-memory <code class="docutils literal notranslate"><span class="pre
 TORTOISE_TEST_DB=postgres://postgres:&#64;127.0.0.1:5432/test_{}</p>
 </div></blockquote>
 <h3 id="py-test">Py.test<a class="headerlink" href="#py-test" title="Permalink to this heading">¶</a></h3>
-<div class="admonition note">
+<div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>pytest 5.4.0 &amp; 5.4.1 has a bug that stops it from working with async test cases. You may have to install <code class="docutils literal notranslate"><span class="pre">pytest&gt;=5.4.2</span></code> to get it to work.</p>
 </div>
@@ -1287,7 +1290,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.assertListSortEqual">
 <span class="sig-name descname"><span class="pre">assertListSortEqual</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">list2</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="bp">Ellipsis</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">sorted_key</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.assertListSortEqual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1297,7 +1300,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1307,7 +1310,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1335,7 +1338,7 @@ separate transaction that will rollback on finish.</p>
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TestCase.asyncSetUp">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncSetUp-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncSetUp-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1345,7 +1348,7 @@ separate transaction that will rollback on finish.</p>
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TestCase.asyncTearDown">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncTearDown-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncTearDown-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1378,7 +1381,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.env_initializer-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.env_initializer-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.env_initializer-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.env_initializer-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1396,7 +1399,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">finalizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#finalizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.finalizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cleans up the DB after testing. Must be called as part of the test environment teardown.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.finalizer-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.finalizer-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.finalizer-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.finalizer-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1407,7 +1410,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">getDBConfig</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.app_label" title="tortoise.contrib.test.getDBConfig.app_label (Python parameter) — Label of the app (must be distinct for multiple apps)."><span class="n"><span class="pre">app_label</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.modules" title="tortoise.contrib.test.getDBConfig.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#getDBConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.getDBConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>DB Config factory, for use in testing.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.getDBConfig-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.test.getDBConfig-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.getDBConfig-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.getDBConfig-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.contrib.test.getDBConfig.app_label"><span class="n sig-name">app_label</span><a class="headerlink" href="#tortoise.contrib.test.getDBConfig.app_label" title="Permalink to this definition">¶</a></dt><dd><p>Label of the app (must be distinct for multiple apps).</p>
 </dd>
@@ -1415,7 +1418,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.contrib.test.getDBConfig-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.getDBConfig-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.contrib.test.getDBConfig-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.getDBConfig-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -1426,7 +1429,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">initializer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.modules" title="tortoise.contrib.test.initializer.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.db_url" title="tortoise.contrib.test.initializer.db_url (Python parameter) — The db_url, defaults to sqlite://:memory."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.app_label" title="tortoise.contrib.test.initializer.app_label (Python parameter) — The name of the APP to initialise the modules in, defaults to &quot;models&quot;"><span class="n"><span class="pre">app_label</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.loop" title="tortoise.contrib.test.initializer.loop (Python parameter) — Optional event loop."><span class="n"><span class="pre">loop</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.initializer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up the DB for testing. Must be called as part of test environment setup.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.initializer-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.test.initializer-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.initializer-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.initializer-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.contrib.test.initializer.modules"><span class="n sig-name">modules</span><a class="headerlink" href="#tortoise.contrib.test.initializer.modules" title="Permalink to this definition">¶</a></dt><dd><p>List of modules to look for models in.</p>
 </dd>
@@ -1438,7 +1441,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.contrib.test.initializer-return-type">Return type<a class="headerlink" href="#tortoise.contrib.test.initializer-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.contrib.test.initializer-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.initializer-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1448,7 +1451,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.requireCapability">
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">requireCapability</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.connection_name" title="tortoise.contrib.test.requireCapability.connection_name (Python parameter) — name of the connection to retrieve capabilities from."><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.conditions" title="tortoise.contrib.test.requireCapability.conditions (Python parameter) — capability tests which must all pass for the test to run."><span class="n"><span class="pre">conditions</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#requireCapability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.requireCapability" title="Permalink to this definition">¶</a></dt>
 <dd><p>Skip a test if the required capabilities are not matched.</p>
-<div class="admonition note">
+<div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>The database must be initialized <em>before</em> the decorated test runs.</p>
 </div>
@@ -1465,7 +1468,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </code></pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.contrib.test.requireCapability-parameters">Parameters<a class="headerlink" href="#tortoise.contrib.test.requireCapability-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.contrib.test.requireCapability-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.requireCapability-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.contrib.test.requireCapability.connection_name"><span class="n sig-name">connection_name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code><a class="headerlink" href="#tortoise.contrib.test.requireCapability.connection_name" title="Permalink to this definition">¶</a></dt><dd><p>name of the connection to retrieve capabilities from.</p>
 </dd>
@@ -1497,12 +1500,19 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 
 
-              
-            </article>
-          </div>
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
@@ -1511,7 +1521,8 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="pydantic.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pydantic serialisation" rel="prev">
@@ -1560,7 +1571,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    5.1.1.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -1575,10 +1586,12 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="../_static/javascripts/bundle.dc1bded0.min.js"></script>
+      <script src="../_static/javascripts/bundle.444abb77.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     

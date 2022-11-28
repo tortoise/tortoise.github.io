@@ -17,12 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="_static/stylesheets/main.b0359c04.min.css">
       
         
-        <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
         
       
+      
+
     
     
     
@@ -34,7 +34,8 @@
     
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
         <link rel="stylesheet" type="text/css" href="_static/google_fonts.css" />
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+        <link rel="stylesheet" type="text/css" href="_static/stylesheets/sphinx_immaterial_theme.e10f1df50225cf229.min.css" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -44,10 +45,13 @@
   
 
 
-  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
+    
     
     
   </head>
@@ -77,9 +81,7 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+        
       </div>
     
     
@@ -148,11 +150,11 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -176,7 +178,7 @@
         <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -343,7 +345,7 @@
       <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -2431,12 +2433,13 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset" role="main">
-                
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
 
 
-  <h1 id="query-api"><span id="id1"></span>Query API<a class="headerlink" href="#query-api" title="Permalink to this heading">¶</a></h1>
+<h1 id="query-api"><span id="id1"></span>Query API<a class="headerlink" href="#query-api" title="Permalink to this heading">¶</a></h1>
 <p>This document describes how to use QuerySet to build your queries</p>
 <p>Be sure to check <a class="reference external" href="https://github.com/tortoise/tortoise-orm/tree/master/examples">examples</a> for better understanding</p>
 <p>You start your query from your model class:</p>
@@ -2490,7 +2493,7 @@
 <dd><p>Return the whole QuerySet.
 Essentially a no-op except as the only operation.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.all-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.all-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.all-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.all-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2501,10 +2504,10 @@ Essentially a no-op except as the only operation.</p>
 <span class="sig-name descname"><span class="pre">annotate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.annotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.annotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Annotate result with aggregation or function result.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.annotate-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.annotate-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.annotate-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.annotate-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><strong>TypeError</strong> – Value of kwarg is expected to be a <code class="docutils literal notranslate"><span class="pre">Function</span></code> instance.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.annotate-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.annotate-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.annotate-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.annotate-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2515,7 +2518,7 @@ Essentially a no-op except as the only operation.</p>
 <span class="sig-name descname"><span class="pre">as_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.as_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the actual query.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.as_query-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.as_query-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.as_query-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.as_query-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p></p>
 </dd>
 </dl>
@@ -2528,7 +2531,7 @@ Essentially a no-op except as the only operation.</p>
 (generally only 1 query, no matter how many objects there are),
 and returns created objects as a list, in the same order as provided</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_create-parameters">Parameters<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_create-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.queryset.QuerySet.bulk_create.on_conflict"><span class="n sig-name">on_conflict</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create.on_conflict" title="Permalink to this definition">¶</a></dt><dd><p>On conflict index name</p>
 </dd>
@@ -2542,10 +2545,10 @@ and returns created objects as a list, in the same order as provided</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.bulk_create-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.bulk_create-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If params do not meet specifications</p>
 </dd>
-<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_create-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Return the actual SQL."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2556,7 +2559,7 @@ and returns created objects as a list, in the same order as provided</p>
 <span class="sig-name descname"><span class="pre">bulk_update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_update.objects" title="tortoise.queryset.QuerySet.bulk_update.objects (Python parameter) — List of objects to bulk create"><span class="n"><span class="pre">objects</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_update.fields" title="tortoise.queryset.QuerySet.bulk_update.fields (Python parameter) — The fields to update"><span class="n"><span class="pre">fields</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_update.batch_size" title="tortoise.queryset.QuerySet.bulk_update.batch_size (Python parameter) — How many objects are created in a single query"><span class="n"><span class="pre">batch_size</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.bulk_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the given fields in each of the given objects in the database.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_update-parameters">Parameters<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_update-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.queryset.QuerySet.bulk_update.objects"><span class="n sig-name">objects</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update.objects" title="Permalink to this definition">¶</a></dt><dd><p>List of objects to bulk create</p>
 </dd>
@@ -2566,10 +2569,10 @@ and returns created objects as a list, in the same order as provided</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.bulk_update-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.bulk_update-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If objects have no primary key set</p>
 </dd>
-<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_update-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkUpdateQuery" title="tortoise.queryset.BulkUpdateQuery (Python class) — Return the actual SQL."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkUpdateQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2580,7 +2583,7 @@ and returns created objects as a list, in the same order as provided</p>
 <span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return count of objects in queryset instead of objects.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.count-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.count-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.count-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.count-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CountQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2591,7 +2594,7 @@ and returns created objects as a list, in the same order as provided</p>
 <span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all objects in QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.delete-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.delete-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.delete-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.delete-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.DeleteQuery" title="tortoise.queryset.DeleteQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeleteQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2604,7 +2607,7 @@ and returns created objects as a list, in the same order as provided</p>
 <p>Only makes sense in combination with a <code class="docutils literal notranslate"><span class="pre">.values()</span></code> or <code class="docutils literal notranslate"><span class="pre">.values_list()</span></code> as it
 precedes all the fetched fields with a distinct.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.distinct-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.distinct-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.distinct-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.distinct-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2615,7 +2618,7 @@ precedes all the fetched fields with a distinct.</p>
 <span class="sig-name descname"><span class="pre">exclude</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.exclude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.exclude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as .filter(), but with appends all args with NOT</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.exclude-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.exclude-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.exclude-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.exclude-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2626,7 +2629,7 @@ precedes all the fetched fields with a distinct.</p>
 <span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True/False whether queryset exists.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.exists-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.exists-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.exists-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.exists-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.ExistsQuery" title="tortoise.queryset.ExistsQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExistsQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2643,14 +2646,14 @@ on the database backend, as documented below.</p>
 <li><p>SQLite: <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">QUERY</span> <span class="pre">PLAN</span> <span class="pre">...</span></code></p></li>
 <li><p>MySQL: <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">FORMAT=JSON</span> <span class="pre">...</span></code></p></li>
 </ul>
-<div class="admonition note">
+<div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>This is only meant to be used in an interactive environment for debugging
 and query optimization.
 <strong>The output format may (and will) vary greatly depending on the database backend.</strong></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.explain-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.explain-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.explain-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
 </dd>
 </dl>
@@ -2665,7 +2668,7 @@ and query optimization.
 </div>
 <p>You can also pass Q objects to filters as args.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.filter-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.filter-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.filter-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.filter-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2676,7 +2679,7 @@ and query optimization.
 <span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.first"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.first" title="Permalink to this definition">¶</a></dt>
 <dd><p>Limit queryset to one object and return one object instead of list.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.first-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.first-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.first-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.first-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySetSingle</span></code></a>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[Model]]</p>
 </dd>
 </dl>
@@ -2688,7 +2691,7 @@ and query optimization.
 <dd><p>The FORCE INDEX hint acts like USE INDEX (index_list),
 with the addition that a table scan is assumed to be very expensive.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.force_index-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.force_index-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.force_index-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.force_index-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2699,7 +2702,7 @@ with the addition that a table scan is assumed to be very expensive.</p>
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch exactly one object matching the parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.get-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.get-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.get-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.get-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySetSingle</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2710,7 +2713,7 @@ with the addition that a table scan is assumed to be very expensive.</p>
 <span class="sig-name descname"><span class="pre">get_or_none</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.get_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.get_or_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch exactly one object matching the parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.get_or_none-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.get_or_none-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.get_or_none-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.get_or_none-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySetSingle</span></code></a>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[Model]]</p>
 </dd>
 </dl>
@@ -2722,7 +2725,7 @@ with the addition that a table scan is assumed to be very expensive.</p>
 <dd><p>Make QuerySet returns list of dict or tuple with group by.</p>
 <p>Must call before .values() or .values_list()</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.group_by-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.group_by-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.group_by-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.group_by-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2734,7 +2737,7 @@ with the addition that a table scan is assumed to be very expensive.</p>
 <dd><p>Return a dictionary mapping each of the given IDs to the object with
 that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.in_bulk-parameters">Parameters<a class="headerlink" href="#tortoise.queryset.QuerySet.in_bulk-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.in_bulk-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.in_bulk-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.queryset.QuerySet.in_bulk.id_list"><span class="n sig-name">id_list</span><a class="headerlink" href="#tortoise.queryset.QuerySet.in_bulk.id_list" title="Permalink to this definition">¶</a></dt><dd><p>A list of field values</p>
 </dd>
@@ -2742,7 +2745,7 @@ that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.in_bulk-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.in_bulk-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.in_bulk-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.in_bulk-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, Model]</p>
 </dd>
 </dl>
@@ -2753,10 +2756,10 @@ that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.
 <span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Limits QuerySet to given length.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.limit-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.limit-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.limit-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.limit-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Limit should be non-negative number.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.limit-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.limit-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.limit-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.limit-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2767,10 +2770,10 @@ that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.
 <span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query offset for QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.offset-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.offset-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.offset-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.offset-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Offset should be non-negative number.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.offset-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.offset-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.offset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.offset-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2795,7 +2798,7 @@ then <code class="docutils literal notranslate"><span class="pre">IncompleteInst
 then <code class="docutils literal notranslate"><span class="pre">IncompleteInstanceError</span></code> as that field is not available to be updated.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.only-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.only-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.only-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.only-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2811,10 +2814,10 @@ then <code class="docutils literal notranslate"><span class="pre">IncompleteInst
 <p>Supports ordering by related models too.
 A ‘-’ before the name will result in descending sort order, default is ascending.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.order_by-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.order_by-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.order_by-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.order_by-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If unknown field has been provided.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.order_by-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.order_by-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.order_by-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.order_by-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2825,10 +2828,10 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 <span class="sig-name descname"><span class="pre">prefetch_related</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.prefetch_related"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.prefetch_related" title="Permalink to this definition">¶</a></dt>
 <dd><p>Like <code class="docutils literal notranslate"><span class="pre">.fetch_related()</span></code> on instance, but works on all objects in QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.prefetch_related-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.prefetch_related-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.prefetch_related-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.prefetch_related-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If the field to prefetch on is not a relation, or not found.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.prefetch_related-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.prefetch_related-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.prefetch_related-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.prefetch_related-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2839,7 +2842,7 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 <span class="sig-name descname"><span class="pre">raw</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">sql</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.raw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the QuerySet from raw SQL</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.raw-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.raw-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.raw-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.raw-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RawSQLQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2850,7 +2853,7 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 <span class="sig-name descname"><span class="pre">resolve_filters</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_filters.model" title="tortoise.queryset.QuerySet.resolve_filters.model (Python parameter) — The Model this queryset is based on."><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_filters.q_objects" title="tortoise.queryset.QuerySet.resolve_filters.q_objects (Python parameter) — The Q expressions to apply."><span class="n"><span class="pre">q_objects</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_filters.annotations" title="tortoise.queryset.QuerySet.resolve_filters.annotations (Python parameter) — Extra annotations to add."><span class="n"><span class="pre">annotations</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_filters.custom_filters" title="tortoise.queryset.QuerySet.resolve_filters.custom_filters (Python parameter) — Pre-resolved filters to be passed through."><span class="n"><span class="pre">custom_filters</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds the common filters for a QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_filters-parameters">Parameters<a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_filters-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.queryset.QuerySet.resolve_filters.model"><span class="n sig-name">model</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters.model" title="Permalink to this definition">¶</a></dt><dd><p>The Model this queryset is based on.</p>
 </dd>
@@ -2862,7 +2865,7 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.resolve_filters-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.resolve_filters-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_filters-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -2873,7 +2876,7 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 <span class="sig-name descname"><span class="pre">resolve_ordering</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_ordering.model" title="tortoise.queryset.QuerySet.resolve_ordering.model (Python parameter) — The Model this queryset is based on."><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_ordering.table" title="tortoise.queryset.QuerySet.resolve_ordering.table (Python parameter) — pypika.Table to keep track of the virtual SQL table (to allow self referential joins)"><span class="n"><span class="pre">table</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_ordering.orderings" title="tortoise.queryset.QuerySet.resolve_ordering.orderings (Python parameter) — What columns/order to order by"><span class="n"><span class="pre">orderings</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.resolve_ordering.annotations" title="tortoise.queryset.QuerySet.resolve_ordering.annotations (Python parameter) — Annotations that may be ordered on"><span class="n"><span class="pre">annotations</span></span></a></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies standard ordering to QuerySet.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_ordering-parameters">Parameters<a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_ordering-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.queryset.QuerySet.resolve_ordering.model"><span class="n sig-name">model</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering.model" title="Permalink to this definition">¶</a></dt><dd><p>The Model this queryset is based on.</p>
 </dd>
@@ -2886,10 +2889,10 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.resolve_ordering-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.resolve_ordering-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If a field provided does not exist in model.</p>
 </dd>
-<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_ordering-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.resolve_ordering-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.resolve_ordering-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -2902,7 +2905,7 @@ A ‘-’ before the name will result in descending sort order, default is ascen
 <p>Returns a queryset that will lock rows until the end of the transaction,
 generating a SELECT … FOR UPDATE SQL statement on supported databases.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.select_for_update-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.select_for_update-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.select_for_update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.select_for_update-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2915,7 +2918,7 @@ generating a SELECT … FOR UPDATE SQL statement on supported databases.</p>
 <p>If fields are specified, they must be ForeignKey fields and only those
 related objects are included in the selection.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.select_related-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.select_related-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.select_related-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.select_related-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2926,7 +2929,7 @@ related objects are included in the selection.</p>
 <span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the actual SQL.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.sql-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.sql-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
@@ -2938,7 +2941,7 @@ related objects are included in the selection.</p>
 <dd><p>Update all objects in QuerySet with given kwargs.</p>
 <p>Will instead of returning a resultset, update the data in the DB itself.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.update-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.update-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.update-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.UpdateQuery" title="tortoise.queryset.UpdateQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2949,7 +2952,7 @@ related objects are included in the selection.</p>
 <span class="sig-name descname"><span class="pre">use_index</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">index_names</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.use_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.use_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>The USE INDEX (index_list) hint tells MySQL to use only one of the named indexes to find rows in the table.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.use_index-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.use_index-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.use_index-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.use_index-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2961,7 +2964,7 @@ related objects are included in the selection.</p>
 <dd><p>Executes query in provided db client.
 Useful for transactions workaround.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.using_db-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.using_db-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.using_db-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.using_db-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation."><code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2975,10 +2978,10 @@ Useful for transactions workaround.</p>
 <p>Can pass names of fields to fetch, or as a <code class="docutils literal notranslate"><span class="pre">field_name='name_in_dict'</span></code> kwarg.</p>
 <p>If no arguments are passed it will default to a dict containing all fields.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.values-raises">Raises<a class="headerlink" href="#tortoise.queryset.QuerySet.values-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.values-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.values-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If duplicate key has been provided.</p>
 </dd>
-<dt class="field-even" id="tortoise.queryset.QuerySet.values-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.values-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.queryset.QuerySet.values-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.values-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.ValuesQuery" title="tortoise.queryset.ValuesQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValuesQuery</span></code></a></p>
 </dd>
 </dl>
@@ -2993,7 +2996,7 @@ Useful for transactions workaround.</p>
 <p>If no arguments are passed it will default to a tuple containing all fields
 in order of declaration.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.values_list-return-type">Return type<a class="headerlink" href="#tortoise.queryset.QuerySet.values_list-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.values_list-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.values_list-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.ValuesListQuery" title="tortoise.queryset.ValuesListQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValuesListQuery</span></code></a></p>
 </dd>
 </dl>
@@ -3009,7 +3012,7 @@ in order of declaration.</p>
 <span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the actual SQL.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.BulkCreateQuery.sql-return-type">Return type<a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.BulkCreateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
@@ -3025,7 +3028,7 @@ in order of declaration.</p>
 <span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkUpdateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the actual SQL.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.BulkUpdateQuery.sql-return-type">Return type<a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.queryset.BulkUpdateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
@@ -3149,7 +3152,7 @@ In cases like this you could use <code class="docutils literal notranslate"><spa
 <span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ReverseRelation.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with all related elements.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.all-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.all-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.all-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.all-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3160,7 +3163,7 @@ In cases like this you could use <code class="docutils literal notranslate"><spa
 <span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ReverseRelation.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with related elements filtered by args/kwargs.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.filter-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.filter-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.filter-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.filter-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3171,7 +3174,7 @@ In cases like this you could use <code class="docutils literal notranslate"><spa
 <span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ReverseRelation.limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with at most «limit» related elements.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.limit-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.limit-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.limit-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.limit-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3182,7 +3185,7 @@ In cases like this you could use <code class="docutils literal notranslate"><spa
 <span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ReverseRelation.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with all related elements offset by «offset».</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.offset-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.offset-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.offset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.offset-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3193,7 +3196,7 @@ In cases like this you could use <code class="docutils literal notranslate"><spa
 <span class="sig-name descname"><span class="pre">order_by</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">orderings</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ReverseRelation.order_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.order_by" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet related elements in order.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.order_by-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.order_by-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ReverseRelation.order_by-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ReverseRelation.order_by-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3244,10 +3247,10 @@ when obtained model can be nullable.</p>
 <dd><p>Adds one or more of <code class="docutils literal notranslate"><span class="pre">instances</span></code> to the relation.</p>
 <p>If it is already added, it will be silently ignored.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.add-raises">Raises<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.add-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.add-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.add-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If Object to add is not saved.</p>
 </dd>
-<dt class="field-even" id="tortoise.fields.relational.ManyToManyRelation.add-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.add-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.relational.ManyToManyRelation.add-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.add-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -3258,7 +3261,7 @@ when obtained model can be nullable.</p>
 <span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with all related elements.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.all-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.all-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.all-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.all-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3269,7 +3272,7 @@ when obtained model can be nullable.</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">using_db</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ManyToManyRelation.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clears ALL relations.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.clear-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.clear-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.clear-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.clear-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -3280,7 +3283,7 @@ when obtained model can be nullable.</p>
 <span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with related elements filtered by args/kwargs.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.filter-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.filter-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.filter-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.filter-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3291,7 +3294,7 @@ when obtained model can be nullable.</p>
 <span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with at most «limit» related elements.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.limit-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.limit-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.limit-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.limit-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3302,7 +3305,7 @@ when obtained model can be nullable.</p>
 <span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet with all related elements offset by «offset».</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.offset-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.offset-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.offset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.offset-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3313,7 +3316,7 @@ when obtained model can be nullable.</p>
 <span class="sig-name descname"><span class="pre">order_by</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">orderings</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.order_by" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a QuerySet related elements in order.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.order_by-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.order_by-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.order_by-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.order_by-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a>[MODEL]</p>
 </dd>
 </dl>
@@ -3324,10 +3327,10 @@ when obtained model can be nullable.</p>
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">instances</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">using_db</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/relational.html#ManyToManyRelation.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes one or more of <code class="docutils literal notranslate"><span class="pre">instances</span></code> from the relation.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.remove-raises">Raises<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.remove-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyRelation.remove-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.remove-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – remove() was called with no instances.</p>
 </dd>
-<dt class="field-even" id="tortoise.fields.relational.ManyToManyRelation.remove-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.remove-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.relational.ManyToManyRelation.remove-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyRelation.remove-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -3432,7 +3435,7 @@ when obtained model can be nullable.</p>
 <dd><p>Prefetcher container. One would directly use this when wanting to attach a custom QuerySet
 for specialised prefetching.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.query_utils.Prefetch-parameters">Parameters<a class="headerlink" href="#tortoise.query_utils.Prefetch-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.query_utils.Prefetch-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.query_utils.Prefetch-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.query_utils.Prefetch.__init__.relation"><span class="n sig-name">relation</span><a class="headerlink" href="#tortoise.query_utils.Prefetch.__init__.relation" title="Permalink to this definition">¶</a></dt><dd><p>Related field name.</p>
 </dd>
@@ -3448,16 +3451,16 @@ for specialised prefetching.</p>
 <span class="sig-name descname"><span class="pre">resolve_for_queryset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.query_utils.Prefetch.resolve_for_queryset.queryset" title="tortoise.query_utils.Prefetch.resolve_for_queryset.queryset (Python parameter) — Custom QuerySet to use for prefetching."><span class="n"><span class="pre">queryset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/query_utils.html#Prefetch.resolve_for_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called internally to generate prefetching query.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.query_utils.Prefetch.resolve_for_queryset-parameters">Parameters<a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.query_utils.Prefetch.resolve_for_queryset-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.query_utils.Prefetch.resolve_for_queryset.queryset"><span class="sig-name descname">queryset</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Return the whole QuerySet. Essentially a no-op except as the only operation.">QuerySet</a></span></span><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset.queryset" title="Permalink to this definition">¶</a></dt><dd><p>Custom QuerySet to use for prefetching.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.query_utils.Prefetch.resolve_for_queryset-raises">Raises<a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.query_utils.Prefetch.resolve_for_queryset-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If field does not exist in model.</p>
 </dd>
-<dt class="field-odd" id="tortoise.query_utils.Prefetch.resolve_for_queryset-return-type">Return type<a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.query_utils.Prefetch.resolve_for_queryset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p>None</p>
 </dd>
 </dl>
@@ -3468,12 +3471,19 @@ for specialised prefetching.</p>
 
 
 
-              
-            </article>
-          </div>
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
@@ -3482,7 +3492,8 @@ for specialised prefetching.</p>
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="schema.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Schema Creation" rel="prev">
@@ -3531,7 +3542,7 @@ for specialised prefetching.</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    5.1.1.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -3546,10 +3557,12 @@ for specialised prefetching.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
+      <script src="_static/javascripts/bundle.444abb77.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     

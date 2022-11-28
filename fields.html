@@ -17,12 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="_static/stylesheets/main.b0359c04.min.css">
       
         
-        <link rel="stylesheet" href="_static/stylesheets/palette.92c9fe4a.min.css">
         
       
+      
+
     
     
     
@@ -34,7 +34,8 @@
     
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
         <link rel="stylesheet" type="text/css" href="_static/google_fonts.css" />
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+        <link rel="stylesheet" type="text/css" href="_static/stylesheets/sphinx_immaterial_theme.e10f1df50225cf229.min.css" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -44,10 +45,13 @@
   
 
 
-  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-MJ7RHW2FRB",{page_path:e.pathname})})})</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB"></script>
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
+    
     
     
   </head>
@@ -77,9 +81,7 @@
     </div>
     
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          
-        </aside>
+        
       </div>
     
     
@@ -148,11 +150,11 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
           </a>
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -176,7 +178,7 @@
         <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -343,7 +345,7 @@
       <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -1389,19 +1391,6 @@
     <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.fields.data.TimeDeltaField (Python class) — A field for storing time differences." class="md-ellipsis">tortoise.<wbr>fields.<wbr>data.<wbr>Time<wbr>Delta<wbr>Field</span>
   </a>
   
-    <nav class="md-nav" aria-label="tortoise.fields.data.TimeDeltaField">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.fields.data.TimeDeltaField.field_type" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.fields.data.TimeDeltaField.field_type (Python attribute) — alias of timedelta" class="md-ellipsis">field_<wbr>type</span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -1927,12 +1916,13 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset" role="main">
-                
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
 
 
-  <h1 id="fields"><span id="id1"></span>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h1>
+<h1 id="fields"><span id="id1"></span>Fields<a class="headerlink" href="#fields" title="Permalink to this heading">¶</a></h1>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>Fields are defined as properties of a <code class="docutils literal notranslate"><span class="pre">Model</span></code> class object:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -1951,7 +1941,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.fields.base.</span></span><span class="sig-name descname"><span class="pre">Field</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.source_field" title="tortoise.fields.base.Field.__init__.source_field (Python parameter) — Provide a source_field name if the DB column name needs to be something specific instead of generated off the field name."><span class="n"><span class="pre">source_field</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.generated" title="tortoise.fields.base.Field.__init__.generated (Python parameter) — Is this field DB-generated?"><span class="n"><span class="pre">generated</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.pk" title="tortoise.fields.base.Field.__init__.pk (Python parameter) — Is this field a Primary Key? Can only have a single such field on the Model, and if none is specified it will autogenerate a default primary key called id."><span class="n"><span class="pre">pk</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.null" title="tortoise.fields.base.Field.__init__.null (Python parameter) — Is this field nullable?"><span class="n"><span class="pre">null</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.default" title="tortoise.fields.base.Field.__init__.default (Python parameter) — A default value for the field if not specified on Model creation. This can also be a callable for dynamic defaults in which case we will call it. The default value will not be part of the schema."><span class="n"><span class="pre">default</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.unique" title="tortoise.fields.base.Field.__init__.unique (Python parameter) — Is this field unique?"><span class="n"><span class="pre">unique</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.index" title="tortoise.fields.base.Field.__init__.index (Python parameter) — Should this field be indexed by itself?"><span class="n"><span class="pre">index</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.description" title="tortoise.fields.base.Field.__init__.description (Python parameter) — Field description. Will also appear in Tortoise.describe_model() and as DB comments in the generated DDL."><span class="n"><span class="pre">description</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.__init__.validators" title="tortoise.fields.base.Field.__init__.validators (Python parameter) — Validators for this field."><span class="n"><span class="pre">validators</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base Field type.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.__init__.source_field"><span class="n sig-name">source_field</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.fields.base.Field.__init__.source_field" title="Permalink to this definition">¶</a></dt><dd><p>Provide a source_field name if the DB column name needs to be
 something specific instead of generated off the field name.</p>
@@ -2052,7 +2042,7 @@ If you need a dynamic attribute, you can use a property.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.base.Field.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2063,17 +2053,17 @@ If you need a dynamic attribute, you can use a property.</p>
 <span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.describe.serializable" title="tortoise.fields.base.Field.describe.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)"><span class="n"><span class="pre">serializable</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.describe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.describe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describes the field.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.describe-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field.describe-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.describe-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.describe-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.describe.serializable"><span class="n sig-name">serializable</span><a class="headerlink" href="#tortoise.fields.base.Field.describe.serializable" title="Permalink to this definition">¶</a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if you want raw python objects,
 <code class="docutils literal notranslate"><span class="pre">True</span></code> for JSON-serializable data. (Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.describe-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.describe-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.describe-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.describe-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
-<dt class="field-odd" id="tortoise.fields.base.Field.describe-returns">Returns<a class="headerlink" href="#tortoise.fields.base.Field.describe-returns" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.describe-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.describe-returns" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><p>A dictionary containing the field description.</p>
 <p>(This assumes <code class="docutils literal notranslate"><span class="pre">serializable=True</span></code>, which is the default):</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -2114,10 +2104,10 @@ JSON types. The changes are:</p>
 <span class="sig-name descname"><span class="pre">get_db_field_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.get_db_field_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.get_db_field_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the DB types for this field.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.get_db_field_types-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.get_db_field_types-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.get_db_field_types-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.get_db_field_types-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</p>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.get_db_field_types-returns">Returns<a class="headerlink" href="#tortoise.fields.base.Field.get_db_field_types-returns" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.get_db_field_types-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.get_db_field_types-returns" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p>A dictionary that is keyed by dialect.
 A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 </dd>
@@ -2129,7 +2119,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <span class="sig-name descname"><span class="pre">get_for_dialect</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.get_for_dialect.dialect" title="tortoise.fields.base.Field.get_for_dialect.dialect (Python parameter) — The requested SQL Dialect."><span class="n"><span class="pre">dialect</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.get_for_dialect.key" title="tortoise.fields.base.Field.get_for_dialect.key (Python parameter) — The attribute/method name."><span class="n"><span class="pre">key</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.get_for_dialect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a field by dialect override.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.get_for_dialect-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.get_for_dialect-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.get_for_dialect.dialect"><span class="n sig-name">dialect</span><a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect.dialect" title="Permalink to this definition">¶</a></dt><dd><p>The requested SQL Dialect.</p>
 </dd>
@@ -2137,7 +2127,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.get_for_dialect-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.get_for_dialect-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.get_for_dialect-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
 </dd>
 </dl>
@@ -2149,7 +2139,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the field is required to be provided.</p>
 <p>It needs to be non-nullable and not have a default or be DB-generated to be required.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.required-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.required-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.required-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.required-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 </dl>
@@ -2160,7 +2150,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <span class="sig-name descname"><span class="pre">to_db_value</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.to_db_value.value" title="tortoise.fields.base.Field.to_db_value.value (Python parameter) — Current python value in model."><span class="n"><span class="pre">value</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.to_db_value.instance" title="tortoise.fields.base.Field.to_db_value.instance (Python parameter) — Model class or Model instance provided to look up."><span class="n"><span class="pre">instance</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.to_db_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.to_db_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from the Python type to the DB type.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.to_db_value-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field.to_db_value-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.to_db_value-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.to_db_value-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.to_db_value.value"><span class="n sig-name">value</span><a class="headerlink" href="#tortoise.fields.base.Field.to_db_value.value" title="Permalink to this definition">¶</a></dt><dd><p>Current python value in model.</p>
 </dd>
@@ -2173,7 +2163,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.to_db_value-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.to_db_value-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.to_db_value-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.to_db_value-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
 </dd>
 </dl>
@@ -2184,13 +2174,13 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <span class="sig-name descname"><span class="pre">to_python_value</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.to_python_value.value" title="tortoise.fields.base.Field.to_python_value.value (Python parameter) — Value from DB"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.to_python_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.to_python_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from the DB type to the Python type.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.to_python_value-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field.to_python_value-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.to_python_value-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.to_python_value-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.to_python_value.value"><span class="n sig-name">value</span><a class="headerlink" href="#tortoise.fields.base.Field.to_python_value.value" title="Permalink to this definition">¶</a></dt><dd><p>Value from DB</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.to_python_value-return-type">Return type<a class="headerlink" href="#tortoise.fields.base.Field.to_python_value-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.to_python_value-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.to_python_value-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
 </dd>
 </dl>
@@ -2201,13 +2191,13 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.base.Field.validate.value" title="tortoise.fields.base.Field.validate.value (Python parameter) — Value to be validation"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/base.html#Field.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.base.Field.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Validate whether given value is valid</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.base.Field.validate-parameters">Parameters<a class="headerlink" href="#tortoise.fields.base.Field.validate-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.base.Field.validate-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.validate-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.base.Field.validate.value"><span class="n sig-name">value</span><a class="headerlink" href="#tortoise.fields.base.Field.validate.value" title="Permalink to this definition">¶</a></dt><dd><p>Value to be validation</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.base.Field.validate-raises">Raises<a class="headerlink" href="#tortoise.fields.base.Field.validate-raises" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.base.Field.validate-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.base.Field.validate-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ValidationError" title="tortoise.exceptions.ValidationError (Python exception) — Bases: BaseORMException"><strong>ValidationError</strong></a> – If validator check is not passed</p>
 </dd>
 </dl>
@@ -2229,7 +2219,7 @@ A blank dialect <cite>“”</cite> means it is the default DB field type.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.data.BigIntField.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.BigIntField.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.BigIntField.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.BigIntField.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.BigIntField.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2289,7 +2279,7 @@ enum_type.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.CharEnumField-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.CharEnumField-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.CharEnumField-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.CharEnumField-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 </dd>
 </dl>
@@ -2309,7 +2299,7 @@ enum_type.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.data.CharField.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.CharField.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.CharField.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.CharField.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.CharField.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2352,7 +2342,7 @@ You can opt to set neither or only ONE of them.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.DatetimeField.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.DatetimeField.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.DatetimeField.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2363,17 +2353,17 @@ You can opt to set neither or only ONE of them.</p>
 <span class="sig-name descname"><span class="pre">describe</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.data.DatetimeField.describe.serializable" title="tortoise.fields.data.DatetimeField.describe.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)"><span class="n"><span class="pre">serializable</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/data.html#DatetimeField.describe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describes the field.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.DatetimeField.describe-parameters">Parameters<a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-parameters" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.DatetimeField.describe-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt id="tortoise.fields.data.DatetimeField.describe.serializable"><span class="n sig-name">serializable</span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe.serializable" title="Permalink to this definition">¶</a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if you want raw python objects,
 <code class="docutils literal notranslate"><span class="pre">True</span></code> for JSON-serializable data. (Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.fields.data.DatetimeField.describe-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-even" id="tortoise.fields.data.DatetimeField.describe-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
-<dt class="field-odd" id="tortoise.fields.data.DatetimeField.describe-returns">Returns<a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-returns" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.DatetimeField.describe-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.DatetimeField.describe-returns" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><p>A dictionary containing the field description.</p>
 <p>(This assumes <code class="docutils literal notranslate"><span class="pre">serializable=True</span></code>, which is the default):</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -2464,7 +2454,7 @@ of “name: value” pairs.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.IntEnumField-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.IntEnumField-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.IntEnumField-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.IntEnumField-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
 </dd>
 </dl>
@@ -2483,7 +2473,7 @@ of “name: value” pairs.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.data.IntField.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.IntField.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.IntField.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.IntField.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.IntField.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2526,7 +2516,7 @@ else the default <code class="docutils literal notranslate"><span class="pre">js
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constraints</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span></span><a class="headerlink" href="#tortoise.fields.data.SmallIntField.constraints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dict with constraints defined in the Pydantic/JSONSchema format.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.data.SmallIntField.constraints-return-type">Return type<a class="headerlink" href="#tortoise.fields.data.SmallIntField.constraints-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.data.SmallIntField.constraints-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.data.SmallIntField.constraints-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
@@ -2556,12 +2546,6 @@ else the default <code class="docutils literal notranslate"><span class="pre">js
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.fields.data.TimeDeltaField">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.fields.data.</span></span><span class="sig-name descname"><span class="pre">TimeDeltaField</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">source_field</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">generated</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">pk</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">null</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">unique</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">validators</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/data.html#TimeDeltaField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.data.TimeDeltaField" title="Permalink to this definition">¶</a></dt>
 <dd><p>A field for storing time differences.</p>
-<dl class="py attribute objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.fields.data.TimeDeltaField.field_type">
-<span class="sig-name descname"><span class="pre">field_type</span></span><a class="headerlink" href="#tortoise.fields.data.TimeDeltaField.field_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta</span></code></p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class objdesc">
@@ -2619,7 +2603,7 @@ The default is True, and that’s almost certainly what you want; setting this t
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ForeignKeyField-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ForeignKeyField-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ForeignKeyField-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ForeignKeyField-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKeyFieldInstance</span></code>[Model]</p>
 </dd>
 </dl>
@@ -2671,7 +2655,7 @@ Can only be set is field has a <code class="docutils literal notranslate"><span 
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.ManyToManyField-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.ManyToManyField-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.ManyToManyField-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.ManyToManyField-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.fields.relational.ManyToManyRelation" title="tortoise.fields.relational.ManyToManyRelation (Python class) — Many-to-many relation container for ManyToManyField()."><code class="xref py py-class docutils literal notranslate"><span class="pre">ManyToManyRelation</span></code></a>[Model]</p>
 </dd>
 </dl>
@@ -2717,7 +2701,7 @@ The default is True, and that’s almost certainly what you want; setting this t
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.fields.relational.OneToOneField-return-type">Return type<a class="headerlink" href="#tortoise.fields.relational.OneToOneField-return-type" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dt class="field-odd" id="tortoise.fields.relational.OneToOneField-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.fields.relational.OneToOneField-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneFieldInstance</span></code>[Model]</p>
 </dd>
 </dl>
@@ -2776,12 +2760,19 @@ that is a <code class="docutils literal notranslate"><span class="pre">str</span
 
 
 
-              
-            </article>
-          </div>
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
@@ -2790,7 +2781,8 @@ that is a <code class="docutils literal notranslate"><span class="pre">str</span
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="models.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Models" rel="prev">
@@ -2839,7 +2831,7 @@ that is a <code class="docutils literal notranslate"><span class="pre">str</span
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    5.1.1.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -2854,10 +2846,12 @@ that is a <code class="docutils literal notranslate"><span class="pre">str</span
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
     
     
-      <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
+      <script src="_static/javascripts/bundle.444abb77.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     
