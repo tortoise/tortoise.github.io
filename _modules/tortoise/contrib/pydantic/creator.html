@@ -910,7 +910,7 @@
                 <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotation</span>
         <span class="c1"># Json fields</span>
         <span class="k">elif</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">JSONField</span><span class="p">:</span>
-            <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">Any</span>  <span class="c1"># type: ignore</span>
+            <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">Json</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
         <span class="c1"># Any other tortoise fields</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">annotation</span> <span class="o">=</span> <span class="n">annotations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
