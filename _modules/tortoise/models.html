@@ -1079,37 +1079,37 @@
                         <span class="s2">&quot; already present&quot;</span>
                     <span class="p">)</span>
 
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta_class</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-                        <span class="n">value</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Field</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta_class</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-                    <span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-                    <span class="n">value</span><span class="o">.</span><span class="n">model_field_name</span> <span class="o">=</span> <span class="n">key</span>
+                <span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">model_field_name</span> <span class="o">=</span> <span class="n">key</span>
 
-                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">OneToOneFieldInstance</span><span class="p">):</span>
-                        <span class="n">o2o_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">):</span>
-                        <span class="n">fk_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ManyToManyFieldInstance</span><span class="p">):</span>
-                        <span class="n">m2m_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">key</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">OneToOneFieldInstance</span><span class="p">):</span>
+                    <span class="n">o2o_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">):</span>
+                    <span class="n">fk_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ManyToManyFieldInstance</span><span class="p">):</span>
+                    <span class="n">m2m_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">key</span>
+                    <span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                        <span class="n">get_filters_for_field</span><span class="p">(</span>
+                            <span class="n">field_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                            <span class="n">field</span><span class="o">=</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
+                            <span class="n">source_field</span><span class="o">=</span><span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
                         <span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                             <span class="n">get_filters_for_field</span><span class="p">(</span>
-                                <span class="n">field_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+                                <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span>
                                 <span class="n">field</span><span class="o">=</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
                                 <span class="n">source_field</span><span class="o">=</span><span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
                             <span class="p">)</span>
                         <span class="p">)</span>
-                        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
-                            <span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-                                <span class="n">get_filters_for_field</span><span class="p">(</span>
-                                    <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span>
-                                    <span class="n">field</span><span class="o">=</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                                    <span class="n">source_field</span><span class="o">=</span><span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                                <span class="p">)</span>
-                            <span class="p">)</span>
 
         <span class="c1"># Clean the class attributes</span>
         <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">fields_map</span><span class="p">:</span>
