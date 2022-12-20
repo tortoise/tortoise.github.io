@@ -34,7 +34,7 @@
     
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
         <link rel="stylesheet" type="text/css" href="../../_static/google_fonts.css" />
-        <link rel="stylesheet" type="text/css" href="../../_static/stylesheets/sphinx_immaterial_theme.e10f1df50225cf229.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/stylesheets/sphinx_immaterial_theme.7e770c658028b1997.min.css" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -531,13 +531,14 @@
     <span class="n">TypeVar</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">cast</span><span class="p">,</span>
+    <span class="n">overload</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">JoinType</span><span class="p">,</span> <span class="n">Order</span><span class="p">,</span> <span class="n">Table</span>
 <span class="kn">from</span> <span class="nn">pypika.functions</span> <span class="kn">import</span> <span class="n">Cast</span><span class="p">,</span> <span class="n">Count</span>
 <span class="kn">from</span> <span class="nn">pypika.queries</span> <span class="kn">import</span> <span class="n">QueryBuilder</span>
 <span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Case</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
-<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Protocol</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Protocol</span>
 
 <span class="kn">from</span> <span class="nn">tortoise.backends.base.client</span> <span class="kn">import</span> <span class="n">BaseDBAsyncClient</span><span class="p">,</span> <span class="n">Capabilities</span>
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
@@ -567,6 +568,7 @@
 
 <span class="n">MODEL</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;MODEL&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
 <span class="n">T_co</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T_co&quot;</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SINGLE</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;SINGLE&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="QuerySetSingle"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySetSingle">[docs]</a><span class="k">class</span> <span class="nc">QuerySetSingle</span><span class="p">(</span><span class="n">Protocol</span><span class="p">[</span><span class="n">T_co</span><span class="p">]):</span>
@@ -590,10 +592,10 @@
     <span class="k">def</span> <span class="nf">only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_for_select</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySetSingle[T_co]&quot;</span><span class="p">:</span>
         <span class="o">...</span>  <span class="c1"># pragma: nocoverage</span>
 
-    <span class="k">def</span> <span class="nf">values_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">flat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesListQuery&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">values_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">flat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesListQuery[Literal[True]]&quot;</span><span class="p">:</span>
         <span class="o">...</span>  <span class="c1"># pragma: nocoverage</span>
 
-    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesQuery&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesQuery[Literal[True]]&quot;</span><span class="p">:</span>
         <span class="o">...</span>  <span class="c1"># pragma: nocoverage</span></div>
 
 
@@ -1014,7 +1016,7 @@
         <span class="n">queryset</span><span class="o">.</span><span class="n">_group_bys</span> <span class="o">=</span> <span class="n">fields</span>
         <span class="k">return</span> <span class="n">queryset</span></div>
 
-<div class="viewcode-block" id="QuerySet.values_list"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values_list">[docs]</a>    <span class="k">def</span> <span class="nf">values_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">flat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesListQuery&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="QuerySet.values_list"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values_list">[docs]</a>    <span class="k">def</span> <span class="nf">values_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">flat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesListQuery[Literal[False]]&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet returns list of tuples for given args instead of objects.</span>
 
@@ -1050,7 +1052,7 @@
             <span class="n">use_indexes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_use_indexes</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="QuerySet.values"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesQuery&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="QuerySet.values"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesQuery[Literal[False]]&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet return dicts instead of objects.</span>
 
@@ -1906,7 +1908,7 @@
         <span class="k">return</span> <span class="n">group_bys</span></div>
 
 
-<div class="viewcode-block" id="ValuesListQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ValuesListQuery">[docs]</a><span class="k">class</span> <span class="nc">ValuesListQuery</span><span class="p">(</span><span class="n">FieldSelectQuery</span><span class="p">):</span>
+<div class="viewcode-block" id="ValuesListQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ValuesListQuery">[docs]</a><span class="k">class</span> <span class="nc">ValuesListQuery</span><span class="p">(</span><span class="n">FieldSelectQuery</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">SINGLE</span><span class="p">]):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;flat&quot;</span><span class="p">,</span>
         <span class="s2">&quot;fields&quot;</span><span class="p">,</span>
@@ -1995,13 +1997,23 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">]]:</span>
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesListQuery[Literal[False]]&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]]]:</span>
+        <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesListQuery[Literal[True]]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]]:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>  <span class="c1"># pylint: disable=E1101</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesListQuery[Any]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="k">await</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">val</span>
 
@@ -2030,7 +2042,7 @@
         <span class="k">return</span> <span class="n">lst_values</span></div>
 
 
-<div class="viewcode-block" id="ValuesQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ValuesQuery">[docs]</a><span class="k">class</span> <span class="nc">ValuesQuery</span><span class="p">(</span><span class="n">FieldSelectQuery</span><span class="p">):</span>
+<div class="viewcode-block" id="ValuesQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.ValuesQuery">[docs]</a><span class="k">class</span> <span class="nc">ValuesQuery</span><span class="p">(</span><span class="n">FieldSelectQuery</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">SINGLE</span><span class="p">]):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;fields_for_select&quot;</span><span class="p">,</span>
         <span class="s2">&quot;limit&quot;</span><span class="p">,</span>
@@ -2110,13 +2122,23 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_use_indexes</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">use_index</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">Dict</span><span class="p">]]:</span>
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesQuery[Literal[False]]&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]:</span>
+        <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesQuery[Literal[True]]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>  <span class="c1"># pylint: disable=E1101</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aiter__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;ValuesQuery[Any]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="k">await</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">val</span>
 
