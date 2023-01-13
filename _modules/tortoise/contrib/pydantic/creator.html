@@ -517,10 +517,10 @@
 <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha3_224</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
 
-<span class="kn">import</span> <span class="nn">pydantic</span>
-<span class="kn">from</span> <span class="nn">pydantic.main</span> <span class="kn">import</span> <span class="n">BaseConfig</span> <span class="k">as</span> <span class="n">PydanticBaseConfig</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseConfig</span> <span class="k">as</span> <span class="n">PydanticBaseConfig</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Extra</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">relational</span><span class="p">,</span> <span class="n">JSONField</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.base</span> <span class="kn">import</span> <span class="n">PydanticListModel</span><span class="p">,</span> <span class="n">PydanticModel</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.utils</span> <span class="kn">import</span> <span class="n">get_annotations</span>
 
@@ -760,10 +760,10 @@
     <span class="c1"># If at least one of default_config_class or config_class have extra,</span>
     <span class="c1">#   we don&#39;t add extra automatically.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">default_config_class</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">config_class</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">):</span>
-        <span class="n">pconfig_attrs</span><span class="p">[</span><span class="s2">&quot;extra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">Extra</span><span class="o">.</span><span class="n">forbid</span>
+        <span class="n">pconfig_attrs</span><span class="p">[</span><span class="s2">&quot;extra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Extra</span><span class="o">.</span><span class="n">forbid</span>
 
     <span class="c1"># Properties and their annotations` store</span>
-    <span class="n">pconfig</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">BaseConfig</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+    <span class="n">pconfig</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">PydanticBaseConfig</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
         <span class="s2">&quot;Config&quot;</span><span class="p">,</span>
         <span class="nb">tuple</span><span class="p">(</span><span class="n">pconfig_bases</span><span class="p">),</span>
         <span class="n">pconfig_attrs</span><span class="p">,</span>
@@ -882,9 +882,9 @@
 
         <span class="c1"># Foreign keys and OneToOne fields are embedded schemas</span>
         <span class="k">if</span> <span class="p">(</span>
-            <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">relational</span><span class="o">.</span><span class="n">ForeignKeyFieldInstance</span>
-            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">relational</span><span class="o">.</span><span class="n">OneToOneFieldInstance</span>
-            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">relational</span><span class="o">.</span><span class="n">BackwardOneToOneRelation</span>
+            <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">ForeignKeyFieldInstance</span>
+            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">OneToOneFieldInstance</span>
+            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">BackwardOneToOneRelation</span>
         <span class="p">):</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">get_submodel</span><span class="p">(</span><span class="n">fdesc</span><span class="p">[</span><span class="s2">&quot;python_type&quot;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
@@ -897,8 +897,8 @@
 
         <span class="c1"># Backward FK and ManyToMany fields are list of embedded schemas</span>
         <span class="k">elif</span> <span class="p">(</span>
-            <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">relational</span><span class="o">.</span><span class="n">BackwardFKRelation</span>
-            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">relational</span><span class="o">.</span><span class="n">ManyToManyFieldInstance</span>
+            <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">BackwardFKRelation</span>
+            <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">ManyToManyFieldInstance</span>
         <span class="p">):</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">get_submodel</span><span class="p">(</span><span class="n">fdesc</span><span class="p">[</span><span class="s2">&quot;python_type&quot;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
@@ -912,7 +912,7 @@
             <span class="k">if</span> <span class="n">annotation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotation</span>
         <span class="c1"># Json fields</span>
-        <span class="k">elif</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">fields</span><span class="o">.</span><span class="n">JSONField</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">JSONField</span><span class="p">:</span>
             <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">Any</span>  <span class="c1"># type: ignore</span>
         <span class="c1"># Any other tortoise fields</span>
         <span class="k">else</span><span class="p">:</span>

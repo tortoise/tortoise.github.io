@@ -515,7 +515,7 @@
 <span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>  <span class="c1"># pylint: disable=E0611</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">BaseConfig</span>  <span class="c1"># pylint: disable=E0611</span>
 
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span>
 
@@ -559,7 +559,7 @@
 <span class="sd">    `model properties &lt;https://pydantic-docs.helpmanual.io/usage/models/#model-properties&gt;`__</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
         <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># It should be in ORM mode to convert tortoise data to pydantic</span>
 
     <span class="c1"># noinspection PyMethodParameters</span>
