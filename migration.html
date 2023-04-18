@@ -942,25 +942,25 @@
 <p>This document describes how to use <cite>Aerich</cite> to make migrations.</p>
 <p>You can see <a class="reference external" href="https://github.com/tortoise/aerich">https://github.com/tortoise/aerich</a> for more details.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich -h
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>-h
 
-Usage: aerich <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+Usage:<span class="w"> </span>aerich<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
 
 Options:
-  -c, --config TEXT  Config file.  <span class="o">[</span>default: aerich.ini<span class="o">]</span>
-  --app TEXT         Tortoise-ORM app name.  <span class="o">[</span>default: models<span class="o">]</span>
-  -n, --name TEXT    Name of section <span class="k">in</span> .ini file to use <span class="k">for</span> aerich config.
-                     <span class="o">[</span>default: aerich<span class="o">]</span>
-  -h, --help         Show this message and exit.
+<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>TEXT<span class="w">  </span>Config<span class="w"> </span>file.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>aerich.ini<span class="o">]</span>
+<span class="w">  </span>--app<span class="w"> </span>TEXT<span class="w">         </span>Tortoise-ORM<span class="w"> </span>app<span class="w"> </span>name.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>models<span class="o">]</span>
+<span class="w">  </span>-n,<span class="w"> </span>--name<span class="w"> </span>TEXT<span class="w">    </span>Name<span class="w"> </span>of<span class="w"> </span>section<span class="w"> </span><span class="k">in</span><span class="w"> </span>.ini<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>aerich<span class="w"> </span>config.
+<span class="w">                     </span><span class="o">[</span>default:<span class="w"> </span>aerich<span class="o">]</span>
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 
 Commands:
-  downgrade  Downgrade to specified version.
-  heads      Show current available heads <span class="k">in</span> migrate location.
-  <span class="nb">history</span>    List all migrate items.
-  init       Init config file and generate root migrate location.
-  init-db    Generate schema and generate app migrate location.
-  migrate    Generate migrate changes file.
-  upgrade    Upgrade to latest version.
+<span class="w">  </span>downgrade<span class="w">  </span>Downgrade<span class="w"> </span>to<span class="w"> </span>specified<span class="w"> </span>version.
+<span class="w">  </span>heads<span class="w">      </span>Show<span class="w"> </span>current<span class="w"> </span>available<span class="w"> </span>heads<span class="w"> </span><span class="k">in</span><span class="w"> </span>migrate<span class="w"> </span>location.
+<span class="w">  </span><span class="nb">history</span><span class="w">    </span>List<span class="w"> </span>all<span class="w"> </span>migrate<span class="w"> </span>items.
+<span class="w">  </span>init<span class="w">       </span>Init<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>root<span class="w"> </span>migrate<span class="w"> </span>location.
+<span class="w">  </span>init-db<span class="w">    </span>Generate<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>app<span class="w"> </span>migrate<span class="w"> </span>location.
+<span class="w">  </span>migrate<span class="w">    </span>Generate<span class="w"> </span>migrate<span class="w"> </span>changes<span class="w"> </span>file.
+<span class="w">  </span>upgrade<span class="w">    </span>Upgrade<span class="w"> </span>to<span class="w"> </span>latest<span class="w"> </span>version.
 </code></pre></div>
 </div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
@@ -978,39 +978,39 @@ example:</p>
 </code></pre></div>
 </div>
 <h3 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich init -h
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>init<span class="w"> </span>-h
 
-Usage: aerich init <span class="o">[</span>OPTIONS<span class="o">]</span>
+Usage:<span class="w"> </span>aerich<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
-  Init config file and generate root migrate location.
+<span class="w">  </span>Init<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>root<span class="w"> </span>migrate<span class="w"> </span>location.
 
 Options:
-  -t, --tortoise-orm TEXT  Tortoise-ORM config module dict variable, like settings.TORTOISE_ORM.
-                           <span class="o">[</span>required<span class="o">]</span>
-  --location TEXT          Migrate store location.  <span class="o">[</span>default: ./migrations<span class="o">]</span>
-  -h, --help               Show this message and exit.
+<span class="w">  </span>-t,<span class="w"> </span>--tortoise-orm<span class="w"> </span>TEXT<span class="w">  </span>Tortoise-ORM<span class="w"> </span>config<span class="w"> </span>module<span class="w"> </span>dict<span class="w"> </span>variable,<span class="w"> </span>like<span class="w"> </span>settings.TORTOISE_ORM.
+<span class="w">                           </span><span class="o">[</span>required<span class="o">]</span>
+<span class="w">  </span>--location<span class="w"> </span>TEXT<span class="w">          </span>Migrate<span class="w"> </span>store<span class="w"> </span>location.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>./migrations<span class="o">]</span>
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">               </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
 </div>
 <p>Init config file and location:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich init -t tests.backends.mysql.TORTOISE_ORM
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>init<span class="w"> </span>-t<span class="w"> </span>tests.backends.mysql.TORTOISE_ORM
 
-Success create migrate location ./migrations
-Success generate config file aerich.ini
+Success<span class="w"> </span>create<span class="w"> </span>migrate<span class="w"> </span>location<span class="w"> </span>./migrations
+Success<span class="w"> </span>generate<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>aerich.ini
 </code></pre></div>
 </div>
 <h3 id="init-db">Init db<a class="headerlink" href="#init-db" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich init-db
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>init-db
 
-Success create app migrate location ./migrations/models
-Success generate schema <span class="k">for</span> app <span class="s2">&quot;models&quot;</span>
+Success<span class="w"> </span>create<span class="w"> </span>app<span class="w"> </span>migrate<span class="w"> </span>location<span class="w"> </span>./migrations/models
+Success<span class="w"> </span>generate<span class="w"> </span>schema<span class="w"> </span><span class="k">for</span><span class="w"> </span>app<span class="w"> </span><span class="s2">&quot;models&quot;</span>
 </code></pre></div>
 </div>
 <p>If your Tortoise-ORM app is not default <cite>models</cite>, you must specify
 <cite>–app</cite> like <cite>aerich –app other_models init-db</cite>.</p>
 <h3 id="update-models-and-make-migrate">Update models and make migrate<a class="headerlink" href="#update-models-and-make-migrate" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich migrate --name drop_column
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>migrate<span class="w"> </span>--name<span class="w"> </span>drop_column
 
-Success migrate 1_202029051520102929_drop_column.json
+Success<span class="w"> </span>migrate<span class="w"> </span>1_202029051520102929_drop_column.json
 </code></pre></div>
 </div>
 <p>Format of migrate filename is
@@ -1018,38 +1018,38 @@ Success migrate 1_202029051520102929_drop_column.json
 <p>And if <cite>aerich</cite> guess you are renaming a column, it will ask <cite>Rename {old_column} to {new_column} [True]</cite>, you can choice <cite>True</cite> to rename column without column drop, or choice <cite>False</cite> to drop column then create.</p>
 <p>If you use <cite>MySQL</cite>, only MySQL8.0+ support <cite>rename..to</cite> syntax.</p>
 <h3 id="upgrade-to-latest-version">Upgrade to latest version<a class="headerlink" href="#upgrade-to-latest-version" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich upgrade
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>upgrade
 
-Success upgrade 1_202029051520102929_drop_column.json
+Success<span class="w"> </span>upgrade<span class="w"> </span>1_202029051520102929_drop_column.json
 </code></pre></div>
 </div>
 <p>Now your db is migrated to latest.</p>
 <h3 id="downgrade-to-specified-version">Downgrade to specified version<a class="headerlink" href="#downgrade-to-specified-version" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich init -h
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>init<span class="w"> </span>-h
 
-Usage: aerich downgrade <span class="o">[</span>OPTIONS<span class="o">]</span>
+Usage:<span class="w"> </span>aerich<span class="w"> </span>downgrade<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
-  Downgrade to specified version.
+<span class="w">  </span>Downgrade<span class="w"> </span>to<span class="w"> </span>specified<span class="w"> </span>version.
 
 Options:
-  -v, --version INTEGER  Specified version, default to last.  <span class="o">[</span>default: -1<span class="o">]</span>
-  -h, --help             Show this message and exit.
+<span class="w">  </span>-v,<span class="w"> </span>--version<span class="w"> </span>INTEGER<span class="w">  </span>Specified<span class="w"> </span>version,<span class="w"> </span>default<span class="w"> </span>to<span class="w"> </span>last.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>-1<span class="o">]</span>
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">             </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich downgrade
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>downgrade
 
-Success downgrade 1_202029051520102929_drop_column.json
+Success<span class="w"> </span>downgrade<span class="w"> </span>1_202029051520102929_drop_column.json
 </code></pre></div>
 </div>
 <p>Now your db rollback to specified version.</p>
 <h3 id="show-history">Show history<a class="headerlink" href="#show-history" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich <span class="nb">history</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span><span class="nb">history</span>
 
 1_202029051520102929_drop_column.json
 </code></pre></div>
 </div>
 <h3 id="show-heads-to-be-migrated">Show heads to be migrated<a class="headerlink" href="#show-heads-to-be-migrated" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; aerich heads
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>heads
 
 1_202029051520102929_drop_column.json
 </code></pre></div>

@@ -2493,7 +2493,7 @@ of “name: value” pairs.</p>
 <dd><p>JSON field.</p>
 <p>This field can store dictionaries or lists of any JSON-compliant structure.</p>
 <p>You can specify your own custom JSON encoder/decoder, leaving at the default should work well.
-If you have <code class="docutils literal notranslate"><span class="pre">python-rapidjson</span></code> installed, we default to using that,
+If you have <code class="docutils literal notranslate"><span class="pre">orjson</span></code> installed, we default to using that,
 else the default <code class="docutils literal notranslate"><span class="pre">json</span></code> module will be used.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">encoder</span></code>:</dt><dd><p>The custom JSON encoder.</p>
@@ -2732,7 +2732,7 @@ to store and query Enum types.</p>
 
 
 <span class="k">class</span> <span class="nc">EnumField</span><span class="p">(</span><span class="n">CharField</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An example extension to CharField that serializes Enums</span>
 <span class="sd">    to and from a str representation in the DB.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

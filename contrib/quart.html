@@ -841,18 +841,18 @@
 <p>Note that the modules path can not be <code class="docutils literal notranslate"><span class="pre">__main__</span></code> as that changes depending on the launch point. One wants to be able to launch a Quart service from the ASGI runner directly, so all paths need to be explicit.</p>
 <p>See the <a class="reference internal" href="../examples/quart.html#example-quart"><span class="std std-ref">Quart Example</span></a></p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code><span class="nv">QUART_APP</span><span class="o">=</span>main quart
-    ...
-    Commands:
-      generate-schemas  Populate DB with Tortoise-ORM schemas.
-      run               Start and run a development server.
-      shell             Open a shell within the app context.
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code><span class="nv">QUART_APP</span><span class="o">=</span>main<span class="w"> </span>quart
+<span class="w">    </span>...
+<span class="w">    </span>Commands:
+<span class="w">      </span>generate-schemas<span class="w">  </span>Populate<span class="w"> </span>DB<span class="w"> </span>with<span class="w"> </span>Tortoise-ORM<span class="w"> </span>schemas.
+<span class="w">      </span>run<span class="w">               </span>Start<span class="w"> </span>and<span class="w"> </span>run<span class="w"> </span>a<span class="w"> </span>development<span class="w"> </span>server.
+<span class="w">      </span>shell<span class="w">             </span>Open<span class="w"> </span>a<span class="w"> </span>shell<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>app<span class="w"> </span>context.
 
 <span class="c1"># To generate schemas</span>
-<span class="nv">QUART_APP</span><span class="o">=</span>main quart generate-schemas
+<span class="nv">QUART_APP</span><span class="o">=</span>main<span class="w"> </span>quart<span class="w"> </span>generate-schemas
 
 <span class="c1"># To run</span>
-<span class="nv">QUART_APP</span><span class="o">=</span>main quart run
+<span class="nv">QUART_APP</span><span class="o">=</span>main<span class="w"> </span>quart<span class="w"> </span>run
 </code></pre></div>
 </div>
 <h2 id="module-tortoise.contrib.quart"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise.contrib.quart" title="Permalink to this heading">¶</a></h2>

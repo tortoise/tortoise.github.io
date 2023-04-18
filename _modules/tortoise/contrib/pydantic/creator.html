@@ -520,9 +520,9 @@
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseConfig</span> <span class="k">as</span> <span class="n">PydanticBaseConfig</span>
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Extra</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">relational</span><span class="p">,</span> <span class="n">JSONField</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.base</span> <span class="kn">import</span> <span class="n">PydanticListModel</span><span class="p">,</span> <span class="n">PydanticModel</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.utils</span> <span class="kn">import</span> <span class="n">get_annotations</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">JSONField</span><span class="p">,</span> <span class="n">relational</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
     <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -532,7 +532,7 @@
 
 
 <div class="viewcode-block" id="PydanticMeta"><a class="viewcode-back" href="../../../../contrib/pydantic.html#tortoise.contrib.pydantic.creator.PydanticMeta">[docs]</a><span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ``PydanticMeta`` class is used to configure metadata for generating the pydantic Model.</span>
 
 <span class="sd">    Usage:</span>
@@ -597,7 +597,7 @@
     <span class="n">allow_cycles</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">sort_alphabetically</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    It is an inner function to protect pydantic model creator against cyclic recursion</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_cycles</span> <span class="ow">and</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">stack</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
@@ -647,7 +647,7 @@
     <span class="n">meta_override</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">config_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticBaseConfig</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to build `Pydantic Model &lt;https://pydantic-docs.helpmanual.io/usage/models/&gt;`__ off Tortoise Model.</span>
 
 <span class="sd">    :param cls: The Tortoise Model</span>
@@ -819,7 +819,7 @@
         <span class="c1"># Add possible computed fields</span>
         <span class="n">field_map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="p">{</span>
-                <span class="n">k</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="n">callable</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+                <span class="n">k</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;field_type&quot;</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">computed</span>
             <span class="p">}</span>
         <span class="p">)</span>
@@ -843,7 +843,7 @@
         <span class="n">field_default</span> <span class="o">=</span> <span class="n">fdesc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">get_submodel</span><span class="p">(</span><span class="n">_model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]]:</span>
-            <span class="sd">&quot;&quot;&quot;Get Pydantic model for the submodel&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Get Pydantic model for the submodel&quot;&quot;&quot;</span>
             <span class="k">nonlocal</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">_name</span><span class="p">,</span> <span class="n">has_submodel</span>
 
             <span class="k">if</span> <span class="n">_model</span><span class="p">:</span>
@@ -905,7 +905,7 @@
                 <span class="n">pannotations</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
 
         <span class="c1"># Computed fields as methods</span>
-        <span class="k">elif</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">callable</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="nb">callable</span><span class="p">:</span>
             <span class="n">func</span> <span class="o">=</span> <span class="n">fdesc</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span>
             <span class="n">annotation</span> <span class="o">=</span> <span class="n">get_annotations</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;return&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="n">comment</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -932,7 +932,7 @@
             <span class="n">description</span> <span class="o">=</span> <span class="n">comment</span> <span class="ow">or</span> <span class="n">_br_it</span><span class="p">(</span><span class="n">fdesc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;docstring&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">fdesc</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
             <span class="n">fconfig</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">description</span>
             <span class="n">fconfig</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">field_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">field_default</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">field_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">field_default</span><span class="p">):</span>
                 <span class="n">properties</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_default</span>
             <span class="n">pconfig</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="n">fconfig</span>
 
@@ -970,7 +970,7 @@
     <span class="n">allow_cycles</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">sort_alphabetically</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">PydanticListModel</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to build a `Pydantic Model &lt;https://pydantic-docs.helpmanual.io/usage/models/&gt;`__ list off Tortoise Model.</span>
 
 <span class="sd">    :param cls: The Tortoise Model to put in a list.</span>

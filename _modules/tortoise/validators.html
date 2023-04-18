@@ -524,7 +524,7 @@
 <div class="viewcode-block" id="Validator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.Validator">[docs]</a><span class="k">class</span> <span class="nc">Validator</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
 <div class="viewcode-block" id="Validator.__call__"><a class="viewcode-back" href="../../validators.html#tortoise.validators.Validator.__call__">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        All specific validators should implement this method.</span>
 
 <span class="sd">        :param value: The given value to be validated.</span>
@@ -533,7 +533,7 @@
 
 
 <div class="viewcode-block" id="RegexValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.RegexValidator">[docs]</a><span class="k">class</span> <span class="nc">RegexValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate the given value whether match regex or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -546,7 +546,7 @@
 
 
 <div class="viewcode-block" id="MaxLengthValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.MaxLengthValidator">[docs]</a><span class="k">class</span> <span class="nc">MaxLengthValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate the length of given value whether greater than max_length or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -561,7 +561,7 @@
 
 
 <div class="viewcode-block" id="MinLengthValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.MinLengthValidator">[docs]</a><span class="k">class</span> <span class="nc">MinLengthValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate the length of given value whether less than min_length or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -576,7 +576,7 @@
 
 
 <div class="viewcode-block" id="MinValueValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.MinValueValidator">[docs]</a><span class="k">class</span> <span class="nc">MinValueValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Min value validator for FloatField, IntField, SmallIntField, BigIntField</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -594,7 +594,7 @@
 
 
 <div class="viewcode-block" id="MaxValueValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.MaxValueValidator">[docs]</a><span class="k">class</span> <span class="nc">MaxValueValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Max value validator for FloatField, IntField, SmallIntField, BigIntField</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -612,7 +612,7 @@
 
 
 <div class="viewcode-block" id="CommaSeparatedIntegerListValidator"><a class="viewcode-back" href="../../validators.html#tortoise.validators.CommaSeparatedIntegerListValidator">[docs]</a><span class="k">class</span> <span class="nc">CommaSeparatedIntegerListValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate whether the given value is valid comma separated integer list or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -628,7 +628,7 @@
 
 
 <div class="viewcode-block" id="validate_ipv4_address"><a class="viewcode-back" href="../../validators.html#tortoise.validators.validate_ipv4_address">[docs]</a><span class="k">def</span> <span class="nf">validate_ipv4_address</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate whether the given value is valid IPv4Address or not.</span>
 
 <span class="sd">    :raises ValidationError: if value is invalid IPv4Address.</span>
@@ -641,7 +641,7 @@
 
 
 <div class="viewcode-block" id="validate_ipv6_address"><a class="viewcode-back" href="../../validators.html#tortoise.validators.validate_ipv6_address">[docs]</a><span class="k">def</span> <span class="nf">validate_ipv6_address</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate whether the given value is valid IPv6Address or not.</span>
 
 <span class="sd">    :raises ValidationError: if value is invalid IPv6Address.</span>
@@ -653,7 +653,7 @@
 
 
 <div class="viewcode-block" id="validate_ipv46_address"><a class="viewcode-back" href="../../validators.html#tortoise.validators.validate_ipv46_address">[docs]</a><span class="k">def</span> <span class="nf">validate_ipv46_address</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate whether the given value is valid IPv4Address or IPv6Address or not.</span>
 
 <span class="sd">    :raises ValidationError: if value is invalid IPv4Address or IPv6Address.</span>

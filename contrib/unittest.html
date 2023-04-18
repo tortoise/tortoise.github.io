@@ -1211,8 +1211,8 @@ The SQLite in-memory <code class="docutils literal notranslate"><span class="pre
 <h2 id="test-runners">Test Runners<a class="headerlink" href="#test-runners" title="Permalink to this heading">¶</a></h2>
 <h3 id="green">Green<a class="headerlink" href="#green" title="Permalink to this heading">¶</a></h3>
 <p>In your <code class="docutils literal notranslate"><span class="pre">.green</span></code> file:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="na">initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.env_initializer</span><span class="w"></span>
-<span class="na">finalizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.finalizer</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="na">initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.env_initializer</span>
+<span class="na">finalizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.finalizer</span>
 </code></pre></div>
 </div>
 <p>And then define the <code class="docutils literal notranslate"><span class="pre">TORTOISE_TEST_MODULES</span></code> environment variable with a comma separated list of module paths.</p>
@@ -1244,15 +1244,15 @@ TORTOISE_TEST_DB=postgres://postgres:&#64;127.0.0.1:5432/test_{}</p>
 </code></pre></div>
 </div>
 <p>Or via the config file:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="k">[unittest]</span><span class="w"></span>
-<span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.nose2</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="k">[unittest]</span>
+<span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.nose2</span>
 
-<span class="k">[tortoise]</span><span class="w"></span>
-<span class="c1"># Must specify at least one module path</span><span class="w"></span>
-<span class="na">db-module</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="na">tests.testmodels</span><span class="w"></span>
-<span class="c1"># You can optionally override the db_url here</span><span class="w"></span>
-<span class="na">db-url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sqlite://testdb-{}.sqlite</span><span class="w"></span>
+<span class="k">[tortoise]</span>
+<span class="c1"># Must specify at least one module path</span>
+<span class="na">db-module</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">tests.testmodels</span>
+<span class="c1"># You can optionally override the db_url here</span>
+<span class="na">db-url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sqlite://testdb-{}.sqlite</span>
 </code></pre></div>
 </div>
 <h2 id="module-tortoise.contrib.test"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise.contrib.test" title="Permalink to this heading">¶</a></h2>

@@ -572,7 +572,7 @@
 
 
 <div class="viewcode-block" id="QuerySetSingle"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySetSingle">[docs]</a><span class="k">class</span> <span class="nc">QuerySetSingle</span><span class="p">(</span><span class="n">Protocol</span><span class="p">[</span><span class="n">T_co</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Awaiting on this will resolve a single instance of the Model object, and not a sequence.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -604,14 +604,14 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_joined_tables</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Table</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[MODEL]&quot;</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">:</span> <span class="n">QueryBuilder</span> <span class="o">=</span> <span class="n">QUERY</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">capabilities</span><span class="p">:</span> <span class="n">Capabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">capabilities</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Expression</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">_choose_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">for_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseDBAsyncClient</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the connection that will be used if this query is executed now.</span>
 
 <span class="sd">        :return: BaseDBAsyncClient:</span>
@@ -631,7 +631,7 @@
         <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
         <span class="n">custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Builds the common filters for a QuerySet.</span>
 
 <span class="sd">        :param model: The Model this queryset is based on.</span>
@@ -689,7 +689,7 @@
         <span class="n">orderings</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
         <span class="n">annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Applies standard ordering to QuerySet.</span>
 
 <span class="sd">        :param model: The Model this queryset is based on.</span>
@@ -764,11 +764,11 @@
         <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">is_aggregate</span> <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">annotation_info</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the actual SQL.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the actual SQL.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_query</span><span class="p">()</span><span class="o">.</span><span class="n">get_sql</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">as_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QUERY</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the actual query.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the actual query.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
@@ -889,7 +889,7 @@
         <span class="k">return</span> <span class="n">queryset</span>
 
 <div class="viewcode-block" id="QuerySet.filter"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Filters QuerySet by given kwargs. You can filter by related objects like this:</span>
 
 <span class="sd">        .. code-block:: python3</span>
@@ -901,13 +901,13 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_or_exclude</span><span class="p">(</span><span class="n">negate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.exclude"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.exclude">[docs]</a>    <span class="k">def</span> <span class="nf">exclude</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Same as .filter(), but with appends all args with NOT</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_or_exclude</span><span class="p">(</span><span class="n">negate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.order_by"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.order_by">[docs]</a>    <span class="k">def</span> <span class="nf">order_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Accept args to filter by in format like this:</span>
 
 <span class="sd">        .. code-block:: python3</span>
@@ -934,7 +934,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.limit"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.limit">[docs]</a>    <span class="k">def</span> <span class="nf">limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Limits QuerySet to given length.</span>
 
 <span class="sd">        :raises ParamsError: Limit should be non-negative number.</span>
@@ -947,7 +947,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.offset"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.offset">[docs]</a>    <span class="k">def</span> <span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Query offset for QuerySet.</span>
 
 <span class="sd">        :raises ParamsError: Offset should be non-negative number.</span>
@@ -962,7 +962,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.distinct"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.distinct">[docs]</a>    <span class="k">def</span> <span class="nf">distinct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet distinct.</span>
 
 <span class="sd">        Only makes sense in combination with a ``.values()`` or ``.values_list()`` as it</span>
@@ -975,7 +975,7 @@
 <div class="viewcode-block" id="QuerySet.select_for_update"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.select_for_update">[docs]</a>    <span class="k">def</span> <span class="nf">select_for_update</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">nowait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">skip_locked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">of</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet select for update.</span>
 
 <span class="sd">        Returns a queryset that will lock rows until the end of the transaction,</span>
@@ -991,7 +991,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="QuerySet.annotate"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.annotate">[docs]</a>    <span class="k">def</span> <span class="nf">annotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Expression</span><span class="p">,</span> <span class="n">Term</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Annotate result with aggregation or function result.</span>
 
 <span class="sd">        :raises TypeError: Value of kwarg is expected to be a ``Function`` instance.</span>
@@ -1007,7 +1007,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.group_by"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.group_by">[docs]</a>    <span class="k">def</span> <span class="nf">group_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet returns list of dict or tuple with group by.</span>
 
 <span class="sd">        Must call before .values() or .values_list()</span>
@@ -1017,7 +1017,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.values_list"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values_list">[docs]</a>    <span class="k">def</span> <span class="nf">values_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">flat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesListQuery[Literal[False]]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet returns list of tuples for given args instead of objects.</span>
 
 <span class="sd">        If call after `.get()`, `.get_or_none()` or `.first()` return tuples for given args instead of object.</span>
@@ -1053,7 +1053,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.values"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ValuesQuery[Literal[False]]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet return dicts instead of objects.</span>
 
 <span class="sd">        If call after `.get()`, `.get_or_none()` or `.first()` return dict instead of object.</span>
@@ -1103,7 +1103,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.delete"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DeleteQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete all objects in QuerySet.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">DeleteQuery</span><span class="p">(</span>
@@ -1117,7 +1117,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.update"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;UpdateQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update all objects in QuerySet with given kwargs.</span>
 
 <span class="sd">        .. admonition: Example:</span>
@@ -1140,7 +1140,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.count"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.count">[docs]</a>    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;CountQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return count of objects in queryset instead of objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">CountQuery</span><span class="p">(</span>
@@ -1156,7 +1156,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.exists"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.exists">[docs]</a>    <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ExistsQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return True/False whether queryset exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ExistsQuery</span><span class="p">(</span>
@@ -1170,20 +1170,20 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.all"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the whole QuerySet.</span>
 <span class="sd">        Essentially a no-op except as the only operation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clone</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="QuerySet.raw"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.raw">[docs]</a>    <span class="k">def</span> <span class="nf">raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RawSQLQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the QuerySet from raw SQL</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">RawSQLQuery</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="n">sql</span><span class="o">=</span><span class="n">sql</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.first"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.first">[docs]</a>    <span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Limit queryset to one object and return one object instead of list.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clone</span><span class="p">()</span>
@@ -1192,7 +1192,7 @@
         <span class="k">return</span> <span class="n">queryset</span>  <span class="c1"># type: ignore</span></div>
 
 <div class="viewcode-block" id="QuerySet.get"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetch exactly one object matching the parameters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1204,7 +1204,7 @@
 <div class="viewcode-block" id="QuerySet.in_bulk"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.in_bulk">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">in_bulk</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">id_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">field_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MODEL</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a dictionary mapping each of the given IDs to the object with</span>
 <span class="sd">        that ID. If `id_list` isn&#39;t provided, evaluate the entire QuerySet.</span>
 
@@ -1221,8 +1221,8 @@
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkCreateQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkCreateQuery[MODEL]&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method inserts the provided list of objects into the database in an efficient manner</span>
 <span class="sd">        (generally only 1 query, no matter how many objects there are),</span>
 <span class="sd">        and returns created objects as a list, in the same order as provided</span>
@@ -1242,7 +1242,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_conflicts</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">update_fields</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">on_conflict</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">on_conflict</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">update_fields</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;update_fields and on_conflict need set in same time.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">BulkCreateQuery</span><span class="p">(</span>  <span class="c1"># type:ignore</span>
+        <span class="k">return</span> <span class="n">BulkCreateQuery</span><span class="p">(</span>
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">objects</span><span class="o">=</span><span class="n">objects</span><span class="p">,</span>
@@ -1257,8 +1257,8 @@
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
         <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkUpdateQuery&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkUpdateQuery[MODEL]&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the given fields in each of the given objects in the database.</span>
 
 <span class="sd">        :param objects: List of objects to bulk create</span>
@@ -1269,7 +1269,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">pk</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All bulk_update() objects must have a primary key set.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">BulkUpdateQuery</span><span class="p">(</span>  <span class="c1"># type:ignore</span>
+        <span class="k">return</span> <span class="n">BulkUpdateQuery</span><span class="p">(</span>
             <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span>
             <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
             <span class="n">q_objects</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_q_objects</span><span class="p">,</span>
@@ -1283,7 +1283,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.get_or_none"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.get_or_none">[docs]</a>    <span class="k">def</span> <span class="nf">get_or_none</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetch exactly one object matching the parameters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1292,7 +1292,7 @@
         <span class="k">return</span> <span class="n">queryset</span>  <span class="c1"># type: ignore</span></div>
 
 <div class="viewcode-block" id="QuerySet.only"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.only">[docs]</a>    <span class="k">def</span> <span class="nf">only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields_for_select</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetch ONLY the specified fields to create a partial model.</span>
 
 <span class="sd">        Persisting changes on the model is allowed only when:</span>
@@ -1314,7 +1314,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.select_related"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.select_related">[docs]</a>    <span class="k">def</span> <span class="nf">select_related</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a new QuerySet instance that will select related objects.</span>
 
 <span class="sd">        If fields are specified, they must be ForeignKey fields and only those</span>
@@ -1327,7 +1327,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.force_index"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.force_index">[docs]</a>    <span class="k">def</span> <span class="nf">force_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">index_names</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The FORCE INDEX hint acts like USE INDEX (index_list),</span>
 <span class="sd">        with the addition that a table scan is assumed to be very expensive.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1339,7 +1339,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="QuerySet.use_index"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.use_index">[docs]</a>    <span class="k">def</span> <span class="nf">use_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">index_names</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The USE INDEX (index_list) hint tells MySQL to use only one of the named indexes to find rows in the table.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">support_index_hint</span><span class="p">:</span>
@@ -1350,7 +1350,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="QuerySet.prefetch_related"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.prefetch_related">[docs]</a>    <span class="k">def</span> <span class="nf">prefetch_related</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Prefetch</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Like ``.fetch_related()`` on instance, but works on all objects in QuerySet.</span>
 
 <span class="sd">        :raises FieldError: If the field to prefetch on is not a relation, or not found.</span>
@@ -1379,7 +1379,7 @@
         <span class="k">return</span> <span class="n">queryset</span></div>
 
 <div class="viewcode-block" id="QuerySet.explain"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.explain">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">explain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Fetch and return information about the query execution plan.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fetch and return information about the query execution plan.</span>
 
 <span class="sd">        This is done by executing an ``EXPLAIN`` query whose exact prefix depends</span>
 <span class="sd">        on the database backend, as documented below.</span>
@@ -1401,7 +1401,7 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="QuerySet.using_db"><a class="viewcode-back" href="../../query.html#tortoise.queryset.QuerySet.using_db">[docs]</a>    <span class="k">def</span> <span class="nf">using_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes query in provided db client.</span>
 <span class="sd">        Useful for transactions workaround.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2194,7 +2194,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="BulkUpdateQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkUpdateQuery">[docs]</a><span class="k">class</span> <span class="nc">BulkUpdateQuery</span><span class="p">(</span><span class="n">UpdateQuery</span><span class="p">):</span>
+<div class="viewcode-block" id="BulkUpdateQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkUpdateQuery">[docs]</a><span class="k">class</span> <span class="nc">BulkUpdateQuery</span><span class="p">(</span><span class="n">UpdateQuery</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;objects&quot;</span><span class="p">,</span> <span class="s2">&quot;fields&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_size&quot;</span><span class="p">,</span> <span class="s2">&quot;queries&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -2267,7 +2267,7 @@
         <span class="k">return</span> <span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">queries</span><span class="p">])</span></div></div>
 
 
-<div class="viewcode-block" id="BulkCreateQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery">[docs]</a><span class="k">class</span> <span class="nc">BulkCreateQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">):</span>
+<div class="viewcode-block" id="BulkCreateQuery"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery">[docs]</a><span class="k">class</span> <span class="nc">BulkCreateQuery</span><span class="p">(</span><span class="n">AwaitableQuery</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;objects&quot;</span><span class="p">,</span>
         <span class="s2">&quot;ignore_conflicts&quot;</span><span class="p">,</span>
@@ -2363,7 +2363,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BulkCreateQuery.sql"><a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery.sql">[docs]</a>    <span class="k">def</span> <span class="nf">sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">as_query</span><span class="p">()</span>

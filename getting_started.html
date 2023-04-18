@@ -574,23 +574,23 @@
 <h1 id="getting-started"><span id="id1"></span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>First you have to install tortoise like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm
 </code></pre></div>
 </div>
 <p>You can also install with your db driver:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncpg<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncpg<span class="o">]</span>
 </code></pre></div>
 </div>
 <p>Or PsycoPG:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
 </code></pre></div>
 </div>
 <p>For MySQL:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
 </code></pre></div>
 </div>
 <p>For Microsoft SQL Server/Oracle:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>asyncodbc<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncodbc<span class="o">]</span>
 </code></pre></div>
 </div>
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> there is also support for <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> through <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> and
@@ -599,7 +599,7 @@ You can easily implement more backends if there is appropriate <code class="docu
 <h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Permalink to this heading">¶</a></h3>
 <p>The following libraries can be used as accelerators:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pypi.org/project/python-rapidjson/">python-rapidjson</a>: Automatically used if installed for JSON SerDes.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/orjson/">orjson</a>: Automatically used if installed for JSON SerDes.</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/uvloop/">uvloop</a>: Shown to improve performance, but needs to be set up.
 Please look at <code class="docutils literal notranslate"><span class="pre">uvloop</span></code> documentation for more info.
 If you use a framework, it may already use it.</p></li>
@@ -607,7 +607,7 @@ If you use a framework, it may already use it.</p></li>
 Not automatically installed on Windows due to often a lack of a C compiler. Default on Linux/CPython.</p></li>
 </ul>
 <p>You can install with all accelerators above:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip install tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
 </code></pre></div>
 </div>
 <h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">¶</a></h2>

@@ -513,86 +513,86 @@
 
 <h1>Source code for tortoise.exceptions</h1><div class="highlight"><pre>
 <div class="viewcode-block" id="BaseORMException"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.BaseORMException">[docs]</a><span></span><code><span class="k">class</span> <span class="nc">BaseORMException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base ORM Exception.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="FieldError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.FieldError">[docs]</a><span class="k">class</span> <span class="nc">FieldError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The FieldError exception is raised when there is a problem with a model field.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="ParamsError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ParamsError">[docs]</a><span class="k">class</span> <span class="nc">ParamsError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ParamsError is raised when function can not be run with given parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="ConfigurationError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ConfigurationError">[docs]</a><span class="k">class</span> <span class="nc">ConfigurationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ConfigurationError exception is raised when the configuration of the ORM is invalid.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="TransactionManagementError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.TransactionManagementError">[docs]</a><span class="k">class</span> <span class="nc">TransactionManagementError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The TransactionManagementError is raised when any transaction error occurs.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="OperationalError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.OperationalError">[docs]</a><span class="k">class</span> <span class="nc">OperationalError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The OperationalError exception is raised when an operational error occurs.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="IntegrityError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IntegrityError">[docs]</a><span class="k">class</span> <span class="nc">IntegrityError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The IntegrityError exception is raised when there is an integrity error.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="NoValuesFetched"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NoValuesFetched">[docs]</a><span class="k">class</span> <span class="nc">NoValuesFetched</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The NoValuesFetched exception is raised when the related model was never fetched.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="MultipleObjectsReturned"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.MultipleObjectsReturned">[docs]</a><span class="k">class</span> <span class="nc">MultipleObjectsReturned</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The MultipleObjectsReturned exception is raised when doing a ``.get()`` operation,</span>
 <span class="sd">    and more than one object is returned.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="DoesNotExist"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DoesNotExist">[docs]</a><span class="k">class</span> <span class="nc">DoesNotExist</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DoesNotExist exception is raised when expecting data, such as a ``.get()`` operation.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="IncompleteInstanceError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IncompleteInstanceError">[docs]</a><span class="k">class</span> <span class="nc">IncompleteInstanceError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The IncompleteInstanceError exception is raised when a partial model is attempted to be persisted.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="DBConnectionError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DBConnectionError">[docs]</a><span class="k">class</span> <span class="nc">DBConnectionError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">,</span> <span class="ne">ConnectionError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DBConnectionError is raised when problems with connecting to db occurs</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="ValidationError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ValidationError">[docs]</a><span class="k">class</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ValidationError is raised when validators of field validate failed.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="UnSupportedError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.UnSupportedError">[docs]</a><span class="k">class</span> <span class="nc">UnSupportedError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The UnSupportedError is raised when operation is not supported.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 </code></pre></div>

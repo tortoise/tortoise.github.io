@@ -534,7 +534,7 @@
     <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Unified connection management interface.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unified connection management interface.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;DBConfigType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_create_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -548,7 +548,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">db_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DBConfigType&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the DB config.</span>
 
 <span class="sd">        This is the same config passed to the</span>
@@ -614,7 +614,7 @@
         <span class="k">return</span> <span class="n">connection</span>
 
 <div class="viewcode-block" id="ConnectionHandler.get"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn_alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BaseDBAsyncClient&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the connection object for the given alias, creating it if needed.</span>
 
 <span class="sd">        Used for accessing the low-level connection object</span>
@@ -634,7 +634,7 @@
             <span class="k">return</span> <span class="n">connection</span></div>
 
 <div class="viewcode-block" id="ConnectionHandler.set"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn_alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">conn_obj</span><span class="p">:</span> <span class="s2">&quot;BaseDBAsyncClient&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">Token</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the given alias to the provided connection object.</span>
 
 <span class="sd">        :param conn_alias: The alias to set the connection for.</span>
@@ -651,7 +651,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conn_storage</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">storage_copy</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ConnectionHandler.discard"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.discard">[docs]</a>    <span class="k">def</span> <span class="nf">discard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn_alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;BaseDBAsyncClient&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Discards the given alias from the storage in the `current context`.</span>
 
 <span class="sd">        :param conn_alias: The alias for which the connection object should be discarded.</span>
@@ -663,7 +663,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_storage</span><span class="p">()</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">conn_alias</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ConnectionHandler.reset"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="n">contextvars</span><span class="o">.</span><span class="n">Token</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reset the underlying storage to the previous context state.</span>
 
 <span class="sd">        Resets the storage state to the `context` associated with the provided token. After</span>
@@ -683,7 +683,7 @@
                 <span class="n">prev_storage</span><span class="p">[</span><span class="n">alias</span><span class="p">]</span> <span class="o">=</span> <span class="n">conn</span></div>
 
 <div class="viewcode-block" id="ConnectionHandler.all"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;BaseDBAsyncClient&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a list of connection objects from the storage in the `current context`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of connection objects from the storage in the `current context`.&quot;&quot;&quot;</span>
         <span class="c1"># The reason this method iterates over db_config and not over `storage` directly is</span>
         <span class="c1"># because: assume that someone calls `discard` with a certain alias, and calls this</span>
         <span class="c1"># method subsequently. The alias which just got discarded from the storage would not</span>
@@ -691,7 +691,7 @@
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span> <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_config</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ConnectionHandler.close_all"><a class="viewcode-back" href="../../connections.html#tortoise.connection.ConnectionHandler.close_all">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">close_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">discard</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Closes all connections in the storage in the `current context`.</span>
 
 <span class="sd">        All closed connections will be removed from the storage by default.</span>

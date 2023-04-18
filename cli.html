@@ -894,41 +894,41 @@
 <p>This document describes how to use <cite>tortoise-cli</cite>, a cli tool for tortoise-orm, build on top of click and ptpython.</p>
 <p>You can see <a class="reference external" href="https://github.com/tortoise/tortoise-cli">https://github.com/tortoise/tortoise-cli</a> for more details.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt; tortoise-cli -h                                                                                                                                                                 <span class="m">23</span>:59:38
-Usage: tortoise-cli <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>tortoise-cli<span class="w"> </span>-h<span class="w">                                                                                                                                                                 </span><span class="m">23</span>:59:38
+Usage:<span class="w"> </span>tortoise-cli<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
 
 Options:
-  -V, --version      Show the version and exit.
-  -c, --config TEXT  TortoiseORM config dictionary path, like settings.TORTOISE_ORM
-  -h, --help         Show this message and exit.
+<span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">      </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>TEXT<span class="w">  </span>TortoiseORM<span class="w"> </span>config<span class="w"> </span>dictionary<span class="w"> </span>path,<span class="w"> </span>like<span class="w"> </span>settings.TORTOISE_ORM
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 
 Commands:
-  shell  Start an interactive shell.
+<span class="w">  </span>shell<span class="w">  </span>Start<span class="w"> </span>an<span class="w"> </span>interactive<span class="w"> </span>shell.
 </code></pre></div>
 </div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>First, you need make a TortoiseORM config object, assuming that in <cite>settings.py</cite>.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code><span class="nv">TORTOISE_ORM</span> <span class="o">=</span> <span class="o">{</span>
-    <span class="s2">&quot;connections&quot;</span>: <span class="o">{</span>
-        <span class="s2">&quot;default&quot;</span>: <span class="s2">&quot;sqlite://:memory:&quot;</span>,
-    <span class="o">}</span>,
-    <span class="s2">&quot;apps&quot;</span>: <span class="o">{</span>
-        <span class="s2">&quot;models&quot;</span>: <span class="o">{</span><span class="s2">&quot;models&quot;</span>: <span class="o">[</span><span class="s2">&quot;examples.models&quot;</span><span class="o">]</span>, <span class="s2">&quot;default_connection&quot;</span>: <span class="s2">&quot;default&quot;</span><span class="o">}</span>,
-    <span class="o">}</span>,
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code><span class="nv">TORTOISE_ORM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;connections&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;default&quot;</span>:<span class="w"> </span><span class="s2">&quot;sqlite://:memory:&quot;</span>,
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s2">&quot;apps&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;models&quot;</span>:<span class="w"> </span><span class="o">{</span><span class="s2">&quot;models&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="s2">&quot;examples.models&quot;</span><span class="o">]</span>,<span class="w"> </span><span class="s2">&quot;default_connection&quot;</span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="o">}</span>,
+<span class="w">    </span><span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 </div>
 <h2 id="interactive-shell">Interactive shell<a class="headerlink" href="#interactive-shell" title="Permalink to this heading">¶</a></h2>
 <p>Then you can start an interactive shell for TortoiseORM.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>tortoise-cli -c settings.TORTOISE_ORM shell
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>tortoise-cli<span class="w"> </span>-c<span class="w"> </span>settings.TORTOISE_ORM<span class="w"> </span>shell
 </code></pre></div>
 </div>
 <p>Or you can set config by set environment variable.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">TORTOISE_ORM</span><span class="o">=</span>settings.TORTOISE_ORM
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">TORTOISE_ORM</span><span class="o">=</span>settings.TORTOISE_ORM
 </code></pre></div>
 </div>
 <p>Then just run:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>tortoise-cli shell
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>tortoise-cli<span class="w"> </span>shell
 </code></pre></div>
 </div>
 

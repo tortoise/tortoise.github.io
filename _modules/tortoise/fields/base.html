@@ -559,7 +559,7 @@
 
 
 <div class="viewcode-block" id="Field"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field">[docs]</a><span class="k">class</span> <span class="nc">Field</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">VALUE</span><span class="p">],</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">_FieldMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base Field type.</span>
 
 <span class="sd">    :param source_field: Provide a source_field name if the DB column name needs to be</span>
@@ -711,7 +711,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">:</span> <span class="s2">&quot;Optional[Field]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Field.to_db_value"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.to_db_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Converts from the Python type to the DB type.</span>
 
 <span class="sd">        :param value: Current python value in model.</span>
@@ -729,7 +729,7 @@
         <span class="k">return</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="Field.to_python_value"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.to_python_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Converts from the DB type to the Python type.</span>
 
 <span class="sd">        :param value: Value from DB</span>
@@ -740,7 +740,7 @@
         <span class="k">return</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="Field.validate"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Validate whether given value is valid</span>
 
 <span class="sd">        :param value: Value to be validation</span>
@@ -759,7 +759,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">required</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns ``True`` if the field is required to be provided.</span>
 
 <span class="sd">        It needs to be non-nullable and not have a default or be DB-generated to be required.</span>
@@ -768,7 +768,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a dict with constraints defined in the Pydantic/JSONSchema format.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{}</span>
@@ -789,7 +789,7 @@
         <span class="k">return</span> <span class="n">ret</span>
 
 <div class="viewcode-block" id="Field.get_db_field_types"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.get_db_field_types">[docs]</a>    <span class="k">def</span> <span class="nf">get_db_field_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the DB types for this field.</span>
 
 <span class="sd">        :return: A dictionary that is keyed by dialect.</span>
@@ -807,7 +807,7 @@
         <span class="p">}</span></div>
 
 <div class="viewcode-block" id="Field.get_for_dialect"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.get_for_dialect">[docs]</a>    <span class="k">def</span> <span class="nf">get_for_dialect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a field by dialect override.</span>
 
 <span class="sd">        :param dialect: The requested SQL Dialect.</span>
@@ -817,7 +817,7 @@
         <span class="k">return</span> <span class="n">dialect_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Field.describe"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.describe">[docs]</a>    <span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Describes the field.</span>
 
 <span class="sd">        :param serializable:</span>
@@ -884,7 +884,7 @@
         <span class="k">def</span> <span class="nf">default_name</span><span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
                 <span class="k">return</span> <span class="n">default</span>
-            <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">default</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">default</span><span class="p">):</span>
                 <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;function </span><span class="si">{</span><span class="n">default</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">default</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>
 

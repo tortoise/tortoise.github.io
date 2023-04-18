@@ -608,7 +608,7 @@
 
 
 <span class="k">class</span> <span class="nc">QueryModifier</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Internal structure used to generate SQL Queries.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -663,14 +663,14 @@
         <span class="k">return</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="o">.</span><span class="n">negate</span><span class="p">(),</span> <span class="n">joins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_query_modifiers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]],</span> <span class="n">Criterion</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a tuple of the query criterion.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span>
 
 
 <div class="viewcode-block" id="Prefetch"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch">[docs]</a><span class="k">class</span> <span class="nc">Prefetch</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prefetcher container. One would directly use this when wanting to attach a custom QuerySet</span>
 <span class="sd">    for specialised prefetching.</span>
 
@@ -688,7 +688,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Prefetch.resolve_for_queryset"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_for_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Called internally to generate prefetching query.</span>
 
 <span class="sd">        :param queryset: Custom QuerySet to use for prefetching.</span>

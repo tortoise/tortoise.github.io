@@ -520,21 +520,21 @@
 
 
 <div class="viewcode-block" id="get_use_tz"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.get_use_tz">[docs]</a><span class="k">def</span> <span class="nf">get_use_tz</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get use_tz from env set in Tortoise config.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;USE_TZ&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span></div>
 
 
 <div class="viewcode-block" id="get_timezone"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.get_timezone">[docs]</a><span class="k">def</span> <span class="nf">get_timezone</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get timezone from env set in Tortoise config.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TIMEZONE&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;UTC&quot;</span></div>
 
 
 <div class="viewcode-block" id="now"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.now">[docs]</a><span class="k">def</span> <span class="nf">now</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return an aware datetime.datetime, depending on use_tz and timezone.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">get_use_tz</span><span class="p">():</span>
@@ -544,7 +544,7 @@
 
 
 <div class="viewcode-block" id="get_default_timezone"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.get_default_timezone">[docs]</a><span class="k">def</span> <span class="nf">get_default_timezone</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">tzinfo</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the default time zone as a tzinfo instance.</span>
 
 <span class="sd">    This is the time zone defined by Tortoise config.</span>
@@ -553,7 +553,7 @@
 
 
 <div class="viewcode-block" id="localtime"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.localtime">[docs]</a><span class="k">def</span> <span class="nf">localtime</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert an aware datetime.datetime to local time.</span>
 
 <span class="sd">    Only aware datetime are allowed. When value is omitted, it defaults to</span>
@@ -573,7 +573,7 @@
 
 
 <div class="viewcode-block" id="is_aware"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.is_aware">[docs]</a><span class="k">def</span> <span class="nf">is_aware</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine if a given datetime.datetime or datetime.time is aware.</span>
 
 <span class="sd">    The concept is defined in Python&#39;s docs:</span>
@@ -586,7 +586,7 @@
 
 
 <div class="viewcode-block" id="is_naive"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.is_naive">[docs]</a><span class="k">def</span> <span class="nf">is_naive</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine if a given datetime.datetime or datetime.time is naive.</span>
 
 <span class="sd">    The concept is defined in Python&#39;s docs:</span>
@@ -601,7 +601,7 @@
 <div class="viewcode-block" id="make_aware"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.make_aware">[docs]</a><span class="k">def</span> <span class="nf">make_aware</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">is_dst</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a naive datetime.datetime in a given time zone aware.</span>
 
 <span class="sd">    :raises ValueError: when value is not naive datetime</span>
@@ -616,7 +616,7 @@
 
 
 <div class="viewcode-block" id="make_naive"><a class="viewcode-back" href="../../timezone.html#tortoise.timezone.make_naive">[docs]</a><span class="k">def</span> <span class="nf">make_naive</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make an aware datetime.datetime naive in a given time zone.</span>
 
 <span class="sd">    :raises ValueError: when value is naive datetime</span>

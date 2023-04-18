@@ -559,7 +559,7 @@
 
 
 <div class="viewcode-block" id="getDBConfig"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.getDBConfig">[docs]</a><span class="k">def</span> <span class="nf">getDBConfig</span><span class="p">(</span><span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">modules</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    DB Config factory, for use in testing.</span>
 
 <span class="sd">    :param app_label: Label of the app (must be distinct for multiple apps).</span>
@@ -600,7 +600,7 @@
     <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;models&quot;</span><span class="p">,</span>
     <span class="n">loop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AbstractEventLoop</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sets up the DB for testing. Must be called as part of test environment setup.</span>
 
 <span class="sd">    :param modules: List of modules to look for models in.</span>
@@ -633,7 +633,7 @@
 
 
 <div class="viewcode-block" id="finalizer"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.finalizer">[docs]</a><span class="k">def</span> <span class="nf">finalizer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cleans up the DB after testing. Must be called as part of the test environment teardown.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_restore_default</span><span class="p">()</span>
@@ -643,7 +643,7 @@
 
 
 <div class="viewcode-block" id="env_initializer"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.env_initializer">[docs]</a><span class="k">def</span> <span class="nf">env_initializer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calls ``initializer()`` with parameters mapped from environment variables.</span>
 
 <span class="sd">    ``TORTOISE_TEST_MODULES``:</span>
@@ -666,7 +666,7 @@
 
 
 <div class="viewcode-block" id="SimpleTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.SimpleTestCase">[docs]</a><span class="k">class</span> <span class="nc">SimpleTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">IsolatedAsyncioTestCase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Tortoise base test class.</span>
 
 <span class="sd">    This will ensure that your DB environment has a test double set up for use.</span>
@@ -732,7 +732,7 @@
 
 
 <div class="viewcode-block" id="IsolatedTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.IsolatedTestCase">[docs]</a><span class="k">class</span> <span class="nc">IsolatedTestCase</span><span class="p">(</span><span class="n">SimpleTestCase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An asyncio capable test class that will ensure that an isolated test db</span>
 <span class="sd">    is available for each test.</span>
 
@@ -760,7 +760,7 @@
 
 
 <div class="viewcode-block" id="TruncationTestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TruncationTestCase">[docs]</a><span class="k">class</span> <span class="nc">TruncationTestCase</span><span class="p">(</span><span class="n">SimpleTestCase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An asyncio capable test class that will truncate the tables after a test.</span>
 
 <span class="sd">    Use this when your tests contain transactions.</span>
@@ -822,7 +822,7 @@
 
 
 <div class="viewcode-block" id="TestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TestCase">[docs]</a><span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">TruncationTestCase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An asyncio capable test class that will ensure that each test will be run at</span>
 <span class="sd">    separate transaction that will rollback on finish.</span>
 
@@ -847,7 +847,7 @@
 
 
 <div class="viewcode-block" id="requireCapability"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.requireCapability">[docs]</a><span class="k">def</span> <span class="nf">requireCapability</span><span class="p">(</span><span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;models&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">conditions</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Skip a test if the required capabilities are not matched.</span>
 
 <span class="sd">    .. note::</span>
@@ -890,7 +890,7 @@
         <span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">var</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">test_item</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;test_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;test_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">test_item</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
         <span class="p">}</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="nb">setattr</span><span class="p">(</span>
