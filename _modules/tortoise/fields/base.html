@@ -538,12 +538,24 @@
 
 <span class="n">VALUE</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;VALUE&quot;</span><span class="p">)</span>
 
-<span class="c1"># TODO: Replace this with an enum</span>
-<span class="n">CASCADE</span> <span class="o">=</span> <span class="s2">&quot;CASCADE&quot;</span>
-<span class="n">RESTRICT</span> <span class="o">=</span> <span class="s2">&quot;RESTRICT&quot;</span>
-<span class="n">SET_NULL</span> <span class="o">=</span> <span class="s2">&quot;SET NULL&quot;</span>
-<span class="n">SET_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;SET DEFAULT&quot;</span>
-<span class="n">NO_ACTION</span> <span class="o">=</span> <span class="s2">&quot;NO ACTION&quot;</span>
+
+<div class="viewcode-block" id="StrEnum"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.StrEnum">[docs]</a><span class="k">class</span> <span class="nc">StrEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="fm">__str__</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="fm">__str__</span></div>
+
+
+<div class="viewcode-block" id="OnDelete"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.OnDelete">[docs]</a><span class="k">class</span> <span class="nc">OnDelete</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+    <span class="n">CASCADE</span> <span class="o">=</span> <span class="s2">&quot;CASCADE&quot;</span>
+    <span class="n">RESTRICT</span> <span class="o">=</span> <span class="s2">&quot;RESTRICT&quot;</span>
+    <span class="n">SET_NULL</span> <span class="o">=</span> <span class="s2">&quot;SET NULL&quot;</span>
+    <span class="n">SET_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;SET DEFAULT&quot;</span>
+    <span class="n">NO_ACTION</span> <span class="o">=</span> <span class="s2">&quot;NO ACTION&quot;</span></div>
+
+
+<span class="n">CASCADE</span> <span class="o">=</span> <span class="n">OnDelete</span><span class="o">.</span><span class="n">CASCADE</span>
+<span class="n">RESTRICT</span> <span class="o">=</span> <span class="n">OnDelete</span><span class="o">.</span><span class="n">RESTRICT</span>
+<span class="n">SET_NULL</span> <span class="o">=</span> <span class="n">OnDelete</span><span class="o">.</span><span class="n">SET_NULL</span>
+<span class="n">SET_DEFAULT</span> <span class="o">=</span> <span class="n">OnDelete</span><span class="o">.</span><span class="n">SET_DEFAULT</span>
+<span class="n">NO_ACTION</span> <span class="o">=</span> <span class="n">OnDelete</span><span class="o">.</span><span class="n">NO_ACTION</span>
 
 
 <span class="k">class</span> <span class="nc">_FieldMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
