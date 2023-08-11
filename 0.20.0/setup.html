@@ -1,0 +1,1672 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="_static/tortoise.png">
+    
+    
+      
+        <title>Set up - Tortoise ORM v0.20.0 Documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.9dcb20399d0097661.min.css" />
+        <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="toc.html" title="Tortoise ORM v0.20.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.20.0 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 0.20.0 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Set up
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      <span class="md-ellipsis">Tortoise ORM</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="getting_started.html" class="md-tabs__link">
+      <span class="md-ellipsis">Getting started</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="reference.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">Reference</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="examples.html" class="md-tabs__link">
+      <span class="md-ellipsis">Examples</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="contrib.html" class="md-tabs__link">
+      <span class="md-ellipsis">Contrib</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CHANGELOG.html" class="md-tabs__link">
+      <span class="md-ellipsis">Changelog</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="roadmap.html" class="md-tabs__link">
+      <span class="md-ellipsis">Roadmap</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTING.html" class="md-tabs__link">
+      <span class="md-ellipsis">Contribution Guide</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="CONTRIBUTORS.html" class="md-tabs__link">
+      <span class="md-ellipsis">Thanks</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="toc.html" title="Tortoise ORM v0.20.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.20.0 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v0.20.0 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        <span class="md-ellipsis">Tortoise ORM</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        <span class="md-ellipsis">Getting started</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference.html"><span class="md-ellipsis">Reference</span></a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Reference</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Set up</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Set up</span>
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#init-app" class="md-nav__link">
+    <span title="init_app (reference label)" class="md-ellipsis">Init app</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-importance-of-cleaning-up" class="md-nav__link">
+    <span class="md-ellipsis">The Importance of cleaning up</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-tortoise" class="md-nav__link">
+    <span title="tortoise (Python module)" class="md-ellipsis">Reference</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise" class="md-nav__link">
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.Tortoise (Python class) — Close all connections cleanly." class="md-ellipsis">tortoise.<wbr>Tortoise</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.Tortoise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.apps" class="md-nav__link">
+    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.Tortoise.apps (Python attribute)" class="md-ellipsis">apps</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.close_connections" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.close_connections (Python method) — Close all connections cleanly." class="md-ellipsis">close_<wbr>connections</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="close_connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.close_connections-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_model" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.describe_model (Python method) — Describes the given list of models or ALL registered models." class="md-ellipsis">describe_<wbr>model</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="describe_model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_model-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_model.model" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.describe_model.model (Python parameter) — The Model to describe" class="md-ellipsis">model</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_model.serializable" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.describe_model.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)" class="md-ellipsis">serializable</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_model-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.describe_models (Python method) — Describes the given list of models or ALL registered models." class="md-ellipsis">describe_<wbr>models</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="describe_models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models.models" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.describe_models.models (Python parameter) — List of models to describe, if not provided then describes ALL registered models" class="md-ellipsis">models</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models.serializable" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.describe_models.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)" class="md-ellipsis">serializable</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.describe_models-returns" class="md-nav__link">
+    <span class="md-ellipsis">Returns</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.generate_schemas (Python method) — Generate schemas according to models provided to .init() method. Will fail if schemas already exists, so it&#39;s not recommended to be used as part of application workflow" class="md-ellipsis">generate_<wbr>schemas</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="generate_schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas.safe" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.generate_schemas.safe (Python parameter) — When set to true, creates the table only when it does not already exist." class="md-ellipsis">safe</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.get_connection" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.get_connection (Python method) — Returns the connection by name." class="md-ellipsis">get_<wbr>connection</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="get_connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.get_connection-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.get_connection-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM." class="md-ellipsis">init</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.config" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.config (Python parameter) — Dict containing config:" class="md-ellipsis">config</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.config_file" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.config_file (Python parameter) — Path to .json or .yml (if PyYAML installed) file containing config with same format as above." class="md-ellipsis">config_<wbr>file</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.db_url" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.db_url (Python parameter) — Use a DB_URL string. See db_url" class="md-ellipsis">db_<wbr>url</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.modules" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.modules (Python parameter) — Dictionary of key: [list_of_modules] that defined &#34;apps&#34; and modules that should be discovered for models." class="md-ellipsis">modules</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init._create_db" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init._create_db (Python parameter) — If True tries to create database for specified connections, could be used for testing purposes." class="md-ellipsis">_<wbr>create_<wbr>db</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.use_tz" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.use_tz (Python parameter) — A boolean that specifies if datetime will be timezone-aware by default or not." class="md-ellipsis">use_<wbr>tz</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.timezone" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.timezone (Python parameter) — Timezone to use, default is UTC." class="md-ellipsis">timezone</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init.routers" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init.routers (Python parameter) — A list of db routers str path or module." class="md-ellipsis">routers</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models" class="md-nav__link">
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.Tortoise.init_models (Python method) — Early initialisation of Tortoise ORM Models." class="md-ellipsis">init_<wbr>models</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="init_models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models.models_paths" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init_models.models_paths (Python parameter) — Models paths to initialise" class="md-ellipsis">models_<wbr>paths</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models.app_label" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init_models.app_label (Python parameter) — The app label, e.g. &#39;models&#39;" class="md-ellipsis">app_<wbr>label</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models._init_relations" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.init_models._init_relations (Python parameter) — Whether to init relations or not" class="md-ellipsis">_<wbr>init_<wbr>relations</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models-raises" class="md-nav__link">
+    <span class="md-ellipsis">Raises</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.init_models-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.run_async" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.run_async (Python function) — Simple async runner that cleans up DB connections on exit. This is meant for simple scripts." class="md-ellipsis">tortoise.<wbr>run_<wbr>async</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.run_async">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.run_async-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="databases.html" class="md-nav__link">
+        <span class="md-ellipsis">Databases</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="models.html" class="md-nav__link">
+        <span class="md-ellipsis">Models</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="fields.html" class="md-nav__link">
+        <span class="md-ellipsis">Fields</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="indexes.html" class="md-nav__link">
+        <span class="md-ellipsis">Indexes</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="timezone.html" class="md-nav__link">
+        <span class="md-ellipsis">Timezone</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="schema.html" class="md-nav__link">
+        <span class="md-ellipsis">Schema Creation</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="query.html" class="md-nav__link">
+        <span class="md-ellipsis">Query API</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manager.html" class="md-nav__link">
+        <span class="md-ellipsis">Manager</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="functions.html" class="md-nav__link">
+        <span class="md-ellipsis">Functions &amp; Aggregates</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="expressions.html" class="md-nav__link">
+        <span class="md-ellipsis">Expressions</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="transactions.html" class="md-nav__link">
+        <span class="md-ellipsis">Transactions</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="connections.html" class="md-nav__link">
+        <span class="md-ellipsis">Connections</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exceptions.html" class="md-nav__link">
+        <span class="md-ellipsis">Exceptions</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signals.html" class="md-nav__link">
+        <span class="md-ellipsis">Signals</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migration.html" class="md-nav__link">
+        <span class="md-ellipsis">Migration</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validators.html" class="md-nav__link">
+        <span class="md-ellipsis">Validators</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="logging.html" class="md-nav__link">
+        <span class="md-ellipsis">Logging</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="router.html" class="md-nav__link">
+        <span class="md-ellipsis">Router</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cli.html" class="md-nav__link">
+        <span class="md-ellipsis">Tortoise<wbr>CLI</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples.html" class="md-nav__link">
+        <span class="md-ellipsis">Examples</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contrib.html" class="md-nav__link">
+        <span class="md-ellipsis">Contrib</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG.html" class="md-nav__link">
+        <span class="md-ellipsis">Changelog</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap.html" class="md-nav__link">
+        <span class="md-ellipsis">Roadmap</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTING.html" class="md-nav__link">
+        <span class="md-ellipsis">Contribution Guide</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTORS.html" class="md-nav__link">
+        <span class="md-ellipsis">Thanks</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+<h1 id="set-up">Set up<a class="headerlink" href="#set-up" title="Permalink to this heading">¶</a></h1>
+<h2 id="init-app"><span id="id1"></span>Init app<a class="headerlink" href="#init-app" title="Permalink to this heading">¶</a></h2>
+<p>After you defined all your models, tortoise needs you to init them, in order to create backward relations between models and match your db client with appropriate models.</p>
+<p>You can do it like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+    <span class="c1"># Here we create a SQLite DB using file &quot;db.sqlite3&quot;</span>
+    <span class="c1">#  also specify the app name of &quot;models&quot;</span>
+    <span class="c1">#  which contain models from &quot;app.models&quot;</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
+    <span class="p">)</span>
+    <span class="c1"># Generate the schema</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>Here we create connection to SQLite database client and then we discover &amp; initialize models.</p>
+<p><code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> generates schema on empty database, you shouldn’t run it on every app init, run it just once, maybe out of your main code.
+There is also the option when generating the schemas to set the <code class="docutils literal notranslate"><span class="pre">safe</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> which will only insert the tables if they don’t already exist.</p>
+<p>If you define the variable <code class="docutils literal notranslate"><span class="pre">__models__</span></code> in the <code class="docutils literal notranslate"><span class="pre">app.models</span></code> module (or wherever you specify to load your models from), <code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> will use that list, rather than automatically finding models for you.</p>
+<h2 id="the-importance-of-cleaning-up"><span id="cleaningup"></span>The Importance of cleaning up<a class="headerlink" href="#the-importance-of-cleaning-up" title="Permalink to this heading">¶</a></h2>
+<p>Tortoise ORM will keep connections open to external Databases. As an <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> Python library, it needs to have the connections closed properly or the Python interpreter may still wait for the completion of said connections.</p>
+<p>To ensure connections are closed please ensure that <code class="docutils literal notranslate"><span class="pre">Tortoise.close_connections()</span></code> is called:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>The small helper function <code class="docutils literal notranslate"><span class="pre">tortoise.run_async()</span></code> will ensure that connections are closed.</p>
+<h2 id="module-tortoise"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise" title="Permalink to this heading">¶</a></h2>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.</span></span><span class="sig-name descname"><span class="pre">Tortoise</span></span><a class="reference internal" href="_modules/tortoise.html#Tortoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.apps">
+<span class="sig-name descname"><span class="pre">apps</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="models.html#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models."><span class="pre">Model</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">{}</span></code><a class="headerlink" href="#tortoise.Tortoise.apps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.close_connections">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.close_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.close_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close all connections cleanly.</p>
+<p>It is required for this to be called on exit,
+else your event loop may never complete
+as it is waiting for the connections to die.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>This is deprecated and will be removed in a future release. Please use
+<a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.close_all" title="tortoise.connection.ConnectionHandler.close_all (Python method) — Closes all connections in the storage in the current context."><code class="xref py py-meth docutils literal notranslate"><span class="pre">connections.close_all</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.close_connections-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.close_connections-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.describe_model">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">describe_model</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.describe_model.model" title="tortoise.Tortoise.describe_model.model (Python parameter) — The Model to describe"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.describe_model.serializable" title="tortoise.Tortoise.describe_model.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)"><span class="n"><span class="pre">serializable</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.describe_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.describe_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes the given list of models or ALL registered models.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.describe_model-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.describe_model-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.Tortoise.describe_model.model"><span class="n sig-name">model</span><a class="headerlink" href="#tortoise.Tortoise.describe_model.model" title="Permalink to this definition">¶</a></dt><dd><p>The Model to describe</p>
+</dd>
+<dt id="tortoise.Tortoise.describe_model.serializable"><span class="n sig-name">serializable</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.Tortoise.describe_model.serializable" title="Permalink to this definition">¶</a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if you want raw python objects,
+<code class="docutils literal notranslate"><span class="pre">True</span></code> for JSON-serializable data. (Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>See <a class="reference internal" href="models.html#tortoise.models.Model.describe" title="tortoise.models.Model.describe (Python method) — Describes the given list of models or ALL registered models."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.models.Model.describe()</span></code></a></p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>This is deprecated, please use <a class="reference internal" href="models.html#tortoise.models.Model.describe" title="tortoise.models.Model.describe (Python method) — Describes the given list of models or ALL registered models."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.models.Model.describe()</span></code></a> instead</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.describe_model-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.describe_model-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.describe_models">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">describe_models</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.describe_models.models" title="tortoise.Tortoise.describe_models.models (Python parameter) — List of models to describe, if not provided then describes ALL registered models"><span class="n"><span class="pre">models</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.describe_models.serializable" title="tortoise.Tortoise.describe_models.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data. (Defaults to True)"><span class="n"><span class="pre">serializable</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.describe_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.describe_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes the given list of models or ALL registered models.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.describe_models-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.describe_models-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.Tortoise.describe_models.models"><span class="n sig-name">models</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.describe_models.models" title="Permalink to this definition">¶</a></dt><dd><p>List of models to describe, if not provided then describes ALL registered models</p>
+</dd>
+<dt id="tortoise.Tortoise.describe_models.serializable"><span class="n sig-name">serializable</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.Tortoise.describe_models.serializable" title="Permalink to this definition">¶</a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if you want raw python objects,
+<code class="docutils literal notranslate"><span class="pre">True</span></code> for JSON-serializable data. (Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.Tortoise.describe_models-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.describe_models-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]</p>
+</dd>
+<dt class="field-odd" id="tortoise.Tortoise.describe_models-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.describe_models-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><p>A dictionary containing the model qualifier as key,
+and the same output as <code class="docutils literal notranslate"><span class="pre">describe_model(...)</span></code> as value:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s2">&quot;models.User&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+    <span class="s2">&quot;models.Permission&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.generate_schemas">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_schemas</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.generate_schemas.safe" title="tortoise.Tortoise.generate_schemas.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.generate_schemas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.generate_schemas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate schemas according to models provided to <code class="docutils literal notranslate"><span class="pre">.init()</span></code> method.
+Will fail if schemas already exists, so it’s not recommended to be used as part
+of application workflow</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.generate_schemas-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.generate_schemas-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.Tortoise.generate_schemas.safe"><span class="n sig-name">safe</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.Tortoise.generate_schemas.safe" title="Permalink to this definition">¶</a></dt><dd><p>When set to true, creates the table only when it does not already exist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.Tortoise.generate_schemas-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.generate_schemas-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">.init()</span></code> has not been called.</p>
+</dd>
+<dt class="field-odd" id="tortoise.Tortoise.generate_schemas-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.generate_schemas-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.Tortoise.get_connection">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">connection_name</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.get_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the connection by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.get_connection-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.get_connection-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – If connection name does not exist.</p>
+</dd>
+</dl>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>This is deprecated and will be removed in a future release. Please use
+<a class="reference internal" href="connections.html#tortoise.connection.ConnectionHandler.get" title="tortoise.connection.ConnectionHandler.get (Python method) — Return the connection object for the given alias, creating it if needed."><code class="xref py py-meth docutils literal notranslate"><span class="pre">connections.get</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.get_connection-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.get_connection-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection."><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseDBAsyncClient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.Tortoise.init">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.config" title="tortoise.Tortoise.init.config (Python parameter) — Dict containing config:"><span class="n"><span class="pre">config</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.config_file" title="tortoise.Tortoise.init.config_file (Python parameter) — Path to .json or .yml (if PyYAML installed) file containing config with same format as above."><span class="n"><span class="pre">config_file</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init._create_db" title="tortoise.Tortoise.init._create_db (Python parameter) — If True tries to create database for specified connections, could be used for testing purposes."><span class="n"><span class="pre">_create_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.db_url" title="tortoise.Tortoise.init.db_url (Python parameter) — Use a DB_URL string. See db_url"><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.modules" title="tortoise.Tortoise.init.modules (Python parameter) — Dictionary of key: [list_of_modules] that defined &quot;apps&quot; and modules that should be discovered for models."><span class="n"><span class="pre">modules</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.use_tz" title="tortoise.Tortoise.init.use_tz (Python parameter) — A boolean that specifies if datetime will be timezone-aware by default or not."><span class="n"><span class="pre">use_tz</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.timezone" title="tortoise.Tortoise.init.timezone (Python parameter) — Timezone to use, default is UTC."><span class="n"><span class="pre">timezone</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;UTC&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init.routers" title="tortoise.Tortoise.init.routers (Python parameter) — A list of db routers str path or module."><span class="n"><span class="pre">routers</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up Tortoise-ORM.</p>
+<p>You can configure using only one of <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">config_file</span></code>
+and <code class="docutils literal notranslate"><span class="pre">(db_url,</span> <span class="pre">modules)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.init-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.Tortoise.init.config"><span class="n sig-name">config</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.init.config" title="Permalink to this definition">¶</a></dt><dd><p><p>Dict containing config:</p>
+<div class="admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;connections&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1"># Dict format for connection</span>
+        <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;engine&#39;</span><span class="p">:</span> <span class="s1">&#39;tortoise.backends.asyncpg&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;credentials&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;tortoise&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;qwerty123&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="c1"># Using a DB_URL string</span>
+        <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;postgres://postgres:qwerty123@localhost:5432/test&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;apps&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;my_app&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;__main__&#39;</span><span class="p">],</span>
+            <span class="c1"># If no default_connection specified, defaults to &#39;default&#39;</span>
+            <span class="s1">&#39;default_connection&#39;</span><span class="p">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;routers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;path.router1&#39;</span><span class="p">,</span> <span class="s1">&#39;path.router2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;use_tz&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;timezone&#39;</span><span class="p">:</span> <span class="s1">&#39;UTC&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</p>
+</dd>
+<dt id="tortoise.Tortoise.init.config_file"><span class="n sig-name">config_file</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.init.config_file" title="Permalink to this definition">¶</a></dt><dd><p>Path to .json or .yml (if PyYAML installed) file containing config with
+same format as above.</p>
+</dd>
+<dt id="tortoise.Tortoise.init.db_url"><span class="n sig-name">db_url</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.init.db_url" title="Permalink to this definition">¶</a></dt><dd><p>Use a DB_URL string. See <a class="reference internal" href="databases.html#db-url"><span class="std std-ref">DB_URL</span></a></p>
+</dd>
+<dt id="tortoise.Tortoise.init.modules"><span class="n sig-name">modules</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.init.modules" title="Permalink to this definition">¶</a></dt><dd><p>Dictionary of <code class="docutils literal notranslate"><span class="pre">key</span></code>: [<code class="docutils literal notranslate"><span class="pre">list_of_modules</span></code>] that defined “apps” and modules that
+should be discovered for models.</p>
+</dd>
+<dt id="tortoise.Tortoise.init._create_db"><span class="n sig-name">_create_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.Tortoise.init._create_db" title="Permalink to this definition">¶</a></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> tries to create database for specified connections,
+could be used for testing purposes.</p>
+</dd>
+<dt id="tortoise.Tortoise.init.use_tz"><span class="n sig-name">use_tz</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.Tortoise.init.use_tz" title="Permalink to this definition">¶</a></dt><dd><p>A boolean that specifies if datetime will be timezone-aware by default or not.</p>
+</dd>
+<dt id="tortoise.Tortoise.init.timezone"><span class="n sig-name">timezone</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;UTC&#39;</span></code><a class="headerlink" href="#tortoise.Tortoise.init.timezone" title="Permalink to this definition">¶</a></dt><dd><p>Timezone to use, default is UTC.</p>
+</dd>
+<dt id="tortoise.Tortoise.init.routers"><span class="n sig-name">routers</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.Tortoise.init.routers" title="Permalink to this definition">¶</a></dt><dd><p>A list of db routers str path or module.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.Tortoise.init-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – For any configuration error</p>
+</dd>
+<dt class="field-odd" id="tortoise.Tortoise.init-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.Tortoise.init_models">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_models</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init_models.models_paths" title="tortoise.Tortoise.init_models.models_paths (Python parameter) — Models paths to initialise"><span class="n"><span class="pre">models_paths</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init_models.app_label" title="tortoise.Tortoise.init_models.app_label (Python parameter) — The app label, e.g. 'models'"><span class="n"><span class="pre">app_label</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.init_models._init_relations" title="tortoise.Tortoise.init_models._init_relations (Python parameter) — Whether to init relations or not"><span class="n"><span class="pre">_init_relations</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.init_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.Tortoise.init_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Early initialisation of Tortoise ORM Models.</p>
+<p>Initialise the relationships between Models.
+This does not initialise any database connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.Tortoise.init_models-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init_models-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.Tortoise.init_models.models_paths"><span class="n sig-name">models_paths</span><a class="headerlink" href="#tortoise.Tortoise.init_models.models_paths" title="Permalink to this definition">¶</a></dt><dd><p>Models paths to initialise</p>
+</dd>
+<dt id="tortoise.Tortoise.init_models.app_label"><span class="n sig-name">app_label</span><a class="headerlink" href="#tortoise.Tortoise.init_models.app_label" title="Permalink to this definition">¶</a></dt><dd><p>The app label, e.g. ‘models’</p>
+</dd>
+<dt id="tortoise.Tortoise.init_models._init_relations"><span class="n sig-name">_init_relations</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.Tortoise.init_models._init_relations" title="Permalink to this definition">¶</a></dt><dd><p>Whether to init relations or not</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.Tortoise.init_models-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init_models-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – If models are invalid.</p>
+</dd>
+<dt class="field-odd" id="tortoise.Tortoise.init_models-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.Tortoise.init_models-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.run_async">
+<span class="sig-prename descclassname"><span class="pre">tortoise.</span></span><span class="sig-name descname"><span class="pre">run_async</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">coro</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#run_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.run_async" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple async runner that cleans up DB connections on exit.
+This is meant for simple scripts.</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">run_async</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">do_stuff</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
+        <span class="n">models</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
+    <span class="p">)</span>
+
+    <span class="o">...</span>
+
+<span class="n">run_async</span><span class="p">(</span><span class="n">do_stuff</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.run_async-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.run_async-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="reference.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Reference
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="databases.html" class="md-footer__link md-footer__link--next" aria-label="Next: Databases" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Databases
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2023, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    7.0.1.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+  </body>
+</html>
