@@ -998,7 +998,7 @@
 <span class="sd">* Creating a Pydantic model from a Tortoise model</span>
 <span class="sd">* Docstrings &amp; doc-comments are used</span>
 <span class="sd">* Evaluating the generated schema</span>
-<span class="sd">* Simple serialisation with both .dict() and .json()</span>
+<span class="sd">* Simple serialisation with both .model_dump() and .model_dump_json()</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
@@ -1031,7 +1031,7 @@
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
 
     <span class="c1"># As Python dict with Python objects (e.g. datetime)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
     <span class="c1"># As serialised JSON (e.g. datetime is ISO8601 string representation)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
@@ -1088,8 +1088,8 @@
     <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
     <span class="c1"># As Python dict with Python objects (e.g. datetime)</span>
-    <span class="c1"># Note that the root element is &#39;__root__&#39; that contains the root element.</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+    <span class="c1"># Note that the root element is &#39;root&#39; that contains the root element.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
     <span class="c1"># As serialised JSON (e.g. datetime is ISO8601 string representation)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 

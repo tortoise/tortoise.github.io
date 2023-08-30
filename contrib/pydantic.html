@@ -1285,7 +1285,7 @@
 <li><p>Creating a Pydantic model from a Tortoise model</p></li>
 <li><p>Docstrings &amp; doc-comments are used</p></li>
 <li><p>Evaluating the generated schema</p></li>
-<li><p>Simple serialisation with both <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> and <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p></li>
+<li><p>Simple serialisation with both <code class="docutils literal notranslate"><span class="pre">.model_dump()</span></code> and <code class="docutils literal notranslate"><span class="pre">.model_dump_json()</span></code></p></li>
 </ul>
 <p>Source to example: <a class="reference internal" href="../examples/pydantic.html#example-pydantic-tut1"><span class="std std-ref">1: Basic usage</span></a></p>
 <p>Lets start with a basic Tortoise Model:</p>
@@ -1343,14 +1343,14 @@
 <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> or <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.model_dump()</span></code> or <code class="docutils literal notranslate"><span class="pre">.model_dump_json()</span></code></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="go">{</span>
 <span class="go">    &#39;id&#39;: 1,</span>
 <span class="go">    &#39;name&#39;: &#39;New Tournament&#39;,</span>
 <span class="go">    &#39;created_at&#39;: datetime.datetime(2020, 3, 1, 20, 28, 9, 346808)</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
 <span class="go">{</span>
 <span class="go">    &quot;id&quot;: 1,</span>
 <span class="go">    &quot;name&quot;: &quot;New Tournament&quot;,</span>
@@ -1438,10 +1438,10 @@
 <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> or <code class="docutils literal notranslate"><span class="pre">.json()</span></code></p>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<p>And one could get the contents by using <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">regular Pydantic-object methods</a>, such as <code class="docutils literal notranslate"><span class="pre">.model_dump()</span></code> or <code class="docutils literal notranslate"><span class="pre">.model_dump_json()</span></code></p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="go">{</span>
-<span class="go">    &#39;__root__&#39;: [</span>
+<span class="go">    &#39;root&#39;: [</span>
 <span class="go">        {</span>
 <span class="go">            &#39;id&#39;: 2,</span>
 <span class="go">            &#39;name&#39;: &#39;Another&#39;,</span>
@@ -1459,7 +1459,7 @@
 <span class="go">        }</span>
 <span class="go">    ]</span>
 <span class="go">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
 <span class="go">[</span>
 <span class="go">    {</span>
 <span class="go">        &quot;id&quot;: 2,</span>
@@ -1479,7 +1479,7 @@
 <span class="go">]</span>
 </code></pre></div>
 </div>
-<p>Note how <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> has a <code class="docutils literal notranslate"><span class="pre">_root__</span></code> element with the list, but the <code class="docutils literal notranslate"><span class="pre">.json()</span></code> has the list as root.
+<p>Note how <code class="docutils literal notranslate"><span class="pre">.model_dump()</span></code> has a <code class="docutils literal notranslate"><span class="pre">root</span></code> element with the list, but the <code class="docutils literal notranslate"><span class="pre">.model_dump_json()</span></code> has the list as root.
 Also note how the results are sorted alphabetically by <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <h3 id="relations-early-init">3: Relations &amp; Early-init<a class="headerlink" href="#relations-early-init" title="Permalink to this heading">¶</a></h3>
 <p>Here we introduce:</p>
@@ -1686,7 +1686,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
 <span class="c1"># Serialise Tournament</span>
 <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
 <span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Tournament&quot;</span><span class="p">,</span>
@@ -1704,7 +1704,7 @@ Also note how the results are sorted alphabetically by <code class="docutils lit
 <p>And serialising the event <em>(in an async context)</em>:</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">eventpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">eventpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">eventpy</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
 <span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Event&quot;</span><span class="p">,</span>
@@ -1860,7 +1860,7 @@ We should however protect against the case where no prefetching was done, hence 
 <span class="c1"># Serialise Tournament</span>
 <span class="n">tourpy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">tournament</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">tourpy</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>
 <span class="p">{</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New Tournament&quot;</span><span class="p">,</span>
