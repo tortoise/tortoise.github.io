@@ -582,7 +582,7 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BaseDBAsyncClient"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient">[docs]</a><span class="k">class</span> <span class="nc">BaseDBAsyncClient</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient">[docs]</a><span class="k">class</span> <span class="nc">BaseDBAsyncClient</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for containing a DB connection.</span>
 
@@ -619,7 +619,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fetch_inserted</span> <span class="o">=</span> <span class="n">fetch_inserted</span>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.create_connection"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.create_connection">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_db</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.create_connection"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.create_connection">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_db</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Establish a DB connection.</span>
 
@@ -628,13 +628,13 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.close"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.close">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.close"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.close">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Closes the DB connection.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.db_create"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_create">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">db_create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.db_create"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.db_create">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">db_create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Created the database in the server. Typically only called by the test runner.</span>
 
@@ -644,7 +644,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.db_delete"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.db_delete">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">db_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.db_delete"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.db_delete">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">db_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete the database from the Server. Typically only called by the test runner.</span>
 
@@ -654,7 +654,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.acquire_connection"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">[docs]</a>    <span class="k">def</span> <span class="nf">acquire_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;ConnectionWrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;PoolConnectionWrapper&quot;</span><span class="p">]:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.acquire_connection"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">[docs]</a>    <span class="k">def</span> <span class="nf">acquire_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;ConnectionWrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;PoolConnectionWrapper&quot;</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Acquires a connection from the pool.</span>
 <span class="sd">        Will return the current context connection if already in a transaction.</span>
@@ -664,7 +664,7 @@
     <span class="k">def</span> <span class="nf">_in_transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TransactionContext&quot;</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.execute_insert"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.execute_insert"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a RAW SQL insert statement, with provided parameters.</span>
 
@@ -675,7 +675,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.execute_query"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_query</span><span class="p">(</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.execute_query"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_query</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -687,7 +687,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.execute_script"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_script">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.execute_script"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_script">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a RAW SQL script with multiple statements, and returns nothing.</span>
 
@@ -696,7 +696,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.execute_many"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_many">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.execute_many"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_many">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a RAW bulk insert statement, like execute_insert, but returns no data.</span>
 
@@ -705,7 +705,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
-<div class="viewcode-block" id="BaseDBAsyncClient.execute_query_dict"><a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_query_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<div class="viewcode-block" id="BaseDBAsyncClient.execute_query_dict"><a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">execute_query_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a RAW SQL query statement, and returns the resultset as a list of dicts.</span>
 
