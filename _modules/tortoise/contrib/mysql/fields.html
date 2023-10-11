@@ -511,11 +511,69 @@
 
 
 <h1>Source code for tortoise.contrib.mysql.fields</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">Field</span>
+<span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
+    <span class="n">TYPE_CHECKING</span><span class="p">,</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
+
+<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">UUIDField</span> <span class="k">as</span> <span class="n">UUIDFieldBase</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
 
 
 <div class="viewcode-block" id="GeometryField"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.GeometryField">[docs]</a><span class="k">class</span> <span class="nc">GeometryField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;GEOMETRY&quot;</span></div>
+
+
+<div class="viewcode-block" id="UUIDField"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField">[docs]</a><span class="k">class</span> <span class="nc">UUIDField</span><span class="p">(</span><span class="n">UUIDFieldBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    UUID Field</span>
+
+<span class="sd">    This field can store uuid value, but with the option to add binary compression.</span>
+
+<span class="sd">    If used as a primary key, it will auto-generate a UUID4 by default.</span>
+
+<span class="sd">    ``binary_compression`` (bool):</span>
+<span class="sd">        If True, the UUID will be stored in binary format.</span>
+<span class="sd">        This will save 6 bytes per UUID in the database.</span>
+<span class="sd">        Note: that this is a MySQL-only feature.</span>
+<span class="sd">        See https://dev.mysql.com/blog-archive/mysql-8-0-uuid-support/ for more details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;CHAR(36)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary_compression</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;default&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uuid4</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">binary_compression</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BINARY(16)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_binary_compression</span> <span class="o">=</span> <span class="n">binary_compression</span>
+
+<div class="viewcode-block" id="UUIDField.to_db_value"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_db_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]:</span>  <span class="c1"># type: ignore</span>
+        <span class="c1"># Make sure that value is a UUIDv4</span>
+        <span class="c1"># If not, raise an error</span>
+        <span class="c1"># This is to prevent UUIDv1 or any other version from being stored in the database</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binary_compression</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;UUIDField only accepts UUID values&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">bytes</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UUIDField.to_python_value"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_python_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binary_compression</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="nb">bytes</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div></div>
 </code></pre></div>
 
 

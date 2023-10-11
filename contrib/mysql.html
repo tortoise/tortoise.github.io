@@ -651,6 +651,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.mysql.fields.UUIDField" class="md-nav__link">
+    <span class="md-ellipsis">tortoise.<wbr>contrib.<wbr>mysql.<wbr>fields.<wbr>UUIDField</span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -819,6 +826,21 @@
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.mysql.fields.GeometryField">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.mysql.fields.</span></span><span class="sig-name descname"><span class="pre">GeometryField</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">source_field</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">generated</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">pk</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">null</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">unique</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">validators</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/mysql/fields.html#GeometryField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.mysql.fields.GeometryField" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.mysql.fields.UUIDField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.mysql.fields.</span></span><span class="sig-name descname"><span class="pre">UUIDField</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">binary_compression</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/mysql/fields.html#UUIDField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.mysql.fields.UUIDField" title="Permalink to this definition">¶</a></dt>
+<dd><p>UUID Field</p>
+<p>This field can store uuid value, but with the option to add binary compression.</p>
+<p>If used as a primary key, it will auto-generate a UUID4 by default.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">binary_compression</span></code> (bool):</dt><dd><p>If True, the UUID will be stored in binary format.
+This will save 6 bytes per UUID in the database.
+Note: that this is a MySQL-only feature.
+See <a class="reference external" href="https://dev.mysql.com/blog-archive/mysql-8-0-uuid-support/">https://dev.mysql.com/blog-archive/mysql-8-0-uuid-support/</a> for more details.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permalink to this heading">¶</a></h2>
 <p>MySQL full text search.</p>
