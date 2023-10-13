@@ -521,7 +521,7 @@
 
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.base</span> <span class="kn">import</span> <span class="n">PydanticListModel</span><span class="p">,</span> <span class="n">PydanticModel</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic.utils</span> <span class="kn">import</span> <span class="n">get_annotations</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">JSONField</span><span class="p">,</span> <span class="n">relational</span>
+<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">IntField</span><span class="p">,</span> <span class="n">JSONField</span><span class="p">,</span> <span class="n">TextField</span><span class="p">,</span> <span class="n">relational</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
     <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -861,11 +861,13 @@
             <span class="k">return</span> <span class="n">pmodel</span>
 
         <span class="c1"># Foreign keys and OneToOne fields are embedded schemas</span>
+        <span class="n">is_to_one_relation</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">ForeignKeyFieldInstance</span>
             <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">OneToOneFieldInstance</span>
             <span class="ow">or</span> <span class="n">field_type</span> <span class="ow">is</span> <span class="n">relational</span><span class="o">.</span><span class="n">BackwardOneToOneRelation</span>
         <span class="p">):</span>
+            <span class="n">is_to_one_relation</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">get_submodel</span><span class="p">(</span><span class="n">fdesc</span><span class="p">[</span><span class="s2">&quot;python_type&quot;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">fdesc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nullable&quot;</span><span class="p">):</span>
@@ -923,6 +925,15 @@
             <span class="k">if</span> <span class="n">field_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">field_default</span><span class="p">):</span>
                 <span class="n">properties</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ftype</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">field_default</span><span class="p">,</span> <span class="o">**</span><span class="n">fconfig</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">:=</span> <span class="n">fconfig</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;json_schema_extra&quot;</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="n">j</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nullable&quot;</span><span class="p">)</span>
+                        <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_to_one_relation</span>
+                        <span class="ow">and</span> <span class="n">field_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">IntField</span><span class="p">,</span> <span class="n">TextField</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="ow">or</span> <span class="p">(</span><span class="n">exclude_readonly</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;readOnly&quot;</span><span class="p">))</span>
+                <span class="p">):</span>
+                    <span class="n">fconfig</span><span class="p">[</span><span class="s2">&quot;default_factory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="kc">None</span>
                 <span class="n">properties</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ftype</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="o">**</span><span class="n">fconfig</span><span class="p">))</span>
 
     <span class="c1"># Here we endure that the name is unique, but complete objects are still labeled verbatim</span>
