@@ -644,6 +644,7 @@
     <span class="n">exclude_readonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">meta_override</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">model_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConfigDict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">validators</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to build `Pydantic Model &lt;https://pydantic-docs.helpmanual.io/usage/models/&gt;`__ off Tortoise Model.</span>
@@ -669,6 +670,7 @@
 <span class="sd">    :param exclude_readonly: Build a subset model that excludes any readonly fields</span>
 <span class="sd">    :param meta_override: A PydanticMeta class to override model&#39;s values.</span>
 <span class="sd">    :param model_config: A custom config to use as pydantic config.</span>
+<span class="sd">    :param validators: A dictionary of methods that validate fields.</span>
 
 <span class="sd">        Note: Created pydantic model uses config_class parameter and PydanticMeta&#39;s</span>
 <span class="sd">            config_class as its Config class&#39;s bases(Only if provided!), but it</span>
@@ -952,6 +954,7 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
         <span class="n">_name</span><span class="p">,</span>
         <span class="n">__base__</span><span class="o">=</span><span class="n">PydanticModel</span><span class="p">,</span>
+        <span class="n">__validators__</span><span class="o">=</span><span class="n">validators</span><span class="p">,</span>
         <span class="o">**</span><span class="n">properties</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1"># Copy the Model docstring over</span>
