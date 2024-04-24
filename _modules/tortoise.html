@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.03ee1730f15ed0f74.min.css?v=e1a21df1" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.359ec555e2989f00f.min.css?v=b000af5c" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -824,9 +824,9 @@
 
                     <span class="n">backward_relation_name</span> <span class="o">=</span> <span class="n">m2m_object</span><span class="o">.</span><span class="n">related_name</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">backward_relation_name</span><span class="p">:</span>
-                        <span class="n">backward_relation_name</span> <span class="o">=</span> <span class="p">(</span>
-                            <span class="n">m2m_object</span><span class="o">.</span><span class="n">related_name</span>
-                        <span class="p">)</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}</span><span class="s2">s&quot;</span>
+                        <span class="n">backward_relation_name</span> <span class="o">=</span> <span class="n">m2m_object</span><span class="o">.</span><span class="n">related_name</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}</span><span class="s2">s&quot;</span>
+                        <span class="p">)</span>
                     <span class="k">if</span> <span class="n">backward_relation_name</span> <span class="ow">in</span> <span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
                             <span class="sa">f</span><span class="s1">&#39;backward relation &quot;</span><span class="si">{</span><span class="n">backward_relation_name</span><span class="si">}</span><span class="s1">&quot; duplicates in&#39;</span>
