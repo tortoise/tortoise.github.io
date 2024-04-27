@@ -803,6 +803,7 @@
 </div>
 <h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># pylint: disable=E0611,E0401</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">asynccontextmanager</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
@@ -810,9 +811,26 @@
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 <span class="kn">from</span> <span class="nn">starlette.exceptions</span> <span class="kn">import</span> <span class="n">HTTPException</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.contrib.fastapi</span> <span class="kn">import</span> <span class="n">register_tortoise</span>
+<span class="kn">from</span> <span class="nn">tortoise.contrib.fastapi</span> <span class="kn">import</span> <span class="n">RegisterTortoise</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">)</span>
+
+<span class="nd">@asynccontextmanager</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>
+    <span class="c1"># app startup</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">RegisterTortoise</span><span class="p">(</span>
+        <span class="n">app</span><span class="p">,</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">]},</span>
+        <span class="n">generate_schemas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">add_exception_handlers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># db connected</span>
+        <span class="k">yield</span>
+        <span class="c1"># app teardown</span>
+    <span class="c1"># db connections closed</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">,</span> <span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -847,15 +865,6 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">deleted_count</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Status</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Deleted user </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="n">register_tortoise</span><span class="p">(</span>
-    <span class="n">app</span><span class="p">,</span>
-    <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
-    <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">]},</span>
-    <span class="n">generate_schemas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">add_exception_handlers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
 </code></pre></div>
 </div>
 
