@@ -532,6 +532,15 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">ToTsQuery</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;TO_TSQUERY&quot;</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="PlainToTsQuery"><a class="viewcode-back" href="../../../../contrib/postgres.html#tortoise.contrib.postgres.functions.PlainToTsQuery">[docs]</a><span class="k">class</span> <span class="nc">PlainToTsQuery</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    plainto_tsquery function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Term</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PlainToTsQuery</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;PLAINTO_TSQUERY&quot;</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Random"><a class="viewcode-back" href="../../../../functions.html#tortoise.contrib.postgres.functions.Random">[docs]</a><span class="k">class</span> <span class="nc">Random</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate random number.</span>
