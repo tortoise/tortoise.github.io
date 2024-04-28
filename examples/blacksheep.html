@@ -730,12 +730,8 @@
 </div>
 <h2 id="basic-non-relational-example">Basic non-relational example<a class="headerlink" href="#basic-non-relational-example" title="Permalink to this heading">¶</a></h2>
 <h3 id="models-py">models.py<a class="headerlink" href="#models-py" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tortoise</span>
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-
-<span class="k">if</span> <span class="n">tortoise</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&gt;=</span> <span class="s2">&quot;0.20&quot;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;blacksheep not support pydantic V2, use tortoise-orm&lt;0.20 instead!&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Users</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -785,13 +781,13 @@
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">users_create</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserPydanticIn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UserPydanticOut</span><span class="p">:</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">created</span><span class="p">(</span><span class="k">await</span> <span class="n">UserPydanticOut</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">user</span><span class="p">))</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">users_patch</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">UserPydanticIn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UserPydanticOut</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">ok</span><span class="p">(</span><span class="k">await</span> <span class="n">UserPydanticOut</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)))</span>
 
 
