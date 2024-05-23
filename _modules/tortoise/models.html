@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.20.1 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.21.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.20.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.20.1 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.20.1 Documentation
+            Tortoise ORM 0.21.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.20.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.20.1 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.20.1 Documentation
+    Tortoise ORM v0.21.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -545,7 +545,6 @@
     <span class="n">IntegrityError</span><span class="p">,</span>
     <span class="n">OperationalError</span><span class="p">,</span>
     <span class="n">ParamsError</span><span class="p">,</span>
-    <span class="n">TransactionManagementError</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.base</span> <span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.data</span> <span class="kn">import</span> <span class="n">IntField</span>
@@ -1074,7 +1073,7 @@
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">custom_pk_present</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta_class</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
                 <span class="k">if</span> <span class="s2">&quot;id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-                    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">attrs</span><span class="p">}</span>
+                    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">attrs</span><span class="p">}</span>
 
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span>
@@ -1581,22 +1580,22 @@
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
 <span class="sd">        :param kwargs: Query parameters.</span>
 <span class="sd">        :raises IntegrityError: If create failed</span>
-<span class="sd">        :raises TransactionManagementError: If transaction error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">defaults</span><span class="p">:</span>
             <span class="n">defaults</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">(</span><span class="n">connection_name</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span>
-                    <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">select_for_update</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
-                    <span class="kc">False</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
+                <span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">(</span><span class="n">connection_name</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
                     <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">using_db</span><span class="o">=</span><span class="n">connection</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="kc">True</span>
-                <span class="k">except</span> <span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">TransactionManagementError</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span></div>
+            <span class="k">except</span> <span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span>
+                <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">raise</span> <span class="n">exc</span></div>
 
 <div class="viewcode-block" id="Model.select_for_update"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.select_for_update">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">select_for_update</span><span class="p">(</span>
@@ -1897,15 +1896,15 @@
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
         <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">cls</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">fetch_for_list</span><span class="p">(</span><span class="n">instance_list</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Model.check"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.check">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calls various checks to validate the model.</span>
 
 <span class="sd">        :raises ConfigurationError: If the model has not been configured correctly.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">_check_together</span><span class="p">(</span><span class="s2">&quot;unique_together&quot;</span><span class="p">)</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_check_together</span><span class="p">(</span><span class="s2">&quot;indexes&quot;</span><span class="p">)</span></div>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_check_together</span><span class="p">(</span><span class="s2">&quot;indexes&quot;</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_check_together</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">together</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -2094,7 +2093,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
     
       
         <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>

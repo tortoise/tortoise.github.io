@@ -13,7 +13,7 @@
     
     
       
-        <title>Indexes - Tortoise ORM v0.20.1 Documentation</title>
+        <title>Indexes - Tortoise ORM v0.21.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.20.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.20.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.21.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.20.1 Documentation
+            Tortoise ORM 0.21.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.20.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.20.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.21.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.20.1 Documentation
+    Tortoise ORM v0.21.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -883,7 +883,7 @@
 
 
 <h1 id="indexes"><span id="index"></span>Indexes<a class="headerlink" href="#indexes" title="Permalink to this heading">¶</a></h1>
-<p>Default tortoise use <cite>BTree</cite> index when define index use <cite>index=True</cite> in field, or define indexes use in <cite>Meta</cite> class, but if you want use other index types, like <cite>FullTextIndex</cite> in <cite>MySQL</cite>, or <cite>GinIndex</cite> in <cite>Postgres</cite>, you should use <cite>tortoise.indexes.Index</cite> and its subclasses.</p>
+<p>Default tortoise use <cite>BTree</cite> index when define index use <cite>db_index=True</cite> in field, or define indexes use in <cite>Meta</cite> class, but if you want use other index types, like <cite>FullTextIndex</cite> in <cite>MySQL</cite>, or <cite>GinIndex</cite> in <cite>Postgres</cite>, you should use <cite>tortoise.indexes.Index</cite> and its subclasses.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>Following is example which use <cite>FullTextIndex</cite> and <cite>SpatialIndex</cite> of <cite>MySQL</cite>:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">fields</span>
@@ -1019,7 +1019,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}, {"aliases": [], "title": "0.19.1", "version": "https://tortoise.github.io/0.19.1"}], "versionPath": null}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
     
       
         <script src="_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
