@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.21.2 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.21.3 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.2 Documentation
+            Tortoise ORM 0.21.3 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.2 Documentation
+    Tortoise ORM v0.21.3 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -558,7 +558,7 @@
     <span class="n">OneToOneFieldInstance</span><span class="p">,</span>
     <span class="n">ReverseRelation</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">get_filters_for_field</span>
+<span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">FilterInfoDict</span><span class="p">,</span> <span class="n">get_filters_for_field</span>
 <span class="kn">from</span> <span class="nn">tortoise.functions</span> <span class="kn">import</span> <span class="n">Function</span>
 <span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">Index</span>
 <span class="kn">from</span> <span class="nn">tortoise.manager</span> <span class="kn">import</span> <span class="n">Manager</span>
@@ -577,9 +577,6 @@
 
 <span class="n">MODEL</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;MODEL&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
 <span class="n">EMPTY</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
-
-
-<span class="c1"># TODO: Define Filter type object. Possibly tuple?</span>
 
 
 <span class="k">def</span> <span class="nf">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span><span class="p">,</span> <span class="n">together</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
@@ -747,8 +744,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_db_projection</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_db_projection_reverse</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inited</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default_connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -810,7 +807,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_ordering</span>
 
-    <span class="k">def</span> <span class="nf">get_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FilterInfoDict</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">finalise_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -836,11 +833,11 @@
             <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">o2o_fields</span>
         <span class="p">)</span>
 
-        <span class="n">generated_fields</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">generated</span><span class="p">:</span>
-                <span class="k">continue</span>
-            <span class="n">generated_fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">)</span>
+        <span class="n">generated_fields</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">generated</span>
+        <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">generated_db_fields</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">generated_fields</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_ordering_validated</span> <span class="o">=</span> <span class="kc">True</span>
@@ -856,29 +853,28 @@
             <span class="n">fk_field_object</span><span class="p">:</span> <span class="n">ForeignKeyFieldInstance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
             <span class="n">relation_field</span> <span class="o">=</span> <span class="n">fk_field_object</span><span class="o">.</span><span class="n">source_field</span>
             <span class="n">to_field</span> <span class="o">=</span> <span class="n">fk_field_object</span><span class="o">.</span><span class="n">to_field_instance</span><span class="o">.</span><span class="n">model_field_name</span>
+            <span class="n">property_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
+                <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
+                <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span>
                 <span class="n">key</span><span class="p">,</span>
                 <span class="nb">property</span><span class="p">(</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_getter</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
                         <span class="n">ftype</span><span class="o">=</span><span class="n">fk_field_object</span><span class="o">.</span><span class="n">related_model</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_setter</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_setter</span><span class="p">,</span>
                         <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                 <span class="p">),</span>
             <span class="p">)</span>
@@ -907,29 +903,28 @@
             <span class="n">o2o_field_object</span><span class="p">:</span> <span class="n">OneToOneFieldInstance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
             <span class="n">relation_field</span> <span class="o">=</span> <span class="n">o2o_field_object</span><span class="o">.</span><span class="n">source_field</span>
             <span class="n">to_field</span> <span class="o">=</span> <span class="n">o2o_field_object</span><span class="o">.</span><span class="n">to_field_instance</span><span class="o">.</span><span class="n">model_field_name</span>
+            <span class="n">property_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
+                <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
+                <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span>
                 <span class="n">key</span><span class="p">,</span>
                 <span class="nb">property</span><span class="p">(</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_getter</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
                         <span class="n">ftype</span><span class="o">=</span><span class="n">o2o_field_object</span><span class="o">.</span><span class="n">related_model</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_setter</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                     <span class="n">partial</span><span class="p">(</span>
                         <span class="n">_fk_setter</span><span class="p">,</span>
                         <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="n">_key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span>
-                        <span class="n">relation_field</span><span class="o">=</span><span class="n">relation_field</span><span class="p">,</span>
-                        <span class="n">to_field</span><span class="o">=</span><span class="n">to_field</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">property_kwargs</span><span class="p">,</span>
                     <span class="p">),</span>
                 <span class="p">),</span>
             <span class="p">)</span>
@@ -988,12 +983,10 @@
     <span class="k">def</span> <span class="nf">_generate_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">get_overridden_filter_func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">executor_class</span><span class="o">.</span><span class="n">get_overridden_filter_func</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">filter_info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">overridden_operator</span> <span class="o">=</span> <span class="n">get_overridden_filter_func</span><span class="p">(</span>
-                <span class="n">filter_func</span><span class="o">=</span><span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
-            <span class="p">)</span>
+            <span class="n">overridden_operator</span> <span class="o">=</span> <span class="n">get_overridden_filter_func</span><span class="p">(</span><span class="n">filter_func</span><span class="o">=</span><span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">overridden_operator</span><span class="p">:</span>
                 <span class="n">filter_info</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">filter_info</span><span class="p">)</span>
-                <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">overridden_operator</span>  <span class="c1"># type: ignore</span>
+                <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">overridden_operator</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">filter_info</span>
 
 
@@ -1003,7 +996,7 @@
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">fields_db_projection</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">fields_map</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">fk_fields</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">m2m_fields</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">o2o_fields</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -1097,19 +1090,16 @@
                     <span class="n">m2m_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">key</span>
+                    <span class="n">field</span><span class="p">,</span> <span class="n">source_field</span> <span class="o">=</span> <span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
                     <span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                         <span class="n">get_filters_for_field</span><span class="p">(</span>
-                            <span class="n">field_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
-                            <span class="n">field</span><span class="o">=</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                            <span class="n">source_field</span><span class="o">=</span><span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
+                            <span class="n">field_name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">,</span> <span class="n">source_field</span><span class="o">=</span><span class="n">source_field</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
                         <span class="n">filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                             <span class="n">get_filters_for_field</span><span class="p">(</span>
-                                <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span>
-                                <span class="n">field</span><span class="o">=</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                                <span class="n">source_field</span><span class="o">=</span><span class="n">fields_db_projection</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
+                                <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">,</span> <span class="n">source_field</span><span class="o">=</span><span class="n">source_field</span>
                             <span class="p">)</span>
                         <span class="p">)</span>
 
@@ -1255,12 +1245,9 @@
             <span class="c1"># Fields that don&#39;t override .to_python_value() are converted without a call</span>
             <span class="c1">#  as we already know what we will be doing.</span>
             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model_field</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">db_default_fields</span><span class="p">:</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-                <span class="nb">setattr</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="p">,</span>
-                    <span class="n">model_field</span><span class="p">,</span>
-                    <span class="kc">None</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">field</span><span class="o">.</span><span class="n">field_type</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
-                <span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">:=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">field_type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_field</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
             <span class="c1"># These fields need manual .to_python_value()</span>
             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model_field</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">db_complex_fields</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_field</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">to_python_value</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
@@ -1375,48 +1362,23 @@
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="k">await</span> <span class="n">v</span><span class="p">())</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_await_when_save</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_pre_delete</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">listeners</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">cls_listeners</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listeners</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_delete</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">:</span>
-            <span class="n">listeners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">listener</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="p">,</span>
-                    <span class="n">using_db</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_wait_for_listeners</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">:</span> <span class="n">Signals</span><span class="p">,</span> <span class="o">*</span><span class="n">listener_args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cls_listeners</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listeners</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">listeners</span> <span class="o">=</span> <span class="p">[</span><span class="n">listener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">listener_args</span><span class="p">)</span> <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">]</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">listeners</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_post_delete</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">listeners</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">cls_listeners</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listeners</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_delete</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">:</span>
-            <span class="n">listeners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">listener</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="p">,</span>
-                    <span class="n">using_db</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">listeners</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_pre_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_delete</span><span class="p">,</span> <span class="n">using_db</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_post_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_delete</span><span class="p">,</span> <span class="n">using_db</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_pre_save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">listeners</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">cls_listeners</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listeners</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_save</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">:</span>
-            <span class="n">listeners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">listener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">))</span>
-        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">listeners</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_post_save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1424,11 +1386,7 @@
         <span class="n">created</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">listeners</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">cls_listeners</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listeners</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_save</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">:</span>
-            <span class="n">listeners</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">listener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">))</span>
-        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">listeners</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_save</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.save"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.save">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

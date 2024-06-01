@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.expressions - Tortoise ORM v0.21.2 Documentation</title>
+        <title>tortoise.expressions - Tortoise ORM v0.21.3 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.2 Documentation
+            Tortoise ORM 0.21.3 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.2 Documentation
+    Tortoise ORM v0.21.3 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -540,6 +540,7 @@
     <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
     <span class="n">RelationalField</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">FilterInfoDict</span>
 <span class="kn">from</span> <span class="nn">tortoise.query_utils</span> <span class="kn">import</span> <span class="n">QueryModifier</span><span class="p">,</span> <span class="n">_get_joins_for_related_field</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
@@ -667,14 +668,14 @@
         <span class="c1">#: Contains the sub-Q&#39;s that this Q is made up of</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Q</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
         <span class="c1">#: Contains the filters applied to this Q</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span>
         <span class="k">if</span> <span class="n">join_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OR</span><span class="p">}:</span>
             <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">&quot;join_type must be AND or OR&quot;</span><span class="p">)</span>
         <span class="c1">#: Specifies if this Q does an AND or OR on its children</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">join_type</span> <span class="o">=</span> <span class="n">join_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_annotations</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_custom_filters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="Q.__and__"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__and__">[docs]</a>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

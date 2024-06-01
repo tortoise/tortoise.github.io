@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.fields.base - Tortoise ORM v0.21.2 Documentation</title>
+        <title>tortoise.fields.base - Tortoise ORM v0.21.3 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.2 Documentation
+            Tortoise ORM 0.21.3 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.21.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.2 Documentation
+    Tortoise ORM v0.21.3 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,7 +511,8 @@
 
 
 <h1>Source code for tortoise.fields.base</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">import</span> <span class="nn">warnings</span>
+<span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
@@ -536,11 +537,15 @@
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
     <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
 
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+
+<div class="viewcode-block" id="StrEnum"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.StrEnum">[docs]</a>    <span class="k">class</span> <span class="nc">StrEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+        <span class="fm">__str__</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="fm">__str__</span></div>
+
+
 <span class="n">VALUE</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;VALUE&quot;</span><span class="p">)</span>
-
-
-<div class="viewcode-block" id="StrEnum"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.StrEnum">[docs]</a><span class="k">class</span> <span class="nc">StrEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-    <span class="fm">__str__</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="fm">__str__</span></div>
 
 
 <div class="viewcode-block" id="OnDelete"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.OnDelete">[docs]</a><span class="k">class</span> <span class="nc">OnDelete</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
