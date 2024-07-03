@@ -13,7 +13,7 @@
     
     
       
-        <title>Models - Tortoise ORM v0.21.3 Documentation</title>
+        <title>Models - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -3048,8 +3048,8 @@ Any value you specify here will always be used.</p>
 </dd>
 <dt class="field-even" id="tortoise.models.Model.get-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.MultipleObjectsReturned" title="tortoise.exceptions.MultipleObjectsReturned (Python exception) — Bases: OperationalError"><strong>MultipleObjectsReturned</strong></a> – If provided search returned more than one object.</p></li>
-<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.DoesNotExist" title="tortoise.exceptions.DoesNotExist (Python exception) — Bases: OperationalError"><strong>DoesNotExist</strong></a> – If object can not be found.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.MultipleObjectsReturned" title="tortoise.exceptions.MultipleObjectsReturned (Python exception) — Bases: NotExistOrMultiple"><strong>MultipleObjectsReturned</strong></a> – If provided search returned more than one object.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.DoesNotExist" title="tortoise.exceptions.DoesNotExist (Python exception) — Bases: NotExistOrMultiple"><strong>DoesNotExist</strong></a> – If object can not be found.</p></li>
 </ul>
 </dd>
 <dt class="field-odd" id="tortoise.models.Model.get-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get-return-type" title="Permalink to this headline">¶</a></dt>
@@ -3075,7 +3075,11 @@ else creates an instance with any unspecified parameters as default values.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.models.Model.get_or_create-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_create-raises" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.IntegrityError" title="tortoise.exceptions.IntegrityError (Python exception) — Bases: OperationalError"><strong>IntegrityError</strong></a> – If create failed</p>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.IntegrityError" title="tortoise.exceptions.IntegrityError (Python exception) — Bases: OperationalError"><strong>IntegrityError</strong></a> – If create failed</p></li>
+<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.TransactionManagementError" title="tortoise.exceptions.TransactionManagementError (Python exception) — Bases: BaseORMException"><strong>TransactionManagementError</strong></a> – If transaction error</p></li>
+<li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – If defaults conflict with kwargs</p></li>
+</ul>
 </dd>
 <dt class="field-odd" id="tortoise.models.Model.get_or_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_create-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[typing_extensions.Self, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]</p>

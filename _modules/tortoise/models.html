@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.21.3 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -543,6 +543,7 @@
     <span class="n">DoesNotExist</span><span class="p">,</span>
     <span class="n">IncompleteInstanceError</span><span class="p">,</span>
     <span class="n">IntegrityError</span><span class="p">,</span>
+    <span class="n">ObjectDoesNotExistError</span><span class="p">,</span>
     <span class="n">OperationalError</span><span class="p">,</span>
     <span class="n">ParamsError</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1296,7 +1297,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">(</span><span class="n">DoesNotExist</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">full_name</span><span class="si">}</span><span class="s2"> has no object </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">ObjectDoesNotExistError</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">pk_attr</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.clone"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">pk</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">EMPTY</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1538,6 +1539,8 @@
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
 <span class="sd">        :param kwargs: Query parameters.</span>
 <span class="sd">        :raises IntegrityError: If create failed</span>
+<span class="sd">        :raises TransactionManagementError: If transaction error</span>
+<span class="sd">        :raises ParamsError: If defaults conflict with kwargs</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">defaults</span><span class="p">:</span>
             <span class="n">defaults</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1545,15 +1548,33 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span>
         <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_or_get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_create_or_get</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Try to create, if fails with IntegrityError then try to get&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">default_value</span> <span class="o">:=</span> <span class="n">defaults</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">!=</span> <span class="p">(</span><span class="n">query_value</span> <span class="o">:=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="n">ParamsError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Conflict value with </span><span class="si">{</span><span class="n">key</span><span class="si">=}</span><span class="s2">: </span><span class="si">{</span><span class="n">default_value</span><span class="si">=}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">query_value</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">merged_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">(</span><span class="n">connection_name</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">using_db</span><span class="o">=</span><span class="n">connection</span><span class="p">,</span> <span class="o">**</span><span class="n">merged_defaults</span><span class="p">),</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">(</span><span class="n">connection_name</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">using_db</span><span class="o">=</span><span class="n">connection</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="kc">True</span>
-            <span class="k">except</span> <span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span>
-                <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
-                    <span class="k">pass</span>
-                <span class="k">raise</span> <span class="n">exc</span></div>
+                <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="n">DoesNotExist</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">raise</span> <span class="n">exc</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_db_queryset</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">for_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="n">for_write</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.select_for_update"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.select_for_update">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">select_for_update</span><span class="p">(</span>
@@ -1569,10 +1590,7 @@
 <span class="sd">        Returns a queryset that will lock rows until the end of the transaction,</span>
 <span class="sd">        generating a SELECT ... FOR UPDATE SQL statement on supported databases.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">select_for_update</span><span class="p">(</span><span class="n">nowait</span><span class="p">,</span> <span class="n">skip_locked</span><span class="p">,</span> <span class="n">of</span><span class="p">)</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">select_for_update</span><span class="p">(</span><span class="n">nowait</span><span class="p">,</span> <span class="n">skip_locked</span><span class="p">,</span> <span class="n">of</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.update_or_create"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.update_or_create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">update_or_create</span><span class="p">(</span>
@@ -1596,7 +1614,7 @@
             <span class="k">if</span> <span class="n">instance</span><span class="p">:</span>
                 <span class="k">await</span> <span class="n">instance</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">using_db</span><span class="o">=</span><span class="n">connection</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">instance</span><span class="p">,</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">defaults</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_or_get</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.create"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
@@ -1653,10 +1671,7 @@
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">bulk_update</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">bulk_update</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.in_bulk"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.in_bulk">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">in_bulk</span><span class="p">(</span>
@@ -1673,8 +1688,7 @@
 <span class="sd">        :param field_name: Must be a unique field</span>
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">in_bulk</span><span class="p">(</span><span class="n">id_list</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">in_bulk</span><span class="p">(</span><span class="n">id_list</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.bulk_create"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.bulk_create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">bulk_create</span><span class="p">(</span>
@@ -1713,11 +1727,8 @@
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">,</span> <span class="n">on_conflict</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span>
+            <span class="n">objects</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">,</span> <span class="n">on_conflict</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.first"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.first">[docs]</a>    <span class="nd">@classmethod</span>
@@ -1725,8 +1736,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a QuerySet that returns the first record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Model.filter"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.filter">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
@@ -1762,8 +1772,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the complete QuerySet.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.get"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
@@ -1783,8 +1792,7 @@
 <span class="sd">        :raises MultipleObjectsReturned: If provided search returned more than one object.</span>
 <span class="sd">        :raises DoesNotExist: If object can not be found.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.raw"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.raw">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">raw</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RawSQLQuery&quot;</span><span class="p">:</span>
@@ -1798,8 +1806,7 @@
 <span class="sd">        :param using_db: The specific DB connection to use</span>
 <span class="sd">        :param sql: The raw sql.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.exists"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.exists">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">exists</span><span class="p">(</span>
@@ -1816,8 +1823,7 @@
 <span class="sd">        :param args: Q functions containing constraints. Will be AND&#39;ed.</span>
 <span class="sd">        :param kwargs: Simple filter constraints.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Model.get_or_none"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get_or_none">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_or_none</span><span class="p">(</span>
@@ -1834,8 +1840,7 @@
 <span class="sd">        :param args: Q functions containing constraints. Will be AND&#39;ed.</span>
 <span class="sd">        :param kwargs: Simple filter constraints.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">get_or_none</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">)</span><span class="o">.</span><span class="n">get_or_none</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.fetch_for_list"><a class="viewcode-back" href="../../setup.html#tortoise.models.Model.fetch_for_list">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_for_list</span><span class="p">(</span>

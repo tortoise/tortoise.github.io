@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.queryset - Tortoise ORM v0.21.3 Documentation</title>
+        <title>tortoise.queryset - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1584,9 +1584,9 @@
                 <span class="k">return</span> <span class="n">instance_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">instance_list</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_does_not_exist</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="s2">&quot;Object does not exist&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
-            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="s2">&quot;Multiple objects returned, expected exactly one&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">instance_list</span></div>
 
 
@@ -2027,6 +2027,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_joined_tables</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">positional_number</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_field_to_select_query</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">positional_number</span><span class="p">)</span>
@@ -2098,9 +2100,9 @@
                 <span class="k">return</span> <span class="n">lst_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">lst_values</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="s2">&quot;Object does not exist&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
-            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="s2">&quot;Multiple objects returned, expected exactly one&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">lst_values</span></div>
 
 
@@ -2155,6 +2157,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">use_indexes</span> <span class="o">=</span> <span class="n">use_indexes</span>
 
     <span class="k">def</span> <span class="nf">_make_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_joined_tables</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">return_as</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_for_select</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_field_to_select_query</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">return_as</span><span class="p">)</span>
@@ -2230,9 +2234,9 @@
                 <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_does_not_exist</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="s2">&quot;Object does not exist&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">DoesNotExist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
-            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="s2">&quot;Multiple objects returned, expected exactly one&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">MultipleObjectsReturned</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
 

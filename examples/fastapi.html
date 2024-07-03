@@ -13,7 +13,7 @@
     
     
       
-        <title>FastAPI Examples - Tortoise ORM v0.21.3 Documentation</title>
+        <title>FastAPI Examples - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -769,12 +769,14 @@
 <h3 id="tests-py">tests.py<a class="headerlink" href="#tests-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># mypy: no-disallow-untyped-decorators</span>
 <span class="c1"># pylint: disable=E0611,E0401</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">AsyncGenerator</span>
 
 <span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">import</span> <span class="nn">pytz</span>
 <span class="kn">from</span> <span class="nn">asgi_lifespan</span> <span class="kn">import</span> <span class="n">LifespanManager</span>
 <span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">ASGITransport</span><span class="p">,</span> <span class="n">AsyncClient</span>
-<span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">app_east</span>
 <span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Users</span>
 
 
@@ -802,6 +804,40 @@
 
     <span class="n">user_obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">client_east</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AsyncClient</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">LifespanManager</span><span class="p">(</span><span class="n">app_east</span><span class="p">):</span>
+        <span class="n">transport</span> <span class="o">=</span> <span class="n">ASGITransport</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app_east</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncClient</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="n">transport</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://test&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">c</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_user_east</span><span class="p">(</span><span class="n">client_east</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># nosec</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client_east</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users_east&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="k">assert</span> <span class="s2">&quot;id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+
+    <span class="n">user_obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span>
+
+    <span class="c1"># Verify that the time zone is East 8.</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">created_at</span>
+
+    <span class="c1"># Asia/Shanghai timezone</span>
+    <span class="n">asia_tz</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;Asia/Shanghai&quot;</span><span class="p">)</span>
+    <span class="n">asia_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">asia_tz</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">created_at</span><span class="o">.</span><span class="n">hour</span> <span class="o">-</span> <span class="n">asia_now</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="c1"># UTC timezone</span>
+    <span class="n">utc_tz</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;UTC&quot;</span><span class="p">)</span>
+    <span class="n">utc_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">utc_tz</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">created_at</span><span class="o">.</span><span class="n">hour</span> <span class="o">-</span> <span class="n">utc_now</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">8</span>
 </code></pre></div>
 </div>
 <h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Permalink to this heading">¶</a></h3>
@@ -844,7 +880,26 @@
     <span class="c1"># db connections closed</span>
 
 
+<span class="nd">@asynccontextmanager</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">lifespan_east</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="c1"># app startup</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">RegisterTortoise</span><span class="p">(</span>
+        <span class="n">app</span><span class="p">,</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">]},</span>
+        <span class="n">generate_schemas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">add_exception_handlers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_tz</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">timezone</span><span class="o">=</span><span class="s2">&quot;Asia/Shanghai&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># db connected</span>
+        <span class="k">yield</span>
+        <span class="c1"># app teardown</span>
+    <span class="c1"># db connections closed</span>
+
+
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">,</span> <span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">)</span>
+<span class="n">app_east</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">,</span> <span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan_east</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -875,6 +930,37 @@
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/user/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Status</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">delete_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">deleted_count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">deleted_count</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Status</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Deleted user </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">############################ East 8 ############################</span>
+<span class="nd">@app_east</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users_east&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">User_Pydantic</span><span class="p">])</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_users_east</span><span class="p">():</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">User_Pydantic</span><span class="o">.</span><span class="n">from_queryset</span><span class="p">(</span><span class="n">Users</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+
+<span class="nd">@app_east</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users_east&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">User_Pydantic</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">create_user_east</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserIn_Pydantic</span><span class="p">):</span>
+    <span class="n">user_obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">User_Pydantic</span><span class="o">.</span><span class="n">from_tortoise_orm</span><span class="p">(</span><span class="n">user_obj</span><span class="p">)</span>
+
+
+<span class="nd">@app_east</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/user_east/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">User_Pydantic</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_user_east</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">User_Pydantic</span><span class="o">.</span><span class="n">from_queryset_single</span><span class="p">(</span><span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">))</span>
+
+
+<span class="nd">@app_east</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;/user_east/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">User_Pydantic</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">update_user_east</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">UserIn_Pydantic</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">User_Pydantic</span><span class="o">.</span><span class="n">from_queryset_single</span><span class="p">(</span><span class="n">Users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">))</span>
+
+
+<span class="nd">@app_east</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/user_east/</span><span class="si">{user_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Status</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">delete_user_east</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="n">deleted_count</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">deleted_count</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;User </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>

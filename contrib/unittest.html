@@ -13,7 +13,7 @@
     
     
       
-        <title>UnitTest support - Tortoise ORM v0.21.3 Documentation</title>
+        <title>UnitTest support - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -823,6 +823,46 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.contrib.test.init_memory_sqlite" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.test.init_memory_sqlite (Python function) — For single file style to run code with memory sqlite" class="md-ellipsis">tortoise.<wbr>contrib.<wbr>test.<wbr>init_<wbr>memory_<wbr>sqlite</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.test.init_memory_sqlite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.test.init_memory_sqlite-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.test.init_memory_sqlite.models" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to [&#39;__main__&#39;]." class="md-ellipsis">models</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.test.init_memory_sqlite-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.contrib.test.initializer" class="md-nav__link">
     <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.test.initializer (Python function) — Sets up the DB for testing. Must be called as part of test environment setup." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>test.<wbr>initializer</span>
   </a>
@@ -915,6 +955,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.test.requireCapability-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
   
 </li>
         
@@ -1424,6 +1471,50 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </dd></dl>
 
 <dl class="py function objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.init_memory_sqlite">
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">init_memory_sqlite</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.init_memory_sqlite.models" title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to ['__main__']."><span class="n"><span class="pre">models</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#init_memory_sqlite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object highlight sig-wrap py">
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">init_memory_sqlite</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.init_memory_sqlite.models" title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to ['__main__']."><span class="n"><span class="pre">models</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></span></dt>
+<dd><p>For single file style to run code with memory sqlite</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.test.init_memory_sqlite-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.contrib.test.init_memory_sqlite.models"><span class="n sig-name">models</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype">str<span class="w">   </span><span class="p">|</span><span class="w">   </span>list<span class="p">[</span>str<span class="p">]</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>None</span></span><span class="w">   </span><span class="o">=</span><span class="w">   </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite.models" title="Permalink to this definition">¶</a></dt><dt><span class="n sig-name">models</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype">Callable<span class="p">[</span><span class="p">[</span>P<span class="p">]</span><span class="p">,</span><span class="w">   </span>Coroutine<span class="p">[</span>None<span class="p">,</span><span class="w">   </span>None<span class="p">,</span><span class="w">   </span>T<span class="p">]</span><span class="p">]</span></span></span></dt><dd><p>list_of_modules that should be discovered for models, default to [‘__main__’].</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span> <span class="nn">tortoise.contrib.test</span> <span class="kn">import</span> <span class="n">init_memory_sqlite</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+
+<span class="nd">@init_memory_sqlite</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span>
+    <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Custom models example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@init_memory_sqlite</span><span class="p">(</span><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">,</span> <span class="s1">&#39;aerich.models&#39;</span><span class="p">])</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="o">...</span>
+</code></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.test.init_memory_sqlite-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[~P], <code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, ~T]], <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[…, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[~P], <code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, ~T]]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.initializer">
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">initializer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.modules" title="tortoise.contrib.test.initializer.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.db_url" title="tortoise.contrib.test.initializer.db_url (Python parameter) — The db_url, defaults to sqlite://:memory."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.app_label" title="tortoise.contrib.test.initializer.app_label (Python parameter) — The name of the APP to initialise the modules in, defaults to &quot;models&quot;"><span class="n"><span class="pre">app_label</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.loop" title="tortoise.contrib.test.initializer.loop (Python parameter) — Optional event loop."><span class="n"><span class="pre">loop</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.initializer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up the DB for testing. Must be called as part of test environment setup.</p>
@@ -1474,6 +1565,9 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 <dt id="tortoise.contrib.test.requireCapability.conditions"><span class="o">**</span><span class="n sig-name">conditions</span><a class="headerlink" href="#tortoise.contrib.test.requireCapability.conditions" title="Permalink to this definition">¶</a></dt><dd><p>capability tests which must all pass for the test to run.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.contrib.test.requireCapability-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.requireCapability-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></p>
 </dd>
 </dl>
 </dd></dl>

@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.exceptions - Tortoise ORM v0.21.3 Documentation</title>
+        <title>tortoise.exceptions - Tortoise ORM v0.21.4 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.3 Documentation
+            Tortoise ORM 0.21.4 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.21.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.3 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.21.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.4 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.3 Documentation
+    Tortoise ORM v0.21.4 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,7 +511,13 @@
 
 
 <h1>Source code for tortoise.exceptions</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="BaseORMException"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.BaseORMException">[docs]</a><span></span><code><span class="k">class</span> <span class="nc">BaseORMException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Type</span>
+
+
+<div class="viewcode-block" id="BaseORMException"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.BaseORMException">[docs]</a><span class="k">class</span> <span class="nc">BaseORMException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base ORM Exception.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
@@ -559,17 +565,52 @@
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="MultipleObjectsReturned"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.MultipleObjectsReturned">[docs]</a><span class="k">class</span> <span class="nc">MultipleObjectsReturned</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+<div class="viewcode-block" id="NotExistOrMultiple"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NotExistOrMultiple">[docs]</a><span class="k">class</span> <span class="nc">NotExistOrMultiple</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+    <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], str]&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Optional[Type[Model]]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MultipleObjectsReturned"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.MultipleObjectsReturned">[docs]</a><span class="k">class</span> <span class="nc">MultipleObjectsReturned</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The MultipleObjectsReturned exception is raised when doing a ``.get()`` operation,</span>
 <span class="sd">    and more than one object is returned.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;Multiple objects returned for &quot;</span><span class="si">{}</span><span class="s1">&quot;, expected exactly one&#39;</span></div>
 
 
-<div class="viewcode-block" id="DoesNotExist"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DoesNotExist">[docs]</a><span class="k">class</span> <span class="nc">DoesNotExist</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+<div class="viewcode-block" id="ObjectDoesNotExistError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ObjectDoesNotExistError">[docs]</a><span class="k">class</span> <span class="nc">ObjectDoesNotExistError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The DoesNotExist exception is raised when an item with the passed primary key does not exist</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">pk_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">pk_val</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> has no object with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pk_name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pk_val</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="DoesNotExist"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DoesNotExist">[docs]</a><span class="k">class</span> <span class="nc">DoesNotExist</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DoesNotExist exception is raised when expecting data, such as a ``.get()`` operation.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;Object &quot;</span><span class="si">{}</span><span class="s1">&quot; does not exist&#39;</span></div>
 
 
 <div class="viewcode-block" id="IncompleteInstanceError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IncompleteInstanceError">[docs]</a><span class="k">class</span> <span class="nc">IncompleteInstanceError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
