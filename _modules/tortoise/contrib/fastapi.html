@@ -621,6 +621,7 @@
         <span class="n">add_exception_handlers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">use_tz</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">timezone</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
+        <span class="n">_create_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
@@ -630,6 +631,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">generate_schemas</span> <span class="o">=</span> <span class="n">generate_schemas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">use_tz</span> <span class="o">=</span> <span class="n">use_tz</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timezone</span> <span class="o">=</span> <span class="n">timezone</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_db</span> <span class="o">=</span> <span class="n">_create_db</span>
 
         <span class="k">if</span> <span class="n">add_exception_handlers</span><span class="p">:</span>
 
@@ -652,6 +654,7 @@
             <span class="n">modules</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">,</span>
             <span class="n">use_tz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_tz</span><span class="p">,</span>
             <span class="n">timezone</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timezone</span><span class="p">,</span>
+            <span class="n">_create_db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_db</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Tortoise-ORM started, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">connections</span><span class="o">.</span><span class="n">_get_storage</span><span class="p">(),</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">:</span>
