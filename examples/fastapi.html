@@ -13,7 +13,7 @@
     
     
       
-        <title>FastAPI Examples - Tortoise ORM v0.21.6 Documentation</title>
+        <title>FastAPI Examples - Tortoise ORM v0.21.7 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.37dfeca1a5899a14e.min.css?v=e07098ad" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.3394d25b557047e78.min.css?v=3143a2d0" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.21.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.6 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.6 Documentation
+            Tortoise ORM 0.21.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.21.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.6 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.6 Documentation
+    Tortoise ORM v0.21.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -764,12 +764,15 @@
 <h3 id="tests-py">tests.py<a class="headerlink" href="#tests-py" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># mypy: no-disallow-untyped-decorators</span>
 <span class="c1"># pylint: disable=E0611,E0401</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">asynccontextmanager</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Tuple</span>
 
+<span class="kn">import</span> <span class="nn">anyio</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
 <span class="kn">import</span> <span class="nn">pytz</span>
 <span class="kn">from</span> <span class="nn">asgi_lifespan</span> <span class="kn">import</span> <span class="n">LifespanManager</span>
@@ -780,6 +783,7 @@
 
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_URL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MEMORY_SQLITE</span>
 <span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">register_orm</span>
     <span class="kn">from</span> <span class="nn">main</span> <span class="kn">import</span> <span class="n">app</span>
     <span class="kn">from</span> <span class="nn">main_custom_timezone</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">app_east</span>
     <span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">Users</span>
@@ -881,6 +885,21 @@
         <span class="n">created_at</span> <span class="o">=</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">created_at</span>
         <span class="k">assert</span> <span class="p">(</span><span class="n">created_at</span><span class="o">.</span><span class="n">hour</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_hours</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta_hours</span> <span class="o">-</span> <span class="mi">24</span><span class="p">]</span>
         <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="n">created_at</span><span class="o">.</span><span class="n">hour</span>
+
+
+<span class="k">def</span> <span class="nf">query_without_app</span><span class="p">(</span><span class="n">pk</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">runner</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">register_orm</span><span class="p">():</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">Users</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">id__gt</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">anyio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">runner</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_query_without_app</span><span class="p">():</span>
+    <span class="n">multiprocessing</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s2">&quot;spawn&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">future</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">query_without_app</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 </code></pre></div>
 </div>
 <h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Permalink to this heading">¶</a></h3>

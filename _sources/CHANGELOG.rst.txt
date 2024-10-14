@@ -8,6 +8,22 @@ Changelog
 
 0.21
 ====
+0.21.7
+------
+Fixed
+^^^^^
+- Fix unittest error with pydantic2.9 (#1734)
+- Fix bug when using annotate and count at the same time but the annotation does not match anything, leading to an IndexError (#1707)
+- Added missing field_type for TimeDeltaField (#1462) (#1699)
+- improve jsonfield type hint (#1700)
+- Fix bug in tortoise.models.Model When a QuerySet uses the only function and then uses the print function to print the returned result, an AttributeError is generated (#1724)
+- Update the pylint plugin to latest astroid version (#1708)
+
+Added
+^^^^^
+- Add POSIX Regex support for PostgreSQL and MySQL (#1714)
+- support app=None for tortoise.contrib.fastapi.RegisterTortoise (#1733)
+
 
 0.21.6
 ------
@@ -20,6 +36,7 @@ Fixed
 - Fix mysql uuid compression bug (#1687)
 - Fix comment for fk fields without constraint for mysql (#1679)
 - Removed no_delay option for postgres, as it wasn't doing anything (#1677)
+- Fix bug in `tortoise.models.Model` When a QuerySet uses the only function and then uses the print function to print the returned result, an AttributeError is generated. (#1723)
 
 0.21.5 <../0.21.5>`_ - 2024-07-18
 ------
