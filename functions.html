@@ -13,7 +13,7 @@
     
     
       
-        <title>Functions & Aggregates - Tortoise ORM v0.21.7 Documentation</title>
+        <title>Functions & Aggregates - Tortoise ORM v0.22.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.3394d25b557047e78.min.css?v=3143a2d0" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.7 Documentation
+            Tortoise ORM 0.22.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.7 Documentation
+    Tortoise ORM v0.22.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -785,26 +785,6 @@
   <a href="#tortoise.functions.Function.resolve-parameters" class="md-nav__link">
     <span class="md-ellipsis">Parameters</span>
   </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.functions.Function.resolve.model" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.functions.Function.resolve.model (Python parameter) — Model the function is applied on to." class="md-ellipsis">model</span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.functions.Function.resolve.table" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.functions.Function.resolve.table (Python parameter) — pypika.Table to keep track of the virtual SQL table (to allow self referential joins)" class="md-ellipsis">table</span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1302,20 +1282,20 @@ So often makes sense with a <code class="docutils literal notranslate"><span cla
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.functions.Function.resolve">
-<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Function.resolve.model" title="tortoise.functions.Function.resolve.model (Python parameter) — Model the function is applied on to."><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Function.resolve.table" title="tortoise.functions.Function.resolve.table (Python parameter) — pypika.Table to keep track of the virtual SQL table (to allow self referential joins)"><span class="n"><span class="pre">table</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Function.resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.functions.Function.resolve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">resolve_context</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Function.resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.functions.Function.resolve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to resolve the Function statement for SQL generation.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.functions.Function.resolve-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.functions.Function.resolve-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.functions.Function.resolve.model"><span class="n sig-name">model</span><a class="headerlink" href="#tortoise.functions.Function.resolve.model" title="Permalink to this definition">¶</a></dt><dd><p>Model the function is applied on to.</p>
+<dt><span class="sig-name descname">model</span></dt><dd><p>Model the function is applied on to.</p>
 </dd>
-<dt id="tortoise.functions.Function.resolve.table"><span class="n sig-name">table</span><a class="headerlink" href="#tortoise.functions.Function.resolve.table" title="Permalink to this definition">¶</a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">pypika.Table</span></code> to keep track of the virtual SQL table
+<dt><span class="sig-name descname">table</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">pypika.Table</span></code> to keep track of the virtual SQL table
 (to allow self referential joins)</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.functions.Function.resolve-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.functions.Function.resolve-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ResolveResult</span></code></p>
 </dd>
 <dt class="field-odd" id="tortoise.functions.Function.resolve-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.functions.Function.resolve-returns" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p>Dict with keys <code class="docutils literal notranslate"><span class="pre">&quot;joins&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;fields&quot;</span></code></p>
@@ -1358,11 +1338,15 @@ So often makes sense with a <code class="docutils literal notranslate"><span cla
 </div>
 <p>And you can also use functions in update, the example is only suitable for MySQL and SQLite, but PostgreSQL is the same.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Function</span>
+<span class="kn">from</span> <span class="nn">tortoise.functions</span> <span class="kn">import</span> <span class="n">Function</span>
+<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">PupikaFunction</span>
 
 <span class="k">class</span> <span class="nc">JsonSet</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">F</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;JSON_SET&quot;</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">class</span> <span class="nc">PypikaJsonSet</span><span class="p">(</span><span class="n">PupikaFunction</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">F</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;JSON_SET&quot;</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="n">database_func</span> <span class="o">=</span> <span class="n">PypikaJsonSet</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="k">await</span> <span class="n">JSONFields</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">data_default</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
 <span class="n">json</span><span class="o">.</span><span class="n">data_default</span> <span class="o">=</span> <span class="n">JsonSet</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;data_default&quot;</span><span class="p">),</span> <span class="s2">&quot;$.a&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>

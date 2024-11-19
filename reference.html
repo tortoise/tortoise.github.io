@@ -13,7 +13,7 @@
     
     
       
-        <title>Reference - Tortoise ORM v0.21.7 Documentation</title>
+        <title>Reference - Tortoise ORM v0.22.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.3394d25b557047e78.min.css?v=3143a2d0" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.21.7 Documentation
+            Tortoise ORM 0.22.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.21.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.21.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.21.7 Documentation
+    Tortoise ORM v0.22.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -721,6 +721,7 @@
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.create">create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.delete">delete</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.describe">describe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.earliest">earliest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.exclude">exclude</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.exists">exists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.fetch_for_list">fetch_for_list</a></li>
@@ -731,6 +732,8 @@
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.get_or_create">get_or_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.get_or_none">get_or_none</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.in_bulk">in_bulk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.last">last</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.latest">latest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.pk">pk</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.raw">raw</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Model.refresh_from_db">refresh_from_db</a></li>
@@ -750,6 +753,7 @@
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.get_connection">get_connection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.init">init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.init_models">init_models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.table_name_generator">table_name_generator</a></li>
 </ul>
 </li>
 </ul>
@@ -838,6 +842,7 @@
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.create">create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.delete">delete</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.describe">describe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.earliest">earliest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.exclude">exclude</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.exists">exists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.fetch_for_list">fetch_for_list</a></li>
@@ -848,6 +853,8 @@
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.get_or_create">get_or_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.get_or_none">get_or_none</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.in_bulk">in_bulk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.last">last</a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.latest">latest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.pk">pk</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.raw">raw</a></li>
 <li class="toctree-l4"><a class="reference internal" href="models.html#tortoise.models.Model.refresh_from_db">refresh_from_db</a></li>
@@ -993,6 +1000,7 @@
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.count">count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.delete">delete</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.distinct">distinct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.earliest">earliest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.exclude">exclude</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.exists">exists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.explain">explain</a></li>
@@ -1003,6 +1011,8 @@
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.get_or_none">get_or_none</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.group_by">group_by</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.in_bulk">in_bulk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.last">last</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.latest">latest</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.limit">limit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.offset">offset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.only">only</a></li>
@@ -1285,6 +1295,10 @@
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MaxValueValidator">tortoise.validators.MaxValueValidator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MinLengthValidator">tortoise.validators.MinLengthValidator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MinValueValidator">tortoise.validators.MinValueValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.NumericValidator">tortoise.validators.NumericValidator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.NumericValidator.types">types</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.RegexValidator">tortoise.validators.RegexValidator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.Validator">tortoise.validators.Validator</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.Validator.__call__">__call__</a></li>
@@ -1292,14 +1306,17 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv46_address">tortoise.validators.validate_ipv46_address</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv46_address-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv46_address-return-type">Return type</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv4_address">tortoise.validators.validate_ipv4_address</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv4_address-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv4_address-return-type">Return type</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv6_address">tortoise.validators.validate_ipv6_address</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv6_address-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.validate_ipv6_address-return-type">Return type</a></li>
 </ul>
 </li>
 </ul>
