@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.mysql.functions - Tortoise ORM v0.22.0 Documentation</title>
+        <title>tortoise.contrib.mysql.functions - Tortoise ORM v0.22.1 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.0 Documentation
+            Tortoise ORM 0.22.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.0 Documentation
+    Tortoise ORM v0.22.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -513,7 +513,7 @@
 <h1>Source code for tortoise.contrib.mysql.functions</h1><div class="highlight"><pre>
 <span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Function</span><span class="p">,</span> <span class="n">Parameter</span>
+<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Function</span>
 
 
 <div class="viewcode-block" id="Rand"><a class="viewcode-back" href="../../../../functions.html#tortoise.contrib.mysql.functions.Rand">[docs]</a><span class="k">class</span> <span class="nc">Rand</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
@@ -525,7 +525,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;RAND&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="n">alias</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrap_constant</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)]</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrap_constant</span><span class="p">(</span><span class="n">seed</span><span class="p">)]</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span></div>
 </code></pre></div>
 
 

@@ -13,7 +13,7 @@
     
     
       
-        <title>Query API - Tortoise ORM v0.22.0 Documentation</title>
+        <title>Query API - Tortoise ORM v0.22.1 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.0 Documentation
+            Tortoise ORM 0.22.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.22.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.0 Documentation
+    Tortoise ORM v0.22.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -649,26 +649,6 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.annotate-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.queryset.QuerySet.as_query" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.QuerySet.as_query (Python method) — Return the actual query." class="md-ellipsis">as_<wbr>query</span>
-  </a>
-  
-    <nav class="md-nav" aria-label="as_query">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.queryset.QuerySet.as_query-return-type" class="md-nav__link">
     <span class="md-ellipsis">Return type</span>
   </a>
   
@@ -1468,11 +1448,31 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.sql" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.QuerySet.sql (Python method) — Return the actual SQL." class="md-ellipsis">sql</span>
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.QuerySet.sql (Python method) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters." class="md-ellipsis">sql</span>
   </a>
   
     <nav class="md-nav" aria-label="sql">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.sql-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.sql.params_inline" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.queryset.QuerySet.sql.params_inline (Python parameter) — Whether to inline the parameters" class="md-ellipsis">params_<wbr>inline</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.sql-return-type" class="md-nav__link">
@@ -1600,7 +1600,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkCreateQuery" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.queryset.BulkCreateQuery (Python class) — Return the actual SQL." class="md-ellipsis">tortoise.<wbr>queryset.<wbr>Bulk<wbr>Create<wbr>Query</span>
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.queryset.BulkCreateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters." class="md-ellipsis">tortoise.<wbr>queryset.<wbr>Bulk<wbr>Create<wbr>Query</span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.queryset.BulkCreateQuery">
@@ -1608,11 +1608,31 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkCreateQuery.sql" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.BulkCreateQuery.sql (Python method) — Return the actual SQL." class="md-ellipsis">sql</span>
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.BulkCreateQuery.sql (Python method) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters." class="md-ellipsis">sql</span>
   </a>
   
     <nav class="md-nav" aria-label="sql">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.BulkCreateQuery.sql-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.BulkCreateQuery.sql.params_inline" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.queryset.BulkCreateQuery.sql.params_inline (Python parameter) — Whether to inline the parameters" class="md-ellipsis">params_<wbr>inline</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkCreateQuery.sql-return-type" class="md-nav__link">
@@ -1633,7 +1653,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkUpdateQuery" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.queryset.BulkUpdateQuery (Python class) — Return the actual SQL." class="md-ellipsis">tortoise.<wbr>queryset.<wbr>Bulk<wbr>Update<wbr>Query</span>
+    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.queryset.BulkUpdateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters." class="md-ellipsis">tortoise.<wbr>queryset.<wbr>Bulk<wbr>Update<wbr>Query</span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.queryset.BulkUpdateQuery">
@@ -1641,11 +1661,31 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkUpdateQuery.sql" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.BulkUpdateQuery.sql (Python method) — Return the actual SQL." class="md-ellipsis">sql</span>
+    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.queryset.BulkUpdateQuery.sql (Python method) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters." class="md-ellipsis">sql</span>
   </a>
   
     <nav class="md-nav" aria-label="sql">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.BulkUpdateQuery.sql-parameters" class="md-nav__link">
+    <span class="md-ellipsis">Parameters</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.BulkUpdateQuery.sql.params_inline" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.queryset.BulkUpdateQuery.sql.params_inline (Python parameter) — Whether to inline the parameters" class="md-ellipsis">params_<wbr>inline</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.BulkUpdateQuery.sql-return-type" class="md-nav__link">
@@ -2609,17 +2649,6 @@ Essentially a no-op except as the only operation.</p>
 </dd></dl>
 
 <dl class="py method objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.as_query">
-<span class="sig-name descname"><span class="pre">as_query</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.as_query" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the actual query.</p>
-<dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.as_query-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.as_query-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueryBuilder</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.queryset.QuerySet.bulk_create">
 <span class="sig-name descname"><span class="pre">bulk_create</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_create.objects" title="tortoise.queryset.QuerySet.bulk_create.objects (Python parameter) — List of objects to bulk create"><span class="n"><span class="pre">objects</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_create.batch_size" title="tortoise.queryset.QuerySet.bulk_create.batch_size (Python parameter) — How many objects are created in a single query"><span class="n"><span class="pre">batch_size</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_create.ignore_conflicts" title="tortoise.queryset.QuerySet.bulk_create.ignore_conflicts (Python parameter) — Ignore conflicts when inserting"><span class="n"><span class="pre">ignore_conflicts</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_create.update_fields" title="tortoise.queryset.QuerySet.bulk_create.update_fields (Python parameter) — Update fields when conflicts"><span class="n"><span class="pre">update_fields</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.bulk_create.on_conflict" title="tortoise.queryset.QuerySet.bulk_create.on_conflict (Python parameter) — On conflict index name"><span class="n"><span class="pre">on_conflict</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.bulk_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method inserts the provided list of objects into the database in an efficient manner
@@ -2643,7 +2672,7 @@ Essentially a no-op except as the only operation.</p>
 <dd class="field-even"><p><strong>ValueError</strong> – If params do not meet specifications</p>
 </dd>
 <dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_create-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Return the actual SQL."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a>[Model]</p>
+<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a>[Model]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2667,7 +2696,7 @@ Essentially a no-op except as the only operation.</p>
 <dd class="field-even"><p><strong>ValueError</strong> – If objects have no primary key set</p>
 </dd>
 <dt class="field-odd" id="tortoise.queryset.QuerySet.bulk_update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.bulk_update-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkUpdateQuery" title="tortoise.queryset.BulkUpdateQuery (Python class) — Return the actual SQL."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkUpdateQuery</span></code></a>[Model]</p>
+<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.BulkUpdateQuery" title="tortoise.queryset.BulkUpdateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkUpdateQuery</span></code></a>[Model]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3053,11 +3082,18 @@ related objects are included in the selection.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.sql">
-<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the actual SQL.</p>
+<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.sql.params_inline" title="tortoise.queryset.QuerySet.sql.params_inline (Python parameter) — Whether to inline the parameters"><span class="n"><span class="pre">params_inline</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SQL query that will be executed. By default, it will return the query with
+placeholders, but if you set <cite>params_inline=True</cite>, it will inline the parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.sql-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.QuerySet.sql.params_inline"><span class="n sig-name">params_inline</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.queryset.QuerySet.sql.params_inline" title="Permalink to this definition">¶</a></dt><dd><p>Whether to inline the parameters</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.QuerySet.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.sql-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3136,11 +3172,18 @@ in order of declaration.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">BulkCreateQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">ignore_conflicts</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">update_fields</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">on_conflict</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.BulkCreateQuery.sql">
-<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the actual SQL.</p>
+<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.BulkCreateQuery.sql.params_inline" title="tortoise.queryset.BulkCreateQuery.sql.params_inline (Python parameter) — Whether to inline the parameters"><span class="n"><span class="pre">params_inline</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkCreateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SQL query that will be executed. By default, it will return the query with
+placeholders, but if you set <cite>params_inline=True</cite>, it will inline the parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.BulkCreateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+<dt class="field-odd" id="tortoise.queryset.BulkCreateQuery.sql-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.BulkCreateQuery.sql.params_inline"><span class="n sig-name">params_inline</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql.params_inline" title="Permalink to this definition">¶</a></dt><dd><p>Whether to inline the parameters</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.BulkCreateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkCreateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3152,11 +3195,18 @@ in order of declaration.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">BulkUpdateQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">q_objects</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">annotations</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">custom_filters</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">orderings</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">objects</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkUpdateQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.BulkUpdateQuery.sql">
-<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkUpdateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the actual SQL.</p>
+<span class="sig-name descname"><span class="pre">sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.BulkUpdateQuery.sql.params_inline" title="tortoise.queryset.BulkUpdateQuery.sql.params_inline (Python parameter) — Whether to inline the parameters"><span class="n"><span class="pre">params_inline</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#BulkUpdateQuery.sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SQL query that will be executed. By default, it will return the query with
+placeholders, but if you set <cite>params_inline=True</cite>, it will inline the parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.BulkUpdateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+<dt class="field-odd" id="tortoise.queryset.BulkUpdateQuery.sql-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.BulkUpdateQuery.sql.params_inline"><span class="n sig-name">params_inline</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql.params_inline" title="Permalink to this definition">¶</a></dt><dd><p>Whether to inline the parameters</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.BulkUpdateQuery.sql-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.BulkUpdateQuery.sql-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
