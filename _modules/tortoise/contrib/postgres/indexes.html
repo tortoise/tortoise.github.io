@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.postgres.indexes - Tortoise ORM v0.22.1 Documentation</title>
+        <title>tortoise.contrib.postgres.indexes - Tortoise ORM v0.22.2 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.1 Documentation
+            Tortoise ORM 0.22.2 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.1 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.1 Documentation
+    Tortoise ORM v0.22.2 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,33 +511,13 @@
 
 
 <h1>Source code for tortoise.contrib.postgres.indexes</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
-
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
-
-<span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">PartialIndex</span>
+<span></span><code><span class="kn">from</span> <span class="nn">tortoise.indexes</span> <span class="kn">import</span> <span class="n">PartialIndex</span>
 
 
 <span class="k">class</span> <span class="nc">PostgreSQLIndex</span><span class="p">(</span><span class="n">PartialIndex</span><span class="p">):</span>
     <span class="n">INDEX_CREATE_TEMPLATE</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;CREATE INDEX </span><span class="si">{exists}{index_name}</span><span class="s2"> ON </span><span class="si">{table_name}</span><span class="s2"> USING</span><span class="si">{index_type}</span><span class="s2">(</span><span class="si">{fields}</span><span class="s2">)</span><span class="si">{extra}</span><span class="s2">;&quot;</span>
     <span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="o">*</span><span class="n">expressions</span><span class="p">:</span> <span class="n">Term</span><span class="p">,</span>
-        <span class="n">fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">expressions</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
-            <span class="n">cond</span> <span class="o">=</span> <span class="s2">&quot; WHERE &quot;</span>
-            <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">condition</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">ValueWrapper</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">cond</span> <span class="o">+=</span> <span class="s2">&quot; AND &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="n">cond</span>
 
 
 <div class="viewcode-block" id="BloomIndex"><a class="viewcode-back" href="../../../../contrib/postgres.html#tortoise.contrib.postgres.indexes.BloomIndex">[docs]</a><span class="k">class</span> <span class="nc">BloomIndex</span><span class="p">(</span><span class="n">PostgreSQLIndex</span><span class="p">):</span>

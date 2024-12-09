@@ -9,12 +9,32 @@ Changelog
 0.22
 ====
 
+0.22.2
+------
+Fixed
+^^^^^
+- Fix bug related to `Connector.div` in combined expressions. (#1794)
+- Fix recovery in case of database downtime (#1796)
+
+Changed
+^^^^^^^
+- Parametrizes UPDATE, DELETE, bulk update and create operations (#1785)
+- Parametrizes related field queries (#1797)
+
+Added
+^^^^^
+- CharEnumField and IntEnumField is supported by pydantic_model_creator (#1798)
+
 0.22.1
 ------
 Fixed
 ^^^^^
 - Fix unable to use ManyToManyField if OneToOneField passed as Primary Key (#1783)
 - Fix sorting by Term (e.g. RawSQL) (#1788)
+
+Changed
+^^^^^^^
+- Parametrizes SELECT queries including `.count()`, `.exists()`, `.values()`, `.values_list()` (#1777)
 
 0.22.0
 ------
@@ -33,11 +53,10 @@ Added
 - Allow use of annotate fields within Case-When expression (#1748)
 - Added new queryset methods: last(), latest(), earliest() (#1754) (#1756)
 
-
 Changed
 ^^^^^^^
 - Change old pydantic docs link to new one (#1775).
-- Refactored pydantic_model_creator, interface not changed  (#1763)
+- Refactored pydantic_model_creator, interface not changed  (#1745)
 - Values are no longer validated to be right type upon loading from database (#1750)
 - Refactored private field names in queryset classes (#1751)
 
