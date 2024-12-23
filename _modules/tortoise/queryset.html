@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.queryset - Tortoise ORM v0.22.2 Documentation</title>
+        <title>tortoise.queryset - Tortoise ORM v0.23.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.2 Documentation
+            Tortoise ORM 0.23.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.2 Documentation
+    Tortoise ORM v0.23.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1717,6 +1717,7 @@
             <span class="k">if</span> <span class="n">field_object</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">IntegrityError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Field </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> is PK and can not be updated&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_object</span><span class="p">,</span> <span class="p">(</span><span class="n">ForeignKeyFieldInstance</span><span class="p">,</span> <span class="n">OneToOneFieldInstance</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_validate_relation_type</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
                 <span class="n">fk_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field_object</span><span class="o">.</span><span class="n">source_field</span>  <span class="c1"># type: ignore</span>
                 <span class="n">db_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">fk_field</span><span class="p">]</span><span class="o">.</span><span class="n">source_field</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">column_map</span><span class="p">[</span><span class="n">fk_field</span><span class="p">](</span>

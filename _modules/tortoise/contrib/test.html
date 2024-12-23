@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.test - Tortoise ORM v0.22.2 Documentation</title>
+        <title>tortoise.contrib.test - Tortoise ORM v0.23.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.2 Documentation
+            Tortoise ORM 0.23.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.2 Documentation
+    Tortoise ORM v0.23.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -810,40 +810,8 @@
         <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_tearDownDB</span><span class="p">()</span></div>
 
 
-<span class="k">class</span> <span class="nc">TransactionTestContext</span><span class="p">:</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="s2">&quot;connection_name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;uses_pool&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">connection_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">uses_pool</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="p">,</span> <span class="s2">&quot;_pool&quot;</span><span class="p">)</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">ensure_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">is_conn_established</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">uses_pool</span><span class="p">:</span>
-            <span class="n">is_conn_established</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-
-        <span class="c1"># If the underlying pool/connection hasn&#39;t been established then</span>
-        <span class="c1"># first create the pool/connection</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_conn_established</span><span class="p">:</span>
-            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">with_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">uses_pool</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_connection</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_connection</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">uses_pool</span><span class="p">:</span>
-            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span><span class="p">)</span>
-        <span class="n">connections</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">_RollbackException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
 
 
 <div class="viewcode-block" id="TestCase"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TestCase">[docs]</a><span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">TruncationTestCase</span><span class="p">):</span>
@@ -857,11 +825,12 @@
 <div class="viewcode-block" id="TestCase.asyncSetUp"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TestCase.asyncSetUp">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">asyncSetUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">asyncSetUp</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;models&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span> <span class="o">=</span> <span class="n">TransactionTestContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">_in_transaction</span><span class="p">()</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="fm">__aenter__</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">_in_transaction</span><span class="p">()</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="fm">__aenter__</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TestCase.asyncTearDown"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.TestCase.asyncTearDown">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">asyncTearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="fm">__aexit__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># this will cause a rollback</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="fm">__aexit__</span><span class="p">(</span><span class="n">_RollbackException</span><span class="p">,</span> <span class="n">_RollbackException</span><span class="p">(),</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">asyncTearDown</span><span class="p">()</span></div>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_tearDownDB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -959,7 +928,7 @@
 
 
 <div class="viewcode-block" id="init_memory_sqlite"><a class="viewcode-back" href="../../../contrib/unittest.html#tortoise.contrib.test.init_memory_sqlite">[docs]</a><span class="k">def</span> <span class="nf">init_memory_sqlite</span><span class="p">(</span>
-    <span class="n">models</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModulesConfigType</span><span class="p">,</span> <span class="n">AsyncFunc</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">models</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModulesConfigType</span><span class="p">,</span> <span class="n">AsyncFunc</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">AsyncFunc</span><span class="p">,</span> <span class="n">AsyncFuncDeco</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For single file style to run code with memory sqlite</span>

@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.22.2 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.23.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.2 Documentation
+            Tortoise ORM 0.23.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.2 Documentation
+    Tortoise ORM v0.23.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -543,11 +543,13 @@
 <span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">ConfigurationError</span><span class="p">,</span>
     <span class="n">DoesNotExist</span><span class="p">,</span>
+    <span class="n">FieldError</span><span class="p">,</span>
     <span class="n">IncompleteInstanceError</span><span class="p">,</span>
     <span class="n">IntegrityError</span><span class="p">,</span>
     <span class="n">ObjectDoesNotExistError</span><span class="p">,</span>
     <span class="n">OperationalError</span><span class="p">,</span>
     <span class="n">ParamsError</span><span class="p">,</span>
+    <span class="n">ValidationError</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">Expression</span>
 <span class="kn">from</span> <span class="nn">tortoise.fields.base</span> <span class="kn">import</span> <span class="n">Field</span>
@@ -1198,6 +1200,8 @@
         <span class="c1"># set field value override async default function</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_await_when_save&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_await_when_save</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fk_fields</span> <span class="ow">or</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">o2o_fields</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_validate_relation_type</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_set_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -1318,6 +1322,27 @@
 <span class="sd">    Alias to the models Primary Key.</span>
 <span class="sd">    Can be used as a field name when doing filtering e.g. ``.filter(pk=...)`` etc...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_validate_relation_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">field</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">field_key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="p">(</span><span class="n">OneToOneFieldInstance</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">FieldError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Field &#39;</span><span class="si">{</span><span class="n">field_key</span><span class="si">}</span><span class="s2">&#39; must be a OneToOne or ForeignKey relation, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">expected_model</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">related_model</span>
+        <span class="n">received_model</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">received_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">expected_model</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid type for relationship field &#39;</span><span class="si">{</span><span class="n">field_key</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected model type &#39;</span><span class="si">{</span><span class="n">expected_model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;, but got &#39;</span><span class="si">{</span><span class="n">received_model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                <span class="s2">&quot;Make sure you&#39;re using the correct model class for this relationship.&quot;</span>
+            <span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_getbypk</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>

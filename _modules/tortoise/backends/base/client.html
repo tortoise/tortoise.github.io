@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.backends.base.client - Tortoise ORM v0.22.2 Documentation</title>
+        <title>tortoise.backends.base.client - Tortoise ORM v0.23.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.22.2 Documentation
+            Tortoise ORM 0.23.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.22.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.22.2 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.22.2 Documentation
+    Tortoise ORM v0.23.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -513,6 +513,7 @@
 <h1>Source code for tortoise.backends.base.client</h1><div class="highlight"><pre>
 <span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
+<span class="kn">import</span> <span class="nn">abc</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
@@ -731,10 +732,12 @@
 
 
 <span class="k">class</span> <span class="nc">ConnectionWrapper</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T_conn</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps the connections with a lock to facilitate safe concurrent access when using</span>
+<span class="sd">    asyncio.gather, TaskGroup, or similar.&quot;&quot;&quot;</span>
+
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="s2">&quot;lock&quot;</span><span class="p">,</span> <span class="s2">&quot;client&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lock</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Lock</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps the connections with a lock to facilitate safe concurrent access.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Lock</span> <span class="o">=</span> <span class="n">lock</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span> <span class="n">T_conn</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_connection</span>
@@ -754,41 +757,26 @@
 
 
 <span class="k">class</span> <span class="nc">TransactionContext</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T_conn</span><span class="p">]):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="s2">&quot;connection_name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;lock&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A context manager interface for transactions. It is returned from in_transaction</span>
+<span class="sd">    and _in_transaction.&quot;&quot;&quot;</span>
+
+    <span class="n">connection</span><span class="p">:</span> <span class="n">T_conn</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+
+<span class="k">class</span> <span class="nc">TransactionContextPooled</span><span class="p">(</span><span class="n">TransactionContext</span><span class="p">):</span>
+    <span class="s2">&quot;A version of TransactionContext that uses a pool to acquire connections.&quot;</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;conn_wrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="s2">&quot;connection_name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">connection_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">_trxlock</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">ensure_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span><span class="p">:</span>
-            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">with_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_connection</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_connection</span><span class="p">()</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_finalized</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">exc_type</span><span class="p">:</span>
-                    <span class="c1"># Can&#39;t rollback a transaction that already failed.</span>
-                    <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">TransactionManagementError</span><span class="p">:</span>
-                        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-        <span class="k">finally</span><span class="p">:</span>
-            <span class="n">connections</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-
-
-<span class="k">class</span> <span class="nc">TransactionContextPooled</span><span class="p">(</span><span class="n">TransactionContext</span><span class="p">):</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;conn_wrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="s2">&quot;connection_name&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">ensure_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="p">:</span>
@@ -796,9 +784,11 @@
 
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_connection</span><span class="p">()</span>
+        <span class="c1"># Set the context variable so the current task is always seeing a</span>
+        <span class="c1"># TransactionWrapper conneciton.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -817,7 +807,12 @@
 
 
 <span class="k">class</span> <span class="nc">NestedTransactionContext</span><span class="p">(</span><span class="n">TransactionContext</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">connection_name</span>
+
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">savepoint</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
 
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -825,26 +820,15 @@
             <span class="k">if</span> <span class="n">exc_type</span><span class="p">:</span>
                 <span class="c1"># Can&#39;t rollback a transaction that already failed.</span>
                 <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">TransactionManagementError</span><span class="p">:</span>
-                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
-
-
-<span class="k">class</span> <span class="nc">NestedTransactionPooledContext</span><span class="p">(</span><span class="n">TransactionContext</span><span class="p">):</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span>
-        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="fm">__aexit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">_finalized</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">exc_type</span><span class="p">:</span>
-                <span class="c1"># Can&#39;t rollback a transaction that already failed.</span>
-                <span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">TransactionManagementError</span><span class="p">:</span>
-                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">savepoint_rollback</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">release_savepoint</span><span class="p">()</span>
 
 
 <span class="k">class</span> <span class="nc">PoolConnectionWrapper</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T_conn</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to manage acquiring from and releasing connections to a pool.&quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Class to manage acquiring from and releasing connections to a pool.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_pool</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">T_conn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -856,7 +840,7 @@
 
     <span class="k">async</span> <span class="k">def</span> <span class="fm">__aenter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T_conn</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_connection</span><span class="p">()</span>
-        <span class="c1"># get first available connection</span>
+        <span class="c1"># get first available connection. If none available, wait until one is released</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">T_conn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
 
@@ -866,17 +850,23 @@
 
 
 <span class="k">class</span> <span class="nc">BaseTransactionWrapper</span><span class="p">:</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">savepoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">rollback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">rollback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">savepoint_rollback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">release_savepoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 </code></pre></div>
 
 
