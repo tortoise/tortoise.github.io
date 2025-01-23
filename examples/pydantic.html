@@ -13,7 +13,7 @@
     
     
       
-        <title>Pydantic Examples - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Pydantic Examples - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -750,30 +750,30 @@
                   
 
 
-<h1 id="pydantic-examples"><span id="examples-pydantic"></span>Pydantic Examples<a class="headerlink" href="#pydantic-examples" title="Permalink to this heading">¶</a></h1>
+<h1 id="pydantic-examples"><span id="examples-pydantic"></span>Pydantic Examples<a class="headerlink" href="#pydantic-examples" title="Link to this heading">¶</a></h1>
 <p>See <a class="reference internal" href="../contrib/pydantic.html#contrib-pydantic"><span class="std std-ref">Pydantic serialisation</span></a></p>
-<h2 id="basic-pydantic"><span id="example-pydantic-basic"></span>Basic Pydantic<a class="headerlink" href="#basic-pydantic" title="Permalink to this heading">¶</a></h2>
+<h2 id="basic-pydantic"><span id="example-pydantic-basic"></span>Basic Pydantic<a class="headerlink" href="#basic-pydantic" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span><span class="p">,</span> <span class="n">pydantic_queryset_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span><span class="p">,</span> <span class="n">pydantic_queryset_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -785,11 +785,11 @@
     <span class="p">)</span>
     <span class="n">address</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">OneToOneNullableRelation</span><span class="p">[</span><span class="s2">&quot;Address&quot;</span><span class="p">]</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">Address</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Address</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">city</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
     <span class="n">street</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -798,22 +798,22 @@
         <span class="s2">&quot;models.Event&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">fields</span><span class="o">.</span><span class="n">OnDelete</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;address&quot;</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">Team</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Team</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
     <span class="n">Event_Pydantic</span> <span class="o">=</span> <span class="n">pydantic_model_creator</span><span class="p">(</span><span class="n">Event</span><span class="p">)</span>
@@ -858,28 +858,28 @@
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<h2 id="early-model-init"><span id="example-pydantic-early-init"></span>Early model Init<a class="headerlink" href="#early-model-init" title="Permalink to this heading">¶</a></h2>
+<h2 id="early-model-init"><span id="example-pydantic-early-init"></span>Early model Init<a class="headerlink" href="#early-model-init" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation, and how to use early partial init.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -887,7 +887,7 @@
         <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
 
@@ -905,18 +905,18 @@
 <span class="c1"># Now we can use the pydantic model early if needed</span>
 </code></pre></div>
 </div>
-<h2 id="recursive-models-computed-fields"><span id="example-pydantic-recursive"></span>Recursive models + Computed fields<a class="headerlink" href="#recursive-models-computed-fields" title="Permalink to this heading">¶</a></h2>
+<h2 id="recursive-models-computed-fields"><span id="example-pydantic-recursive"></span>Recursive models + Computed fields<a class="headerlink" href="#recursive-models-computed-fields" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This example demonstrates pydantic serialisation of a recursively cycled model.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">NoValuesFetched</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoValuesFetched</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Employee</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
     <span class="n">manager</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span>
@@ -929,13 +929,13 @@
     <span class="p">)</span>
     <span class="n">gets_talked_to</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyRelation</span><span class="p">[</span><span class="s2">&quot;Employee&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="c1"># Computes length of name</span>
         <span class="c1"># Note that this function needs to be annotated with a return type so that pydantic</span>
         <span class="c1"># can generate a valid schema</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">team_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">team_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes team size.</span>
 
@@ -953,18 +953,18 @@
         <span class="k">except</span> <span class="n">NoValuesFetched</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">not_annotated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">not_annotated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Never called due to no annotation!</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not Done&quot;</span><span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">PydanticMeta</span><span class="p">:</span>
         <span class="n">computed</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="s2">&quot;team_size&quot;</span><span class="p">,</span> <span class="s2">&quot;not_annotated&quot;</span><span class="p">]</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;manager&quot;</span><span class="p">,</span> <span class="s2">&quot;gets_talked_to&quot;</span><span class="p">]</span>
         <span class="n">allow_cycles</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">max_recursion</span> <span class="o">=</span> <span class="mi">4</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
@@ -991,8 +991,8 @@
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<h2 id="tutorial-sources"><span id="example-pydantic-tutorials"></span>Tutorial sources<a class="headerlink" href="#tutorial-sources" title="Permalink to this heading">¶</a></h2>
-<h3 id="basic-usage"><span id="example-pydantic-tut1"></span>1: Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading">¶</a></h3>
+<h2 id="tutorial-sources"><span id="example-pydantic-tutorials"></span>Tutorial sources<a class="headerlink" href="#tutorial-sources" title="Link to this heading">¶</a></h2>
+<h3 id="basic-usage"><span id="example-pydantic-tut1"></span>1: Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 1</span>
 
@@ -1003,12 +1003,12 @@
 <span class="sd">* Simple serialisation with both .model_dump() and .model_dump_json()</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1024,7 +1024,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
@@ -1043,7 +1043,7 @@
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<h3 id="querysets-lists"><span id="example-pydantic-tut2"></span>2: Querysets &amp; Lists<a class="headerlink" href="#querysets-lists" title="Permalink to this heading">¶</a></h3>
+<h3 id="querysets-lists"><span id="example-pydantic-tut2"></span>2: Querysets &amp; Lists<a class="headerlink" href="#querysets-lists" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 2</span>
 
@@ -1052,12 +1052,12 @@
 <span class="sd">* Default sorting is honoured</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_queryset_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_queryset_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1067,7 +1067,7 @@
     <span class="c1">#: The date-time the Tournament record was created at</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="c1"># Define the default ordering</span>
         <span class="c1">#  the pydantic serialiser will use this to order the results</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
@@ -1079,7 +1079,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic_List</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
@@ -1102,7 +1102,7 @@
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<h3 id="relations-early-init"><span id="example-pydantic-tut3"></span>3: Relations &amp; Early-init<a class="headerlink" href="#relations-early-init" title="Permalink to this heading">¶</a></h3>
+<h3 id="relations-early-init"><span id="example-pydantic-tut3"></span>3: Relations &amp; Early-init<a class="headerlink" href="#relations-early-init" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 3</span>
 
@@ -1111,12 +1111,12 @@
 <span class="sd">* Early model init</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1127,7 +1127,7 @@
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references an Event in a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1162,7 +1162,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">Event_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
@@ -1187,7 +1187,7 @@
     <span class="n">run_async</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<h3 id="pydanticmeta-callables"><span id="example-pydantic-tut4"></span>4: PydanticMeta &amp; Callables<a class="headerlink" href="#pydanticmeta-callables" title="Permalink to this heading">¶</a></h3>
+<h3 id="pydanticmeta-callables"><span id="example-pydantic-tut4"></span>4: PydanticMeta &amp; Callables<a class="headerlink" href="#pydanticmeta-callables" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pydantic tutorial 4</span>
 
@@ -1196,13 +1196,13 @@
 <span class="sd">* Using callable functions to annotate extra data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.pydantic</span> <span class="kn">import</span> <span class="n">pydantic_model_creator</span>
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">NoValuesFetched</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">pydantic_model_creator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoValuesFetched</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
-<span class="k">class</span> <span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1215,7 +1215,7 @@
     <span class="c1">#  and auto completion work</span>
     <span class="n">events</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">ReverseRelation</span><span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes length of name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1223,7 +1223,7 @@
         <span class="c1">#  can generate a valid schema</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">events_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">events_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes team size.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1240,14 +1240,14 @@
         <span class="k">except</span> <span class="n">NoValuesFetched</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">PydanticMeta</span><span class="p">:</span>
         <span class="c1"># Let&#39;s exclude the created timestamp</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
         <span class="c1"># Let&#39;s include two callables as computed columns</span>
         <span class="n">computed</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name_length&quot;</span><span class="p">,</span> <span class="s2">&quot;events_num&quot;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This references an Event in a Tournament</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1260,10 +1260,10 @@
         <span class="s2">&quot;models.Tournament&quot;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;The Tournament this happens in&quot;</span>
     <span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
-    <span class="k">class</span> <span class="nc">PydanticMeta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">PydanticMeta</span><span class="p">:</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;created_at&quot;</span><span class="p">,)</span>
 
 
@@ -1276,7 +1276,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">Tournament_Pydantic</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
@@ -1364,13 +1364,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

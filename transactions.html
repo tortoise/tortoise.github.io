@@ -13,7 +13,7 @@
     
     
       
-        <title>Transactions - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Transactions - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -948,7 +948,7 @@
                   
 
 
-<h1 id="transactions"><span id="id1"></span>Transactions<a class="headerlink" href="#transactions" title="Permalink to this heading">¶</a></h1>
+<h1 id="transactions"><span id="id1"></span>Transactions<a class="headerlink" href="#transactions" title="Link to this heading">¶</a></h1>
 <p>Tortoise ORM provides a simple way to manage transactions. You can use the
 <code class="docutils literal notranslate"><span class="pre">atomic()</span></code> decorator or <code class="docutils literal notranslate"><span class="pre">in_transaction()</span></code> context manager.</p>
 <p><code class="docutils literal notranslate"><span class="pre">atomic()</span></code> and <code class="docutils literal notranslate"><span class="pre">in_transaction()</span></code> can be nested. The inner blocks will create transaction savepoints,
@@ -976,9 +976,9 @@ propagate the exception to the outermost block to ensure that the transaction is
 <p>When using <code class="docutils literal notranslate"><span class="pre">asyncio.gather</span></code> or similar ways to spin up concurrent tasks in a transaction block,
 avoid having nested transaction blocks in the concurrent tasks. Transactions are stateful and nested
 blocks are expected to run sequentially, not concurrently.</p>
-<span class="target" id="module-tortoise.transactions"></span><dl class="py function objdesc">
+<dl class="py function objdesc" id="module-tortoise.transactions">
 <dt class="sig sig-object highlight py" id="tortoise.transactions.atomic">
-<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">atomic</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.atomic.connection_name" title="tortoise.transactions.atomic.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#atomic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.atomic" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">atomic</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.atomic.connection_name" title="tortoise.transactions.atomic.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#atomic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.atomic" title="Link to this definition">¶</a></dt>
 <dd><p>Transaction decorator.</p>
 <p>You can wrap your function with this decorator to run it into one transaction.
 If error occurs transaction will rollback.</p>
@@ -991,14 +991,14 @@ one db connection</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.transactions.atomic-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.transactions.atomic-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[…, ~T]], <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[…, ~T]]</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.transactions.in_transaction">
-<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">in_transaction</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.in_transaction.connection_name" title="tortoise.transactions.in_transaction.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#in_transaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.in_transaction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">in_transaction</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.in_transaction.connection_name" title="tortoise.transactions.in_transaction.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#in_transaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.in_transaction" title="Link to this definition">¶</a></dt>
 <dd><p>Transaction context manager.</p>
 <p>You can run your code inside <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span> <span class="pre">in_transaction():</span></code> statement to run it
 into one transaction. If error occurs transaction will rollback.</p>
@@ -1084,13 +1084,13 @@ one db connection</p>
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

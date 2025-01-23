@@ -13,7 +13,7 @@
     
     
       
-        <title>Validators - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Validators - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1098,11 +1098,11 @@
                   
 
 
-<h1 id="validators"><span id="id1"></span>Validators<a class="headerlink" href="#validators" title="Permalink to this heading">¶</a></h1>
+<h1 id="validators"><span id="id1"></span>Validators<a class="headerlink" href="#validators" title="Link to this heading">¶</a></h1>
 <p>A validator is a callable for model field that takes a value and raises a <cite>ValidationError</cite> if it doesn’t meet some criteria.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <p>You can pass a list of validators to <cite>Field</cite> parameter <cite>validators</cite>:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ValidatorModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ValidatorModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">regex</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">RegexValidator</span><span class="p">(</span><span class="s2">&quot;abc.+&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)])</span>
 
 <span class="c1"># oh no, this will raise ValidationError!</span>
@@ -1111,60 +1111,60 @@
 <span class="k">await</span> <span class="n">ValidatorModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;abcd&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h2 id="built-in-validators">Built-in Validators<a class="headerlink" href="#built-in-validators" title="Permalink to this heading">¶</a></h2>
+<h2 id="built-in-validators">Built-in Validators<a class="headerlink" href="#built-in-validators" title="Link to this heading">¶</a></h2>
 <p>Here is the list of built-in validators:</p>
-<span class="target" id="module-tortoise.validators"></span><dl class="py class objdesc">
+<dl class="py class objdesc" id="module-tortoise.validators">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.validators.CommaSeparatedIntegerListValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">CommaSeparatedIntegerListValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">allow_negative</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#CommaSeparatedIntegerListValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.CommaSeparatedIntegerListValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">CommaSeparatedIntegerListValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.CommaSeparatedIntegerListValidator" title="tortoise.validators.CommaSeparatedIntegerListValidator.__init__.allow_negative (Python parameter)"><span class="n"><span class="pre">allow_negative</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#CommaSeparatedIntegerListValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.CommaSeparatedIntegerListValidator" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate whether the given value is valid comma separated integer list or not.</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.MaxLengthValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MaxLengthValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">max_length</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MaxLengthValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MaxLengthValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MaxLengthValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.MaxLengthValidator" title="tortoise.validators.MaxLengthValidator.__init__.max_length (Python parameter)"><span class="n"><span class="pre">max_length</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MaxLengthValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MaxLengthValidator" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate the length of given value whether greater than max_length or not.</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.MaxValueValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MaxValueValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">max_value</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MaxValueValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MaxValueValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MaxValueValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.MaxValueValidator" title="tortoise.validators.MaxValueValidator.__init__.max_value (Python parameter)"><span class="n"><span class="pre">max_value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MaxValueValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MaxValueValidator" title="Link to this definition">¶</a></dt>
 <dd><p>Max value validator for FloatField, IntField, SmallIntField, BigIntField</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.MinLengthValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MinLengthValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">min_length</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MinLengthValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MinLengthValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MinLengthValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.MinLengthValidator" title="tortoise.validators.MinLengthValidator.__init__.min_length (Python parameter)"><span class="n"><span class="pre">min_length</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MinLengthValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MinLengthValidator" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate the length of given value whether less than min_length or not.</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.MinValueValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MinValueValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">min_value</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MinValueValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MinValueValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">MinValueValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.MinValueValidator" title="tortoise.validators.MinValueValidator.__init__.min_value (Python parameter)"><span class="n"><span class="pre">min_value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#MinValueValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.MinValueValidator" title="Link to this definition">¶</a></dt>
 <dd><p>Min value validator for FloatField, IntField, SmallIntField, BigIntField</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.NumericValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">NumericValidator</span></span><a class="reference internal" href="_modules/tortoise/validators.html#NumericValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.NumericValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">NumericValidator</span></span><a class="reference internal" href="_modules/tortoise/validators.html#NumericValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.NumericValidator" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.NumericValidator.types">
-<span class="sig-name descname"><span class="pre">types</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python">(&lt;class &#39;int&#39;&gt;, &lt;class &#39;float&#39;&gt;, &lt;class &#39;decimal.Decimal&#39;&gt;)</code><a class="headerlink" href="#tortoise.validators.NumericValidator.types" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">types</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">(</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nc">int</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="nb">float</span><span class="s1">&#39;&gt;, &lt;class &#39;</span><span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="s1">&#39;&gt;)</span></code><a class="headerlink" href="#tortoise.validators.NumericValidator.types" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.RegexValidator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">RegexValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#RegexValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.RegexValidator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">RegexValidator</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.RegexValidator" title="tortoise.validators.RegexValidator.__init__.pattern (Python parameter)"><span class="n"><span class="pre">pattern</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.RegexValidator" title="tortoise.validators.RegexValidator.__init__.flags (Python parameter)"><span class="n"><span class="pre">flags</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#RegexValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.RegexValidator" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate the given value whether match regex or not.</p>
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.Validator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><a class="reference internal" href="_modules/tortoise/validators.html#Validator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.Validator" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><a class="reference internal" href="_modules/tortoise/validators.html#Validator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.Validator" title="Link to this definition">¶</a></dt>
 <dd><dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.Validator.__call__">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.Validator.__call__.value" title="tortoise.validators.Validator.__call__.value (Python parameter) — The given value to be validated."><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#Validator.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.Validator.__call__" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.Validator.__call__.value" title="tortoise.validators.Validator.__call__.value (Python parameter) — The given value to be validated."><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#Validator.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.Validator.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>All specific validators should implement this method.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.validators.Validator.__call__-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.validators.Validator.__call__-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1186,7 +1186,7 @@
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.validate_ipv46_address">
-<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv46_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv46_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv46_address" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv46_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.validate_ipv46_address" title="tortoise.validators.validate_ipv46_address.value (Python parameter)"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv46_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv46_address" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate whether the given value is valid IPv4Address or IPv6Address or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.validators.validate_ipv46_address-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.validators.validate_ipv46_address-raises" title="Permalink to this headline">¶</a></dt>
@@ -1200,7 +1200,7 @@
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.validate_ipv4_address">
-<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv4_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv4_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv4_address" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv4_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.validate_ipv4_address" title="tortoise.validators.validate_ipv4_address.value (Python parameter)"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv4_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv4_address" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate whether the given value is valid IPv4Address or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.validators.validate_ipv4_address-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.validators.validate_ipv4_address-raises" title="Permalink to this headline">¶</a></dt>
@@ -1214,7 +1214,7 @@
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.validators.validate_ipv6_address">
-<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv6_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">value</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv6_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv6_address" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.validators.</span></span><span class="sig-name descname"><span class="pre">validate_ipv6_address</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.validators.validate_ipv6_address" title="tortoise.validators.validate_ipv6_address.value (Python parameter)"><span class="n"><span class="pre">value</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/validators.html#validate_ipv6_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.validators.validate_ipv6_address" title="Link to this definition">¶</a></dt>
 <dd><p>A validator to validate whether the given value is valid IPv6Address or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.validators.validate_ipv6_address-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.validators.validate_ipv6_address-raises" title="Permalink to this headline">¶</a></dt>
@@ -1226,22 +1226,22 @@
 </dl>
 </dd></dl>
 
-<h2 id="custom-validator">Custom Validator<a class="headerlink" href="#custom-validator" title="Permalink to this heading">¶</a></h2>
+<h2 id="custom-validator">Custom Validator<a class="headerlink" href="#custom-validator" title="Link to this heading">¶</a></h2>
 <p>There are two methods to write a custom validator, one you can write a function by passing a given value, another you can inherit <cite>tortoise.validators.Validator</cite> and implement <cite>__call__</cite>.</p>
 <p>Here is a example to write a custom validator to validate the given value is an even number:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.validators</span> <span class="kn">import</span> <span class="n">Validator</span>
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.validators</span><span class="w"> </span><span class="kn">import</span> <span class="n">Validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
 
-<span class="k">class</span> <span class="nc">EvenNumberValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EvenNumberValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A validator to validate whether the given value is an even number or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39; is not an even number&quot;</span><span class="p">)</span>
 
 <span class="c1"># or use function instead of class</span>
-<span class="k">def</span> <span class="nf">validate_even_number</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_even_number</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39; is not an even number&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1314,13 +1314,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

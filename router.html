@@ -13,7 +13,7 @@
     
     
       
-        <title>Router - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Router - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -895,21 +895,21 @@
                   
 
 
-<h1 id="router"><span id="id1"></span>Router<a class="headerlink" href="#router" title="Permalink to this heading">¶</a></h1>
+<h1 id="router"><span id="id1"></span>Router<a class="headerlink" href="#router" title="Link to this heading">¶</a></h1>
 <p>The easiest way to use multiple databases is to set up a database routing scheme. The default routing scheme ensures that objects remain ‘sticky’ to their original database (i.e., an object retrieved from the foo database will be saved on the same database). The default routing scheme ensures that if a database isn’t specified, all queries fall back to the default database.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<h3 id="define-router">Define Router<a class="headerlink" href="#define-router" title="Permalink to this heading">¶</a></h3>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<h3 id="define-router">Define Router<a class="headerlink" href="#define-router" title="Link to this heading">¶</a></h3>
 <p>Define a router is simple, you need just write a class that has <cite>db_for_read</cite> and <cite>db_for_write</cite> methods.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Router</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]):</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Router</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]):</span>
         <span class="k">return</span> <span class="s2">&quot;slave&quot;</span>
 
-    <span class="k">def</span> <span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]):</span>
         <span class="k">return</span> <span class="s2">&quot;master&quot;</span>
 </code></pre></div>
 </div>
 <p>The two methods return a connection string defined in configuration.</p>
-<h3 id="config-router">Config Router<a class="headerlink" href="#config-router" title="Permalink to this heading">¶</a></h3>
+<h3 id="config-router">Config Router<a class="headerlink" href="#config-router" title="Link to this heading">¶</a></h3>
 <p>Just put it in configuration of tortoise or in <cite>Tortoise.init</cite> method.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;master&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/test.db&quot;</span><span class="p">,</span> <span class="s2">&quot;slave&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/test.db&quot;</span><span class="p">},</span>
@@ -998,13 +998,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

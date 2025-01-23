@@ -13,7 +13,7 @@
     
     
       
-        <title>Reference - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Reference - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -683,7 +683,7 @@
                   
 
 
-<h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permalink to this heading">¶</a></h1>
+<h1 id="reference">Reference<a class="headerlink" href="#reference" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Set up</a><ul>
@@ -698,6 +698,7 @@
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.acquire_connection">acquire_connection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#id0">capabilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.close">close</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.connection_name">connection_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.create_connection">create_connection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.db_create">db_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.BaseDBAsyncClient.db_delete">db_delete</a></li>
@@ -753,6 +754,7 @@
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.get_connection">get_connection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.init">init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.init_models">init_models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.star_password">star_password</a></li>
 <li class="toctree-l4"><a class="reference internal" href="setup.html#tortoise.Tortoise.table_name_generator">table_name_generator</a></li>
 </ul>
 </li>
@@ -765,6 +767,7 @@
 <li class="toctree-l2"><a class="reference internal" href="databases.html#capabilities">Capabilities</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="databases.html#tortoise.backends.base.client.Capabilities">tortoise.backends.base.client.Capabilities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="databases.html#tortoise.backends.base.client.Capabilities-parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="databases.html#tortoise.backends.base.client.Capabilities-param">Param</a></li>
 </ul>
 </li>
 </ul>
@@ -969,7 +972,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Creation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="schema.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema.html#parameters">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="schema.html#tortoise.Tortoise.generate_schemas.safe">safe</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="schema.html#raises">Raises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="schema.html#return-type">Return type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="schema.html#module-tortoise.utils">Helper Functions</a><ul>
@@ -1408,13 +1414,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

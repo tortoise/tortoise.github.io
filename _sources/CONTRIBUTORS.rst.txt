@@ -63,6 +63,7 @@ Contributors
 * Rui Catarino ``@ruitcatarino``
 * Lance Moe ``@lancemoe``
 * Markus Beckschulte ``@markus-96``
+* Frederic Aoustin ``@fraoustin``
 
 Special Thanks
 ==============

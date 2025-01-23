@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.mysql.fields - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise.contrib.mysql.fields - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,27 +511,32 @@
 
 
 <h1>Source code for tortoise.contrib.mysql.fields</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Type</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">Field</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields</span> <span class="kn">import</span> <span class="n">UUIDField</span> <span class="k">as</span> <span class="n">UUIDFieldBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUIDField</span> <span class="k">as</span> <span class="n">UUIDFieldBase</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>  <span class="c1"># noqa pylint: disable=unused-import</span>
 
 
-<div class="viewcode-block" id="GeometryField"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.GeometryField">[docs]</a><span class="k">class</span> <span class="nc">GeometryField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+<div class="viewcode-block" id="GeometryField">
+<a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.GeometryField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GeometryField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;GEOMETRY&quot;</span></div>
 
 
-<div class="viewcode-block" id="UUIDField"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField">[docs]</a><span class="k">class</span> <span class="nc">UUIDField</span><span class="p">(</span><span class="n">UUIDFieldBase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UUIDField">
+<a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UUIDField</span><span class="p">(</span><span class="n">UUIDFieldBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    UUID Field</span>
 
@@ -548,7 +553,7 @@
 
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;CHAR(36)&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary_compression</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary_compression</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;primary_key&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="ow">and</span> <span class="s2">&quot;default&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uuid4</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -557,7 +562,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BINARY(16)&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_binary_compression</span> <span class="o">=</span> <span class="n">binary_compression</span>
 
-<div class="viewcode-block" id="UUIDField.to_db_value"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_db_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]:</span>  <span class="c1"># type: ignore</span>
+<div class="viewcode-block" id="UUIDField.to_db_value">
+<a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_db_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]:</span>  <span class="c1"># type: ignore</span>
         <span class="c1"># Make sure that value is a UUIDv4</span>
         <span class="c1"># If not, raise an error</span>
         <span class="c1"># This is to prevent UUIDv1 or any other version from being stored in the database</span>
@@ -567,13 +574,18 @@
             <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">bytes</span>
         <span class="k">return</span> <span class="n">value</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="UUIDField.to_python_value"><a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_python_value">[docs]</a>    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="UUIDField.to_python_value">
+<a class="viewcode-back" href="../../../../fields.html#tortoise.contrib.mysql.fields.UUIDField.to_python_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">value</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binary_compression</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="nb">bytes</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div></div>
+            <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</div>
+
 </code></pre></div>
 
 
@@ -606,13 +618,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

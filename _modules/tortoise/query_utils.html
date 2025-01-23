@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.query_utils - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise.query_utils - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,17 +511,17 @@
 
 
 <h1>Source code for tortoise.query_utils</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
 
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Table</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">Term</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">Term</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">OperationalError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.base</span> <span class="kn">import</span> <span class="n">Field</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">OperationalError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">BackwardFKRelation</span><span class="p">,</span>
     <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
     <span class="n">ManyToManyFieldInstance</span><span class="p">,</span>
@@ -529,17 +529,17 @@
 <span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
-    <span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">QuerySet</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.queryset</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuerySet</span>
 
 
-<span class="n">TableCriterionTuple</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]</span>
+<span class="n">TableCriterionTuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">get_joins_for_related_field</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_joins_for_related_field</span><span class="p">(</span>
     <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">:</span> <span class="n">RelationalField</span><span class="p">,</span> <span class="n">related_field_name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]:</span>
-    <span class="n">required_joins</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]:</span>
+    <span class="n">required_joins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">related_table</span><span class="p">:</span> <span class="n">Table</span> <span class="o">=</span> <span class="n">related_field</span><span class="o">.</span><span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">related_field</span><span class="p">,</span> <span class="n">ManyToManyFieldInstance</span><span class="p">):</span>
@@ -591,9 +591,9 @@
     <span class="k">return</span> <span class="n">required_joins</span>
 
 
-<span class="k">def</span> <span class="nf">resolve_nested_field</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resolve_nested_field</span><span class="p">(</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Term</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Field</span><span class="p">]]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Term</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Field</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resolves a nested field string like events__participants__name and</span>
 <span class="sd">    returns the pypika term, required joins and the Field that can be used for</span>
@@ -647,55 +647,55 @@
     <span class="k">return</span> <span class="n">term</span><span class="p">,</span> <span class="n">joins</span><span class="p">,</span> <span class="n">field_object</span>
 
 
-<span class="k">class</span> <span class="nc">EmptyCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>  <span class="c1"># type:ignore[override]</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EmptyCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>  <span class="c1"># type:ignore[override]</span>
         <span class="k">return</span> <span class="n">other</span>
 
-    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>  <span class="c1"># type:ignore[override]</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>  <span class="c1"># type:ignore[override]</span>
         <span class="k">return</span> <span class="n">other</span>
 
-    <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
 
-<span class="k">def</span> <span class="nf">_and</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_and</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">left</span>
     <span class="k">return</span> <span class="n">left</span> <span class="o">&amp;</span> <span class="n">right</span>
 
 
-<span class="k">def</span> <span class="nf">_or</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_or</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Criterion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">left</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">left</span>
     <span class="k">return</span> <span class="n">left</span> <span class="o">|</span> <span class="n">right</span>
 
 
-<span class="k">class</span> <span class="nc">QueryModifier</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QueryModifier</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Internal structure used to generate SQL Queries.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">where_criterion</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Criterion</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">joins</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">joins</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">having_criterion</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Criterion</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">:</span> <span class="n">Criterion</span> <span class="o">=</span> <span class="n">where_criterion</span> <span class="ow">or</span> <span class="n">EmptyCriterion</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">joins</span> <span class="o">=</span> <span class="n">joins</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">:</span> <span class="n">Criterion</span> <span class="o">=</span> <span class="n">having_criterion</span> <span class="ow">or</span> <span class="n">EmptyCriterion</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">QueryModifier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">QueryModifier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
             <span class="n">where_criterion</span><span class="o">=</span><span class="n">_and</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">),</span>
             <span class="n">joins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">joins</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span>
             <span class="n">having_criterion</span><span class="o">=</span><span class="n">_and</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">),</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_and_criterion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_and_criterion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Criterion</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_and</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">QueryModifier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">QueryModifier</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">where_criterion</span> <span class="o">=</span> <span class="n">having_criterion</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">:</span>
             <span class="n">having_criterion</span> <span class="o">=</span> <span class="n">_or</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_and_criterion</span><span class="p">(),</span> <span class="n">other</span><span class="o">.</span><span class="n">_and_criterion</span><span class="p">())</span>
@@ -707,7 +707,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joins</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span> <span class="n">having_criterion</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">where_criterion</span> <span class="o">=</span> <span class="n">having_criterion</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">:</span>
             <span class="n">having_criterion</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">where_criterion</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">having_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">negate</span><span class="p">()</span>
@@ -716,7 +716,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">where_criterion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joins</span><span class="p">,</span> <span class="n">having_criterion</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Prefetch"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch">[docs]</a><span class="k">class</span> <span class="nc">Prefetch</span><span class="p">:</span>
+<div class="viewcode-block" id="Prefetch">
+<a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Prefetch</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prefetcher container. One would directly use this when wanting to attach a custom QuerySet</span>
 <span class="sd">    for specialised prefetching.</span>
@@ -728,13 +730,15 @@
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;relation&quot;</span><span class="p">,</span> <span class="s2">&quot;queryset&quot;</span><span class="p">,</span> <span class="s2">&quot;to_attr&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">,</span> <span class="n">to_attr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">,</span> <span class="n">to_attr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">to_attr</span> <span class="o">=</span> <span class="n">to_attr</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">relation</span> <span class="o">=</span> <span class="n">relation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basequery</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Prefetch.resolve_for_queryset"><a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_for_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Prefetch.resolve_for_queryset">
+<a class="viewcode-back" href="../../query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_for_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Called internally to generate prefetching query.</span>
 
@@ -757,7 +761,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">queryset</span><span class="o">.</span><span class="n">_prefetch_queries</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">first_level_field</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_attr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="p">)</span>
-            <span class="p">)</span></div></div>
+            <span class="p">)</span></div>
+</div>
+
 </code></pre></div>
 
 
@@ -790,13 +796,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

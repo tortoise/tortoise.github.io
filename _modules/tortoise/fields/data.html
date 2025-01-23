@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.fields.data - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise.fields.data - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,34 +511,35 @@
 
 
 <h1>Source code for tortoise.fields.data</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">IntEnum</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span>
-<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
+<span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">IntEnum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
 
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">functions</span>
-<span class="kn">from</span> <span class="nn">pypika.enums</span> <span class="kn">import</span> <span class="n">SqlTypes</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Term</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqlTypes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Term</span>
 
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">timezone</span>
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">FieldError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.base</span> <span class="kn">import</span> <span class="n">Field</span>
-<span class="kn">from</span> <span class="nn">tortoise.timezone</span> <span class="kn">import</span> <span class="n">get_default_timezone</span><span class="p">,</span> <span class="n">get_timezone</span><span class="p">,</span> <span class="n">get_use_tz</span><span class="p">,</span> <span class="n">localtime</span>
-<span class="kn">from</span> <span class="nn">tortoise.validators</span> <span class="kn">import</span> <span class="n">MaxLengthValidator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">FieldError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.timezone</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_default_timezone</span><span class="p">,</span> <span class="n">get_timezone</span><span class="p">,</span> <span class="n">get_use_tz</span><span class="p">,</span> <span class="n">localtime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.validators</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxLengthValidator</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">ciso8601</span> <span class="kn">import</span> <span class="n">parse_datetime</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ciso8601</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_datetime</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">iso8601</span> <span class="kn">import</span> <span class="n">parse_date</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">iso8601</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_date</span>
 
     <span class="n">parse_datetime</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">parse_date</span><span class="p">,</span> <span class="n">default_timezone</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;BigIntField&quot;</span><span class="p">,</span>
@@ -569,7 +570,7 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># Use orjson as an optional accelerator</span>
-    <span class="kn">import</span> <span class="nn">orjson</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">orjson</span>
 
     <span class="n">JSON_DUMPS</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">orjson</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>  <span class="c1"># noqa: E731</span>
     <span class="n">JSON_LOADS</span> <span class="o">=</span> <span class="n">orjson</span><span class="o">.</span><span class="n">loads</span>
@@ -577,7 +578,9 @@
     <span class="k">pass</span>
 
 
-<div class="viewcode-block" id="IntField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.IntField">[docs]</a><span class="k">class</span> <span class="nc">IntField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="IntField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.IntField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IntField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Integer field. (32-bit signed)</span>
 
@@ -588,35 +591,38 @@
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;INT&quot;</span>
     <span class="n">allows_generated</span> <span class="o">=</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primary_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">primary_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">primary_key</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">):</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;generated&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;generated&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="n">primary_key</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;ge&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2147483648</span><span class="p">,</span>
             <span class="s2">&quot;le&quot;</span><span class="p">:</span> <span class="mi">2147483647</span><span class="p">,</span>
         <span class="p">}</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;SERIAL NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_sqlite</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_sqlite</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;INT NOT NULL PRIMARY KEY AUTO_INCREMENT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;INT IDENTITY(1,1) NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY NOT NULL&quot;</span></div>
 
 
-<div class="viewcode-block" id="BigIntField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BigIntField">[docs]</a><span class="k">class</span> <span class="nc">BigIntField</span><span class="p">(</span><span class="n">IntField</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BigIntField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BigIntField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BigIntField</span><span class="p">(</span><span class="n">IntField</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Big integer field. (64-bit signed)</span>
 
@@ -627,27 +633,30 @@
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BIGINT&quot;</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;ge&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">9223372036854775808</span><span class="p">,</span>
             <span class="s2">&quot;le&quot;</span><span class="p">:</span> <span class="mi">9223372036854775807</span><span class="p">,</span>
         <span class="p">}</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;BIGSERIAL NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;INT&quot;</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY NOT NULL&quot;</span></div>
 
 
-<div class="viewcode-block" id="SmallIntField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.SmallIntField">[docs]</a><span class="k">class</span> <span class="nc">SmallIntField</span><span class="p">(</span><span class="n">IntField</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SmallIntField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.SmallIntField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SmallIntField</span><span class="p">(</span><span class="n">IntField</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Small integer field. (16-bit signed)</span>
 
@@ -658,26 +667,29 @@
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;SMALLINT&quot;</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;ge&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">32768</span><span class="p">,</span>
             <span class="s2">&quot;le&quot;</span><span class="p">:</span> <span class="mi">32767</span><span class="p">,</span>
         <span class="p">}</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;SMALLSERIAL NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;SMALLINT IDENTITY(1,1) NOT NULL PRIMARY KEY&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">GENERATED_SQL</span> <span class="o">=</span> <span class="s2">&quot;SMALLINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY NOT NULL&quot;</span></div>
 
 
-<div class="viewcode-block" id="CharField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.CharField">[docs]</a><span class="k">class</span> <span class="nc">CharField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+
+<div class="viewcode-block" id="CharField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.CharField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CharField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Character field.</span>
 
@@ -689,7 +701,7 @@
 
     <span class="n">field_type</span> <span class="o">=</span> <span class="nb">str</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_length</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">&quot;&#39;max_length&#39; must be &gt;= 1&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_length</span><span class="p">)</span>
@@ -697,25 +709,28 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MaxLengthValidator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">))</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;max_length&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">,</span>
         <span class="p">}</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;VARCHAR(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="s2">&quot;CharField&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="s2">&quot;CharField&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span>
 
         <span class="nd">@property</span>
-        <span class="k">def</span> <span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;NVARCHAR2(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">max_length</span><span class="si">}</span><span class="s2">)&quot;</span></div>
 
 
-<div class="viewcode-block" id="TextField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.TextField">[docs]</a><span class="k">class</span> <span class="nc">TextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+
+<div class="viewcode-block" id="TextField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.TextField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TextField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Large Text field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -723,7 +738,7 @@
     <span class="n">indexable</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">primary_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -745,17 +760,20 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="n">primary_key</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;LONGTEXT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NVARCHAR(MAX)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NCLOB&quot;</span></div>
 
 
-<div class="viewcode-block" id="BooleanField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BooleanField">[docs]</a><span class="k">class</span> <span class="nc">BooleanField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">bool</span><span class="p">]):</span>
+
+<div class="viewcode-block" id="BooleanField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BooleanField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BooleanField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">bool</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Boolean field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -764,17 +782,20 @@
     <span class="n">field_type</span> <span class="o">=</span> <span class="nb">bool</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BOOL&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_sqlite</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_sqlite</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;INT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BIT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NUMBER(1)&quot;</span></div>
 
 
-<div class="viewcode-block" id="DecimalField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DecimalField">[docs]</a><span class="k">class</span> <span class="nc">DecimalField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">Decimal</span><span class="p">],</span> <span class="n">Decimal</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DecimalField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DecimalField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DecimalField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">Decimal</span><span class="p">],</span> <span class="n">Decimal</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Accurate decimal field.</span>
 
@@ -788,7 +809,7 @@
 
     <span class="n">skip_to_python_if_native</span> <span class="o">=</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_digits</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_digits</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_digits</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">&quot;&#39;max_digits&#39; must be &gt;= 1&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">decimal_places</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -798,20 +819,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decimal_places</span> <span class="o">=</span> <span class="n">decimal_places</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quant</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;1&quot;</span> <span class="k">if</span> <span class="n">decimal_places</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;1.</span><span class="si">{</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">decimal_places</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quant</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">SQL_TYPE</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;DECIMAL(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_digits</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">decimal_places</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_sqlite</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_sqlite</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;VARCHAR(40)&quot;</span>
 
-        <span class="k">def</span> <span class="nf">function_cast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Term</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">function_cast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Term</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">functions</span><span class="o">.</span><span class="n">Cast</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">SqlTypes</span><span class="o">.</span><span class="n">NUMERIC</span><span class="p">)</span></div>
+
 
 
 <span class="c1"># In case of queryset with filter `__year`/`__month`/`__day` ..., value can be int, float or str. Example:</span>
@@ -823,7 +845,9 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="DatetimeField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DatetimeField">[docs]</a><span class="k">class</span> <span class="nc">DatetimeField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+<div class="viewcode-block" id="DatetimeField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DatetimeField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatetimeField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Datetime field.</span>
 
@@ -838,26 +862,26 @@
 
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIMESTAMP&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;DATETIME(6)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIMESTAMPTZ&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;DATETIME2&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIMESTAMP WITH TIME ZONE&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auto_now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auto_now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">auto_now_add</span> <span class="ow">and</span> <span class="n">auto_now</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">&quot;You can choose only &#39;auto_now&#39; or &#39;auto_now_add&#39;&quot;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_now</span> <span class="o">=</span> <span class="n">auto_now</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="n">auto_now</span> <span class="o">|</span> <span class="n">auto_now_add</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
@@ -871,7 +895,7 @@
                 <span class="n">value</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DatetimeFieldQueryValueType</span><span class="p">],</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DatetimeFieldQueryValueType</span><span class="p">]:</span>
         <span class="c1"># Only do this if it is a Model instance, not class. Test for guaranteed instance var</span>
@@ -895,20 +919,26 @@
         <span class="k">return</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_now_add</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;readOnly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">data</span>
 
-<div class="viewcode-block" id="DatetimeField.describe"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DatetimeField.describe">[docs]</a>    <span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<div class="viewcode-block" id="DatetimeField.describe">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DatetimeField.describe">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">desc</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">serializable</span><span class="p">)</span>
         <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;auto_now_add&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_now_add</span>
         <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;auto_now&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_now</span>
-        <span class="k">return</span> <span class="n">desc</span></div></div>
+        <span class="k">return</span> <span class="n">desc</span></div>
+</div>
 
 
-<div class="viewcode-block" id="DateField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DateField">[docs]</a><span class="k">class</span> <span class="nc">DateField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DateField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.DateField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DateField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Date field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -916,12 +946,12 @@
     <span class="n">skip_to_python_if_native</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;DATE&quot;</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">parse_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
@@ -930,7 +960,8 @@
         <span class="k">return</span> <span class="n">value</span></div>
 
 
-<span class="k">class</span> <span class="nc">TimeField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">):</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Time field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -938,17 +969,17 @@
     <span class="n">skip_to_python_if_native</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIME&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NVARCHAR2(8)&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auto_now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auto_now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">auto_now_add</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">auto_now_add</span> <span class="ow">and</span> <span class="n">auto_now</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">&quot;You can choose only &#39;auto_now&#39; or &#39;auto_now_add&#39;&quot;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_now</span> <span class="o">=</span> <span class="n">auto_now</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auto_now_add</span> <span class="o">=</span> <span class="n">auto_now</span> <span class="o">|</span> <span class="n">auto_now_add</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -958,7 +989,7 @@
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">get_default_timezone</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]],</span>
         <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">,</span>
@@ -985,14 +1016,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIME(6)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;TIMETZ&quot;</span>
 
 
-<div class="viewcode-block" id="TimeDeltaField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.TimeDeltaField">[docs]</a><span class="k">class</span> <span class="nc">TimeDeltaField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]):</span>
+<div class="viewcode-block" id="TimeDeltaField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.TimeDeltaField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeDeltaField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A field for storing time differences.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1000,15 +1033,15 @@
     <span class="n">field_type</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BIGINT&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NUMBER(19)&quot;</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">microseconds</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">],</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -1018,21 +1051,27 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="mi">86400000000</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="n">microseconds</span></div>
 
 
-<div class="viewcode-block" id="FloatField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.FloatField">[docs]</a><span class="k">class</span> <span class="nc">FloatField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FloatField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.FloatField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FloatField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Float (double) field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;DOUBLE PRECISION&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_sqlite</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_sqlite</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;REAL&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;DOUBLE&quot;</span></div>
 
 
-<div class="viewcode-block" id="JSONField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.JSONField">[docs]</a><span class="k">class</span> <span class="nc">JSONField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+
+<div class="viewcode-block" id="JSONField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.JSONField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">JSONField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    JSON field.</span>
 
@@ -1059,16 +1098,16 @@
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;JSON&quot;</span>
     <span class="n">indexable</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;JSONB&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NVARCHAR(MAX)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_oracle</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_oracle</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;NCLOB&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">encoder</span><span class="p">:</span> <span class="n">JsonDumpsFunc</span> <span class="o">=</span> <span class="n">JSON_DUMPS</span><span class="p">,</span>
         <span class="n">decoder</span><span class="p">:</span> <span class="n">JsonLoadsFunc</span> <span class="o">=</span> <span class="n">JSON_LOADS</span><span class="p">,</span>
@@ -1080,7 +1119,7 @@
         <span class="k">if</span> <span class="n">field_type</span> <span class="o">:=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;field_type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">field_type</span> <span class="o">=</span> <span class="n">field_type</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]],</span>
         <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">,</span>
@@ -1099,7 +1138,7 @@
             <span class="k">return</span> <span class="n">value</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">):</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
@@ -1108,7 +1147,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
@@ -1116,7 +1155,7 @@
                 <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="kn">from</span> <span class="nn">pydantic._internal._model_construction</span> <span class="kn">import</span> <span class="n">ModelMetaclass</span>
+                    <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic._internal._model_construction</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelMetaclass</span>
 
                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field_type</span><span class="p">,</span> <span class="n">ModelMetaclass</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_type</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
@@ -1132,7 +1171,10 @@
         <span class="k">return</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="UUIDField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.UUIDField">[docs]</a><span class="k">class</span> <span class="nc">UUIDField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="n">UUID</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UUIDField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.UUIDField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UUIDField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="n">UUID</span><span class="p">],</span> <span class="n">UUID</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    UUID Field</span>
 
@@ -1143,24 +1185,27 @@
 
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;CHAR(36)&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;UUID&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;primary_key&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pk&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="ow">and</span> <span class="s2">&quot;default&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uuid4</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">value</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">UUID</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BinaryField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BinaryField">[docs]</a><span class="k">class</span> <span class="nc">BinaryField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+
+<div class="viewcode-block" id="BinaryField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.BinaryField">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BinaryField</span><span class="p">(</span><span class="n">Field</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Binary field.</span>
 
@@ -1171,18 +1216,19 @@
     <span class="n">indexable</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BLOB&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_postgres</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_postgres</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;BYTEA&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mysql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mysql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;LONGBLOB&quot;</span>
 
-    <span class="k">class</span> <span class="nc">_db_mssql</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_db_mssql</span><span class="p">:</span>
         <span class="n">SQL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;VARBINARY(MAX)&quot;</span></div>
 
 
-<span class="k">class</span> <span class="nc">IntEnumFieldInstance</span><span class="p">(</span><span class="n">SmallIntField</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IntEnumFieldInstance</span><span class="p">(</span><span class="n">SmallIntField</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">enum_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">IntEnum</span><span class="p">],</span>
         <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1208,11 +1254,11 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">enum_type</span> <span class="o">=</span> <span class="n">enum_type</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">IntEnum</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">IntEnum</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enum_type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">IntEnum</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">IntEnum</span><span class="p">):</span>
@@ -1226,7 +1272,9 @@
 <span class="n">IntEnumType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;IntEnumType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">IntEnum</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="IntEnumField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.IntEnumField">[docs]</a><span class="k">def</span> <span class="nf">IntEnumField</span><span class="p">(</span>
+<div class="viewcode-block" id="IntEnumField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.IntEnumField">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">IntEnumField</span><span class="p">(</span>
     <span class="n">enum_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">IntEnumType</span><span class="p">],</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -1251,8 +1299,9 @@
     <span class="k">return</span> <span class="n">IntEnumFieldInstance</span><span class="p">(</span><span class="n">enum_type</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<span class="k">class</span> <span class="nc">CharEnumFieldInstance</span><span class="p">(</span><span class="n">CharField</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CharEnumFieldInstance</span><span class="p">(</span><span class="n">CharField</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">enum_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Enum</span><span class="p">],</span>
         <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1273,10 +1322,10 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="n">max_length</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">enum_type</span> <span class="o">=</span> <span class="n">enum_type</span>
 
-    <span class="k">def</span> <span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Enum</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_python_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Enum</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enum_type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">to_db_value</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Enum</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -1290,7 +1339,9 @@
 <span class="n">CharEnumType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;CharEnumType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Enum</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="CharEnumField"><a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.CharEnumField">[docs]</a><span class="k">def</span> <span class="nf">CharEnumField</span><span class="p">(</span>
+<div class="viewcode-block" id="CharEnumField">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.data.CharEnumField">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">CharEnumField</span><span class="p">(</span>
     <span class="n">enum_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">CharEnumType</span><span class="p">],</span>
     <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -1319,6 +1370,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">CharEnumFieldInstance</span><span class="p">(</span><span class="n">enum_type</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
 </code></pre></div>
 
 
@@ -1351,13 +1403,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

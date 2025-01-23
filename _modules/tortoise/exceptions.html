@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.exceptions - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise.exceptions - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,64 +511,90 @@
 
 
 <h1>Source code for tortoise.exceptions</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Type</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Type</span>
 
 
-<div class="viewcode-block" id="BaseORMException"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.BaseORMException">[docs]</a><span class="k">class</span> <span class="nc">BaseORMException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseORMException">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.BaseORMException">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseORMException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base ORM Exception.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="FieldError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.FieldError">[docs]</a><span class="k">class</span> <span class="nc">FieldError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FieldError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.FieldError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FieldError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The FieldError exception is raised when there is a problem with a model field.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="ParamsError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ParamsError">[docs]</a><span class="k">class</span> <span class="nc">ParamsError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ParamsError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ParamsError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParamsError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ParamsError is raised when function can not be run with given parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="ConfigurationError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ConfigurationError">[docs]</a><span class="k">class</span> <span class="nc">ConfigurationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ConfigurationError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ConfigurationError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigurationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ConfigurationError exception is raised when the configuration of the ORM is invalid.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="TransactionManagementError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.TransactionManagementError">[docs]</a><span class="k">class</span> <span class="nc">TransactionManagementError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TransactionManagementError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.TransactionManagementError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TransactionManagementError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The TransactionManagementError is raised when any transaction error occurs.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="OperationalError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.OperationalError">[docs]</a><span class="k">class</span> <span class="nc">OperationalError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="OperationalError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.OperationalError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OperationalError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The OperationalError exception is raised when an operational error occurs.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="IntegrityError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IntegrityError">[docs]</a><span class="k">class</span> <span class="nc">IntegrityError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IntegrityError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IntegrityError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IntegrityError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The IntegrityError exception is raised when there is an integrity error.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="NoValuesFetched"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NoValuesFetched">[docs]</a><span class="k">class</span> <span class="nc">NoValuesFetched</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NoValuesFetched">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NoValuesFetched">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NoValuesFetched</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The NoValuesFetched exception is raised when the related model was never fetched.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="NotExistOrMultiple"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NotExistOrMultiple">[docs]</a><span class="k">class</span> <span class="nc">NotExistOrMultiple</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="NotExistOrMultiple">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.NotExistOrMultiple">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NotExistOrMultiple</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
     <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], str]&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], str]&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Optional[Type[Model]]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
@@ -576,13 +602,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">TEMPLATE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="MultipleObjectsReturned"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.MultipleObjectsReturned">[docs]</a><span class="k">class</span> <span class="nc">MultipleObjectsReturned</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MultipleObjectsReturned">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.MultipleObjectsReturned">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MultipleObjectsReturned</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The MultipleObjectsReturned exception is raised when doing a ``.get()`` operation,</span>
 <span class="sd">    and more than one object is returned.</span>
@@ -591,21 +620,27 @@
     <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;Multiple objects returned for &quot;</span><span class="si">{}</span><span class="s1">&quot;, expected exactly one&#39;</span></div>
 
 
-<div class="viewcode-block" id="ObjectDoesNotExistError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ObjectDoesNotExistError">[docs]</a><span class="k">class</span> <span class="nc">ObjectDoesNotExistError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ObjectDoesNotExistError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ObjectDoesNotExistError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ObjectDoesNotExistError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DoesNotExist exception is raised when an item with the passed primary key does not exist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">pk_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">pk_val</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> has no object with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pk_name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pk_val</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
-<div class="viewcode-block" id="DoesNotExist"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DoesNotExist">[docs]</a><span class="k">class</span> <span class="nc">DoesNotExist</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DoesNotExist">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DoesNotExist">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DoesNotExist</span><span class="p">(</span><span class="n">NotExistOrMultiple</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DoesNotExist exception is raised when expecting data, such as a ``.get()`` operation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -613,28 +648,41 @@
     <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;Object &quot;</span><span class="si">{}</span><span class="s1">&quot; does not exist&#39;</span></div>
 
 
-<div class="viewcode-block" id="IncompleteInstanceError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IncompleteInstanceError">[docs]</a><span class="k">class</span> <span class="nc">IncompleteInstanceError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IncompleteInstanceError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.IncompleteInstanceError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IncompleteInstanceError</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The IncompleteInstanceError exception is raised when a partial model is attempted to be persisted.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="DBConnectionError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DBConnectionError">[docs]</a><span class="k">class</span> <span class="nc">DBConnectionError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">,</span> <span class="ne">ConnectionError</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DBConnectionError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.DBConnectionError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DBConnectionError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">,</span> <span class="ne">ConnectionError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The DBConnectionError is raised when problems with connecting to db occurs</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="ValidationError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ValidationError">[docs]</a><span class="k">class</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ValidationError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.ValidationError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ValidationError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The ValidationError is raised when validators of field validate failed.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="UnSupportedError"><a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.UnSupportedError">[docs]</a><span class="k">class</span> <span class="nc">UnSupportedError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
+
+<div class="viewcode-block" id="UnSupportedError">
+<a class="viewcode-back" href="../../exceptions.html#tortoise.exceptions.UnSupportedError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UnSupportedError</span><span class="p">(</span><span class="n">BaseORMException</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The UnSupportedError is raised when operation is not supported.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
+
 </code></pre></div>
 
 
@@ -667,13 +715,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

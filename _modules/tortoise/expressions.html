@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.expressions - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise.expressions - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,28 +511,29 @@
 
 
 <h1>Source code for tortoise.expressions</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">operator</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">field</span> <span class="k">as</span> <span class="n">dataclass_field</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">operator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">field</span> <span class="k">as</span> <span class="n">dataclass_field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
 
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Case</span> <span class="k">as</span> <span class="n">PypikaCase</span>
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PypikaField</span>
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Table</span>
-<span class="kn">from</span> <span class="nn">pypika.functions</span> <span class="kn">import</span> <span class="n">AggregateFunction</span><span class="p">,</span> <span class="n">DistinctOptionFunction</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">ArithmeticExpression</span><span class="p">,</span> <span class="n">Criterion</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">PypikaFunction</span>
-<span class="kn">from</span> <span class="nn">pypika.terms</span> <span class="kn">import</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
-<span class="kn">from</span> <span class="nn">pypika.utils</span> <span class="kn">import</span> <span class="n">format_alias_sql</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Case</span> <span class="k">as</span> <span class="n">PypikaCase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PypikaField</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqlContext</span><span class="p">,</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">AggregateFunction</span><span class="p">,</span> <span class="n">DistinctOptionFunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArithmeticExpression</span><span class="p">,</span> <span class="n">Criterion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">PypikaFunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_alias_sql</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.base</span> <span class="kn">import</span> <span class="n">Field</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="n">RelationalField</span>
-<span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">FilterInfoDict</span>
-<span class="kn">from</span> <span class="nn">tortoise.query_utils</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="n">RelationalField</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">FilterInfoDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.query_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QueryModifier</span><span class="p">,</span>
     <span class="n">TableCriterionTuple</span><span class="p">,</span>
     <span class="n">get_joins_for_related_field</span><span class="p">,</span>
@@ -540,14 +541,14 @@
 <span class="p">)</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
-    <span class="kn">from</span> <span class="nn">pypika.queries</span> <span class="kn">import</span> <span class="n">Selectable</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.queries</span><span class="w"> </span><span class="kn">import</span> <span class="n">Selectable</span>
 
-    <span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span>
-    <span class="kn">from</span> <span class="nn">tortoise.queryset</span> <span class="kn">import</span> <span class="n">AwaitableQuery</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.queryset</span><span class="w"> </span><span class="kn">import</span> <span class="n">AwaitableQuery</span>
 
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">ResolveContext</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResolveContext</span><span class="p">:</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
     <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
@@ -555,34 +556,34 @@
 
 
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">ResolveResult</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResolveResult</span><span class="p">:</span>
     <span class="n">term</span><span class="p">:</span> <span class="n">Term</span>
     <span class="n">joins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataclass_field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
     <span class="n">output_field</span><span class="p">:</span> <span class="n">Field</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
 
-<span class="k">class</span> <span class="nc">Expression</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Expression</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parent class for expressions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">Value</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Value</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wrapper for a value that should be used as a term in a query.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ResolveResult</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">ValueWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 
 
-<span class="k">class</span> <span class="nc">Connector</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Connector</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">add</span> <span class="o">=</span> <span class="s2">&quot;add&quot;</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="s2">&quot;sub&quot;</span>
     <span class="n">mul</span> <span class="o">=</span> <span class="s2">&quot;mul&quot;</span>
@@ -591,13 +592,13 @@
     <span class="n">mod</span> <span class="o">=</span> <span class="s2">&quot;mod&quot;</span>
 
 
-<span class="k">class</span> <span class="nc">CombinedExpression</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">connector</span><span class="p">:</span> <span class="n">Connector</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CombinedExpression</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">connector</span><span class="p">:</span> <span class="n">Connector</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connector</span> <span class="o">=</span> <span class="n">connector</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Expression</span><span class="p">)</span> <span class="k">else</span> <span class="n">Value</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span>
         <span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span>
         <span class="n">left_output_field</span><span class="p">,</span> <span class="n">right_output_field</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">output_field</span><span class="p">,</span> <span class="n">right</span><span class="o">.</span><span class="n">output_field</span>  <span class="c1"># type: ignore</span>
@@ -617,7 +618,7 @@
         <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">F</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">F</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An F() object represents a model field&#39;s value, its transformed value, or an annotated column.</span>
 <span class="sd">    It enables referencing and performing database operations on model field values directly in</span>
@@ -626,10 +627,10 @@
 <span class="sd">    :param name: The name of the field to reference.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">term</span><span class="p">:</span> <span class="n">Term</span> <span class="o">=</span> <span class="n">PypikaField</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="n">joins</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">output_field</span> <span class="o">=</span> <span class="kc">None</span>
@@ -660,10 +661,10 @@
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">FieldError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;There is no non-virtual field </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> on Model </span><span class="si">{</span><span class="n">resolve_context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
         <span class="k">return</span> <span class="n">ResolveResult</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">output_field</span><span class="o">=</span><span class="n">output_field</span><span class="p">,</span> <span class="n">joins</span><span class="o">=</span><span class="n">joins</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">connector</span><span class="p">:</span> <span class="n">Connector</span><span class="p">,</span> <span class="n">right_hand</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">connector</span><span class="p">:</span> <span class="n">Connector</span><span class="p">,</span> <span class="n">right_hand</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="n">Value</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -671,74 +672,76 @@
             <span class="k">return</span> <span class="n">CombinedExpression</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">CombinedExpression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">sub</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">div</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">mod</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">pow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">sub</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">div</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">mod</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CombinedExpression</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_combine</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Connector</span><span class="o">.</span><span class="n">pow</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Subquery</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="s2">&quot;AwaitableQuery&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Subquery</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="s2">&quot;AwaitableQuery&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span>
 
-    <span class="k">def</span> <span class="nf">get_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">SqlContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_choose_db_if_not_chosen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">get_parameterized_sql</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">get_parameterized_sql</span><span class="p">(</span><span class="n">ctx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">as_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Selectable&quot;</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">as_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Selectable&quot;</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_choose_db_if_not_chosen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">RawSQL</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RawSQL</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> <span class="o">=</span> <span class="n">sql</span>
 
-    <span class="k">def</span> <span class="nf">get_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_alias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">with_alias</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">format_alias_sql</span><span class="p">(</span><span class="n">sql</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sql</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alias</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">SqlContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">with_alias</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">format_alias_sql</span><span class="p">(</span><span class="n">sql</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sql</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alias</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span>
 
 
-<div class="viewcode-block" id="Q"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q">[docs]</a><span class="k">class</span> <span class="nc">Q</span><span class="p">:</span>
+<div class="viewcode-block" id="Q">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Q</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Q Expression container.</span>
 <span class="sd">    Q Expressions are a useful tool to compose a query from many small parts.</span>
@@ -758,7 +761,7 @@
     <span class="n">AND</span> <span class="o">=</span> <span class="s2">&quot;AND&quot;</span>
     <span class="n">OR</span> <span class="o">=</span> <span class="s2">&quot;OR&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="n">join_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AND</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="n">join_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AND</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">newarg</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">join_type</span><span class="o">=</span><span class="n">join_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">newarg</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
@@ -775,7 +778,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">join_type</span> <span class="o">=</span> <span class="n">join_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span> <span class="o">=</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="Q.__and__"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__and__">[docs]</a>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+<div class="viewcode-block" id="Q.__and__">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__and__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a binary AND of Q objects, use ``AND`` operator.</span>
 
@@ -785,7 +790,10 @@
             <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">&quot;AND operation requires a Q node&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">join_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Q.__or__"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__or__">[docs]</a>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Q.__or__">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__or__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a binary OR of Q objects, use ``OR`` operator.</span>
 
@@ -795,7 +803,10 @@
             <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">&quot;OR operation requires a Q node&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">join_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">OR</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Q.__invert__"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Q.__invert__">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__invert__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a negated instance of the Q object, use ``~`` operator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -803,7 +814,8 @@
         <span class="n">q</span><span class="o">.</span><span class="n">negate</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">q</span></div>
 
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -812,13 +824,16 @@
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">filters</span>
         <span class="p">)</span>
 
-<div class="viewcode-block" id="Q.negate"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.negate">[docs]</a>    <span class="k">def</span> <span class="nf">negate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Q.negate">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.negate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">negate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Negates the current Q object. (mutation)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_negated</span></div>
 
-    <span class="k">def</span> <span class="nf">_resolve_nested_filter</span><span class="p">(</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_nested_filter</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">related_field_name</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">forwarded_fields</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)</span>
@@ -837,7 +852,7 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">joins</span><span class="o">=</span><span class="n">required_joins</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">modifier</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_custom_kwarg</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_custom_kwarg</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">having_info</span> <span class="o">=</span> <span class="n">resolve_context</span><span class="o">.</span><span class="n">custom_filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
@@ -861,7 +876,7 @@
             <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="n">operator</span><span class="p">(</span><span class="n">annotation_info</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">modifier</span>
 
-    <span class="k">def</span> <span class="nf">_process_filter_kwarg</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_filter_kwarg</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="n">join</span> <span class="o">=</span> <span class="kc">None</span>
@@ -896,7 +911,7 @@
             <span class="n">criterion</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;source_field&quot;</span><span class="p">]],</span> <span class="n">encoded_value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">join</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_regular_kwarg</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_regular_kwarg</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span>
@@ -910,7 +925,7 @@
             <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">(</span><span class="n">where_criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span> <span class="n">joins</span><span class="o">=</span><span class="n">joins</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">modifier</span>
 
-    <span class="k">def</span> <span class="nf">_get_actual_filter_params</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_actual_filter_params</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Table</span> <span class="o">|</span> <span class="n">FilterInfoDict</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="n">filter_key</span> <span class="o">=</span> <span class="n">key</span>
@@ -942,7 +957,7 @@
 
         <span class="k">return</span> <span class="n">filter_key</span><span class="p">,</span> <span class="n">filter_value</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">raw_key</span><span class="p">,</span> <span class="n">raw_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_actual_filter_params</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">,</span> <span class="n">raw_key</span><span class="p">,</span> <span class="n">raw_value</span><span class="p">)</span>
@@ -963,7 +978,7 @@
             <span class="n">modifier</span> <span class="o">=</span> <span class="o">~</span><span class="n">modifier</span>
         <span class="k">return</span> <span class="n">modifier</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
         <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="n">node_modifier</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span>
@@ -976,7 +991,9 @@
             <span class="n">modifier</span> <span class="o">=</span> <span class="o">~</span><span class="n">modifier</span>
         <span class="k">return</span> <span class="n">modifier</span>
 
-<div class="viewcode-block" id="Q.resolve"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.resolve">[docs]</a>    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span>
+<div class="viewcode-block" id="Q.resolve">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.resolve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryModifier</span><span class="p">:</span>
@@ -984,15 +1001,19 @@
 <span class="sd">        Resolves the logical Q chain into the parts of a SQL statement.</span>
 
 <span class="sd">        :param model: The Model this Q Expression should be resolved on.</span>
-<span class="sd">        :param table: ``pypika.Table`` to keep track of the virtual SQL table</span>
+<span class="sd">        :param table: ``pypika_tortoise.Table`` to keep track of the virtual SQL table</span>
 <span class="sd">            (to allow self referential joins)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_kwargs</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_children</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_children</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Function"><a class="viewcode-back" href="../../functions.html#tortoise.expressions.Function">[docs]</a><span class="k">class</span> <span class="nc">Function</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Function">
+<a class="viewcode-back" href="../../functions.html#tortoise.expressions.Function">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Function</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function/Aggregate base.</span>
 
@@ -1000,7 +1021,7 @@
 <span class="sd">    :param default_values: Extra parameters to the function.</span>
 
 <span class="sd">    .. attribute:: database_func</span>
-<span class="sd">        :annotation: pypika.terms.Function</span>
+<span class="sd">        :annotation: pypika_tortoise.terms.Function</span>
 
 <span class="sd">        The pypika function this represents.</span>
 
@@ -1016,17 +1037,17 @@
     <span class="c1"># Enable populate_field_object where we want to try and preserve the field type.</span>
     <span class="n">populate_field_object</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span> <span class="o">|</span> <span class="s2">&quot;Function&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span><span class="p">:</span> <span class="s2">&quot;Field | None&quot;</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default_values</span> <span class="o">=</span> <span class="n">default_values</span>
 
-    <span class="k">def</span> <span class="nf">_get_function_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Term</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PypikaFunction</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_function_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Term</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PypikaFunction</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">database_func</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span>  <span class="c1"># type:ignore[arg-type]</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_nested_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_nested_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">term</span><span class="p">,</span> <span class="n">joins</span><span class="p">,</span> <span class="n">output_field</span> <span class="o">=</span> <span class="n">resolve_nested_field</span><span class="p">(</span>
             <span class="n">resolve_context</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">resolve_context</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="n">field</span>
         <span class="p">)</span>
@@ -1034,19 +1055,21 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span> <span class="o">=</span> <span class="n">output_field</span>
         <span class="k">return</span> <span class="n">ResolveResult</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">term</span><span class="p">,</span> <span class="n">joins</span><span class="o">=</span><span class="n">joins</span><span class="p">,</span> <span class="n">output_field</span><span class="o">=</span><span class="n">output_field</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">default_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_values</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default_value</span><span class="p">,</span> <span class="n">Function</span><span class="p">):</span>
                 <span class="k">yield</span> <span class="n">default_value</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">)</span><span class="o">.</span><span class="n">term</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">default_value</span>
 
-<div class="viewcode-block" id="Function.resolve"><a class="viewcode-back" href="../../functions.html#tortoise.expressions.Function.resolve">[docs]</a>    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+<div class="viewcode-block" id="Function.resolve">
+<a class="viewcode-back" href="../../functions.html#tortoise.expressions.Function.resolve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Used to resolve the Function statement for SQL generation.</span>
 
 <span class="sd">        :param model: Model the function is applied on to.</span>
-<span class="sd">        :param table: ``pypika.Table`` to keep track of the virtual SQL table</span>
+<span class="sd">        :param table: ``pypika_tortoise.Table`` to keep track of the virtual SQL table</span>
 <span class="sd">            (to allow self referential joins)</span>
 <span class="sd">        :return: Dict with keys ``&quot;joins&quot;`` and ``&quot;fields&quot;``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1070,10 +1093,14 @@
         <span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span> <span class="o">=</span> <span class="n">res_output_field</span>
 
-        <span class="k">return</span> <span class="n">res</span></div></div>
+        <span class="k">return</span> <span class="n">res</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Aggregate"><a class="viewcode-back" href="../../functions.html#tortoise.expressions.Aggregate">[docs]</a><span class="k">class</span> <span class="nc">Aggregate</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Aggregate">
+<a class="viewcode-back" href="../../functions.html#tortoise.expressions.Aggregate">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Aggregate</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base for SQL Aggregates.</span>
 
@@ -1084,7 +1111,7 @@
 
     <span class="n">database_func</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">AggregateFunction</span><span class="p">]</span> <span class="o">=</span> <span class="n">DistinctOptionFunction</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span><span class="p">,</span>
         <span class="o">*</span><span class="n">default_values</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -1095,7 +1122,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">distinct</span> <span class="o">=</span> <span class="n">distinct</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filter</span> <span class="o">=</span> <span class="n">_filter</span>
 
-    <span class="k">def</span> <span class="nf">_get_function_field</span><span class="p">(</span>  <span class="c1"># type:ignore[override]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_function_field</span><span class="p">(</span>  <span class="c1"># type:ignore[override]</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">ArithmeticExpression</span> <span class="o">|</span> <span class="n">PypikaField</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DistinctOptionFunction</span><span class="p">:</span>
         <span class="n">function</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">DistinctOptionFunction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">database_func</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">))</span>
@@ -1103,7 +1130,7 @@
             <span class="n">function</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">function</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_nested_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_nested_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_resolve_nested_field</span><span class="p">(</span><span class="n">resolve_context</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">:</span>
             <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
@@ -1113,15 +1140,18 @@
         <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<span class="k">class</span> <span class="nc">_WhenThen</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_WhenThen</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This is not a real term, but a helper to store the when and then terms.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">when</span><span class="p">:</span> <span class="n">Term</span><span class="p">,</span> <span class="n">then</span><span class="p">:</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">when</span><span class="p">:</span> <span class="n">Term</span><span class="p">,</span> <span class="n">then</span><span class="p">:</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">when</span> <span class="o">=</span> <span class="n">when</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">then</span> <span class="o">=</span> <span class="n">then</span>
 
 
-<div class="viewcode-block" id="When"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.When">[docs]</a><span class="k">class</span> <span class="nc">When</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+<div class="viewcode-block" id="When">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.When">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">When</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    When expression.</span>
 
@@ -1131,7 +1161,7 @@
 <span class="sd">    :param negate: false (default)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span>
         <span class="n">then</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span> <span class="o">|</span> <span class="n">Function</span><span class="p">,</span>
@@ -1143,7 +1173,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">negate</span> <span class="o">=</span> <span class="n">negate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
 
-    <span class="k">def</span> <span class="nf">_resolve_q_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Q</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_q_objects</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Q</span><span class="p">]:</span>
         <span class="n">q_objects</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
@@ -1160,7 +1190,7 @@
                 <span class="n">q_objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span><span class="p">}))</span>
         <span class="k">return</span> <span class="n">q_objects</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">q_objects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_q_objects</span><span class="p">()</span>
 
         <span class="n">modifier</span> <span class="o">=</span> <span class="n">QueryModifier</span><span class="p">()</span>
@@ -1175,7 +1205,10 @@
         <span class="k">return</span> <span class="n">ResolveResult</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">_WhenThen</span><span class="p">(</span><span class="n">modifier</span><span class="o">.</span><span class="n">where_criterion</span><span class="p">,</span> <span class="n">then</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="Case"><a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Case">[docs]</a><span class="k">class</span> <span class="nc">Case</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Case">
+<a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Case">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Case</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Case expression.</span>
 
@@ -1183,7 +1216,7 @@
 <span class="sd">    :param default: value for &#39;CASE WHEN ... THEN ... ELSE &lt;default&gt; END&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">When</span><span class="p">,</span>
         <span class="n">default</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span> <span class="o">|</span> <span class="n">Function</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1191,7 +1224,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
 
-    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_context</span><span class="p">:</span> <span class="n">ResolveContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResolveResult</span><span class="p">:</span>
         <span class="n">case</span> <span class="o">=</span> <span class="n">PypikaCase</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">When</span><span class="p">):</span>
@@ -1206,6 +1239,7 @@
             <span class="n">case</span> <span class="o">=</span> <span class="n">case</span><span class="o">.</span><span class="n">else_</span><span class="p">(</span><span class="n">Term</span><span class="o">.</span><span class="n">wrap_constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">ResolveResult</span><span class="p">(</span><span class="n">term</span><span class="o">=</span><span class="n">case</span><span class="p">)</span></div>
+
 </code></pre></div>
 
 
@@ -1238,13 +1272,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

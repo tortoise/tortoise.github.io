@@ -13,7 +13,7 @@
     
     
       
-        <title>Schema Creation - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Schema Creation - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -551,6 +551,19 @@
   <a href="#parameters" class="md-nav__link">
     <span class="md-ellipsis">Parameters</span>
   </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.Tortoise.generate_schemas.safe" class="md-nav__link">
+    <span class="md-ellipsis">safe</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -996,7 +1009,7 @@
                   
 
 
-<h1 id="schema-creation"><span id="schema"></span>Schema Creation<a class="headerlink" href="#schema-creation" title="Permalink to this heading">¶</a></h1>
+<h1 id="schema-creation"><span id="schema"></span>Schema Creation<a class="headerlink" href="#schema-creation" title="Link to this heading">¶</a></h1>
 <p>Here we create connection to SQLite database client and then we discover &amp; initialize models.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py">
@@ -1007,7 +1020,7 @@ of application workflow</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt><span class="n sig-name">safe</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></dt><dd><p>When set to true, creates the table only when it does not already exist.</p>
+<dt id="tortoise.Tortoise.generate_schemas.safe"><span class="n sig-name">safe</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.Tortoise.generate_schemas.safe" title="Permalink to this definition">¶</a></dt><dd><p>When set to true, creates the table only when it does not already exist.</p>
 </dd>
 </dl>
 </dd>
@@ -1022,10 +1035,10 @@ of application workflow</p>
 
 <p><code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> generates schema on empty database.
 There is also the default option when generating the schemas to set the <code class="docutils literal notranslate"><span class="pre">safe</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code> which will only insert the tables if they don’t already exist.</p>
-<h2 id="module-tortoise.utils"><span id="helper-functions"></span>Helper Functions<a class="headerlink" href="#module-tortoise.utils" title="Permalink to this heading">¶</a></h2>
+<h2 id="module-tortoise.utils"><span id="helper-functions"></span>Helper Functions<a class="headerlink" href="#module-tortoise.utils" title="Link to this heading">¶</a></h2>
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.utils.generate_schema_for_client">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.utils.</span></span><span class="sig-name descname"><span class="pre">generate_schema_for_client</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.generate_schema_for_client.client" title="tortoise.utils.generate_schema_for_client.client (Python parameter) — The DB client to generate Schema SQL for"><span class="n"><span class="pre">client</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.generate_schema_for_client.safe" title="tortoise.utils.generate_schema_for_client.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/utils.html#generate_schema_for_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.utils.generate_schema_for_client" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.utils.</span></span><span class="sig-name descname"><span class="pre">generate_schema_for_client</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.generate_schema_for_client.client" title="tortoise.utils.generate_schema_for_client.client (Python parameter) — The DB client to generate Schema SQL for"><span class="n"><span class="pre">client</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.generate_schema_for_client.safe" title="tortoise.utils.generate_schema_for_client.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/utils.html#generate_schema_for_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.utils.generate_schema_for_client" title="Link to this definition">¶</a></dt>
 <dd><p>Generates and applies the SQL schema directly to the given client.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.utils.generate_schema_for_client-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.utils.generate_schema_for_client-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1044,7 +1057,7 @@ There is also the default option when generating the schemas to set the <code cl
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.utils.get_schema_sql">
-<span class="sig-prename descclassname"><span class="pre">tortoise.utils.</span></span><span class="sig-name descname"><span class="pre">get_schema_sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.get_schema_sql.client" title="tortoise.utils.get_schema_sql.client (Python parameter) — The DB client to generate Schema SQL for"><span class="n"><span class="pre">client</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.get_schema_sql.safe" title="tortoise.utils.get_schema_sql.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/utils.html#get_schema_sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.utils.get_schema_sql" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.utils.</span></span><span class="sig-name descname"><span class="pre">get_schema_sql</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.get_schema_sql.client" title="tortoise.utils.get_schema_sql.client (Python parameter) — The DB client to generate Schema SQL for"><span class="n"><span class="pre">client</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.utils.get_schema_sql.safe" title="tortoise.utils.get_schema_sql.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/utils.html#get_schema_sql"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.utils.get_schema_sql" title="Link to this definition">¶</a></dt>
 <dd><p>Generates the SQL schema for the given client.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.utils.get_schema_sql-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.utils.get_schema_sql-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1129,13 +1142,13 @@ There is also the default option when generating the schemas to set the <code cl
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

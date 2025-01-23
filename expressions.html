@@ -13,7 +13,7 @@
     
     
       
-        <title>Expressions - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Expressions - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -931,7 +931,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.expressions.Case.__init__.default" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.expressions.Case.__init__.default (Python parameter) — value for &#39;CASE WHEN ... THEN ... ELSE &lt;default&gt; END&#39;" class="md-ellipsis">default</span>
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.expressions.Case.__init__.default (Python parameter) — value for &#39;CASE WHEN ..." class="md-ellipsis">default</span>
   </a>
   
 </li>
@@ -1212,8 +1212,8 @@
                   
 
 
-<h1 id="expressions"><span id="id1"></span>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">¶</a></h1>
-<h2 id="q-expression">Q Expression<a class="headerlink" href="#q-expression" title="Permalink to this heading">¶</a></h2>
+<h1 id="expressions"><span id="id1"></span>Expressions<a class="headerlink" href="#expressions" title="Link to this heading">¶</a></h1>
+<h2 id="q-expression">Q Expression<a class="headerlink" href="#q-expression" title="Link to this heading">¶</a></h2>
 <p>Sometimes you need to do more complicated queries than the simple AND <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> provides. Luckily we have Q objects to spice things up and help you find what you need. These Q-objects can then be used as argument to <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> instead.</p>
 <dl class="simple">
 <dt>Q objects are extremely versatile, some example use cases:</dt><dd><ul class="simple">
@@ -1247,9 +1247,9 @@
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">not_third_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
 </code></pre></div>
 </div>
-<span class="target" id="module-tortoise.expressions"></span><dl class="py class objdesc">
+<dl class="py class objdesc" id="module-tortoise.expressions">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">Q</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.Q.__init__.args" title="tortoise.expressions.Q.__init__.args (Python parameter) — Inner Q expressions that you want to wrap."><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Q.__init__.join_type" title="tortoise.expressions.Q.__init__.join_type (Python parameter) — Is the join an AND or OR join type?"><span class="n"><span class="pre">join_type</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;AND&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.expressions.Q.__init__.kwargs" title="tortoise.expressions.Q.__init__.kwargs (Python parameter) — Filter statements that this Q object should encapsulate."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">Q</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.Q.__init__.args" title="tortoise.expressions.Q.__init__.args (Python parameter) — Inner Q expressions that you want to wrap."><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Q.__init__.join_type" title="tortoise.expressions.Q.__init__.join_type (Python parameter) — Is the join an AND or OR join type?"><span class="n"><span class="pre">join_type</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;AND&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.expressions.Q.__init__.kwargs" title="tortoise.expressions.Q.__init__.kwargs (Python parameter) — Filter statements that this Q object should encapsulate."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q" title="Link to this definition">¶</a></dt>
 <dd><p>Q Expression container.
 Q Expressions are a useful tool to compose a query from many small parts.</p>
 <dl class="field-list simple">
@@ -1266,17 +1266,17 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 </dl>
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.AND">
-<span class="sig-name descname"><span class="pre">AND</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="s1">&#39;AND&#39;</span></code><a class="headerlink" href="#tortoise.expressions.Q.AND" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">AND</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="s1">&#39;AND&#39;</span></code><a class="headerlink" href="#tortoise.expressions.Q.AND" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.OR">
-<span class="sig-name descname"><span class="pre">OR</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="s1">&#39;OR&#39;</span></code><a class="headerlink" href="#tortoise.expressions.Q.OR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">OR</span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="s1">&#39;OR&#39;</span></code><a class="headerlink" href="#tortoise.expressions.Q.OR" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.__and__">
-<span class="sig-name descname"><span class="pre">__and__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__and__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__and__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__and__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Q.__and__" title="tortoise.expressions.Q.__and__.other (Python parameter)"><span class="n"><span class="pre">other</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__and__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__and__" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a binary AND of Q objects, use <code class="docutils literal notranslate"><span class="pre">AND</span></code> operator.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Q.__and__-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Q.__and__-raises" title="Permalink to this headline">¶</a></dt>
@@ -1290,7 +1290,7 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.__invert__">
-<span class="sig-name descname"><span class="pre">__invert__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__invert__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__invert__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__invert__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__invert__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__invert__" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a negated instance of the Q object, use <code class="docutils literal notranslate"><span class="pre">~</span></code> operator.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Q.__invert__-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Q.__invert__-return-type" title="Permalink to this headline">¶</a></dt>
@@ -1301,7 +1301,7 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.__or__">
-<span class="sig-name descname"><span class="pre">__or__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">other</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__or__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__or__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__or__</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Q.__or__" title="tortoise.expressions.Q.__or__.other (Python parameter)"><span class="n"><span class="pre">other</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.__or__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.__or__" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a binary OR of Q objects, use <code class="docutils literal notranslate"><span class="pre">OR</span></code> operator.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Q.__or__-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Q.__or__-raises" title="Permalink to this headline">¶</a></dt>
@@ -1315,25 +1315,25 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.children">
-<span class="sig-name descname"><span class="pre">children</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q (Python class) — Q Expression container. Q Expressions are a useful tool to compose a query from many small parts."><span class="pre">tortoise.expressions.Q</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#tortoise.expressions.Q.children" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">children</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#tortoise.expressions.Q" title="tortoise.expressions.Q (Python class) — Q Expression container. Q Expressions are a useful tool to compose a query from many small parts."><span class="pre">Q</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#tortoise.expressions.Q.children" title="Link to this definition">¶</a></dt>
 <dd><p>Contains the sub-Q’s that this Q is made up of</p>
 </dd></dl>
 
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.filters">
-<span class="sig-name descname"><span class="pre">filters</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tortoise.filters.FilterInfoDict</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#tortoise.expressions.Q.filters" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">filters</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FilterInfoDict</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#tortoise.expressions.Q.filters" title="Link to this definition">¶</a></dt>
 <dd><p>Contains the filters applied to this Q</p>
 </dd></dl>
 
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.join_type">
-<span class="sig-name descname"><span class="pre">join_type</span></span><a class="headerlink" href="#tortoise.expressions.Q.join_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">join_type</span></span><a class="headerlink" href="#tortoise.expressions.Q.join_type" title="Link to this definition">¶</a></dt>
 <dd><p>Specifies if this Q does an AND or OR on its children</p>
 </dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.negate">
-<span class="sig-name descname"><span class="pre">negate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.negate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.negate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">negate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.negate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.negate" title="Link to this definition">¶</a></dt>
 <dd><p>Negates the current Q object. (mutation)</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Q.negate-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Q.negate-return-type" title="Permalink to this headline">¶</a></dt>
@@ -1344,14 +1344,14 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Q.resolve">
-<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">resolve_context</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.resolve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Q.resolve" title="tortoise.expressions.Q.resolve.resolve_context (Python parameter)"><span class="n"><span class="pre">resolve_context</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Q.resolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Q.resolve" title="Link to this definition">¶</a></dt>
 <dd><p>Resolves the logical Q chain into the parts of a SQL statement.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Q.resolve-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Q.resolve-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
 <dt><span class="sig-name descname">model</span></dt><dd><p>The Model this Q Expression should be resolved on.</p>
 </dd>
-<dt><span class="sig-name descname">table</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">pypika.Table</span></code> to keep track of the virtual SQL table
+<dt><span class="sig-name descname">table</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">pypika_tortoise.Table</span></code> to keep track of the virtual SQL table
 (to allow self referential joins)</p>
 </dd>
 </dl>
@@ -1364,10 +1364,10 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 </dd></dl>
 
-<h2 id="f-expression">F Expression<a class="headerlink" href="#f-expression" title="Permalink to this heading">¶</a></h2>
+<h2 id="f-expression">F Expression<a class="headerlink" href="#f-expression" title="Link to this heading">¶</a></h2>
 <p>An <cite>F</cite> object represents the value of a model field. It makes it possible to refer to model field values and perform database operations using them without actually having to pull them out of the database into Python memory.</p>
 <p>For example to use <code class="docutils literal notranslate"><span class="pre">F</span></code> to update user balance atomic:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">F</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">F</span>
 
 <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">balance</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;balance&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">balance</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;balance&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;award&#39;</span><span class="p">),</span> <span class="n">award</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -1390,15 +1390,15 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;idp&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h2 id="subquery">Subquery<a class="headerlink" href="#subquery" title="Permalink to this heading">¶</a></h2>
+<h2 id="subquery">Subquery<a class="headerlink" href="#subquery" title="Link to this heading">¶</a></h2>
 <p>You can use <cite>Subquery</cite> in <cite>filter()</cite> and <cite>annotate()</cite>.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.expressions</span> <span class="kn">import</span> <span class="n">Subquery</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subquery</span>
 
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;ids&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">t1</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)))</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 </code></pre></div>
 </div>
-<h2 id="rawsql">RawSQL<a class="headerlink" href="#rawsql" title="Permalink to this heading">¶</a></h2>
+<h2 id="rawsql">RawSQL<a class="headerlink" href="#rawsql" title="Link to this heading">¶</a></h2>
 <p><cite>RawSQL</cite> just like <cite>Subquery</cite> but provides the ability to write raw sql.</p>
 <p>You can use <cite>RawSQL</cite> in <cite>filter()</cite> and <cite>annotate()</cite>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s1">&#39;count(*)&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
@@ -1406,11 +1406,11 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s2">&quot;id + 1&quot;</span><span class="p">))</span>
 </code></pre></div>
 </div>
-<h2 id="case-when-expression">Case-When Expression<a class="headerlink" href="#case-when-expression" title="Permalink to this heading">¶</a></h2>
+<h2 id="case-when-expression">Case-When Expression<a class="headerlink" href="#case-when-expression" title="Link to this heading">¶</a></h2>
 <p>Build classic <cite>CASE WHEN … THEN … ELSE … END</cite> sql snippet.</p>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.When">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">When</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.args" title="tortoise.expressions.When.__init__.args (Python parameter) — Q objects"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.then" title="tortoise.expressions.When.__init__.then (Python parameter) — value for criterion"><span class="n"><span class="pre">then</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.negate" title="tortoise.expressions.When.__init__.negate (Python parameter) — false (default)"><span class="n"><span class="pre">negate</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.kwargs" title="tortoise.expressions.When.__init__.kwargs (Python parameter) — keyword criterion like filter"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#When"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.When" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">When</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.args" title="tortoise.expressions.When.__init__.args (Python parameter) — Q objects"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.then" title="tortoise.expressions.When.__init__.then (Python parameter) — value for criterion"><span class="n"><span class="pre">then</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.negate" title="tortoise.expressions.When.__init__.negate (Python parameter) — false (default)"><span class="n"><span class="pre">negate</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.kwargs" title="tortoise.expressions.When.__init__.kwargs (Python parameter) — keyword criterion like filter"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#When"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.When" title="Link to this definition">¶</a></dt>
 <dd><p>When expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.When-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.When-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1430,7 +1430,7 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.Case">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">Case</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.Case.__init__.args" title="tortoise.expressions.Case.__init__.args (Python parameter) — When objects"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Case.__init__.default" title="tortoise.expressions.Case.__init__.default (Python parameter) — value for 'CASE WHEN ... THEN ... ELSE &lt;default&gt; END'"><span class="n"><span class="pre">default</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Case" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">Case</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.Case.__init__.args" title="tortoise.expressions.Case.__init__.args (Python parameter) — When objects"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.Case.__init__.default" title="tortoise.expressions.Case.__init__.default (Python parameter) — value for 'CASE WHEN ..."><span class="n"><span class="pre">default</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Case"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.Case" title="Link to this definition">¶</a></dt>
 <dd><p>Case expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.expressions.Case-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.expressions.Case-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1515,13 +1515,13 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

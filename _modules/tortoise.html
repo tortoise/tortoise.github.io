@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise - Tortoise ORM v0.23.0 Documentation</title>
+        <title>tortoise - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,45 +511,52 @@
 
 
 <h1>Source code for tortoise</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">importlib</span>
-<span class="kn">import</span> <span class="nn">importlib.metadata</span> <span class="k">as</span> <span class="nn">importlib_metadata</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">isclass</span>
-<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">importlib_metadata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Iterable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">isclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
 
-<span class="kn">from</span> <span class="nn">pypika</span> <span class="kn">import</span> <span class="n">Query</span><span class="p">,</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span><span class="p">,</span> <span class="n">Table</span>
 
-<span class="kn">from</span> <span class="nn">tortoise.backends.base.client</span> <span class="kn">import</span> <span class="n">BaseDBAsyncClient</span>
-<span class="kn">from</span> <span class="nn">tortoise.backends.base.config_generator</span> <span class="kn">import</span> <span class="n">expand_db_url</span><span class="p">,</span> <span class="n">generate_config</span>
-<span class="kn">from</span> <span class="nn">tortoise.connection</span> <span class="kn">import</span> <span class="n">connections</span>
-<span class="kn">from</span> <span class="nn">tortoise.exceptions</span> <span class="kn">import</span> <span class="n">ConfigurationError</span>
-<span class="kn">from</span> <span class="nn">tortoise.fields.relational</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.backends.base.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseDBAsyncClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.backends.base.config_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">expand_db_url</span><span class="p">,</span> <span class="n">generate_config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">connections</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">BackwardFKRelation</span><span class="p">,</span>
     <span class="n">BackwardOneToOneRelation</span><span class="p">,</span>
     <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
     <span class="n">ManyToManyFieldInstance</span><span class="p">,</span>
     <span class="n">OneToOneFieldInstance</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">tortoise.filters</span> <span class="kn">import</span> <span class="n">get_m2m_filters</span>
-<span class="kn">from</span> <span class="nn">tortoise.log</span> <span class="kn">import</span> <span class="n">logger</span>
-<span class="kn">from</span> <span class="nn">tortoise.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModelMeta</span>
-<span class="kn">from</span> <span class="nn">tortoise.utils</span> <span class="kn">import</span> <span class="n">generate_schema_for_client</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_m2m_filters</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.log</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModelMeta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.timezone</span><span class="w"> </span><span class="kn">import</span> <span class="n">_reset_timezone_cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_schema_for_client</span>
 
 
-<div class="viewcode-block" id="Tortoise"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise">[docs]</a><span class="k">class</span> <span class="nc">Tortoise</span><span class="p">:</span>
+<div class="viewcode-block" id="Tortoise">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tortoise</span><span class="p">:</span>
     <span class="n">apps</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">table_name_generator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_inited</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="Tortoise.get_connection"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.get_connection">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_connection</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseDBAsyncClient</span><span class="p">:</span>
+<div class="viewcode-block" id="Tortoise.get_connection">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.get_connection">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_connection</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseDBAsyncClient</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the connection by name.</span>
 
@@ -561,8 +568,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">connection_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Tortoise.describe_model"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.describe_model">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">describe_model</span><span class="p">(</span>
+
+<div class="viewcode-block" id="Tortoise.describe_model">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.describe_model">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe_model</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>  <span class="c1"># pragma: nocoverage</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -587,8 +597,11 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">serializable</span><span class="o">=</span><span class="n">serializable</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Tortoise.describe_models"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.describe_models">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">describe_models</span><span class="p">(</span>
+
+<div class="viewcode-block" id="Tortoise.describe_models">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.describe_models">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">describe_models</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -623,9 +636,10 @@
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">serializable</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span>
         <span class="p">}</span></div>
 
+
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_init_relations</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">get_related_model</span><span class="p">(</span><span class="n">related_app_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">related_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_relations</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_related_model</span><span class="p">(</span><span class="n">related_app_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">related_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]:</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Test, if app and model really exist. Throws a ConfigurationError with a hopefully</span>
 <span class="sd">            helpful message. If successful, returns the requested model.</span>
@@ -646,7 +660,7 @@
                     <span class="sa">f</span><span class="s2">&quot; app &#39;</span><span class="si">{</span><span class="n">related_app_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
                 <span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">split_reference</span><span class="p">(</span><span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">split_reference</span><span class="p">(</span><span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Validate, if reference follow the official naming conventions. Throws a</span>
 <span class="sd">            ConfigurationError with a hopefully helpful message. If successful,</span>
@@ -661,7 +675,7 @@
                 <span class="p">)</span>
             <span class="k">return</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="k">def</span> <span class="nf">init_fk_o2o_field</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">is_o2o</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">init_fk_o2o_field</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">is_o2o</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fk_object</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
                 <span class="s2">&quot;OneToOneFieldInstance | ForeignKeyFieldInstance&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
             <span class="p">)</span>
@@ -794,7 +808,7 @@
                     <span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">backward_relation_name</span><span class="p">,</span> <span class="n">m2m_relation</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_discover_models</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">models_path</span><span class="p">:</span> <span class="n">ModuleType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discover_models</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">models_path</span><span class="p">:</span> <span class="n">ModuleType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">models_path</span><span class="p">,</span> <span class="n">ModuleType</span><span class="p">):</span>
             <span class="n">module</span> <span class="o">=</span> <span class="n">models_path</span>
         <span class="k">else</span><span class="p">:</span>
@@ -820,8 +834,10 @@
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Module &quot;</span><span class="si">{</span><span class="n">models_path</span><span class="si">}</span><span class="s1">&quot; has no models&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">discovered_models</span>
 
-<div class="viewcode-block" id="Tortoise.init_models"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.init_models">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">init_models</span><span class="p">(</span>
+<div class="viewcode-block" id="Tortoise.init_models">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.init_models">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_models</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">models_paths</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">ModuleType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span>
         <span class="n">app_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -848,8 +864,9 @@
         <span class="k">if</span> <span class="n">_init_relations</span><span class="p">:</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">_init_relations</span><span class="p">()</span></div>
 
+
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_init_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">apps_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">apps_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">apps_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default_connection&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">))</span>
@@ -870,10 +887,10 @@
         <span class="bp">cls</span><span class="o">.</span><span class="n">_build_initial_querysets</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_get_config_from_config_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_config_from_config_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">extension</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yaml&quot;</span><span class="p">):</span>
-            <span class="kn">import</span> <span class="nn">yaml</span>  <span class="c1"># pylint: disable=C0415</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>  <span class="c1"># pylint: disable=C0415</span>
 
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -887,7 +904,7 @@
         <span class="k">return</span> <span class="n">config</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_build_initial_querysets</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_initial_querysets</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                 <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">finalise_model</span><span class="p">()</span>
@@ -898,8 +915,10 @@
                     <span class="n">Query</span><span class="p">,</span> <span class="n">basequery</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_fields</span><span class="p">)</span>
                 <span class="p">)</span>
 
-<div class="viewcode-block" id="Tortoise.init"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.init">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">init</span><span class="p">(</span>
+<div class="viewcode-block" id="Tortoise.init">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.init">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -912,7 +931,9 @@
         <span class="n">table_name_generator</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Sets up Tortoise-ORM.</span>
+<span class="sd">        Sets up Tortoise-ORM: loads apps and models, configures database connections but does not</span>
+<span class="sd">        connect to the database yet. The actual connection or connection pool is established</span>
+<span class="sd">        lazily on first query execution.</span>
 
 <span class="sd">        You can configure using only one of ``config``, ``config_file``</span>
 <span class="sd">        and ``(db_url, modules)``.</span>
@@ -1008,7 +1029,27 @@
 
         <span class="bp">cls</span><span class="o">.</span><span class="n">table_name_generator</span> <span class="o">=</span> <span class="n">table_name_generator</span>
 
-        <span class="c1"># Mask passwords in logs output</span>
+        <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+            <span class="n">str_connection_config</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">star_password</span><span class="p">(</span><span class="n">connections_config</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;Tortoise-ORM startup</span><span class="se">\n</span><span class="s2">    connections: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">    apps: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">str_connection_config</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">apps_config</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_timezone</span><span class="p">(</span><span class="n">use_tz</span><span class="p">,</span> <span class="n">timezone</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="n">connections_config</span><span class="p">,</span> <span class="n">_create_db</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_apps</span><span class="p">(</span><span class="n">apps_config</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_routers</span><span class="p">(</span><span class="n">routers</span><span class="p">)</span>
+
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Tortoise.star_password">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.star_password">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">star_password</span><span class="p">(</span><span class="n">connections_config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># Mask passwords to hide sensitive information in logs output</span>
         <span class="n">passwords</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">connections_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -1023,23 +1064,12 @@
                 <span class="c1"># Show one third of the password at beginning (may be better for debugging purposes)</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">password</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">***&quot;</span><span class="p">,</span>
             <span class="p">)</span>
+        <span class="k">return</span> <span class="n">str_connection_config</span></div>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
-            <span class="s2">&quot;Tortoise-ORM startup</span><span class="se">\n</span><span class="s2">    connections: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">    apps: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">str_connection_config</span><span class="p">,</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">apps_config</span><span class="p">),</span>
-        <span class="p">)</span>
-
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_timezone</span><span class="p">(</span><span class="n">use_tz</span><span class="p">,</span> <span class="n">timezone</span><span class="p">)</span>
-        <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="n">connections_config</span><span class="p">,</span> <span class="n">_create_db</span><span class="p">)</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_apps</span><span class="p">(</span><span class="n">apps_config</span><span class="p">)</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_init_routers</span><span class="p">(</span><span class="n">routers</span><span class="p">)</span>
-
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_inited</span> <span class="o">=</span> <span class="kc">True</span></div>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_init_routers</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">routers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">type</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">tortoise.router</span> <span class="kn">import</span> <span class="n">router</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_routers</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">routers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">type</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.router</span><span class="w"> </span><span class="kn">import</span> <span class="n">router</span>
 
         <span class="n">routers</span> <span class="o">=</span> <span class="n">routers</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="n">router_cls</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1056,8 +1086,10 @@
                 <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="s2">&quot;Router must be either str or type&quot;</span><span class="p">)</span>
         <span class="n">router</span><span class="o">.</span><span class="n">init_routers</span><span class="p">(</span><span class="n">router_cls</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Tortoise.close_connections"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.close_connections">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">close_connections</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Tortoise.close_connections">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.close_connections">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close_connections</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Close all connections cleanly.</span>
 
@@ -1072,16 +1104,19 @@
         <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Tortoise-ORM shutdown&quot;</span><span class="p">)</span></div>
 
+
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_reset_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_reset_apps</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">app</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ModelMeta</span><span class="p">):</span>
                     <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">default_connection</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Tortoise.generate_schemas"><a class="viewcode-back" href="../setup.html#tortoise.Tortoise.generate_schemas">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">generate_schemas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">safe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Tortoise.generate_schemas">
+<a class="viewcode-back" href="../setup.html#tortoise.Tortoise.generate_schemas">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_schemas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">safe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate schemas according to models provided to ``.init()`` method.</span>
 <span class="sd">        Will fail if schemas already exists, so it&#39;s not recommended to be used as part</span>
@@ -1096,8 +1131,9 @@
         <span class="k">for</span> <span class="n">connection</span> <span class="ow">in</span> <span class="n">connections</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="k">await</span> <span class="n">generate_schema_for_client</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">safe</span><span class="p">)</span></div>
 
+
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_drop_databases</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_drop_databases</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Tries to drop all databases provided in config passed to ``.init()`` method.</span>
 <span class="sd">        Normally should be used only for testing purposes.</span>
@@ -1116,12 +1152,14 @@
         <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_reset_apps</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_init_timezone</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">use_tz</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">timezone</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_timezone</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">use_tz</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">timezone</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USE_TZ&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">use_tz</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TIMEZONE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timezone</span></div>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TIMEZONE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timezone</span>
+        <span class="n">_reset_timezone_cache</span><span class="p">()</span></div>
 
 
-<span class="k">def</span> <span class="nf">run_async</span><span class="p">(</span><span class="n">coro</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_async</span><span class="p">(</span><span class="n">coro</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simple async runner that cleans up DB connections on exit.</span>
 <span class="sd">    This is meant for simple scripts.</span>
@@ -1188,13 +1226,13 @@
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

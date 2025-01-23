@@ -13,7 +13,7 @@
     
     
       
-        <title>Connections - Tortoise ORM v0.23.0 Documentation</title>
+        <title>Connections - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -845,7 +845,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.connection.ConnectionHandler.reset.token" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.connection.ConnectionHandler.reset.token (Python parameter) — The token corresponding to the context to which the storage state has to be reset. Typically, this token is obtained by calling the set method of this class." class="md-ellipsis">token</span>
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.connection.ConnectionHandler.reset.token (Python parameter) — The token corresponding to the context to which the storage state has to be reset." class="md-ellipsis">token</span>
   </a>
   
 </li>
@@ -1155,13 +1155,13 @@
                   
 
 
-<h1 id="connections"><span id="id1"></span>Connections<a class="headerlink" href="#connections" title="Permalink to this heading">¶</a></h1>
+<h1 id="connections"><span id="id1"></span>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h1>
 <p>This document describes how to access the underlying connection object (<a class="reference internal" href="databases.html#base-db-client"><span class="std std-ref">BaseDBAsyncClient</span></a>) for the aliases defined
-as part of the DB config passed to the <a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> call.</p>
+as part of the DB config passed to the <a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> call.</p>
 <p>Below is a simple code snippet which shows how the interface can be accessed:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># connections is a singleton instance of the ConnectionHandler class and serves as the</span>
 <span class="c1"># entrypoint to access all connection management APIs.</span>
-<span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">connections</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">connections</span>
 
 
 <span class="c1"># Assume that this is the Tortoise configuration used</span>
@@ -1195,24 +1195,24 @@ Any attempt to modify or override its behaviour at runtime is risky and not reco
 </div>
 <p>Please refer to <a class="reference internal" href="examples/basic.html#example-two-databases"><span class="std std-ref">this example</span></a> for a detailed demonstration of how this API can be used
 in practice.</p>
-<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">¶</a></h2>
-<span class="target" id="module-tortoise.connection"><span id="connection-handler"></span></span><dl class="py class objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionHandler</span></span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler" title="Permalink to this definition">¶</a></dt>
+<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h2>
+<dl class="py class objdesc" id="module-tortoise.connection">
+<span id="connection-handler"></span><dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionHandler</span></span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler" title="Link to this definition">¶</a></dt>
 <dd><dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.all">
-<span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.all" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.all" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a list of connection objects from the storage in the <cite>current context</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.connection.ConnectionHandler.all-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.all-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection."><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseDBAsyncClient</span></code></a>]</p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.close_all">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_all</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.close_all.discard" title="tortoise.connection.ConnectionHandler.close_all.discard (Python parameter) — If False, all connection objects are closed but retained in the storage."><span class="n"><span class="pre">discard</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.close_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.close_all" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_all</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.close_all.discard" title="tortoise.connection.ConnectionHandler.close_all.discard (Python parameter) — If False, all connection objects are closed but retained in the storage."><span class="n"><span class="pre">discard</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.close_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.close_all" title="Link to this definition">¶</a></dt>
 <dd><p>Closes all connections in the storage in the <cite>current context</cite>.</p>
 <p>All closed connections will be removed from the storage by default.</p>
 <dl class="field-list simple">
@@ -1230,14 +1230,14 @@ in practice.</p>
 
 <dl class="py property objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.db_config">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">db_config</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">DBConfigType</span></span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">db_config</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">DBConfigType</span></span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config" title="Link to this definition">¶</a></dt>
 <dd><p>Return the DB config.</p>
 <p>This is the same config passed to the
-<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method while initialization.</p>
+<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method while initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.connection.ConnectionHandler.db_config-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – If this property is accessed before calling the
-<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method.</p>
+<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method.</p>
 </dd>
 <dt class="field-even" id="tortoise.connection.ConnectionHandler.db_config-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p>DBConfigType</p>
@@ -1247,7 +1247,7 @@ in practice.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.discard">
-<span class="sig-name descname"><span class="pre">discard</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.discard.conn_alias" title="tortoise.connection.ConnectionHandler.discard.conn_alias (Python parameter) — The alias for which the connection object should be discarded."><span class="n"><span class="pre">conn_alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.discard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.discard" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">discard</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.discard.conn_alias" title="tortoise.connection.ConnectionHandler.discard.conn_alias (Python parameter) — The alias for which the connection object should be discarded."><span class="n"><span class="pre">conn_alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.discard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.discard" title="Link to this definition">¶</a></dt>
 <dd><p>Discards the given alias from the storage in the <cite>current context</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.connection.ConnectionHandler.discard-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.discard-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1271,7 +1271,7 @@ this method else there would be a connection leak (dangling connection).</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.get.conn_alias" title="tortoise.connection.ConnectionHandler.get.conn_alias (Python parameter) — The alias for which the connection has to be fetched"><span class="n"><span class="pre">conn_alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.get" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.get.conn_alias" title="tortoise.connection.ConnectionHandler.get.conn_alias (Python parameter) — The alias for which the connection has to be fetched"><span class="n"><span class="pre">conn_alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.get" title="Link to this definition">¶</a></dt>
 <dd><p>Return the connection object for the given alias, creating it if needed.</p>
 <p>Used for accessing the low-level connection object
 (<a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection."><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseDBAsyncClient</span></code></a>) for the
@@ -1294,7 +1294,7 @@ given alias.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.reset.token" title="tortoise.connection.ConnectionHandler.reset.token (Python parameter) — The token corresponding to the context to which the storage state has to be reset. Typically, this token is obtained by calling the set method of this class."><span class="n"><span class="pre">token</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.reset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.reset.token" title="tortoise.connection.ConnectionHandler.reset.token (Python parameter) — The token corresponding to the context to which the storage state has to be reset."><span class="n"><span class="pre">token</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.reset" title="Link to this definition">¶</a></dt>
 <dd><p>Reset the underlying storage to the previous context state.</p>
 <p>Resets the storage state to the <cite>context</cite> associated with the provided token. After
 resetting storage state, any additional <cite>connections</cite> created in the <cite>old context</cite> are
@@ -1316,7 +1316,7 @@ be reset. Typically, this token is obtained by calling the
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.set.conn_alias" title="tortoise.connection.ConnectionHandler.set.conn_alias (Python parameter) — The alias to set the connection for."><span class="n"><span class="pre">conn_alias</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.set.conn_obj" title="tortoise.connection.ConnectionHandler.set.conn_obj (Python parameter) — The connection object that needs to be set for this alias."><span class="n"><span class="pre">conn_obj</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.set" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.set.conn_alias" title="tortoise.connection.ConnectionHandler.set.conn_alias (Python parameter) — The alias to set the connection for."><span class="n"><span class="pre">conn_alias</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.set.conn_obj" title="tortoise.connection.ConnectionHandler.set.conn_obj (Python parameter) — The connection object that needs to be set for this alias."><span class="n"><span class="pre">conn_obj</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.set" title="Link to this definition">¶</a></dt>
 <dd><p>Sets the given alias to the provided connection object.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.connection.ConnectionHandler.set-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.set-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1412,13 +1412,13 @@ the original context storage.</p>
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   

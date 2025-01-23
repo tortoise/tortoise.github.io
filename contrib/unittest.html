@@ -13,7 +13,7 @@
     
     
       
-        <title>UnitTest support - Tortoise ORM v0.23.0 Documentation</title>
+        <title>UnitTest support - Tortoise ORM v0.24.0 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b454d0e296e565629.min.css?v=3a14c3c3" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.23.0 Documentation
+            Tortoise ORM 0.24.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.23.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.23.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.23.0 Documentation
+    Tortoise ORM v0.24.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1210,29 +1210,29 @@
                   
 
 
-<h1 id="unittest-support"><span id="unittest"></span>UnitTest support<a class="headerlink" href="#unittest-support" title="Permalink to this heading">¶</a></h1>
+<h1 id="unittest-support"><span id="unittest"></span>UnitTest support<a class="headerlink" href="#unittest-support" title="Link to this heading">¶</a></h1>
 <p>Tortoise ORM includes its own helper utilities to assist in unit tests.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib</span> <span class="kn">import</span> <span class="n">test</span>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
 
-<span class="k">class</span> <span class="nc">TestSomething</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestSomething</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">test_something_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_something_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 
     <span class="nd">@test</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s1">&#39;Skip this&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">test_skip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_skip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 
     <span class="nd">@test</span><span class="o">.</span><span class="n">expectedFailure</span>
-    <span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
 </code></pre></div>
 </div>
 <p>To get <code class="docutils literal notranslate"><span class="pre">test.TestCase</span></code> to work as expected, you need to configure your test environment setup and teardown to call the following:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise.contrib.test</span> <span class="kn">import</span> <span class="n">initializer</span><span class="p">,</span> <span class="n">finalizer</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">initializer</span><span class="p">,</span> <span class="n">finalizer</span>
 
 <span class="c1"># In setup</span>
 <span class="n">initializer</span><span class="p">([</span><span class="s1">&#39;module.a&#39;</span><span class="p">,</span> <span class="s1">&#39;module.b.c&#39;</span><span class="p">])</span>
@@ -1254,8 +1254,8 @@ TORTOISE_TEST_DB=postgres://postgres:&#64;127.0.0.1:5432/test_{}</p>
 This is currently required for <code class="docutils literal notranslate"><span class="pre">test.IsolatedTestCase</span></code> to function.
 If you don’t use <code class="docutils literal notranslate"><span class="pre">test.IsolatedTestCase</span></code> then you can give an absolute address.
 The SQLite in-memory <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> database will always work, and is the default.</p>
-<h2 id="test-runners">Test Runners<a class="headerlink" href="#test-runners" title="Permalink to this heading">¶</a></h2>
-<h3 id="green">Green<a class="headerlink" href="#green" title="Permalink to this heading">¶</a></h3>
+<h2 id="test-runners">Test Runners<a class="headerlink" href="#test-runners" title="Link to this heading">¶</a></h2>
+<h3 id="green">Green<a class="headerlink" href="#green" title="Link to this heading">¶</a></h3>
 <p>In your <code class="docutils literal notranslate"><span class="pre">.green</span></code> file:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><code><span class="na">initializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.env_initializer</span>
 <span class="na">finalizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">tortoise.contrib.test.finalizer</span>
@@ -1267,24 +1267,24 @@ The SQLite in-memory <code class="docutils literal notranslate"><span class="pre
 <div><p>TORTOISE_TEST_DB=sqlite:///tmp/test-{}.sqlite
 TORTOISE_TEST_DB=postgres://postgres:&#64;127.0.0.1:5432/test_{}</p>
 </div></blockquote>
-<h3 id="py-test">Py.test<a class="headerlink" href="#py-test" title="Permalink to this heading">¶</a></h3>
+<h3 id="py-test">Py.test<a class="headerlink" href="#py-test" title="Link to this heading">¶</a></h3>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>pytest 5.4.0 &amp; 5.4.1 has a bug that stops it from working with async test cases. You may have to install <code class="docutils literal notranslate"><span class="pre">pytest&gt;=5.4.2</span></code> to get it to work.</p>
 </div>
 <p>Run the initializer and finalizer in your <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.test</span> <span class="kn">import</span> <span class="n">finalizer</span><span class="p">,</span> <span class="n">initializer</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">finalizer</span><span class="p">,</span> <span class="n">initializer</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">initialize_tests</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize_tests</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">db_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TORTOISE_TEST_DB&quot;</span><span class="p">,</span> <span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">)</span>
     <span class="n">initializer</span><span class="p">([</span><span class="s2">&quot;tests.testmodels&quot;</span><span class="p">],</span> <span class="n">db_url</span><span class="o">=</span><span class="n">db_url</span><span class="p">,</span> <span class="n">app_label</span><span class="o">=</span><span class="s2">&quot;models&quot;</span><span class="p">)</span>
     <span class="n">request</span><span class="o">.</span><span class="n">addfinalizer</span><span class="p">(</span><span class="n">finalizer</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h3 id="nose2">Nose2<a class="headerlink" href="#nose2" title="Permalink to this heading">¶</a></h3>
+<h3 id="nose2">Nose2<a class="headerlink" href="#nose2" title="Link to this heading">¶</a></h3>
 <p>Load the plugin <code class="docutils literal notranslate"><span class="pre">tortoise.contrib.test.nose2</span></code> either via command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">nose2</span> <span class="o">--</span><span class="n">plugin</span> <span class="n">tortoise</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nose2</span> <span class="o">--</span><span class="n">db</span><span class="o">-</span><span class="n">module</span> <span class="n">tortoise</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">testmodels</span>
 </code></pre></div>
@@ -1301,10 +1301,10 @@ TORTOISE_TEST_DB=postgres://postgres:&#64;127.0.0.1:5432/test_{}</p>
 <span class="na">db-url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sqlite://testdb-{}.sqlite</span>
 </code></pre></div>
 </div>
-<h2 id="module-tortoise.contrib.test"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise.contrib.test" title="Permalink to this heading">¶</a></h2>
+<h2 id="module-tortoise.contrib.test"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise.contrib.test" title="Link to this heading">¶</a></h2>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.IsolatedTestCase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">IsolatedTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#IsolatedTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.IsolatedTestCase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">IsolatedTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.IsolatedTestCase" title="tortoise.contrib.test.IsolatedTestCase.__init__.methodName (Python parameter)"><span class="n"><span class="pre">methodName</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#IsolatedTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.IsolatedTestCase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tortoise.contrib.test.SimpleTestCase" title="tortoise.contrib.test.SimpleTestCase (Python class) — Bases: IsolatedAsyncioTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleTestCase</span></code></a></p>
 <p>An asyncio capable test class that will ensure that an isolated test db
 is available for each test.</p>
@@ -1316,14 +1316,14 @@ This is obviously slow, but guarantees a fresh DB.</p>
 <p>If you define a <code class="docutils literal notranslate"><span class="pre">tortoise_test_modules</span></code> list, it overrides the DB setup module for the tests.</p>
 <dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.IsolatedTestCase.tortoise_test_modules">
-<span class="sig-name descname"><span class="pre">tortoise_test_modules</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">module</span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">[]</span></code><a class="headerlink" href="#tortoise.contrib.test.IsolatedTestCase.tortoise_test_modules" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tortoise_test_modules</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModuleType</span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">[]</span></code><a class="headerlink" href="#tortoise.contrib.test.IsolatedTestCase.tortoise_test_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">SimpleTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">SimpleTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.SimpleTestCase" title="tortoise.contrib.test.SimpleTestCase.__init__.methodName (Python parameter)"><span class="n"><span class="pre">methodName</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase</span></code></p>
 <p>The Tortoise base test class.</p>
 <p>This will ensure that your DB environment has a test double set up for use.</p>
@@ -1334,7 +1334,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 <p>Based on <a class="reference external" href="http://asynctest.readthedocs.io/">asynctest</a></p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.assertListSortEqual">
-<span class="sig-name descname"><span class="pre">assertListSortEqual</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">list2</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="bp">Ellipsis</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">sorted_key</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.assertListSortEqual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">assertListSortEqual</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="tortoise.contrib.test.SimpleTestCase.assertListSortEqual.list1 (Python parameter)"><span class="n"><span class="pre">list1</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="tortoise.contrib.test.SimpleTestCase.assertListSortEqual.list2 (Python parameter)"><span class="n"><span class="pre">list2</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="tortoise.contrib.test.SimpleTestCase.assertListSortEqual.msg (Python parameter)"><span class="n"><span class="pre">msg</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="bp">Ellipsis</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="tortoise.contrib.test.SimpleTestCase.assertListSortEqual.sorted_key (Python parameter)"><span class="n"><span class="pre">sorted_key</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.assertListSortEqual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.assertListSortEqual-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -1344,7 +1344,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -1354,7 +1354,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#SimpleTestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.SimpleTestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -1366,7 +1366,7 @@ If you specify <code class="docutils literal notranslate"><span class="pre">asyn
 
 <dl class="py exception objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.SkipTest">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">SkipTest</span></span><a class="reference internal" href="../_modules/unittest/case.html#SkipTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SkipTest" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">SkipTest</span></span><a class="reference internal" href="../_modules/unittest/case.html#SkipTest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.SkipTest" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raise this exception in a test to skip it.</p>
 <p>Usually you can use TestCase.skipTest() or one of the skipping decorators
@@ -1375,14 +1375,14 @@ instead of raising this directly.</p>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TestCase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">TestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">TestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.TestCase" title="tortoise.contrib.test.TestCase.__init__.methodName (Python parameter)"><span class="n"><span class="pre">methodName</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tortoise.contrib.test.TruncationTestCase" title="tortoise.contrib.test.TruncationTestCase (Python class) — Bases: SimpleTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncationTestCase</span></code></a></p>
 <p>An asyncio capable test class that will ensure that each test will be run at
 separate transaction that will rollback on finish.</p>
 <p>This is a fast test runner. Don’t use it if your test uses transactions.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TestCase.asyncSetUp">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncSetUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncSetUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncSetUp-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncSetUp-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -1392,7 +1392,7 @@ separate transaction that will rollback on finish.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TestCase.asyncTearDown">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asyncTearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TestCase.asyncTearDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.TestCase.asyncTearDown-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.TestCase.asyncTearDown-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -1404,7 +1404,7 @@ separate transaction that will rollback on finish.</p>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.TruncationTestCase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">TruncationTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TruncationTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TruncationTestCase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">TruncationTestCase</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.TruncationTestCase" title="tortoise.contrib.test.TruncationTestCase.__init__.methodName (Python parameter)"><span class="n"><span class="pre">methodName</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;runTest&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#TruncationTestCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.TruncationTestCase" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tortoise.contrib.test.SimpleTestCase" title="tortoise.contrib.test.SimpleTestCase (Python class) — Bases: IsolatedAsyncioTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleTestCase</span></code></a></p>
 <p>An asyncio capable test class that will truncate the tables after a test.</p>
 <p>Use this when your tests contain transactions.</p>
@@ -1414,7 +1414,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.env_initializer">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">env_initializer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#env_initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.env_initializer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">env_initializer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#env_initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.env_initializer" title="Link to this definition">¶</a></dt>
 <dd><p>Calls <code class="docutils literal notranslate"><span class="pre">initializer()</span></code> with parameters mapped from environment variables.</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">TORTOISE_TEST_MODULES</span></code>:</dt><dd><p>A comma-separated list of modules to include <em>(required)</em></p>
@@ -1435,14 +1435,14 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.expectedFailure">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">expectedFailure</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">test_item</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#expectedFailure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.expectedFailure" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">expectedFailure</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.expectedFailure" title="tortoise.contrib.test.expectedFailure.test_item (Python parameter)"><span class="n"><span class="pre">test_item</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#expectedFailure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.expectedFailure" title="Link to this definition">¶</a></dt>
 <dd><p>Mark test as expecting failure.</p>
 <p>On success it will be marked as unexpected success.</p>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.finalizer">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">finalizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#finalizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.finalizer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">finalizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#finalizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.finalizer" title="Link to this definition">¶</a></dt>
 <dd><p>Cleans up the DB after testing. Must be called as part of the test environment teardown.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.finalizer-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.finalizer-return-type" title="Permalink to this headline">¶</a></dt>
@@ -1453,7 +1453,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.getDBConfig">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">getDBConfig</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.app_label" title="tortoise.contrib.test.getDBConfig.app_label (Python parameter) — Label of the app (must be distinct for multiple apps)."><span class="n"><span class="pre">app_label</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.modules" title="tortoise.contrib.test.getDBConfig.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#getDBConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.getDBConfig" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">getDBConfig</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.app_label" title="tortoise.contrib.test.getDBConfig.app_label (Python parameter) — Label of the app (must be distinct for multiple apps)."><span class="n"><span class="pre">app_label</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.getDBConfig.modules" title="tortoise.contrib.test.getDBConfig.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#getDBConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.getDBConfig" title="Link to this definition">¶</a></dt>
 <dd><p>DB Config factory, for use in testing.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.getDBConfig-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.getDBConfig-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1472,28 +1472,28 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.init_memory_sqlite">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">init_memory_sqlite</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.init_memory_sqlite.models" title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to ['__main__']."><span class="n"><span class="pre">models</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#init_memory_sqlite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">init_memory_sqlite</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.init_memory_sqlite.models" title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to ['__main__']."><span class="n"><span class="pre">models</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#init_memory_sqlite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite" title="Link to this definition">¶</a></dt>
 <dt class="sig sig-object highlight sig-wrap py">
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">init_memory_sqlite</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.init_memory_sqlite.models" title="tortoise.contrib.test.init_memory_sqlite.models (Python parameter) — list_of_modules that should be discovered for models, default to ['__main__']."><span class="n"><span class="pre">models</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">P</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Coroutine</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span></span></dt>
 <dd><p>For single file style to run code with memory sqlite</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.init_memory_sqlite-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.contrib.test.init_memory_sqlite.models"><span class="n sig-name">models</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype">str<span class="w">   </span><span class="p">|</span><span class="w">   </span>list<span class="p">[</span>str<span class="p">]</span><span class="w">   </span><span class="p">|</span><span class="w">   </span>None</span></span><span class="w">   </span><span class="o">=</span><span class="w">   </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite.models" title="Permalink to this definition">¶</a></dt><dt><span class="n sig-name">models</span><span class="p">:</span><span class="w">   </span><span class="n"><span class="desctype">Callable<span class="p">[</span><span class="p">[</span>P<span class="p">]</span><span class="p">,</span><span class="w">   </span>Coroutine<span class="p">[</span>None<span class="p">,</span><span class="w">   </span>None<span class="p">,</span><span class="w">   </span>T<span class="p">]</span><span class="p">]</span></span></span></dt><dd><p>list_of_modules that should be discovered for models, default to [‘__main__’].</p>
+<dt id="tortoise.contrib.test.init_memory_sqlite.models"><span class="n sig-name">models</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype">str<span class="w"> </span><span class="p">|</span><span class="w"> </span>list<span class="p">[</span>str<span class="p">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>None</span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite.models" title="Permalink to this definition">¶</a></dt><dt><span class="n sig-name">models</span><span class="p">:</span><span class="w"> </span><span class="n"><span class="desctype">Callable<span class="p">[</span><span class="p">[</span>P<span class="p">]</span><span class="p">,</span><span class="w"> </span>Coroutine<span class="p">[</span>None<span class="p">,</span><span class="w"> </span>None<span class="p">,</span><span class="w"> </span>T<span class="p">]</span><span class="p">]</span></span></span></dt><dd><p>list_of_modules that should be discovered for models, default to [‘__main__’].</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p>Usage:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tortoise</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">run_async</span>
-<span class="kn">from</span> <span class="nn">tortoise.contrib.test</span> <span class="kn">import</span> <span class="n">init_memory_sqlite</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">run_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_memory_sqlite</span>
 
-<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
 
 <span class="nd">@init_memory_sqlite</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="mi">1</span>
 
@@ -1503,20 +1503,20 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </div>
 <p>Custom models example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@init_memory_sqlite</span><span class="p">(</span><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">,</span> <span class="s1">&#39;aerich.models&#39;</span><span class="p">])</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">():</span>
     <span class="o">...</span>
 </code></pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.init_memory_sqlite-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.init_memory_sqlite-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[~P], <code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, ~T]], <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[…, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[~P], <code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, ~T]]]]</p>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.initializer">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">initializer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.modules" title="tortoise.contrib.test.initializer.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.db_url" title="tortoise.contrib.test.initializer.db_url (Python parameter) — The db_url, defaults to sqlite://:memory."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.app_label" title="tortoise.contrib.test.initializer.app_label (Python parameter) — The name of the APP to initialise the modules in, defaults to &quot;models&quot;"><span class="n"><span class="pre">app_label</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.loop" title="tortoise.contrib.test.initializer.loop (Python parameter) — Optional event loop."><span class="n"><span class="pre">loop</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.initializer" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">initializer</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.modules" title="tortoise.contrib.test.initializer.modules (Python parameter) — List of modules to look for models in."><span class="n"><span class="pre">modules</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.db_url" title="tortoise.contrib.test.initializer.db_url (Python parameter) — The db_url, defaults to sqlite://:memory."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.app_label" title="tortoise.contrib.test.initializer.app_label (Python parameter) — The name of the APP to initialise the modules in, defaults to &quot;models&quot;"><span class="n"><span class="pre">app_label</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.initializer.loop" title="tortoise.contrib.test.initializer.loop (Python parameter) — Optional event loop."><span class="n"><span class="pre">loop</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#initializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.initializer" title="Link to this definition">¶</a></dt>
 <dd><p>Sets up the DB for testing. Must be called as part of test environment setup.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.test.initializer-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.initializer-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1539,7 +1539,7 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.test.requireCapability">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">requireCapability</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.connection_name" title="tortoise.contrib.test.requireCapability.connection_name (Python parameter) — name of the connection to retrieve capabilities from."><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.conditions" title="tortoise.contrib.test.requireCapability.conditions (Python parameter) — capability tests which must all pass for the test to run."><span class="n"><span class="pre">conditions</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#requireCapability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.requireCapability" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">requireCapability</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.connection_name" title="tortoise.contrib.test.requireCapability.connection_name (Python parameter) — name of the connection to retrieve capabilities from."><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;models&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.contrib.test.requireCapability.conditions" title="tortoise.contrib.test.requireCapability.conditions (Python parameter) — capability tests which must all pass for the test to run."><span class="n"><span class="pre">conditions</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/test.html#requireCapability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.requireCapability" title="Link to this definition">¶</a></dt>
 <dd><p>Skip a test if the required capabilities are not matched.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
@@ -1547,13 +1547,13 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </div>
 <p>Usage:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@requireCapability</span><span class="p">(</span><span class="n">dialect</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">test_run_sqlite_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_run_sqlite_only</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div>
 </div>
 <p>Or to conditionally skip a class:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@requireCapability</span><span class="p">(</span><span class="n">dialect</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">TestSqlite</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestSqlite</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div>
 </div>
@@ -1567,26 +1567,26 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.test.requireCapability-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.test.requireCapability-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.skip">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skip</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">reason</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skip" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skip</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.skip" title="tortoise.contrib.test.skip.reason (Python parameter)"><span class="n"><span class="pre">reason</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skip" title="Link to this definition">¶</a></dt>
 <dd><p>Unconditionally skip a test.</p>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.skipIf">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skipIf</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">reason</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skipIf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skipIf" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skipIf</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.skipIf" title="tortoise.contrib.test.skipIf.condition (Python parameter)"><span class="n"><span class="pre">condition</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.skipIf" title="tortoise.contrib.test.skipIf.reason (Python parameter)"><span class="n"><span class="pre">reason</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skipIf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skipIf" title="Link to this definition">¶</a></dt>
 <dd><p>Skip a test if the condition is true.</p>
 </dd></dl>
 
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.contrib.test.skipUnless">
-<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skipUnless</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="n"><span class="pre">reason</span></span></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skipUnless"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skipUnless" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.test.</span></span><span class="sig-name descname"><span class="pre">skipUnless</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.skipUnless" title="tortoise.contrib.test.skipUnless.condition (Python parameter)"><span class="n"><span class="pre">condition</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.test.skipUnless" title="tortoise.contrib.test.skipUnless.reason (Python parameter)"><span class="n"><span class="pre">reason</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/unittest/case.html#skipUnless"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.test.skipUnless" title="Link to this definition">¶</a></dt>
 <dd><p>Skip a test unless the condition is true.</p>
 </dd></dl>
 
@@ -1658,13 +1658,13 @@ Note that usage of this does not guarantee that auto-number-pks will be reset to
       <div class="md-copyright">
   
     <div class="md-footer-copyright__highlight">
-        &#169; Copyright 2018 - 2024, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        &#169; Copyright 2018 - 2025, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
         
     </div>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.1.2.
+    7.4.7.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
