@@ -13,7 +13,7 @@
     
     
       
-        <title>Migration - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Migration - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -938,33 +938,36 @@
 
 
 <h1 id="migration"><span id="id1"></span>Migration<a class="headerlink" href="#migration" title="Link to this heading">¶</a></h1>
-<p>This document describes how to use <cite>Aerich</cite> to make migrations.</p>
-<p>You can see <a class="reference external" href="https://github.com/tortoise/aerich">https://github.com/tortoise/aerich</a> for more details.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Aerich is not as mature yet, expect some issues here and there.</p>
+</div>
+<p>This document describes how to use <cite>Aerich</cite> to manage schema changes.</p>
+<p>Check out <a class="reference external" href="https://github.com/tortoise/aerich">aerich repository</a> for more details.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>aerich<span class="w"> </span>-h
 
 Usage:<span class="w"> </span>aerich<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
 
 Options:
-<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>TEXT<span class="w">  </span>Config<span class="w"> </span>file.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>aerich.ini<span class="o">]</span>
-<span class="w">  </span>--app<span class="w"> </span>TEXT<span class="w">         </span>Tortoise-ORM<span class="w"> </span>app<span class="w"> </span>name.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>models<span class="o">]</span>
-<span class="w">  </span>-n,<span class="w"> </span>--name<span class="w"> </span>TEXT<span class="w">    </span>Name<span class="w"> </span>of<span class="w"> </span>section<span class="w"> </span><span class="k">in</span><span class="w"> </span>.ini<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>aerich<span class="w"> </span>config.
-<span class="w">                     </span><span class="o">[</span>default:<span class="w"> </span>aerich<span class="o">]</span>
+<span class="w">  </span>-V,<span class="w"> </span>--version<span class="w">      </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>TEXT<span class="w">  </span>Config<span class="w"> </span>file.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>pyproject.toml<span class="o">]</span>
+<span class="w">  </span>--app<span class="w"> </span>TEXT<span class="w">         </span>Tortoise-ORM<span class="w"> </span>app<span class="w"> </span>name.
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 
 Commands:
 <span class="w">  </span>downgrade<span class="w">  </span>Downgrade<span class="w"> </span>to<span class="w"> </span>specified<span class="w"> </span>version.
-<span class="w">  </span>heads<span class="w">      </span>Show<span class="w"> </span>current<span class="w"> </span>available<span class="w"> </span>heads<span class="w"> </span><span class="k">in</span><span class="w"> </span>migrate<span class="w"> </span>location.
-<span class="w">  </span><span class="nb">history</span><span class="w">    </span>List<span class="w"> </span>all<span class="w"> </span>migrate<span class="w"> </span>items.
-<span class="w">  </span>init<span class="w">       </span>Init<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>root<span class="w"> </span>migrate<span class="w"> </span>location.
-<span class="w">  </span>init-db<span class="w">    </span>Generate<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>app<span class="w"> </span>migrate<span class="w"> </span>location.
-<span class="w">  </span>migrate<span class="w">    </span>Generate<span class="w"> </span>migrate<span class="w"> </span>changes<span class="w"> </span>file.
-<span class="w">  </span>upgrade<span class="w">    </span>Upgrade<span class="w"> </span>to<span class="w"> </span>latest<span class="w"> </span>version.
+<span class="w">  </span>heads<span class="w">      </span>Show<span class="w"> </span>currently<span class="w"> </span>available<span class="w"> </span>heads<span class="w"> </span><span class="o">(</span>unapplied<span class="w"> </span>migrations<span class="o">)</span>.
+<span class="w">  </span><span class="nb">history</span><span class="w">    </span>List<span class="w"> </span>all<span class="w"> </span>migrations.
+<span class="w">  </span>init<span class="w">       </span>Initialize<span class="w"> </span>aerich<span class="w"> </span>config<span class="w"> </span>and<span class="w"> </span>create<span class="w"> </span>migrations<span class="w"> </span>folder.
+<span class="w">  </span>init-db<span class="w">    </span>Generate<span class="w"> </span>schema<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>app<span class="w"> </span>migration<span class="w"> </span>folder.
+<span class="w">  </span>inspectdb<span class="w">  </span>Prints<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>database<span class="w"> </span>tables<span class="w"> </span>to<span class="w"> </span>stdout<span class="w"> </span>as<span class="w"> </span>Tortoise-ORM...
+<span class="w">  </span>migrate<span class="w">    </span>Generate<span class="w"> </span>a<span class="w"> </span>migration<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>state<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>models.
+<span class="w">  </span>upgrade<span class="w">    </span>Upgrade<span class="w"> </span>to<span class="w"> </span>specified<span class="w"> </span>migration<span class="w"> </span>version.
 </code></pre></div>
 </div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
-<p>You need add <cite>aerich.models</cite> to your <cite>Tortoise-ORM</cite> config first,
-example:</p>
+<p>Add <code class="docutils literal notranslate"><span class="pre">aerich.models</span></code> to your <cite>Tortoise-ORM</cite> config first:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">TORTOISE_ORM</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;mysql://root:123456@127.0.0.1:3306/test&quot;</span><span class="p">},</span>
     <span class="s2">&quot;apps&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -981,12 +984,13 @@ example:</p>
 
 Usage:<span class="w"> </span>aerich<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
-<span class="w">  </span>Init<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>and<span class="w"> </span>generate<span class="w"> </span>root<span class="w"> </span>migrate<span class="w"> </span>location.
+<span class="w">  </span>Initialize<span class="w"> </span>aerich<span class="w"> </span>config<span class="w"> </span>and<span class="w"> </span>create<span class="w"> </span>migrations<span class="w"> </span>folder.
 
 Options:
-<span class="w">  </span>-t,<span class="w"> </span>--tortoise-orm<span class="w"> </span>TEXT<span class="w">  </span>Tortoise-ORM<span class="w"> </span>config<span class="w"> </span>module<span class="w"> </span>dict<span class="w"> </span>variable,<span class="w"> </span>like<span class="w"> </span>settings.TORTOISE_ORM.
-<span class="w">                           </span><span class="o">[</span>required<span class="o">]</span>
-<span class="w">  </span>--location<span class="w"> </span>TEXT<span class="w">          </span>Migrate<span class="w"> </span>store<span class="w"> </span>location.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>./migrations<span class="o">]</span>
+<span class="w">  </span>-t,<span class="w"> </span>--tortoise-orm<span class="w"> </span>TEXT<span class="w">  </span>Tortoise-ORM<span class="w"> </span>config<span class="w"> </span>dict<span class="w"> </span>location,<span class="w"> </span>like
+<span class="w">                          </span><span class="sb">`</span>settings.TORTOISE_ORM<span class="sb">`</span>.<span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
+<span class="w">  </span>--location<span class="w"> </span>TEXT<span class="w">          </span>Migrations<span class="w"> </span>folder.<span class="w">  </span><span class="o">[</span>default:<span class="w"> </span>./migrations<span class="o">]</span>
+<span class="w">  </span>-s,<span class="w"> </span>--src_folder<span class="w"> </span>TEXT<span class="w">    </span>Folder<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>source,<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>project<span class="w"> </span>root.
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">               </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
 </div>

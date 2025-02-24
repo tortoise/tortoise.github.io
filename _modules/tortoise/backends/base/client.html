@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.backends.base.client - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.backends.base.client - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -516,7 +516,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
 
@@ -603,17 +603,17 @@
 <span class="sd">    Parameters get passed as kwargs, and is mostly driver specific.</span>
 
 <span class="sd">    .. attribute:: query_class</span>
-<span class="sd">        :annotation: Type[pypika_tortoise.Query]</span>
+<span class="sd">        :annotation: type[pypika_tortoise.Query]</span>
 
 <span class="sd">        The PyPika Query dialect (low level dialect)</span>
 
 <span class="sd">    .. attribute:: executor_class</span>
-<span class="sd">        :annotation: Type[BaseExecutor]</span>
+<span class="sd">        :annotation: type[BaseExecutor]</span>
 
 <span class="sd">        The executor dialect class (high level dialect)</span>
 
 <span class="sd">    .. attribute:: schema_generator</span>
-<span class="sd">        :annotation: Type[BaseSchemaGenerator]</span>
+<span class="sd">        :annotation: type[BaseSchemaGenerator]</span>
 
 <span class="sd">        The DDL schema generator</span>
 
@@ -624,12 +624,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_connection</span><span class="p">:</span> <span class="n">Any</span>
-    <span class="n">_parent</span><span class="p">:</span> <span class="s2">&quot;BaseDBAsyncClient&quot;</span>
+    <span class="n">_parent</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span>
     <span class="n">_pool</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">query_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Query</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span>
-    <span class="n">executor_class</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseExecutor</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseExecutor</span>
-    <span class="n">schema_generator</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseSchemaGenerator</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseSchemaGenerator</span>
+    <span class="n">query_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Query</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span>
+    <span class="n">executor_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseExecutor</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseExecutor</span>
+    <span class="n">schema_generator</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseSchemaGenerator</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseSchemaGenerator</span>
     <span class="n">capabilities</span><span class="p">:</span> <span class="n">Capabilities</span> <span class="o">=</span> <span class="n">Capabilities</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fetch_inserted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -686,7 +686,7 @@
 
 <div class="viewcode-block" id="BaseDBAsyncClient.acquire_connection">
 <a class="viewcode-back" href="../../../../setup.html#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">acquire_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ConnectionWrapper&quot;</span> <span class="o">|</span> <span class="s2">&quot;PoolConnectionWrapper&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">acquire_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConnectionWrapper</span> <span class="o">|</span> <span class="n">PoolConnectionWrapper</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Acquires a connection from the pool.</span>
 <span class="sd">        Will return the current context connection if already in a transaction.</span>
@@ -694,7 +694,7 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_in_transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TransactionContext&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_in_transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TransactionContext</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>  <span class="c1"># pragma: nocoverage</span>
 
 <div class="viewcode-block" id="BaseDBAsyncClient.execute_insert">

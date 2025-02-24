@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,13 +511,15 @@
 
 
 <h1>Source code for tortoise.models</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Order</span><span class="p">,</span> <span class="n">Query</span><span class="p">,</span> <span class="n">Table</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Term</span>
@@ -569,7 +571,7 @@
 <span class="n">EMPTY</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span><span class="p">,</span> <span class="n">together</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span> <span class="n">together</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
     <span class="n">_together</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">together</span><span class="p">,</span> <span class="p">())</span>
 
     <span class="k">if</span> <span class="n">_together</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_together</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_together</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
@@ -579,7 +581,7 @@
     <span class="k">return</span> <span class="n">_together</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">prepare_default_ordering</span><span class="p">(</span><span class="n">meta</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Order</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_default_ordering</span><span class="p">(</span><span class="n">meta</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">Meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Order</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
     <span class="n">ordering_list</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;ordering&quot;</span><span class="p">,</span> <span class="p">())</span>
 
     <span class="n">parsed_ordering</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
@@ -596,8 +598,8 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_fk_setter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
-    <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;Optional[Model]&quot;</span><span class="p">,</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">to_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -607,7 +609,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_fk_getter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_field</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_field</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Awaitable</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_key</span><span class="p">)</span>
@@ -619,7 +621,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_rfk_getter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">frelfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_field</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">frelfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_field</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReverseRelation</span><span class="p">:</span>
     <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -629,8 +631,8 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_ro2o_getter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">frelfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_field</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySetSingle[Optional[Model]]&quot;</span><span class="p">:</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ftype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">frelfield</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">from_field</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_key</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_key</span><span class="p">)</span>
 
@@ -640,7 +642,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_m2m_getter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field_object</span><span class="p">:</span> <span class="n">ManyToManyFieldInstance</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field_object</span><span class="p">:</span> <span class="n">ManyToManyFieldInstance</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ManyToManyRelation</span><span class="p">:</span>
     <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -649,7 +651,7 @@
     <span class="k">return</span> <span class="n">val</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_comments</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_comments</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get comments exactly before attributes</span>
 
@@ -720,14 +722,14 @@
         <span class="s2">&quot;_ordering_validated&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">Meta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">abstract</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span> <span class="n">Manager</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;manager&quot;</span><span class="p">,</span> <span class="n">Manager</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unique_together</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;unique_together&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">indexes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">Index</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;indexes&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="n">Index</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_together</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;indexes&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_default_ordering</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Order</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">prepare_default_ordering</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ordering_validated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -744,13 +746,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inited</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">default_connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_connection</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basequery</span><span class="p">:</span> <span class="n">Query</span> <span class="o">=</span> <span class="n">Query</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basequery_all_fields</span><span class="p">:</span> <span class="n">Query</span> <span class="o">=</span> <span class="n">Query</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basetable</span><span class="p">:</span> <span class="n">Table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;pk_attr&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">generated_db_fields</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;table_description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span> <span class="n">Field</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_pk_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -987,9 +989,9 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">ModelMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;ModelMeta&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ModelMeta</span><span class="p">:</span>
         <span class="n">fields_db_projection</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">meta_class</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{}))</span>
+        <span class="n">meta_class</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">Meta</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Meta&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{}))</span>
         <span class="n">pk_attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span>
 
         <span class="c1"># Start searching for fields in the base classes.</span>
@@ -1041,7 +1043,7 @@
         <span class="k">return</span> <span class="n">new_class</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_search_for_field_attributes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Type</span><span class="p">,</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_search_for_field_attributes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Searching for class attributes of type fields.Field</span>
 <span class="sd">        in the given class.</span>
@@ -1149,7 +1151,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">build_meta</span><span class="p">(</span>
-        <span class="n">meta_class</span><span class="p">:</span> <span class="s2">&quot;Model.Meta&quot;</span><span class="p">,</span>
+        <span class="n">meta_class</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">Meta</span><span class="p">,</span>
         <span class="n">fields_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">],</span>
         <span class="n">fields_db_projection</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
         <span class="n">filters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">],</span>
@@ -1179,7 +1181,7 @@
             <span class="n">meta</span><span class="o">.</span><span class="n">abstract</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">meta</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_getbypk</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
 
@@ -1192,7 +1194,7 @@
 
     <span class="c1"># I don&#39; like this here, but it makes auto completion and static analysis much happier</span>
     <span class="n">_meta</span> <span class="o">=</span> <span class="n">MetaInfo</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-    <span class="n">_listeners</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Signals</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Callable</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># type: ignore</span>
+    <span class="n">_listeners</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Signals</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Callable</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># type: ignore</span>
         <span class="n">Signals</span><span class="o">.</span><span class="n">pre_save</span><span class="p">:</span> <span class="p">{},</span>
         <span class="n">Signals</span><span class="o">.</span><span class="n">post_save</span><span class="p">:</span> <span class="p">{},</span>
         <span class="n">Signals</span><span class="o">.</span><span class="n">pre_delete</span><span class="p">:</span> <span class="p">{},</span>
@@ -1264,7 +1266,7 @@
         <span class="k">return</span> <span class="n">passed_fields</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_init_from_db</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_from_db</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_partial</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_saved_in_db</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1346,7 +1348,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_relation_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_relation_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -1367,7 +1369,7 @@
             <span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_getbypk</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_getbypk</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">(</span><span class="n">DoesNotExist</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
@@ -1451,24 +1453,24 @@
         <span class="n">listeners</span> <span class="o">=</span> <span class="p">[</span><span class="n">listener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">listener_args</span><span class="p">)</span> <span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="n">cls_listeners</span><span class="p">]</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">listeners</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_pre_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_pre_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_delete</span><span class="p">,</span> <span class="n">using_db</span><span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_post_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_post_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_delete</span><span class="p">,</span> <span class="n">using_db</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_pre_save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">pre_save</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_post_save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">created</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_save</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">)</span>
 
@@ -1476,8 +1478,8 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.save">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">force_create</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">force_update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1494,6 +1496,7 @@
 
 <span class="sd">        :raises IncompleteInstanceError: If the model is partial and the fields are not available for persistence.</span>
 <span class="sd">        :raises IntegrityError: If the model can&#39;t be created or updated (specifically if force_create or force_update has been set)</span>
+<span class="sd">        :raises OperationalError: If update_fields include pk field.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_async_default_field</span><span class="p">()</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -1542,7 +1545,7 @@
 
 <div class="viewcode-block" id="Model.delete">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.delete">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes the current model object.</span>
 
@@ -1560,7 +1563,7 @@
 
 <div class="viewcode-block" id="Model.fetch_related">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.fetch_related">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_related</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_related</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetch related fields.</span>
 
@@ -1579,8 +1582,8 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.refresh_from_db">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">refresh_from_db</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Refresh latest data from db. When this method is called without arguments</span>
@@ -1624,8 +1627,8 @@
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_or_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
-        <span class="n">defaults</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1669,7 +1672,7 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_db_queryset</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">for_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">for_write</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">(</span><span class="n">for_write</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
@@ -1682,7 +1685,7 @@
         <span class="n">nowait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">skip_locked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">of</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet select for update.</span>
@@ -1697,9 +1700,9 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.update_or_create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update_or_create</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
-        <span class="n">defaults</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MODEL</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1724,7 +1727,7 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a record in the DB and returns the object.</span>
@@ -1754,12 +1757,12 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.bulk_update">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">bulk_update</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkUpdateQuery[MODEL]&quot;</span><span class="p">:</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BulkUpdateQuery</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the given fields in each of the given objects in the database.</span>
 <span class="sd">        This method efficiently updates the given fields on the provided model instances, generally with one query.</span>
@@ -1787,10 +1790,10 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.in_bulk">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">in_bulk</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
-        <span class="n">id_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">id_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">],</span>
         <span class="n">field_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pk&quot;</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a dictionary mapping each of the given IDs to the object with</span>
@@ -1807,14 +1810,14 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.bulk_create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">bulk_create</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">objects</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
-        <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ignore_conflicts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BulkCreateQuery[MODEL]&quot;</span><span class="p">:</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_conflict</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BulkCreateQuery</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Bulk insert operation:</span>
 
@@ -1850,7 +1853,7 @@
 <div class="viewcode-block" id="Model.first">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.first">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Self</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a QuerySet that returns the first record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1860,7 +1863,7 @@
 <div class="viewcode-block" id="Model.last">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.last">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">last</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Self</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">last</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a QuerySet that returns the last record.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1883,7 +1886,7 @@
 <div class="viewcode-block" id="Model.latest">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.latest">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">latest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Self</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">latest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a QuerySet with the filter applied that returns the last record.</span>
 
@@ -1895,7 +1898,7 @@
 <div class="viewcode-block" id="Model.earliest">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.earliest">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">earliest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Self</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">earliest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a QuerySet with the filter applied that returns the first record.</span>
 
@@ -1920,7 +1923,7 @@
 <div class="viewcode-block" id="Model.annotate">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.annotate">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Expression</span><span class="p">,</span> <span class="n">Term</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Expression</span> <span class="o">|</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Annotates the result set with extra Functions/Aggregations/Expressions.</span>
 
@@ -1932,7 +1935,7 @@
 <div class="viewcode-block" id="Model.all">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.all">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the complete QuerySet.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1943,7 +1946,7 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetches a single record for a Model type using the provided filter parameters.</span>
@@ -1965,7 +1968,7 @@
 <div class="viewcode-block" id="Model.raw">
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.raw">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">raw</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RawSQLQuery&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">raw</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RawSQLQuery</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes a RAW SQL and returns the result</span>
 
@@ -1983,7 +1986,7 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.exists">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">exists</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExistsQuery</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return True/False whether record exists with the provided filter parameters.</span>
@@ -2003,8 +2006,8 @@
 <a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get_or_none">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_or_none</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Self</span><span class="p">]]:</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetches a single record for a Model type using the provided filter parameters or None.</span>
 
@@ -2024,9 +2027,9 @@
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_for_list</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
-        <span class="n">instance_list</span><span class="p">:</span> <span class="s2">&quot;Iterable[Model]&quot;</span><span class="p">,</span>
+        <span class="n">instance_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BaseDBAsyncClient</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetches related models for provided list of Model objects.</span>
@@ -2084,8 +2087,8 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_describe_index</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Index</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Index</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="nb">dict</span><span class="p">]:</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Index</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Index</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">index</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="k">if</span> <span class="n">serializable</span> <span class="k">else</span> <span class="n">index</span>
 

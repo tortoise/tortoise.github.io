@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.exceptions - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.exceptions - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,10 +511,12 @@
 
 
 <h1>Source code for tortoise.exceptions</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Type</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
 <div class="viewcode-block" id="BaseORMException">
@@ -594,8 +596,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">NotExistOrMultiple</span><span class="p">(</span><span class="n">OperationalError</span><span class="p">):</span>
     <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], str]&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Optional[Type[Model]]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
         <span class="k">else</span><span class="p">:</span>
@@ -628,8 +630,8 @@
 <span class="sd">    The DoesNotExist exception is raised when an item with the passed primary key does not exist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">pk_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pk_val</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">pk_val</span>
 

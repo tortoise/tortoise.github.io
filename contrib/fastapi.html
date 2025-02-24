@@ -13,7 +13,7 @@
     
     
       
-        <title>Tortoise-ORM FastAPI integration - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Tortoise-ORM FastAPI integration - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -543,33 +543,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tortoise.contrib.fastapi.HTTPNotFoundError" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.contrib.fastapi.HTTPNotFoundError (Python class) — Bases: BaseModel" class="md-ellipsis">tortoise.<wbr>contrib.<wbr>fastapi.<wbr>HTTPNot<wbr>Found<wbr>Error</span>
-  </a>
-  
-    <nav class="md-nav" aria-label="tortoise.contrib.fastapi.HTTPNotFoundError">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.contrib.fastapi.HTTPNotFoundError.detail" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.fastapi.HTTPNotFoundError.detail (Python attribute)" class="md-ellipsis">detail</span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.contrib.fastapi.HTTPNotFoundError.model_config" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.contrib.fastapi.HTTPNotFoundError.model_config (Python attribute) — Configuration for the model, should be a dictionary conforming to [ConfigDict][pydantic.config.ConfigDict]." class="md-ellipsis">model_<wbr>config</span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tortoise.contrib.fastapi.RegisterTortoise" class="md-nav__link">
     <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.contrib.fastapi.RegisterTortoise (Python class) — Bases: AbstractAsyncContextManager" class="md-ellipsis">tortoise.<wbr>contrib.<wbr>fastapi.<wbr>Register<wbr>Tortoise</span>
   </a>
@@ -707,7 +680,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.contrib.fastapi.register_tortoise" class="md-nav__link">
-    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.fastapi.register_tortoise (Python function) — Registers startup and shutdown events to set-up and tear-down Tortoise-ORM inside a FastAPI application." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>fastapi.<wbr>register_<wbr>tortoise</span>
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.fastapi.register_tortoise (Python function) — Registers Tortoise-ORM with set-up at the beginning of FastAPI application&#39;s lifespan (which allow user to read/write data from/to db inside the lifespan function), and tear-down at the end of that lifespan." class="md-ellipsis">tortoise.<wbr>contrib.<wbr>fastapi.<wbr>register_<wbr>tortoise</span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.contrib.fastapi.register_tortoise">
@@ -784,6 +757,26 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.contrib.fastapi.register_tortoise-return-type" class="md-nav__link">
+    <span class="md-ellipsis">Return type</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.fastapi.tortoise_exception_handlers" class="md-nav__link">
+    <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span><span title="tortoise.contrib.fastapi.tortoise_exception_handlers (Python function) — dict" class="md-ellipsis">tortoise.<wbr>contrib.<wbr>fastapi.<wbr>tortoise_<wbr>exception_<wbr>handlers</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.contrib.fastapi.tortoise_exception_handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.contrib.fastapi.tortoise_exception_handlers-return-type" class="md-nav__link">
     <span class="md-ellipsis">Return type</span>
   </a>
   
@@ -1004,23 +997,6 @@
 <p>See the <a class="reference internal" href="../examples/fastapi.html#example-fastapi"><span class="std std-ref">FastAPI Examples</span></a> &amp; have a look at the <a class="reference internal" href="pydantic.html#contrib-pydantic"><span class="std std-ref">Pydantic serialisation</span></a> tutorials.</p>
 <h2 id="module-tortoise.contrib.fastapi"><span id="reference"></span>Reference<a class="headerlink" href="#module-tortoise.contrib.fastapi" title="Link to this heading">¶</a></h2>
 <dl class="py class objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.contrib.fastapi.HTTPNotFoundError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.fastapi.</span></span><span class="sig-name descname"><span class="pre">HTTPNotFoundError</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.contrib.fastapi.HTTPNotFoundError" title="tortoise.contrib.fastapi.HTTPNotFoundError.__init__.data (Python parameter)"><span class="n"><span class="pre">data</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/fastapi.html#HTTPNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.fastapi.HTTPNotFoundError" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
-<dl class="py attribute objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.contrib.fastapi.HTTPNotFoundError.detail">
-<span class="sig-name descname"><span class="pre">detail</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">str</span></span><a class="headerlink" href="#tortoise.contrib.fastapi.HTTPNotFoundError.detail" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.contrib.fastapi.HTTPNotFoundError.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></span><span class="p"> <span class="pre">=</span> </span><code class="code python docutils literal highlight highlight-python"><span class="p">{}</span></code><a class="headerlink" href="#tortoise.contrib.fastapi.HTTPNotFoundError.model_config" title="Link to this definition">¶</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.fastapi.RegisterTortoise">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.contrib.fastapi.</span></span><span class="sig-name descname"><span class="pre">RegisterTortoise</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.app" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.app (Python parameter) — FastAPI app."><span class="n"><span class="pre">app</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.config" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.config (Python parameter) — Dict containing config:"><span class="n"><span class="pre">config</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.config_file" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.config_file (Python parameter) — Path to .json or .yml (if PyYAML installed) file containing config with same format as above."><span class="n"><span class="pre">config_file</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.db_url" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.db_url (Python parameter) — Use a DB_URL string."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.modules" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.modules (Python parameter) — Dictionary of key: [list_of_modules] that defined &quot;apps&quot; and modules that should be discovered for models."><span class="n"><span class="pre">modules</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.generate_schemas" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.generate_schemas (Python parameter) — True to generate schema immediately."><span class="n"><span class="pre">generate_schemas</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.add_exception_handlers" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.add_exception_handlers (Python parameter) — True to add some automatic exception handlers for DoesNotExist &amp; IntegrityError. This is not recommended for production systems as it may leak data."><span class="n"><span class="pre">add_exception_handlers</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.use_tz" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.use_tz (Python parameter) — A boolean that specifies if datetime will be timezone-aware by default or not."><span class="n"><span class="pre">use_tz</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise.__init__.timezone" title="tortoise.contrib.fastapi.RegisterTortoise.__init__.timezone (Python parameter) — Timezone to use, default is UTC."><span class="n"><span class="pre">timezone</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;UTC&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.RegisterTortoise" title="tortoise.contrib.fastapi.RegisterTortoise.__init__._create_db (Python parameter)"><span class="n"><span class="pre">_create_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/fastapi.html#RegisterTortoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.fastapi.RegisterTortoise" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractAsyncContextManager</span></code></p>
@@ -1114,14 +1090,15 @@ This is not recommended for production systems as it may leak data.</p>
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.contrib.fastapi.register_tortoise">
 <span class="sig-prename descclassname"><span class="pre">tortoise.contrib.fastapi.</span></span><span class="sig-name descname"><span class="pre">register_tortoise</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.app" title="tortoise.contrib.fastapi.register_tortoise.app (Python parameter) — FastAPI app."><span class="n"><span class="pre">app</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.config" title="tortoise.contrib.fastapi.register_tortoise.config (Python parameter) — Dict containing config:"><span class="n"><span class="pre">config</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.config_file" title="tortoise.contrib.fastapi.register_tortoise.config_file (Python parameter) — Path to .json or .yml (if PyYAML installed) file containing config with same format as above."><span class="n"><span class="pre">config_file</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.db_url" title="tortoise.contrib.fastapi.register_tortoise.db_url (Python parameter) — Use a DB_URL string."><span class="n"><span class="pre">db_url</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.modules" title="tortoise.contrib.fastapi.register_tortoise.modules (Python parameter) — Dictionary of key: [list_of_modules] that defined &quot;apps&quot; and modules that should be discovered for models."><span class="n"><span class="pre">modules</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.generate_schemas" title="tortoise.contrib.fastapi.register_tortoise.generate_schemas (Python parameter) — True to generate schema immediately."><span class="n"><span class="pre">generate_schemas</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.contrib.fastapi.register_tortoise.add_exception_handlers" title="tortoise.contrib.fastapi.register_tortoise.add_exception_handlers (Python parameter) — True to add some automatic exception handlers for DoesNotExist &amp; IntegrityError. This is not recommended for production systems as it may leak data."><span class="n"><span class="pre">add_exception_handlers</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/fastapi.html#register_tortoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise" title="Link to this definition">¶</a></dt>
-<dd><p>Registers <code class="docutils literal notranslate"><span class="pre">startup</span></code> and <code class="docutils literal notranslate"><span class="pre">shutdown</span></code> events to set-up and tear-down Tortoise-ORM
-inside a FastAPI application.</p>
+<dd><p>Registers Tortoise-ORM with set-up at the beginning of FastAPI application’s lifespan
+(which allow user to read/write data from/to db inside the lifespan function),
+and tear-down at the end of that lifespan.</p>
 <p>You can configure using only one of <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">config_file</span></code>
 and <code class="docutils literal notranslate"><span class="pre">(db_url,</span> <span class="pre">modules)</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.fastapi.register_tortoise-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.contrib.fastapi.register_tortoise.app"><span class="sig-name descname">app</span><span class="p"> : </span><span class="desctype"><span class="desctype">'FastAPI'</span></span><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise.app" title="Permalink to this definition">¶</a></dt><dd><p>FastAPI app.</p>
+<dt id="tortoise.contrib.fastapi.register_tortoise.app"><span class="sig-name descname">app</span><span class="p"> : </span><span class="desctype"><span class="desctype">FastAPI</span></span><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise.app" title="Permalink to this definition">¶</a></dt><dd><p>FastAPI app.</p>
 </dd>
 <dt id="tortoise.contrib.fastapi.register_tortoise.config"><span class="sig-name descname">config</span><span class="p"> : </span><span class="desctype"><span class="desctype">dict | None</span></span><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise.config" title="Permalink to this definition">¶</a></dt><dd><p><p>Dict containing config:</p>
 <div class="example admonition">
@@ -1176,6 +1153,16 @@ This is not recommended for production systems as it may leak data.</p>
 </dd>
 <dt class="field-odd" id="tortoise.contrib.fastapi.register_tortoise-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.fastapi.register_tortoise-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.contrib.fastapi.tortoise_exception_handlers">
+<span class="sig-prename descclassname"><span class="pre">tortoise.contrib.fastapi.</span></span><span class="sig-name descname"><span class="pre">tortoise_exception_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tortoise/contrib/fastapi.html#tortoise_exception_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.contrib.fastapi.tortoise_exception_handlers" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd" id="tortoise.contrib.fastapi.tortoise_exception_handlers-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.fastapi.tortoise_exception_handlers-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 </dd>
 </dl>
 </dd></dl>

@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.fields.relational - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.fields.relational - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,11 +511,20 @@
 
 
 <h1>Source code for tortoise.fields.relational</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TYPE_CHECKING</span><span class="p">,</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Generic</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">TypeVar</span><span class="p">,</span>
+    <span class="n">overload</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">NoValuesFetched</span><span class="p">,</span> <span class="n">OperationalError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CASCADE</span><span class="p">,</span> <span class="n">SET_NULL</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">OnDelete</span>
@@ -550,9 +559,9 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">remote_model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">remote_model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span>
+        <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span>
         <span class="n">from_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">remote_model</span> <span class="o">=</span> <span class="n">remote_model</span>
@@ -564,7 +573,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">related_objects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_query</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">_saved_in_db</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span>
                 <span class="s2">&quot;This objects hasn&#39;t been instanced, call .save() before calling related queries&quot;</span>
@@ -577,7 +586,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_not_fetched</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">related_objects</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Iterator[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_not_fetched</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">related_objects</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
 
@@ -604,7 +613,7 @@
 
 <div class="viewcode-block" id="ReverseRelation.filter">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ReverseRelation.filter">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a QuerySet with related elements filtered by args/kwargs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -613,7 +622,7 @@
 
 <div class="viewcode-block" id="ReverseRelation.all">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ReverseRelation.all">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a QuerySet with all related elements.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -622,7 +631,7 @@
 
 <div class="viewcode-block" id="ReverseRelation.order_by">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ReverseRelation.order_by">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">order_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">order_by</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a QuerySet related elements in order.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -631,7 +640,7 @@
 
 <div class="viewcode-block" id="ReverseRelation.limit">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ReverseRelation.limit">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a QuerySet with at most «limit» related elements.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -640,14 +649,14 @@
 
 <div class="viewcode-block" id="ReverseRelation.offset">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ReverseRelation.offset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;QuerySet[MODEL]&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a QuerySet with all related elements offset by «offset».</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_set_result_for_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">attr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_result_for_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fetched</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">related_objects</span> <span class="o">=</span> <span class="n">sequence</span>
         <span class="k">if</span> <span class="n">attr</span><span class="p">:</span>
@@ -668,14 +677,14 @@
 <span class="sd">    Many-to-many relation container for :func:`.ManyToManyField`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">m2m_field</span><span class="p">:</span> <span class="s2">&quot;ManyToManyFieldInstance[MODEL]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">m2m_field</span><span class="p">:</span> <span class="n">ManyToManyFieldInstance</span><span class="p">[</span><span class="n">MODEL</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">m2m_field</span><span class="o">.</span><span class="n">related_model</span><span class="p">,</span> <span class="n">m2m_field</span><span class="o">.</span><span class="n">related_name</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="s2">&quot;pk&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">m2m_field</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="n">instance</span>
 
 <div class="viewcode-block" id="ManyToManyRelation.add">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ManyToManyRelation.add">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="s2">&quot;Optional[BaseDBAsyncClient]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds one or more of ``instances`` to the relation.</span>
 
@@ -723,7 +732,7 @@
 
 <div class="viewcode-block" id="ManyToManyRelation.clear">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ManyToManyRelation.clear">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="s2">&quot;Optional[BaseDBAsyncClient]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Clears ALL relations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -732,9 +741,7 @@
 
 <div class="viewcode-block" id="ManyToManyRelation.remove">
 <a class="viewcode-back" href="../../../query.html#tortoise.fields.relational.ManyToManyRelation.remove">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="s2">&quot;Optional[BaseDBAsyncClient]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">instances</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes one or more of ``instances`` from the relation.</span>
 
@@ -747,8 +754,8 @@
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_remove_or_clear</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">instances</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">MODEL</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">using_db</span><span class="p">:</span> <span class="s2">&quot;Optional[BaseDBAsyncClient]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">instances</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MODEL</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">remote_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span>
         <span class="n">through_table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">through</span><span class="p">)</span>
@@ -777,13 +784,13 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">related_model</span><span class="p">:</span> <span class="s2">&quot;Type[MODEL]&quot;</span><span class="p">,</span>
-        <span class="n">to_field</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">related_model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
+        <span class="n">to_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">related_model</span><span class="p">:</span> <span class="s2">&quot;Type[MODEL]&quot;</span> <span class="o">=</span> <span class="n">related_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">related_model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">=</span> <span class="n">related_model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">to_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">to_field</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">to_field_instance</span><span class="p">:</span> <span class="n">Field</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_constraint</span> <span class="o">=</span> <span class="n">db_constraint</span>
@@ -791,16 +798,16 @@
     <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
 
         <span class="nd">@overload</span>
-        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;RelationalField[MODEL]&quot;</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">RelationalField</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span> <span class="o">...</span>
 
         <span class="nd">@overload</span>
-        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span> <span class="o">...</span>
 
         <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
-        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RelationalField[MODEL] | MODEL&quot;</span><span class="p">:</span> <span class="o">...</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RelationalField</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">|</span> <span class="n">MODEL</span><span class="p">:</span> <span class="o">...</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">desc</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">serializable</span><span class="p">)</span>
@@ -819,7 +826,7 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -845,24 +852,24 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">BackwardFKRelation</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">field_type</span><span class="p">:</span> <span class="s2">&quot;Type[MODEL]&quot;</span><span class="p">,</span>
+        <span class="n">field_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
         <span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">relation_source_field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">null</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-        <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">field_type</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="n">null</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">relation_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">relation_field</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">relation_source_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">relation_source_field</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">description</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">OneToOneFieldInstance</span><span class="p">(</span><span class="n">ForeignKeyFieldInstance</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -880,12 +887,12 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">through</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">forward_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">through</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">forward_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">backward_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
-        <span class="n">field_type</span><span class="p">:</span> <span class="s2">&quot;Type[MODEL]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+        <span class="n">field_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
         <span class="n">create_unique_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -917,36 +924,36 @@
 <span class="nd">@overload</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">OneToOneField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;OneToOneNullableRelation[MODEL]&quot;</span><span class="p">:</span> <span class="o">...</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OneToOneNullableRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span> <span class="o">...</span>
 
 
 <span class="nd">@overload</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">OneToOneField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;OneToOneRelation[MODEL]&quot;</span><span class="p">:</span> <span class="o">...</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OneToOneRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span> <span class="o">...</span>
 
 
 <div class="viewcode-block" id="OneToOneField">
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.relational.OneToOneField">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">OneToOneField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;OneToOneRelation[MODEL] | OneToOneNullableRelation[MODEL]&quot;</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OneToOneRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">|</span> <span class="n">OneToOneNullableRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    OneToOne relation field.</span>
 
@@ -995,36 +1002,36 @@
 <span class="nd">@overload</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">ForeignKeyField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ForeignKeyNullableRelation[MODEL]&quot;</span><span class="p">:</span> <span class="o">...</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span> <span class="o">...</span>
 
 
 <span class="nd">@overload</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">ForeignKeyField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ForeignKeyRelation[MODEL]&quot;</span><span class="p">:</span> <span class="o">...</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForeignKeyRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span> <span class="o">...</span>
 
 
 <div class="viewcode-block" id="ForeignKeyField">
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.relational.ForeignKeyField">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">ForeignKeyField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">related_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">null</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ForeignKeyRelation[MODEL] | ForeignKeyNullableRelation[MODEL]&quot;</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ForeignKeyRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]</span> <span class="o">|</span> <span class="n">ForeignKeyNullableRelation</span><span class="p">[</span><span class="n">MODEL</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ForeignKey relation field.</span>
 
@@ -1074,15 +1081,15 @@
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.relational.ManyToManyField">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">ManyToManyField</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">through</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">forward_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">through</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">forward_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">backward_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">related_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="n">on_delete</span><span class="p">:</span> <span class="n">OnDelete</span> <span class="o">=</span> <span class="n">CASCADE</span><span class="p">,</span>
     <span class="n">db_constraint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">create_unique_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ManyToManyRelation[Any]&quot;</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ManyToManyRelation</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ManyToMany relation field.</span>
 

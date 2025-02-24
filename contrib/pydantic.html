@@ -13,7 +13,7 @@
     
     
       
-        <title>Pydantic serialisation - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Pydantic serialisation - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1826,24 +1826,24 @@ We should however protect against the case where no prefetching was done, hence 
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.cls"><span class="n sig-name">cls</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.cls"><span class="sig-name descname">cls</span><span class="p"> : </span><span class="desctype"><span class="desctype">type[<a class="reference internal" href="../models.html#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models.">Model</a>]</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model</p>
 </dd>
 <dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.name"><span class="n sig-name">name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.name" title="Permalink to this definition">¶</a></dt><dd><p>Specify a custom name explicitly, instead of a generated name.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude"><span class="n sig-name">exclude</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude"><span class="sig-name descname">exclude</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...] | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.include"><span class="n sig-name">include</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.include"><span class="sig-name descname">include</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...] | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.computed"><span class="n sig-name">computed</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.computed"><span class="sig-name descname">computed</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...] | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.optional"><span class="n sig-name">optional</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.optional" title="Permalink to this definition">¶</a></dt><dd><p>Extra optional fields for the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.optional"><span class="sig-name descname">optional</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...] | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.optional" title="Permalink to this definition">¶</a></dt><dd><p>Extra optional fields for the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles"><span class="n sig-name">allow_cycles</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles"><span class="sig-name descname">allow_cycles</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
 This is only useful for recursive/self-referential models.</p>
 <p>A value of <code class="docutils literal notranslate"><span class="pre">False</span></code> (the default) will prevent any and all backtracking.</p>
 </p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically"><span class="n sig-name">sort_alphabetically</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically"><span class="sig-name descname">sort_alphabetically</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
 <p>The default order would be:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1854,15 +1854,15 @@ This is only useful for recursive/self-referential models.</p>
 </div></blockquote>
 </p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly"><span class="n sig-name">exclude_readonly</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly" title="Permalink to this definition">¶</a></dt><dd><p>Build a subset model that excludes any readonly fields</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly"><span class="sig-name descname">exclude_readonly</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.exclude_readonly" title="Permalink to this definition">¶</a></dt><dd><p>Build a subset model that excludes any readonly fields</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override"><span class="n sig-name">meta_override</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override" title="Permalink to this definition">¶</a></dt><dd><p>A PydanticMeta class to override model’s values.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override"><span class="sig-name descname">meta_override</span><span class="p"> : </span><span class="desctype"><span class="desctype">type | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.meta_override" title="Permalink to this definition">¶</a></dt><dd><p>A PydanticMeta class to override model’s values.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.model_config"><span class="n sig-name">model_config</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.model_config" title="Permalink to this definition">¶</a></dt><dd><p>A custom config to use as pydantic config.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.model_config"><span class="sig-name descname">model_config</span><span class="p"> : </span><span class="desctype"><span class="desctype">ConfigDict | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.model_config" title="Permalink to this definition">¶</a></dt><dd><p>A custom config to use as pydantic config.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.validators"><span class="n sig-name">validators</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.validators" title="Permalink to this definition">¶</a></dt><dd><p>A dictionary of methods that validate fields.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.validators"><span class="sig-name descname">validators</span><span class="p"> : </span><span class="desctype"><span class="desctype">dict[str, Any] | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.validators" title="Permalink to this definition">¶</a></dt><dd><p>A dictionary of methods that validate fields.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.module"><span class="n sig-name">module</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;tortoise.contrib.pydantic.creator&#39;</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.module" title="Permalink to this definition">¶</a></dt><dd><p><p>The name of the module that the model belongs to.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_model_creator.module"><span class="sig-name descname">module</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator.module" title="Permalink to this definition">¶</a></dt><dd><p><p>The name of the module that the model belongs to.</p>
 <dl class="simple">
 <dt>Note: Created pydantic model uses config_class parameter and PydanticMeta’s</dt><dd><p>config_class as its Config class’s bases(Only if provided!), but it
 ignores <code class="docutils literal notranslate"><span class="pre">fields</span></code> config. pydantic_model_creator will generate fields by
@@ -1874,7 +1874,7 @@ include/exclude/computed parameters automatically.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_model_creator-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects."><code class="xref py py-class docutils literal notranslate"><span class="pre">PydanticModel</span></code></a>]</p>
+<dd class="field-even"><p>type[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticModel" title="tortoise.contrib.pydantic.base.PydanticModel (Python class) — Pydantic BaseModel for Tortoise objects.">PydanticModel</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1886,25 +1886,25 @@ include/exclude/computed parameters automatically.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls"><span class="n sig-name">cls</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model to put in a list.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls"><span class="sig-name descname">cls</span><span class="p"> : </span><span class="desctype"><span class="desctype">type[<a class="reference internal" href="../models.html#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models.">Model</a>]</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.cls" title="Permalink to this definition">¶</a></dt><dd><p>The Tortoise Model to put in a list.</p>
 </dd>
 <dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name"><span class="n sig-name">name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.name" title="Permalink to this definition">¶</a></dt><dd><p><p>Specify a custom name explicitly, instead of a generated name.</p>
 <p>The list generated name is currently naive and merely adds a “s” to the end
 of the singular name.</p>
 </p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude"><span class="n sig-name">exclude</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude"><span class="sig-name descname">exclude</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...]</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.exclude" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to exclude from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include"><span class="n sig-name">include</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include"><span class="sig-name descname">include</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...]</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.include" title="Permalink to this definition">¶</a></dt><dd><p>Extra fields to include from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed"><span class="n sig-name">computed</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="p">()</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed"><span class="sig-name descname">computed</span><span class="p"> : </span><span class="desctype"><span class="desctype">tuple[str, ...]</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.computed" title="Permalink to this definition">¶</a></dt><dd><p>Extra computed fields to include from the provided model.</p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles"><span class="n sig-name">allow_cycles</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles"><span class="sig-name descname">allow_cycles</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.allow_cycles" title="Permalink to this definition">¶</a></dt><dd><p><p>Do we allow any cycles in the generated model?
 This is only useful for recursive/self-referential models.</p>
 <p>A value of <code class="docutils literal notranslate"><span class="pre">False</span></code> (the default) will prevent any and all backtracking.</p>
 </p>
 </dd>
-<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically"><span class="n sig-name">sort_alphabetically</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
+<dt id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically"><span class="sig-name descname">sort_alphabetically</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool | None</span></span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator.sort_alphabetically" title="Permalink to this definition">¶</a></dt><dd><p><p>Sort the parameters alphabetically instead of Field-definition order.</p>
 <p>The default order would be:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1918,7 +1918,7 @@ This is only useful for recursive/self-referential models.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.creator.pydantic_queryset_creator-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticListModel" title="tortoise.contrib.pydantic.base.PydanticListModel (Python class) — Pydantic BaseModel for List of Tortoise Models"><code class="xref py py-class docutils literal notranslate"><span class="pre">PydanticListModel</span></code></a>]</p>
+<dd class="field-even"><p>type[<a class="reference internal" href="#tortoise.contrib.pydantic.base.PydanticListModel" title="tortoise.contrib.pydantic.base.PydanticListModel (Python class) — Pydantic BaseModel for List of Tortoise Models">PydanticListModel</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1945,7 +1945,7 @@ from the provided queryset.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p>typing_extensions.Self</p>
+<dd class="field-even"><p>Self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1978,7 +1978,7 @@ from the provided queryset.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<dd class="field-even"><p>list[Self]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1997,7 +1997,7 @@ from the provided queryset.</p>
 </dl>
 </dd>
 <dt class="field-even" id="tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p>typing_extensions.Self</p>
+<dd class="field-even"><p>Self</p>
 </dd>
 </dl>
 </dd></dl>

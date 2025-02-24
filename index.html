@@ -13,7 +13,7 @@
     
     
       
-        <title>Tortoise ORM - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Tortoise ORM - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -430,7 +430,7 @@
         
           <li class="md-nav__item">
   <a href="#clean-familiar-python-interface" class="md-nav__link">
-    <span class="md-ellipsis">Clean, familiar python interface</span>
+    <span class="md-ellipsis">Clean, familiar Python interface</span>
   </a>
   
 </li>
@@ -606,15 +606,13 @@
 
 <h1 id="tortoise-orm">Tortoise ORM<a class="headerlink" href="#tortoise-orm" title="Link to this heading">¶</a></h1>
 <p>Tortoise ORM is an easy-to-use <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> ORM <em>(Object Relational Mapper)</em> inspired by Django.</p>
-<p>Tortoise ORM was built with relations in mind and admiration for the excellent and popular Django ORM.
-It’s engraved in it’s design that you are working not with just tables, you work with relational data.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Tortoise ORM is young project and breaking changes are to be expected.
-We keep a <a class="reference internal" href="CHANGELOG.html#changelog"><span class="std std-ref">Changelog</span></a> and it will have possible breakage clearly documented.</p>
+<p>Tortoise ORM is a young project and breaking changes are to be expected.
+We keep a <a class="reference external" href="https://tortoise.github.io/CHANGELOG.html">Changelog</a> and it will have possible breakage clearly documented.</p>
 </div>
 <p>Source &amp; issue trackers are available at <a class="reference external" href="https://github.com/tortoise/tortoise-orm/">https://github.com/tortoise/tortoise-orm/</a></p>
-<p>Tortoise ORM is supported on CPython &gt;= 3.9 for SQLite, MySQL and PostgreSQL.</p>
+<p>Tortoise ORM supports CPython 3.9 and later for SQLite, MySQL, PostgreSQL, Microsoft SQL Server, and Oracle.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <h3 id="why-was-tortoise-orm-built">Why was Tortoise ORM built?<a class="headerlink" href="#why-was-tortoise-orm-built" title="Link to this heading">¶</a></h3>
 <p>Python has many existing and mature ORMs, unfortunately they are designed with an opposing paradigm of how I/O gets processed.
@@ -622,18 +620,20 @@ We keep a <a class="reference internal" href="CHANGELOG.html#changelog"><span cl
 <p>However, Tortoise ORM is not first attempt of building <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> ORM, there are many cases of developers attempting to map synchronous python ORMs to the async world, initial attempts did not have a clean API.</p>
 <p>Hence we started Tortoise ORM.</p>
 <p>Tortoise ORM is designed to be functional, yet familiar, to ease the migration of developers wishing to switch to <code class="docutils literal notranslate"><span class="pre">asyncio</span></code>.</p>
-<p>It also performs well when compared to other Python ORMs, trading places with Pony ORM:</p>
+<p>It also performs well when compared to other Python ORMs. In <a class="reference external" href="https://github.com/tortoise/orm-benchmarks">our benchmarks</a>, where we measure different read and write operations (rows/sec, more is better), it’s trading places with Pony ORM:</p>
 <a class="reference external image-reference" href="https://github.com/tortoise/orm-benchmarks"><img alt="_images/ORM_Perf.png" src="_images/ORM_Perf.png" />
 </a>
 <h3 id="how-is-an-orm-useful">How is an ORM useful?<a class="headerlink" href="#how-is-an-orm-useful" title="Link to this heading">¶</a></h3>
-<p>When you build an application or service that uses a relational database, there is a point when you can’t just get away with just using parametrized queries or even query builder, you just keep repeating yourself, writing slightly different code for each entity.
-Code has no idea about relations between data, so you end up concatenating your data almost manually.
-It is also easy to make a mistake in how you access your database, making it easy for SQL-injection attacks to occur.
-Your data rules are also distributed, increasing the complexity of managing your data, and even worse, is applied inconsistently.</p>
-<p>An ORM (Object Relational Mapper) is designed to address these issues, by centralizing your data model and data rules, ensuring that your data is managed safely (providing immunity to SQL-injection) and keeps track of relationships so you don’t have to.</p>
+<p>An Object-Relational Mapper (ORM) abstracts database interactions, allowing developers to work with databases using high-level, object-oriented code instead of raw SQL.</p>
+<ul class="simple">
+<li><p>Reduces boilerplate SQL, allowing faster development with cleaner, more readable code.</p></li>
+<li><p>Helps prevent SQL injection by using parameterized queries.</p></li>
+<li><p>Centralized schema and relationship definitions make code easier to manage and modify.</p></li>
+<li><p>Handles schema changes through version-controlled migrations.</p></li>
+</ul>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
-<h3 id="clean-familiar-python-interface">Clean, familiar python interface<a class="headerlink" href="#clean-familiar-python-interface" title="Link to this heading">¶</a></h3>
-<p>Define your models like so:</p>
+<h3 id="clean-familiar-python-interface">Clean, familiar Python interface<a class="headerlink" href="#clean-familiar-python-interface" title="Link to this heading">¶</a></h3>
+<p>Model definitions:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">fields</span>
 
@@ -642,37 +642,8 @@ Your data rules are also distributed, increasing the complexity of managing your
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
 </code></pre></div>
 </div>
-<p>Initialise your models and database like so:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">run_async</span>
-
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
-    <span class="c1"># Here we create a SQLite DB using file &quot;db.sqlite3&quot;</span>
-    <span class="c1">#  also specify the app name of &quot;models&quot;</span>
-    <span class="c1">#  which contain models from &quot;app.models&quot;</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-        <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
-        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
-    <span class="p">)</span>
-    <span class="c1"># Generate the schema</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
-
-<span class="c1"># run_async is a helper function to run simple async Tortoise scripts.</span>
-<span class="n">run_async</span><span class="p">(</span><span class="n">init</span><span class="p">())</span>
-</code></pre></div>
-</div>
-<p>And use it like so:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create instance by save</span>
-<span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Tournament&#39;</span><span class="p">)</span>
-<span class="k">await</span> <span class="n">tournament</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-
-<span class="c1"># Or by .create()</span>
-<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Another Tournament&#39;</span><span class="p">)</span>
-
-<span class="c1"># Now search for a record</span>
-<span class="n">tour</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;Another&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</code></pre></div>
-</div>
+<p>Operations on models, queries and complex aggregations:</p>
+<p>See <a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting started</span></a> for a more detailed guide.</p>
 <h3 id="pluggable-database-backends">Pluggable Database backends<a class="headerlink" href="#pluggable-database-backends" title="Link to this heading">¶</a></h3>
 <p>Tortoise ORM currently supports the following <a class="reference internal" href="databases.html#databases"><span class="std std-ref">Databases</span></a>:</p>
 <ul class="simple">
@@ -684,24 +655,15 @@ Your data rules are also distributed, increasing the complexity of managing your
 <h3 id="and-more">And more<a class="headerlink" href="#and-more" title="Link to this heading">¶</a></h3>
 <p>Tortoise ORM supports the following features:</p>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Designed to be used in an existing project:</dt><dd><ul>
-<li><p>Testing framework uses existing Python Unittest framework, just requires
-that <code class="docutils literal notranslate"><span class="pre">initializer()</span></code> and <code class="docutils literal notranslate"><span class="pre">finalizer()</span></code> gets called to set up and tear
-down the test databases. (See <a class="reference internal" href="contrib/unittest.html#unittest"><span class="std std-ref">UnitTest support</span></a>)</p></li>
-<li><p>ORM <a class="reference internal" href="setup.html#init-app"><span class="std std-ref">Init app</span></a> configures entirely from provided parameters</p></li>
-</ul>
-</dd>
-</dl>
-</li>
 <li><p>Composable, Django-inspired <a class="reference internal" href="models.html#models"><span class="std std-ref">Models</span></a></p></li>
 <li><p>Supports relations, such as <code class="docutils literal notranslate"><span class="pre">ForeignKeyField</span></code> and <code class="docutils literal notranslate"><span class="pre">ManyToManyField</span></code></p></li>
 <li><p>Supports many standard <a class="reference internal" href="fields.html#fields"><span class="std std-ref">Fields</span></a></p></li>
 <li><p>Comprehensive <a class="reference internal" href="query.html#query-api"><span class="std std-ref">Query API</span></a></p></li>
 <li><p>Transactions <a class="reference internal" href="transactions.html#transactions"><span class="std std-ref">Transactions</span></a></p></li>
+<li><p>Supports tests frameworks, see <a class="reference internal" href="contrib/unittest.html#unittest"><span class="std std-ref">UnitTest support</span></a></p></li>
 <li><p><a class="reference internal" href="contrib/linters.html#pylint"><span class="std std-ref">PyLint plugin</span></a></p></li>
 </ul>
-<p>If you want to contribute check out issues, or just straightforwardly create PR</p>
+<p>If you want to contribute, check out issues first, and then create a PR.</p>
 
 
 

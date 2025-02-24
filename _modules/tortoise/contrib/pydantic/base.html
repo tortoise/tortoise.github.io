@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.pydantic.base - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.contrib.pydantic.base - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,8 +511,10 @@
 
 
 <h1>Source code for tortoise.contrib.pydantic.base</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pydantic</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">RootModel</span>
@@ -529,9 +531,7 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.queryset</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuerySet</span><span class="p">,</span> <span class="n">QuerySetSingle</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_fetch_fields</span><span class="p">(</span>
-    <span class="n">pydantic_class</span><span class="p">:</span> <span class="s2">&quot;Type[PydanticModel]&quot;</span><span class="p">,</span> <span class="n">model_class</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_fetch_fields</span><span class="p">(</span><span class="n">pydantic_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">],</span> <span class="n">model_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Recursively collect fields needed to fetch</span>
 <span class="sd">    :param pydantic_class: The pydantic model class</span>
@@ -541,7 +541,7 @@
     <span class="n">fetch_fields</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">field_type</span> <span class="ow">in</span> <span class="n">pydantic_class</span><span class="o">.</span><span class="vm">__annotations__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">origin</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">field_type</span><span class="p">,</span> <span class="s2">&quot;__origin__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">origin</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">origin</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">Union</span><span class="p">):</span>
             <span class="n">field_type</span> <span class="o">=</span> <span class="n">field_type</span><span class="o">.</span><span class="n">__args__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
         <span class="c1"># noinspection PyProtectedMember</span>
@@ -582,7 +582,7 @@
 <div class="viewcode-block" id="PydanticModel.from_tortoise_orm">
 <a class="viewcode-back" href="../../../../contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_tortoise_orm">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_tortoise_orm</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_tortoise_orm</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a serializable pydantic model instance built from the provided model instance.</span>
 
@@ -612,7 +612,7 @@
 <div class="viewcode-block" id="PydanticModel.from_queryset_single">
 <a class="viewcode-back" href="../../../../contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset_single">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset_single</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySetSingle&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset_single</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="n">QuerySetSingle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a serializable pydantic model instance for a single model</span>
 <span class="sd">        from the provided queryset.</span>
@@ -628,7 +628,7 @@
 <div class="viewcode-block" id="PydanticModel.from_queryset">
 <a class="viewcode-back" href="../../../../contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticModel.from_queryset">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="n">QuerySet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a serializable pydantic model instance that contains a list of models,</span>
 <span class="sd">        from the provided queryset.</span>
@@ -656,7 +656,7 @@
 <div class="viewcode-block" id="PydanticListModel.from_queryset">
 <a class="viewcode-back" href="../../../../contrib/pydantic.html#tortoise.contrib.pydantic.base.PydanticListModel.from_queryset">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="s2">&quot;QuerySet&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_queryset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">queryset</span><span class="p">:</span> <span class="n">QuerySet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a serializable pydantic model instance that contains a list of models,</span>
 <span class="sd">        from the provided queryset.</span>

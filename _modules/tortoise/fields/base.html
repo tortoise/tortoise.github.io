@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.fields.base - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.fields.base - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -511,11 +511,13 @@
 
 
 <h1>Source code for tortoise.fields.base</h1><div class="highlight"><pre>
-<span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Term</span>
 
@@ -559,7 +561,7 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">_FieldMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="c1"># TODO: Require functions to return field instances instead of this hack</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">bases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">Field</span><span class="p">:</span>
             <span class="c1"># Instantiate class with only the 1st base class (should be Field)</span>
             <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">bases</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">attrs</span><span class="p">)</span>
@@ -594,7 +596,7 @@
 <span class="sd">    These attributes needs to be defined when defining an actual field type.</span>
 
 <span class="sd">    .. attribute:: field_type</span>
-<span class="sd">        :annotation: Type[Any]</span>
+<span class="sd">        :annotation: type[Any]</span>
 
 <span class="sd">        The Python type the field is.</span>
 <span class="sd">        If adding a type as a mixin, _FieldMeta will automatically set this to that.</span>
@@ -658,45 +660,43 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Field_type is a readonly property for the instance, it is set by _FieldMeta</span>
-    <span class="n">field_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+    <span class="n">field_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
     <span class="n">indexable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">has_db_field</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">skip_to_python_if_native</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">allows_generated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">function_cast</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Term</span><span class="p">],</span> <span class="n">Term</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">function_cast</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Term</span><span class="p">],</span> <span class="n">Term</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">SQL_TYPE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
     <span class="n">GENERATED_SQL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
 
     <span class="c1"># These methods are just to make IDE/Linters happy:</span>
     <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Field[VALUE]&quot;</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Field</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
         <span class="nd">@overload</span>
-        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;Field[VALUE]&quot;</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Field</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span> <span class="o">...</span>
 
         <span class="nd">@overload</span>
-        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">VALUE</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">VALUE</span><span class="p">:</span> <span class="o">...</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
-        <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Field[VALUE] | VALUE&quot;</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Field</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">|</span> <span class="n">VALUE</span><span class="p">:</span> <span class="o">...</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">VALUE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">VALUE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">source_field</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">source_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">generated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">primary_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">primary_key</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">null</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">unique</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">db_index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Optional[Model]&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">validators</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Validator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">db_index</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Model</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">validators</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Validator</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">:=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -746,15 +746,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">db_index</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_field_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">docstring</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">validators</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Validator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="n">validators</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">docstring</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validators</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Validator</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="n">validators</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="c1"># TODO: consider making this not be set from constructor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>  <span class="c1"># type: ignore</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">:</span> <span class="s2">&quot;Optional[Field]&quot;</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">:</span> <span class="n">Field</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Field.to_db_value">
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.to_db_value">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="s2">&quot;Union[Type[Model], Model]&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span> <span class="o">|</span> <span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Converts from the Python type to the DB type.</span>
 
@@ -847,9 +847,19 @@
 
         <span class="k">return</span> <span class="n">ret</span>
 
+<div class="viewcode-block" id="Field.get_db_field_type">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.get_db_field_type">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_db_field_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the DB field type for this field for the current dialect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dialect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">dialect</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_for_dialect</span><span class="p">(</span><span class="n">dialect</span><span class="p">,</span> <span class="s2">&quot;SQL_TYPE&quot;</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Field.get_db_field_types">
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.get_db_field_types">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_db_field_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_db_field_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the DB types for this field.</span>
 
@@ -858,12 +868,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_db_field</span><span class="p">:</span>  <span class="c1"># pragma: nocoverage</span>
             <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SQL_TYPE</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;SQL_TYPE&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">default</span><span class="p">,</span>
             <span class="o">**</span><span class="p">{</span>
-                <span class="n">dialect</span><span class="p">:</span> <span class="n">_db</span><span class="p">[</span><span class="s2">&quot;SQL_TYPE&quot;</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">_db</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialects</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                <span class="k">if</span> <span class="s2">&quot;SQL_TYPE&quot;</span> <span class="ow">in</span> <span class="n">_db</span>
+                <span class="n">dialect</span><span class="p">:</span> <span class="n">sql_type</span>
+                <span class="k">for</span> <span class="n">dialect</span><span class="p">,</span> <span class="n">sql_type</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_for_dialect</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="s2">&quot;SQL_TYPE&quot;</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_db_&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">sql_type</span> <span class="o">!=</span> <span class="n">default</span>
             <span class="p">},</span>
         <span class="p">}</span></div>
 
@@ -877,8 +892,19 @@
 <span class="sd">        :param dialect: The requested SQL Dialect.</span>
 <span class="sd">        :param key: The attribute/method name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dialect_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dialects</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dialect</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="k">return</span> <span class="n">dialect_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></div>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dialect_cls</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_db_</span><span class="si">{</span><span class="n">dialect</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># throws AttributeError if not present</span>
+            <span class="n">dialect_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dialect_cls</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>  <span class="c1"># throws AttributeError if not present</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># we have dialect_cls and dialect_value, so lets use it</span>
+            <span class="c1"># it could be that dialect_value is a computed property, like in CharField._db_oracle.SQL_TYPE,</span>
+            <span class="c1"># and therefore one first needs to instantiate dialect_cls</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dialect_value</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dialect_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">dialect_value</span>
+        <span class="c1"># If there is nothing special defined, return the value of self</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Field.describe">
@@ -928,14 +954,14 @@
 <span class="sd">                }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">_type_name</span><span class="p">(</span><span class="n">typ</span><span class="p">:</span> <span class="n">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_type_name</span><span class="p">(</span><span class="n">typ</span><span class="p">:</span> <span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">typ</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s2">&quot;builtins&quot;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">typ</span><span class="o">.</span><span class="vm">__name__</span>
             <span class="k">if</span> <span class="n">typ</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s2">&quot;typing&quot;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">typ</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;typing.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">typ</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">typ</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">type_name</span><span class="p">(</span><span class="n">typ</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">type_name</span><span class="p">(</span><span class="n">typ</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">typ</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">full_name</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
@@ -948,7 +974,7 @@
                 <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">typ</span><span class="p">)</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">default_name</span><span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">default_name</span><span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
                 <span class="k">return</span> <span class="n">default</span>
             <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">default</span><span class="p">):</span>

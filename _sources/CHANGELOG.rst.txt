@@ -9,13 +9,25 @@ Changelog
 0.24
 ====
 
+0.24.1
+------
+Added
+^^^^^
+- Implement __contains, __contained_by, __overlap and __len for ArrayField (#1877)
+
+Fixed
+^^^^^
+- Fix update pk field raises unfriendly error (#1873)
+- Using `.distinct()` with an annotation and `.order_by()` produces invalid SQL for PostgreSQL (#1886)
+
+
 0.24.0
 ------
 Fixed
 ^^^^^
+- `_get_dialects`: support properties (#1859)
 - Rename pypika to pypika_tortoise for fixing package name conflict (#1829)
 - Concurrent connection pool initialization (#1825)
-- `_get_dialects`: support properties (#1859)
 
 Changed
 ^^^^^^^

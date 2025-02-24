@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.expressions - Tortoise ORM v0.24.0 Documentation</title>
+        <title>tortoise.expressions - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -518,15 +518,21 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">field</span> <span class="k">as</span> <span class="n">dataclass_field</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Case</span> <span class="k">as</span> <span class="n">PypikaCase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PypikaField</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqlContext</span><span class="p">,</span> <span class="n">Table</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">AggregateFunction</span><span class="p">,</span> <span class="n">DistinctOptionFunction</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArithmeticExpression</span><span class="p">,</span> <span class="n">Criterion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ArithmeticExpression</span><span class="p">,</span>
+    <span class="n">Criterion</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">PypikaFunction</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Term</span><span class="p">,</span> <span class="n">ValueWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Term</span><span class="p">,</span>
+    <span class="n">ValueWrapper</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_alias_sql</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
@@ -549,7 +555,7 @@
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ResolveContext</span><span class="p">:</span>
-    <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+    <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]</span>
     <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="n">annotations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
     <span class="n">custom_filters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FilterInfoDict</span><span class="p">]</span>
@@ -713,7 +719,7 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Subquery</span><span class="p">(</span><span class="n">Term</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="s2">&quot;AwaitableQuery&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">AwaitableQuery</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span>
 
@@ -722,7 +728,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">get_parameterized_sql</span><span class="p">(</span><span class="n">ctx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">as_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Selectable&quot;</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">as_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alias</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Selectable</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_choose_db_if_not_chosen</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">_make_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>
@@ -761,7 +767,7 @@
     <span class="n">AND</span> <span class="o">=</span> <span class="s2">&quot;AND&quot;</span>
     <span class="n">OR</span> <span class="o">=</span> <span class="s2">&quot;OR&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="n">join_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AND</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">join_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">AND</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">newarg</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">join_type</span><span class="o">=</span><span class="n">join_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">newarg</span><span class="p">,)</span> <span class="o">+</span> <span class="n">args</span>
@@ -780,7 +786,7 @@
 
 <div class="viewcode-block" id="Q.__and__">
 <a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__and__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Q</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Q</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a binary AND of Q objects, use ``AND`` operator.</span>
 
@@ -793,7 +799,7 @@
 
 <div class="viewcode-block" id="Q.__or__">
 <a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__or__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Q</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Q</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a binary OR of Q objects, use ``OR`` operator.</span>
 
@@ -806,7 +812,7 @@
 
 <div class="viewcode-block" id="Q.__invert__">
 <a class="viewcode-back" href="../../expressions.html#tortoise.expressions.Q.__invert__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Q</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a negated instance of the Q object, use ``~`` operator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -877,38 +883,35 @@
         <span class="k">return</span> <span class="n">modifier</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_process_filter_kwarg</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="s2">&quot;Type[Model]&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Criterion</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Table</span><span class="p">,</span> <span class="n">Criterion</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="n">join</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">__isnull&quot;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">filters</span><span class="p">:</span>
-            <span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">__isnull&quot;</span><span class="p">)</span>
+            <span class="n">filter_info</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">__isnull&quot;</span><span class="p">)</span>
             <span class="n">value</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">filter_info</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_filter</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-        <span class="n">pk_db_field</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_pk_column</span>
-        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;table&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;table&quot;</span> <span class="ow">in</span> <span class="n">filter_info</span><span class="p">:</span>
+            <span class="c1"># join the table</span>
             <span class="n">join</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">param</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">],</span>
-                <span class="n">table</span><span class="p">[</span><span class="n">pk_db_field</span><span class="p">]</span> <span class="o">==</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">][</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;backward_key&quot;</span><span class="p">]],</span>
+                <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">],</span>
+                <span class="n">table</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_pk_column</span><span class="p">]</span>
+                <span class="o">==</span> <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">][</span><span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;backward_key&quot;</span><span class="p">]],</span>
             <span class="p">)</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">):</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-            <span class="n">op</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span>
-            <span class="n">criterion</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">][</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]],</span> <span class="n">value</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Term</span><span class="p">):</span>
-                <span class="n">encoded_value</span> <span class="o">=</span> <span class="n">value</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">field_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]]</span>
-                <span class="n">encoded_value</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="n">param</span><span class="p">[</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">field_object</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">)</span>
-                    <span class="k">else</span> <span class="n">field_object</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="n">op</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span>
-            <span class="n">criterion</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;source_field&quot;</span><span class="p">]],</span> <span class="n">encoded_value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;value_encoder&quot;</span> <span class="ow">in</span> <span class="n">filter_info</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Term</span><span class="p">):</span>
+            <span class="n">field_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]]</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;value_encoder&quot;</span><span class="p">](</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">field_object</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s2">&quot;value_encoder&quot;</span> <span class="ow">in</span> <span class="n">filter_info</span>
+                <span class="k">else</span> <span class="n">field_object</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;operator&quot;</span><span class="p">]</span>
+        <span class="n">criterion</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">filter_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_field&quot;</span><span class="p">,</span> <span class="n">filter_info</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">])],</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">join</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_regular_kwarg</span><span class="p">(</span>
@@ -1033,15 +1036,15 @@
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;field&quot;</span><span class="p">,</span> <span class="s2">&quot;field_object&quot;</span><span class="p">,</span> <span class="s2">&quot;default_values&quot;</span><span class="p">)</span>
 
-    <span class="n">database_func</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">PypikaFunction</span><span class="p">]</span> <span class="o">=</span> <span class="n">PypikaFunction</span>
+    <span class="n">database_func</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">PypikaFunction</span><span class="p">]</span> <span class="o">=</span> <span class="n">PypikaFunction</span>
     <span class="c1"># Enable populate_field_object where we want to try and preserve the field type.</span>
     <span class="n">populate_field_object</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span> <span class="o">|</span> <span class="s2">&quot;Function&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">:</span> <span class="n">Any</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">F</span> <span class="o">|</span> <span class="n">CombinedExpression</span> <span class="o">|</span> <span class="n">Function</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">:</span> <span class="n">Any</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span><span class="p">:</span> <span class="s2">&quot;Field | None&quot;</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field_object</span><span class="p">:</span> <span class="n">Field</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default_values</span> <span class="o">=</span> <span class="n">default_values</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_function_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Term</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">default_values</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PypikaFunction</span><span class="p">:</span>
@@ -1109,7 +1112,7 @@
 <span class="sd">    :param is_distinct: Flag for aggregate with distinction</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">database_func</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">AggregateFunction</span><span class="p">]</span> <span class="o">=</span> <span class="n">DistinctOptionFunction</span>
+    <span class="n">database_func</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">AggregateFunction</span><span class="p">]</span> <span class="o">=</span> <span class="n">DistinctOptionFunction</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

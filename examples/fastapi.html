@@ -13,7 +13,7 @@
     
     
       
-        <title>FastAPI Examples - Tortoise ORM v0.24.0 Documentation</title>
+        <title>FastAPI Examples - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -860,6 +860,23 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_list</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 
 
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_404</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/404&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_422</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/422&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span>
+
+
 <span class="k">class</span><span class="w"> </span><span class="nc">TestUserEast</span><span class="p">(</span><span class="n">UserTester</span><span class="p">):</span>
     <span class="n">timezone</span> <span class="o">=</span> <span class="s2">&quot;Asia/Shanghai&quot;</span>
     <span class="n">delta_hours</span> <span class="o">=</span> <span class="mi">8</span>
@@ -885,6 +902,23 @@
         <span class="n">created_at</span> <span class="o">=</span> <span class="n">user_obj</span><span class="o">.</span><span class="n">created_at</span>
         <span class="k">assert</span> <span class="p">(</span><span class="n">created_at</span><span class="o">.</span><span class="n">hour</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_hours</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta_hours</span> <span class="o">-</span> <span class="mi">24</span><span class="p">]</span>
         <span class="k">assert</span> <span class="n">item</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="n">created_at</span><span class="o">.</span><span class="n">hour</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_404_east</span><span class="p">(</span><span class="n">client_east</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client_east</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/404&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_422_east</span><span class="p">(</span><span class="n">client_east</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client_east</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/422&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">],</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;detail&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">query_without_app</span><span class="p">(</span><span class="n">pk</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -913,7 +947,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">examples.fastapi.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_orm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">generate_config</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterTortoise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterTortoise</span><span class="p">,</span> <span class="n">tortoise_exception_handlers</span>
 
 
 <span class="nd">@asynccontextmanager</span>
@@ -928,7 +962,6 @@
         <span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span>
         <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
         <span class="n">generate_schemas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">add_exception_handlers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="c1"># db connected</span>
@@ -952,7 +985,11 @@
         <span class="c1"># db connections closed</span>
 
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">,</span> <span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tortoise ORM FastAPI example&quot;</span><span class="p">,</span>
+    <span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">,</span>
+    <span class="n">exception_handlers</span><span class="o">=</span><span class="n">tortoise_exception_handlers</span><span class="p">(),</span>
+<span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users_router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>

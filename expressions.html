@@ -13,7 +13,7 @@
     
     
       
-        <title>Expressions - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Expressions - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1214,36 +1214,42 @@
 
 <h1 id="expressions"><span id="id1"></span>Expressions<a class="headerlink" href="#expressions" title="Link to this heading">¶</a></h1>
 <h2 id="q-expression">Q Expression<a class="headerlink" href="#q-expression" title="Link to this heading">¶</a></h2>
-<p>Sometimes you need to do more complicated queries than the simple AND <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> provides. Luckily we have Q objects to spice things up and help you find what you need. These Q-objects can then be used as argument to <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> instead.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Q</span></code> Expression provides advanced querying capabilities beyond the basic filtering provided by <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code>. Q objects enable complex query construction and can be used as arguments to <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code>.</p>
 <dl class="simple">
-<dt>Q objects are extremely versatile, some example use cases:</dt><dd><ul class="simple">
-<li><p>creating an OR filter</p></li>
-<li><p>nested filters</p></li>
-<li><p>inverted filters</p></li>
-<li><p>combining any of the above to simply write complicated multilayer filters</p></li>
+<dt>Key features of <code class="docutils literal notranslate"><span class="pre">Q</span></code> objects include:</dt><dd><ul class="simple">
+<li><p>Construction of OR conditions</p></li>
+<li><p>Creation of nested filters</p></li>
+<li><p>Filter inversion</p></li>
+<li><p>Combination of multiple conditions into complex queries</p></li>
 </ul>
 </dd>
 </dl>
-<p>Q objects can take any (special) kwargs for filtering that <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> accepts, see those docs for a full list of filter options in that regard.</p>
-<p>They can also be combined by using bitwise operators (<code class="docutils literal notranslate"><span class="pre">|</span></code> is OR and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is AND for those unfamiliar with bitwise operators)</p>
-<p>For example to find the events with as name <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">Event</span> <span class="pre">2</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Q</span></code> objects accept any filtering parameters that <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;.filter()</span></code> supports. Please refer to <a class="reference internal" href="query.html#query-api"><span class="std std-ref">Query API</span></a> for a complete list of available options.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Q</span></code> objects can be combined using bitwise operators:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code> for OR operations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code> for AND operations</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example of using Q objects to query events with specific names:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">found_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Event 1&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Event 2&#39;</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
-<p>Q objects can be nested as well, the above for example is equivalent to:</p>
+<p>Q objects also support nesting. The following example is equivalent to the previous one:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">found_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">Q</span><span class="p">(</span><span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Event 1&#39;</span><span class="p">),</span> <span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Event 2&#39;</span><span class="p">),</span> <span class="n">join_type</span><span class="o">=</span><span class="s2">&quot;OR&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
-<p>If join type is omitted it defaults to <code class="docutils literal notranslate"><span class="pre">AND</span></code>.</p>
+<p>If the join_type parameter is not specified, it defaults to “AND”.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Q objects without filter arguments are considered NOP and will be ignored for the final query (regardless on if they are used as <code class="docutils literal notranslate"><span class="pre">AND</span></code> or <code class="docutils literal notranslate"><span class="pre">OR</span></code> param)</p>
+<p>Q objects without filter arguments are treated as no-operation (NOP) and are excluded from the final query, regardless of whether they are used in AND or OR operations.</p>
 </div>
-<p>Also, Q objects support negated to generate <code class="docutils literal notranslate"><span class="pre">NOT</span></code> (<code class="docutils literal notranslate"><span class="pre">~</span></code> operator) clause in your query</p>
+<p>The NOT operation can be achieved using the negation operator (<code class="docutils literal notranslate"><span class="pre">~</span></code>):</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">not_third_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
 </code></pre></div>
 </div>
@@ -1365,33 +1371,35 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 </dd></dl>
 
 <h2 id="f-expression">F Expression<a class="headerlink" href="#f-expression" title="Link to this heading">¶</a></h2>
-<p>An <cite>F</cite> object represents the value of a model field. It makes it possible to refer to model field values and perform database operations using them without actually having to pull them out of the database into Python memory.</p>
-<p>For example to use <code class="docutils literal notranslate"><span class="pre">F</span></code> to update user balance atomic:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">F</span></code> Expression represents a model field value and enables database operations on field values without loading them into Python memory. This is particularly useful for atomic operations.</p>
+<p>Example of using F expressions for balance updates (this is just an example and such updates are not recommended for use in financial applications):</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">F</span>
 
 <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">balance</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;balance&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span>
+
 <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">balance</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;balance&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;award&#39;</span><span class="p">),</span> <span class="n">award</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># or use .save()</span>
+<span class="c1"># Using F expressions with .save()</span>
 <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">user</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">&#39;balance&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span>
 <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">])</span>
 </code></pre></div>
 </div>
-<p>For this if you want access updated <cite>F</cite> field again, you should call <cite>refresh_from_db</cite> to refresh special fields first.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Can&#39;t do this!</span>
+<p>When working with F expressions, you must refresh the model instance to access updated field values:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Incorrect - balance value may be stale</span>
 <span class="n">balance</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">balance</span>
+
+<span class="c1"># Correct - refresh the balance field first</span>
 <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">])</span>
-<span class="c1"># Great!</span>
 <span class="n">balance</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">balance</span>
 </code></pre></div>
 </div>
-<p>And you can also use <cite>F</cite> in <cite>annotate</cite>.</p>
+<p>F expressions can also be used in annotations:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values_list</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;idp&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <h2 id="subquery">Subquery<a class="headerlink" href="#subquery" title="Link to this heading">¶</a></h2>
-<p>You can use <cite>Subquery</cite> in <cite>filter()</cite> and <cite>annotate()</cite>.</p>
+<p>Subquery expressions can be utilized in both <code class="docutils literal notranslate"><span class="pre">filter()</span></code> and <code class="docutils literal notranslate"><span class="pre">annotate()</span></code> operations:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subquery</span>
 
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">ids</span><span class="o">=</span><span class="n">Subquery</span><span class="p">(</span><span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;ids&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
@@ -1399,15 +1407,14 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 </code></pre></div>
 </div>
 <h2 id="rawsql">RawSQL<a class="headerlink" href="#rawsql" title="Link to this heading">¶</a></h2>
-<p><cite>RawSQL</cite> just like <cite>Subquery</cite> but provides the ability to write raw sql.</p>
-<p>You can use <cite>RawSQL</cite> in <cite>filter()</cite> and <cite>annotate()</cite>.</p>
+<p>RawSQL provides the capability to execute raw SQL queries within <code class="docutils literal notranslate"><span class="pre">filter()</span></code> and <code class="docutils literal notranslate"><span class="pre">annotate()</span></code> operations. This offers maximum flexibility when needed:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s1">&#39;count(*)&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s1">&#39;id + 1&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">idp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;idp&quot;</span><span class="p">)</span>
 <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">RawSQL</span><span class="p">(</span><span class="s2">&quot;id + 1&quot;</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <h2 id="case-when-expression">Case-When Expression<a class="headerlink" href="#case-when-expression" title="Link to this heading">¶</a></h2>
-<p>Build classic <cite>CASE WHEN … THEN … ELSE … END</cite> sql snippet.</p>
+<p>The Case-When expression enables the construction of conditional logic using <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span> <span class="pre">...</span> <span class="pre">THEN</span> <span class="pre">...</span> <span class="pre">ELSE</span> <span class="pre">...</span> <span class="pre">END</span></code> SQL statements.</p>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.expressions.When">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.expressions.</span></span><span class="sig-name descname"><span class="pre">When</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.args" title="tortoise.expressions.When.__init__.args (Python parameter) — Q objects"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.then" title="tortoise.expressions.When.__init__.then (Python parameter) — value for criterion"><span class="n"><span class="pre">then</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.expressions.When.__init__.negate" title="tortoise.expressions.When.__init__.negate (Python parameter) — false (default)"><span class="n"><span class="pre">negate</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.expressions.When.__init__.kwargs" title="tortoise.expressions.When.__init__.kwargs (Python parameter) — keyword criterion like filter"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#When"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.expressions.When" title="Link to this definition">¶</a></dt>
@@ -1444,7 +1451,14 @@ Q Expressions are a useful tool to compose a query from many small parts.</p>
 </dl>
 </dd></dl>
 
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntModel</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">Case</span><span class="p">(</span><span class="n">When</span><span class="p">(</span><span class="n">intnum__gte</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">&#39;big&#39;</span><span class="p">),</span> <span class="n">When</span><span class="p">(</span><span class="n">intnum__lte</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">))</span>
+<p>Example usage:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntModel</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">Case</span><span class="p">(</span>
+        <span class="n">When</span><span class="p">(</span><span class="n">intnum__gte</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">&#39;big&#39;</span><span class="p">),</span>
+        <span class="n">When</span><span class="p">(</span><span class="n">intnum__lte</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">),</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 

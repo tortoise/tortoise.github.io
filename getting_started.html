@@ -13,7 +13,7 @@
     
     
       
-        <title>Getting started - Tortoise ORM v0.24.0 Documentation</title>
+        <title>Getting started - Tortoise ORM v0.24.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.b83f2e057cd610c26.min.css?v=71bc7cdb" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.0 Documentation
+            Tortoise ORM 0.24.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.0 Documentation
+    Tortoise ORM v0.24.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -418,8 +418,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#optional-accelerators" class="md-nav__link">
-    <span class="md-ellipsis">Optional Accelerators</span>
+  <a href="#optional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">Optional Dependencies</span>
   </a>
   
 </li>
@@ -572,46 +572,56 @@
 
 <h1 id="getting-started"><span id="id1"></span>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
-<p>First you have to install tortoise like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm
-</code></pre></div>
-</div>
-<p>You can also install with your db driver:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncpg<span class="o">]</span>
-</code></pre></div>
-</div>
-<p>Or PsycoPG:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>psycopg<span class="o">]</span>
-</code></pre></div>
-</div>
-<p>For MySQL:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncmy<span class="o">]</span>
-</code></pre></div>
-</div>
-<p>For Microsoft SQL Server/Oracle:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>asyncodbc<span class="o">]</span>
-</code></pre></div>
-</div>
-<p>Apart from <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> there is also support for <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> through <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> and
-<code class="docutils literal notranslate"><span class="pre">mysql</span></code> through <code class="docutils literal notranslate"><span class="pre">asyncmy</span></code>.
-You can easily implement more backends if there is appropriate <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> driver for this db.</p>
-<h3 id="optional-accelerators">Optional Accelerators<a class="headerlink" href="#optional-accelerators" title="Link to this heading">¶</a></h3>
-<p>The following libraries can be used as accelerators:</p>
+<p>The following table shows the available installation options for different databases (note that there are multiple options of clients for some databases):</p>
+<table class="docutils data align-default" id="id2">
+<caption><span class="caption-text">Available Installation Options</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Database</p></th>
+<th class="head"><p>Installation Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SQLite</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PostgreSQL (psycopg)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[psycopg]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PostgreSQL (asyncpg)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[asyncpg]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MySQL (aiomysql)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[aiomysql]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MySQL (asyncmy)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[asyncmy]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MS SQL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[asyncodbc]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Oracle</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tortoise-orm[asyncodbc]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-dependencies">Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Link to this heading">¶</a></h3>
+<p>The following libraries can be used to improve performance:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/orjson/">orjson</a>: Automatically used if installed for JSON SerDes.</p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/uvloop/">uvloop</a>: Shown to improve performance, but needs to be set up.
-Please look at <code class="docutils literal notranslate"><span class="pre">uvloop</span></code> documentation for more info.
-If you use a framework, it may already use it.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/uvloop/">uvloop</a>: Shown to improve performance as an alternative to <code class="docutils literal notranslate"><span class="pre">asyncio</span></code>.</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/ciso8601/">ciso8601</a>: Automatically used if installed.
 Not automatically installed on Windows due to often a lack of a C compiler. Default on Linux/CPython.</p></li>
 </ul>
-<p>You can install with all accelerators above:</p>
+<p>The following command will install all optional dependencies:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tortoise-orm<span class="o">[</span>accel<span class="o">]</span>
 </code></pre></div>
 </div>
 <h2 id="tutorial">Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">¶</a></h2>
-<p>Primary entity of tortoise is <code class="docutils literal notranslate"><span class="pre">tortoise.models.Model</span></code>.
-You can start writing models like this:</p>
+<p>Define the models by inheriting from <code class="docutils literal notranslate"><span class="pre">tortoise.models.Model</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">fields</span>
 
@@ -621,110 +631,98 @@ You can start writing models like this:</p>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
 
-    <span class="c1"># Defining ``__str__`` is also optional, but gives you pretty</span>
-    <span class="c1"># represent of model in debugger and interpreter</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
     <span class="c1"># References to other models are defined in format</span>
-    <span class="c1"># &quot;{app_name}.{model_name}&quot; - where {app_name} is defined in tortoise config</span>
+    <span class="c1"># &quot;{app_name}.{model_name}&quot; - where {app_name} is defined in the tortoise config</span>
     <span class="n">tournament</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ForeignKeyField</span><span class="p">(</span><span class="s1">&#39;models.Tournament&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">)</span>
     <span class="n">participants</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s1">&#39;models.Team&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="n">through</span><span class="o">=</span><span class="s1">&#39;event_team&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Team</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </code></pre></div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>You can read more on defining models in <a class="reference internal" href="models.html#models"><span class="std std-ref">Models</span></a></p>
 </div>
-<p>After you defined all your models, tortoise needs you to init them, in order to create backward relations between models and match your db client with appropriate models.</p>
-<p>You can do it like this:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+<p>After defining the models, Tortoise ORM needs to be initialized to establish the relationships between models and connect to the database.
+The code below creates a connection to a SQLite DB database with the <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> client. <code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> sets up schema on an empty database.
+<code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> is for development purposes only, see <a class="reference internal" href="migration.html#migration"><span class="std std-ref">Migration</span></a> for schema migration tools.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span><span class="p">,</span> <span class="n">run_async</span>
 
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
-    <span class="c1"># Here we create a SQLite DB using file &quot;db.sqlite3&quot;</span>
-    <span class="c1">#  also specify the app name of &quot;models&quot;</span>
-    <span class="c1">#  which contain models from &quot;app.models&quot;</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Here we connect to a SQLite DB file.</span>
+    <span class="c1"># also specify the app name of &quot;models&quot;</span>
+    <span class="c1"># which contain models from &quot;app.models</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
         <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
         <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
     <span class="p">)</span>
-    <span class="c1"># Generate the schema</span>
     <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
+
+<span class="n">run_async</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
 </div>
-<p>Here we create a connection to a SQLite DB database with the default <code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code> client and then we discover &amp; initialise models.</p>
-<p><code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> generates schema on empty database, you shouldn’t run it on every app init, run it just once, maybe out of your main code.</p>
-<p>If you are running this in a simple script, you can do:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">run_async</span><span class="p">(</span><span class="n">init</span><span class="p">())</span>
-</code></pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">run_async</span></code> is a helper function to run simple async Tortoise scripts. If you are running Tortoise ORM as part of a service, please have a look at <a class="reference internal" href="setup.html#cleaningup"><span class="std std-ref">The Importance of cleaning up</span></a></p>
-<p>After that you can start using your models:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Create instance by save</span>
-<span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Tournament&#39;</span><span class="p">)</span>
-<span class="k">await</span> <span class="n">tournament</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<p><code class="docutils literal notranslate"><span class="pre">run_async</span></code> is a helper function to run simple Tortoise scripts. For production use, see <a class="reference internal" href="contrib/fastapi.html#contrib-fastapi"><span class="std std-ref">Tortoise-ORM FastAPI integration</span></a>, <a class="reference internal" href="contrib/sanic.html#contrib-sanic"><span class="std std-ref">Tortoise-ORM Sanic integration</span></a> and other integrations, as welll as check out <a class="reference internal" href="setup.html#cleaningup"><span class="std std-ref">The Importance of cleaning up</span></a>.</p>
+<p>With the Tortoise initialized, the models are available for use:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s1">&#39;sqlite://db.sqlite3&#39;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;app.models&#39;</span><span class="p">]}</span>
+    <span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
-<span class="c1"># Or by .create()</span>
-<span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Without participants&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-<span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
-<span class="n">participants</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Team </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">participants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
+    <span class="c1"># Creating an instance with .save()</span>
+    <span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Tournament&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">tournament</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-<span class="c1"># M2M Relationship management is quite straightforward</span>
-<span class="c1"># (look for methods .remove(...) and .clear())</span>
-<span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="n">participants</span><span class="p">)</span>
+    <span class="c1"># Or with .create()</span>
+    <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Without participants&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">)</span>
+    <span class="n">participants</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">team</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Team </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">participants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
 
-<span class="c1"># You can query related entity just with async for</span>
-<span class="k">async</span> <span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">:</span>
-    <span class="k">pass</span>
+    <span class="c1"># Many to Many Relationship management is quite straightforward</span>
+    <span class="c1"># (there are .remove(...) and .clear() too)</span>
+    <span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">*</span><span class="n">participants</span><span class="p">)</span>
 
-<span class="c1"># After making related query you can iterate with regular for,</span>
-<span class="c1"># which can be extremely convenient for using with other packages,</span>
-<span class="c1"># for example some kind of serializers with nested support</span>
-<span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">:</span>
-    <span class="k">pass</span>
+    <span class="c1"># Iterate over related entities with the async context manager</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
+    <span class="c1"># The related entities are cached and can be iterated in the synchronous way afterwards</span>
+    <span class="k">for</span> <span class="n">team</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">:</span>
+        <span class="k">pass</span>
 
-<span class="c1"># Or you can make preemptive call to fetch related objects,</span>
-<span class="c1"># so you can work with related objects immediately</span>
-<span class="n">selected_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">participants</span><span class="o">=</span><span class="n">participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
-<span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;participants&#39;</span><span class="p">,</span> <span class="s1">&#39;tournament&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">selected_events</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">])</span>
+    <span class="c1"># Use prefetch_related to fetch related objects</span>
+    <span class="n">selected_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Event</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">participants</span><span class="o">=</span><span class="n">participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;participants&#39;</span><span class="p">,</span> <span class="s1">&#39;tournament&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">selected_events</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">])</span>
 
-<span class="c1"># Tortoise ORM supports variable depth of prefetching related entities</span>
-<span class="c1"># This will fetch all events for team and in those team tournament will be prefetched</span>
-<span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;events__tournament&#39;</span><span class="p">)</span>
+    <span class="c1"># Prefetch multiple levels of related entities</span>
+    <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;events__tournament&#39;</span><span class="p">)</span>
 
-<span class="c1"># You can filter and order by related models too</span>
-<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">events__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Prod&#39;</span><span class="p">]</span>
-<span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-events__participants__name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+    <span class="c1"># Filter and order by related models too</span>
+    <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">events__name__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Prod&#39;</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-events__participants__name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+<span class="n">run_async</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>You can read more examples (including transactions, several databases and a little more complex querying) in
-<a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a></p>
+<p>Find more examples (including transactions, using multiple databases and more complex querying) in <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a> and <a class="reference internal" href="query.html#query-api"><span class="std std-ref">Query API</span></a>.</p>
 </div>
 
 
