@@ -13,7 +13,7 @@
     
     
       
-        <title>Query API - Tortoise ORM v0.24.1 Documentation</title>
+        <title>Query API - Tortoise ORM v0.24.2 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.1 Documentation
+            Tortoise ORM 0.24.2 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.1 Documentation
+    Tortoise ORM v0.24.2 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -3463,6 +3463,14 @@ The <code class="docutils literal notranslate"><span class="pre">filter</span></
 <p>In PostgreSQL and MySQL and SQLite, you can use <code class="docutils literal notranslate"><span class="pre">posix_regex</span></code> to make comparisons using POSIX regular expressions:
 On PostgreSQL, this uses the <code class="docutils literal notranslate"><span class="pre">~</span></code> operator, on MySQL and SQLite it uses the <code class="docutils literal notranslate"><span class="pre">REGEXP</span></code> operator.
 PostgreSQL and SQLite also support <code class="docutils literal notranslate"><span class="pre">iposix_regex</span></code>, which makes case insensive comparisons.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DemoModel</span><span class="p">:</span>
+  <span class="n">demo_text</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+
+<span class="k">await</span> <span class="n">DemoModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">demo_text</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DemoModel</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">demo_text__posix_regex</span><span class="o">=</span><span class="s2">&quot;^Hello World$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DemoModel</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">demo_text__iposix_regex</span><span class="o">=</span><span class="s2">&quot;^hello world$&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</code></pre></div>
+</div>
 <p>With PostgreSQL, for <code class="docutils literal notranslate"><span class="pre">JSONField</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> supports additional lookup types:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">in</span></code> - <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">JSONModel.filter(data__filter={&quot;breed__in&quot;:</span> <span class="pre">[&quot;labrador&quot;,</span> <span class="pre">&quot;poodle&quot;]}).first()</span></code></p></li>

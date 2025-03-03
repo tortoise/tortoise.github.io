@@ -13,7 +13,7 @@
     
     
       
-        <title>Tortoise ORM - Tortoise ORM v0.24.1 Documentation</title>
+        <title>Tortoise ORM - Tortoise ORM v0.24.2 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.1 Documentation
+            Tortoise ORM 0.24.2 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.1 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.1 Documentation
+    Tortoise ORM v0.24.2 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -643,6 +643,27 @@ We keep a <a class="reference external" href="https://tortoise.github.io/CHANGEL
 </code></pre></div>
 </div>
 <p>Operations on models, queries and complex aggregations:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Creating a record</span>
+<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Another Tournament&#39;</span><span class="p">)</span>
+
+<span class="c1"># Searching for a record</span>
+<span class="n">tour</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__contains</span><span class="o">=</span><span class="s1">&#39;Another&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tour</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Count groups of records with a complex condition</span>
+<span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">name_prefix</span><span class="o">=</span><span class="n">Case</span><span class="p">(</span>
+        <span class="n">When</span><span class="p">(</span><span class="n">name__startswith</span><span class="o">=</span><span class="s2">&quot;One&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">),</span>
+        <span class="n">When</span><span class="p">(</span><span class="n">name__startswith</span><span class="o">=</span><span class="s2">&quot;Two&quot;</span><span class="p">,</span> <span class="n">then</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">),</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;name_prefix&quot;</span><span class="p">)),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="s2">&quot;name_prefix&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;name_prefix&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
 <p>See <a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting started</span></a> for a more detailed guide.</p>
 <h3 id="pluggable-database-backends">Pluggable Database backends<a class="headerlink" href="#pluggable-database-backends" title="Link to this heading">¶</a></h3>
 <p>Tortoise ORM currently supports the following <a class="reference internal" href="databases.html#databases"><span class="std std-ref">Databases</span></a>:</p>
