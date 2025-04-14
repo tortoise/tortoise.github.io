@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.sanic - Tortoise ORM v0.24.2 Documentation</title>
+        <title>tortoise.contrib.sanic - Tortoise ORM v0.25.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.2 Documentation
+            Tortoise ORM 0.25.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.2 Documentation
+    Tortoise ORM v0.25.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -602,18 +602,21 @@
 
     <span class="k">if</span> <span class="n">generate_schemas</span><span class="p">:</span>
 
-        <span class="nd">@app</span><span class="o">.</span><span class="n">listener</span><span class="p">(</span><span class="s2">&quot;main_process_start&quot;</span><span class="p">)</span>
-        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init_orm_main</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>  <span class="c1"># pylint: disable=W0612</span>
+        <span class="nd">@app</span><span class="o">.</span><span class="n">main_process_start</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init_orm_main</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>  <span class="c1"># pylint: disable=W0612</span>
             <span class="k">await</span> <span class="n">tortoise_init</span><span class="p">()</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Tortoise-ORM generating schema&quot;</span><span class="p">)</span>
             <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
-    <span class="nd">@app</span><span class="o">.</span><span class="n">listener</span><span class="p">(</span><span class="s2">&quot;before_server_start&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init_orm</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>  <span class="c1"># pylint: disable=W0612</span>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">before_server_start</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init_orm</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
         <span class="k">await</span> <span class="n">tortoise_init</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">generate_schemas</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="s2">&quot;_test_manager&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="c1"># Running by sanic-testing</span>
+            <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
 
-    <span class="nd">@app</span><span class="o">.</span><span class="n">listener</span><span class="p">(</span><span class="s2">&quot;after_server_stop&quot;</span><span class="p">)</span>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close_orm</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">loop</span><span class="p">):</span>  <span class="c1"># pylint: disable=W0612</span>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">after_server_stop</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close_orm</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>  <span class="c1"># pylint: disable=W0612</span>
         <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Tortoise-ORM shutdown&quot;</span><span class="p">)</span></div>
 

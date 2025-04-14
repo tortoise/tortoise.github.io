@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.24.2 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.25.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.2 Documentation
+            Tortoise ORM 0.25.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.2 Documentation
+    Tortoise ORM v0.25.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1601,7 +1601,9 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_in_db</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t refresh unpersisted record&quot;</span><span class="p">)</span>
         <span class="n">db</span> <span class="o">=</span> <span class="n">using_db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db</span><span class="p">()</span>
-        <span class="n">qs</span> <span class="o">=</span> <span class="n">QuerySet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">fields</span> <span class="ow">or</span> <span class="p">[]))</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="n">QuerySet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">qs</span> <span class="o">=</span> <span class="n">qs</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="o">*</span><span class="n">fields</span><span class="p">)</span>
         <span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">qs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_fields</span><span class="p">:</span>

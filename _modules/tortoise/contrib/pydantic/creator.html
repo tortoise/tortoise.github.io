@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v0.24.2 Documentation</title>
+        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v0.25.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.2 Documentation
+            Tortoise ORM 0.25.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.2 Documentation
+    Tortoise ORM v0.25.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -521,9 +521,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha3_224</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">computed_field</span><span class="p">,</span> <span class="n">create_model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PydanticField</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">computed_field</span><span class="p">,</span> <span class="n">create_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComputedFieldInfo</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">BackwardFKRelation</span><span class="p">,</span>
@@ -900,13 +900,25 @@
                 <span class="k">return</span> <span class="n">_MODEL_INDEX</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_pconfig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_pconfig</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">[</span><span class="s2">&quot;model_config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pconfig</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
+        <span class="c1"># Extract the computed fields</span>
+        <span class="n">computed_fields</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">common_fields</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;decorator_info&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">ComputedFieldInfo</span><span class="p">):</span>
+                <span class="n">computed_fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">common_fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="n">base_model</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+            <span class="s2">&quot;BasePydanticModel&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">PydanticModel</span><span class="p">,),</span>
+            <span class="p">{</span><span class="s2">&quot;model_config&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pconfig</span><span class="p">,</span> <span class="o">**</span><span class="n">computed_fields</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span>
-            <span class="n">__base__</span><span class="o">=</span><span class="n">PydanticModel</span><span class="p">,</span>
+            <span class="n">__base__</span><span class="o">=</span><span class="n">base_model</span><span class="p">,</span>
             <span class="vm">__module__</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_module</span><span class="p">,</span>
             <span class="n">__validators__</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_validators</span><span class="p">,</span>
-            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">common_fields</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="c1"># Copy the Model docstring over</span>
         <span class="n">model</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">)</span>

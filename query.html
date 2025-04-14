@@ -13,7 +13,7 @@
     
     
       
-        <title>Query API - Tortoise ORM v0.24.2 Documentation</title>
+        <title>Query API - Tortoise ORM v0.25.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.2 Documentation
+            Tortoise ORM 0.25.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.2 Documentation
+    Tortoise ORM v0.25.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -3005,9 +3005,11 @@ Useful for transactions workaround.</p>
 <dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.values">
 <span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.queryset.QuerySet.values" title="tortoise.queryset.QuerySet.values.args (Python parameter)"><span class="n"><span class="pre">args</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.queryset.QuerySet.values" title="tortoise.queryset.QuerySet.values.kwargs (Python parameter)"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.values" title="Link to this definition">¶</a></dt>
 <dd><p>Make QuerySet return dicts instead of objects.</p>
-<p>If call after <cite>.get()</cite>, <cite>.get_or_none()</cite> or <cite>.first()</cite> return dict instead of object.</p>
-<p>Can pass names of fields to fetch, or as a <code class="docutils literal notranslate"><span class="pre">field_name='name_in_dict'</span></code> kwarg.</p>
-<p>If no arguments are passed it will default to a dict containing all fields.</p>
+<p>If called after <cite>.get()</cite>, <cite>.get_or_none()</cite> or <cite>.first()</cite>, returns a dict instead of an object.</p>
+<p>You can specify which fields to include by:
+- Passing field names as positional arguments
+- Using kwargs in the format <cite>field_name=’name_in_dict’</cite> to customize the keys in the resulting dict</p>
+<p>If no arguments are passed, it will default to a dict containing all fields.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.queryset.QuerySet.values-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.values-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If duplicate key has been provided.</p>

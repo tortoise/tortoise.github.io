@@ -6,6 +6,29 @@ Changelog
 
 .. rst-class:: emphasize-children
 
+0.25
+====
+
+0.25.0
+------
+Fixed
+^^^^^
+- Fix `pydantic_model_creator` incompatibility with Pydantic 2.11 (#1925)
+
+Changed
+^^^^^^^
+- Skip database selection if the router is not configured to improve performance (#1915)
+- `.values()`, `.values_list()` and `.only()` cannot be used together (#1923)
+
+Added
+^^^^^
+- `.only` supports selecting related fields, e.g. `.only("related__field")` (#1923)
+
+Fixed
+^^^^^
+- Fix pydantic_model_creator incompatibility with Pydantic 2.11 (#1930)
+
+
 0.24
 ====
 

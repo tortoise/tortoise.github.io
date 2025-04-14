@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.query_utils - Tortoise ORM v0.24.2 Documentation</title>
+        <title>tortoise.query_utils - Tortoise ORM v0.25.0 Documentation</title>
       
     
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.24.2 Documentation
+            Tortoise ORM 0.25.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.24.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.24.2 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.24.2 Documentation
+    Tortoise ORM v0.25.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -515,11 +515,12 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise.terms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Criterion</span><span class="p">,</span> <span class="n">Term</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">OperationalError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FieldError</span><span class="p">,</span> <span class="n">OperationalError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">BackwardFKRelation</span><span class="p">,</span>
@@ -591,6 +592,24 @@
     <span class="k">return</span> <span class="n">required_joins</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_lookup_expression</span><span class="p">(</span><span class="n">root_model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">lookup_expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Field</span><span class="p">]:</span>
+    <span class="n">field_names</span> <span class="o">=</span> <span class="n">lookup_expression</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)</span>
+    <span class="n">fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Field</span> <span class="o">|</span> <span class="n">RelationalField</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">root_model</span>
+    <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">field_names</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">field_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FieldError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lookup_expression</span><span class="si">}</span><span class="s2"> not resolvable&quot;</span><span class="p">)</span>
+        <span class="n">field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">])</span>
+        <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">related_model</span>
+    <span class="c1"># the last field is not necessarily a RelationalField, so threting it differently</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">field_names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FieldError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lookup_expression</span><span class="si">}</span><span class="s2"> not resolvable&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fields</span>
+
+
 <span class="k">def</span><span class="w"> </span><span class="nf">resolve_nested_field</span><span class="p">(</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="n">table</span><span class="p">:</span> <span class="n">Table</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Term</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">TableCriterionTuple</span><span class="p">],</span> <span class="n">Field</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
@@ -599,52 +618,51 @@
 <span class="sd">    returns the pypika term, required joins and the Field that can be used for</span>
 <span class="sd">    converting the value.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">field_object</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">joins</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">expand_lookup_expression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">iter_field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">iter_field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2"> not resolvable&quot;</span><span class="p">)</span>
-
-        <span class="n">related_field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">iter_field</span><span class="p">])</span>
-        <span class="n">joins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_joins_for_related_field</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">,</span> <span class="n">iter_field</span><span class="p">))</span>
+        <span class="n">related_field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">iter_field</span><span class="p">)</span>
+        <span class="n">joins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_joins_for_related_field</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">,</span> <span class="n">iter_field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">))</span>
 
         <span class="n">model</span> <span class="o">=</span> <span class="n">related_field</span><span class="o">.</span><span class="n">related_model</span>
         <span class="n">related_table</span><span class="p">:</span> <span class="n">Table</span> <span class="o">=</span> <span class="n">related_field</span><span class="o">.</span><span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">related_field</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">):</span>
             <span class="c1"># Only FK&#39;s can be to same table, so we only auto-alias FK join tables</span>
-            <span class="n">related_table</span> <span class="o">=</span> <span class="n">related_table</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">table</span><span class="o">.</span><span class="n">get_table_name</span><span class="p">()</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">iter_field</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">related_table</span> <span class="o">=</span> <span class="n">related_table</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">table</span><span class="o">.</span><span class="n">get_table_name</span><span class="p">()</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">iter_field</span><span class="o">.</span><span class="n">model_field_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
         <span class="n">table</span> <span class="o">=</span> <span class="n">related_table</span>
 
     <span class="n">last_field</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">last_field</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
-        <span class="n">related_field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">last_field</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">last_field</span><span class="o">.</span><span class="n">model_field_name</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
+        <span class="n">related_field</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">RelationalField</span><span class="p">,</span> <span class="n">last_field</span><span class="p">)</span>
         <span class="n">related_field_meta</span> <span class="o">=</span> <span class="n">related_field</span><span class="o">.</span><span class="n">related_model</span><span class="o">.</span><span class="n">_meta</span>
 
-        <span class="n">joins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">get_joins_for_related_field</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">,</span> <span class="n">last_field</span><span class="p">))</span>
+        <span class="n">joins</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="n">get_joins_for_related_field</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">related_field</span><span class="p">,</span> <span class="n">related_field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">)</span>
+        <span class="p">)</span>
         <span class="n">related_table</span> <span class="o">=</span> <span class="n">related_field_meta</span><span class="o">.</span><span class="n">basetable</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">related_field</span><span class="p">,</span> <span class="n">BackwardFKRelation</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">table</span> <span class="o">==</span> <span class="n">related_table</span><span class="p">:</span>
-                <span class="n">related_table</span> <span class="o">=</span> <span class="n">related_table</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">table</span><span class="o">.</span><span class="n">get_table_name</span><span class="p">()</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">last_field</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">related_table</span> <span class="o">=</span> <span class="n">related_table</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">table</span><span class="o">.</span><span class="n">get_table_name</span><span class="p">()</span><span class="si">}</span><span class="s2">__</span><span class="si">{</span><span class="n">related_field</span><span class="o">.</span><span class="n">model_field_name</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
 
         <span class="n">term</span> <span class="o">=</span> <span class="n">related_table</span><span class="p">[</span><span class="n">related_field_meta</span><span class="o">.</span><span class="n">db_pk_column</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">field_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">last_field</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">field_object</span><span class="o">.</span><span class="n">source_field</span><span class="p">:</span>
-            <span class="n">term</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">field_object</span><span class="o">.</span><span class="n">source_field</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">last_field</span><span class="o">.</span><span class="n">source_field</span><span class="p">:</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">last_field</span><span class="o">.</span><span class="n">source_field</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">term</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">last_field</span><span class="p">]</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">last_field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">field_object</span><span class="p">:</span>  <span class="c1"># pragma: nobranch</span>
-            <span class="n">func</span> <span class="o">=</span> <span class="n">field_object</span><span class="o">.</span><span class="n">get_for_dialect</span><span class="p">(</span>
-                <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">dialect</span><span class="p">,</span> <span class="s2">&quot;function_cast&quot;</span>
-            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">last_field</span><span class="p">:</span>  <span class="c1"># pragma: nobranch</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">last_field</span><span class="o">.</span><span class="n">get_for_dialect</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">dialect</span><span class="p">,</span> <span class="s2">&quot;function_cast&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">func</span><span class="p">:</span>
-                <span class="n">term</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">field_object</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span>
+                <span class="n">term</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">last_field</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">term</span><span class="p">,</span> <span class="n">joins</span><span class="p">,</span> <span class="n">field_object</span>
+    <span class="k">return</span> <span class="n">term</span><span class="p">,</span> <span class="n">joins</span><span class="p">,</span> <span class="n">last_field</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">EmptyCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
