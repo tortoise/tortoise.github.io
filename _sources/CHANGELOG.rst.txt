@@ -1,4 +1,5 @@
 .. _changelog:
+:no-search:
 
 =========
 Changelog
@@ -8,6 +9,17 @@ Changelog
 
 0.25
 ====
+
+0.25.1
+------------------
+Changed
+^^^^^
+- Force async task switch every 2000 rows when converting db objects to python objects to avoid blocking the event loop (#1939)
+
+Added
+^^^^^
+- Add `no_key` parameter to `queryset.select_for_update`.
+- `F()` supports referencing JSONField attributes, e.g. `F("json_field__custom_field__nested_id")` (#1960)
 
 0.25.0
 ------
@@ -23,10 +35,6 @@ Changed
 Added
 ^^^^^
 - `.only` supports selecting related fields, e.g. `.only("related__field")` (#1923)
-
-Fixed
-^^^^^
-- Fix pydantic_model_creator incompatibility with Pydantic 2.11 (#1930)
 
 
 0.24

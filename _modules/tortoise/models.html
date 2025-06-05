@@ -13,7 +13,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v0.25.0 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v0.25.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
         <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.0 Documentation
+            Tortoise ORM 0.25.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -332,10 +332,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.0 Documentation
+    Tortoise ORM v0.25.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1186,7 +1186,7 @@
 
 
 <div class="viewcode-block" id="Model">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ModelMeta</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for all Tortoise ORM Models.</span>
@@ -1376,7 +1376,7 @@
             <span class="k">raise</span> <span class="n">ObjectDoesNotExistError</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">pk_attr</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.clone">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.clone">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.clone">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">pk</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">EMPTY</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a new clone of the object that when you do a ``.save()`` will create a new record.</span>
@@ -1402,7 +1402,7 @@
 
 
 <div class="viewcode-block" id="Model.update_from_dict">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.update_from_dict">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.update_from_dict">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">update_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates the current model with the provided dict.</span>
@@ -1423,7 +1423,7 @@
 
 
 <div class="viewcode-block" id="Model.register_listener">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.register_listener">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.register_listener">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">register_listener</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">signal</span><span class="p">:</span> <span class="n">Signals</span><span class="p">,</span> <span class="n">listener</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1475,7 +1475,7 @@
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_listeners</span><span class="p">(</span><span class="n">Signals</span><span class="o">.</span><span class="n">post_save</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">using_db</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.save">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.save">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.save">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1544,7 +1544,7 @@
 
 
 <div class="viewcode-block" id="Model.delete">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.delete">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.delete">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes the current model object.</span>
@@ -1562,7 +1562,7 @@
 
 
 <div class="viewcode-block" id="Model.fetch_related">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.fetch_related">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.fetch_related">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_related</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fetch related fields.</span>
@@ -1579,7 +1579,7 @@
 
 
 <div class="viewcode-block" id="Model.refresh_from_db">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.refresh_from_db">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.refresh_from_db">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">refresh_from_db</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1625,7 +1625,7 @@
         <span class="k">return</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span>
 
 <div class="viewcode-block" id="Model.get_or_create">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get_or_create">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.get_or_create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_or_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -1680,7 +1680,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span><span class="o">.</span><span class="n">using_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Model.select_for_update">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.select_for_update">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.select_for_update">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">select_for_update</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -1688,6 +1688,7 @@
         <span class="n">skip_locked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">of</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">no_key</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make QuerySet select for update.</span>
@@ -1695,11 +1696,13 @@
 <span class="sd">        Returns a queryset that will lock rows until the end of the transaction,</span>
 <span class="sd">        generating a SELECT ... FOR UPDATE SQL statement on supported databases.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">select_for_update</span><span class="p">(</span><span class="n">nowait</span><span class="p">,</span> <span class="n">skip_locked</span><span class="p">,</span> <span class="n">of</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">select_for_update</span><span class="p">(</span>
+            <span class="n">nowait</span><span class="p">,</span> <span class="n">skip_locked</span><span class="p">,</span> <span class="n">of</span><span class="p">,</span> <span class="n">no_key</span><span class="o">=</span><span class="n">no_key</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Model.update_or_create">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.update_or_create">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.update_or_create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update_or_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
@@ -1726,7 +1729,7 @@
 
 
 <div class="viewcode-block" id="Model.create">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.create">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
@@ -1756,7 +1759,7 @@
 
 
 <div class="viewcode-block" id="Model.bulk_update">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.bulk_update">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.bulk_update">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">bulk_update</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
@@ -1789,7 +1792,7 @@
 
 
 <div class="viewcode-block" id="Model.in_bulk">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.in_bulk">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.in_bulk">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">in_bulk</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
@@ -1809,7 +1812,7 @@
 
 
 <div class="viewcode-block" id="Model.bulk_create">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.bulk_create">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.bulk_create">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">bulk_create</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span>
@@ -1853,7 +1856,7 @@
 
 
 <div class="viewcode-block" id="Model.first">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.first">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.first">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">first</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1863,7 +1866,7 @@
 
 
 <div class="viewcode-block" id="Model.last">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.last">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.last">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">last</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1873,7 +1876,7 @@
 
 
 <div class="viewcode-block" id="Model.filter">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.filter">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.filter">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1886,7 +1889,7 @@
 
 
 <div class="viewcode-block" id="Model.latest">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.latest">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.latest">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">latest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1898,7 +1901,7 @@
 
 
 <div class="viewcode-block" id="Model.earliest">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.earliest">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.earliest">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">earliest</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">orderings</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySetSingle</span><span class="p">[</span><span class="n">Self</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1910,7 +1913,7 @@
 
 
 <div class="viewcode-block" id="Model.exclude">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.exclude">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.exclude">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">exclude</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1923,7 +1926,7 @@
 
 
 <div class="viewcode-block" id="Model.annotate">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.annotate">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.annotate">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Expression</span> <span class="o">|</span> <span class="n">Term</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1935,7 +1938,7 @@
 
 
 <div class="viewcode-block" id="Model.all">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.all">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.all">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuerySet</span><span class="p">[</span><span class="n">Self</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1945,7 +1948,7 @@
 
 
 <div class="viewcode-block" id="Model.get">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.get">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
@@ -1968,7 +1971,7 @@
 
 
 <div class="viewcode-block" id="Model.raw">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.raw">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.raw">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">raw</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RawSQLQuery</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1985,7 +1988,7 @@
 
 
 <div class="viewcode-block" id="Model.exists">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.exists">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.exists">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">exists</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
@@ -2005,7 +2008,7 @@
 
 
 <div class="viewcode-block" id="Model.get_or_none">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.get_or_none">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.get_or_none">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_or_none</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="n">using_db</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
@@ -2025,7 +2028,7 @@
 
 
 <div class="viewcode-block" id="Model.fetch_for_list">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.fetch_for_list">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.fetch_for_list">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fetch_for_list</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -2097,7 +2100,7 @@
         <span class="k">return</span> <span class="n">index</span>
 
 <div class="viewcode-block" id="Model.describe">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.describe">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.describe">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">describe</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">serializable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2185,7 +2188,7 @@
         <span class="k">return</span> <span class="n">_self</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Model.Meta">
-<a class="viewcode-back" href="../../setup.html#tortoise.models.Model.Meta">[docs]</a>
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.Meta">[docs]</a>
     <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The ``Meta`` class is used to configure metadata for the Model.</span>

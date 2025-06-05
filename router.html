@@ -13,7 +13,7 @@
     
     
       
-        <title>Router - Tortoise ORM v0.25.0 Documentation</title>
+        <title>Router - Tortoise ORM v0.25.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.0 Documentation
+            Tortoise ORM 0.25.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.0 Documentation
+    Tortoise ORM v0.25.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -743,8 +743,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#config-router" class="md-nav__link">
-    <span class="md-ellipsis">Config Router</span>
+  <a href="#configure-router" class="md-nav__link">
+    <span class="md-ellipsis">Configure Router</span>
   </a>
   
 </li>
@@ -896,10 +896,10 @@
 
 
 <h1 id="router"><span id="id1"></span>Router<a class="headerlink" href="#router" title="Link to this heading">¶</a></h1>
-<p>The easiest way to use multiple databases is to set up a database routing scheme. The default routing scheme ensures that objects remain ‘sticky’ to their original database (i.e., an object retrieved from the foo database will be saved on the same database). The default routing scheme ensures that if a database isn’t specified, all queries fall back to the default database.</p>
+<p>The easiest way to use multiple databases is to set up a database routing scheme. The default routing scheme ensures that objects remain ‘sticky’ to their original database (i.e., an object retrieved from the foo database will be saved to the same database). The default routing scheme also ensures that if a database isn’t specified, all queries fall back to the default database.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <h3 id="define-router">Define Router<a class="headerlink" href="#define-router" title="Link to this heading">¶</a></h3>
-<p>Define a router is simple, you need just write a class that has <cite>db_for_read</cite> and <cite>db_for_write</cite> methods.</p>
+<p>Defining a router is simple - you just need to write a class that has <cite>db_for_read</cite> and <cite>db_for_write</cite> methods.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Router</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Model</span><span class="p">]):</span>
         <span class="k">return</span> <span class="s2">&quot;slave&quot;</span>
@@ -908,13 +908,16 @@
         <span class="k">return</span> <span class="s2">&quot;master&quot;</span>
 </code></pre></div>
 </div>
-<p>The two methods return a connection string defined in configuration.</p>
-<h3 id="config-router">Config Router<a class="headerlink" href="#config-router" title="Link to this heading">¶</a></h3>
-<p>Just put it in configuration of tortoise or in <cite>Tortoise.init</cite> method.</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;master&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/test.db&quot;</span><span class="p">,</span> <span class="s2">&quot;slave&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/test.db&quot;</span><span class="p">},</span>
+<p>Both methods return a connection identifier that must be defined in the Tortoise configuration.</p>
+<h3 id="configure-router">Configure Router<a class="headerlink" href="#configure-router" title="Link to this heading">¶</a></h3>
+<p>Simply include the router in your Tortoise configuration or pass it to the <cite>Tortoise.init</cite> method.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;master&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/m.db&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;slave&quot;</span><span class="p">:</span> <span class="s2">&quot;sqlite:///tmp/s.db&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
     <span class="s2">&quot;apps&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;app&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">],</span>
             <span class="s2">&quot;default_connection&quot;</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
         <span class="p">}</span>
@@ -923,13 +926,10 @@
     <span class="s2">&quot;use_tz&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-<span class="c1"># or</span>
-<span class="n">routers</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;routers&#39;</span><span class="p">)</span>
-<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">routers</span><span class="o">=</span><span class="n">routers</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<p>After that, all <cite>select</cite> operations will use <cite>slave</cite> connection, all <cite>create/update/delete</cite> operations will use <cite>master</cite> connection.</p>
+<p>With this configuration, all <cite>select</cite> operations will use the <cite>slave</cite> connection, while all <cite>create/update/delete</cite> operations will use the <cite>master</cite> connection.</p>
 
 
 

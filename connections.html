@@ -13,7 +13,7 @@
     
     
       
-        <title>Connections - Tortoise ORM v0.25.0 Documentation</title>
+        <title>Connections - Tortoise ORM v0.25.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.0 Documentation
+            Tortoise ORM 0.25.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.0 Documentation
+    Tortoise ORM v0.25.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1157,7 +1157,7 @@
 
 <h1 id="connections"><span id="id1"></span>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h1>
 <p>This document describes how to access the underlying connection object (<a class="reference internal" href="databases.html#base-db-client"><span class="std std-ref">BaseDBAsyncClient</span></a>) for the aliases defined
-as part of the DB config passed to the <a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> call.</p>
+as part of the DB config passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code> call.</p>
 <p>Below is a simple code snippet which shows how the interface can be accessed:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># connections is a singleton instance of the ConnectionHandler class and serves as the</span>
 <span class="c1"># entrypoint to access all connection management APIs.</span>
@@ -1233,11 +1233,11 @@ in practice.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">db_config</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">DBConfigType</span></span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config" title="Link to this definition">¶</a></dt>
 <dd><p>Return the DB config.</p>
 <p>This is the same config passed to the
-<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method while initialization.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code> method while initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.connection.ConnectionHandler.db_config-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ConfigurationError" title="tortoise.exceptions.ConfigurationError (Python exception) — Bases: BaseORMException"><strong>ConfigurationError</strong></a> – If this property is accessed before calling the
-<a class="reference internal" href="setup.html#tortoise.Tortoise.init" title="tortoise.Tortoise.init (Python method) — Sets up Tortoise-ORM: loads apps and models, configures database connections but does not connect to the database yet. The actual connection or connection pool is established lazily on first query execution."><code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code></a> method.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Tortoise.init</span></code> method.</p>
 </dd>
 <dt class="field-even" id="tortoise.connection.ConnectionHandler.db_config-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.connection.ConnectionHandler.db_config-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p>DBConfigType</p>

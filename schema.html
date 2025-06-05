@@ -13,7 +13,7 @@
     
     
       
-        <title>Schema Creation - Tortoise ORM v0.25.0 Documentation</title>
+        <title>Schema Creation - Tortoise ORM v0.25.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.0 Documentation
+            Tortoise ORM 0.25.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.0 Documentation
+    Tortoise ORM v0.25.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -557,7 +557,7 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.Tortoise.generate_schemas.safe" class="md-nav__link">
-    <span class="md-ellipsis">safe</span>
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.Tortoise.generate_schemas.safe (Python parameter) — When set to true, creates the table only when it does not already exist." class="md-ellipsis">safe</span>
   </a>
   
 </li>
@@ -1013,7 +1013,7 @@
 <p>Here we create connection to SQLite database client and then we discover &amp; initialize models.</p>
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py">
-<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Tortoise.</span></span><span class="sig-name descname"><span class="pre">generate_schemas</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="setup.html#tortoise.Tortoise.generate_schemas.safe" title="tortoise.Tortoise.generate_schemas.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.generate_schemas"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Tortoise.</span></span><span class="sig-name descname"><span class="pre">generate_schemas</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.Tortoise.generate_schemas.safe" title="tortoise.Tortoise.generate_schemas.safe (Python parameter) — When set to true, creates the table only when it does not already exist."><span class="n"><span class="pre">safe</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise.html#Tortoise.generate_schemas"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Generate schemas according to models provided to <code class="docutils literal notranslate"><span class="pre">.init()</span></code> method.
 Will fail if schemas already exists, so it’s not recommended to be used as part
 of application workflow</p>

@@ -13,7 +13,7 @@
     
     
       
-        <title>Databases - Tortoise ORM v0.25.0 Documentation</title>
+        <title>Databases - Tortoise ORM v0.25.1 Documentation</title>
       
     
     
@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.02cb18745d09eea51.min.css?v=ff456132" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -98,7 +98,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.0 Documentation
+            Tortoise ORM 0.25.1 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -334,10 +334,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v0.25.1 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.1 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.0 Documentation
+    Tortoise ORM v0.25.1 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -559,15 +559,22 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries" class="md-ellipsis">support_<wbr>for_<wbr>posix_<wbr>regex_<wbr>queries</span>
+  </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tortoise.backends.base.client.Capabilities-param" class="md-nav__link">
-    <span class="md-ellipsis">Param</span>
+  <a href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" class="md-nav__link">
+    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes" class="md-ellipsis">support_<wbr>json_<wbr>attributes</span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1498,8 +1505,7 @@
 </ul>
 <p>To use, please ensure that corresponding asyncio driver is installed.</p>
 <h2 id="db-url"><span id="id2"></span>DB_URL<a class="headerlink" href="#db-url" title="Link to this heading">¶</a></h2>
-<p>Tortoise supports specifying Database configuration in a URL form.</p>
-<p>The form is:</p>
+<p>Tortoise supports specifying Database configuration in a URL form. The form is:</p>
 <p><code class="samp docutils literal notranslate"><em><span class="pre">DB_TYPE</span></em><span class="pre">://</span><em><span class="pre">USERNAME</span></em><span class="pre">:</span><em><span class="pre">PASSWORD</span></em><span class="pre">&#64;</span><em><span class="pre">HOST</span></em><span class="pre">:</span><em><span class="pre">PORT</span></em><span class="pre">/</span><em><span class="pre">DB_NAME</span></em><span class="pre">?</span><em><span class="pre">PARAM1</span></em><span class="pre">=value&amp;</span><em><span class="pre">PARAM2</span></em><span class="pre">=value</span></code></p>
 <p>If password contains special characters it need to be URL encoded:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.parse</span>
@@ -1530,7 +1536,7 @@ Typically in the form of <code class="samp docutils literal notranslate"><span c
 Primarily this is to work around larger-than SQL differences, or common issues.</p>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.backends.base.client.Capabilities">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.backends.base.client.</span></span><span class="sig-name descname"><span class="pre">Capabilities</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.dialect" title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver."><span class="n"><span class="pre">dialect</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.daemon" title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?"><span class="n"><span class="pre">daemon</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.requires_limit" title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work."><span class="n"><span class="pre">requires_limit</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.inline_comment" title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement."><span class="n"><span class="pre">inline_comment</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.supports_transactions" title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions."><span class="n"><span class="pre">supports_transactions</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..."><span class="n"><span class="pre">support_for_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index."><span class="n"><span class="pre">support_index_hint</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by."><span class="n"><span class="pre">support_update_limit_order_by</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities" title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter)"><span class="n"><span class="pre">support_for_posix_regex_queries</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#Capabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.Capabilities" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.backends.base.client.</span></span><span class="sig-name descname"><span class="pre">Capabilities</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.dialect" title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver."><span class="n"><span class="pre">dialect</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.daemon" title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?"><span class="n"><span class="pre">daemon</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.requires_limit" title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work."><span class="n"><span class="pre">requires_limit</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.inline_comment" title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement."><span class="n"><span class="pre">inline_comment</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.supports_transactions" title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions."><span class="n"><span class="pre">supports_transactions</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..."><span class="n"><span class="pre">support_for_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities" title="tortoise.backends.base.client.Capabilities.__init__.support_for_no_key_update (Python parameter)"><span class="n"><span class="pre">support_for_no_key_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index."><span class="n"><span class="pre">support_index_hint</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by."><span class="n"><span class="pre">support_update_limit_order_by</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries"><span class="n"><span class="pre">support_for_posix_regex_queries</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes"><span class="n"><span class="pre">support_json_attributes</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#Capabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.Capabilities" title="Link to this definition">¶</a></dt>
 <dd><p>DB Client Capabilities indicates the supported feature-set,
 and is also used to note common workarounds to deficiencies.</p>
 <p>Defaults are set with the following standard:</p>
@@ -1555,14 +1561,17 @@ DDL statement, and not as a separate statement.</p>
 </dd>
 <dt id="tortoise.backends.base.client.Capabilities.__init__.support_for_update"><span class="n sig-name">support_for_update</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" title="Permalink to this definition">¶</a></dt><dd><p>Indicates that this DB supports SELECT … FOR UPDATE SQL statement.</p>
 </dd>
+<dt><span class="sig-name descname">support_for_update_no_key</span></dt><dd><p>Indicates that this DB supports SELECT … FOR NO KEY UPDATE SQL statement.</p>
+</dd>
 <dt id="tortoise.backends.base.client.Capabilities.__init__.support_index_hint"><span class="n sig-name">support_index_hint</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" title="Permalink to this definition">¶</a></dt><dd><p>Support force index or use index.</p>
 </dd>
 <dt id="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by"><span class="n sig-name">support_update_limit_order_by</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" title="Permalink to this definition">¶</a></dt><dd><p>support update/delete with limit and order by.</p>
 </dd>
-</dl>
+<dt id="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries"><span class="n sig-name">support_for_posix_regex_queries</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" title="Permalink to this definition">¶</a></dt><dd><p>indicated if the db supports posix regex queries</p>
 </dd>
-<dt class="field-even" id="tortoise.backends.base.client.Capabilities-param">Param<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.Capabilities-param" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p>support_for_posix_regex_queries: indicated if the db supports posix regex queries</p>
+<dt id="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes"><span class="n sig-name">support_json_attributes</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" title="Permalink to this definition">¶</a></dt><dd><p>indicated if the db supports accessing json attributes</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
