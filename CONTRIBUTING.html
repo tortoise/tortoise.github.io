@@ -32,7 +32,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.c5589c0bd87d933a4.min.css?v=eeeb54bc" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.58d549dac8fe20eca.min.css?v=7776979a" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -637,10 +637,10 @@ If not you are welcome to open one.</p>
     <span class="n">up</span>          <span class="n">Updates</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span>
     <span class="n">deps</span>        <span class="n">Ensure</span> <span class="n">dev</span><span class="o">/</span><span class="n">test</span> <span class="n">dependencies</span> <span class="n">are</span> <span class="n">installed</span>
     <span class="n">check</span>       <span class="n">Checks</span> <span class="n">that</span> <span class="n">build</span> <span class="ow">is</span> <span class="n">sane</span>
-    <span class="n">lint</span>        <span class="n">Reports</span> <span class="nb">all</span> <span class="n">linter</span> <span class="n">violations</span>
     <span class="n">test</span>        <span class="n">Runs</span> <span class="nb">all</span> <span class="n">tests</span>
     <span class="n">docs</span>        <span class="n">Builds</span> <span class="n">the</span> <span class="n">documentation</span>
     <span class="n">style</span>       <span class="n">Auto</span><span class="o">-</span><span class="n">formats</span> <span class="n">the</span> <span class="n">code</span>
+    <span class="n">lint</span>        <span class="n">Auto</span><span class="o">-</span><span class="n">formats</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">and</span> <span class="n">check</span> <span class="nb">type</span> <span class="n">hints</span>
 </code></pre></div>
 </div>
 <p>So to run the tests you just need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>, etc…</p>
@@ -660,7 +660,7 @@ If not you are welcome to open one.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">tortoise/contrib/</span></code>:</dt><dd><p>Anything that helps people use the project, such as Testing framework and linter plugins</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">tortoise/tests/</span></code>:</dt><dd><p>The Tortoise test code</p>
+<dt><code class="docutils literal notranslate"><span class="pre">tests/</span></code>:</dt><dd><p>The Tortoise test code</p>
 </dd>
 </dl>
 <h2 id="coding-guideline">Coding Guideline<a class="headerlink" href="#coding-guideline" title="Link to this heading">¶</a></h2>
@@ -711,14 +711,13 @@ Postgres uses the default <code class="docutils literal notranslate"><span class
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test_mysql</span></code>: Runs the tests on the mysql database</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">testall</span></code>: runs the tests on all 4 database types: sqlite (in memory), postgresql, MySQL-MyISAM and MySQL-InnoDB</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">green</span></code>: runs the same tests as <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>, ensures the green plugin works</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nose2</span> <span class="pre">--plugin</span> <span class="pre">tortoise.contrib.test.nose2</span> <span class="pre">--db-module</span> <span class="pre">tests.testmodels</span> <span class="pre">--db-url</span> <span class="pre">sqlite://:memory:</span> <span class="pre">``:</span> <span class="pre">same</span> <span class="pre">test</span> <span class="pre">as</span> <span class="pre">``make</span> <span class="pre">test</span></code> , ensures the nose2 plugin works</p></li>
 </ul>
 <h3 id="things-to-be-aware-of-when-running-the-test-suite">Things to be aware of when running the test suite<a class="headerlink" href="#things-to-be-aware-of-when-running-the-test-suite" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Some tests always run regardless of what test suite you are running (the connection tests for mysql and postgres for example, you don’t need a database running as it doesn’t actually connect though)</p></li>
 <li><p>Some tests use hardcoded databases (usually sqlite) for testing, regardless of what DB url you specified.</p></li>
 <li><p>The postgres driver does not work under Pypy so those tests will be skipped if you are running under pypy</p></li>
-<li><p>You can run only specific tests by running `` py.test &lt;testfiles&gt;`` or <code class="docutils literal notranslate"><span class="pre">green</span> <span class="pre">-s</span> <span class="pre">1</span> <span class="pre">&lt;testfile&gt;</span></code></p></li>
+<li><p>You can run only specific tests by running <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">&lt;testfiles&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">green</span> <span class="pre">-s</span> <span class="pre">1</span> <span class="pre">&lt;testfile&gt;</span></code></p></li>
 <li><dl class="simple">
 <dt>If you want a peek under the hood of test that hang to debug try running them with <code class="docutils literal notranslate"><span class="pre">green</span> <span class="pre">-s</span> <span class="pre">1</span> <span class="pre">-vv</span> <span class="pre">-d</span> <span class="pre">-a</span> <span class="pre">&lt;test&gt;</span></code></dt><dd><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">1</span></code> means it only runs one test at a time</p></li>
