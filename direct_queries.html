@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="expressions.html">
+        <link rel="prev" href="query.html">
       
       
-        <link rel="next" href="connections.html">
+        <link rel="next" href="manager.html">
       
       
       <link rel="icon" href="_static/tortoise.png">
     
     
       
-        <title>Transactions - Tortoise ORM v1.0.0 Documentation</title>
+        <title>Direct PyPika Queries - Tortoise ORM v1.0.0 Documentation</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Transactions
+              Direct PyPika Queries
             
           </span>
         </div>
@@ -730,11 +730,31 @@
                 
   
   
+    
+  
+    
   
   
   
-    <li class="md-nav__item">
-      <a href="direct_queries.html" class="md-nav__link">
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Direct Py<wbr>Pika Queries</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
         
   
   
@@ -745,6 +765,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-access" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Table Access</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-execution" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Query Execution</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows-affected-semantics" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Rows Affected Semantics</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typed-results" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Typed Results</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameter-binding" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameter Binding</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -826,31 +915,11 @@
                 
   
   
-    
-  
-    
   
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    <span>Transactions</span>
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="#" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="transactions.html" class="md-nav__link">
         
   
   
@@ -861,137 +930,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tortoise.transactions.atomic" class="md-nav__link">
-    
-      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
-    
-    <span class="md-ellipsis">
-      <span title="tortoise.transactions.atomic (Python function) — Transaction decorator."><span>tortoise.<wbr>transactions.<wbr>atomic</span></span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="tortoise.transactions.atomic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.atomic-parameters" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      <span>Parameters</span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.atomic.connection_name" class="md-nav__link">
-    
-      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
-    
-    <span class="md-ellipsis">
-      <span title="tortoise.transactions.atomic.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span>connection_<wbr>name</span></span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.atomic-return-type" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      <span>Return type</span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tortoise.transactions.in_transaction" class="md-nav__link">
-    
-      <span aria-label="Python function" class="objinfo-icon objinfo-icon__procedure" title="Python function">F</span>
-    
-    <span class="md-ellipsis">
-      <span title="tortoise.transactions.in_transaction (Python function) — Transaction context manager."><span>tortoise.<wbr>transactions.<wbr>in_<wbr>transaction</span></span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="tortoise.transactions.in_transaction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.in_transaction-parameters" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      <span>Parameters</span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.in_transaction.connection_name" class="md-nav__link">
-    
-      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
-    
-    <span class="md-ellipsis">
-      <span title="tortoise.transactions.in_transaction.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span>connection_<wbr>name</span></span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tortoise.transactions.in_transaction-return-type" class="md-nav__link">
-    
-    <span class="md-ellipsis">
-      <span>Return type</span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1374,73 +1312,92 @@
                   
 
 
-<h1 id="transactions"><span id="id1"></span>Transactions<a class="headerlink" href="#transactions" title="Link to this heading">¶</a></h1>
-<p>Tortoise ORM provides a simple way to manage transactions. You can use the
-<code class="docutils literal notranslate"><span class="pre">atomic()</span></code> decorator or <code class="docutils literal notranslate"><span class="pre">in_transaction()</span></code> context manager.</p>
-<p><code class="docutils literal notranslate"><span class="pre">atomic()</span></code> and <code class="docutils literal notranslate"><span class="pre">in_transaction()</span></code> can be nested. The inner blocks will create transaction savepoints,
-and if an exception is raised and then caught outside of a nested block, the transaction will be rolled back
-to the state before the block was entered. The outermost block will be the one that actually commits the transaction.
-The savepoints are supported for Postgres, MySQL, MSSQL and SQLite. For other databases, it is advised to
-propagate the exception to the outermost block to ensure that the transaction is rolled back.</p>
-<blockquote>
-<div><div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># this block will commit changes on exit</span>
-<span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">():</span>
-    <span class="k">await</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># this block will create a savepoint and rollback to it if an exception is raised</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="n">in_transaction</span><span class="p">():</span>
-            <span class="k">await</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-            <span class="c1"># this will rollback to the savepoint, meaning that</span>
-            <span class="c1"># the &#39;bar&#39; record will not be created, however,</span>
-            <span class="c1"># the &#39;foo&#39; record will be created</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
-    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="k">pass</span>
+<h1 id="direct-pypika-queries">Direct PyPika Queries<a class="headerlink" href="#direct-pypika-queries" title="Link to this heading">¶</a></h1>
+<p>Tortoise exposes a public API for building and executing PyPika queries directly, without
+creating model instances.</p>
+<h2 id="table-access">Table Access<a class="headerlink" href="#table-access" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Model.get_table()</span></code> to get a fresh PyPika <code class="docutils literal notranslate"><span class="pre">Table</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">fields</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Tournament</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">get_table</span><span class="p">()</span>
 </code></pre></div>
 </div>
-</div></blockquote>
-<p>When using <code class="docutils literal notranslate"><span class="pre">asyncio.gather</span></code> or similar ways to spin up concurrent tasks in a transaction block,
-avoid having nested transaction blocks in the concurrent tasks. Transactions are stateful and nested
-blocks are expected to run sequentially, not concurrently.</p>
-<dl class="py function objdesc" id="module-tortoise.transactions">
-<dt class="sig sig-object highlight py" id="tortoise.transactions.atomic">
-<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">atomic</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.atomic.connection_name" title="tortoise.transactions.atomic.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#atomic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.atomic" title="Link to this definition">¶</a></dt>
-<dd><p>Transaction decorator.</p>
-<p>You can wrap your function with this decorator to run it into one transaction.
-If error occurs transaction will rollback.</p>
-<dl class="field-list simple">
-<dt class="field-odd" id="tortoise.transactions.atomic-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.transactions.atomic-parameters" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.transactions.atomic.connection_name"><span class="n sig-name">connection_name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.transactions.atomic.connection_name" title="Permalink to this definition">¶</a></dt><dd><p>name of connection to run with, optional if you have only
-one db connection</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even" id="tortoise.transactions.atomic-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.transactions.atomic-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></p>
-</dd>
-</dl>
-</dd></dl>
+<h2 id="query-execution">Query Execution<a class="headerlink" href="#query-execution" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">execute_pypika</span></code> to run a PyPika query and get a <code class="docutils literal notranslate"><span class="pre">QueryResult</span></code> with rows as dicts.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pypika_tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.query_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">execute_pypika</span>
 
-<dl class="py function objdesc">
-<dt class="sig sig-object highlight py" id="tortoise.transactions.in_transaction">
-<span class="sig-prename descclassname"><span class="pre">tortoise.transactions.</span></span><span class="sig-name descname"><span class="pre">in_transaction</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.transactions.in_transaction.connection_name" title="tortoise.transactions.in_transaction.connection_name (Python parameter) — name of connection to run with, optional if you have only one db connection"><span class="n"><span class="pre">connection_name</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/transactions.html#in_transaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.transactions.in_transaction" title="Link to this definition">¶</a></dt>
-<dd><p>Transaction context manager.</p>
-<p>You can run your code inside <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span> <span class="pre">in_transaction():</span></code> statement to run it
-into one transaction. If error occurs transaction will rollback.</p>
-<dl class="field-list simple">
-<dt class="field-odd" id="tortoise.transactions.in_transaction-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.transactions.in_transaction-parameters" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.transactions.in_transaction.connection_name"><span class="n sig-name">connection_name</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.transactions.in_transaction.connection_name" title="Permalink to this definition">¶</a></dt><dd><p>name of connection to run with, optional if you have only
-one db connection</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even" id="tortoise.transactions.in_transaction-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.transactions.in_transaction-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionContext</span></code>[~T_conn]</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="n">table</span> <span class="o">=</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">get_table</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">Query</span><span class="o">.</span><span class="n">from_</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">table</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Champions&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">rows_affected</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>If your application has multiple database connections configured, you must pass
+<code class="docutils literal notranslate"><span class="pre">using_db</span></code> explicitly:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_connection</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">get_connection</span><span class="p">(</span><span class="s2">&quot;analytics&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">using_db</span><span class="o">=</span><span class="n">db</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h2 id="rows-affected-semantics">Rows Affected Semantics<a class="headerlink" href="#rows-affected-semantics" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">QueryResult.rows_affected</span></code> is always populated, but the meaning depends on backend and
+query type:</p>
+<ul class="simple">
+<li><p>SQLite: for SELECT, it is the number of rows fetched; for UPDATE/DELETE, it is the delta
+of total changes.</p></li>
+<li><p>asyncpg: for SELECT, it is the number of rows fetched; for UPDATE/DELETE, it is parsed
+from the command status.</p></li>
+<li><p>MySQL/ODBC/psycopg: typically uses <code class="docutils literal notranslate"><span class="pre">cursor.rowcount</span></code> (driver-defined for some statements).</p></li>
+</ul>
+<h2 id="typed-results">Typed Results<a class="headerlink" href="#typed-results" title="Link to this heading">¶</a></h2>
+<p>You can provide an optional schema to validate or type the results.</p>
+<p>Pydantic v2 BaseModel:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Row</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">Row</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Pydantic v2 TypeAdapter:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeAdapter</span>
+
+<span class="n">adapter</span> <span class="o">=</span> <span class="n">TypeAdapter</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">adapter</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>TypedDict (typing only, no runtime validation):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RowDict</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">RowDict</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h2 id="parameter-binding">Parameter Binding<a class="headerlink" href="#parameter-binding" title="Link to this heading">¶</a></h2>
+<p>PyPika will parameterize literal values for you, so avoid formatting SQL by hand:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">table</span> <span class="o">=</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">get_table</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">Query</span><span class="o">.</span><span class="n">from_</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Champions&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">execute_pypika</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="c1"># SQL: SELECT &quot;id&quot; FROM &quot;tournament&quot; WHERE &quot;name&quot;=?</span>
+<span class="c1"># Params: [&quot;Champions&quot;]</span>
+</code></pre></div>
+</div>
 
 
 

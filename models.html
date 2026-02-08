@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -9,21 +10,30 @@
       
       
       
+      
+        <link rel="prev" href="databases.html">
+      
+      
+        <link rel="next" href="fields.html">
+      
+      
       <link rel="icon" href="_static/tortoise.png">
     
     
       
-        <title>Models - Tortoise ORM v0.25.4 Documentation</title>
+        <title>Models - Tortoise ORM v1.0.0 Documentation</title>
       
     
     
       
-        
         
       
       
 
+
     
+    
+      
     
     
       
@@ -32,9 +42,9 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.58d549dac8fe20eca.min.css?v=7776979a" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.acf80fe7f4d9ef9e2.min.css?v=9e56d0d2" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -43,9 +53,7 @@
   
   
 
-
-  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-MJ7RHW2FRB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
@@ -66,9 +74,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -79,7 +84,7 @@
       
     </div>
     
-      <div data-md-component="outdated" hidden>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
       </div>
     
@@ -88,17 +93,18 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.4 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.4 Documentation
+            Tortoise ORM 1.0.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -111,32 +117,40 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -144,28 +158,32 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -177,7 +195,7 @@
         <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -198,31 +216,41 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Tortoise ORM</span>
 
-
-  <li class="md-tabs__item">
-    <a href="index.html" class="md-tabs__link">
-      <span class="md-ellipsis">Tortoise ORM</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="getting_started.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Getting started</span>
 
-
-  <li class="md-tabs__item">
-    <a href="getting_started.html" class="md-tabs__link">
-      <span class="md-ellipsis">Getting started</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
@@ -230,85 +258,137 @@
   
     
   
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="reference.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Reference</span>
 
-
-  <li class="md-tabs__item">
-    <a href="reference.html" class="md-tabs__link md-tabs__link--active">
-      <span class="md-ellipsis">Reference</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="examples.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
 
-
-  <li class="md-tabs__item">
-    <a href="examples.html" class="md-tabs__link">
-      <span class="md-ellipsis">Examples</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="contrib.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contrib</span>
 
-
-  <li class="md-tabs__item">
-    <a href="contrib.html" class="md-tabs__link">
-      <span class="md-ellipsis">Contrib</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="migration_guide.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
 
-
-  <li class="md-tabs__item">
-    <a href="CHANGELOG.html" class="md-tabs__link">
-      <span class="md-ellipsis">Changelog</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="CHANGELOG.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Changelog</span>
 
-
-  <li class="md-tabs__item">
-    <a href="roadmap.html" class="md-tabs__link">
-      <span class="md-ellipsis">Roadmap</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="roadmap.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Roadmap</span>
 
-
-  <li class="md-tabs__item">
-    <a href="CONTRIBUTING.html" class="md-tabs__link">
-      <span class="md-ellipsis">Contribution Guide</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTING.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contribution Guide</span>
 
+      </a>
+    </li>
+  
 
-  <li class="md-tabs__item">
-    <a href="CONTRIBUTORS.html" class="md-tabs__link">
-      <span class="md-ellipsis">Thanks</span>
-    </a>
-  </li>
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTORS.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Thanks</span>
+
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -327,6 +407,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -334,17 +415,17 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.4 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.4 Documentation
+    Tortoise ORM v1.0.0 Documentation
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -356,15 +437,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
-        <span class="md-ellipsis">Tortoise ORM</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Tortoise ORM</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -372,15 +460,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="getting_started.html" class="md-nav__link">
-        <span class="md-ellipsis">Getting started</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Getting started</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -388,89 +483,143 @@
     
       
       
-      
-
   
   
     
   
   
+  
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
-      
+        
+        
       
       
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="reference.html"><span class="md-ellipsis">Reference</span></a>
-          
-            <label for="__nav_3">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
       
-      <nav class="md-nav" aria-label="Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">Reference</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
           
+          <div class="md-nav__link md-nav__container">
+            <a href="reference.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>Reference</span>
+    
+  </span>
+  
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Reference</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="setup.html" class="md-nav__link">
-        <span class="md-ellipsis">Set up</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Set up</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="databases.html" class="md-nav__link">
-        <span class="md-ellipsis">Databases</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Databases</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-ellipsis">Models</span>
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Models</span>
+    
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="#" class="md-nav__link md-nav__link--active">
-        <span class="md-ellipsis">Models</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Models</span>
+    
+  </span>
+  
+
       </a>
       
         
@@ -489,7 +638,10 @@
       
         <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">Usage</span>
+    
+    <span class="md-ellipsis">
+      <span>Usage</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Usage">
@@ -497,28 +649,40 @@
         
           <li class="md-nav__item">
   <a href="#use-of-models" class="md-nav__link">
-    <span class="md-ellipsis">Use of __<wbr>models__<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Use of __<wbr>models__<wbr></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#primary-keys" class="md-nav__link">
-    <span class="md-ellipsis">Primary Keys</span>
+    
+    <span class="md-ellipsis">
+      <span>Primary Keys</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">Inheritance</span>
+    
+    <span class="md-ellipsis">
+      <span>Inheritance</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#the-meta-class" class="md-nav__link">
-    <span class="md-ellipsis">The Meta class</span>
+    
+    <span class="md-ellipsis">
+      <span>The Meta class</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="The Meta class">
@@ -526,7 +690,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta" class="md-nav__link">
-    <span class="md-ellipsis">tortoise.<wbr>models.<wbr>Model.<wbr>Meta</span>
+    
+    <span class="md-ellipsis">
+      <span>tortoise.<wbr>models.<wbr>Model.<wbr>Meta</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.models.Model.Meta">
@@ -534,56 +701,96 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.abstract" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.abstract (Python attribute) — Set to True to indicate this is an abstract class" class="md-ellipsis">abstract</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.abstract (Python attribute) — Set to True to indicate this is an abstract class"><span>abstract</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.schema" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.schema (Python attribute) — Set this to configure a schema name, where table exists" class="md-ellipsis">schema</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.schema (Python attribute) — Set this to configure a schema name, where table exists"><span>schema</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.table" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.table (Python attribute) — Set this to configure a manual table name, instead of a generated one" class="md-ellipsis">table</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.table (Python attribute) — Set this to configure a manual table name, instead of a generated one"><span>table</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.table_description" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.table_description (Python attribute) — Set this to generate a comment message for the table being created for the current model" class="md-ellipsis">table_<wbr>description</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.table_description (Python attribute) — Set this to generate a comment message for the table being created for the current model"><span>table_<wbr>description</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.unique_together" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.unique_together (Python attribute) — Specify unique_together to set up compound unique indexes for sets of columns." class="md-ellipsis">unique_<wbr>together</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.unique_together (Python attribute) — Specify unique_together to set up compound unique indexes for sets of columns."><span>unique_<wbr>together</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.indexes" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.indexes (Python attribute) — Specify indexes to set up compound non-unique indexes for sets of columns." class="md-ellipsis">indexes</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.indexes (Python attribute) — Specify indexes to set up compound non-unique indexes for sets of columns."><span>indexes</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.ordering" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.ordering (Python attribute) — Specify ordering to set up default ordering for given model. It should be iterable of strings formatted in same way as .order_by(...) receives. If query is built with GROUP_BY clause using .annotate(...) default ordering is not applied." class="md-ellipsis">ordering</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.ordering (Python attribute) — Specify ordering to set up default ordering for given model. It should be iterable of strings formatted in same way as .order_by(...) receives. If query is built with GROUP_BY clause using .annotate(...) default ordering is not applied."><span>ordering</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.manager" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.models.Model.Meta.manager (Python attribute) — Specify manager to override the default manager. It should be instance of tortoise.manager.Manager or subclass." class="md-ellipsis">manager</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.manager (Python attribute) — Specify manager to override the default manager. It should be instance of tortoise.manager.Manager or subclass."><span>manager</span></span>
+    </span>
   </a>
   
 </li>
@@ -600,7 +807,10 @@
         
           <li class="md-nav__item">
   <a href="#foreignkeyfield" class="md-nav__link">
-    <span class="md-ellipsis">Foreign<wbr>Key<wbr>Field</span>
+    
+    <span class="md-ellipsis">
+      <span>Foreign<wbr>Key<wbr>Field</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="ForeignKeyField">
@@ -608,14 +818,20 @@
         
           <li class="md-nav__item">
   <a href="#the-db-backing-field" class="md-nav__link">
-    <span class="md-ellipsis">The DB-<wbr>backing field</span>
+    
+    <span class="md-ellipsis">
+      <span>The DB-<wbr>backing field</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#fetching-the-foreign-object" class="md-nav__link">
-    <span class="md-ellipsis">Fetching the foreign object</span>
+    
+    <span class="md-ellipsis">
+      <span>Fetching the foreign object</span>
+    </span>
   </a>
   
 </li>
@@ -627,7 +843,10 @@
         
           <li class="md-nav__item">
   <a href="#manytomanyfield" class="md-nav__link">
-    <span class="md-ellipsis">Many<wbr>To<wbr>Many<wbr>Field</span>
+    
+    <span class="md-ellipsis">
+      <span>Many<wbr>To<wbr>Many<wbr>Field</span>
+    </span>
   </a>
   
 </li>
@@ -639,14 +858,20 @@
       
         <li class="md-nav__item">
   <a href="#improving-relational-type-hinting" class="md-nav__link">
-    <span class="md-ellipsis">Improving relational type hinting</span>
+    
+    <span class="md-ellipsis">
+      <span>Improving relational type hinting</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#module-tortoise.models" class="md-nav__link">
-    <span title="tortoise.models (Python module)" class="md-ellipsis">Reference</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models (Python module)"><span>Reference</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Reference">
@@ -654,7 +879,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models." class="md-ellipsis">tortoise.<wbr>models.<wbr>Model</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models."><span>tortoise.<wbr>models.<wbr>Model</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.models.Model">
@@ -662,21 +892,52 @@
         
           <li class="md-nav__item">
   <a href="#id0" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.models.Model.Meta (Python class) — The Meta class is used to configure metadata for the Model." class="md-ellipsis">Meta</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta (Python class) — The Meta class is used to configure metadata for the Model."><span>Meta</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.all" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.all (Python method) — Returns the complete QuerySet." class="md-ellipsis">all</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.all (Python method) — Returns the complete QuerySet."><span>all</span></span>
+    </span>
   </a>
+  
+    <nav class="md-nav" aria-label="all">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.all-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.annotate" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.annotate (Python method) — Annotates the result set with extra Functions/Aggregations/Expressions." class="md-ellipsis">annotate</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.annotate (Python method) — Annotates the result set with extra Functions/Aggregations/Expressions."><span>annotate</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="annotate">
@@ -684,7 +945,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.annotate-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -692,13 +956,28 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.annotate.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.annotate.kwargs (Python parameter) — Parameter name and the Function/Aggregation to annotate with." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.annotate.kwargs (Python parameter) — Parameter name and the Function/Aggregation to annotate with."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.annotate-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -709,7 +988,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.bulk_create (Python method) — Bulk insert operation:" class="md-ellipsis">bulk_<wbr>create</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create (Python method) — Bulk insert operation:"><span>bulk_<wbr>create</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="bulk_create">
@@ -717,7 +1001,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -725,48 +1012,88 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.on_conflict" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.on_conflict (Python parameter) — On conflict index name" class="md-ellipsis">on_<wbr>conflict</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.on_conflict (Python parameter) — On conflict index name"><span>on_<wbr>conflict</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.update_fields" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.update_fields (Python parameter) — Update fields when conflicts" class="md-ellipsis">update_<wbr>fields</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.update_fields (Python parameter) — Update fields when conflicts"><span>update_<wbr>fields</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.ignore_conflicts" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.ignore_conflicts (Python parameter) — Ignore conflicts when inserting" class="md-ellipsis">ignore_<wbr>conflicts</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.ignore_conflicts (Python parameter) — Ignore conflicts when inserting"><span>ignore_<wbr>conflicts</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.objects" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.objects (Python parameter) — List of objects to bulk create" class="md-ellipsis">objects</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.objects (Python parameter) — List of objects to bulk create"><span>objects</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.batch_size" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.batch_size (Python parameter) — How many objects are created in a single query" class="md-ellipsis">batch_<wbr>size</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.batch_size (Python parameter) — How many objects are created in a single query"><span>batch_<wbr>size</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_create.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_create.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_create.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.bulk_create-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -777,7 +1104,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.bulk_update (Python method) — Update the given fields in each of the given objects in the database. This method efficiently updates the given fields on the provided model instances, generally with one query." class="md-ellipsis">bulk_<wbr>update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_update (Python method) — Update the given fields in each of the given objects in the database. This method efficiently updates the given fields on the provided model instances, generally with one query."><span>bulk_<wbr>update</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="bulk_update">
@@ -785,7 +1117,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -793,34 +1128,64 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update.objects" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_update.objects (Python parameter) — List of objects to bulk create" class="md-ellipsis">objects</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_update.objects (Python parameter) — List of objects to bulk create"><span>objects</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update.fields" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_update.fields (Python parameter) — The fields to update" class="md-ellipsis">fields</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_update.fields (Python parameter) — The fields to update"><span>fields</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update.batch_size" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_update.batch_size (Python parameter) — How many objects are created in a single query" class="md-ellipsis">batch_<wbr>size</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_update.batch_size (Python parameter) — How many objects are created in a single query"><span>batch_<wbr>size</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.bulk_update.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.bulk_update.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.bulk_update.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.bulk_update-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -831,7 +1196,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.clone" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.clone (Python method) — Create a new clone of the object that when you do a .save() will create a new record." class="md-ellipsis">clone</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.clone (Python method) — Create a new clone of the object that when you do a .save() will create a new record."><span>clone</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="clone">
@@ -839,28 +1209,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.clone-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.clone-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.clone-returns" class="md-nav__link">
-    <span class="md-ellipsis">Returns</span>
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.clone-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
   </a>
   
 </li>
@@ -872,7 +1254,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.create" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.create (Python method) — Create a record in the DB and returns the object." class="md-ellipsis">create</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.create (Python method) — Create a record in the DB and returns the object."><span>create</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="create">
@@ -880,7 +1267,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.create-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -888,20 +1278,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.create.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.create.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.create.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.create.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.create.kwargs (Python parameter) — Model parameters." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.create.kwargs (Python parameter) — Model parameters."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.create-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -912,7 +1322,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.delete" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.delete (Python method) — Deletes the current model object." class="md-ellipsis">delete</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.delete (Python method) — Deletes the current model object."><span>delete</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="delete">
@@ -920,7 +1335,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.delete-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -928,7 +1346,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.delete.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.delete.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.delete.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
@@ -940,7 +1363,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.delete-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.delete-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -952,7 +1388,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.describe" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.describe (Python method) — Describes the given list of models or ALL registered models." class="md-ellipsis">describe</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.describe (Python method) — Describes the given list of models or ALL registered models."><span>describe</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="describe">
@@ -960,7 +1401,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.describe-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -968,7 +1412,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.describe.serializable" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.describe.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data." class="md-ellipsis">serializable</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.describe.serializable (Python parameter) — False if you want raw python objects, True for JSON-serializable data."><span>serializable</span></span>
+    </span>
   </a>
   
 </li>
@@ -980,14 +1429,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.describe-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.describe-returns" class="md-nav__link">
-    <span class="md-ellipsis">Returns</span>
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
   </a>
   
 </li>
@@ -999,7 +1454,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.earliest" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.earliest (Python method) — Generates a QuerySet with the filter applied that returns the first record." class="md-ellipsis">earliest</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.earliest (Python method) — Generates a QuerySet with the filter applied that returns the first record."><span>earliest</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="earliest">
@@ -1007,14 +1467,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.earliest-params-orderings" class="md-nav__link">
-    <span class="md-ellipsis">Params orderings</span>
+    
+    <span class="md-ellipsis">
+      <span>Params orderings</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.earliest-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1026,7 +1492,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exclude" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.exclude (Python method) — Generates a QuerySet with the exclude applied." class="md-ellipsis">exclude</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exclude (Python method) — Generates a QuerySet with the exclude applied."><span>exclude</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="exclude">
@@ -1034,7 +1505,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exclude-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1042,14 +1516,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exclude.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.exclude.args (Python parameter) — Q functions containing constraints." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exclude.args (Python parameter) — Q functions containing constraints."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exclude.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.exclude.kwargs (Python parameter) — Simple filter constraints." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exclude.kwargs (Python parameter) — Simple filter constraints."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
@@ -1061,7 +1545,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exclude-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1073,7 +1560,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exists" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.exists (Python method) — Return True/False whether record exists with the provided filter parameters." class="md-ellipsis">exists</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exists (Python method) — Return True/False whether record exists with the provided filter parameters."><span>exists</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="exists">
@@ -1081,7 +1573,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exists-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1089,27 +1584,52 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exists.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.exists.using_db (Python parameter) — The specific DB connection to use." class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exists.using_db (Python parameter) — The specific DB connection to use."><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exists.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.exists.args (Python parameter) — Q functions containing constraints." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exists.args (Python parameter) — Q functions containing constraints."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.exists.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.exists.kwargs (Python parameter) — Simple filter constraints." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.exists.kwargs (Python parameter) — Simple filter constraints."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.exists-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1120,7 +1640,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_for_list" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.fetch_for_list (Python method) — Fetches related models for provided list of Model objects." class="md-ellipsis">fetch_<wbr>for_<wbr>list</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_for_list (Python method) — Fetches related models for provided list of Model objects."><span>fetch_<wbr>for_<wbr>list</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="fetch_for_list">
@@ -1128,7 +1653,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_for_list-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1136,27 +1664,52 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_for_list.instance_list" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.fetch_for_list.instance_list (Python parameter) — List of Model objects to fetch relations for." class="md-ellipsis">instance_<wbr>list</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_for_list.instance_list (Python parameter) — List of Model objects to fetch relations for."><span>instance_<wbr>list</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_for_list.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.fetch_for_list.args (Python parameter) — Relation names to fetch." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_for_list.args (Python parameter) — Relation names to fetch."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_for_list.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.fetch_for_list.using_db (Python parameter) — DO NOT USE" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_for_list.using_db (Python parameter) — DO NOT USE"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.fetch_for_list-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1167,7 +1720,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_related" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.fetch_related (Python method) — Fetch related fields." class="md-ellipsis">fetch_<wbr>related</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_related (Python method) — Fetch related fields."><span>fetch_<wbr>related</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="fetch_related">
@@ -1175,7 +1733,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_related-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1183,20 +1744,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_related.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.fetch_related.args (Python parameter) — The related fields that should be fetched." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_related.args (Python parameter) — The related fields that should be fetched."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.fetch_related.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.fetch_related.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.fetch_related.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.fetch_related-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1207,7 +1788,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.filter" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.filter (Python method) — Generates a QuerySet with the filter applied." class="md-ellipsis">filter</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.filter (Python method) — Generates a QuerySet with the filter applied."><span>filter</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="filter">
@@ -1215,7 +1801,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.filter-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1223,14 +1812,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.filter.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.filter.args (Python parameter) — Q functions containing constraints." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.filter.args (Python parameter) — Q functions containing constraints."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.filter.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.filter.kwargs (Python parameter) — Simple filter constraints." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.filter.kwargs (Python parameter) — Simple filter constraints."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
@@ -1242,7 +1841,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.filter-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1254,14 +1856,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.first" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.first (Python method) — Generates a QuerySet that returns the first record." class="md-ellipsis">first</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.first (Python method) — Generates a QuerySet that returns the first record."><span>first</span></span>
+    </span>
   </a>
+  
+    <nav class="md-nav" aria-label="first">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.first-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.get (Python method) — Fetches a single record for a Model type using the provided filter parameters." class="md-ellipsis">get</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get (Python method) — Fetches a single record for a Model type using the provided filter parameters."><span>get</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="get">
@@ -1269,7 +1897,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1277,21 +1908,36 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get.using_db (Python parameter) — The DB connection to use" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get.using_db (Python parameter) — The DB connection to use"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get.args (Python parameter) — Q functions containing constraints." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get.args (Python parameter) — Q functions containing constraints."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get.kwargs (Python parameter) — Simple filter constraints." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get.kwargs (Python parameter) — Simple filter constraints."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
@@ -1303,7 +1949,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.get-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1315,7 +1974,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.get_or_create (Python method) — Fetches the object if exists (filtering on the provided parameters), else creates an instance with any unspecified parameters as default values." class="md-ellipsis">get_<wbr>or_<wbr>create</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_create (Python method) — Fetches the object if exists (filtering on the provided parameters), else creates an instance with any unspecified parameters as default values."><span>get_<wbr>or_<wbr>create</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="get_or_create">
@@ -1323,7 +1987,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1331,21 +1998,36 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create.defaults" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_create.defaults (Python parameter) — Default values to be added to a created instance if it can&#39;t be fetched." class="md-ellipsis">defaults</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_create.defaults (Python parameter) — Default values to be added to a created instance if it can&#39;t be fetched."><span>defaults</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_create.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_create.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_create.kwargs (Python parameter) — Query parameters." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_create.kwargs (Python parameter) — Query parameters."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
@@ -1357,7 +2039,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_create-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.get_or_create-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1369,7 +2064,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_none" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.get_or_none (Python method) — Fetches a single record for a Model type using the provided filter parameters or None." class="md-ellipsis">get_<wbr>or_<wbr>none</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_none (Python method) — Fetches a single record for a Model type using the provided filter parameters or None."><span>get_<wbr>or_<wbr>none</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="get_or_none">
@@ -1377,7 +2077,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_none-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1385,27 +2088,80 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_none.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_none.using_db (Python parameter) — The specific DB connection to use." class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_none.using_db (Python parameter) — The specific DB connection to use."><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_none.args" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_none.args (Python parameter) — Q functions containing constraints." class="md-ellipsis">args</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_none.args (Python parameter) — Q functions containing constraints."><span>args</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.get_or_none.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.get_or_none.kwargs (Python parameter) — Simple filter constraints." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_or_none.kwargs (Python parameter) — Simple filter constraints."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.get_or_none-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.get_table" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.get_table (Python method) — Return a PyPika table for this model."><span>get_<wbr>table</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="get_table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.get_table-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1416,7 +2172,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.in_bulk" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.in_bulk (Python method) — Return a dictionary mapping each of the given IDs to the object with that ID. If id_list isn&#39;t provided, evaluate the entire QuerySet." class="md-ellipsis">in_<wbr>bulk</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.in_bulk (Python method) — Return a dictionary mapping each of the given IDs to the object with that ID. If id_list isn&#39;t provided, evaluate the entire QuerySet."><span>in_<wbr>bulk</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="in_bulk">
@@ -1424,7 +2185,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.in_bulk-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1432,27 +2196,52 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.in_bulk.id_list" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.in_bulk.id_list (Python parameter) — A list of field values" class="md-ellipsis">id_<wbr>list</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.in_bulk.id_list (Python parameter) — A list of field values"><span>id_<wbr>list</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.in_bulk.field_name" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.in_bulk.field_name (Python parameter) — Must be a unique field" class="md-ellipsis">field_<wbr>name</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.in_bulk.field_name (Python parameter) — Must be a unique field"><span>field_<wbr>name</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.in_bulk.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.in_bulk.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.in_bulk.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.in_bulk-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1463,14 +2252,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.last" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.last (Python method) — Generates a QuerySet that returns the last record." class="md-ellipsis">last</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.last (Python method) — Generates a QuerySet that returns the last record."><span>last</span></span>
+    </span>
   </a>
+  
+    <nav class="md-nav" aria-label="last">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.last-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.latest" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.latest (Python method) — Generates a QuerySet with the filter applied that returns the last record." class="md-ellipsis">latest</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.latest (Python method) — Generates a QuerySet with the filter applied that returns the last record."><span>latest</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="latest">
@@ -1478,14 +2293,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.latest-params-orderings" class="md-nav__link">
-    <span class="md-ellipsis">Params orderings</span>
+    
+    <span class="md-ellipsis">
+      <span>Params orderings</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.latest-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1497,7 +2318,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.pk" class="md-nav__link">
-    <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span><span title="tortoise.models.Model.pk (Python property) — Alias to the models Primary Key. Can be used as a field name when doing filtering e.g. .filter(pk=...) etc..." class="md-ellipsis">pk</span>
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.pk (Python property) — Alias to the models Primary Key. Can be used as a field name when doing filtering e.g. .filter(pk=...) etc..."><span>pk</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="pk">
@@ -1505,7 +2331,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.pk-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1517,7 +2346,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.raw" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.raw (Python method) — Executes a RAW SQL and returns the result" class="md-ellipsis">raw</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.raw (Python method) — Executes a RAW SQL and returns the result"><span>raw</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="raw">
@@ -1525,7 +2359,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.raw-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1533,20 +2370,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.raw.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.raw.using_db (Python parameter) — The specific DB connection to use" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.raw.using_db (Python parameter) — The specific DB connection to use"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.raw.sql" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.raw.sql (Python parameter) — The raw sql." class="md-ellipsis">sql</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.raw.sql (Python parameter) — The raw sql."><span>sql</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.raw-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1557,7 +2414,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.refresh_from_db" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.refresh_from_db (Python method) — Refresh latest data from db. When this method is called without arguments all db fields of the model are updated to the values currently present in the database." class="md-ellipsis">refresh_<wbr>from_<wbr>db</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.refresh_from_db (Python method) — Refresh latest data from db. When this method is called without arguments all db fields of the model are updated to the values currently present in the database."><span>refresh_<wbr>from_<wbr>db</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="refresh_from_db">
@@ -1565,7 +2427,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.refresh_from_db-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1573,14 +2438,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.refresh_from_db.fields" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.refresh_from_db.fields (Python parameter) — The special fields that to be refreshed." class="md-ellipsis">fields</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.refresh_from_db.fields (Python parameter) — The special fields that to be refreshed."><span>fields</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.refresh_from_db.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.refresh_from_db.using_db (Python parameter) — Specific DB connection to use instead of default bound." class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.refresh_from_db.using_db (Python parameter) — Specific DB connection to use instead of default bound."><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
@@ -1592,7 +2467,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.refresh_from_db-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.refresh_from_db-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1604,7 +2492,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.register_listener (Python method) — Register listener to current model class for special Signal." class="md-ellipsis">register_<wbr>listener</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.register_listener (Python method) — Register listener to current model class for special Signal."><span>register_<wbr>listener</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="register_listener">
@@ -1612,7 +2505,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1620,14 +2516,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener.signal" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.register_listener.signal (Python parameter) — one of tortoise.signals.Signals" class="md-ellipsis">signal</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.register_listener.signal (Python parameter) — one of tortoise.signals.Signals"><span>signal</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener.listener" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.register_listener.listener (Python parameter) — callable listener" class="md-ellipsis">listener</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.register_listener.listener (Python parameter) — callable listener"><span>listener</span></span>
+    </span>
   </a>
   
 </li>
@@ -1639,14 +2545,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.register_listener-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1658,7 +2570,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.save (Python method) — Creates/Updates the current model object." class="md-ellipsis">save</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.save (Python method) — Creates/Updates the current model object."><span>save</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="save">
@@ -1666,7 +2583,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1674,28 +2594,48 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save.update_fields" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.save.update_fields (Python parameter) — If provided, it should be a tuple/list of fields by name." class="md-ellipsis">update_<wbr>fields</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.save.update_fields (Python parameter) — If provided, it should be a tuple/list of fields by name."><span>update_<wbr>fields</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.save.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.save.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save.force_create" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.save.force_create (Python parameter) — Forces creation of the record" class="md-ellipsis">force_<wbr>create</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.save.force_create (Python parameter) — Forces creation of the record"><span>force_<wbr>create</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save.force_update" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.save.force_update (Python parameter) — Forces updating of the record" class="md-ellipsis">force_<wbr>update</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.save.force_update (Python parameter) — Forces updating of the record"><span>force_<wbr>update</span></span>
+    </span>
   </a>
   
 </li>
@@ -1707,7 +2647,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.save-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.save-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1719,14 +2672,40 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.select_for_update" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.select_for_update (Python method) — Make QuerySet select for update." class="md-ellipsis">select_<wbr>for_<wbr>update</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.select_for_update (Python method) — Make QuerySet select for update."><span>select_<wbr>for_<wbr>update</span></span>
+    </span>
   </a>
+  
+    <nav class="md-nav" aria-label="select_for_update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.select_for_update-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.update_from_dict (Python method) — Updates the current model with the provided dict. This can allow mass-updating a model from a dict, also ensuring that datatype conversions happen." class="md-ellipsis">update_<wbr>from_<wbr>dict</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_from_dict (Python method) — Updates the current model with the provided dict. This can allow mass-updating a model from a dict, also ensuring that datatype conversions happen."><span>update_<wbr>from_<wbr>dict</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="update_from_dict">
@@ -1734,7 +2713,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1742,7 +2724,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict.data" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.update_from_dict.data (Python parameter) — The parameters you want to update in a dict format" class="md-ellipsis">data</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_from_dict.data (Python parameter) — The parameters you want to update in a dict format"><span>data</span></span>
+    </span>
   </a>
   
 </li>
@@ -1754,21 +2741,30 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict-returns" class="md-nav__link">
-    <span class="md-ellipsis">Returns</span>
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_from_dict-raises" class="md-nav__link">
-    <span class="md-ellipsis">Raises</span>
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
   </a>
   
 </li>
@@ -1780,7 +2776,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.models.Model.update_or_create (Python method) — A convenience method for updating an object with the given kwargs, creating a new one if necessary." class="md-ellipsis">update_<wbr>or_<wbr>create</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_or_create (Python method) — A convenience method for updating an object with the given kwargs, creating a new one if necessary."><span>update_<wbr>or_<wbr>create</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="update_or_create">
@@ -1788,7 +2789,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1796,27 +2800,52 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create.defaults" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.update_or_create.defaults (Python parameter) — Default values used to update the object." class="md-ellipsis">defaults</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_or_create.defaults (Python parameter) — Default values used to update the object."><span>defaults</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create.using_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.update_or_create.using_db (Python parameter) — Specific DB connection to use instead of default bound" class="md-ellipsis">using_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_or_create.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span>using_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create.kwargs" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.models.Model.update_or_create.kwargs (Python parameter) — Query parameters." class="md-ellipsis">kwargs</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.update_or_create.kwargs (Python parameter) — Query parameters."><span>kwargs</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.update_or_create-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1842,265 +2871,443 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="fields.html" class="md-nav__link">
-        <span class="md-ellipsis">Fields</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fields</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="indexes.html" class="md-nav__link">
-        <span class="md-ellipsis">Indexes</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Indexes</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="timezone.html" class="md-nav__link">
-        <span class="md-ellipsis">Timezone</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Timezone</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="schema.html" class="md-nav__link">
-        <span class="md-ellipsis">Schema Creation</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Schema Creation</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="query.html" class="md-nav__link">
-        <span class="md-ellipsis">Query API</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Query API</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="direct_queries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Direct Py<wbr>Pika Queries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="manager.html" class="md-nav__link">
-        <span class="md-ellipsis">Manager</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Manager</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="functions.html" class="md-nav__link">
-        <span class="md-ellipsis">Functions &amp; Aggregates</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Functions &amp; Aggregates</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="expressions.html" class="md-nav__link">
-        <span class="md-ellipsis">Expressions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Expressions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="transactions.html" class="md-nav__link">
-        <span class="md-ellipsis">Transactions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Transactions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="connections.html" class="md-nav__link">
-        <span class="md-ellipsis">Connections</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Connections</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="exceptions.html" class="md-nav__link">
-        <span class="md-ellipsis">Exceptions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Exceptions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="signals.html" class="md-nav__link">
-        <span class="md-ellipsis">Signals</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Signals</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="migration.html" class="md-nav__link">
-        <span class="md-ellipsis">Migration</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Migrations</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="validators.html" class="md-nav__link">
-        <span class="md-ellipsis">Validators</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Validators</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="logging.html" class="md-nav__link">
-        <span class="md-ellipsis">Logging</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Logging</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="router.html" class="md-nav__link">
-        <span class="md-ellipsis">Router</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Router</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="cli.html" class="md-nav__link">
-        <span class="md-ellipsis">Tortoise<wbr>CLI</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Tortoise CLI</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
@@ -2108,15 +3315,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="examples.html" class="md-nav__link">
-        <span class="md-ellipsis">Examples</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2124,15 +3338,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="contrib.html" class="md-nav__link">
-        <span class="md-ellipsis">Contrib</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contrib</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2140,15 +3361,45 @@
     
       
       
-      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migration_guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
+    
+  </span>
+  
 
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CHANGELOG.html" class="md-nav__link">
-        <span class="md-ellipsis">Changelog</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Changelog</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2156,15 +3407,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="roadmap.html" class="md-nav__link">
-        <span class="md-ellipsis">Roadmap</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Roadmap</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2172,15 +3430,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CONTRIBUTING.html" class="md-nav__link">
-        <span class="md-ellipsis">Contribution Guide</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contribution Guide</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2188,15 +3453,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CONTRIBUTORS.html" class="md-nav__link">
-        <span class="md-ellipsis">Thanks</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Thanks</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -2213,6 +3485,8 @@
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset" role="main">
+                
+                
                   
 
 
@@ -2445,7 +3719,7 @@ It should be instance of <code class="docutils literal notranslate"><span class=
 </div>
 <p>In event model we got some more fields, that could be interesting for us.</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">fields.ForeignKeyField('models.Tournament',</span> <span class="pre">related_name='events')</span></code></dt><dd><p>Here we create foreign key reference to tournament. We create it by referring to model by it’s literal, consisting of app name and model name. <code class="docutils literal notranslate"><span class="pre">models</span></code> is default app name, but you can change it in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Meta</span></code> with <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">=</span> <span class="pre">'other'</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">fields.ForeignKeyField('models.Tournament',</span> <span class="pre">related_name='events')</span></code></dt><dd><p>Here we create foreign key reference to tournament. You can refer to the model either by string literal (<code class="docutils literal notranslate"><span class="pre">&quot;app_name.ModelName&quot;</span></code>) or by passing the model class directly (e.g. <code class="docutils literal notranslate"><span class="pre">fields.ForeignKeyField(Tournament)</span></code>). String references are required for forward references where the target model is not yet defined. <code class="docutils literal notranslate"><span class="pre">models</span></code> is default app name, but you can change it in <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Meta</span></code> with <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">=</span> <span class="pre">'other'</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">related_name</span></code></dt><dd><p>Is keyword argument, that defines field for related query on referenced models, so with that you could fetch all tournaments’s events with like this:</p>
 </dd>
@@ -2614,6 +3888,11 @@ all models including fields for the relations between models.</p>
 <dt class="sig sig-object highlight py" id="tortoise.models.Model.all">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.all" title="tortoise.models.Model.all.using_db (Python parameter)"><span class="n"><span class="pre">using_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.all" title="Link to this definition">¶</a></dt>
 <dd><p>Returns the complete QuerySet.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.all-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.all-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Query offset and limit for Queryset.">QuerySet</a>[Self]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method objdesc">
@@ -2623,9 +3902,12 @@ all models including fields for the relations between models.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.annotate-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.annotate-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.models.Model.annotate.kwargs"><span class="o">**</span><span class="n sig-name">kwargs</span><a class="headerlink" href="#tortoise.models.Model.annotate.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Parameter name and the Function/Aggregation to annotate with.</p>
+<dt id="tortoise.models.Model.annotate.kwargs"><span class="sig-name descname">kwargs</span><span class="p"> : </span><span class="desctype"><span class="desctype">Expression | Term</span></span><a class="headerlink" href="#tortoise.models.Model.annotate.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Parameter name and the Function/Aggregation to annotate with.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.annotate-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.annotate-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Query offset and limit for Queryset.">QuerySet</a>[Self]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2666,6 +3948,9 @@ insert performance.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.bulk_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a>[Model]</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -2696,6 +3981,9 @@ This method efficiently updates the given fields on the provided model instances
 <dt id="tortoise.models.Model.bulk_update.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.bulk_update.using_db" title="Permalink to this definition">¶</a></dt><dd><p>Specific DB connection to use instead of default bound</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.bulk_update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_update-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.BulkUpdateQuery" title="tortoise.queryset.BulkUpdateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkUpdateQuery</span></code></a>[Model]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2745,6 +4033,9 @@ Any value you specify here will always be used.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models.">Model</a></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -2761,6 +4052,9 @@ Any value you specify here will always be used.</p>
 </dd>
 <dt class="field-even" id="tortoise.models.Model.delete-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.delete-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If object has never been persisted.</p>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.delete-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.delete-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2860,6 +4154,9 @@ Any value you specify here will always be used.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.exists-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.exists-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.ExistsQuery" title="tortoise.queryset.ExistsQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExistsQuery</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -2877,6 +4174,9 @@ Any value you specify here will always be used.</p>
 <dt id="tortoise.models.Model.fetch_for_list.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.fetch_for_list.using_db" title="Permalink to this definition">¶</a></dt><dd><p>DO NOT USE</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.fetch_for_list-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.fetch_for_list-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2896,6 +4196,9 @@ Any value you specify here will always be used.</p>
 <dt id="tortoise.models.Model.fetch_related.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.fetch_related.using_db" title="Permalink to this definition">¶</a></dt><dd><p>Specific DB connection to use instead of default bound</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.fetch_related-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.fetch_related-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2923,6 +4226,11 @@ Any value you specify here will always be used.</p>
 <dt class="sig sig-object highlight py" id="tortoise.models.Model.first">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.first" title="tortoise.models.Model.first.using_db (Python parameter)"><span class="n"><span class="pre">using_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.first"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.first" title="Link to this definition">¶</a></dt>
 <dd><p>Generates a QuerySet that returns the first record.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.first-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.first-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence.">QuerySetSingle</a>[Self | None]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method objdesc">
@@ -2935,11 +4243,11 @@ Any value you specify here will always be used.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.get-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.models.Model.get.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.get.using_db" title="Permalink to this definition">¶</a></dt><dd><p>The DB connection to use</p>
+<dt id="tortoise.models.Model.get.using_db"><span class="sig-name descname">using_db</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection.">BaseDBAsyncClient</a> | None</span></span><a class="headerlink" href="#tortoise.models.Model.get.using_db" title="Permalink to this definition">¶</a></dt><dd><p>The DB connection to use</p>
 </dd>
-<dt id="tortoise.models.Model.get.args"><span class="o">*</span><span class="n sig-name">args</span><a class="headerlink" href="#tortoise.models.Model.get.args" title="Permalink to this definition">¶</a></dt><dd><p>Q functions containing constraints. Will be AND’ed.</p>
+<dt id="tortoise.models.Model.get.args"><span class="sig-name descname">args</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="expressions.html#tortoise.expressions.Q" title="tortoise.expressions.Q (Python class) — Q Expression container. Q Expressions are a useful tool to compose a query from many small parts.">Q</a></span></span><a class="headerlink" href="#tortoise.models.Model.get.args" title="Permalink to this definition">¶</a></dt><dd><p>Q functions containing constraints. Will be AND’ed.</p>
 </dd>
-<dt id="tortoise.models.Model.get.kwargs"><span class="o">**</span><span class="n sig-name">kwargs</span><a class="headerlink" href="#tortoise.models.Model.get.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Simple filter constraints.</p>
+<dt id="tortoise.models.Model.get.kwargs"><span class="sig-name descname">kwargs</span><span class="p"> : </span><span class="desctype"><span class="desctype">Any</span></span><a class="headerlink" href="#tortoise.models.Model.get.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Simple filter constraints.</p>
 </dd>
 </dl>
 </dd>
@@ -2948,6 +4256,9 @@ Any value you specify here will always be used.</p>
 <li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.MultipleObjectsReturned" title="tortoise.exceptions.MultipleObjectsReturned (Python exception) — Bases: NotExistOrMultiple"><strong>MultipleObjectsReturned</strong></a> – If provided search returned more than one object.</p></li>
 <li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.DoesNotExist" title="tortoise.exceptions.DoesNotExist (Python exception) — Bases: NotExistOrMultiple"><strong>DoesNotExist</strong></a> – If object can not be found.</p></li>
 </ul>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.get-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence.">QuerySetSingle</a>[Self]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2960,11 +4271,11 @@ else creates an instance with any unspecified parameters as default values.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.get_or_create-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_create-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.models.Model.get_or_create.defaults"><span class="n sig-name">defaults</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.get_or_create.defaults" title="Permalink to this definition">¶</a></dt><dd><p>Default values to be added to a created instance if it can’t be fetched.</p>
+<dt id="tortoise.models.Model.get_or_create.defaults"><span class="sig-name descname">defaults</span><span class="p"> : </span><span class="desctype"><span class="desctype">dict | None</span></span><a class="headerlink" href="#tortoise.models.Model.get_or_create.defaults" title="Permalink to this definition">¶</a></dt><dd><p>Default values to be added to a created instance if it can’t be fetched.</p>
 </dd>
-<dt id="tortoise.models.Model.get_or_create.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.get_or_create.using_db" title="Permalink to this definition">¶</a></dt><dd><p>Specific DB connection to use instead of default bound</p>
+<dt id="tortoise.models.Model.get_or_create.using_db"><span class="sig-name descname">using_db</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection.">BaseDBAsyncClient</a> | None</span></span><a class="headerlink" href="#tortoise.models.Model.get_or_create.using_db" title="Permalink to this definition">¶</a></dt><dd><p>Specific DB connection to use instead of default bound</p>
 </dd>
-<dt id="tortoise.models.Model.get_or_create.kwargs"><span class="o">**</span><span class="n sig-name">kwargs</span><a class="headerlink" href="#tortoise.models.Model.get_or_create.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Query parameters.</p>
+<dt id="tortoise.models.Model.get_or_create.kwargs"><span class="sig-name descname">kwargs</span><span class="p"> : </span><span class="desctype"><span class="desctype">Any</span></span><a class="headerlink" href="#tortoise.models.Model.get_or_create.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Query parameters.</p>
 </dd>
 </dl>
 </dd>
@@ -2974,6 +4285,9 @@ else creates an instance with any unspecified parameters as default values.</p>
 <li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.TransactionManagementError" title="tortoise.exceptions.TransactionManagementError (Python exception) — Bases: BaseORMException"><strong>TransactionManagementError</strong></a> – If transaction error</p></li>
 <li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – If defaults conflict with kwargs</p></li>
 </ul>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.get_or_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>tuple[Self, bool]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2988,13 +4302,27 @@ else creates an instance with any unspecified parameters as default values.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.get_or_none-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_none-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
-<dt id="tortoise.models.Model.get_or_none.using_db"><span class="n sig-name">using_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.models.Model.get_or_none.using_db" title="Permalink to this definition">¶</a></dt><dd><p>The specific DB connection to use.</p>
+<dt id="tortoise.models.Model.get_or_none.using_db"><span class="sig-name descname">using_db</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection.">BaseDBAsyncClient</a> | None</span></span><a class="headerlink" href="#tortoise.models.Model.get_or_none.using_db" title="Permalink to this definition">¶</a></dt><dd><p>The specific DB connection to use.</p>
 </dd>
-<dt id="tortoise.models.Model.get_or_none.args"><span class="o">*</span><span class="n sig-name">args</span><a class="headerlink" href="#tortoise.models.Model.get_or_none.args" title="Permalink to this definition">¶</a></dt><dd><p>Q functions containing constraints. Will be AND’ed.</p>
+<dt id="tortoise.models.Model.get_or_none.args"><span class="sig-name descname">args</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="expressions.html#tortoise.expressions.Q" title="tortoise.expressions.Q (Python class) — Q Expression container. Q Expressions are a useful tool to compose a query from many small parts.">Q</a></span></span><a class="headerlink" href="#tortoise.models.Model.get_or_none.args" title="Permalink to this definition">¶</a></dt><dd><p>Q functions containing constraints. Will be AND’ed.</p>
 </dd>
-<dt id="tortoise.models.Model.get_or_none.kwargs"><span class="o">**</span><span class="n sig-name">kwargs</span><a class="headerlink" href="#tortoise.models.Model.get_or_none.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Simple filter constraints.</p>
+<dt id="tortoise.models.Model.get_or_none.kwargs"><span class="sig-name descname">kwargs</span><span class="p"> : </span><span class="desctype"><span class="desctype">Any</span></span><a class="headerlink" href="#tortoise.models.Model.get_or_none.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Simple filter constraints.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.get_or_none-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_or_none-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence.">QuerySetSingle</a>[Self | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.models.Model.get_table">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.get_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.get_table" title="Link to this definition">¶</a></dt>
+<dd><p>Return a PyPika table for this model.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.get_table-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.get_table-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3015,6 +4343,9 @@ that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.in_bulk-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.in_bulk-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -3022,6 +4353,11 @@ that ID. If <cite>id_list</cite> isn’t provided, evaluate the entire QuerySet.
 <dt class="sig sig-object highlight py" id="tortoise.models.Model.last">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">last</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.last" title="tortoise.models.Model.last.using_db (Python parameter)"><span class="n"><span class="pre">using_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.last"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.last" title="Link to this definition">¶</a></dt>
 <dd><p>Generates a QuerySet that returns the last record.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.last-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.last-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySetSingle" title="tortoise.queryset.QuerySetSingle (Python class) — Awaiting on this will resolve a single instance of the Model object, and not a sequence.">QuerySetSingle</a>[Self | None]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method objdesc">
@@ -3066,6 +4402,9 @@ Can be used as a field name when doing filtering e.g. <code class="docutils lite
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.raw-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.raw-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RawSQLQuery</span></code></a></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -3088,6 +4427,9 @@ all db fields of the model are updated to the values currently present in the da
 </dd>
 <dt class="field-even" id="tortoise.models.Model.refresh_from_db-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.refresh_from_db-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If object has never been persisted.</p>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.refresh_from_db-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.refresh_from_db-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3141,6 +4483,9 @@ If the object needs to be created <code class="docutils literal notranslate"><sp
 <li><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If update_fields include pk field.</p></li>
 </ul>
 </dd>
+<dt class="field-odd" id="tortoise.models.Model.save-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.save-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -3150,6 +4495,11 @@ If the object needs to be created <code class="docutils literal notranslate"><sp
 <dd><p>Make QuerySet select for update.</p>
 <p>Returns a queryset that will lock rows until the end of the transaction,
 generating a SELECT … FOR UPDATE SQL statement on supported databases.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.select_for_update-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.select_for_update-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.QuerySet" title="tortoise.queryset.QuerySet (Python class) — Query offset and limit for Queryset.">QuerySet</a>[Self]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method objdesc">
@@ -3197,11 +4547,22 @@ but will raise errors on bad types or updating Many-instance relations.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even" id="tortoise.models.Model.update_or_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.update_or_create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
+
+
+
+
+
+
+  
+  
 
 
 
@@ -3217,50 +4578,15 @@ but will raise errors on bad types or updating Many-instance relations.</p>
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="databases.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Databases" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Databases
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="fields.html" class="md-footer__link md-footer__link--next" aria-label="Next: Fields" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Fields
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   
   
@@ -3276,7 +4602,7 @@ but will raise errors on bad types or updating Many-instance relations.</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.4.7.
+    8.1.3.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -3292,10 +4618,11 @@ but will raise errors on bad types or updating Many-instance relations.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
     
       
-        <script src="_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script src="_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
     

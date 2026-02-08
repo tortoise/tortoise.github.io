@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -9,21 +10,30 @@
       
       
       
+      
+        <link rel="prev" href="setup.html">
+      
+      
+        <link rel="next" href="models.html">
+      
+      
       <link rel="icon" href="_static/tortoise.png">
     
     
       
-        <title>Databases - Tortoise ORM v0.25.4 Documentation</title>
+        <title>Databases - Tortoise ORM v1.0.0 Documentation</title>
       
     
     
       
-        
         
       
       
 
+
     
+    
+      
     
     
       
@@ -32,9 +42,9 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.58d549dac8fe20eca.min.css?v=7776979a" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.acf80fe7f4d9ef9e2.min.css?v=9e56d0d2" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -43,9 +53,7 @@
   
   
 
-
-  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-MJ7RHW2FRB",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-MJ7RHW2FRB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
@@ -66,9 +74,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -79,7 +84,7 @@
       
     </div>
     
-      <div data-md-component="outdated" hidden>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
       </div>
     
@@ -88,17 +93,18 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v0.25.4 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v0.25.4 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 0.25.4 Documentation
+            Tortoise ORM 1.0.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -111,32 +117,40 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -144,28 +158,32 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -177,7 +195,7 @@
         <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -198,31 +216,41 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Tortoise ORM</span>
 
-
-  <li class="md-tabs__item">
-    <a href="index.html" class="md-tabs__link">
-      <span class="md-ellipsis">Tortoise ORM</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="getting_started.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Getting started</span>
 
-
-  <li class="md-tabs__item">
-    <a href="getting_started.html" class="md-tabs__link">
-      <span class="md-ellipsis">Getting started</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
@@ -230,85 +258,137 @@
   
     
   
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="reference.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Reference</span>
 
-
-  <li class="md-tabs__item">
-    <a href="reference.html" class="md-tabs__link md-tabs__link--active">
-      <span class="md-ellipsis">Reference</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="examples.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
 
-
-  <li class="md-tabs__item">
-    <a href="examples.html" class="md-tabs__link">
-      <span class="md-ellipsis">Examples</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="contrib.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contrib</span>
 
-
-  <li class="md-tabs__item">
-    <a href="contrib.html" class="md-tabs__link">
-      <span class="md-ellipsis">Contrib</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="migration_guide.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
 
-
-  <li class="md-tabs__item">
-    <a href="CHANGELOG.html" class="md-tabs__link">
-      <span class="md-ellipsis">Changelog</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="CHANGELOG.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Changelog</span>
 
-
-  <li class="md-tabs__item">
-    <a href="roadmap.html" class="md-tabs__link">
-      <span class="md-ellipsis">Roadmap</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="roadmap.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Roadmap</span>
 
-
-  <li class="md-tabs__item">
-    <a href="CONTRIBUTING.html" class="md-tabs__link">
-      <span class="md-ellipsis">Contribution Guide</span>
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTING.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contribution Guide</span>
 
+      </a>
+    </li>
+  
 
-  <li class="md-tabs__item">
-    <a href="CONTRIBUTORS.html" class="md-tabs__link">
-      <span class="md-ellipsis">Thanks</span>
-    </a>
-  </li>
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTORS.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Thanks</span>
+
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -327,6 +407,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -334,17 +415,17 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v0.25.4 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v0.25.4 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v0.25.4 Documentation
+    Tortoise ORM v1.0.0 Documentation
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     tortoise-orm
@@ -356,15 +437,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
-        <span class="md-ellipsis">Tortoise ORM</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Tortoise ORM</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -372,15 +460,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="getting_started.html" class="md-nav__link">
-        <span class="md-ellipsis">Getting started</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Getting started</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -388,74 +483,119 @@
     
       
       
-      
-
   
   
     
   
   
+  
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
-      
+        
+        
       
       
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="reference.html"><span class="md-ellipsis">Reference</span></a>
-          
-            <label for="__nav_3">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
       
-      <nav class="md-nav" aria-label="Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          <span class="md-ellipsis">Reference</span>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
           
+          <div class="md-nav__link md-nav__container">
+            <a href="reference.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>Reference</span>
+    
+  </span>
+  
+
+            </a>
             
               
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Reference</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="setup.html" class="md-nav__link">
-        <span class="md-ellipsis">Set up</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Set up</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-ellipsis">Databases</span>
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Databases</span>
+    
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="#" class="md-nav__link md-nav__link--active">
-        <span class="md-ellipsis">Databases</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Databases</span>
+    
+  </span>
+  
+
       </a>
       
         
@@ -474,14 +614,20 @@
       
         <li class="md-nav__item">
   <a href="#db-url" class="md-nav__link">
-    <span title="db_url (reference label)" class="md-ellipsis">DB_<wbr>URL</span>
+    
+    <span class="md-ellipsis">
+      <span title="db_url (reference label)"><span>DB_<wbr>URL</span></span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#capabilities" class="md-nav__link">
-    <span class="md-ellipsis">Capabilities</span>
+    
+    <span class="md-ellipsis">
+      <span>Capabilities</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Capabilities">
@@ -489,7 +635,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.backends.base.client.Capabilities (Python class) — DB Client Capabilities indicates the supported feature-set, and is also used to note common workarounds to deficiencies." class="md-ellipsis">tortoise.<wbr>backends.<wbr>base.<wbr>client.<wbr>Capabilities</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities (Python class) — DB Client Capabilities indicates the supported feature-set, and is also used to note common workarounds to deficiencies."><span>tortoise.<wbr>backends.<wbr>base.<wbr>client.<wbr>Capabilities</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.backends.base.client.Capabilities">
@@ -497,7 +648,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -505,70 +659,132 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.dialect" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver." class="md-ellipsis">dialect</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver."><span>dialect</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.daemon" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?" class="md-ellipsis">daemon</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?"><span>daemon</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.requires_limit" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work." class="md-ellipsis">requires_<wbr>limit</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work."><span>requires_<wbr>limit</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.inline_comment" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement." class="md-ellipsis">inline_<wbr>comment</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement."><span>inline_<wbr>comment</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.supports_transactions" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions." class="md-ellipsis">supports_<wbr>transactions</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions."><span>supports_<wbr>transactions</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..." class="md-ellipsis">support_<wbr>for_<wbr>update</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..."><span>support_<wbr>for_<wbr>update</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index." class="md-ellipsis">support_<wbr>index_<wbr>hint</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index."><span>support_<wbr>index_<wbr>hint</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by." class="md-ellipsis">support_<wbr>update_<wbr>limit_<wbr>order_<wbr>by</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by."><span>support_<wbr>update_<wbr>limit_<wbr>order_<wbr>by</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries" class="md-ellipsis">support_<wbr>for_<wbr>posix_<wbr>regex_<wbr>queries</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries"><span>support_<wbr>for_<wbr>posix_<wbr>regex_<wbr>queries</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes" class="md-ellipsis">support_<wbr>json_<wbr>attributes</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes"><span>support_<wbr>json_<wbr>attributes</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl (Python parameter) — Whether the database supports transactional DDL. Used to determine if migrations can be run atomically."><span>can_<wbr>rollback_<wbr>ddl</span></span>
+    </span>
   </a>
   
 </li>
@@ -590,7 +806,10 @@
       
         <li class="md-nav__item">
   <a href="#sqlite" class="md-nav__link">
-    <span class="md-ellipsis">SQLite</span>
+    
+    <span class="md-ellipsis">
+      <span>SQLite</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="SQLite">
@@ -598,14 +817,20 @@
         
           <li class="md-nav__item">
   <a href="#required-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Required Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Required Parameters</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#optional-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Optional parameters:<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Optional parameters:<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -617,7 +842,10 @@
       
         <li class="md-nav__item">
   <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">Postgre<wbr>SQL</span>
+    
+    <span class="md-ellipsis">
+      <span>Postgre<wbr>SQL</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="PostgreSQL">
@@ -625,14 +853,20 @@
         
           <li class="md-nav__item">
   <a href="#id3" class="md-nav__link">
-    <span class="md-ellipsis">Required Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Required Parameters</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#id4" class="md-nav__link">
-    <span class="md-ellipsis">Optional parameters:<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Optional parameters:<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -644,7 +878,10 @@
       
         <li class="md-nav__item">
   <a href="#mysql-mariadb" class="md-nav__link">
-    <span class="md-ellipsis">My<wbr>SQL/Maria<wbr>DB</span>
+    
+    <span class="md-ellipsis">
+      <span>My<wbr>SQL/Maria<wbr>DB</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="MySQL/MariaDB">
@@ -652,14 +889,20 @@
         
           <li class="md-nav__item">
   <a href="#id5" class="md-nav__link">
-    <span class="md-ellipsis">Required Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Required Parameters</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#id6" class="md-nav__link">
-    <span class="md-ellipsis">Optional parameters:<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Optional parameters:<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -671,7 +914,10 @@
       
         <li class="md-nav__item">
   <a href="#mssql-oracle" class="md-nav__link">
-    <span class="md-ellipsis">MSSQL/Oracle</span>
+    
+    <span class="md-ellipsis">
+      <span>MSSQL/Oracle</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="MSSQL/Oracle">
@@ -679,14 +925,20 @@
         
           <li class="md-nav__item">
   <a href="#id7" class="md-nav__link">
-    <span class="md-ellipsis">Required Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Required Parameters</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#id8" class="md-nav__link">
-    <span class="md-ellipsis">Optional parameters:<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Optional parameters:<wbr></span>
+    </span>
   </a>
   
 </li>
@@ -698,21 +950,30 @@
       
         <li class="md-nav__item">
   <a href="#encoding-in-oracle" class="md-nav__link">
-    <span class="md-ellipsis">Encoding in Oracle:<wbr></span>
+    
+    <span class="md-ellipsis">
+      <span>Encoding in Oracle:<wbr></span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#passing-in-custom-ssl-certificates" class="md-nav__link">
-    <span class="md-ellipsis">Passing in custom SSL Certificates</span>
+    
+    <span class="md-ellipsis">
+      <span>Passing in custom SSL Certificates</span>
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#base-db-client" class="md-nav__link">
-    <span title="base_db_client (reference label)" class="md-ellipsis">Base DB client</span>
+    
+    <span class="md-ellipsis">
+      <span title="base_db_client (reference label)"><span>Base DB client</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Base DB client">
@@ -720,7 +981,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient" class="md-nav__link">
-    <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span><span title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection." class="md-ellipsis">tortoise.<wbr>backends.<wbr>base.<wbr>client.<wbr>Base<wbr>DBAsync<wbr>Client</span>
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection."><span>tortoise.<wbr>backends.<wbr>base.<wbr>client.<wbr>Base<wbr>DBAsync<wbr>Client</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="tortoise.backends.base.client.BaseDBAsyncClient">
@@ -728,42 +994,88 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.query_class" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.query_class (Python attribute) — The PyPika Query dialect (low level dialect)" class="md-ellipsis">query_<wbr>class</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.query_class (Python attribute) — The PyPika Query dialect (low level dialect)"><span>query_<wbr>class</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.executor_class" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.executor_class (Python attribute) — The executor dialect class (high level dialect)" class="md-ellipsis">executor_<wbr>class</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.executor_class (Python attribute) — The executor dialect class (high level dialect)"><span>executor_<wbr>class</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.schema_generator" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.schema_generator (Python attribute) — The DDL schema generator" class="md-ellipsis">schema_<wbr>generator</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.schema_generator (Python attribute) — The DDL schema generator"><span>schema_<wbr>generator</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.capabilities" class="md-nav__link">
-    <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.capabilities (Python attribute) — Contains the connection capabilities" class="md-ellipsis">capabilities</span>
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.capabilities (Python attribute) — Contains the connection capabilities"><span>capabilities</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection (Python method) — Acquires a connection from the pool. Will return the current context connection if already in a transaction." class="md-ellipsis">acquire_<wbr>connection</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection (Python method) — Acquires a connection from the pool. Will return the current context connection if already in a transaction."><span>acquire_<wbr>connection</span></span>
+    </span>
   </a>
+  
+    <nav class="md-nav" aria-label="acquire_connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.close" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.close (Python method) — Closes the DB connection." class="md-ellipsis">close</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.close (Python method) — Closes the DB connection."><span>close</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="close">
@@ -771,7 +1083,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.close-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -783,7 +1098,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.create_connection" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.create_connection (Python method) — Establish a DB connection." class="md-ellipsis">create_<wbr>connection</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.create_connection (Python method) — Establish a DB connection."><span>create_<wbr>connection</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="create_connection">
@@ -791,7 +1111,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.create_connection-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -799,7 +1122,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.create_connection.with_db" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.create_connection.with_db (Python parameter) — If True, then select the DB to use, else use default. Use case for this is to create/drop a database." class="md-ellipsis">with_<wbr>db</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.create_connection.with_db (Python parameter) — If True, then select the DB to use, else use default. Use case for this is to create/drop a database."><span>with_<wbr>db</span></span>
+    </span>
   </a>
   
 </li>
@@ -811,7 +1139,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.create_connection-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -823,7 +1154,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.db_create" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.db_create (Python method) — Created the database in the server. Typically only called by the test runner." class="md-ellipsis">db_<wbr>create</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.db_create (Python method) — Created the database in the server. Typically only called by the test runner."><span>db_<wbr>create</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="db_create">
@@ -831,7 +1167,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.db_create-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -843,7 +1182,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.db_delete" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.db_delete (Python method) — Delete the database from the Server. Typically only called by the test runner." class="md-ellipsis">db_<wbr>delete</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.db_delete (Python method) — Delete the database from the Server. Typically only called by the test runner."><span>db_<wbr>delete</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="db_delete">
@@ -851,7 +1195,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.db_delete-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -863,7 +1210,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert (Python method) — Executes a RAW SQL insert statement, with provided parameters." class="md-ellipsis">execute_<wbr>insert</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert (Python method) — Executes a RAW SQL insert statement, with provided parameters."><span>execute_<wbr>insert</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="execute_insert">
@@ -871,7 +1223,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -879,14 +1234,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.query" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect." class="md-ellipsis">query</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span>query</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.values" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.values (Python parameter) — A sequence of positional DB parameters." class="md-ellipsis">values</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_insert.values (Python parameter) — A sequence of positional DB parameters."><span>values</span></span>
+    </span>
   </a>
   
 </li>
@@ -898,14 +1263,20 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_insert-returns" class="md-nav__link">
-    <span class="md-ellipsis">Returns</span>
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
   </a>
   
 </li>
@@ -917,7 +1288,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many (Python method) — Executes a RAW bulk insert statement, like execute_insert, but returns no data." class="md-ellipsis">execute_<wbr>many</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many (Python method) — Executes a RAW bulk insert statement, like execute_insert, but returns no data."><span>execute_<wbr>many</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="execute_many">
@@ -925,7 +1301,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -933,14 +1312,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many.query" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect." class="md-ellipsis">query</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span>query</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many.values" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many.values (Python parameter) — A sequence of positional DB parameters." class="md-ellipsis">values</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_many.values (Python parameter) — A sequence of positional DB parameters."><span>values</span></span>
+    </span>
   </a>
   
 </li>
@@ -952,7 +1341,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_many-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -964,7 +1356,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query (Python method) — Executes a RAW SQL query statement, and returns the resultset." class="md-ellipsis">execute_<wbr>query</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query (Python method) — Executes a RAW SQL query statement, and returns the resultset."><span>execute_<wbr>query</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="execute_query">
@@ -972,7 +1369,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -980,14 +1380,24 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query.query" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect." class="md-ellipsis">query</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span>query</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query.values" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query.values (Python parameter) — A sequence of positional DB parameters." class="md-ellipsis">values</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query.values (Python parameter) — A sequence of positional DB parameters."><span>values</span></span>
+    </span>
   </a>
   
 </li>
@@ -998,8 +1408,21 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-returns" class="md-nav__link">
-    <span class="md-ellipsis">Returns</span>
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
   </a>
   
 </li>
@@ -1011,7 +1434,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict (Python method) — Executes a RAW SQL query statement, and returns the resultset as a list of dicts." class="md-ellipsis">execute_<wbr>query_<wbr>dict</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict (Python method) — Executes a RAW SQL query statement, and returns the resultset as a list of dicts."><span>execute_<wbr>query_<wbr>dict</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="execute_query_dict">
@@ -1019,7 +1447,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1027,20 +1458,108 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.query" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect." class="md-ellipsis">query</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span>query</span></span>
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.values" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.values (Python parameter) — A sequence of positional DB parameters." class="md-ellipsis">values</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.values (Python parameter) — A sequence of positional DB parameters."><span>values</span></span>
+    </span>
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected (Python method) — Executes a RAW SQL query statement, and returns the resultset as a list of dicts along with the rows affected if available."><span>execute_<wbr>query_<wbr>dict_<wbr>with_<wbr>affected</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="execute_query_dict_with_affected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span>query</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values (Python parameter) — A sequence of positional DB parameters."><span>values</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
   
 </li>
         
@@ -1051,7 +1570,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_script" class="md-nav__link">
-    <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_script (Python method) — Executes a RAW SQL script with multiple statements, and returns nothing." class="md-ellipsis">execute_<wbr>script</span>
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_script (Python method) — Executes a RAW SQL script with multiple statements, and returns nothing."><span>execute_<wbr>script</span></span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="execute_script">
@@ -1059,7 +1583,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_script-parameters" class="md-nav__link">
-    <span class="md-ellipsis">Parameters</span>
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Parameters">
@@ -1067,7 +1594,12 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_script.query" class="md-nav__link">
-    <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span><span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_script.query (Python parameter) — The SQL string, which will be passed on verbatim. Semicolons is supported here." class="md-ellipsis">query</span>
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.backends.base.client.BaseDBAsyncClient.execute_script.query (Python parameter) — The SQL string, which will be passed on verbatim. Semicolons is supported here."><span>query</span></span>
+    </span>
   </a>
   
 </li>
@@ -1079,7 +1611,10 @@
         
           <li class="md-nav__item">
   <a href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_script-return-type" class="md-nav__link">
-    <span class="md-ellipsis">Return type</span>
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
   </a>
   
 </li>
@@ -1106,280 +1641,467 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="models.html" class="md-nav__link">
-        <span class="md-ellipsis">Models</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Models</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="fields.html" class="md-nav__link">
-        <span class="md-ellipsis">Fields</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fields</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="indexes.html" class="md-nav__link">
-        <span class="md-ellipsis">Indexes</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Indexes</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="timezone.html" class="md-nav__link">
-        <span class="md-ellipsis">Timezone</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Timezone</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="schema.html" class="md-nav__link">
-        <span class="md-ellipsis">Schema Creation</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Schema Creation</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="query.html" class="md-nav__link">
-        <span class="md-ellipsis">Query API</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Query API</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="direct_queries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Direct Py<wbr>Pika Queries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="manager.html" class="md-nav__link">
-        <span class="md-ellipsis">Manager</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Manager</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="functions.html" class="md-nav__link">
-        <span class="md-ellipsis">Functions &amp; Aggregates</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Functions &amp; Aggregates</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="expressions.html" class="md-nav__link">
-        <span class="md-ellipsis">Expressions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Expressions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="transactions.html" class="md-nav__link">
-        <span class="md-ellipsis">Transactions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Transactions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="connections.html" class="md-nav__link">
-        <span class="md-ellipsis">Connections</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Connections</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="exceptions.html" class="md-nav__link">
-        <span class="md-ellipsis">Exceptions</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Exceptions</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="signals.html" class="md-nav__link">
-        <span class="md-ellipsis">Signals</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Signals</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="migration.html" class="md-nav__link">
-        <span class="md-ellipsis">Migration</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Migrations</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="validators.html" class="md-nav__link">
-        <span class="md-ellipsis">Validators</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Validators</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="logging.html" class="md-nav__link">
-        <span class="md-ellipsis">Logging</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Logging</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="router.html" class="md-nav__link">
-        <span class="md-ellipsis">Router</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Router</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="cli.html" class="md-nav__link">
-        <span class="md-ellipsis">Tortoise<wbr>CLI</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Tortoise CLI</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
   
@@ -1387,15 +2109,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="examples.html" class="md-nav__link">
-        <span class="md-ellipsis">Examples</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1403,15 +2132,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="contrib.html" class="md-nav__link">
-        <span class="md-ellipsis">Contrib</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contrib</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1419,15 +2155,45 @@
     
       
       
-      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migration_guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
+    
+  </span>
+  
 
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CHANGELOG.html" class="md-nav__link">
-        <span class="md-ellipsis">Changelog</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Changelog</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1435,15 +2201,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="roadmap.html" class="md-nav__link">
-        <span class="md-ellipsis">Roadmap</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Roadmap</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1451,15 +2224,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CONTRIBUTING.html" class="md-nav__link">
-        <span class="md-ellipsis">Contribution Guide</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contribution Guide</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1467,15 +2247,22 @@
     
       
       
-      
-
+  
   
   
   
   
     <li class="md-nav__item">
       <a href="CONTRIBUTORS.html" class="md-nav__link">
-        <span class="md-ellipsis">Thanks</span>
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Thanks</span>
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -1492,6 +2279,8 @@
           
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset" role="main">
+                
+                
                   
 
 
@@ -1528,7 +2317,14 @@ Typically in the form of <code class="samp docutils literal notranslate"><span c
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">mysql</span></code>:</dt><dd><p>Typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mysql://myuser:mypass&#64;db.host:3306/somedb</span></code></p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mssql</span></code>:</dt><dd><p>Typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mssql://myuser:mypass&#64;db.host:1433/somedb?driver=the</span> <span class="pre">odbc</span> <span class="pre">driver</span></code></p>
+<dt><code class="docutils literal notranslate"><span class="pre">mssql</span></code>:</dt><dd><p>Typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mssql://myuser:mypass&#64;db.host:1433/somedb?driver=the</span> <span class="pre">odbc</span> <span class="pre">driver</span></code>
+You can also pass driver options such as <code class="samp docutils literal notranslate"><span class="pre">encrypt</span></code> and
+<code class="samp docutils literal notranslate"><span class="pre">trust_server_certificate</span></code> (or their ODBC-cased equivalents
+<code class="samp docutils literal notranslate"><span class="pre">Encrypt</span></code> and <code class="samp docutils literal notranslate"><span class="pre">TrustServerCertificate</span></code>) which will be appended
+to the DSN. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code>mssql://myuser:mypass@db.host:1433/somedb?driver=ODBC%20Driver%2018%20for%20SQL%20Server&amp;encrypt=no&amp;trust_server_certificate=yes
+</code></pre></div>
+</div>
 </dd>
 </dl>
 <h2 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Link to this heading">¶</a></h2>
@@ -1536,7 +2332,7 @@ Typically in the form of <code class="samp docutils literal notranslate"><span c
 Primarily this is to work around larger-than SQL differences, or common issues.</p>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.backends.base.client.Capabilities">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.backends.base.client.</span></span><span class="sig-name descname"><span class="pre">Capabilities</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.dialect" title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver."><span class="n"><span class="pre">dialect</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.daemon" title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?"><span class="n"><span class="pre">daemon</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.requires_limit" title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work."><span class="n"><span class="pre">requires_limit</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.inline_comment" title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement."><span class="n"><span class="pre">inline_comment</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.supports_transactions" title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions."><span class="n"><span class="pre">supports_transactions</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..."><span class="n"><span class="pre">support_for_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities" title="tortoise.backends.base.client.Capabilities.__init__.support_for_no_key_update (Python parameter)"><span class="n"><span class="pre">support_for_no_key_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index."><span class="n"><span class="pre">support_index_hint</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by."><span class="n"><span class="pre">support_update_limit_order_by</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries"><span class="n"><span class="pre">support_for_posix_regex_queries</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes"><span class="n"><span class="pre">support_json_attributes</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#Capabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.Capabilities" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.backends.base.client.</span></span><span class="sig-name descname"><span class="pre">Capabilities</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.dialect" title="tortoise.backends.base.client.Capabilities.__init__.dialect (Python parameter) — Dialect name of the DB Client driver."><span class="n"><span class="pre">dialect</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.daemon" title="tortoise.backends.base.client.Capabilities.__init__.daemon (Python parameter) — Is the DB an external Daemon we connect to?"><span class="n"><span class="pre">daemon</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.requires_limit" title="tortoise.backends.base.client.Capabilities.__init__.requires_limit (Python parameter) — Indicates that this DB requires a LIMIT statement for an OFFSET statement to work."><span class="n"><span class="pre">requires_limit</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.inline_comment" title="tortoise.backends.base.client.Capabilities.__init__.inline_comment (Python parameter) — Indicates that comments should be rendered in line with the DDL statement, and not as a separate statement."><span class="n"><span class="pre">inline_comment</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.supports_transactions" title="tortoise.backends.base.client.Capabilities.__init__.supports_transactions (Python parameter) — Indicates that this DB supports transactions."><span class="n"><span class="pre">supports_transactions</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_update" title="tortoise.backends.base.client.Capabilities.__init__.support_for_update (Python parameter) — Indicates that this DB supports SELECT ..."><span class="n"><span class="pre">support_for_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities" title="tortoise.backends.base.client.Capabilities.__init__.support_for_no_key_update (Python parameter)"><span class="n"><span class="pre">support_for_no_key_update</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_index_hint" title="tortoise.backends.base.client.Capabilities.__init__.support_index_hint (Python parameter) — Support force index or use index."><span class="n"><span class="pre">support_index_hint</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by" title="tortoise.backends.base.client.Capabilities.__init__.support_update_limit_order_by (Python parameter) — support update/delete with limit and order by."><span class="n"><span class="pre">support_update_limit_order_by</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries" title="tortoise.backends.base.client.Capabilities.__init__.support_for_posix_regex_queries (Python parameter) — indicated if the db supports posix regex queries"><span class="n"><span class="pre">support_for_posix_regex_queries</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" title="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes (Python parameter) — indicated if the db supports accessing json attributes"><span class="n"><span class="pre">support_json_attributes</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl" title="tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl (Python parameter) — Whether the database supports transactional DDL. Used to determine if migrations can be run atomically."><span class="n"><span class="pre">can_rollback_ddl</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#Capabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.Capabilities" title="Link to this definition">¶</a></dt>
 <dd><p>DB Client Capabilities indicates the supported feature-set,
 and is also used to note common workarounds to deficiencies.</p>
 <p>Defaults are set with the following standard:</p>
@@ -1571,6 +2367,9 @@ DDL statement, and not as a separate statement.</p>
 </dd>
 <dt id="tortoise.backends.base.client.Capabilities.__init__.support_json_attributes"><span class="n sig-name">support_json_attributes</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.support_json_attributes" title="Permalink to this definition">¶</a></dt><dd><p>indicated if the db supports accessing json attributes</p>
 </dd>
+<dt id="tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl"><span class="n sig-name">can_rollback_ddl</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.backends.base.client.Capabilities.__init__.can_rollback_ddl" title="Permalink to this definition">¶</a></dt><dd><p>Whether the database supports transactional DDL.
+Used to determine if migrations can be run atomically.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1578,7 +2377,7 @@ DDL statement, and not as a separate statement.</p>
 
 <h2 id="sqlite">SQLite<a class="headerlink" href="#sqlite" title="Link to this heading">¶</a></h2>
 <p>SQLite is an embedded database, and can run on a file or in-memory. Good database for local development or testing of code logic, but not recommended for production use.</p>
-<div class="caution admonition">
+<div class="caution warning admonition">
 <p class="admonition-title">Caution</p>
 <p>SQLite doesn’t support many of the common datatypes natively, although we do emulation where we can, not everything is perfect.</p>
 <p>For example <code class="docutils literal notranslate"><span class="pre">DecimalField</span></code> has precision preserved by storing values as strings, except when doing aggregates/ordering on it. In those cases we have to cast to/from floating-point numbers.</p>
@@ -1768,6 +2567,11 @@ handle complex objects.</p>
 <span class="sig-name descname"><span class="pre">acquire_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.acquire_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection" title="Link to this definition">¶</a></dt>
 <dd><p>Acquires a connection from the pool.
 Will return the current context connection if already in a transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.acquire_connection-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>tortoise.backends.base.client.ConnectionWrapper | tortoise.backends.base.client.PoolConnectionWrapper</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method objdesc">
@@ -1882,8 +2686,11 @@ indicating the database is in use.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-returns" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p>A tuple of: (The number of rows affected, The resultset)</p>
+<dt class="field-even" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+<dt class="field-odd" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>A tuple of: (The number of rows affected, The resultset)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1900,6 +2707,29 @@ indicating the database is in use.</p>
 <dt id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.values"><span class="n sig-name">values</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict.values" title="Permalink to this definition">¶</a></dt><dd><p>A sequence of positional DB parameters.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute_query_dict_with_affected</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query" title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query (Python parameter) — The SQL string, pre-parametrized for the target DB dialect."><span class="n"><span class="pre">query</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values" title="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values (Python parameter) — A sequence of positional DB parameters."><span class="n"><span class="pre">values</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/backends/base/client.html#BaseDBAsyncClient.execute_query_dict_with_affected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected" title="Link to this definition">¶</a></dt>
+<dd><p>Executes a RAW SQL query statement, and returns the resultset as a list of dicts
+along with the rows affected if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query"><span class="n sig-name">query</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.query" title="Permalink to this definition">¶</a></dt><dd><p>The SQL string, pre-parametrized for the target DB dialect.</p>
+</dd>
+<dt id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values"><span class="n sig-name">values</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected.values" title="Permalink to this definition">¶</a></dt><dd><p>A sequence of positional DB parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.backends.base.client.BaseDBAsyncClient.execute_query_dict_with_affected-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1927,6 +2757,14 @@ Semicolons is supported here.</p>
 
 
 
+
+
+
+  
+  
+
+
+
   
 
 
@@ -1939,50 +2777,15 @@ Semicolons is supported here.</p>
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="setup.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Set up" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Set up
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="models.html" class="md-footer__link md-footer__link--next" aria-label="Next: Models" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Models
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   
   
@@ -1998,7 +2801,7 @@ Semicolons is supported here.</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    7.4.7.
+    8.1.3.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -2014,10 +2817,11 @@ Semicolons is supported here.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
     
       
-        <script src="_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script src="_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
     
