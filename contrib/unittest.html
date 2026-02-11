@@ -21,7 +21,7 @@
     
     
       
-        <title>Testing Support - Tortoise ORM v1.0.0 Documentation</title>
+        <title>Testing Support - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -707,6 +707,26 @@
     
     <span class="md-ellipsis">
       <span>Testing with Multiple Databases</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-loop-isolation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Event Loop Isolation</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing-without-a-database" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Unit Testing Without a Database</span>
     </span>
   </a>
   
@@ -1256,15 +1276,17 @@ Each test gets its own database context, ensuring tests don’t interfere with e
 <li><p><a class="reference internal" href="#quick-start" id="id2">Quick Start</a></p></li>
 <li><p><a class="reference internal" href="#tortoise-test-context-reference" id="id3"><code class="docutils literal notranslate"><span class="pre">tortoise_test_context</span></code> Reference</a></p></li>
 <li><p><a class="reference internal" href="#testing-with-multiple-databases" id="id4">Testing with Multiple Databases</a></p></li>
-<li><p><a class="reference internal" href="#testing-database-capabilities" id="id5">Testing Database Capabilities</a></p></li>
-<li><p><a class="reference internal" href="#environment-variables" id="id6">Environment Variables</a></p></li>
-<li><p><a class="reference internal" href="#utility-functions" id="id7">Utility Functions</a></p>
+<li><p><a class="reference internal" href="#event-loop-isolation" id="id5">Event Loop Isolation</a></p></li>
+<li><p><a class="reference internal" href="#unit-testing-without-a-database" id="id6">Unit Testing Without a Database</a></p></li>
+<li><p><a class="reference internal" href="#testing-database-capabilities" id="id7">Testing Database Capabilities</a></p></li>
+<li><p><a class="reference internal" href="#environment-variables" id="id8">Environment Variables</a></p></li>
+<li><p><a class="reference internal" href="#utility-functions" id="id9">Utility Functions</a></p>
 <ul>
-<li><p><a class="reference internal" href="#truncate-all-models" id="id8">truncate_all_models</a></p></li>
+<li><p><a class="reference internal" href="#truncate-all-models" id="id10">truncate_all_models</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-from-legacy-test-classes" id="id9">Migration from Legacy Test Classes</a></p></li>
-<li><p><a class="reference internal" href="#module-tortoise.contrib.test" id="id10">Reference</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-legacy-test-classes" id="id11">Migration from Legacy Test Classes</a></p></li>
+<li><p><a class="reference internal" href="#module-tortoise.contrib.test" id="id12">Reference</a></p></li>
 </ul>
 </nav>
 <h2 id="quick-start"><a class="toc-backref" href="#id2" role="doc-backlink">Quick Start</a><a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
@@ -1369,7 +1391,67 @@ Each test gets its own database context, ensuring tests don’t interfere with e
         <span class="k">yield</span> <span class="n">ctx</span>
 </code></pre></div>
 </div>
-<h2 id="testing-database-capabilities"><a class="toc-backref" href="#id5" role="doc-backlink">Testing Database Capabilities</a><a class="headerlink" href="#testing-database-capabilities" title="Link to this heading">¶</a></h2>
+<h2 id="event-loop-isolation"><a class="toc-backref" href="#id5" role="doc-backlink">Event Loop Isolation</a><a class="headerlink" href="#event-loop-isolation" title="Link to this heading">¶</a></h2>
+<p>Some backends (asyncpg, aiomysql) bind connection pools to the event loop that created
+them. <code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code> handles this transparently – if the event loop changes
+between tests, connections are automatically recreated.</p>
+<p>This means you <strong>don’t</strong> need <code class="docutils literal notranslate"><span class="pre">loop_scope=&quot;session&quot;</span></code> or any special pytest-asyncio
+configuration. The simplest setup works:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># pyproject.toml -- no loop_scope overrides needed</span>
+<span class="k">[tool.pytest.ini_options]</span>
+<span class="n">asyncio_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span>
+</code></pre></div>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> directly (without <code class="docutils literal notranslate"><span class="pre">tortoise_test_context</span></code>), you may see
+a <code class="docutils literal notranslate"><span class="pre">TortoiseLoopSwitchWarning</span></code> when the loop changes. Suppress it with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseLoopSwitchWarning</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">TortoiseLoopSwitchWarning</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h2 id="unit-testing-without-a-database"><a class="toc-backref" href="#id6" role="doc-backlink">Unit Testing Without a Database</a><a class="headerlink" href="#unit-testing-without-a-database" title="Link to this heading">¶</a></h2>
+<p>For testing pure business logic that reads model attributes and iterates relations
+without making queries, use <code class="docutils literal notranslate"><span class="pre">Model.construct()</span></code> to create model instances in memory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">myapp.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Organization</span><span class="p">,</span> <span class="n">Membership</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_user_has_active_membership</span><span class="p">():</span>
+    <span class="n">org</span> <span class="o">=</span> <span class="n">Organization</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Corp&quot;</span><span class="p">)</span>
+    <span class="n">membership</span> <span class="o">=</span> <span class="n">Membership</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+        <span class="n">organization</span><span class="o">=</span><span class="n">org</span><span class="p">,</span>
+        <span class="n">role</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="n">is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="n">memberships</span><span class="o">=</span><span class="p">[</span><span class="n">membership</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Pure business logic -- no database needed</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">memberships</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">is_active</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">active</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">active</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span>
+</code></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">construct()</span></code> creates “detached” instances that behave like ORM-loaded objects:</p>
+<ul class="simple">
+<li><p>Reverse FK fields (e.g., <code class="docutils literal notranslate"><span class="pre">user.memberships</span></code>) accept lists and wrap them in
+<code class="docutils literal notranslate"><span class="pre">ReverseRelation</span></code>, so <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, iteration, and <code class="docutils literal notranslate"><span class="pre">bool()</span></code> all work.</p></li>
+<li><p>M2M fields work the same way, wrapped in <code class="docutils literal notranslate"><span class="pre">ManyToManyRelation</span></code>.</p></li>
+<li><p>FK fields populate the source field automatically
+(e.g., <code class="docutils literal notranslate"><span class="pre">event.tournament_id</span></code> is set from <code class="docutils literal notranslate"><span class="pre">tournament.pk</span></code>).</p></li>
+<li><p>No validation is performed – null checks, type checks, and <code class="docutils literal notranslate"><span class="pre">_saved_in_db</span></code>
+guards are all skipped.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">construct()</span></code> requires Tortoise to be initialized (via <code class="docutils literal notranslate"><span class="pre">tortoise_test_context</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code>) for relation fields to work, because relation metadata is
+resolved during initialization. For simple data-only fields, it works without
+initialization.</p>
+</div>
+<p>See <a class="reference internal" href="../models.html#tortoise.models.Model.construct" title="tortoise.models.Model.construct (Python method) — Create a model instance without validation, DB checks, or FK restrictions."><code class="xref py py-meth docutils literal notranslate"><span class="pre">tortoise.models.Model.construct()</span></code></a> for the full API reference.</p>
+<h2 id="testing-database-capabilities"><a class="toc-backref" href="#id7" role="doc-backlink">Testing Database Capabilities</a><a class="headerlink" href="#testing-database-capabilities" title="Link to this heading">¶</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">requireCapability</span></code> to skip tests based on database capabilities:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">requireCapability</span>
 
@@ -1387,7 +1469,7 @@ Each test gets its own database context, ensuring tests don’t interfere with e
     <span class="k">pass</span>
 </code></pre></div>
 </div>
-<h2 id="environment-variables"><a class="toc-backref" href="#id6" role="doc-backlink">Environment Variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading">¶</a></h2>
+<h2 id="environment-variables"><a class="toc-backref" href="#id8" role="doc-backlink">Environment Variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading">¶</a></h2>
 <p>Configure your test database via environment variables:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># SQLite (default)</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">TORTOISE_TEST_DB</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span>
@@ -1404,9 +1486,15 @@ Each test gets its own database context, ensuring tests don’t interfere with e
 <span class="nb">export</span><span class="w"> </span><span class="nv">TORTOISE_TEST_DB</span><span class="o">=</span><span class="s2">&quot;postgres://user:pass@localhost:5432/test_{}&quot;</span>
 </code></pre></div>
 </div>
-<h2 id="utility-functions"><a class="toc-backref" href="#id7" role="doc-backlink">Utility Functions</a><a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h2>
-<h3 id="truncate-all-models"><a class="toc-backref" href="#id8" role="doc-backlink">truncate_all_models</a><a class="headerlink" href="#truncate-all-models" title="Link to this heading">¶</a></h3>
-<p>Truncate all model tables in the current context:</p>
+<h2 id="utility-functions"><a class="toc-backref" href="#id9" role="doc-backlink">Utility Functions</a><a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h2>
+<h3 id="truncate-all-models"><a class="toc-backref" href="#id10" role="doc-backlink">truncate_all_models</a><a class="headerlink" href="#truncate-all-models" title="Link to this heading">¶</a></h3>
+<p>Truncate all model tables in the current context. The function handles foreign key
+constraints automatically:</p>
+<ul class="simple">
+<li><p><strong>PostgreSQL</strong>: Uses a single <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span> <span class="pre">...</span> <span class="pre">CASCADE</span></code> statement (fast, single round-trip).</p></li>
+<li><p><strong>Other databases</strong>: Deletes in topological order — child tables are emptied before the
+parent tables they reference, avoiding FK constraint violations.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncate_all_models</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
@@ -1414,7 +1502,7 @@ Each test gets its own database context, ensuring tests don’t interfere with e
     <span class="c1"># Create some data</span>
     <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Truncate all tables</span>
+    <span class="c1"># Truncate all tables (FK-safe)</span>
     <span class="k">await</span> <span class="n">truncate_all_models</span><span class="p">()</span>
 
     <span class="c1"># Tables are now empty</span>
@@ -1422,7 +1510,7 @@ Each test gets its own database context, ensuring tests don’t interfere with e
     <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span>
 </code></pre></div>
 </div>
-<h2 id="migration-from-legacy-test-classes"><a class="toc-backref" href="#id9" role="doc-backlink">Migration from Legacy Test Classes</a><a class="headerlink" href="#migration-from-legacy-test-classes" title="Link to this heading">¶</a></h2>
+<h2 id="migration-from-legacy-test-classes"><a class="toc-backref" href="#id11" role="doc-backlink">Migration from Legacy Test Classes</a><a class="headerlink" href="#migration-from-legacy-test-classes" title="Link to this heading">¶</a></h2>
 <p>If you’re upgrading from the legacy <code class="docutils literal notranslate"><span class="pre">test.TestCase</span></code> classes, see the
 <a class="reference internal" href="../migration_guide.html#migration-guide"><span class="std std-ref">Migration Guide: Tortoise 1.0</span></a> for detailed migration instructions.</p>
 <p><strong>Quick reference:</strong></p>
@@ -1467,7 +1555,7 @@ Each test gets its own database context, ensuring tests don’t interfere with e
 </tr>
 </tbody>
 </table>
-<h2 id="module-tortoise.contrib.test"><span id="reference"></span><a class="toc-backref" href="#id10" role="doc-backlink">Reference</a><a class="headerlink" href="#module-tortoise.contrib.test" title="Link to this heading">¶</a></h2>
+<h2 id="module-tortoise.contrib.test"><span id="reference"></span><a class="toc-backref" href="#id12" role="doc-backlink">Reference</a><a class="headerlink" href="#module-tortoise.contrib.test" title="Link to this heading">¶</a></h2>
 <p>Modern testing utilities for Tortoise ORM.</p>
 <p>Use tortoise_test_context() with pytest fixtures:</p>
 <blockquote>
@@ -1591,8 +1679,9 @@ routers: List of database router paths or classes.</p>
 <dd><p>Truncate all models in the current context.</p>
 <p>This is a utility function for test cleanup that deletes all rows from
 all registered model tables.</p>
-<p>Note: This is a naive implementation that may fail with M2M relations
-and non-cascade foreign keys.</p>
+<p>On PostgreSQL, uses <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span> <span class="pre">...</span> <span class="pre">CASCADE</span></code> for a single fast statement.
+On other databases, deletes in topological (FK dependency) order so that
+child rows are removed before parent rows they reference.</p>
 <dl class="simple">
 <dt>Raises:</dt><dd><p>ValueError: If Tortoise.apps is not loaded.</p>
 </dd>

@@ -21,7 +21,7 @@
     
     
       
-        <title>Connections - Tortoise ORM v1.0.0 Documentation</title>
+        <title>Connections - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -981,6 +981,16 @@
     
     <span class="md-ellipsis">
       <span>Connection Lifecycle</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-loop-handling" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Event Loop Handling</span>
     </span>
   </a>
   
@@ -1910,29 +1920,30 @@
 <p>This document describes how to access database connections in Tortoise ORM.</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#accessing-connections" id="id3">Accessing Connections</a></p>
+<li><p><a class="reference internal" href="#accessing-connections" id="id4">Accessing Connections</a></p>
 <ul>
-<li><p><a class="reference internal" href="#via-tortoise-class-recommended" id="id4">Via <code class="docutils literal notranslate"><span class="pre">Tortoise</span></code> Class (Recommended)</a></p></li>
-<li><p><a class="reference internal" href="#via-helper-functions" id="id5">Via Helper Functions</a></p></li>
-<li><p><a class="reference internal" href="#via-context-advanced" id="id6">Via Context (Advanced)</a></p></li>
+<li><p><a class="reference internal" href="#via-tortoise-class-recommended" id="id5">Via <code class="docutils literal notranslate"><span class="pre">Tortoise</span></code> Class (Recommended)</a></p></li>
+<li><p><a class="reference internal" href="#via-helper-functions" id="id6">Via Helper Functions</a></p></li>
+<li><p><a class="reference internal" href="#via-context-advanced" id="id7">Via Context (Advanced)</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#connection-configuration" id="id7">Connection Configuration</a></p></li>
-<li><p><a class="reference internal" href="#multiple-databases" id="id8">Multiple Databases</a></p></li>
-<li><p><a class="reference internal" href="#closing-connections" id="id9">Closing Connections</a></p></li>
-<li><p><a class="reference internal" href="#connection-lifecycle" id="id10">Connection Lifecycle</a></p></li>
-<li><p><a class="reference internal" href="#api-reference" id="id11">API Reference</a></p>
+<li><p><a class="reference internal" href="#connection-configuration" id="id8">Connection Configuration</a></p></li>
+<li><p><a class="reference internal" href="#multiple-databases" id="id9">Multiple Databases</a></p></li>
+<li><p><a class="reference internal" href="#closing-connections" id="id10">Closing Connections</a></p></li>
+<li><p><a class="reference internal" href="#connection-lifecycle" id="id11">Connection Lifecycle</a></p></li>
+<li><p><a class="reference internal" href="#event-loop-handling" id="id12">Event Loop Handling</a></p></li>
+<li><p><a class="reference internal" href="#api-reference" id="id13">API Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#helper-functions" id="id12">Helper Functions</a></p></li>
-<li><p><a class="reference internal" href="#connectionhandler-class" id="id13">ConnectionHandler Class</a></p></li>
+<li><p><a class="reference internal" href="#helper-functions" id="id14">Helper Functions</a></p></li>
+<li><p><a class="reference internal" href="#connectionhandler-class" id="id15">ConnectionHandler Class</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#migration-from-legacy-api" id="id14">Migration from Legacy API</a></p></li>
+<li><p><a class="reference internal" href="#migration-from-legacy-api" id="id16">Migration from Legacy API</a></p></li>
 </ul>
 </nav>
-<h2 id="accessing-connections"><a class="toc-backref" href="#id3" role="doc-backlink">Accessing Connections</a><a class="headerlink" href="#accessing-connections" title="Link to this heading">¶</a></h2>
+<h2 id="accessing-connections"><a class="toc-backref" href="#id4" role="doc-backlink">Accessing Connections</a><a class="headerlink" href="#accessing-connections" title="Link to this heading">¶</a></h2>
 <p>Tortoise ORM provides multiple ways to access database connections:</p>
-<h3 id="via-tortoise-class-recommended"><a class="toc-backref" href="#id4" role="doc-backlink">Via <code class="docutils literal notranslate"><span class="pre">Tortoise</span></code> Class (Recommended)</a><a class="headerlink" href="#via-tortoise-class-recommended" title="Link to this heading">¶</a></h3>
+<h3 id="via-tortoise-class-recommended"><a class="toc-backref" href="#id5" role="doc-backlink">Via <code class="docutils literal notranslate"><span class="pre">Tortoise</span></code> Class (Recommended)</a><a class="headerlink" href="#via-tortoise-class-recommended" title="Link to this heading">¶</a></h3>
 <p>The simplest way to access connections:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
 
@@ -1943,7 +1954,7 @@
 <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute_query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM &quot;user&quot;&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h3 id="via-helper-functions"><a class="toc-backref" href="#id5" role="doc-backlink">Via Helper Functions</a><a class="headerlink" href="#via-helper-functions" title="Link to this heading">¶</a></h3>
+<h3 id="via-helper-functions"><a class="toc-backref" href="#id6" role="doc-backlink">Via Helper Functions</a><a class="headerlink" href="#via-helper-functions" title="Link to this heading">¶</a></h3>
 <p>For more direct access to the connection handler:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_connection</span><span class="p">,</span> <span class="n">get_connections</span>
 
@@ -1955,7 +1966,7 @@
 <span class="n">all_connections</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </code></pre></div>
 </div>
-<h3 id="via-context-advanced"><a class="toc-backref" href="#id6" role="doc-backlink">Via Context (Advanced)</a><a class="headerlink" href="#via-context-advanced" title="Link to this heading">¶</a></h3>
+<h3 id="via-context-advanced"><a class="toc-backref" href="#id7" role="doc-backlink">Via Context (Advanced)</a><a class="headerlink" href="#via-context-advanced" title="Link to this heading">¶</a></h3>
 <p>When working with explicit contexts:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseContext</span>
 
@@ -1966,7 +1977,7 @@
     <span class="n">conn</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<h2 id="connection-configuration"><a class="toc-backref" href="#id7" role="doc-backlink">Connection Configuration</a><a class="headerlink" href="#connection-configuration" title="Link to this heading">¶</a></h2>
+<h2 id="connection-configuration"><a class="toc-backref" href="#id8" role="doc-backlink">Connection Configuration</a><a class="headerlink" href="#connection-configuration" title="Link to this heading">¶</a></h2>
 <p>Connections are configured when calling <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
     <span class="n">config</span><span class="o">=</span><span class="p">{</span>
@@ -1990,7 +2001,7 @@
 <span class="p">)</span>
 </code></pre></div>
 </div>
-<h2 id="multiple-databases"><a class="toc-backref" href="#id8" role="doc-backlink">Multiple Databases</a><a class="headerlink" href="#multiple-databases" title="Link to this heading">¶</a></h2>
+<h2 id="multiple-databases"><a class="toc-backref" href="#id9" role="doc-backlink">Multiple Databases</a><a class="headerlink" href="#multiple-databases" title="Link to this heading">¶</a></h2>
 <p>Configure multiple connections for different databases:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
     <span class="n">config</span><span class="o">=</span><span class="p">{</span>
@@ -2017,7 +2028,7 @@
 </code></pre></div>
 </div>
 <p>Please refer to <a class="reference internal" href="examples/basic.html#example-two-databases"><span class="std std-ref">this example</span></a> for a detailed demonstration.</p>
-<h2 id="closing-connections"><a class="toc-backref" href="#id9" role="doc-backlink">Closing Connections</a><a class="headerlink" href="#closing-connections" title="Link to this heading">¶</a></h2>
+<h2 id="closing-connections"><a class="toc-backref" href="#id10" role="doc-backlink">Closing Connections</a><a class="headerlink" href="#closing-connections" title="Link to this heading">¶</a></h2>
 <p>Always close connections when shutting down your application:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Close all connections</span>
 <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
@@ -2028,7 +2039,7 @@
 </code></pre></div>
 </div>
 <p>In framework integrations, this is typically handled automatically on shutdown.</p>
-<h2 id="connection-lifecycle"><a class="toc-backref" href="#id10" role="doc-backlink">Connection Lifecycle</a><a class="headerlink" href="#connection-lifecycle" title="Link to this heading">¶</a></h2>
+<h2 id="connection-lifecycle"><a class="toc-backref" href="#id11" role="doc-backlink">Connection Lifecycle</a><a class="headerlink" href="#connection-lifecycle" title="Link to this heading">¶</a></h2>
 <p>Connections are created lazily when first accessed and are managed by the
 <code class="docutils literal notranslate"><span class="pre">ConnectionHandler</span></code> class. Each <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> has its own <code class="docutils literal notranslate"><span class="pre">ConnectionHandler</span></code>,
 providing isolation between different contexts (useful for testing).</p>
@@ -2047,8 +2058,62 @@ providing isolation between different contexts (useful for testing).</p>
 <span class="k">assert</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">conn3</span>
 </code></pre></div>
 </div>
-<h2 id="api-reference"><a class="toc-backref" href="#id11" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h2>
-<h3 id="helper-functions"><span id="connection-handler"></span><a class="toc-backref" href="#id12" role="doc-backlink">Helper Functions</a><a class="headerlink" href="#helper-functions" title="Link to this heading">¶</a></h3>
+<h2 id="event-loop-handling"><a class="toc-backref" href="#id12" role="doc-backlink">Event Loop Handling</a><a class="headerlink" href="#event-loop-handling" title="Link to this heading">¶</a></h2>
+<p>Some database drivers (asyncpg, aiomysql) bind their connection pools to the event loop
+that created them. If the loop changes – for example, when using function-scoped pytest
+fixtures or Starlette’s <code class="docutils literal notranslate"><span class="pre">TestClient</span></code> – the old pool becomes unusable.</p>
+<p>Tortoise handles this automatically: when <code class="docutils literal notranslate"><span class="pre">ConnectionHandler.get()</span></code> detects that the
+current event loop differs from the one the connection was created on, it transparently
+creates a fresh connection.</p>
+<p><strong>In production</strong>, a loop change usually indicates a bug (e.g., mixing sync/async code).
+A <code class="docutils literal notranslate"><span class="pre">TortoiseLoopSwitchWarning</span></code> is emitted so you can investigate:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseLoopSwitchWarning</span>
+
+<span class="c1"># Suppress if you know what you&#39;re doing</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">TortoiseLoopSwitchWarning</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p><strong>In tests</strong>, <code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code> suppresses this warning automatically.
+No special configuration needed.</p>
+<table class="docutils data align-default" id="id2">
+<caption><span class="caption-text">Backend Loop Binding</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>Bound?</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>asyncpg</p></td>
+<td><p>Yes</p></td>
+<td><p>Pool stores loop at creation time</p></td>
+</tr>
+<tr class="row-odd"><td><p>aiomysql/asyncmy</p></td>
+<td><p>Yes</p></td>
+<td><p>Pool stores loop at creation time</p></td>
+</tr>
+<tr class="row-even"><td><p>psycopg</p></td>
+<td><p>No</p></td>
+<td><p>Uses running loop per-operation</p></td>
+</tr>
+<tr class="row-odd"><td><p>aiosqlite</p></td>
+<td><p>Partial</p></td>
+<td><p>Grabs loop per-operation, not at creation</p></td>
+</tr>
+<tr class="row-even"><td><p>asyncodbc (MSSQL/Oracle)</p></td>
+<td><p>No</p></td>
+<td><p>Per-operation loop resolution</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="api-reference"><a class="toc-backref" href="#id13" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h2>
+<h3 id="helper-functions"><span id="connection-handler"></span><a class="toc-backref" href="#id14" role="doc-backlink">Helper Functions</a><a class="headerlink" href="#helper-functions" title="Link to this heading">¶</a></h3>
 <dl class="py function objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.get_connection">
 <span class="sig-prename descclassname"><span class="pre">tortoise.connection.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.get_connection.alias" title="tortoise.connection.get_connection.alias (Python parameter) — The connection alias (e.g., &quot;default&quot;)"><span class="n"><span class="pre">alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.get_connection" title="Link to this definition">¶</a></dt>
@@ -2087,7 +2152,7 @@ via context: <cite>ctx.connections</cite></p>
 </dl>
 </dd></dl>
 
-<h3 id="connectionhandler-class"><a class="toc-backref" href="#id13" role="doc-backlink">ConnectionHandler Class</a><a class="headerlink" href="#connectionhandler-class" title="Link to this heading">¶</a></h3>
+<h3 id="connectionhandler-class"><a class="toc-backref" href="#id15" role="doc-backlink">ConnectionHandler Class</a><a class="headerlink" href="#connectionhandler-class" title="Link to this heading">¶</a></h3>
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionHandler</span></span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler" title="Link to this definition">¶</a></dt>
@@ -2167,6 +2232,10 @@ this method else there would be a connection leak (dangling connection).</p>
 <dt class="sig sig-object highlight py" id="tortoise.connection.ConnectionHandler.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.connection.ConnectionHandler.get.conn_alias" title="tortoise.connection.ConnectionHandler.get.conn_alias (Python parameter) — The alias for which the connection has to be fetched"><span class="n"><span class="pre">conn_alias</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/connection.html#ConnectionHandler.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.connection.ConnectionHandler.get" title="Link to this definition">¶</a></dt>
 <dd><p>Return the connection object for the given alias, creating it if needed.</p>
+<p>If the connection’s event loop has changed (e.g., in a test with a new event loop),
+the connection is transparently replaced with a fresh one and a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TortoiseLoopSwitchWarning</span></code>
+is emitted.</p>
 <p>Used for accessing the low-level connection object
 (<a class="reference internal" href="databases.html#tortoise.backends.base.client.BaseDBAsyncClient" title="tortoise.backends.base.client.BaseDBAsyncClient (Python class) — Base class for containing a DB connection."><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseDBAsyncClient</span></code></a>) for the
 given alias.</p>
@@ -2234,7 +2303,7 @@ original connection when the transaction completes.</p>
 
 </dd></dl>
 
-<h2 id="migration-from-legacy-api"><a class="toc-backref" href="#id14" role="doc-backlink">Migration from Legacy API</a><a class="headerlink" href="#migration-from-legacy-api" title="Link to this heading">¶</a></h2>
+<h2 id="migration-from-legacy-api"><a class="toc-backref" href="#id16" role="doc-backlink">Migration from Legacy API</a><a class="headerlink" href="#migration-from-legacy-api" title="Link to this heading">¶</a></h2>
 <p>If you’re upgrading from an older version that used the <code class="docutils literal notranslate"><span class="pre">connections</span></code> singleton,
 see the <a class="reference internal" href="migration_guide.html#migration-guide"><span class="std std-ref">Migration Guide: Tortoise 1.0</span></a> for details.</p>
 <div class="note admonition">
@@ -2244,8 +2313,8 @@ proxy that delegates to the current context’s <code class="docutils literal no
 should use <code class="docutils literal notranslate"><span class="pre">get_connection()</span></code> / <code class="docutils literal notranslate"><span class="pre">get_connections()</span></code> or <code class="docutils literal notranslate"><span class="pre">Tortoise.get_connection()</span></code>.</p>
 </div>
 <p><strong>Quick reference:</strong></p>
-<table class="docutils data align-default" id="id2">
-<caption><span class="caption-text">API Migration</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<table class="docutils data align-default" id="id3">
+<caption><span class="caption-text">API Migration</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />

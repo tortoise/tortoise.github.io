@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.contrib.test - Tortoise ORM v1.0.0 Documentation</title>
+        <title>tortoise.contrib.test - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -706,12 +706,15 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">unittest</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkipTest</span><span class="p">,</span> <span class="n">expectedFailure</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="n">skipIf</span><span class="p">,</span> <span class="n">skipUnless</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_connection</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseContext</span><span class="p">,</span> <span class="n">tortoise_test_context</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
 <span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
@@ -750,20 +753,89 @@
 <span class="sd">    This is a utility function for test cleanup that deletes all rows from</span>
 <span class="sd">    all registered model tables.</span>
 
-<span class="sd">    Note: This is a naive implementation that may fail with M2M relations</span>
-<span class="sd">    and non-cascade foreign keys.</span>
+<span class="sd">    On PostgreSQL, uses ``TRUNCATE ... CASCADE`` for a single fast statement.</span>
+<span class="sd">    On other databases, deletes in topological (FK dependency) order so that</span>
+<span class="sd">    child rows are removed before parent rows they reference.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If Tortoise.apps is not loaded.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;apps are not loaded&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">get_models_iterable</span><span class="p">():</span>
-        <span class="n">quote_char</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">query_class</span><span class="o">.</span><span class="n">SQL_CONTEXT</span><span class="o">.</span><span class="n">quote_char</span>
-        <span class="k">await</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;DELETE FROM </span><span class="si">{</span><span class="n">quote_char</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}{</span><span class="n">quote_char</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># nosec</span>
-        <span class="p">)</span></div>
 
+    <span class="n">models</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span><span class="o">.</span><span class="n">get_models_iterable</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">models</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">db</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span>
+    <span class="n">dialect</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">capabilities</span><span class="o">.</span><span class="n">dialect</span>
+
+    <span class="k">if</span> <span class="n">dialect</span> <span class="o">==</span> <span class="s2">&quot;postgres&quot;</span><span class="p">:</span>
+        <span class="c1"># PostgreSQL supports TRUNCATE with CASCADE — single statement, fast</span>
+        <span class="n">tables</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}</span><span class="s1">&quot;&#39;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TRUNCATE </span><span class="si">{</span><span class="n">tables</span><span class="si">}</span><span class="s2"> CASCADE&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># For other dialects, topologically sort by FK dependencies (children first)</span>
+        <span class="n">sorted_models</span> <span class="o">=</span> <span class="n">_topological_sort_models</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+
+        <span class="c1"># Disable FK checks to handle self-referential and circular FK constraints</span>
+        <span class="k">if</span> <span class="n">dialect</span> <span class="o">==</span> <span class="s2">&quot;mysql&quot;</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;SET FOREIGN_KEY_CHECKS = 0&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dialect</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = OFF&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">sorted_models</span><span class="p">:</span>
+                <span class="n">quote_char</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">query_class</span><span class="o">.</span><span class="n">SQL_CONTEXT</span><span class="o">.</span><span class="n">quote_char</span>
+                <span class="k">await</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;DELETE FROM </span><span class="si">{</span><span class="n">quote_char</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}{</span><span class="n">quote_char</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># nosec</span>
+                <span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dialect</span> <span class="o">==</span> <span class="s2">&quot;mysql&quot;</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;SET FOREIGN_KEY_CHECKS = 1&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dialect</span> <span class="o">==</span> <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_topological_sort_models</span><span class="p">(</span><span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sort models so children come before parents (safe delete order).</span>
+
+<span class="sd">    Uses Kahn&#39;s algorithm on FK dependencies. Models that depend on others</span>
+<span class="sd">    via ForeignKey are placed *before* the models they reference, ensuring</span>
+<span class="sd">    child rows are deleted before parent rows.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="n">ForeignKeyFieldInstance</span>
+
+    <span class="n">model_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+    <span class="c1"># Build adjacency for delete order: parent -&gt; children that must be deleted first</span>
+    <span class="c1"># If Event has FK to Tournament, then Tournament depends on Event being deleted first</span>
+    <span class="n">deps</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span> <span class="nb">set</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">ForeignKeyFieldInstance</span><span class="p">):</span>
+                <span class="n">related</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">related_model</span>
+                <span class="k">if</span> <span class="n">related</span> <span class="ow">in</span> <span class="n">model_set</span> <span class="ow">and</span> <span class="n">related</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+                    <span class="n">deps</span><span class="p">[</span><span class="n">related</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="c1"># Kahn&#39;s algorithm — emit models whose deps are already emitted</span>
+    <span class="n">sorted_models</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">no_deps</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">deps</span><span class="p">[</span><span class="n">m</span><span class="p">]]</span>
+    <span class="k">while</span> <span class="n">no_deps</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">no_deps</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">sorted_models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">other</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+            <span class="n">deps</span><span class="p">[</span><span class="n">other</span><span class="p">]</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">deps</span><span class="p">[</span><span class="n">other</span><span class="p">]</span> <span class="ow">and</span> <span class="n">other</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sorted_models</span> <span class="ow">and</span> <span class="n">other</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">no_deps</span><span class="p">:</span>
+                <span class="n">no_deps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="c1"># Append any remaining (circular deps — fallback)</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sorted_models</span><span class="p">:</span>
+            <span class="n">sorted_models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sorted_models</span>
 
 
 <span class="n">_FT</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_FT&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span>

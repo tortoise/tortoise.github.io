@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.context - Tortoise ORM v1.0.0 Documentation</title>
+        <title>tortoise.context - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1253,23 +1253,29 @@
 <span class="sd">    Yields:</span>
 <span class="sd">        An initialized TortoiseContext ready for use.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ctx</span> <span class="o">=</span> <span class="n">TortoiseContext</span><span class="p">()</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="n">ctx</span><span class="p">:</span>
-        <span class="n">config</span> <span class="o">=</span> <span class="n">generate_config</span><span class="p">(</span>
-            <span class="n">db_url</span><span class="p">,</span>
-            <span class="n">app_modules</span><span class="o">=</span><span class="p">{</span><span class="n">app_label</span><span class="p">:</span> <span class="n">modules</span><span class="p">},</span>
-            <span class="n">connection_label</span><span class="o">=</span><span class="n">connection_label</span><span class="p">,</span>
-            <span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-            <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-            <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">use_tz</span><span class="o">=</span><span class="n">use_tz</span><span class="p">,</span>
-            <span class="n">timezone</span><span class="o">=</span><span class="n">timezone</span><span class="p">,</span>
-            <span class="n">routers</span><span class="o">=</span><span class="n">routers</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="n">ctx</span></div>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseLoopSwitchWarning</span>
+
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">TortoiseLoopSwitchWarning</span><span class="p">)</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">TortoiseContext</span><span class="p">()</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">ctx</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">generate_config</span><span class="p">(</span>
+                <span class="n">db_url</span><span class="p">,</span>
+                <span class="n">app_modules</span><span class="o">=</span><span class="p">{</span><span class="n">app_label</span><span class="p">:</span> <span class="n">modules</span><span class="p">},</span>
+                <span class="n">connection_label</span><span class="o">=</span><span class="n">connection_label</span><span class="p">,</span>
+                <span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+                <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">use_tz</span><span class="o">=</span><span class="n">use_tz</span><span class="p">,</span>
+                <span class="n">timezone</span><span class="o">=</span><span class="n">timezone</span><span class="p">,</span>
+                <span class="n">routers</span><span class="o">=</span><span class="n">routers</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">ctx</span></div>
 
 
 

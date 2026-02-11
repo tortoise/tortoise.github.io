@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v1.0.0 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1604,6 +1604,129 @@
             <span class="n">obj</span><span class="o">.</span><span class="n">pk</span> <span class="o">=</span> <span class="n">pk</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">_saved_in_db</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<div class="viewcode-block" id="Model.construct">
+<a class="viewcode-back" href="../../models.html#tortoise.models.Model.construct">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">construct</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">MODEL</span><span class="p">],</span> <span class="n">_saved_in_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MODEL</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a model instance without validation, DB checks, or FK restrictions.</span>
+
+<span class="sd">        This creates a &quot;detached&quot; instance that has the right shape for reading</span>
+<span class="sd">        attributes and iterating relations, but is not part of the ORM lifecycle.</span>
+<span class="sd">        Useful for unit testing and serialization without a database connection.</span>
+
+<span class="sd">        Unlike ``__init__``, this method:</span>
+<span class="sd">        - Does NOT validate field values (nullability, type checks)</span>
+<span class="sd">        - Does NOT require FK objects to be saved to the database</span>
+<span class="sd">        - Does NOT prevent setting backward FK, backward O2O, or M2M fields</span>
+<span class="sd">        - Does NOT call ``to_python_value`` on data fields</span>
+<span class="sd">        - Skips async defaults (sets them to ``None``)</span>
+
+<span class="sd">        Backward FK and M2M fields are wrapped in ``ReverseRelation`` and</span>
+<span class="sd">        ``ManyToManyRelation`` respectively with ``_fetched=True`` so that</span>
+<span class="sd">        iteration, ``len()``, ``in``, and ``bool()`` work without raising</span>
+<span class="sd">        ``NoValuesFetched``.</span>
+
+<span class="sd">        Example::</span>
+
+<span class="sd">            tournament = Tournament.construct(id=1, name=&quot;Test&quot;)</span>
+<span class="sd">            event = Event.construct(</span>
+<span class="sd">                name=&quot;Game&quot;,</span>
+<span class="sd">                tournament=tournament,</span>
+<span class="sd">                participants=[</span>
+<span class="sd">                    Team.construct(id=1, name=&quot;Team A&quot;),</span>
+<span class="sd">                    Team.construct(id=2, name=&quot;Team B&quot;),</span>
+<span class="sd">                ],</span>
+<span class="sd">            )</span>
+<span class="sd">            assert event.tournament.name == &quot;Test&quot;</span>
+<span class="sd">            assert event.tournament_id == 1</span>
+<span class="sd">            assert len(event.participants) == 2</span>
+
+<span class="sd">        :param _saved_in_db: Whether to mark the instance as saved in DB.</span>
+<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">        :param kwargs: Field values to set on the instance.</span>
+<span class="sd">        :return: A new model instance with the given field values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta</span>
+        <span class="n">_setattr</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span>
+
+        <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_partial&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_saved_in_db&quot;</span><span class="p">,</span> <span class="n">_saved_in_db</span><span class="p">)</span>
+        <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_custom_generated_pk&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_await_when_save&quot;</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="c1"># Track source fields that are auto-populated from FK/O2O objects</span>
+        <span class="c1"># so that the default-setting loop doesn&#39;t overwrite them with None.</span>
+        <span class="n">populated_source_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">backward_fk_fields</span><span class="p">:</span>
+                <span class="c1"># Backward FK: wrap in ReverseRelation with _fetched=True</span>
+                <span class="n">backward_fk</span><span class="p">:</span> <span class="n">BackwardFKRelation</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+                <span class="n">rel</span> <span class="o">=</span> <span class="n">ReverseRelation</span><span class="p">(</span>
+                    <span class="n">backward_fk</span><span class="o">.</span><span class="n">related_model</span><span class="p">,</span>
+                    <span class="n">backward_fk</span><span class="o">.</span><span class="n">relation_field</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="p">,</span>
+                    <span class="n">backward_fk</span><span class="o">.</span><span class="n">to_field_instance</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">rel</span><span class="o">.</span><span class="n">_fetched</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">rel</span><span class="o">.</span><span class="n">related_objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">rel</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">m2m_fields</span><span class="p">:</span>
+                <span class="c1"># M2M: wrap in ManyToManyRelation with _fetched=True</span>
+                <span class="n">field_object</span><span class="p">:</span> <span class="n">ManyToManyFieldInstance</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+                <span class="n">m2m_rel</span> <span class="o">=</span> <span class="n">ManyToManyRelation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_object</span><span class="p">)</span>
+                <span class="n">m2m_rel</span><span class="o">.</span><span class="n">_fetched</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">m2m_rel</span><span class="o">.</span><span class="n">related_objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">m2m_rel</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">backward_o2o_fields</span><span class="p">:</span>
+                <span class="c1"># Backward O2O: store at _{key} for property getter</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">fk_fields</span> <span class="ow">or</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">o2o_fields</span><span class="p">:</span>
+                <span class="c1"># FK/O2O: store at _{key} for property getter, also set source field</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="n">fk_field</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="nb">hasattr</span><span class="p">(</span><span class="n">fk_field</span><span class="p">,</span> <span class="s2">&quot;to_field_instance&quot;</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="n">fk_field</span><span class="o">.</span><span class="n">to_field_instance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="p">):</span>
+                    <span class="n">source_field</span> <span class="o">=</span> <span class="n">fk_field</span><span class="o">.</span><span class="n">source_field</span>
+                    <span class="k">if</span> <span class="n">source_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">_setattr</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="p">,</span>
+                                <span class="n">source_field</span><span class="p">,</span>
+                                <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">fk_field</span><span class="o">.</span><span class="n">to_field_instance</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_field</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="n">populated_source_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source_field</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Data fields, source fields, or unknown fields: store directly</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="c1"># Set defaults for unprovided non-relational fields</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">fetch_fields</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">populated_source_fields</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">default_field</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">fields_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">field_default</span> <span class="o">=</span> <span class="n">default_field</span><span class="o">.</span><span class="n">default</span>
+            <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">field_default</span><span class="p">):</span>
+                <span class="c1"># Async defaults are skipped in construct() since it is synchronous</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">field_default</span><span class="p">):</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_default</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="n">field_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_default</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
 
 
 <div class="viewcode-block" id="Model.update_from_dict">

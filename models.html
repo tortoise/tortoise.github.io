@@ -21,7 +21,7 @@
     
     
       
-        <title>Models - Tortoise ORM v1.0.0 Documentation</title>
+        <title>Models - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1242,6 +1242,84 @@
     
     <span class="md-ellipsis">
       <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.construct (Python method) — Create a model instance without validation, DB checks, or FK restrictions."><span>construct</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct._saved_in_db" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.construct._saved_in_db (Python parameter) — Whether to mark the instance as saved in DB. Defaults to False."><span>_<wbr>saved_<wbr>in_<wbr>db</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct.kwargs" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.construct.kwargs (Python parameter) — Field values to set on the instance."><span>kwargs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.construct-returns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
     </span>
   </a>
   
@@ -4008,6 +4086,57 @@ Any value you specify here will always be used.</p>
 </dd>
 <dt class="field-even" id="tortoise.models.Model.clone-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.clone-raises" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – If pk is required but not provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.models.Model.construct">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">construct</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.construct._saved_in_db" title="tortoise.models.Model.construct._saved_in_db (Python parameter) — Whether to mark the instance as saved in DB. Defaults to False."><span class="n"><span class="pre">_saved_in_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.models.Model.construct.kwargs" title="tortoise.models.Model.construct.kwargs (Python parameter) — Field values to set on the instance."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.construct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.construct" title="Link to this definition">¶</a></dt>
+<dd><p>Create a model instance without validation, DB checks, or FK restrictions.</p>
+<p>This creates a “detached” instance that has the right shape for reading
+attributes and iterating relations, but is not part of the ORM lifecycle.
+Useful for unit testing and serialization without a database connection.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, this method:
+- Does NOT validate field values (nullability, type checks)
+- Does NOT require FK objects to be saved to the database
+- Does NOT prevent setting backward FK, backward O2O, or M2M fields
+- Does NOT call <code class="docutils literal notranslate"><span class="pre">to_python_value</span></code> on data fields
+- Skips async defaults (sets them to <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
+<p>Backward FK and M2M fields are wrapped in <code class="docutils literal notranslate"><span class="pre">ReverseRelation</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ManyToManyRelation</span></code> respectively with <code class="docutils literal notranslate"><span class="pre">_fetched=True</span></code> so that
+iteration, <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, and <code class="docutils literal notranslate"><span class="pre">bool()</span></code> work without raising
+<code class="docutils literal notranslate"><span class="pre">NoValuesFetched</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">tournament</span> <span class="o">=</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Game&quot;</span><span class="p">,</span>
+    <span class="n">tournament</span><span class="o">=</span><span class="n">tournament</span><span class="p">,</span>
+    <span class="n">participants</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">Team</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Team A&quot;</span><span class="p">),</span>
+        <span class="n">Team</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Team B&quot;</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test&quot;</span>
+<span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">tournament_id</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">participants</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.models.Model.construct-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.construct-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.models.Model.construct._saved_in_db"><span class="n sig-name">_saved_in_db</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.models.Model.construct._saved_in_db" title="Permalink to this definition">¶</a></dt><dd><p>Whether to mark the instance as saved in DB.
+Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt id="tortoise.models.Model.construct.kwargs"><span class="o">**</span><span class="n sig-name">kwargs</span><a class="headerlink" href="#tortoise.models.Model.construct.kwargs" title="Permalink to this definition">¶</a></dt><dd><p>Field values to set on the instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.models.Model.construct-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.construct-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models.">Model</a></p>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.construct-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.construct-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>A new model instance with the given field values.</p>
 </dd>
 </dl>
 </dd></dl>

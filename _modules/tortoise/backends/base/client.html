@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.backends.base.client - Tortoise ORM v1.0.0 Documentation</title>
+        <title>tortoise.backends.base.client - Tortoise ORM v1.1.0 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.0.0 Documentation
+            Tortoise ORM 1.1.0 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.0.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.0.0 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.0 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.0 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.0.0 Documentation
+    Tortoise ORM v1.1.0 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -801,6 +801,7 @@
     <span class="n">_connection</span><span class="p">:</span> <span class="n">Any</span>
     <span class="n">_parent</span><span class="p">:</span> <span class="n">BaseDBAsyncClient</span>
     <span class="n">_pool</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">_bound_loop</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">AbstractEventLoop</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">connection_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">query_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Query</span><span class="p">]</span> <span class="o">=</span> <span class="n">Query</span>
     <span class="n">executor_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseExecutor</span><span class="p">]</span> <span class="o">=</span> <span class="n">BaseExecutor</span>
@@ -811,6 +812,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">db_client_logger</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection_name</span> <span class="o">=</span> <span class="n">connection_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fetch_inserted</span> <span class="o">=</span> <span class="n">fetch_inserted</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the current event loop matches the one this client was created on.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># No running loop — can&#39;t validate</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_loop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Not yet bound (pool not created yet)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_loop</span> <span class="ow">is</span> <span class="n">current</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_post_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called after pool/connection is created. Records the bound loop.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bound_loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BaseDBAsyncClient.create_connection">
 <a class="viewcode-back" href="../../../../databases.html#tortoise.backends.base.client.BaseDBAsyncClient.create_connection">[docs]</a>
