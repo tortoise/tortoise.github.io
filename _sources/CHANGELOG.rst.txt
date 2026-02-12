@@ -8,6 +8,13 @@ Changelog
 1.1
 ===
 
+1.1.2
+-----
+
+Fixed
+^^^^^
+- Fixed optimisation issue, if you didn't have pydantic installed, Tortoise would try to import it on every JSONField deserialization, lowering performance.
+
 1.1.1
 -----
 
