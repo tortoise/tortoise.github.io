@@ -1039,7 +1039,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># mypy: no-disallow-untyped-decorators</span>
 <span class="c1"># pylint: disable=E0611,E0401</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">multiprocessing</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">asynccontextmanager</span>
@@ -1051,11 +1050,10 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">asgi_lifespan</span><span class="w"> </span><span class="kn">import</span> <span class="n">LifespanManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">httpx</span><span class="w"> </span><span class="kn">import</span> <span class="n">ASGITransport</span><span class="p">,</span> <span class="n">AsyncClient</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">MEMORY_SQLITE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncate_all_models</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSON_LOADS</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.timezone</span><span class="w"> </span><span class="kn">import</span> <span class="n">UTC</span><span class="p">,</span> <span class="n">localtime</span>
 
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_URL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MEMORY_SQLITE</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">config</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_orm</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
@@ -1080,7 +1078,6 @@
 
 <span class="nd">@asynccontextmanager</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">client_manager</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://test&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClientManagerType</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">testing</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">LifespanManager</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
         <span class="n">transport</span> <span class="o">=</span> <span class="n">ASGITransport</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">)</span>
         <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncClient</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="n">transport</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
@@ -1090,6 +1087,7 @@
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ClientManagerType</span><span class="p">:</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">client_manager</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">truncate_all_models</span><span class="p">()</span>
         <span class="k">yield</span> <span class="n">c</span>
 
 
@@ -1100,6 +1098,7 @@
     <span class="k">async</span> <span class="k">with</span> <span class="n">client_manager</span><span class="p">(</span><span class="n">app_east</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
         <span class="n">ctx</span> <span class="o">=</span> <span class="n">app_east</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">_tortoise_context</span>
         <span class="k">with</span> <span class="n">ctx</span><span class="p">:</span>  <span class="c1"># Enter context to make it current via contextvar</span>
+            <span class="k">await</span> <span class="n">truncate_all_models</span><span class="p">()</span>
             <span class="k">yield</span> <span class="n">c</span>
 
 
@@ -1227,52 +1226,23 @@
 </div>
 <h3 id="main-py">main.py<a class="headerlink" href="#main-py" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># pylint: disable=E0611,E0401</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">asynccontextmanager</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">config</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_orm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">routers</span><span class="w"> </span><span class="kn">import</span> <span class="n">router</span> <span class="k">as</span> <span class="n">users_router</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">examples.fastapi.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_orm</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.backends.base.config_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_config</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterTortoise</span><span class="p">,</span> <span class="n">tortoise_exception_handlers</span>
-
-
-<span class="nd">@asynccontextmanager</span>
-<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan_test</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">generate_config</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TORTOISE_TEST_DB&quot;</span><span class="p">,</span> <span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">),</span>
-        <span class="n">app_modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">]},</span>
-        <span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">connection_label</span><span class="o">=</span><span class="s2">&quot;models&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="n">RegisterTortoise</span><span class="p">(</span>
-        <span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">,</span>
-        <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-        <span class="n">generate_schemas</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">_create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="c1"># db connected</span>
-        <span class="k">yield</span>
-        <span class="c1"># app teardown</span>
-    <span class="c1"># db connections closed</span>
-    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">_drop_databases</span><span class="p">()</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">tortoise_exception_handlers</span>
 
 
 <span class="nd">@asynccontextmanager</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s2">&quot;testing&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="n">lifespan_test</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
-            <span class="k">yield</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># app startup</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="n">register_orm</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-            <span class="c1"># db connected</span>
-            <span class="k">yield</span>
-            <span class="c1"># app teardown</span>
-        <span class="c1"># db connections closed</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">register_orm</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+        <span class="c1"># db connected</span>
+        <span class="k">yield</span>
+        <span class="c1"># app teardown</span>
+    <span class="c1"># db connections closed</span>
 
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>

@@ -3622,7 +3622,17 @@
 </code></pre></div>
 </div>
 <p>This model will not affect the schema, but it will be available for inheritance.</p>
-<p>Further we have field <code class="docutils literal notranslate"><span class="pre">fields.DatetimeField(auto_now=True)</span></code>. Options <code class="docutils literal notranslate"><span class="pre">auto_now</span></code> and <code class="docutils literal notranslate"><span class="pre">auto_now_add</span></code> work like Django’s options.</p>
+<p>Further we have field <code class="docutils literal notranslate"><span class="pre">fields.DatetimeField(auto_now=True)</span></code>. Options <code class="docutils literal notranslate"><span class="pre">auto_now</span></code> and <code class="docutils literal notranslate"><span class="pre">auto_now_add</span></code> work like Django’s options — they are handled purely in Python and do <strong>not</strong> add a <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> clause to the database schema. If you need a database-level default timestamp, use <code class="docutils literal notranslate"><span class="pre">db_default</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatetimeField</span><span class="p">,</span> <span class="n">Now</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># Python-only: value set by ORM on save, no DB DEFAULT</span>
+    <span class="n">modified</span> <span class="o">=</span> <span class="n">DatetimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># DB-level: emits DEFAULT CURRENT_TIMESTAMP in the schema</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">DatetimeField</span><span class="p">(</span><span class="n">db_default</span><span class="o">=</span><span class="n">Now</span><span class="p">())</span>
+</code></pre></div>
+</div>
 <h3 id="use-of-models">Use of <code class="docutils literal notranslate"><span class="pre">__models__</span></code><a class="headerlink" href="#use-of-models" title="Link to this heading">¶</a></h3>
 <p>If you define the variable <code class="docutils literal notranslate"><span class="pre">__models__</span></code> in the module which you load your models from, <code class="docutils literal notranslate"><span class="pre">generate_schema</span></code> will use that list, rather than automatically finding models for you.</p>
 <h3 id="primary-keys">Primary Keys<a class="headerlink" href="#primary-keys" title="Link to this heading">¶</a></h3>

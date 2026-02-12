@@ -2332,6 +2332,46 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#module-tortoise.fields.db_defaults" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.fields.db_defaults (Python module)"><span>DB Default Expressions</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DB Default Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.fields.db_defaults.Now" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.fields.db_defaults.Now (Python class) — Convenience subclass of SqlDefault that emits CURRENT_TIMESTAMP."><span>tortoise.<wbr>fields.<wbr>db_<wbr>defaults.<wbr>Now</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.fields.db_defaults.SqlDefault" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.fields.db_defaults.SqlDefault (Python class) — Represents a raw SQL expression for use as a database-level default value."><span>tortoise.<wbr>fields.<wbr>db_<wbr>defaults.<wbr>Sql<wbr>Default</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#db-specific-fields" class="md-nav__link">
     
     <span class="md-ellipsis">
@@ -4145,6 +4185,36 @@ The default is True, and that’s almost certainly what you want; setting this t
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneFieldInstance</span></code>[Model]]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<h3 id="module-tortoise.fields.db_defaults"><span id="db-default-expressions"></span>DB Default Expressions<a class="headerlink" href="#module-tortoise.fields.db_defaults" title="Link to this heading">¶</a></h3>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.fields.db_defaults.Now">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.fields.db_defaults.</span></span><span class="sig-name descname"><span class="pre">Now</span></span><a class="reference internal" href="_modules/tortoise/fields/db_defaults.html#Now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.db_defaults.Now" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience subclass of <a class="reference internal" href="#tortoise.fields.db_defaults.SqlDefault" title="tortoise.fields.db_defaults.SqlDefault (Python class) — Represents a raw SQL expression for use as a database-level default value."><code class="xref py py-class docutils literal notranslate"><span class="pre">SqlDefault</span></code></a> that emits <code class="docutils literal notranslate"><span class="pre">CURRENT_TIMESTAMP</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">db_default</span><span class="o">=</span><span class="n">Now</span><span class="p">())</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.fields.db_defaults.SqlDefault">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.fields.db_defaults.</span></span><span class="sig-name descname"><span class="pre">SqlDefault</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.fields.db_defaults.SqlDefault" title="tortoise.fields.db_defaults.SqlDefault.__init__.sql (Python parameter)"><span class="n"><span class="pre">sql</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/fields/db_defaults.html#SqlDefault"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.db_defaults.SqlDefault" title="Link to this definition">¶</a></dt>
+<dd><p>Represents a raw SQL expression for use as a database-level default value.</p>
+<p>Use this with the <code class="docutils literal notranslate"><span class="pre">db_default</span></code> parameter on fields to emit raw SQL
+in both <code class="docutils literal notranslate"><span class="pre">generate_schemas()</span></code> and migrations.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>The SQL string is emitted verbatim into DDL statements.
+Never construct it from untrusted user input.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">db_default</span><span class="o">=</span><span class="n">SqlDefault</span><span class="p">(</span><span class="s2">&quot;CURRENT_TIMESTAMP&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
 </dd></dl>
 
 <h3 id="db-specific-fields">DB Specific Fields<a class="headerlink" href="#db-specific-fields" title="Link to this heading">¶</a></h3>
