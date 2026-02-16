@@ -21,7 +21,7 @@
     
     
       
-        <title>Fields - Tortoise ORM v1.1.2 Documentation</title>
+        <title>Fields - Tortoise ORM v1.1.3 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.2 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.2 Documentation
+            Tortoise ORM 1.1.3 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.2 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.2 Documentation
+    Tortoise ORM v1.1.3 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -2355,6 +2355,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.fields.db_defaults.RandomHex" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.fields.db_defaults.RandomHex (Python class) — Convenience subclass of SqlDefault that emits a dialect-specific expression for generating a random 32-character hex string."><span>tortoise.<wbr>fields.<wbr>db_<wbr>defaults.<wbr>Random<wbr>Hex</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.fields.db_defaults.SqlDefault" class="md-nav__link">
     
       <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
@@ -4195,6 +4207,18 @@ The default is True, and that’s almost certainly what you want; setting this t
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DatetimeField</span><span class="p">(</span><span class="n">db_default</span><span class="o">=</span><span class="n">Now</span><span class="p">())</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.fields.db_defaults.RandomHex">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.fields.db_defaults.</span></span><span class="sig-name descname"><span class="pre">RandomHex</span></span><a class="reference internal" href="_modules/tortoise/fields/db_defaults.html#RandomHex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.fields.db_defaults.RandomHex" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience subclass of <a class="reference internal" href="#tortoise.fields.db_defaults.SqlDefault" title="tortoise.fields.db_defaults.SqlDefault (Python class) — Represents a raw SQL expression for use as a database-level default value."><code class="xref py py-class docutils literal notranslate"><span class="pre">SqlDefault</span></code></a> that emits a dialect-specific
+expression for generating a random 32-character hex string.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tracking_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">db_default</span><span class="o">=</span><span class="n">RandomHex</span><span class="p">())</span>
 </code></pre></div>
 </div>
 </dd></dl>

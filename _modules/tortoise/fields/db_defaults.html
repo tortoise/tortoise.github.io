@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.fields.db_defaults - Tortoise ORM v1.1.2 Documentation</title>
+        <title>tortoise.fields.db_defaults - Tortoise ORM v1.1.3 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v1.1.2 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.2 Documentation
+            Tortoise ORM 1.1.3 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v1.1.2 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.2 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.2 Documentation
+    Tortoise ORM v1.1.3 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -739,6 +739,45 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Now()&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="RandomHex">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.db_defaults.RandomHex">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RandomHex</span><span class="p">(</span><span class="n">SqlDefault</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience subclass of :class:`SqlDefault` that emits a dialect-specific</span>
+<span class="sd">    expression for generating a random 32-character hex string.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">        class MyModel(Model):</span>
+<span class="sd">            tracking_id = fields.CharField(max_length=36, db_default=RandomHex())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_DIALECT_SQL</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sqlite&quot;</span><span class="p">:</span> <span class="s2">&quot;(lower(hex(randomblob(16))))&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;postgres&quot;</span><span class="p">:</span> <span class="s2">&quot;md5(random()::text)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mysql&quot;</span><span class="p">:</span> <span class="s2">&quot;(LOWER(HEX(RANDOM_BYTES(16))))&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mssql&quot;</span><span class="p">:</span> <span class="s2">&quot;(LOWER(CONVERT(VARCHAR(32), HASHBYTES(&#39;MD5&#39;, NEWID()), 2)))&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;oracle&quot;</span><span class="p">:</span> <span class="s2">&quot;LOWER(RAWTOHEX(SYS_GUID()))&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_DIALECT_SQL</span><span class="p">[</span><span class="s2">&quot;sqlite&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dialect</span> <span class="ow">and</span> <span class="n">dialect</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DIALECT_SQL</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DIALECT_SQL</span><span class="p">[</span><span class="n">dialect</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;RandomHex()&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">RandomHex</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;RandomHex&quot;</span><span class="p">)</span></div>
 
 </code></pre></div>
 
