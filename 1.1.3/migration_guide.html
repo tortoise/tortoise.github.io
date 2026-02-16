@@ -1,0 +1,1506 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="contrib/blacksheep.html">
+      
+      
+        <link rel="next" href="CHANGELOG.html">
+      
+      
+      <link rel="icon" href="_static/tortoise.png">
+    
+    
+      
+        <title>Migration Guide: Tortoise 1.0 - Tortoise ORM v1.1.3 Documentation</title>
+      
+    
+    
+      
+        
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.acf80fe7f4d9ef9e2.min.css?v=9e56d0d2" />
+        <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-MJ7RHW2FRB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-MJ7RHW2FRB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-MJ7RHW2FRB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tortoise ORM 1.1.3 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migration Guide: Tortoise 1.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Tortoise ORM</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="getting_started.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Getting started</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="reference.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Reference</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="examples.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="contrib.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contrib</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="#" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CHANGELOG.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Changelog</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="roadmap.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Roadmap</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTING.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Contribution Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="CONTRIBUTORS.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Thanks</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="toc.html" title="Tortoise ORM v1.1.3 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.3 Documentation" data-md-component="logo">
+      <img src="_static/tortoise.png" alt="logo">
+    </a>
+    Tortoise ORM v1.1.3 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tortoise/tortoise-orm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tortoise-orm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Tortoise ORM</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Getting started</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Reference</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contrib.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contrib</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Migration Guide:<wbr> Tortoise 1.<wbr>0</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Overview</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Quick Reference</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-stays-the-same" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>What Stays the Same</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-access-changes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Connection Access Changes</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection Access Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#old-pattern-deprecated" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Old Pattern <wbr>(Deprecated)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-pattern" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>New Pattern</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-migration" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Test Migration</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#old-test-pattern" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Old Test Pattern</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-test-pattern" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>New Test Pattern</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-checklist" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Migration Checklist</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-asyncio-run-calls-uncommon-pattern" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Multiple asyncio.<wbr>run<wbr>() Calls <wbr>(Uncommon Pattern)</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple asyncio.run() Calls (Uncommon Pattern)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#old-pattern-no-longer-works" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Old Pattern <wbr>(No Longer Works)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-patterns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>New Patterns</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-tortoisecontext-directly" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Using Tortoise<wbr>Context Directly</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framework-integration-changes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Framework Integration Changes</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framework Integration Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-fastapi-apps-global-fallback" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Multiple Fast<wbr>API Apps <wbr>(Global Fallback)</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-integration-migration" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Custom Integration Migration</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removed-apis" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Removed APIs</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-apis" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Deprecated APIs</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#still-available" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Still Available</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Troubleshooting</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-tortoisecontext-is-currently-active" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>“No Tortoise<wbr>Context is currently active”</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-context-fallback-is-already-enabled" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>“Global context fallback is already enabled”</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurationerror-connections-not-initialized" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>“Configuration<wbr>Error:<wbr> Connections not initialized”</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-isolation-issues" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Test isolation issues</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Getting Help</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Changelog</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Roadmap</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTING.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Contribution Guide</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CONTRIBUTORS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Thanks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="migration-guide-tortoise-1-0"><span id="migration-guide"></span>Migration Guide: Tortoise 1.0<a class="headerlink" href="#migration-guide-tortoise-1-0" title="Link to this heading">¶</a></h1>
+<p>This guide covers the breaking changes and migration steps for upgrading to Tortoise ORM 1.0+
+which introduces a isolated-context architecture for improved test isolation and cleaner state management.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id2">Overview</a></p></li>
+<li><p><a class="reference internal" href="#quick-reference" id="id3">Quick Reference</a></p></li>
+<li><p><a class="reference internal" href="#what-stays-the-same" id="id4">What Stays the Same</a></p></li>
+<li><p><a class="reference internal" href="#connection-access-changes" id="id5">Connection Access Changes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#old-pattern-deprecated" id="id6">Old Pattern (Deprecated)</a></p></li>
+<li><p><a class="reference internal" href="#new-pattern" id="id7">New Pattern</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#test-migration" id="id8">Test Migration</a></p>
+<ul>
+<li><p><a class="reference internal" href="#old-test-pattern" id="id9">Old Test Pattern</a></p></li>
+<li><p><a class="reference internal" href="#new-test-pattern" id="id10">New Test Pattern</a></p></li>
+<li><p><a class="reference internal" href="#migration-checklist" id="id11">Migration Checklist</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#multiple-asyncio-run-calls-uncommon-pattern" id="id12">Multiple <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> Calls (Uncommon Pattern)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#old-pattern-no-longer-works" id="id13">Old Pattern (No Longer Works)</a></p></li>
+<li><p><a class="reference internal" href="#new-patterns" id="id14">New Patterns</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-tortoisecontext-directly" id="id15">Using <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> Directly</a></p></li>
+<li><p><a class="reference internal" href="#framework-integration-changes" id="id16">Framework Integration Changes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#multiple-fastapi-apps-global-fallback" id="id17">Multiple FastAPI Apps (Global Fallback)</a></p></li>
+<li><p><a class="reference internal" href="#custom-integration-migration" id="id18">Custom Integration Migration</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#removed-apis" id="id19">Removed APIs</a></p></li>
+<li><p><a class="reference internal" href="#deprecated-apis" id="id20">Deprecated APIs</a></p></li>
+<li><p><a class="reference internal" href="#still-available" id="id21">Still Available</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id22">Troubleshooting</a></p>
+<ul>
+<li><p><a class="reference internal" href="#no-tortoisecontext-is-currently-active" id="id23">“No TortoiseContext is currently active”</a></p></li>
+<li><p><a class="reference internal" href="#global-context-fallback-is-already-enabled" id="id24">“Global context fallback is already enabled”</a></p></li>
+<li><p><a class="reference internal" href="#configurationerror-connections-not-initialized" id="id25">“ConfigurationError: Connections not initialized”</a></p></li>
+<li><p><a class="reference internal" href="#test-isolation-issues" id="id26">Test isolation issues</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#getting-help" id="id27">Getting Help</a></p></li>
+</ul>
+</nav>
+<h2 id="overview"><a class="toc-backref" href="#id2" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>Tortoise ORM 1.0 introduces a <strong>isolated-context architecture</strong> that:</p>
+<ul class="simple">
+<li><p>Removes global state (<code class="docutils literal notranslate"><span class="pre">_default_context</span></code>, metaclass)</p></li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> as the single source of truth</p></li>
+<li><p>Provides test isolation with <code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code></p></li>
+<li><p>Simplifies connection management</p></li>
+</ul>
+<p>Most application code continues to work unchanged. The main changes affect:</p>
+<ol class="arabic simple">
+<li><p>Direct access to the <code class="docutils literal notranslate"><span class="pre">connections</span></code> singleton</p></li>
+<li><p>Test infrastructure (<code class="docutils literal notranslate"><span class="pre">test.TestCase</span></code>, <code class="docutils literal notranslate"><span class="pre">initializer</span></code>, etc.)</p></li>
+<li><p>Multiple <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> call patterns</p></li>
+</ol>
+<h2 id="quick-reference"><a class="toc-backref" href="#id3" role="doc-backlink">Quick Reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">¶</a></h2>
+<table class="docutils data align-default" id="id1">
+<caption><span class="caption-text">API Changes</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Old Pattern</p></th>
+<th class="head"><p>New Pattern</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tortoise</span> <span class="pre">import</span> <span class="pre">connections</span></code> (deprecated)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tortoise.connection</span> <span class="pre">import</span> <span class="pre">get_connection,</span> <span class="pre">get_connections</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">connections.get(&quot;default&quot;)</span></code> (still works)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Tortoise.get_connection(&quot;default&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">get_connection(&quot;default&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connections.close_all()</span></code> (still works)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Tortoise.close_connections()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test.TestCase</span></code> (removed)</p></td>
+<td><p>pytest + <code class="docutils literal notranslate"><span class="pre">db</span></code> fixture</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">initializer()</span></code> / <code class="docutils literal notranslate"><span class="pre">finalizer()</span></code> (removed)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-stays-the-same"><a class="toc-backref" href="#id4" role="doc-backlink">What Stays the Same</a><a class="headerlink" href="#what-stays-the-same" title="Link to this heading">¶</a></h2>
+<p>The following APIs continue to work unchanged:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Initialization (unchanged)</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="o">=...</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">})</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
+
+<span class="c1"># Accessing apps (unchanged)</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">apps</span>
+<span class="n">Tortoise</span><span class="o">.</span><span class="n">_inited</span>
+
+<span class="c1"># Model operations (unchanged)</span>
+<span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="c1"># Framework integrations (unchanged for users)</span>
+<span class="c1"># FastAPI, Starlette, Sanic, etc.</span>
+</code></pre></div>
+</div>
+<h2 id="connection-access-changes"><a class="toc-backref" href="#id5" role="doc-backlink">Connection Access Changes</a><a class="headerlink" href="#connection-access-changes" title="Link to this heading">¶</a></h2>
+<h3 id="old-pattern-deprecated"><a class="toc-backref" href="#id6" role="doc-backlink">Old Pattern (Deprecated)</a><a class="headerlink" href="#old-pattern-deprecated" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">connections</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<h3 id="new-pattern"><a class="toc-backref" href="#id7" role="doc-backlink">New Pattern</a><a class="headerlink" href="#new-pattern" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+<span class="c1"># Or: from tortoise.connection import get_connection, get_connections</span>
+
+<span class="c1"># Get a single connection</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get the connection handler</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">get_connections</span><span class="p">()</span>
+<span class="n">all_conns</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># Close all connections</span>
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<h2 id="test-migration"><a class="toc-backref" href="#id8" role="doc-backlink">Test Migration</a><a class="headerlink" href="#test-migration" title="Link to this heading">¶</a></h2>
+<p>The legacy test base classes (<code class="docutils literal notranslate"><span class="pre">TestCase</span></code>, <code class="docutils literal notranslate"><span class="pre">IsolatedTestCase</span></code>, etc.) and helper
+functions (<code class="docutils literal notranslate"><span class="pre">initializer</span></code>, <code class="docutils literal notranslate"><span class="pre">finalizer</span></code>) have been replaced with a pytest-based
+approach using <code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code>.</p>
+<h3 id="old-test-pattern"><a class="toc-backref" href="#id9" role="doc-backlink">Old Test Pattern</a><a class="headerlink" href="#old-test-pattern" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestUser</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+        <span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">initializer</span><span class="p">,</span> <span class="n">finalizer</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize_tests</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">initializer</span><span class="p">([</span><span class="s2">&quot;myapp.models&quot;</span><span class="p">])</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">addfinalizer</span><span class="p">(</span><span class="n">finalizer</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h3 id="new-test-pattern"><a class="toc-backref" href="#id10" role="doc-backlink">New Test Pattern</a><a class="headerlink" href="#new-test-pattern" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tests.testmodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_create</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test&quot;</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_filter</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+    <span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pytest_asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">tortoise_test_context</span>
+
+<span class="nd">@pytest_asyncio</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">db</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">tortoise_test_context</span><span class="p">([</span><span class="s2">&quot;myapp.models&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">ctx</span>
+</code></pre></div>
+</div>
+<h3 id="migration-checklist"><a class="toc-backref" href="#id11" role="doc-backlink">Migration Checklist</a><a class="headerlink" href="#migration-checklist" title="Link to this heading">¶</a></h3>
+<p>For each test file:</p>
+<ol class="arabic simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tortoise.contrib</span> <span class="pre">import</span> <span class="pre">test</span></code> with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pytest</span></code></p></li>
+<li><p>Remove class wrapper (<code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">TestXxx(test.TestCase):</span></code>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.asyncio</span></code> decorator to each async test</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">db</span></code> fixture parameter to each test function</p></li>
+<li><p>Replace assertion methods:
+- <code class="docutils literal notranslate"><span class="pre">self.assertEqual(a,</span> <span class="pre">b)</span></code> → <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code>
+- <code class="docutils literal notranslate"><span class="pre">self.assertIn(a,</span> <span class="pre">b)</span></code> → <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">a</span> <span class="pre">in</span> <span class="pre">b</span></code>
+- <code class="docutils literal notranslate"><span class="pre">self.assertRaises(Exc)</span></code> → <code class="docutils literal notranslate"><span class="pre">pytest.raises(Exc)</span></code>
+- <code class="docutils literal notranslate"><span class="pre">self.assertTrue(x)</span></code> → <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">x</span></code>
+- <code class="docutils literal notranslate"><span class="pre">self.assertFalse(x)</span></code> → <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">not</span> <span class="pre">x</span></code></p></li>
+</ol>
+<h2 id="multiple-asyncio-run-calls-uncommon-pattern"><a class="toc-backref" href="#id12" role="doc-backlink">Multiple <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> Calls (Uncommon Pattern)</a><a class="headerlink" href="#multiple-asyncio-run-calls-uncommon-pattern" title="Link to this heading">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This section only applies if you use multiple <strong>separate</strong> <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> calls
+in sequence. The typical pattern of a single <code class="docutils literal notranslate"><span class="pre">asyncio.run(main())</span></code> that contains
+all ORM operations continues to work unchanged.</p>
+</div>
+<p>If you use multiple separate <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> calls (sometimes seen in scripts or REPL
+sessions), the ContextVar that tracks ORM state is lost between runs due to Python’s
+ContextVar scoping rules. This pattern now requires explicit context management.</p>
+<p>As a fallback <cite>_enable_global_fallback</cite> on <cite>Tortoise.init(…)</cite> can be used to set created
+context as global fallback.</p>
+<h3 id="old-pattern-no-longer-works"><a class="toc-backref" href="#id13" role="doc-backlink">Old Pattern (No Longer Works)</a><a class="headerlink" href="#old-pattern-no-longer-works" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="c1"># Context is lost after asyncio.run() completes</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]}))</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>  <span class="c1"># FAILS: No context</span>
+</code></pre></div>
+</div>
+<h3 id="new-patterns"><a class="toc-backref" href="#id14" role="doc-backlink">New Patterns</a><a class="headerlink" href="#new-patterns" title="Link to this heading">¶</a></h3>
+<p><strong>Option 1: Single asyncio.run (Recommended)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]})</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created user: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<p><strong>Option 2: Capture and Reuse Context</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="c1"># Tortoise.init() returns the context</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]}))</span>
+
+<span class="c1"># Re-enter context for subsequent runs</span>
+<span class="k">with</span> <span class="n">ctx</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Tortoise</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">())</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<p><strong>Option 3: Explicit Context Manager</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseContext</span>
+
+<span class="k">with</span> <span class="n">TortoiseContext</span><span class="p">()</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span> <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;__main__&quot;</span><span class="p">]}))</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">())</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<h2 id="using-tortoisecontext-directly"><a class="toc-backref" href="#id15" role="doc-backlink">Using <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> Directly</a><a class="headerlink" href="#using-tortoisecontext-directly" title="Link to this heading">¶</a></h2>
+<p>For advanced use cases (testing, multi-tenant applications), you can use
+<code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code> directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">TortoiseContext</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_isolated</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">TortoiseContext</span><span class="p">()</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+            <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
+            <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;myapp.models&quot;</span><span class="p">]}</span>
+        <span class="p">)</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">generate_schemas</span><span class="p">()</span>
+
+        <span class="c1"># All ORM operations use this context</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Context auto-closes on exit</span>
+</code></pre></div>
+</div>
+<p>Benefits of <code class="docutils literal notranslate"><span class="pre">TortoiseContext</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Test isolation</strong>: Each context has independent connections and state</p></li>
+<li><p><strong>Multi-tenancy</strong>: Different contexts can connect to different databases</p></li>
+<li><p><strong>No global state</strong>: Clear ownership of ORM state</p></li>
+<li><p><strong>Automatic cleanup</strong>: Connections close when context exits</p></li>
+</ul>
+<h2 id="framework-integration-changes"><a class="toc-backref" href="#id16" role="doc-backlink">Framework Integration Changes</a><a class="headerlink" href="#framework-integration-changes" title="Link to this heading">¶</a></h2>
+<p>If you use the built-in framework integrations (FastAPI, Starlette, etc.), no changes
+are required. The integrations have been updated internally to use <code class="docutils literal notranslate"><span class="pre">Tortoise.close_connections()</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">connections.close_all()</span></code>.</p>
+<h3 id="multiple-fastapi-apps-global-fallback"><a class="toc-backref" href="#id17" role="doc-backlink">Multiple FastAPI Apps (Global Fallback)</a><a class="headerlink" href="#multiple-fastapi-apps-global-fallback" title="Link to this heading">¶</a></h3>
+<p>When using <code class="docutils literal notranslate"><span class="pre">RegisterTortoise</span></code> with FastAPI, a global fallback context is enabled by default.
+This allows Tortoise ORM to work correctly with <code class="docutils literal notranslate"><span class="pre">asgi-lifespan</span></code> (used in tests) where the
+lifespan runs in a separate background task from the requests.</p>
+<p>If you run <strong>multiple FastAPI apps</strong> in the same process (e.g., in tests), you may encounter:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>ConfigurationError: Global context fallback is already enabled by another Tortoise.init() call.
+</code></pre></div>
+</div>
+<p><strong>Solution:</strong> Disable global fallback for secondary apps and use explicit context access:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># main_app.py - Primary app (uses global fallback)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterTortoise</span>
+
+<span class="nd">@asynccontextmanager</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">RegisterTortoise</span><span class="p">(</span>
+        <span class="n">app</span><span class="p">,</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;myapp.models&quot;</span><span class="p">]},</span>
+    <span class="p">):</span>
+        <span class="k">yield</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># secondary_app.py - Secondary app (explicit context)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.contrib.fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterTortoise</span>
+
+<span class="nd">@asynccontextmanager</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">app</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">RegisterTortoise</span><span class="p">(</span>
+        <span class="n">app</span><span class="p">,</span>
+        <span class="n">db_url</span><span class="o">=</span><span class="s2">&quot;sqlite://:memory:&quot;</span><span class="p">,</span>
+        <span class="n">modules</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;myapp.models&quot;</span><span class="p">]},</span>
+        <span class="n">_enable_global_fallback</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Disable global fallback</span>
+    <span class="p">):</span>
+        <span class="k">yield</span>
+
+<span class="n">app_secondary</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">lifespan</span><span class="o">=</span><span class="n">lifespan</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>In tests, access the secondary app’s context explicitly via <code class="docutils literal notranslate"><span class="pre">app.state</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">client_secondary</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">LifespanManager</span><span class="p">(</span><span class="n">app_secondary</span><span class="p">)</span> <span class="k">as</span> <span class="n">manager</span><span class="p">:</span>
+        <span class="c1"># Get context from app.state and enter it</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="n">app_secondary</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">_tortoise_context</span>
+        <span class="k">with</span> <span class="n">ctx</span><span class="p">:</span>  <span class="c1"># Make context current via contextvar</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncClient</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app_secondary</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">c</span>
+</code></pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">_enable_global_fallback</span></code> parameter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> (default): Sets context as global fallback for cross-task access</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: Context only accessible via <code class="docutils literal notranslate"><span class="pre">app.state._tortoise_context</span></code></p></li>
+</ul>
+<p>This is also available in <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code> (default <code class="docutils literal notranslate"><span class="pre">False</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">TortoiseContext.init()</span></code> (default <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<h3 id="custom-integration-migration"><a class="toc-backref" href="#id18" role="doc-backlink">Custom Integration Migration</a><a class="headerlink" href="#custom-integration-migration" title="Link to this heading">¶</a></h3>
+<p>If you’ve written custom framework integrations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># Old</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">connections</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">connections</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
+
+<span class="c1"># New</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tortoise</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<h2 id="removed-apis"><a class="toc-backref" href="#id19" role="doc-backlink">Removed APIs</a><a class="headerlink" href="#removed-apis" title="Link to this heading">¶</a></h2>
+<p>The following APIs have been removed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test.TestCase</span></code>, <code class="docutils literal notranslate"><span class="pre">test.IsolatedTestCase</span></code>, <code class="docutils literal notranslate"><span class="pre">test.TruncationTestCase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test.SimpleTestCase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test.initializer()</span></code>, <code class="docutils literal notranslate"><span class="pre">test.finalizer()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test.env_initializer()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test.getDBConfig()</span></code></p></li>
+</ul>
+<h2 id="deprecated-apis"><a class="toc-backref" href="#id20" role="doc-backlink">Deprecated APIs</a><a class="headerlink" href="#deprecated-apis" title="Link to this heading">¶</a></h2>
+<p>The following APIs still work but are deprecated:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tortoise</span> <span class="pre">import</span> <span class="pre">connections</span></code> - use <code class="docutils literal notranslate"><span class="pre">get_connection()</span></code> / <code class="docutils literal notranslate"><span class="pre">get_connections()</span></code> instead</p></li>
+</ul>
+<h2 id="still-available"><a class="toc-backref" href="#id21" role="doc-backlink">Still Available</a><a class="headerlink" href="#still-available" title="Link to this heading">¶</a></h2>
+<p>The following APIs are still available and work as before:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">init_memory_sqlite()</span></code> decorator - for simple scripts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MEMORY_SQLITE</span></code> constant - <code class="docutils literal notranslate"><span class="pre">&quot;sqlite://:memory:&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requireCapability()</span></code> - for capability-based test skipping</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">truncate_all_models()</span></code> - for test cleanup</p></li>
+</ul>
+<h2 id="troubleshooting"><a class="toc-backref" href="#id22" role="doc-backlink">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<h3 id="no-tortoisecontext-is-currently-active"><a class="toc-backref" href="#id23" role="doc-backlink">“No TortoiseContext is currently active”</a><a class="headerlink" href="#no-tortoisecontext-is-currently-active" title="Link to this heading">¶</a></h3>
+<p>This error occurs when trying to access ORM features without an active context.</p>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic simple">
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code> was called before accessing models</p></li>
+<li><p>If using multiple <code class="docutils literal notranslate"><span class="pre">asyncio.run()</span></code> calls, use context manager pattern</p></li>
+<li><p>In tests, ensure the <code class="docutils literal notranslate"><span class="pre">db</span></code> fixture is being used</p></li>
+</ol>
+<h3 id="global-context-fallback-is-already-enabled"><a class="toc-backref" href="#id24" role="doc-backlink">“Global context fallback is already enabled”</a><a class="headerlink" href="#global-context-fallback-is-already-enabled" title="Link to this heading">¶</a></h3>
+<p>This error occurs when multiple <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code> or <code class="docutils literal notranslate"><span class="pre">RegisterTortoise</span></code> calls
+try to enable global fallback simultaneously.</p>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic simple">
+<li><p>For multiple FastAPI apps, set <code class="docutils literal notranslate"><span class="pre">_enable_global_fallback=False</span></code> on secondary apps</p></li>
+<li><p>Access secondary app’s context explicitly via <code class="docutils literal notranslate"><span class="pre">app.state._tortoise_context</span></code></p></li>
+<li><p>See “Multiple FastAPI Apps (Global Fallback)” section above</p></li>
+</ol>
+<h3 id="configurationerror-connections-not-initialized"><a class="toc-backref" href="#id25" role="doc-backlink">“ConfigurationError: Connections not initialized”</a><a class="headerlink" href="#configurationerror-connections-not-initialized" title="Link to this heading">¶</a></h3>
+<p>This error occurs when trying to access connections before initialization.</p>
+<p><strong>Solution:</strong> Ensure <code class="docutils literal notranslate"><span class="pre">Tortoise.init()</span></code> or <code class="docutils literal notranslate"><span class="pre">ctx.init()</span></code> has been called and awaited.</p>
+<h3 id="test-isolation-issues"><a class="toc-backref" href="#id26" role="doc-backlink">Test isolation issues</a><a class="headerlink" href="#test-isolation-issues" title="Link to this heading">¶</a></h3>
+<p>If tests are interfering with each other:</p>
+<ol class="arabic simple">
+<li><p>Ensure using function-scoped <code class="docutils literal notranslate"><span class="pre">db</span></code> fixture (not session-scoped)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">tortoise_test_context()</span></code> which provides explicit isolation</p></li>
+<li><p>Remove any <code class="docutils literal notranslate"><span class="pre">&#64;pytest.fixture(scope=&quot;session&quot;)</span></code> that calls <code class="docutils literal notranslate"><span class="pre">initializer()</span></code></p></li>
+</ol>
+<h2 id="getting-help"><a class="toc-backref" href="#id27" role="doc-backlink">Getting Help</a><a class="headerlink" href="#getting-help" title="Link to this heading">¶</a></h2>
+<p>If you encounter issues during migration:</p>
+<ol class="arabic simple">
+<li><p>Check the <a class="reference external" href="https://github.com/tortoise/tortoise-orm/issues">GitHub Issues</a></p></li>
+<li><p>Review the <a class="reference external" href="https://github.com/tortoise/tortoise-orm/tree/develop/examples">examples directory</a></p></li>
+<li><p>Ask in the <a class="reference external" href="https://github.com/tortoise/tortoise-orm/discussions">GitHub Discussions</a></p></li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2018 - 2026, Andrey Bondar &amp; Nickolas Grigoriadis &amp; long2ice.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.tabs", "toc.integrate", "navigation.sections", "navigation.instant", "header.autohide", "navigation.top", "navigation.tracking", "search.highlight", "search.share"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": [{"aliases": [], "title": "latest", "version": "https://tortoise.github.io"}], "versionPath": null}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    
+  </body>
+</html>
