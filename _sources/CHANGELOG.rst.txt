@@ -8,6 +8,18 @@ Changelog
 1.1
 ===
 
+1.1.6
+-----
+
+Fixed
+^^^^^
+- Migration generator now correctly orders ``AddIndex``, ``RemoveIndex``, ``AddConstraint``, ``RemoveConstraint`` operations when adding/removing a field to a model that is used in an index or constraint. (#2118)
+- ``CreateModel`` migrations now include ``DEFAULT`` clauses for fields with ``db_default`` set. Previously only ``AddField`` emitted defaults correctly. (#2129)
+- ``AlterField`` migrations now detect ``max_length`` changes (e.g. ``VARCHAR(32)`` → ``VARCHAR(64)``) and emit the correct ``ALTER`` statements across all backends. (#2128)
+- ``backward_relations=False`` in ``PydanticMeta`` now only excludes unannotated backward relations — fields explicitly annotated with ``ReverseRelation`` in the model class body are preserved. (#2125)
+- MySQL session ``time_zone`` now uses the configured timezone instead of always defaulting to ``+0:00`` when ``use_tz=True``. (#2127)
+- Plus sign (``+``) in database URL passwords is no longer incorrectly decoded as a space. (#2123)
+
 1.1.5
 -----
 
