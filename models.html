@@ -21,7 +21,7 @@
     
     
       
-        <title>Models - Tortoise ORM v1.1.6 Documentation</title>
+        <title>Models - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -796,6 +796,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.models.Model.Meta.fetch_db_defaults" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.models.Model.Meta.fetch_db_defaults (Python attribute) — When True (the default), after an INSERT on a non-RETURNING backend (e.g. MySQL), Tortoise will issue a follow-up SELECT to fetch database-applied default values for fields declared with db_default."><span>fetch_<wbr>db_<wbr>defaults</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.models.Model.Meta.manager" class="md-nav__link">
     
       <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
@@ -1096,6 +1108,16 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.models.Model.bulk_create-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
   
 </li>
         
@@ -3840,6 +3862,25 @@ If query is built with <code class="docutils literal notranslate"><span class="p
 </dd></dl>
 
 <dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.models.Model.Meta.fetch_db_defaults">
+<span class="sig-name descname"><span class="pre">fetch_db_defaults</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#tortoise.models.Model.Meta.fetch_db_defaults" title="Link to this definition">¶</a></dt>
+<dd><p>When <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default), after an INSERT on a non-RETURNING backend
+(e.g. MySQL), Tortoise will issue a follow-up <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> to fetch
+database-applied default values for fields declared with <code class="docutils literal notranslate"><span class="pre">db_default</span></code>.</p>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> to skip the extra query when you don’t need the
+database-generated values back on the Python instance immediately.
+On RETURNING backends (PostgreSQL, SQLite) the values are always
+returned in the INSERT response regardless of this setting.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">IntField</span><span class="p">(</span><span class="n">db_default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">fetch_db_defaults</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.models.Model.Meta.manager">
 <span class="sig-name descname"><span class="pre">manager</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">tortoise.manager.Manager</span></em><a class="headerlink" href="#tortoise.models.Model.Meta.manager" title="Link to this definition">¶</a></dt>
 <dd><p>Specify <code class="docutils literal notranslate"><span class="pre">manager</span></code> to override the default manager.
@@ -4072,6 +4113,12 @@ insert performance.</p>
 <span class="p">])</span>
 </code></pre></div>
 </div>
+<p><strong>db_default behaviour:</strong> Fields with <code class="docutils literal notranslate"><span class="pre">db_default</span></code> that are not explicitly
+set will use the database DEFAULT. However, within a single <code class="docutils literal notranslate"><span class="pre">bulk_create</span></code>
+call, each <code class="docutils literal notranslate"><span class="pre">db_default</span></code> field must be treated consistently across <em>all</em>
+instances — either every instance provides an explicit value, or none of
+them do.  Mixing explicit values and database defaults for the same field
+raises <a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OperationalError</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.bulk_create-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_create-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
@@ -4089,8 +4136,12 @@ insert performance.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.models.Model.bulk_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_create-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a>[Model]</p>
+<dt class="field-even" id="tortoise.models.Model.bulk_create-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_create-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If a <code class="docutils literal notranslate"><span class="pre">db_default</span></code> field has mixed usage across
+instances (some provide a value, others rely on the database default).</p>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.bulk_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.bulk_create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="query.html#tortoise.queryset.BulkCreateQuery" title="tortoise.queryset.BulkCreateQuery (Python class) — Returns the SQL query that will be executed. By default, it will return the query with placeholders, but if you set params_inline=True, it will inline the parameters."><code class="xref py py-class docutils literal notranslate"><span class="pre">BulkCreateQuery</span></code></a>[Model]</p>
 </dd>
 </dl>
 </dd></dl>

@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.fields.base - Tortoise ORM v1.1.6 Documentation</title>
+        <title>tortoise.fields.base - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -722,6 +722,44 @@
 <span class="n">DB_DEFAULT_NOT_SET</span> <span class="o">=</span> <span class="n">_DB_DEFAULT_NOT_SET</span><span class="p">()</span>
 
 
+<div class="viewcode-block" id="DatabaseDefault">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.DatabaseDefault">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatabaseDefault</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sentinel indicating that the database should apply its default value.</span>
+
+<span class="sd">    When a field has ``db_default`` and the user does not provide a value,</span>
+<span class="sd">    this object is set as the attribute value on the model instance.</span>
+
+<span class="sd">    During INSERT compilation it is detected via ``isinstance()`` checks:</span>
+<span class="sd">    - Single-insert path: columns with DatabaseDefault are omitted from the</span>
+<span class="sd">      INSERT statement, so the DB applies its DEFAULT.</span>
+<span class="sd">    - Bulk-insert path: columns where *all* instances hold DatabaseDefault</span>
+<span class="sd">      are omitted; mixed usage raises ``OperationalError``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="n">Field</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;DatabaseDefault(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">model_field_name</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;DB_DEFAULT&gt;&quot;</span>
+
+<div class="viewcode-block" id="DatabaseDefault.__bool__">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.DatabaseDefault.__bool__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns False so that ``if instance.field:`` is falsy for unset db_default fields.</span>
+
+<span class="sd">        This is consistent with &quot;no value has been set yet&quot;. Users who need to</span>
+<span class="sd">        distinguish between DatabaseDefault and other falsy values should use</span>
+<span class="sd">        ``isinstance(value, DatabaseDefault)``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+</div>
+
+
+
 <div class="viewcode-block" id="OnDelete">
 <a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.OnDelete">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">OnDelete</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
@@ -768,6 +806,8 @@
 <span class="sd">    :param default: A default value for the field if not specified on Model creation.</span>
 <span class="sd">        This can also be a callable for dynamic defaults in which case we will call it.</span>
 <span class="sd">        The default value will not be part of the schema.</span>
+<span class="sd">    :param db_default: A database-level default value. This can be a static value or an</span>
+<span class="sd">        instance of :class:`~tortoise.fields.db_defaults.SqlDefault`</span>
 <span class="sd">    :param unique: Is this field unique?</span>
 <span class="sd">    :param db_index: Should this field be indexed by itself?</span>
 <span class="sd">    :param description: Field description. Will also appear in ``Tortoise.describe_model()``</span>
@@ -1016,7 +1056,21 @@
 
 <span class="sd">        It needs to be non-nullable and not have a default or be DB-generated to be required.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">null</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">generated</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">()</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Field.get_db_default_value">
+<a class="viewcode-back" href="../../../fields.html#tortoise.fields.base.Field.get_db_default_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_db_default_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DatabaseDefault</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a DatabaseDefault instance if this field has a db_default, else None.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">DatabaseDefault</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>

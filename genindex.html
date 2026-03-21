@@ -17,7 +17,7 @@
     
     
       
-        <title>Index - Tortoise ORM v1.1.6 Documentation</title>
+        <title>Index - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -709,12 +709,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="expressions.html#tortoise.expressions.Q.__and__">__and__() (tortoise.expressions.Q method)</a>
 </li>
-      <li><a href="validators.html#tortoise.validators.Validator.__call__">__call__() (tortoise.validators.Validator method)</a>
+      <li><a href="fields.html#tortoise.fields.base.DatabaseDefault.__bool__">__bool__() (tortoise.fields.base.DatabaseDefault method)</a>
 </li>
-      <li><a href="fields.html#tortoise.fields.base.StrEnum.__format__">__format__() (tortoise.fields.base.StrEnum method)</a>
+      <li><a href="validators.html#tortoise.validators.Validator.__call__">__call__() (tortoise.validators.Validator method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="fields.html#tortoise.fields.base.StrEnum.__format__">__format__() (tortoise.fields.base.StrEnum method)</a>
+</li>
       <li><a href="query.html#tortoise.queryset.QuerySet.__getitem__">__getitem__() (tortoise.queryset.QuerySet method)</a>
 </li>
       <li><a href="expressions.html#tortoise.expressions.Q.__invert__">__invert__() (tortoise.expressions.Q method)</a>
@@ -887,6 +889,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="functions.html#tortoise.functions.Function.database_func">database_func (tortoise.functions.Function attribute)</a>
 </li>
+      <li><a href="fields.html#tortoise.fields.base.DatabaseDefault">DatabaseDefault (class in tortoise.fields.base)</a>
+</li>
       <li><a href="fields.html#tortoise.fields.data.DateField">DateField (class in tortoise.fields.data)</a>
 </li>
       <li><a href="fields.html#tortoise.fields.data.DatetimeField">DatetimeField (class in tortoise.fields.data)</a>
@@ -979,6 +983,8 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="models.html#tortoise.models.Model.Meta.fetch_db_defaults">fetch_db_defaults (tortoise.models.Model.Meta attribute)</a>
+</li>
       <li><a href="models.html#tortoise.models.Model.fetch_for_list">fetch_for_list() (tortoise.models.Model class method)</a>
 </li>
       <li><a href="models.html#tortoise.models.Model.fetch_related">fetch_related() (tortoise.models.Model method)</a>
@@ -1017,10 +1023,10 @@
 </li>
       <li><a href="contrib/pydantic.html#tortoise.contrib.pydantic.creator.FieldMap">FieldMap (class in tortoise.contrib.pydantic.creator)</a>
 </li>
-      <li><a href="query.html#tortoise.queryset.FieldSelectQuery">FieldSelectQuery (class in tortoise.queryset)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="query.html#tortoise.queryset.FieldSelectQuery">FieldSelectQuery (class in tortoise.queryset)</a>
+</li>
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation.filter">filter() (tortoise.fields.relational.ManyToManyRelation method)</a>
 
       <ul>
@@ -1089,14 +1095,16 @@
 </li>
       <li><a href="connections.html#tortoise.connection.get_connections">get_connections() (in module tortoise.connection)</a>
 </li>
+      <li><a href="fields.html#tortoise.fields.base.Field.get_db_default_value">get_db_default_value() (tortoise.fields.base.Field method)</a>
+</li>
       <li><a href="fields.html#tortoise.fields.base.Field.get_db_field_type">get_db_field_type() (tortoise.fields.base.Field method)</a>
 </li>
       <li><a href="fields.html#tortoise.fields.base.Field.get_db_field_types">get_db_field_types() (tortoise.fields.base.Field method)</a>
 </li>
-      <li><a href="timezone.html#tortoise.timezone.get_default_timezone">get_default_timezone() (in module tortoise.timezone)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="timezone.html#tortoise.timezone.get_default_timezone">get_default_timezone() (in module tortoise.timezone)</a>
+</li>
       <li><a href="fields.html#tortoise.fields.base.Field.get_for_dialect">get_for_dialect() (tortoise.fields.base.Field method)</a>
 </li>
       <li><a href="models.html#tortoise.models.Model.get_or_create">get_or_create() (tortoise.models.Model class method)</a>

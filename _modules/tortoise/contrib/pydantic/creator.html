@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v1.1.6 Documentation</title>
+        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -860,7 +860,7 @@
     <span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">submodel</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">_list&quot;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;submodel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>  <span class="c1"># type: ignore</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;submodel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>  <span class="c1"># type: ignore[typeddict-unknown-key]</span>
     <span class="k">return</span> <span class="n">model</span></div>
 
 
@@ -1062,7 +1062,7 @@
             <span class="o">**</span><span class="n">common_fields</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">model</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">)</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;orig_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span>  <span class="c1"># type: ignore</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;orig_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span>  <span class="c1"># type: ignore[typeddict-unknown-key]</span>
         <span class="n">_MODEL_INDEX</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
         <span class="k">return</span> <span class="n">model</span>
 

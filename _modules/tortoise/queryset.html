@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.queryset - Tortoise ORM v1.1.6 Documentation</title>
+        <title>tortoise.queryset - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -696,9 +696,11 @@
     <span class="n">FieldError</span><span class="p">,</span>
     <span class="n">IntegrityError</span><span class="p">,</span>
     <span class="n">MultipleObjectsReturned</span><span class="p">,</span>
+    <span class="n">OperationalError</span><span class="p">,</span>
     <span class="n">ParamsError</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">RawSQL</span><span class="p">,</span> <span class="n">ResolveContext</span><span class="p">,</span> <span class="n">ResolveResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseDefault</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tortoise.fields.relational</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">ForeignKeyFieldInstance</span><span class="p">,</span>
     <span class="n">OneToOneFieldInstance</span><span class="p">,</span>
@@ -1638,6 +1640,10 @@
 <span class="sd">        This method inserts the provided list of objects into the database in an efficient manner</span>
 <span class="sd">        (generally only 1 query, no matter how many objects there are).</span>
 
+<span class="sd">        Fields with ``db_default`` that are not explicitly set will use the database</span>
+<span class="sd">        DEFAULT.  Within a single call, each ``db_default`` field must be treated</span>
+<span class="sd">        consistently: either **all** instances supply a value or **none** do.</span>
+
 <span class="sd">        :param on_conflict: On conflict index name</span>
 <span class="sd">        :param update_fields: Update fields when conflicts</span>
 <span class="sd">        :param ignore_conflicts: Ignore conflicts when inserting</span>
@@ -1645,6 +1651,8 @@
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
 
 <span class="sd">        :raises ValueError: If params do not meet specifications</span>
+<span class="sd">        :raises OperationalError: If a ``db_default`` field has mixed usage across</span>
+<span class="sd">            instances (some provide a value, others rely on the database default).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">ignore_conflicts</span> <span class="ow">and</span> <span class="n">update_fields</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -2846,73 +2854,187 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span> <span class="o">=</span> <span class="n">update_fields</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_on_conflict</span> <span class="o">=</span> <span class="n">on_conflict</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_make_queries</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">()</span>
-            <span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
-                <span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span>
-            <span class="p">)</span>
-            <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">generated_db_fields</span><span class="p">:</span>
-                <span class="n">_</span><span class="p">,</span> <span class="n">columns_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">(</span><span class="n">include_generated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
-                    <span class="n">columns_all</span><span class="p">,</span>
-                    <span class="n">has_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                    <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span><span class="p">,</span>
-                <span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">:</span>
-                <span class="n">alias</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;new_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span>
-                    <span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_conflict</span> <span class="ow">or</span> <span class="p">[])</span>
-                <span class="p">)</span>
-                <span class="n">insert_query</span> <span class="o">=</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_conflict</span> <span class="ow">or</span> <span class="p">[]))</span>
-                <span class="k">for</span> <span class="n">update_field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">:</span>
-                    <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="n">update_field</span><span class="p">)</span>
-                    <span class="n">insert_query</span> <span class="o">=</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="n">update_field</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">get_sql</span><span class="p">(),</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">get_sql</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_analyze_db_default_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Classify each db_default field across all instances.</span>
+
+<span class="sd">        Returns a set of field names to omit from the INSERT (all instances</span>
+<span class="sd">        use DatabaseDefault for that field). Raises OperationalError if a</span>
+<span class="sd">        field has mixed usage (some instances provide a value, others don&#39;t).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">fields_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span>
+        <span class="n">db_default_field_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">fn</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">columns</span> <span class="k">if</span> <span class="n">fields_map</span><span class="p">[</span><span class="n">fn</span><span class="p">]</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">db_default_field_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="n">omit_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">db_default_field_names</span><span class="p">:</span>
+            <span class="n">has_default</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">has_value</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">DatabaseDefault</span><span class="p">):</span>
+                    <span class="n">has_default</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">has_value</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">has_default</span> <span class="ow">and</span> <span class="n">has_value</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">OperationalError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Cannot use bulk_create() when field &#39;</span><span class="si">{</span><span class="n">field_name</span><span class="si">}</span><span class="s2">&#39; has &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;db_default and some instances provide explicit values while &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;others rely on the database default. Either: &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(a) set the value explicitly on ALL instances, &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(b) omit it from ALL instances to use the database default, or &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;(c) split into separate bulk_create() calls.&quot;</span>
+                    <span class="p">)</span>
+            <span class="k">if</span> <span class="n">has_default</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">has_value</span><span class="p">:</span>
+                <span class="n">omit_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">field_name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">omit_fields</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_default_values_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build INSERT SQL for when all columns are omitted.&quot;&quot;&quot;</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">basetable</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">query_class</span><span class="o">.</span><span class="n">into</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="o">.</span><span class="n">default_values</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_filter_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omit_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">include_generated</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare INSERT columns, filtering out omitted db_default fields.&quot;&quot;&quot;</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_columns</span><span class="p">(</span><span class="n">include_generated</span><span class="o">=</span><span class="n">include_generated</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">omit_fields</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">columns</span>
+        <span class="n">field_names</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns_all</span>
+            <span class="k">if</span> <span class="n">include_generated</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">fn</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">field_names</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span> <span class="k">if</span> <span class="n">fn</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">omit_fields</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_on_conflict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">insert_query</span><span class="p">:</span> <span class="n">QueryBuilder</span><span class="p">,</span>
+        <span class="n">insert_query_all</span><span class="p">:</span> <span class="n">QueryBuilder</span><span class="p">,</span>
+        <span class="n">update_fields</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">omit_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">QueryBuilder</span><span class="p">,</span> <span class="n">QueryBuilder</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply ON CONFLICT ... DO UPDATE to both query variants.&quot;&quot;&quot;</span>
+        <span class="n">effective_update_fields</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">update_fields</span> <span class="k">if</span> <span class="n">f</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">omit_fields</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">omit_fields</span>
+            <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">update_fields</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">alias</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;new_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">db_table</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">insert_query</span> <span class="o">=</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_conflict</span> <span class="ow">or</span> <span class="p">[]))</span>
+        <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">as_</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">.</span><span class="n">on_conflict</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_conflict</span> <span class="ow">or</span> <span class="p">[]))</span>
+        <span class="k">for</span> <span class="n">update_field</span> <span class="ow">in</span> <span class="n">effective_update_fields</span><span class="p">:</span>
+            <span class="n">insert_query</span> <span class="o">=</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="n">update_field</span><span class="p">)</span>
+            <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">do_update</span><span class="p">(</span><span class="n">update_field</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">insert_query</span><span class="p">,</span> <span class="n">insert_query_all</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_queries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omit_fields</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">omit_fields</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">omit_fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">omit_fields</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">insert_query</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">insert_query_all</span>
 
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_execute_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">insert_sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">insert_sql_all</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">default_sql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_default_values_sql</span><span class="p">()</span>
+
+        <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_columns</span><span class="p">(</span><span class="n">omit_fields</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_sql</span><span class="p">,</span> <span class="n">default_sql</span>
+        <span class="n">insert_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
+            <span class="n">columns</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span>
+        <span class="p">)</span>
+
+        <span class="n">insert_query_all</span> <span class="o">=</span> <span class="n">insert_query</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">generated_db_fields</span><span class="p">:</span>
+            <span class="n">columns_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_columns</span><span class="p">(</span><span class="n">omit_fields</span><span class="p">,</span> <span class="n">include_generated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">columns_all</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">default_sql</span><span class="p">,</span> <span class="n">default_sql</span>
+            <span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">_prepare_insert_statement</span><span class="p">(</span>
+                <span class="n">columns_all</span><span class="p">,</span>
+                <span class="n">has_generated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">ignore_conflicts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ignore_conflicts</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">:</span>
+            <span class="n">insert_query</span><span class="p">,</span> <span class="n">insert_query_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_on_conflict</span><span class="p">(</span>
+                <span class="n">insert_query</span><span class="p">,</span> <span class="n">insert_query_all</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_fields</span><span class="p">,</span> <span class="n">omit_fields</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">insert_query</span><span class="o">.</span><span class="n">get_sql</span><span class="p">(),</span> <span class="n">insert_query_all</span><span class="o">.</span><span class="n">get_sql</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_execute_many</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">insert_sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">insert_sql_all</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">effective_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">effective_columns_all</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fields_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">fields_map</span>
         <span class="k">for</span> <span class="n">instance_chunk</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">):</span>
             <span class="n">values_lists_all</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">values_lists</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">count_default_all</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">count_default</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instance_chunk</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">_custom_generated_pk</span><span class="p">:</span>
-                    <span class="n">values_lists_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="p">[</span>
-                            <span class="n">fields_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span>
-                                <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">instance</span>
-                            <span class="p">)</span>
-                            <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns_all</span>
-                        <span class="p">]</span>
-                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">effective_columns_all</span><span class="p">:</span>
+                        <span class="n">values_lists_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">[</span>
+                                <span class="n">fields_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span>
+                                    <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">instance</span>
+                                <span class="p">)</span>
+                                <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">effective_columns_all</span>
+                            <span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">count_default_all</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">values_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                        <span class="p">[</span>
-                            <span class="n">fields_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span>
-                                <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">instance</span>
-                            <span class="p">)</span>
-                            <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns</span>
-                        <span class="p">]</span>
-                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">effective_columns</span><span class="p">:</span>
+                        <span class="n">values_lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">[</span>
+                                <span class="n">fields_map</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span><span class="o">.</span><span class="n">to_db_value</span><span class="p">(</span>
+                                    <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">instance</span>
+                                <span class="p">)</span>
+                                <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">effective_columns</span>
+                            <span class="p">]</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">count_default</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">values_lists_all</span><span class="p">:</span>
                 <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="n">insert_sql_all</span><span class="p">,</span> <span class="n">values_lists_all</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">values_lists</span><span class="p">:</span>
                 <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_many</span><span class="p">(</span><span class="n">insert_sql</span><span class="p">,</span> <span class="n">values_lists</span><span class="p">)</span>
+            <span class="c1"># When all columns are omitted, execute DEFAULT VALUES individually</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count_default_all</span><span class="p">):</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_insert</span><span class="p">(</span><span class="n">insert_sql_all</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count_default</span><span class="p">):</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute_insert</span><span class="p">(</span><span class="n">insert_sql</span><span class="p">,</span> <span class="p">[])</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db_if_not_chosen</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_queries</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_many</span><span class="p">(</span><span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span><span class="p">)</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">)</span>  <span class="c1"># materialize for multi-pass</span>
+
+        <span class="n">omit_fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analyze_db_default_fields</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns</span><span class="p">)</span>
+
+        <span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_queries</span><span class="p">(</span><span class="n">omit_fields</span><span class="p">)</span>
+        <span class="n">effective_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">omit_fields</span><span class="p">]</span>
+        <span class="n">effective_columns_all</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns_all</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">omit_fields</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_many</span><span class="p">(</span>
+            <span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span><span class="p">,</span> <span class="n">effective_columns</span><span class="p">,</span> <span class="n">effective_columns_all</span>
+        <span class="p">)</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BulkCreateQuery.sql">
 <a class="viewcode-back" href="../../query.html#tortoise.queryset.BulkCreateQuery.sql">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_inline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_choose_db_if_not_chosen</span><span class="p">()</span>
-        <span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_queries</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">executor_class</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">)</span>
+
+        <span class="n">omit_fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analyze_db_default_fields</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="o">.</span><span class="n">regular_columns</span><span class="p">)</span>
+        <span class="n">insert_sql</span><span class="p">,</span> <span class="n">insert_sql_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_queries</span><span class="p">(</span><span class="n">omit_fields</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">_custom_generated_pk</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objects</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">insert_sql_all</span>

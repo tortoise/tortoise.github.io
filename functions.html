@@ -21,7 +21,7 @@
     
     
       
-        <title>Functions & Aggregates - Tortoise ORM v1.1.6 Documentation</title>
+        <title>Functions & Aggregates - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1217,6 +1217,18 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tortoise.functions.Aggregate.__init__.distinct" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.functions.Aggregate.__init__.distinct (Python parameter) — Flag for aggregate with distinction"><span>distinct</span></span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1843,7 +1855,7 @@ So often makes sense with a <code class="docutils literal notranslate"><span cla
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.functions.Aggregate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.functions.</span></span><span class="sig-name descname"><span class="pre">Aggregate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate.__init__.field" title="tortoise.functions.Aggregate.__init__.field (Python parameter) — Field name"><span class="n"><span class="pre">field</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.functions.Aggregate.__init__.default_values" title="tortoise.functions.Aggregate.__init__.default_values (Python parameter) — Extra parameters to the function."><span class="n"><span class="pre">default_values</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate" title="tortoise.functions.Aggregate.__init__.distinct (Python parameter)"><span class="n"><span class="pre">distinct</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate" title="tortoise.functions.Aggregate.__init__._filter (Python parameter)"><span class="n"><span class="pre">_filter</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.functions.Aggregate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.functions.</span></span><span class="sig-name descname"><span class="pre">Aggregate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate.__init__.field" title="tortoise.functions.Aggregate.__init__.field (Python parameter) — Field name"><span class="n"><span class="pre">field</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.functions.Aggregate.__init__.default_values" title="tortoise.functions.Aggregate.__init__.default_values (Python parameter) — Extra parameters to the function."><span class="n"><span class="pre">default_values</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate.__init__.distinct" title="tortoise.functions.Aggregate.__init__.distinct (Python parameter) — Flag for aggregate with distinction"><span class="n"><span class="pre">distinct</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.functions.Aggregate" title="tortoise.functions.Aggregate.__init__._filter (Python parameter)"><span class="n"><span class="pre">_filter</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/expressions.html#Aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.functions.Aggregate" title="Link to this definition">¶</a></dt>
 <dd><p>Base for SQL Aggregates.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.functions.Aggregate-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.functions.Aggregate-parameters" title="Permalink to this headline">¶</a></dt>
@@ -1852,7 +1864,7 @@ So often makes sense with a <code class="docutils literal notranslate"><span cla
 </dd>
 <dt id="tortoise.functions.Aggregate.__init__.default_values"><span class="o">*</span><span class="n sig-name">default_values</span><a class="headerlink" href="#tortoise.functions.Aggregate.__init__.default_values" title="Permalink to this definition">¶</a></dt><dd><p>Extra parameters to the function.</p>
 </dd>
-<dt><span class="sig-name descname">is_distinct</span></dt><dd><p>Flag for aggregate with distinction</p>
+<dt id="tortoise.functions.Aggregate.__init__.distinct"><span class="n sig-name">distinct</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code><a class="headerlink" href="#tortoise.functions.Aggregate.__init__.distinct" title="Permalink to this definition">¶</a></dt><dd><p>Flag for aggregate with distinction</p>
 </dd>
 </dl>
 </dd>

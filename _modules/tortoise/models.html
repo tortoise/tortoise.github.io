@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.models - Tortoise ORM v1.1.6 Documentation</title>
+        <title>tortoise.models - Tortoise ORM v1.1.7 Documentation</title>
       
     
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.6 Documentation
+            Tortoise ORM 1.1.7 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../toc.html" title="Tortoise ORM v1.1.6 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.6 Documentation" data-md-component="logo">
+    <a href="../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
       <img src="../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.6 Documentation
+    Tortoise ORM v1.1.7 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -891,6 +891,8 @@
         <span class="s2">&quot;db_native_fields&quot;</span><span class="p">,</span>
         <span class="s2">&quot;db_default_fields&quot;</span><span class="p">,</span>
         <span class="s2">&quot;db_complex_fields&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;db_default_db_columns&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fetch_db_defaults&quot;</span><span class="p">,</span>
         <span class="s2">&quot;_default_ordering&quot;</span><span class="p">,</span>
         <span class="s2">&quot;_ordering_validated&quot;</span><span class="p">,</span>
     <span class="p">)</span>
@@ -933,6 +935,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">db_native_fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_default_fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db_complex_fields</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Field</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_default_db_columns</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fetch_db_defaults</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="s2">&quot;fetch_db_defaults&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1017,6 +1021,13 @@
             <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">generated</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">generated_db_fields</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">generated_fields</span><span class="p">)</span>
+
+        <span class="n">db_default_cols</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">source_field</span> <span class="ow">or</span> <span class="n">field</span><span class="o">.</span><span class="n">model_field_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_map</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">generated</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_default_db_columns</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">db_default_cols</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_ordering_validated</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_ordering</span><span class="p">:</span>
@@ -1418,10 +1429,15 @@
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_default</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">default</span> <span class="o">=</span> <span class="n">field_object</span><span class="o">.</span><span class="n">default</span>
-                <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">field_object</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">():</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_object</span><span class="o">.</span><span class="n">get_db_default_value</span><span class="p">())</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># set field value override async default function</span>
@@ -1725,6 +1741,8 @@
                 <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_default</span><span class="p">())</span>
             <span class="k">elif</span> <span class="n">field_default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">field_default</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">default_field</span><span class="o">.</span><span class="n">has_db_default</span><span class="p">():</span>
+                <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default_field</span><span class="o">.</span><span class="n">get_db_default_value</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">_setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
@@ -2173,12 +2191,22 @@
 <span class="sd">                User(name=&quot;...&quot;, email=&quot;...&quot;)</span>
 <span class="sd">            ])</span>
 
+<span class="sd">        **db_default behaviour:** Fields with ``db_default`` that are not explicitly</span>
+<span class="sd">        set will use the database DEFAULT. However, within a single ``bulk_create``</span>
+<span class="sd">        call, each ``db_default`` field must be treated consistently across *all*</span>
+<span class="sd">        instances — either every instance provides an explicit value, or none of</span>
+<span class="sd">        them do.  Mixing explicit values and database defaults for the same field</span>
+<span class="sd">        raises :exc:`~tortoise.exceptions.OperationalError`.</span>
+
 <span class="sd">        :param on_conflict: On conflict index name</span>
 <span class="sd">        :param update_fields: Update fields when conflicts</span>
 <span class="sd">        :param ignore_conflicts: Ignore conflicts when inserting</span>
 <span class="sd">        :param objects: List of objects to bulk create</span>
 <span class="sd">        :param batch_size: How many objects are created in a single query</span>
 <span class="sd">        :param using_db: Specific DB connection to use instead of default bound</span>
+
+<span class="sd">        :raises OperationalError: If a ``db_default`` field has mixed usage across</span>
+<span class="sd">            instances (some provide a value, others rely on the database default).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_db_queryset</span><span class="p">(</span><span class="n">using_db</span><span class="p">,</span> <span class="n">for_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">bulk_create</span><span class="p">(</span>
             <span class="n">objects</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">ignore_conflicts</span><span class="p">,</span> <span class="n">update_fields</span><span class="p">,</span> <span class="n">on_conflict</span>
