@@ -17,7 +17,7 @@
     
     
       
-        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v1.1.7 Documentation</title>
+        <title>tortoise.contrib.pydantic.creator - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -38,7 +38,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="../../../../toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="../../../../_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -685,7 +685,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">IntEnum</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha3_224</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">cast</span><span class="p">,</span> <span class="n">get_args</span><span class="p">,</span> <span class="n">get_origin</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">computed_field</span><span class="p">,</span> <span class="n">create_model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span> <span class="k">as</span> <span class="n">PydanticField</span>
@@ -751,20 +751,20 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">field_map_update</span><span class="p">([</span><span class="n">pk_field</span><span class="p">],</span> <span class="n">meta</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">computed_fields</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ComputedFieldDescription</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="n">__key</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">ComputedFieldDescription</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">__key</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">ComputedFieldDescription</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">ComputedFieldDescription</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># pragma: no-coverage</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">__value</span><span class="p">:</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">ComputedFieldDescription</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">__key</span><span class="p">,</span> <span class="n">__value</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sort_alphabetically</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_field_map</span><span class="p">)}</span>
@@ -804,6 +804,13 @@
             <span class="p">}</span>
         <span class="p">)</span></div>
 
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_field_annotation</span><span class="p">(</span><span class="n">type_obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">get_origin</span><span class="p">(</span><span class="n">type_obj</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Field</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="pydantic_queryset_creator">
@@ -860,7 +867,7 @@
     <span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">submodel</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">_list&quot;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;submodel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>  <span class="c1"># type: ignore[typeddict-unknown-key]</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;submodel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>  <span class="c1"># type: ignore</span>
     <span class="k">return</span> <span class="n">model</span></div>
 
 
@@ -934,8 +941,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_pconfig</span><span class="p">:</span> <span class="n">ConfigDict</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PropertyValue</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_relational_fields_index</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_properties</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PropertyValue</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relational_fields_index</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_description</span><span class="p">:</span> <span class="n">ModelDescription</span> <span class="o">=</span> <span class="n">ModelDescription</span><span class="o">.</span><span class="n">from_model</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
@@ -1048,6 +1055,9 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;decorator_info&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">ComputedFieldInfo</span><span class="p">):</span>
                 <span class="n">computed_fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">is_field_annotation</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                    <span class="c1"># `tortoise.fields.base.Field[EnumType]` -&gt; `EnumType`</span>
+                    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">get_args</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
                 <span class="n">common_fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
         <span class="n">base_model</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
             <span class="s2">&quot;BasePydanticModel&quot;</span><span class="p">,</span>
@@ -1062,7 +1072,7 @@
             <span class="o">**</span><span class="n">common_fields</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">model</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">)</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;orig_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span>  <span class="c1"># type: ignore[typeddict-unknown-key]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;orig_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span>  <span class="c1"># type: ignore</span>
         <span class="n">_MODEL_INDEX</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
         <span class="k">return</span> <span class="n">model</span>
 
@@ -1154,7 +1164,7 @@
         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_submodel</span><span class="p">(</span><span class="n">python_type</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_relational_fields_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">field_name</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
-            <span class="k">return</span> <span class="nb">list</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>  <span class="c1"># type: ignore[valid-type]</span>
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_process_data_field</span><span class="p">(</span>
@@ -1170,7 +1180,7 @@
             <span class="n">json_schema_extra</span><span class="p">[</span><span class="s2">&quot;readOnly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">[</span><span class="s2">&quot;readOnly&quot;</span><span class="p">]</span>
             <span class="k">del</span> <span class="n">constraints</span><span class="p">[</span><span class="s2">&quot;readOnly&quot;</span><span class="p">]</span>
         <span class="n">fconfig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
-        <span class="n">python_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Enum</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">IntEnum</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span>
+        <span class="n">python_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Enum</span> <span class="o">|</span> <span class="n">IntEnum</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="p">(</span><span class="n">IntEnumFieldInstance</span><span class="p">,</span> <span class="n">CharEnumFieldInstance</span><span class="p">)):</span>
             <span class="n">python_type</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">enum_type</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1199,13 +1209,13 @@
                 <span class="k">if</span> <span class="n">orm_obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="k">return</span> <span class="n">original_func</span><span class="p">(</span><span class="n">orm_obj</span><span class="p">)</span>
-                    <span class="k">except</span> <span class="n">NoValuesFetched</span><span class="p">:</span>
+                    <span class="k">except</span> <span class="n">NoValuesFetched</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="n">NoValuesFetched</span><span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">&quot;Computed field &#39;</span><span class="si">{</span><span class="n">original_func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; tried to access a &quot;</span>
-                            <span class="sa">f</span><span class="s2">&quot;relation that has not been fetched. Either include the relation &quot;</span>
-                            <span class="sa">f</span><span class="s2">&quot;in the Pydantic model so it is auto-prefetched, or call &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Computed field &#39;</span><span class="si">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">original_func</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__name__&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">repr</span><span class="p">(</span><span class="n">original_func</span><span class="p">))</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;tried to access a relation that has not been fetched. Either include the &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;relation in the Pydantic model so it is auto-prefetched, or call &quot;</span>
                             <span class="sa">f</span><span class="s2">&quot;fetch_related() before serialization.&quot;</span>
-                        <span class="p">)</span>
+                        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
                 <span class="k">return</span> <span class="n">original_func</span><span class="p">(</span><span class="n">self_pydantic</span><span class="p">)</span>
 
             <span class="n">comment</span> <span class="o">=</span> <span class="n">_cleandoc</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -1215,7 +1225,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_submodel</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span>
+        <span class="n">model_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Model</span><span class="p">],</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">stack</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">StackEntry</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
         <span class="n">exclude</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
@@ -1226,7 +1236,7 @@
         <span class="n">sort_alphabetically</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticModel</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Pydantic submodel with recursion protection against cyclic references.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_cycles</span> <span class="ow">and</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">stack</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_cycles</span> <span class="ow">and</span> <span class="n">model_cls</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">stack</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1236,7 +1246,7 @@
 
             <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">pmc</span> <span class="o">=</span> <span class="n">PydanticModelCreator</span><span class="p">(</span>
-            <span class="bp">cls</span><span class="p">,</span>
+            <span class="n">model_cls</span><span class="p">,</span>
             <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span>
             <span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span>
             <span class="n">computed</span><span class="o">=</span><span class="n">computed</span><span class="p">,</span>

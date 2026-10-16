@@ -17,7 +17,7 @@
     
     
       
-        <title>Index - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Index - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -38,7 +38,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -89,7 +89,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -409,10 +409,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -735,6 +735,8 @@
 </li>
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation.add">add() (tortoise.fields.relational.ManyToManyRelation method)</a>
 </li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.ADVANCED_IPV6_REGEX">ADVANCED_IPV6_REGEX (tortoise.validators.URLValidator attribute)</a>
+</li>
       <li><a href="functions.html#tortoise.functions.Aggregate">Aggregate (class in tortoise.functions)</a>
 </li>
       <li><a href="connections.html#tortoise.connection.ConnectionHandler.all">all() (tortoise.connection.ConnectionHandler method)</a>
@@ -762,6 +764,12 @@
 </li>
       </ul></li>
       <li><a href="contrib/postgres.html#tortoise.contrib.postgres.fields.ArrayField">ArrayField (class in tortoise.contrib.postgres.fields)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_DOMAIN_REGEX">ASCII_ONLY_DOMAIN_REGEX (tortoise.validators.DomainNameValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_HOSTNAME_REGEX">ASCII_ONLY_HOSTNAME_REGEX (tortoise.validators.DomainNameValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_TLD_REGEX">ASCII_ONLY_TLD_REGEX (tortoise.validators.DomainNameValidator attribute)</a>
 </li>
       <li><a href="transactions.html#tortoise.transactions.atomic">atomic() (in module tortoise.transactions)</a>
 </li>
@@ -834,7 +842,11 @@
       <li><a href="connections.html#tortoise.connection.ConnectionHandler.close_all">close_all() (tortoise.connection.ConnectionHandler method)</a>
 </li>
       <li><a href="contrib/fastapi.html#tortoise.contrib.fastapi.RegisterTortoise.close_orm">close_orm() (tortoise.contrib.fastapi.RegisterTortoise method)</a>
+
+      <ul>
+        <li><a href="contrib/starlette.html#tortoise.contrib.starlette.RegisterTortoise.close_orm">(tortoise.contrib.starlette.RegisterTortoise method)</a>
 </li>
+      </ul></li>
       <li><a href="functions.html#tortoise.functions.Coalesce">Coalesce (class in tortoise.functions)</a>
 </li>
       <li><a href="validators.html#tortoise.validators.CommaSeparatedIntegerListValidator">CommaSeparatedIntegerListValidator (class in tortoise.validators)</a>
@@ -843,10 +855,10 @@
 </li>
       <li><a href="exceptions.html#tortoise.exceptions.ConfigurationError">ConfigurationError</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="connections.html#tortoise.connection.ConnectionHandler">ConnectionHandler (class in tortoise.connection)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.base.Field.constraints">constraints (tortoise.fields.base.Field property)</a>
 
       <ul>
@@ -865,10 +877,18 @@
       </ul></li>
       <li><a href="models.html#tortoise.models.Model.construct">construct() (tortoise.models.Model class method)</a>
 </li>
+      <li><a href="query.html#tortoise.queryset.QuerySet.contains">contains() (tortoise.queryset.QuerySet method)</a>
+</li>
+      <li><a href="query.html#tortoise.queryset.ContainsQuery">ContainsQuery (class in tortoise.queryset)</a>
+</li>
       <li><a href="functions.html#tortoise.functions.Count">Count (class in tortoise.functions)</a>
 </li>
       <li><a href="query.html#tortoise.queryset.QuerySet.count">count() (tortoise.queryset.QuerySet method)</a>
+
+      <ul>
+        <li><a href="query.html#id7">(tortoise.queryset.UnionQuery method)</a>, <a href="query.html#tortoise.queryset.UnionQuery.count">[1]</a>
 </li>
+      </ul></li>
       <li><a href="query.html#tortoise.queryset.CountQuery">CountQuery (class in tortoise.queryset)</a>
 </li>
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation.create">create() (tortoise.fields.relational.ManyToManyRelation method)</a>
@@ -933,6 +953,8 @@
 </li>
       <li><a href="exceptions.html#tortoise.exceptions.DoesNotExist">DoesNotExist</a>
 </li>
+      <li><a href="validators.html#tortoise.validators.DomainNameValidator">DomainNameValidator (class in tortoise.validators)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -945,6 +967,8 @@
         <li><a href="query.html#tortoise.queryset.QuerySet.earliest">(tortoise.queryset.QuerySet method)</a>
 </li>
       </ul></li>
+      <li><a href="validators.html#tortoise.validators.EmailValidator">EmailValidator (class in tortoise.validators)</a>
+</li>
       <li><a href="models.html#tortoise.models.Model.exclude">exclude() (tortoise.models.Model class method)</a>
 
       <ul>
@@ -991,9 +1015,11 @@
 </li>
       <li><a href="fields.html#tortoise.fields.base.Field">Field (class in tortoise.fields.base)</a>
 </li>
-      <li><a href="fields.html#tortoise.fields.base.Field.field_type">field_type (tortoise.fields.base.Field attribute)</a>
+      <li><a href="fields.html#tortoise.contrib.postgres.fields.TSVectorField.field_type">field_type (tortoise.contrib.postgres.fields.TSVectorField attribute)</a>
 
       <ul>
+        <li><a href="fields.html#tortoise.fields.base.Field.field_type">(tortoise.fields.base.Field attribute)</a>
+</li>
         <li><a href="fields.html#tortoise.fields.data.BinaryField.field_type">(tortoise.fields.data.BinaryField attribute)</a>
 </li>
         <li><a href="fields.html#tortoise.fields.data.BooleanField.field_type">(tortoise.fields.data.BooleanField attribute)</a>
@@ -1137,11 +1163,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.base.Field.has_db_default">has_db_default() (tortoise.fields.base.Field method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.base.Field.has_db_field">has_db_field (tortoise.fields.base.Field attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="contrib/postgres.html#tortoise.contrib.postgres.indexes.HashIndex">HashIndex (class in tortoise.contrib.postgres.indexes)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.HOST_REGEX">HOST_REGEX (tortoise.validators.URLValidator attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1163,15 +1191,29 @@
 </li>
       <li><a href="models.html#tortoise.models.Model.Meta.indexes">indexes (tortoise.models.Model.Meta attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="contrib/fastapi.html#tortoise.contrib.fastapi.RegisterTortoise.init_orm">init_orm() (tortoise.contrib.fastapi.RegisterTortoise method)</a>
+
+      <ul>
+        <li><a href="contrib/starlette.html#tortoise.contrib.starlette.RegisterTortoise.init_orm">(tortoise.contrib.starlette.RegisterTortoise method)</a>
 </li>
+      </ul></li>
       <li><a href="exceptions.html#tortoise.exceptions.IntegrityError">IntegrityError</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.data.IntEnumField">IntEnumField() (in module tortoise.fields.data)</a>
 </li>
       <li><a href="fields.html#tortoise.fields.data.IntField">IntField (class in tortoise.fields.data)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.InvalidDomainName">InvalidDomainName</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.InvalidEmailAddress">InvalidEmailAddress</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.InvalidScheme">InvalidScheme</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.InvalidURL">InvalidURL</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.IPV4_REGEX">IPV4_REGEX (tortoise.validators.URLValidator attribute)</a>
 </li>
       <li><a href="timezone.html#tortoise.timezone.is_aware">is_aware() (in module tortoise.timezone)</a>
 </li>
@@ -1209,10 +1251,10 @@
       </ul></li>
       <li><a href="functions.html#tortoise.functions.Length">Length (class in tortoise.functions)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="contrib/postgres.html#tortoise.contrib.postgres.search.Lexeme">Lexeme (class in tortoise.contrib.postgres.search)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation.limit">limit() (tortoise.fields.relational.ManyToManyRelation method)</a>
 
       <ul>
@@ -1220,7 +1262,11 @@
 </li>
         <li><a href="query.html#tortoise.queryset.QuerySet.limit">(tortoise.queryset.QuerySet method)</a>
 </li>
+        <li><a href="query.html#id8">(tortoise.queryset.UnionQuery method)</a>, <a href="query.html#tortoise.queryset.UnionQuery.limit">[1]</a>
+</li>
       </ul></li>
+      <li><a href="validators.html#tortoise.validators.EmailValidator.LITERAL_REGEX">LITERAL_REGEX (tortoise.validators.EmailValidator attribute)</a>
+</li>
       <li><a href="timezone.html#tortoise.timezone.localtime">localtime() (in module tortoise.timezone)</a>
 </li>
       <li><a href="functions.html#tortoise.functions.Lower">Lower (class in tortoise.functions)</a>
@@ -1242,6 +1288,14 @@
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation">ManyToManyRelation (class in tortoise.fields.relational)</a>
 </li>
       <li><a href="functions.html#tortoise.functions.Max">Max (class in tortoise.functions)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.DomainNameValidator.MAX_DOMAIN_LENGTH">MAX_DOMAIN_LENGTH (tortoise.validators.DomainNameValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.EmailValidator.MAX_EMAIL_LENGTH">MAX_EMAIL_LENGTH (tortoise.validators.EmailValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.MAX_HOSTNAME_LENGTH">MAX_HOSTNAME_LENGTH (tortoise.validators.URLValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.MAX_URL_LENGTH">MAX_URL_LENGTH (tortoise.validators.URLValidator attribute)</a>
 </li>
       <li><a href="validators.html#tortoise.validators.MaxLengthValidator">MaxLengthValidator (class in tortoise.validators)</a>
 </li>
@@ -1363,6 +1417,8 @@
 </li>
         <li><a href="query.html#tortoise.queryset.QuerySet.offset">(tortoise.queryset.QuerySet method)</a>
 </li>
+        <li><a href="query.html#id9">(tortoise.queryset.UnionQuery method)</a>, <a href="query.html#tortoise.queryset.UnionQuery.offset">[1]</a>
+</li>
       </ul></li>
       <li><a href="fields.html#tortoise.fields.base.OnDelete">OnDelete (class in tortoise.fields.base)</a>
 </li>
@@ -1386,6 +1442,8 @@
         <li><a href="query.html#tortoise.fields.relational.ReverseRelation.order_by">(tortoise.fields.relational.ReverseRelation method)</a>
 </li>
         <li><a href="query.html#tortoise.queryset.QuerySet.order_by">(tortoise.queryset.QuerySet method)</a>
+</li>
+        <li><a href="query.html#id10">(tortoise.queryset.UnionQuery method)</a>, <a href="query.html#tortoise.queryset.UnionQuery.order_by">[1]</a>
 </li>
       </ul></li>
       <li><a href="models.html#tortoise.models.Model.Meta.ordering">ordering (tortoise.models.Model.Meta attribute)</a>
@@ -1499,7 +1557,11 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="contrib/fastapi.html#tortoise.contrib.fastapi.RegisterTortoise">RegisterTortoise (class in tortoise.contrib.fastapi)</a>
+
+      <ul>
+        <li><a href="contrib/starlette.html#tortoise.contrib.starlette.RegisterTortoise">(class in tortoise.contrib.starlette)</a>
 </li>
+      </ul></li>
       <li><a href="query.html#tortoise.fields.relational.ManyToManyRelation.remove">remove() (tortoise.fields.relational.ManyToManyRelation method)</a>
 </li>
       <li><a href="contrib/unittest.html#tortoise.contrib.test.requireCapability">requireCapability() (in module tortoise.contrib.test)</a>
@@ -1560,13 +1622,15 @@
 </li>
       <li><a href="connections.html#tortoise.connection.ConnectionHandler.set">set() (tortoise.connection.ConnectionHandler method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.base.OnDelete.SET_DEFAULT">SET_DEFAULT (tortoise.fields.base.OnDelete attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fields.html#tortoise.fields.base.OnDelete.SET_NULL">SET_NULL (tortoise.fields.base.OnDelete attribute)</a>
 </li>
       <li><a href="signals.html#tortoise.signals.Signals">Signals (class in tortoise.signals)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.SIMPLE_IPV6_REGEX">SIMPLE_IPV6_REGEX (tortoise.validators.URLValidator attribute)</a>
 </li>
       <li><a href="fields.html#tortoise.fields.base.Field.skip_to_python_if_native">skip_to_python_if_native (tortoise.fields.base.Field attribute)</a>
 </li>
@@ -1836,7 +1900,19 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="query.html#tortoise.queryset.QuerySet.union">union() (tortoise.queryset.QuerySet method)</a>
+
+      <ul>
+        <li><a href="query.html#id11">(tortoise.queryset.UnionQuery method)</a>, <a href="query.html#tortoise.queryset.UnionQuery.union">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="query.html#tortoise.queryset.UnionCountQuery">UnionCountQuery (class in tortoise.queryset)</a>
+</li>
+      <li><a href="query.html#id0">UnionQuery (class in tortoise.queryset)</a>, <a href="query.html#tortoise.queryset.UnionQuery">[1]</a>
+</li>
       <li><a href="models.html#tortoise.models.Model.Meta.unique_together">unique_together (tortoise.models.Model.Meta attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.UNSAFE_CHARS">UNSAFE_CHARS (tortoise.validators.URLValidator attribute)</a>
 </li>
       <li><a href="exceptions.html#tortoise.exceptions.UnSupportedError">UnSupportedError</a>
 </li>
@@ -1844,15 +1920,21 @@
 </li>
       <li><a href="models.html#tortoise.models.Model.update_from_dict">update_from_dict() (tortoise.models.Model method)</a>
 </li>
-      <li><a href="models.html#tortoise.models.Model.update_or_create">update_or_create() (tortoise.models.Model class method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="models.html#tortoise.models.Model.update_or_create">update_or_create() (tortoise.models.Model class method)</a>
+</li>
       <li><a href="query.html#tortoise.queryset.UpdateQuery">UpdateQuery (class in tortoise.queryset)</a>
 </li>
       <li><a href="functions.html#tortoise.functions.Upper">Upper (class in tortoise.functions)</a>
 </li>
+      <li><a href="validators.html#tortoise.validators.URLValidator.URL_REGEX">URL_REGEX (tortoise.validators.URLValidator attribute)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.URLValidator">URLValidator (class in tortoise.validators)</a>
+</li>
       <li><a href="query.html#tortoise.queryset.QuerySet.use_index">use_index() (tortoise.queryset.QuerySet method)</a>
+</li>
+      <li><a href="validators.html#tortoise.validators.EmailValidator.USER_REGEX">USER_REGEX (tortoise.validators.EmailValidator attribute)</a>
 </li>
       <li><a href="query.html#tortoise.queryset.QuerySet.using_db">using_db() (tortoise.queryset.QuerySet method)</a>
 </li>

@@ -21,7 +21,7 @@
     
     
       
-        <title>Contribution Guide - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Contribution Guide - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -825,7 +825,7 @@
 <h1 id="contribution-guide">Contribution Guide<a class="headerlink" href="#contribution-guide" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>If you want to contribute check out issues, or just straightforwardly create PR.</p>
+<p>If you want to contribute, check out the issues, or just create a PR.</p>
 <p>Tortoise ORM is a volunteer effort. We encourage you to pitch in and join the team!</p>
 <p>Please have a look at the <a class="reference internal" href="CODE_OF_CONDUCT.html#code-conduct"><span class="std std-ref">Contributor Covenant Code of Conduct</span></a></p>
 <h2 id="filing-a-bug-or-requesting-a-feature">Filing a bug or requesting a feature<a class="headerlink" href="#filing-a-bug-or-requesting-a-feature" title="Link to this heading">¶</a></h2>
@@ -868,7 +868,7 @@ If not you are welcome to open one.</p>
 </dd>
 </dl>
 <h2 id="coding-guideline">Coding Guideline<a class="headerlink" href="#coding-guideline" title="Link to this heading">¶</a></h2>
-<p>We believe to keep the code simple, so it is easier to test and there is less place for bugs to hide.</p>
+<p>We believe in keeping the code simple, so it is easier to test and there are fewer places for bugs to hide.</p>
 <h3 id="priorities">Priorities<a class="headerlink" href="#priorities" title="Link to this heading">¶</a></h3>
 <p>An important part of Tortoise ORM is that we want a simple interface, that only does what is expected.
 As this is a value that is different for different people, we have settled on:</p>
@@ -880,7 +880,8 @@ As this is a value that is different for different people, we have settled on:</
 <li><p>Only do performance/memory optimisation when you have a repeatable benchmark to measure with.</p></li>
 </ul>
 <h3 id="style">Style<a class="headerlink" href="#style" title="Link to this heading">¶</a></h3>
-<p>We try and automate as much as we can, so a simple <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">check</span></code> will do automated style checking and linting, but these don’t pick up on the non-obvious style preferences.</p>
+<p>We try and automate as much as we can, so a simple <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">style</span></code> (or <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">prek</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>) will do automated formatting, style checking and linting, but these don’t pick up on the non-obvious style preferences.
+Before creating a PR, please run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">check</span></code> (or <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">prek</span> <span class="pre">run</span> <span class="pre">--all-files</span> <span class="pre">--group</span> <span class="pre">check</span></code>) to ensure code quality.</p>
 <p>Tortoise ORM follows a the following agreed upon style:</p>
 <ul class="simple">
 <li><p>Keep to PEP8 where you can</p></li>

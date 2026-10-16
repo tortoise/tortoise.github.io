@@ -21,7 +21,7 @@
     
     
       
-        <title>Query API - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Query API - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -1101,6 +1101,72 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.contains" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.contains (Python method) — Check if the QuerySet contains the given instance."><span>contains</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="contains">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.contains-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.contains.obj" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.contains.obj (Python parameter) — The model instance to check for."><span>obj</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.contains-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.contains-returns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.count" class="md-nav__link">
     
       <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
@@ -1300,6 +1366,56 @@
   
     <nav class="md-nav" aria-label="explain">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.explain-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.explain.output_fmt" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.explain.output_fmt (Python parameter) — The output format for the EXPLAIN result. - PostgreSQL: text, json, xml, yaml (default: json) - MySQL: json, traditional, tree (default: json) - SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)"><span>output_<wbr>fmt</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.explain.options" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.explain.options (Python parameter) — Additional options for EXPLAIN (database-specific). - PostgreSQL: analyze, buffers, costs, memory, settings, summary, timing, verbose, wal, generic_plan, serialize (if not provided default is verbose) - MySQL: analyze - SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)"><span>options</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.explain-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.explain-return-type" class="md-nav__link">
@@ -2155,6 +2271,72 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.union" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.union (Python method) — Return the union of QuerySets."><span>union</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.union-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.union.other_qs" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.QuerySet.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span>other_<wbr>qs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.union-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.QuerySet.union-returns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.queryset.QuerySet.update" class="md-nav__link">
     
       <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
@@ -2458,6 +2640,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.queryset.ContainsQuery" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.ContainsQuery (Python class)"><span>tortoise.<wbr>queryset.<wbr>Contains<wbr>Query</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.queryset.CountQuery" class="md-nav__link">
     
       <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
@@ -2514,6 +2708,232 @@
       <span title="tortoise.queryset.RawSQLQuery (Python class)"><span>tortoise.<wbr>queryset.<wbr>Raw<wbr>SQLQuery</span></span>
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionCountQuery" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionCountQuery (Python class)"><span>tortoise.<wbr>queryset.<wbr>Union<wbr>Count<wbr>Query</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>tortoise.<wbr>queryset.<wbr>Union<wbr>Query</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.queryset.UnionQuery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.count" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>count</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="count">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.count-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.limit" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>limit</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="limit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.limit-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.limit-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.offset" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>offset</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.offset-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.offset-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.order_by" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>order_<wbr>by</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="order_by">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.order_by-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.order_by-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>union</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union.other_qs" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span>other_<wbr>qs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union-returns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3392,6 +3812,248 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="union (reference label)"><span>Union</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id0" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><span>tortoise.<wbr>queryset.<wbr>Union<wbr>Query</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tortoise.queryset.UnionQuery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.count (Python method) — Return count of objects in union query."><span>count</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="count">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id7-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.limit (Python method) — Limits UnionQuery to given length."><span>limit</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="limit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id8-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.offset (Python method) — Query offset for UnionQuery."><span>offset</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id9-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id9-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id10" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.order_by (Python method) — Accept args to filter by in format like this:"><span>order_<wbr>by</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="order_by">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id10-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id10-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.union (Python method) — Return the union of QuerySets."><span>union</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="union">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id11-parameters" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Parameters</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tortoise.queryset.UnionQuery.union.other_qs" class="md-nav__link">
+    
+      <span aria-label="Python parameter" class="objinfo-icon objinfo-icon__sub-data" title="Python parameter">p</span>
+    
+    <span class="md-ellipsis">
+      <span title="tortoise.queryset.UnionQuery.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span>other_<wbr>qs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11-return-type" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Return type</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11-returns" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Returns</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4062,6 +4724,26 @@ instances (some provide a value, others rely on the database default).</p></li>
 </dd></dl>
 
 <dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.contains">
+<span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.contains.obj" title="tortoise.queryset.QuerySet.contains.obj (Python parameter) — The model instance to check for."><span class="n"><span class="pre">obj</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.contains"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.contains" title="Link to this definition">¶</a></dt>
+<dd><p>Check if the QuerySet contains the given instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.QuerySet.contains-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.contains-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.QuerySet.contains.obj"><span class="sig-name descname">obj</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="models.html#tortoise.models.Model" title="tortoise.models.Model (Python class) — Base class for all Tortoise ORM Models.">Model</a></span></span><a class="headerlink" href="#tortoise.queryset.QuerySet.contains.obj" title="Permalink to this definition">¶</a></dt><dd><p>The model instance to check for.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.QuerySet.contains-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.contains-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#tortoise.queryset.ContainsQuery" title="tortoise.queryset.ContainsQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContainsQuery</span></code></a></p>
+</dd>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.contains-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.contains-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>True if the QuerySet contains the instance, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.count">
 <span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.count" title="Link to this definition">¶</a></dt>
 <dd><p>Return count of objects in queryset instead of objects.</p>
@@ -4137,15 +4819,26 @@ precedes all the fetched fields with a distinct.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.explain">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">explain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.explain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.explain" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">explain</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.explain.output_fmt" title="tortoise.queryset.QuerySet.explain.output_fmt (Python parameter) — The output format for the EXPLAIN result. - PostgreSQL: text, json, xml, yaml (default: json) - MySQL: json, traditional, tree (default: json) - SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)"><span class="n"><span class="pre">output_fmt</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.queryset.QuerySet.explain.options" title="tortoise.queryset.QuerySet.explain.options (Python parameter) — Additional options for EXPLAIN (database-specific). - PostgreSQL: analyze, buffers, costs, memory, settings, summary, timing, verbose, wal, generic_plan, serialize (if not provided default is verbose) - MySQL: analyze - SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)"><span class="n"><span class="pre">options</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.explain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.explain" title="Link to this definition">¶</a></dt>
 <dd><p>Fetch and return information about the query execution plan.</p>
 <p>This is done by executing an <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span></code> query whose exact prefix depends
 on the database backend, as documented below.</p>
-<ul class="simple">
-<li><p>PostgreSQL: <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">(FORMAT</span> <span class="pre">JSON,</span> <span class="pre">VERBOSE)</span> <span class="pre">...</span></code></p></li>
-<li><p>SQLite: <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">QUERY</span> <span class="pre">PLAN</span> <span class="pre">...</span></code></p></li>
-<li><p>MySQL: <code class="docutils literal notranslate"><span class="pre">EXPLAIN</span> <span class="pre">FORMAT=JSON</span> <span class="pre">...</span></code></p></li>
-</ul>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.QuerySet.explain-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.QuerySet.explain.output_fmt"><span class="n sig-name">output_fmt</span><span class="o">=</span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code><a class="headerlink" href="#tortoise.queryset.QuerySet.explain.output_fmt" title="Permalink to this definition">¶</a></dt><dd><p>The output format for the EXPLAIN result.
+- PostgreSQL: <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">xml</span></code>, <code class="docutils literal notranslate"><span class="pre">yaml</span></code> (default: <code class="docutils literal notranslate"><span class="pre">json</span></code>)
+- MySQL: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">traditional</span></code>, <code class="docutils literal notranslate"><span class="pre">tree</span></code> (default: <code class="docutils literal notranslate"><span class="pre">json</span></code>)
+- SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)</p>
+</dd>
+<dt id="tortoise.queryset.QuerySet.explain.options"><span class="o">**</span><span class="n sig-name">options</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain.options" title="Permalink to this definition">¶</a></dt><dd><p>Additional options for EXPLAIN (database-specific).
+- PostgreSQL: <code class="docutils literal notranslate"><span class="pre">analyze</span></code>, <code class="docutils literal notranslate"><span class="pre">buffers</span></code>, <code class="docutils literal notranslate"><span class="pre">costs</span></code>, <code class="docutils literal notranslate"><span class="pre">memory</span></code>, <code class="docutils literal notranslate"><span class="pre">settings</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, <code class="docutils literal notranslate"><span class="pre">timing</span></code>, <code class="docutils literal notranslate"><span class="pre">verbose</span></code>, <code class="docutils literal notranslate"><span class="pre">wal</span></code>, <code class="docutils literal notranslate"><span class="pre">generic_plan</span></code>, <code class="docutils literal notranslate"><span class="pre">serialize</span></code> (if not provided default is <code class="docutils literal notranslate"><span class="pre">verbose</span></code>)
+- MySQL: <code class="docutils literal notranslate"><span class="pre">analyze</span></code>
+- SQLite, MSSQL, Oracle: Not supported (raises UnSupportedError)</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>This is only meant to be used in an interactive environment for debugging
@@ -4153,8 +4846,11 @@ and query optimization.
 <strong>The output format may (and will) vary greatly depending on the database backend.</strong></p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd" id="tortoise.queryset.QuerySet.explain-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.explain-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.UnSupportedError" title="tortoise.exceptions.UnSupportedError (Python exception) — Bases: BaseORMException"><strong>UnSupportedError</strong></a> – If the database does not support the requested format or options.</p>
+</dd>
+<dt class="field-even" id="tortoise.queryset.QuerySet.explain-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.explain-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4478,6 +5174,26 @@ placeholders, but if you set <cite>params_inline=True</cite>, it will inline the
 </dd></dl>
 
 <dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.queryset.QuerySet.union.other_qs" title="tortoise.queryset.QuerySet.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span class="n"><span class="pre">other_qs</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.QuerySet.union" title="tortoise.queryset.QuerySet.union.all (Python parameter)"><span class="n"><span class="pre">all</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.union"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.union" title="Link to this definition">¶</a></dt>
+<dd><p>Return the union of QuerySets.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.QuerySet.union-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.union-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.QuerySet.union.other_qs"><span class="o">*</span><span class="n sig-name">other_qs</span><a class="headerlink" href="#tortoise.queryset.QuerySet.union.other_qs" title="Permalink to this definition">¶</a></dt><dd><p>Another QuerySet(s) to union with.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.QuerySet.union-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.union-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+<dt class="field-odd" id="tortoise.queryset.QuerySet.union-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.QuerySet.union-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>A new UnionQuery representing the union of both QuerySets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="tortoise.queryset.QuerySet.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.queryset.QuerySet.update" title="tortoise.queryset.QuerySet.update.kwargs (Python parameter)"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#QuerySet.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.QuerySet.update" title="Link to this definition">¶</a></dt>
 <dd><p>Update all objects in QuerySet with given kwargs.</p>
@@ -4595,8 +5311,13 @@ placeholders, but if you set <cite>params_inline=True</cite>, it will inline the
 </dd></dl>
 
 <dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.ContainsQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">ContainsQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.ContainsQuery" title="tortoise.queryset.ContainsQuery.__init__.obj (Python parameter)"><span class="n"><span class="pre">obj</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.queryset.ContainsQuery" title="tortoise.queryset.ContainsQuery.__init__.kwargs (Python parameter)"><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#ContainsQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.ContainsQuery" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.queryset.CountQuery">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">CountQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.q_objects (Python parameter)"><span class="n"><span class="pre">q_objects</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.annotations (Python parameter)"><span class="n"><span class="pre">annotations</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.custom_filters (Python parameter)"><span class="n"><span class="pre">custom_filters</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.limit (Python parameter)"><span class="n"><span class="pre">limit</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.offset (Python parameter)"><span class="n"><span class="pre">offset</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.force_indexes (Python parameter)"><span class="n"><span class="pre">force_indexes</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.use_indexes (Python parameter)"><span class="n"><span class="pre">use_indexes</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#CountQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.CountQuery" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">CountQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.q_objects (Python parameter)"><span class="n"><span class="pre">q_objects</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.annotations (Python parameter)"><span class="n"><span class="pre">annotations</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.custom_filters (Python parameter)"><span class="n"><span class="pre">custom_filters</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.limit (Python parameter)"><span class="n"><span class="pre">limit</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.offset (Python parameter)"><span class="n"><span class="pre">offset</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.force_indexes (Python parameter)"><span class="n"><span class="pre">force_indexes</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.use_indexes (Python parameter)"><span class="n"><span class="pre">use_indexes</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.CountQuery" title="tortoise.queryset.CountQuery.__init__.distinct (Python parameter)"><span class="n"><span class="pre">distinct</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#CountQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.CountQuery" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py class objdesc">
@@ -4618,6 +5339,93 @@ placeholders, but if you set <cite>params_inline=True</cite>, it will inline the
 <dt class="sig sig-object highlight py" id="tortoise.queryset.RawSQLQuery">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">RawSQLQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.RawSQLQuery" title="tortoise.queryset.RawSQLQuery.__init__.sql (Python parameter)"><span class="n"><span class="pre">sql</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#RawSQLQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.RawSQLQuery" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionCountQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">UnionCountQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.UnionCountQuery" title="tortoise.queryset.UnionCountQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.UnionCountQuery" title="tortoise.queryset.UnionCountQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.queryset.UnionCountQuery" title="tortoise.queryset.UnionCountQuery.__init__.union_query (Python parameter)"><span class="n"><span class="pre">union_query</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionCountQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionCountQuery" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">UnionQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.querysets (Python parameter)"><span class="n"><span class="pre">querysets</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.all (Python parameter)"><span class="n"><span class="pre">all</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery" title="Link to this definition">¶</a></dt>
+<dd><dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery.count" title="Link to this definition">¶</a></dt>
+<dd><p>Return count of objects in union query.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.count-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.count-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.UnionCountQuery" title="tortoise.queryset.UnionCountQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionCountQuery</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery.limit">
+<span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id8" title="tortoise.queryset.UnionQuery.limit.limit (Python parameter)"><span class="n"><span class="pre">limit</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery.limit" title="Link to this definition">¶</a></dt>
+<dd><p>Limits UnionQuery to given length.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.limit-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.limit-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Limit should be non-negative number.</p>
+</dd>
+<dt class="field-even" id="tortoise.queryset.UnionQuery.limit-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.limit-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id9" title="tortoise.queryset.UnionQuery.offset.offset (Python parameter)"><span class="n"><span class="pre">offset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery.offset" title="Link to this definition">¶</a></dt>
+<dd><p>Query offset for UnionQuery.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.offset-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.offset-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Offset should be non-negative number.</p>
+</dd>
+<dt class="field-even" id="tortoise.queryset.UnionQuery.offset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.offset-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery.order_by">
+<span class="sig-name descname"><span class="pre">order_by</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#id10" title="tortoise.queryset.UnionQuery.order_by.orderings (Python parameter)"><span class="n"><span class="pre">orderings</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.order_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery.order_by" title="Link to this definition">¶</a></dt>
+<dd><p>Accept args to filter by in format like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;-id&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>A ‘-’ before the name will result in descending sort order, default is ascending.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.order_by-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.order_by-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If unknown field has been provided.</p>
+</dd>
+<dt class="field-even" id="tortoise.queryset.UnionQuery.order_by-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.order_by-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="tortoise.queryset.UnionQuery.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.queryset.UnionQuery.union.other_qs" title="tortoise.queryset.UnionQuery.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span class="n"><span class="pre">other_qs</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id11" title="tortoise.queryset.UnionQuery.union.all (Python parameter)"><span class="n"><span class="pre">all</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.union"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.queryset.UnionQuery.union" title="Link to this definition">¶</a></dt>
+<dd><p>Return the union of QuerySets.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.union-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.union-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.UnionQuery.union.other_qs"><span class="o">*</span><span class="n sig-name">other_qs</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.union.other_qs" title="Permalink to this definition">¶</a></dt><dd><p>Another QuerySet(s) to union with.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="tortoise.queryset.UnionQuery.union-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.union-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+<dt class="field-odd" id="tortoise.queryset.UnionQuery.union-returns">Returns<span class="colon">:</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.union-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>A new UnionQuery representing the union of all QuerySets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.queryset.UpdateQuery">
@@ -4649,6 +5457,15 @@ section of this document.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">name__icontains</span><span class="o">=</span><span class="s1">&#39;junior&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
+<p>You can also check if a specific object exists in a queryset:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">obj</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">exists</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Or simply check if any record matches a filter:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">exists</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Team</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</code></pre></div>
+</div>
 <p>As more interesting case, when you are working with related data, you could also build your
 query around related entities:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># getting all events, which tournament name is &quot;World Cup&quot;</span>
@@ -4670,7 +5487,7 @@ You could do it using <code class="docutils literal notranslate"><span class="pr
 <span class="c1"># This will fetch tournament with their events and teams for each event</span>
 <span class="n">tournament_list</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;events__participants&#39;</span><span class="p">)</span>
 
-<span class="c1"># Fetched result for m2m and backward fk relations are stored in list-like containe#r</span>
+<span class="c1"># Fetched result for m2m and backward fk relations are stored in list-like container</span>
 <span class="k">for</span> <span class="n">tournament</span> <span class="ow">in</span> <span class="n">tournament_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tournament</span><span class="o">.</span><span class="n">events</span><span class="p">])</span>
 </code></pre></div>
@@ -5125,6 +5942,97 @@ for specialised prefetching.</p>
 </dd>
 <dt class="field-odd" id="tortoise.query_utils.Prefetch.resolve_for_queryset-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.query_utils.Prefetch.resolve_for_queryset-return-type" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<h2 id="union"><span id="id6"></span>Union<a class="headerlink" href="#union" title="Link to this heading">¶</a></h2>
+<p>Tortoise ORM supports SQL <code class="docutils literal notranslate"><span class="pre">UNION</span></code> queries to combine results from multiple QuerySets.</p>
+<p>Example usage:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">qs1</span> <span class="o">=</span> <span class="n">Tournament</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__in</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="n">qs2</span> <span class="o">=</span> <span class="n">Reporter</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__in</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">only</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">qs1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">qs2</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="id0">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tortoise.queryset.</span></span><span class="sig-name descname"><span class="pre">UnionQuery</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.model (Python parameter)"><span class="n"><span class="pre">model</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.db (Python parameter)"><span class="n"><span class="pre">db</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.querysets (Python parameter)"><span class="n"><span class="pre">querysets</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id0" title="tortoise.queryset.UnionQuery.__init__.all (Python parameter)"><span class="n"><span class="pre">all</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd><dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="id7">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd><p>Return count of objects in union query.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="id7-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#id7-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#tortoise.queryset.UnionCountQuery" title="tortoise.queryset.UnionCountQuery (Python class)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionCountQuery</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="id8">
+<span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id8" title="tortoise.queryset.UnionQuery.limit.limit (Python parameter)"><span class="n"><span class="pre">limit</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id8" title="Link to this definition">¶</a></dt>
+<dd><p>Limits UnionQuery to given length.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="id8-raises">Raises<span class="colon">:</span><a class="headerlink" href="#id8-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Limit should be non-negative number.</p>
+</dd>
+<dt class="field-even" id="id8-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#id8-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="id9">
+<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id9" title="tortoise.queryset.UnionQuery.offset.offset (Python parameter)"><span class="n"><span class="pre">offset</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id9" title="Link to this definition">¶</a></dt>
+<dd><p>Query offset for UnionQuery.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="id9-raises">Raises<span class="colon">:</span><a class="headerlink" href="#id9-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.ParamsError" title="tortoise.exceptions.ParamsError (Python exception) — Bases: BaseORMException"><strong>ParamsError</strong></a> – Offset should be non-negative number.</p>
+</dd>
+<dt class="field-even" id="id9-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#id9-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="id10">
+<span class="sig-name descname"><span class="pre">order_by</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#id10" title="tortoise.queryset.UnionQuery.order_by.orderings (Python parameter)"><span class="n"><span class="pre">orderings</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.order_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id10" title="Link to this definition">¶</a></dt>
+<dd><p>Accept args to filter by in format like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;-id&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>A ‘-’ before the name will result in descending sort order, default is ascending.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="id10-raises">Raises<span class="colon">:</span><a class="headerlink" href="#id10-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.FieldError" title="tortoise.exceptions.FieldError (Python exception) — Bases: BaseORMException"><strong>FieldError</strong></a> – If unknown field has been provided.</p>
+</dd>
+<dt class="field-even" id="id10-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#id10-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="id11">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">*</span></span><a class="n reference internal" href="#tortoise.queryset.UnionQuery.union.other_qs" title="tortoise.queryset.UnionQuery.union.other_qs (Python parameter) — Another QuerySet(s) to union with."><span class="n"><span class="pre">other_qs</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#id11" title="tortoise.queryset.UnionQuery.union.all (Python parameter)"><span class="n"><span class="pre">all</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/queryset.html#UnionQuery.union"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id11" title="Link to this definition">¶</a></dt>
+<dd><p>Return the union of QuerySets.</p>
+<dl class="field-list simple">
+<dt class="field-odd" id="id11-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#id11-parameters" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="tortoise.queryset.UnionQuery.union.other_qs"><span class="o">*</span><span class="n sig-name">other_qs</span><a class="headerlink" href="#tortoise.queryset.UnionQuery.union.other_qs" title="Permalink to this definition">¶</a></dt><dd><p>Another QuerySet(s) to union with.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even" id="id11-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#id11-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="#id0" title="tortoise.queryset.UnionQuery (Python class) — Return count of objects in union query."><code class="xref py py-class docutils literal notranslate"><span class="pre">UnionQuery</span></code></a>[Model]</p>
+</dd>
+<dt class="field-odd" id="id11-returns">Returns<span class="colon">:</span><a class="headerlink" href="#id11-returns" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p>A new UnionQuery representing the union of all QuerySets.</p>
 </dd>
 </dl>
 </dd></dl>

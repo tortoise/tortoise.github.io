@@ -21,7 +21,7 @@
     
     
       
-        <title>Databases - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Databases - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -878,6 +878,16 @@
     
     <span class="md-ellipsis">
       <span>Optional parameters:<wbr></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotating-credentials" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Rotating credentials</span>
     </span>
   </a>
   
@@ -2476,6 +2486,41 @@ So if the <code class="docutils literal notranslate"><span class="pre">DB_FILE</
 </dd>
 </dl>
 <p>In case any of <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">password</span></code>, <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code> parameters is missing, we are letting <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>/<code class="docutils literal notranslate"><span class="pre">psycopg</span></code> retrieve it from default sources (standard PostgreSQL environment variables or default values).</p>
+<h3 id="rotating-credentials"><span id="db-password-callable"></span>Rotating credentials<a class="headerlink" href="#rotating-credentials" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">password</span></code> also accepts a callable, which is invoked every time a new connection is
+opened. The callable may be synchronous or asynchronous, and must return a string.</p>
+<p>This makes Tortoise usable with short-lived credentials such as AWS RDS/Aurora IAM
+authentication tokens, Azure Entra ID tokens or Vault leases, where the password expires
+long before the pool does:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_token</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">mint_short_lived_token</span><span class="p">()</span>
+
+<span class="k">await</span> <span class="n">Tortoise</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;connections&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;engine&quot;</span><span class="p">:</span> <span class="s2">&quot;tortoise.backends.asyncpg&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;db.host&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5432</span><span class="p">,</span>
+                    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;someuser&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">get_token</span><span class="p">,</span>
+                    <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="s2">&quot;somedb&quot;</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;apps&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<p>The callable is responsible for caching: it is awaited for every new connection the pool
+creates, so an expensive token request should be memoized until shortly before expiry.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Callable passwords cannot be expressed in a DB URL, so this requires dictionary
+configuration. They are supported on the <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code> and <code class="docutils literal notranslate"><span class="pre">psycopg</span></code> backends only.</p>
+</div>
 <h2 id="mysql-mariadb">MySQL/MariaDB<a class="headerlink" href="#mysql-mariadb" title="Link to this heading">¶</a></h2>
 <p>DB URL is typically in the form of <code class="samp docutils literal notranslate"><span class="pre">mysql://myuser:mypass&#64;db.host:3306/somedb</span></code></p>
 <h3 id="id5">Required Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>

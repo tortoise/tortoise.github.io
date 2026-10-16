@@ -21,7 +21,7 @@
     
     
       
-        <title>Reference - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Reference - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -956,6 +956,7 @@
 <li class="toctree-l2"><a class="reference internal" href="databases.html#postgresql">PostgreSQL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="databases.html#id3">Required Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="databases.html#id4">Optional parameters:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="databases.html#rotating-credentials">Rotating credentials</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="databases.html#mysql-mariadb">MySQL/MariaDB</a><ul>
@@ -1198,6 +1199,7 @@
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.annotate">annotate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.bulk_create">bulk_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.bulk_update">bulk_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.contains">contains</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.count">count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.delete">delete</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.distinct">distinct</a></li>
@@ -1225,6 +1227,7 @@
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.select_for_update">select_for_update</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.select_related">select_related</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.sql">sql</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.union">union</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.update">update</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.use_index">use_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.QuerySet.using_db">using_db</a></li>
@@ -1240,11 +1243,21 @@
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.BulkUpdateQuery.sql">sql</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.ContainsQuery">tortoise.queryset.ContainsQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.CountQuery">tortoise.queryset.CountQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.DeleteQuery">tortoise.queryset.DeleteQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.ExistsQuery">tortoise.queryset.ExistsQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.FieldSelectQuery">tortoise.queryset.FieldSelectQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.RawSQLQuery">tortoise.queryset.RawSQLQuery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.UnionCountQuery">tortoise.queryset.UnionCountQuery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery">tortoise.queryset.UnionQuery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery.count">count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery.limit">limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery.offset">offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery.order_by">order_by</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.queryset.UnionQuery.union">union</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.UpdateQuery">tortoise.queryset.UpdateQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.ValuesListQuery">tortoise.queryset.ValuesListQuery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.queryset.ValuesQuery">tortoise.queryset.ValuesQuery</a></li>
@@ -1289,6 +1302,17 @@
 <li class="toctree-l3"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch">tortoise.query_utils.Prefetch</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch-parameters">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="query.html#tortoise.query_utils.Prefetch.resolve_for_queryset">resolve_for_queryset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="query.html#union">Union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="query.html#id0">tortoise.queryset.UnionQuery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="query.html#id7">count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#id8">limit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#id9">offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#id10">order_by</a></li>
+<li class="toctree-l4"><a class="reference internal" href="query.html#id11">union</a></li>
 </ul>
 </li>
 </ul>
@@ -1529,6 +1553,27 @@
 <li class="toctree-l2"><a class="reference internal" href="validators.html#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="validators.html#built-in-validators">Built-in Validators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.CommaSeparatedIntegerListValidator">tortoise.validators.CommaSeparatedIntegerListValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator">tortoise.validators.DomainNameValidator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator-parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_DOMAIN_REGEX">ASCII_ONLY_DOMAIN_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_HOSTNAME_REGEX">ASCII_ONLY_HOSTNAME_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator.ASCII_ONLY_TLD_REGEX">ASCII_ONLY_TLD_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.DomainNameValidator.MAX_DOMAIN_LENGTH">MAX_DOMAIN_LENGTH</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator">tortoise.validators.EmailValidator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator-parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator.LITERAL_REGEX">LITERAL_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator.MAX_EMAIL_LENGTH">MAX_EMAIL_LENGTH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.EmailValidator.USER_REGEX">USER_REGEX</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.InvalidDomainName">tortoise.validators.InvalidDomainName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.InvalidEmailAddress">tortoise.validators.InvalidEmailAddress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.InvalidScheme">tortoise.validators.InvalidScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.InvalidURL">tortoise.validators.InvalidURL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MaxLengthValidator">tortoise.validators.MaxLengthValidator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MaxValueValidator">tortoise.validators.MaxValueValidator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.MinLengthValidator">tortoise.validators.MinLengthValidator</a></li>
@@ -1538,6 +1583,19 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.RegexValidator">tortoise.validators.RegexValidator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator">tortoise.validators.URLValidator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator-parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator-raises">Raises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.ADVANCED_IPV6_REGEX">ADVANCED_IPV6_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.HOST_REGEX">HOST_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.IPV4_REGEX">IPV4_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.MAX_HOSTNAME_LENGTH">MAX_HOSTNAME_LENGTH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.MAX_URL_LENGTH">MAX_URL_LENGTH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.SIMPLE_IPV6_REGEX">SIMPLE_IPV6_REGEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.UNSAFE_CHARS">UNSAFE_CHARS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.URLValidator.URL_REGEX">URL_REGEX</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="validators.html#tortoise.validators.Validator">tortoise.validators.Validator</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="validators.html#tortoise.validators.Validator.__call__">__call__</a></li>
 </ul>

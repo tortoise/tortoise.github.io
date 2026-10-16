@@ -21,7 +21,7 @@
     
     
       
-        <title>Models - Tortoise ORM v1.1.7 Documentation</title>
+        <title>Models - Tortoise ORM v1.1.9 Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.74c816e3f9967dd6e.min.css?v=6cfe2491" />
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6efbe22605a23fcd6.min.css?v=b2ceb110" />
         <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-header__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Tortoise ORM 1.1.7 Documentation
+            Tortoise ORM 1.1.9 Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -415,10 +415,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="toc.html" title="Tortoise ORM v1.1.7 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.7 Documentation" data-md-component="logo">
+    <a href="toc.html" title="Tortoise ORM v1.1.9 Documentation" class="md-nav__button md-logo" aria-label="Tortoise ORM v1.1.9 Documentation" data-md-component="logo">
       <img src="_static/tortoise.png" alt="logo">
     </a>
-    Tortoise ORM v1.1.7 Documentation
+    Tortoise ORM v1.1.9 Documentation
   </label>
   
     <div class="md-nav__source">
@@ -2952,6 +2952,16 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tortoise.models.Model.update_or_create-raises" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Raises</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tortoise.models.Model.update_or_create-return-type" class="md-nav__link">
     
     <span class="md-ellipsis">
@@ -4779,6 +4789,8 @@ but will raise errors on bad types or updating Many-instance relations.</p>
 <dt class="sig sig-object highlight sig-wrap py" id="tortoise.models.Model.update_or_create">
 <em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_or_create</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.update_or_create.defaults" title="tortoise.models.Model.update_or_create.defaults (Python parameter) — Default values used to update the object."><span class="n"><span class="pre">defaults</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#tortoise.models.Model.update_or_create.using_db" title="tortoise.models.Model.update_or_create.using_db (Python parameter) — Specific DB connection to use instead of default bound"><span class="n"><span class="pre">using_db</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#tortoise.models.Model.update_or_create.kwargs" title="tortoise.models.Model.update_or_create.kwargs (Python parameter) — Query parameters."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tortoise/models.html#Model.update_or_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tortoise.models.Model.update_or_create" title="Link to this definition">¶</a></dt>
 <dd><p>A convenience method for updating an object with the given kwargs, creating a new one if necessary.</p>
+<p>Creation is attempted at most twice. Each concurrent insert conflict is followed by a
+fresh locked read, including after the last creation attempt.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="tortoise.models.Model.update_or_create-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.update_or_create-parameters" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><dl class="simple api-field highlight">
@@ -4790,8 +4802,11 @@ but will raise errors on bad types or updating Many-instance relations.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even" id="tortoise.models.Model.update_or_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.update_or_create-return-type" title="Permalink to this headline">¶</a></dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dt class="field-even" id="tortoise.models.Model.update_or_create-raises">Raises<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.update_or_create-raises" title="Permalink to this headline">¶</a></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#tortoise.exceptions.OperationalError" title="tortoise.exceptions.OperationalError (Python exception) — Bases: BaseORMException"><strong>OperationalError</strong></a> – If repeated concurrent deletions exhaust conflict recovery.</p>
+</dd>
+<dt class="field-odd" id="tortoise.models.Model.update_or_create-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#tortoise.models.Model.update_or_create-return-type" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
 </dd>
 </dl>
 </dd></dl>
